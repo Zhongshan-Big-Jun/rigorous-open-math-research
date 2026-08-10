@@ -1,0 +1,13 @@
+interface:
+  display_name: manage math research program
+  short_description: Manage long-running mathematics research programs, literature portfolios,
+    paper analyses, reusable tool libraries, checkpoints, and task delegation. Use for
+    cross-paper or cross-problem project management; delegate concrete proof work to
+    rigorous-open-math-research.
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true

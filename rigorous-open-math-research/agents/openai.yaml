@@ -1,0 +1,16 @@
+interface:
+  display_name: rigorous open math research
+  short_description: Investigate open or research-level mathematics problems with
+    explicit theorem contracts, diverse search, persistent research ledgers, executable
+    checks, adversarial proof audits, literature verification, and calibrated reporting.
+    Use when asked to solve, disprove, advance, formalize, or rigorously audit a difficult
+    mathematics problem.
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true
