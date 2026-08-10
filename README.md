@@ -13,12 +13,14 @@ Codex 数学研究技能集: 严格开放数学研究 (求解执行层) 与数�
 
 两者只允许单向调用: `manage-math-research-program -> rigorous-open-math-research`.
 
+仓库结构: 父仓库为 `xsoc1/rigorous-open-math-research`; `Zhongshan-Big-Jun/rigorous-open-math-research` 是其 fork 副本, 可随时用 GitHub 的 Sync fork 跟进更新.
+
 ## 安装
 
 方式一 (skill-installer): 在 Codex 中使用 `$skill-installer`, 仓库路径分别为
 
-- `Zhongshan-Big-Jun/rigorous-open-math-research/tree/main/rigorous-open-math-research`
-- `Zhongshan-Big-Jun/rigorous-open-math-research/tree/main/manage-math-research-program`
+- `xsoc1/rigorous-open-math-research/tree/main/rigorous-open-math-research` (父仓库)
+- `xsoc1/rigorous-open-math-research/tree/main/manage-math-research-program` (父仓库)
 
 方式二 (手动): 将对应目录整体复制到 `~/.codex/skills/` 下 (Windows: `C:\Users\<用户名>\.codex\skills\`).
 
