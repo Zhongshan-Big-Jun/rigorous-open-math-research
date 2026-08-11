@@ -22,6 +22,13 @@
 7. 如实记录: 不编造验证结果, 无法验证的能力明确标注为未验证.
 
 ## 会话记录
+### 2026-08-12 会话: 仓库结构复验与收尾
+
+- 核对 GitHub 拓扑: 父仓库 `xsoc1/rigorous-open-math-research` (User, fork=false), fork `Zhongshan-Big-Jun/rigorous-open-math-research` (Organization), 双方 main 同一提交 (3d02ab6).
+- 复验: `python scripts/validate_all.py` 68 项全绿; 临时 CODEX_HOME 冒烟通过 (marketplace add 本地克隆 -> 4 插件全部 installed/enabled, 均为最新 cachebuster: workflow 20260811160209, rigorous/manage 20260811160208, lean-verify 20260812012356).
+- 清理 `scripts/validate_all.py` 死代码: 模板掩码第一次赋值被第二次覆盖, 已移除.
+- 本机市场 `math-research` 刷新 (`codex plugin marketplace upgrade`) 并重装 4 插件至最新版本.
+- 已 push 父仓库, 并同步 fork `Zhongshan-Big-Jun/rigorous-open-math-research`.
 
 ### 2026-08-12 会话: 仓库编排为工作流插件仓库
 

@@ -119,6 +119,7 @@ push / PR 时 GitHub Actions 自动运行 `scripts/validate_all.py`.
 - fork 副本: `Zhongshan-Big-Jun/rigorous-open-math-research` (同步方式: push 父仓库后, 在 fork 上执行 GitHub 的 Sync fork / merge-upstream)
 
 ## 版本历史
+ - 2026-08-12: 仓库结构复验收尾: validate_all.py 清理死代码 (模板掩码重复赋值); 68 项校验复验全绿; 临时 CODEX_HOME 端到端冒烟复验 (4 插件最新 cachebuster installed/enabled); 本机 math-research 市场刷新至最新提交.
 
  - 2026-08-12: 编排收尾核对: 修复 lean-verify agents YAML 语法错误; validate_all.py 新增严格 YAML / 模板感知 JSON 校验 (CI 安装 PyYAML); lean-verify cachebuster 更新为 `0.1.0+codex.20260812012356`; 临时 CODEX_HOME 端到端安装冒烟通过 (4 插件 installed/enabled).
  - 2026-08-12: 编排为工作流插件仓库: 统一 4 插件元数据 (字段顺序 / developerName / 描述修复), workflow 插件补齐 agents 配置, marketplace 顺序调整为编排插件置顶, 插件版本 cachebuster 更新为 `0.1.0+codex.20260811160208`, 新增 LICENSE / validate_all.py / CI / 根 AGENTS.md, README 重写 (流水线图 + 结构树 + 校验与同步说明).

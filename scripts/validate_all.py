@@ -210,7 +210,6 @@ class Validator:
             if suffix == ".json":
                 json_checked += 1
                 text = p.read_text(encoding="utf-8")
-                masked = TEMPLATE_TOKEN_RE.sub('"TMPL"', text)
                 masked = TEMPLATE_TOKEN_RE.sub('0', text)
                 try:
                     json.loads(masked)
