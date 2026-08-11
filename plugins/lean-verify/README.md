@@ -16,8 +16,9 @@ verdicts, and hash-bound run manifests.
 
 ## Usage
 
-1. Install the plugin from the personal marketplace (Codex plugins UI, or
-   `codex plugin install lean-verify` from the `personal` marketplace).
+1. Install the plugin from the repo marketplace: `codex plugin marketplace add
+   xsoc1/rigorous-open-math-research`, then `codex plugin add lean-verify@math-research`.
+   (Alternative: install the skill directory directly via `$skill-installer`.)
 2. Invoke `$lean-verify` with a Lean project directory and the informal theorem contract.
 3. The skill runs Phase 0-5 and emits `verification.json`, `audit_report.md`, and
    `run-manifest.json`.

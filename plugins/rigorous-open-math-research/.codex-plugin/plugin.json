@@ -1,7 +1,7 @@
 {
   "name": "rigorous-open-math-research",
-  "version": "0.1.0+codex.20260811",
-  "description": "Rigorous open mathematics research: explicit theorem contracts, diverse search, persistent research ledgers, executable checks, adversarial proof audits, literature verification, calibrated reporting, sub-agent division of labor, and blueprint snapshot-bound knowledge-graph integration. Chinese trigger: 定理证明, 猜想攻关, 反例搜索, 结构分类, 等价刻画, 复杂推导, 严格审计等困难数学问题.",
+  "version": "0.1.0+codex.20260811160208",
+  "description": "Rigorous open mathematics research: explicit theorem contracts, diverse search, persistent research ledgers, executable checks, adversarial proof audits, literature verification, calibrated reporting, sub-agent division of labor, and blueprint snapshot-bound knowledge-graph integration. Chinese trigger: \u5b9a\u7406\u8bc1\u660e, \u731c\u60f3\u653b\u5173, \u53cd\u4f8b\u641c\u7d22, \u7ed3\u6784\u5206\u7c7b, \u7b49\u4ef7\u523b\u753b, \u590d\u6742\u63a8\u5bfc, \u4e25\u683c\u5ba1\u8ba1\u7b49\u56f0\u96be\u6570\u5b66\u95ee\u9898.",
   "author": {
     "name": "xsoc1"
   },
@@ -16,11 +16,11 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Rigorous Open Math Research",
-    "shortDescription": "严格开放数学研究: 定理契约, 多路线搜索, 对抗性证明审计.",
+    "shortDescription": "\u4e25\u683c\u5f00\u653e\u6570\u5b66\u7814\u7a76: \u5b9a\u7406\u5951\u7ea6, \u591a\u8def\u7ebf\u641c\u7d22, \u5bf9\u6297\u6027\u8bc1\u660e\u5ba1\u8ba1.",
     "longDescription": "Solver layer for difficult mathematics: explicit theorem contracts, diverse route search, persistent research ledgers, executable checks, adversarial proof audits, literature verification, calibrated reporting, sub-agent delegation, and snapshot-bound math knowledge-graph integration.",
     "developerName": "xsoc1",
     "category": "Education & Research",
     "capabilities": [],
-    "defaultPrompt": "帮我严格研究一个数学问题 (定义定理契约, 多路线探索, 审计证明)."
+    "defaultPrompt": "\u5e2e\u6211\u4e25\u683c\u7814\u7a76\u4e00\u4e2a\u6570\u5b66\u95ee\u9898 (\u5b9a\u4e49\u5b9a\u7406\u5951\u7ea6, \u591a\u8def\u7ebf\u63a2\u7d22, \u5ba1\u8ba1\u8bc1\u660e)."
   }
 }

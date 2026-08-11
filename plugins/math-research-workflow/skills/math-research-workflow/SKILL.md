@@ -2,8 +2,8 @@
 name: math-research-workflow
 description: >-
   Orchestrate the full mathematics research pipeline: program management
-  (manage-math-research-program) 到 rigorous problem research
-  (rigorous-open-math-research) 到 Lean formal verification (lean-verify),
+  (manage-math-research-program) to rigorous problem research
+  (rigorous-open-math-research) to Lean formal verification (lean-verify),
   with sub-agent division of labor, artifact handoff contracts, hash binding,
   and automatic git sync at every stage boundary. Use when the user asks to
   run or manage a complete research+verification workflow for a mathematics

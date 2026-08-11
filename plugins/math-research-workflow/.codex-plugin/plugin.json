@@ -1,19 +1,9 @@
 {
   "name": "math-research-workflow",
-  "version": "0.1.0+codex.20260811",
-  "description": "Orchestrates the full mathematics research pipeline: program management (manage-math-research-program) 到 rigorous problem research (rigorous-open-math-research) 到 Lean formal verification (lean-verify), with sub-agent division of labor, artifact handoff contracts, hash binding, and automatic git sync at every stage boundary.",
+  "version": "0.1.0+codex.20260811160209",
+  "description": "Orchestrates the full mathematics research pipeline: program management (manage-math-research-program) to rigorous problem research (rigorous-open-math-research) to Lean formal verification (lean-verify), with sub-agent division of labor, artifact handoff contracts, hash binding, and automatic git sync at every stage boundary.",
   "author": {
     "name": "xsoc1"
-  },
-  "skills": "./skills/",
-  "interface": {
-    "displayName": "Math Research Workflow",
-    "shortDescription": "管理-研究-验证一体化数学研究流水线编排 (manage + rigorous + lean-verify).",
-    "longDescription": "One orchestrator for the three-skill pipeline: stage A program management and task packets, stage B rigorous problem research with solver/audit sub-agents, stage C Lean formalization with machine verification and obligation-level audits. Enforces handoff contracts, honest status labels, and git sync at every stage boundary.",
-    "developerName": "Local developer",
-    "category": "Developer Tools",
-    "capabilities": [],
-    "defaultPrompt": "帮我跑一个数学项目的研究+验证全流程 (管理-研究-Lean形式化)."
   },
   "repository": "https://github.com/xsoc1/rigorous-open-math-research",
   "license": "MIT",
@@ -22,5 +12,15 @@
     "workflow",
     "pipeline",
     "orchestration"
-  ]
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Math Research Workflow",
+    "shortDescription": "\u7ba1\u7406-\u7814\u7a76-\u9a8c\u8bc1\u4e00\u4f53\u5316\u6570\u5b66\u7814\u7a76\u6d41\u6c34\u7ebf\u7f16\u6392 (manage + rigorous + lean-verify).",
+    "longDescription": "One orchestrator for the three-skill pipeline: stage A program management and task packets, stage B rigorous problem research with solver/audit sub-agents, stage C Lean formalization with machine verification and obligation-level audits. Enforces handoff contracts, honest status labels, and git sync at every stage boundary.",
+    "developerName": "xsoc1",
+    "category": "Developer Tools",
+    "capabilities": [],
+    "defaultPrompt": "\u5e2e\u6211\u8dd1\u4e00\u4e2a\u6570\u5b66\u9879\u76ee\u7684\u7814\u7a76+\u9a8c\u8bc1\u5168\u6d41\u7a0b (\u7ba1\u7406-\u7814\u7a76-Lean\u5f62\u5f0f\u5316)."
+  }
 }

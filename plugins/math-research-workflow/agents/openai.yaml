@@ -1,0 +1,18 @@
+interface:
+  display_name: math research workflow
+  short_description: Orchestrate the full mathematics research pipeline (program
+    management, rigorous problem research, Lean formal verification) with sub-agent
+    division of labor, artifact handoff contracts, hash binding, and automatic git
+    sync at every stage boundary. Use when the user asks to run a complete
+    research+verification workflow for a mathematics project or to coordinate the
+    three-skill pipeline.
+  long_description: Sequences the manage -> research -> formalize pipeline, delegates
+    each stage to the corresponding component skill, enforces handoff contracts and
+    honest status labels, and syncs git at every stage boundary.
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true

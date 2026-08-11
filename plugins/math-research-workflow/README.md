@@ -1,10 +1,11 @@
 # Math Research Workflow 插件
 
-管理-研究-验证一体化的数学研究流水线编排插件。
+管理-研究-验证一体化的数学研究流水线编排插件 (工作流插件仓库旗舰).
 
 ## 组成
 
 - `.codex-plugin/plugin.json` -- 插件清单
+- `agents/openai.yaml` -- 代理配置
 - `skills/math-research-workflow/SKILL.md` -- 编排协议 (三阶段流水线 + 子 agent 分工)
 - `skills/math-research-workflow/references/workflow-design.md` -- 设计文档 (角色/交接/并行/失败处理)
 - `assets/pipeline-handoff.template.md` -- 阶段交接记录模板
@@ -20,7 +21,8 @@
 ## 安装
 
 ```text
-codex plugin add math-research-workflow@personal
+codex plugin marketplace add xsoc1/rigorous-open-math-research
+codex plugin add math-research-workflow@math-research
 ```
 
 ## 使用

@@ -1,19 +1,9 @@
 {
   "name": "lean-verify",
-  "version": "0.1.0+codex.20260811",
+  "version": "0.1.0+codex.20260811160209",
   "description": "Strict verification workflow for Lean 4 formalizations: statement-fidelity audit, machine checks (lake build, sorry/axiom scan), per-obligation independent audit, structured verdicts, and hash-bound run manifests.",
   "author": {
     "name": "xsoc1"
-  },
-  "skills": "./skills/",
-  "interface": {
-    "displayName": "Lean Verify",
-    "shortDescription": "Strict Lean 4 formalization verification with audit reports and structured verdicts.",
-    "longDescription": "Runs a verifiable end-to-end check of a Lean 4 proof against its informal theorem contract: environment pinning, statement-fidelity audit, machine verification, independent per-obligation audit, structured verdict JSON, and a hash-bound run manifest.",
-    "developerName": "Local developer",
-    "category": "Developer Tools",
-    "capabilities": [],
-    "defaultPrompt": "Help me verify a Lean 4 formalization of a theorem."
   },
   "repository": "https://github.com/xsoc1/rigorous-open-math-research",
   "license": "MIT",
@@ -22,5 +12,15 @@
     "formal-verification",
     "proof",
     "audit"
-  ]
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Lean Verify",
+    "shortDescription": "Strict Lean 4 formalization verification with audit reports and structured verdicts.",
+    "longDescription": "Runs a verifiable end-to-end check of a Lean 4 proof against its informal theorem contract: environment pinning, statement-fidelity audit, machine verification, independent per-obligation audit, structured verdict JSON, and a hash-bound run manifest.",
+    "developerName": "xsoc1",
+    "category": "Developer Tools",
+    "capabilities": [],
+    "defaultPrompt": "Help me verify a Lean 4 formalization of a theorem."
+  }
 }
