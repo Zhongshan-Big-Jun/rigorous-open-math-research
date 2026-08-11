@@ -1,8 +1,10 @@
 # rigorous-open-math-research
 
-Codex 数学研究技能集: 严格开放数学研究 (求解执行层) 与数学研究项目管理 (项目/知识管理层).
+Codex 数学研究技能集: 严格开放数学研究 (求解执行层), 数学研究项目管理 (项目/知识管理层) 与
+Lean 4 形式化验证 (研究结果可机器核验的正确性证明: lake build + sorry/admit/axiom 扫描 + 义务级审计).
 
-本仓库包含两个相互关联的 Codex skill:
+本仓库包含两个相互关联的 Codex skill, 以及随仓库分发的 lean-verify 验证插件与
+math-research-workflow 一体化流水线插件 (管理-研究-验证全流程编排):
 
 ## 目录
 
