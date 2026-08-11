@@ -19,6 +19,7 @@ Use the following as available:
 - Google for broad discovery, author pages, conference material, and terminology;
 - Google Scholar for citation chains, related works, and versions;
 - arXiv for version history and recent preprints;
+- semantic theorem-retrieval services over indexed arXiv theorem corpora (for example a Lean-based theorem-search endpoint) when searching for exact statements of nearby theorems, lemmas, or definitions; query with a complete mathematical statement rather than keywords, and record the returned arXiv id / theorem id / paper id for every candidate before citing it;
 - MathSciNet, zbMATH Open, journal databases, proceedings, theses, and specialist repositories for professional indexing and reviews;
 - DOI/Crossref and publisher pages for bibliographic normalization;
 - author pages or institutional repositories for legal source copies when needed.

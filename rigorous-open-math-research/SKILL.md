@@ -74,9 +74,10 @@ Before mathematical search:
 2. Check whether the problem is genuinely open as of the research date, unless the user explicitly requests a blind benchmark phase.
 3. Locate variants whose quantifiers or definitions differ.
 4. Inventory every attachment, program, verifier, seed, example, formal library, and environment version.
-5. Record tool and web restrictions exactly.
-6. Separate historical facts from reconstructed prompts or suggested workflows.
-7. When the run workspace is a git repository, check its state before starting: record the current commit hash and any dirty files in the ledger. Do not silently overwrite uncommitted artifacts; commit them or record the divergence first.
+5. When the run provides a per-problem reference directory (for example `data/<id>.refs/` with markdown, LaTeX, plain text, or pre-extracted PDF text), read those user-provided files before external search. Treat them as user-provided context, not verified facts; cite them in the ledger and in proof steps when they influence the proof. Never present user-provided notes as independently verified results.
+6. Record tool and web restrictions exactly.
+7. Separate historical facts from reconstructed prompts or suggested workflows.
+8. When the run workspace is a git repository, check its state before starting: record the current commit hash and any dirty files in the ledger. Do not silently overwrite uncommitted artifacts; commit them or record the divergence first.
 
 If exact-solution search is forbidden for benchmarking, use two phases:
 
@@ -134,6 +135,10 @@ Distinguish:
 - `CONJECTURED`: plausible but unproved;
 - `HEURISTIC`: supported only by examples or analogy;
 - `RECALLED_UNVERIFIED`: memory that must not be used as a premise yet.
+
+### Semantic theorem retrieval
+
+Prefer a semantic theorem-retrieval service (an indexed arXiv theorem/lemma/definition corpus queried with a complete mathematical statement rather than keywords) over full-text keyword search when available. For each returned item, record its full statement plus arXiv id, theorem id, and paper id. Download the paper and read its text before relying on the result; expand the paper's local definitions and check that terminology and hypotheses actually match the current setting. Read the proof of a useful theorem and extract adaptable techniques. If a result is only partial, record the extra hypotheses, why the method does not settle the full statement, and what obstruction this reveals. If semantic retrieval returns nothing useful, fall back to general web search and record the stalled query.
 
 
 When a canonical knowledge base exists (MRP `knowledge/` or Blueprint `statistics/`), bind this phase to it: run `snapshot`, then `math-closure --context <ID>` and `math-frontier --goal <ID> --context <ID>`; keep trusted claims, proved conditional inferences, and open research records in three separate classes; cite reused accepted results by node ID plus semantic hash. See `references/blueprint-math-graph-integration.md`.
@@ -227,6 +232,10 @@ Use these route states:
 - `MERGED`
 - `PROVED`
 - `FORMALIZED`
+
+### Retrieval / deep-thinking scheduling
+
+Avoid search dependency. Alternate explicit retrieval phases with retrieval-free deep-thinking phases: after a search round, run a round in which search tools are disabled and the route is advanced by independent reasoning, constructions, and stress tests. When retrieval stops yielding useful support, stop leaning on it and continue with the non-search skills; record stalled queries and the reason the results were not useful. Deep independent reasoning is a required mode, not a fallback.
 
 ### The theorem-strength gap test
 
@@ -348,6 +357,20 @@ Audit categories:
 
 For each gap, identify the smallest failing claim and provide a counterexample or explicit missing proof obligation whenever possible.
 
+### Structured verification output
+
+Record the audit in a machine-readable shape so downstream revision and ingestion can act on it:
+
+```json
+{
+  "verdict": "PASS | REPAIRABLE_GAP | FATAL_GAP | WRONG_PROBLEM | CIRCULAR_OR_EQUIVALENT_REDUCTION | UNVERIFIED_CITATION | COMPUTATIONAL_ONLY | UNCERTAIN",
+  "critical_errors": [{"location": "...", "issue": "..."}],
+  "gaps": [{"location": "...", "issue": "..."}],
+  "repair_hints": "..."
+}
+```
+
+Strict rule: `PASS` only when `critical_errors` and `gaps` are both empty. Every finding carries a location and, whenever possible, the smallest failing claim (or a counterexample / explicit missing obligation). Any non-`PASS` verdict must include non-empty `repair_hints`. Aggregate without dropping issues; the revision phase consumes the exact gap list.
 
 For canonical promotion, structure the audit as four mandatory audits, each bound to the exact content-hashed proof package: **definition audit** (objects, maps, quotients, multiplicities, orientation, notation, local/global distinctions, category membership), **logic audit** (quantifier order, implication direction, necessity versus sufficiency, induction decrease, termination, existence choices, circularity, local-to-global transitions), **boundary audit** (empty, zero, disconnected, low-dimensional, parity, equality, singular, noncompact, noncomplete, non-smooth, critical-parameter, and degenerate cases), and **adversarial audit** (attack the weakest step, enumerate smallest objects, search extreme parameters, verify every obvious compatibility condition, test whether the central missing lemma restates the target).
 ## Phase 9 — Revision policy
@@ -596,6 +619,12 @@ Available attachments/tools/constraints:
 ```
 
 
+## Changelog (2026-08-11)
+
+- 新增 arXiv 定理语义检索机制 (Phase 2): 以完整数学陈述查询语义定理检索服务, 记录完整陈述/arXiv id/theorem id/paper id, 下载原文核验后再引用; 局部结果必须记录额外假设与真实障碍.
+- 新增检索与深度思考交替调度 (Phase 5): 检索轮与禁用检索的独立推理轮交替, 检索失效时转入非检索技能并记录停滞查询.
+- 新增结构化验证输出规范 (Phase 8): audit 记录采用 verdict + critical_errors/gaps/repair_hints 字段, 严格规则 (errors 与 gaps 全空才 PASS), 非 PASS 必须提供修复提示.
+- 新增用户引用目录机制 (Phase 0): 问题附带引用目录时先于外部检索读取, 视为用户提供的上下文而非已核验事实.
 ## Changelog (2026-08-09)
 
 - 蒸馏整合 Blueprint v2.2 数学工具包 (Downloads/blueprint-v22-math-codex-toolkit): 命题/推理超图与状态语义, 可信闭包与目标 frontier 查询钩子, research_goal 结构化契约字段, 内容哈希证明包, 四项强制审计 (definition/logic/boundary/adversarial), 事务状态与研究状态分离, 失败入档纪律.

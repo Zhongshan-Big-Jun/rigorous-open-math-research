@@ -34,6 +34,7 @@ Codex 数学研究技能集: 严格开放数学研究 (求解执行层) 与数�
 
 ## 版本
 
+- 2026-08-11: 新增 arXiv 定理语义检索机制 (完整陈述查询语义定理库, 引用前下载原文核验, 局部结果记录障碍), 新增检索与深度思考交替调度, 新增结构化验证输出规范 (verdict + critical_errors/gaps/repair_hints), 新增用户引用目录机制 (rigorous-open-math-research); 文献策展新增语义定理检索渠道, MANIFEST 同步更新 (manage-math-research-program).
 - 2026-08-10: 新增自动 git 仓库同步检查 (MRP 工作流第 0 步 + Rigor Phase 0/10/12).
 - 2026-08-09: 蒸馏 Blueprint v2.2 数学工具包 (数学超图/类型/状态语义/可信闭包/四审计/事务-研究状态分离), 整合进两个 skill.
 - 2026-08-05: rigorous-open-math-research 迭代自 rigorous-mathematical-research; 建立 manage-math-research-program.
