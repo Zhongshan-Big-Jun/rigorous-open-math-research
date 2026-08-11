@@ -59,6 +59,15 @@ Do not call manage-math-research-program from inside the solver run.
 
 The dependency remains one-way even when the manager resumes after the call.
 
+## Upstream internal sub-agent delegation
+
+The upstream skill may split a concrete task into parallel sub-agents (route explorers,
+obligation provers, counterexample hunters, literature auditors, proof verifiers) according to
+its own `references/subagent-delegation.md`. The manager does not prescribe or observe that
+split; a task packet supplies only project context and constraints. Sub-agent artifacts are
+bound by hash in the upstream run manifest, so ingestion reads the run root and manifest
+without re-reading intermediate sub-agent work.
+
 ## Run directory
 
 Recommended location:

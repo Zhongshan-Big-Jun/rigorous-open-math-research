@@ -40,6 +40,7 @@ Codex 数学研究技能集: 严格开放数学研究 (求解执行层) 与数�
 
 ## 版本
 
+- 2026-08-11: 新增子 agent 分工模式 (rigorous-open-math-research): 路线探索/义务证明/反例猎手/文献审计/证明验证的并行子 agent 分工, 子任务包契约, 隔离与去相关, 合并协议, 失败机制入档, 动态资源分配与单 agent 顺序 fallback; 管理侧文档同步 (delegation-and-ingestion.md).
 - 2026-08-11: 新增 lean-verify 插件 (Lean 4 形式化验证: 陈述保真审计, 机器验证, 义务级独立审计, 结构化裁决与 hash 绑定运行清单).
 - 2026-08-11: 新增 arXiv 定理语义检索机制 (完整陈述查询语义定理库, 引用前下载原文核验, 局部结果记录障碍), 新增检索与深度思考交替调度, 新增结构化验证输出规范 (verdict + critical_errors/gaps/repair_hints), 新增用户引用目录机制 (rigorous-open-math-research); 文献策展新增语义定理检索渠道, MANIFEST 同步更新 (manage-math-research-program).
 - 2026-08-10: 新增自动 git 仓库同步检查 (MRP 工作流第 0 步 + Rigor Phase 0/10/12).

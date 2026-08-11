@@ -523,7 +523,61 @@ Dynamic policy:
 6. Cross-pollinate after routes expose their real bottlenecks.
 7. Keep an adversarial verifier active throughout, not only at the end.
 
-Single-agent fallback: execute these roles sequentially, write each role’s artifact before switching, and perform the verifier pass with a fresh context or deliberately adversarial prompt.
+### Sub-agent delegation
+
+Use spawned sub-agents when the runtime provides them (for example Codex multi-agent), for
+parallelizable, well-bounded subtasks. Role separation and uncorrelated approaches are the
+value; agent count is not. Do not delegate global synthesis or resource decisions. Detailed
+scheduling, isolation, merge, and failure rules: `references/subagent-delegation.md`.
+
+Appropriate parallel targets:
+
+- **Route explorers (Phase 4):** one sub-agent per mechanism-distinct route, given its route
+  card, a contract slice, and fast falsification tests.
+- **Obligation provers (Phase 3/5):** independent obligations with no circular dependency
+  proved in parallel by separate sub-agents, each returning its obligation ID, artifact, and
+  exact gap.
+- **Counterexample hunters:** one hunter per key lemma or inferred formula, with the exact
+  claim to attack and a search budget.
+- **Literature auditors (Phase 2/11):** per-topic parallel retrieval and citation verification.
+- **Proof verifiers (Phase 8):** an independent audit pass with a context different from the
+  formalizer; never the same agent that wrote the proof.
+
+Subtask packet contract (template in `assets/subtask-packet.template.md`):
+
+- `subgoal_id` binding to the obligation or route, and the exact claim attacked.
+- Input artifacts by exact path and hash, plus the minimal context slice, not the whole project.
+- Output contract: structured return (artifact path, status label, exact gap, failure mechanism).
+- Constraints: do not claim global completion; do not mutate shared artifacts; do not repeat a
+  recorded failure without new evidence.
+- Budget: explicit effort and deadline.
+
+Isolation and decorrelation:
+
+- Keep early sub-agents independent; do not broadcast the currently fashionable route.
+- Give different sub-agents different mechanisms or adversarial perspectives.
+- Have each sub-agent write to its own artifact paths; the coordinator merges only audited
+  results.
+
+Merge protocol:
+
+- Merge only modules that passed their own audit; apply the Phase 7 interface checks (domains,
+  notation, constants, simultaneous choices, gluing, interchange).
+- Conflicts resolve against the audited problem contract; a sub-agent cannot override the
+  contract.
+- Record every sub-agent outcome (`PROVED`, `PARTIAL`, `BLOCKED`, `REFUTED`, `FALSIFIED`) in the
+  ledger and approach registry; failures with a precise mechanism are research results.
+
+Resource policy:
+
+- Allocate dynamically by marginal information gain; no fixed agent counts.
+- Cap concurrency and total budget; stop correlated duplicates early.
+- If a sub-agent stalls or returns noise, record it and redirect resources.
+
+Single-agent fallback: execute these roles sequentially, write each role’s artifact before
+switching, and perform the verifier pass with a fresh context or deliberately adversarial
+prompt. When spawn capability is unavailable, run sub-tasks one at a time in the same session,
+preserving the same packet contract and isolation rules.
 
 # Reusable role prompts
 
@@ -621,6 +675,7 @@ Available attachments/tools/constraints:
 
 ## Changelog (2026-08-11)
 
+- 新增子 agent 分工模式 (Agent orchestration + references/subagent-delegation.md + assets/subtask-packet.template.md): 路线探索/义务证明/反例猎手/文献审计/证明验证的并行子 agent 分工, 子任务包契约 (subgoal_id, 输入 hash, 输出契约, 约束, 预算), 隔离与去相关, 合并协议 (只合并已审计模块 + Phase 7 接口检查), 失败机制入档, 动态资源分配与单 agent 顺序 fallback.
 - 新增 arXiv 定理语义检索机制 (Phase 2): 以完整数学陈述查询语义定理检索服务, 记录完整陈述/arXiv id/theorem id/paper id, 下载原文核验后再引用; 局部结果必须记录额外假设与真实障碍.
 - 新增检索与深度思考交替调度 (Phase 5): 检索轮与禁用检索的独立推理轮交替, 检索失效时转入非检索技能并记录停滞查询.
 - 新增结构化验证输出规范 (Phase 8): audit 记录采用 verdict + critical_errors/gaps/repair_hints 字段, 严格规则 (errors 与 gaps 全空才 PASS), 非 PASS 必须提供修复提示.

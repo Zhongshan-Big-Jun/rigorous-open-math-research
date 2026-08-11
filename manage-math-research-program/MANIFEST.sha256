@@ -34,7 +34,7 @@ f18e9c21941d5cdada041ef1dc7acf6e7b82d869ddbf842e465ca7896eedd5ab  ./examples/01-
 44fa0e7823155c3279ea04712630eee7e4bc4073d6e9e98940b4d00e166dfc7a  ./examples/02-delegated-open-problem.md
 d0824e428c4eb4ba48a18ae2bf539f3a73e22cb1cc0fcb2943a51c913fa55888  ./references/accepted-knowledge-pipeline.md
 54fe75dcfeccc47c2d42716a660f42c5512b9261b9df86de67a69fd5b08ce027  ./references/boundary-checklist.md
-95af591317c58a69fb871bfa52434c926f2a1f8191907aa4d05d14b433d725db  ./references/delegation-and-ingestion.md
+e677b4bac672f77eb41f885835fa763b3c50308a2f13923e881e76e421872c1e  ./references/delegation-and-ingestion.md
 d2fe675a9ec3987d7bcbb4bd4472fade45e2de44af4bfa0c83e551df3169ce3e  ./references/git-sync.md
 5fe2b617034ec64d754afe7f31ed778e8bfa51ff8e31680ad1a966af8dc59713  ./references/literature-and-paper-analysis.md
 9185122c519bfa5399d9c2695ef33c87f3f71fe862a1adef18380746fcbf459a  ./references/project-repository-spec.md
@@ -42,4 +42,4 @@ d2fe675a9ec3987d7bcbb4bd4472fade45e2de44af4bfa0c83e551df3169ce3e  ./references/g
 d43fc8b2d8b58abc067a385dc229a402c86a6af5a9d3ca6d23cb69ceff970bf2  ./references/tool-library-spec.md
 ebdb838aea20223c2841825fe135f0e549a47aacfc877e962e0beec8371d6b48  ./scripts/init_project.py
 389ab2df14424d92384072a17123682e1fb8712a98fb6915cdd7d86ad9c409ee  ./scripts/validate_project.py
-623e127fbb49b5b3e4254301c6a310562eeb8dde1fbf1cc30ce68b3be856ecdb  ./MANIFEST.sha256
+3ef4a07593c8f1e5646e77d97525cd6327156077722de446b98aea9f6cc76da1  ./MANIFEST.sha256
