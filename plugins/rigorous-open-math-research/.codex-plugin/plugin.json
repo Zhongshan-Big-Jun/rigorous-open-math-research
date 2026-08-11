@@ -1,0 +1,26 @@
+{
+  "name": "rigorous-open-math-research",
+  "version": "0.1.0+codex.20260811",
+  "description": "Rigorous open mathematics research: explicit theorem contracts, diverse search, persistent research ledgers, executable checks, adversarial proof audits, literature verification, calibrated reporting, sub-agent division of labor, and blueprint snapshot-bound knowledge-graph integration. Chinese trigger: 定理证明, 猜想攻关, 反例搜索, 结构分类, 等价刻画, 复杂推导, 严格审计等困难数学问题.",
+  "author": {
+    "name": "xsoc1"
+  },
+  "repository": "https://github.com/xsoc1/rigorous-open-math-research",
+  "license": "MIT",
+  "keywords": [
+    "mathematics",
+    "research",
+    "proof",
+    "audit"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Rigorous Open Math Research",
+    "shortDescription": "严格开放数学研究: 定理契约, 多路线搜索, 对抗性证明审计.",
+    "longDescription": "Solver layer for difficult mathematics: explicit theorem contracts, diverse route search, persistent research ledgers, executable checks, adversarial proof audits, literature verification, calibrated reporting, sub-agent delegation, and snapshot-bound math knowledge-graph integration.",
+    "developerName": "xsoc1",
+    "category": "Education & Research",
+    "capabilities": [],
+    "defaultPrompt": "帮我严格研究一个数学问题 (定义定理契约, 多路线探索, 审计证明)."
+  }
+}

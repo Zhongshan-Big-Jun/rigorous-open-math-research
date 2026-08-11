@@ -1,9 +1,9 @@
 {
   "name": "lean-verify",
-  "version": "0.1.0+codex.20260811140558",
+  "version": "0.1.0+codex.20260811",
   "description": "Strict verification workflow for Lean 4 formalizations: statement-fidelity audit, machine checks (lake build, sorry/axiom scan), per-obligation independent audit, structured verdicts, and hash-bound run manifests.",
   "author": {
-    "name": "Local developer"
+    "name": "xsoc1"
   },
   "skills": "./skills/",
   "interface": {
@@ -14,5 +14,13 @@
     "category": "Developer Tools",
     "capabilities": [],
     "defaultPrompt": "Help me verify a Lean 4 formalization of a theorem."
-  }
+  },
+  "repository": "https://github.com/xsoc1/rigorous-open-math-research",
+  "license": "MIT",
+  "keywords": [
+    "lean",
+    "formal-verification",
+    "proof",
+    "audit"
+  ]
 }

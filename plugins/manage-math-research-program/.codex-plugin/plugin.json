@@ -1,0 +1,26 @@
+{
+  "name": "manage-math-research-program",
+  "version": "0.1.0+codex.20260811",
+  "description": "Manage long-running, cross-paper, cross-problem mathematics research programs: project workspaces, literature curation, paper maps, open-problem portfolios, tool libraries, budgets, checkpoints, task packets, delegation to rigorous-open-math-research, and a hash-bound reviewed accepted-knowledge base with blueprint integration. Chinese trigger: 数学研究项目管理, 跨会话维护.",
+  "author": {
+    "name": "xsoc1"
+  },
+  "repository": "https://github.com/xsoc1/rigorous-open-math-research",
+  "license": "MIT",
+  "keywords": [
+    "mathematics",
+    "research-program",
+    "management",
+    "literature"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Math Research Program Manager",
+    "shortDescription": "数学研究项目管理: 文献, 开放问题, 任务包, 已接受知识库.",
+    "longDescription": "Program management layer for mathematics research: initialize and validate project workspaces, curate literature, maintain paper maps and open-problem portfolios, delegate concrete problems to -open-math-research, ingest audited artifacts by reference, and maintain a hash-bound, reviewed, canonical accepted-knowledge base.",
+    "developerName": "xsoc1",
+    "category": "Education & Research",
+    "capabilities": [],
+    "defaultPrompt": "帮我管理一个长期数学研究项目 (初始化/维护项目仓库)."
+  }
+}

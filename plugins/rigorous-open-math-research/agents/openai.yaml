@@ -5,8 +5,8 @@ interface:
     checks, adversarial proof audits, literature verification, and calibrated reporting.
     Use when asked to solve, disprove, advance, formalize, or rigorously audit a difficult
     mathematics problem.
-  icon_small: assets/icon.svg
-  icon_large: assets/icon.svg
+  icon_small: skills/rigorous-open-math-research/assets/icon.svg
+  icon_large: skills/rigorous-open-math-research/assets/icon.svg
 policy:
   products:
   - chatgpt
