@@ -1,0 +1,14 @@
+interface:
+  display_name: lean verify
+  short_description: Strict Lean 4 formalization verification with statement-fidelity
+    audits, machine checks, structured verdicts, and hash-bound run manifests.
+  long_description: Verifies a Lean 4 proof against its informal theorem contract:
+    environment pinning, per-obligation statement fidelity, lake build, sorry/axiom
+    scan, independent audit, structured verdict JSON, and run manifest.
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true

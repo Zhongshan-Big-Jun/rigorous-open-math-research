@@ -11,8 +11,10 @@ Codex 数学研究技能集: 严格开放数学研究 (求解执行层) 与数�
 | `rigorous-open-math-research/` | 严格开放数学研究 | 求解执行层: 显式定理契约, 多样化搜索, 持久研究台账, 可执行验证, 对抗性证明审计, 文献核验, 校准式报告, 快照绑定的数学知识图谱集成 |
 | `manage-math-research-program/` | 数学研究项目管理 | 项目管理层: 跨会话研究项目管理, 文献策展与版本, 论文地图/开放问题组合/工具库/预算/检查点, 任务包派发, 已接受知识流水线 (hash 绑定 -> 确定性校验 -> 独立审查 -> 确定性接收 -> 收据) |
 | `plugins/lean-verify/` | lean-verify 插件 | Lean 4 形式化验证: 陈述保真审计, 机器验证 (lake build + sorry/admit/axiom 扫描), 义务级独立审计, 结构化裁决, hash 绑定运行清单 |
+| `plugins/math-research-workflow/` | 一体化工作流插件 | 管理-研究-验证三阶段流水线编排: 程序管理 (manage) 到 问题研究 (rigorous) 到 Lean 形式化验证 (lean-verify), 子 agent 分工, 交接契约, 阶段边界 git 同步 |
 
-两者只允许单向调用: `manage-math-research-program -> rigorous-open-math-research`.
+依赖方向: `manage-math-research-program` 单向调用 `rigorous-open-math-research`;
+`math-research-workflow` 编排层单向调用三个 skill (manage / rigorous / lean-verify).
 `lean-verify` 是独立插件 (随本仓库分发), 用于对 Lean 4 形式化做严格验证, 与两个 skill 互补.
 
 仓库结构: 父仓库为 `xsoc1/rigorous-open-math-research`; `Zhongshan-Big-Jun/rigorous-open-math-research` 是其 fork 副本, 可随时用 GitHub 的 Sync fork 跟进更新.
@@ -28,17 +30,21 @@ Codex 数学研究技能集: 严格开放数学研究 (求解执行层) 与数�
 
 `manage-math-research-program` 自带 `MANIFEST.sha256` (sha256 逐文件校验清单), 修改后需重新生成.
 
-插件安装: 将 `plugins/lean-verify/` 复制到本地 `~/plugins/lean-verify` (Windows: `C:\Users\HuangZY\plugins\lean-verify`),
-确认个人 marketplace (`~/.agents/plugins/marketplace.json`) 中有 `lean-verify` 条目后执行
-`codex plugin add lean-verify@personal`; 或在 Codex 桌面端插件页从 personal marketplace 安装.
+插件安装: 将 `plugins/lean-verify/` 与 `plugins/math-research-workflow/` 分别复制到本地
+`~/plugins/lean-verify` 与 `~/plugins/math-research-workflow` (Windows: `C:\Users\HuangZY\plugins\...`),
+确认个人 marketplace (`~/.agents/plugins/marketplace.json`) 中有对应条目后执行
+`codex plugin add lean-verify@personal` / `codex plugin add math-research-workflow@personal`;
+或在 Codex 桌面端插件页从 personal marketplace 安装.
 
 ## 使用
 
 - 证明/反例/构造/形式化/严格审计单个数学问题: 调用 `$rigorous-open-math-research`.
 - 长期项目/文献/工具库/任务包/知识库维护: 调用 `$manage-math-research-program`, 具体数学任务一律派发给前者.
 - 若项目根目录是 git 仓库, 两个 skill 会自动检查并保持仓库同步 (会话开始时 `git status`/`git fetch`, 阶段收尾时提交并推送), 详见 `manage-math-research-program/references/git-sync.md`.
+- 全流程 (管理-研究-验证一体化, 含子 agent 分工与阶段交接): 调用 `$math-research-workflow` (插件).
 
 ## 版本
+- 2026-08-11: 新增 math-research-workflow 一体化编排插件 (管理-研究-验证三阶段流水线 + 子 agent 分工 + 交接契约 + 阶段边界 git 同步); lean-verify 补充 agents/openai.yaml (允许隐式调用); manage skill 同步 blueprint 接受知识库工具更新并重生成 MANIFEST.sha256.
 - 2026-08-11: 子 agent 分工冒烟测试通过 (并行归纳/望远镜两路证明 + 独立审计抓出植入范围错误); 子任务包契约增强: 返回裸 JSON (禁止 markdown 代码围栏) 并附 artifact_sha256, 合并前按重算哈希核验工件 (rigorous-open-math-research).
 
 - 2026-08-11: 新增子 agent 分工模式 (rigorous-open-math-research): 路线探索/义务证明/反例猎手/文献审计/证明验证的并行子 agent 分工, 子任务包契约, 隔离与去相关, 合并协议, 失败机制入档, 动态资源分配与单 agent 顺序 fallback; 管理侧文档同步 (delegation-and-ingestion.md).

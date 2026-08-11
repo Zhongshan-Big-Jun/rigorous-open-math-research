@@ -1,6 +1,6 @@
 {
   "name": "lean-verify",
-  "version": "0.1.0",
+  "version": "0.1.0+codex.20260811140558",
   "description": "Strict verification workflow for Lean 4 formalizations: statement-fidelity audit, machine checks (lake build, sorry/axiom scan), per-obligation independent audit, structured verdicts, and hash-bound run manifests.",
   "author": {
     "name": "Local developer"
