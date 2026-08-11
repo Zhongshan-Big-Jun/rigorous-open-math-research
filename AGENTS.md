@@ -15,7 +15,7 @@
 
 1. 每次变更后运行 `python scripts/validate_all.py` (Python 3.10+, 建议 `PYTHONUTF8=1`).
 2. 修改 `skills/<name>/` 内文件后, 若该 skill 带 `MANIFEST.sha256`, 必须重新生成并提交 (sha256 逐文件).
-3. 修改插件元数据后, 用 plugin-creator 的 `update_plugin_cachebuster.py` 更新版本 cachebuster (`0.1.0+codex.YYYYMMDD`).
+3. 修改插件元数据后, 用 plugin-creator 的 `update_plugin_cachebuster.py` 更新版本 cachebuster (`0.1.0+codex.YYYYMMDDHHMMSS`).
 4. marketplace 插件顺序即 Codex UI 渲染顺序; 编排插件置顶, 新增插件追加到列表末尾.
 5. 所有文本文件 UTF-8 无 BOM, 换行 LF (`.gitattributes` 已强制).
 6. 同步顺序: 先 push 父仓库 `xsoc1/rigorous-open-math-research`, 再用 GitHub merge-upstream 同步 fork `Zhongshan-Big-Jun/rigorous-open-math-research`.
@@ -28,7 +28,8 @@
 - 统一 4 个插件 `plugin.json` 元数据 (字段顺序, developerName 全部为 xsoc1, 修复 manage 描述丢字与 workflow 描述中英混杂).
 - 补齐 `math-research-workflow` 的 `agents/openai.yaml` (与其他插件一致).
 - marketplace 顺序调整为编排插件 `math-research-workflow` 置顶 (旗舰).
- - 插件版本 cachebuster 更新为 `0.1.0+codex.20260811160208` (plugin-creator update_plugin_cachebuster.py).
+- 插件版本 cachebuster 更新为 `0.1.0+codex.20260811160208` (plugin-creator update_plugin_cachebuster.py).
 - 新增 `LICENSE` (MIT), `scripts/validate_all.py`, `.github/workflows/validate.yml`, 根 `AGENTS.md`.
 - README 重写: 流水线 mermaid 图, 仓库结构树, 校验与同步说明; 修正 lean-verify / workflow 插件 README 中的 marketplace 名 (`personal` → `math-research`).
 - 验证结果: validate_plugin x4 通过, quick_validate x4 通过, MANIFEST.sha256 43 条全匹配, validate_all 全绿.
+- 已 push 父仓库 `xsoc1/rigorous-open-math-research` (80b438c), 已通过 merge-upstream 同步 fork `Zhongshan-Big-Jun/rigorous-open-math-research` (fast-forward).
