@@ -11,6 +11,10 @@ Checks (stdlib only, no network):
      interface/policy.
   3. MANIFEST.sha256 (when present in a skill dir) matches every listed file.
   4. Text files are UTF-8 without BOM.
+  5. Strict parse: every JSON file parses after masking {{...}} template tokens
+     (templates with placeholders are valid by design); every YAML file parses
+     when PyYAML is installed (CI installs it; locally the check is skipped with a
+     note if PyYAML is missing).
 
 Usage:
     python scripts/validate_all.py [repo-root]
@@ -24,6 +28,7 @@ import hashlib
 import json
 import pathlib
 import sys
+import re
 
 REQUIRED_PLUGIN_KEYS = frozenset(
     {"name", "version", "description", "author", "repository", "license", "skills", "interface"}
@@ -38,6 +43,7 @@ ALLOWED_AUTHENTICATION = frozenset({"ON_INSTALL", "ON_USE"})
 TEXT_SUFFIXES = frozenset(
     {".md", ".json", ".yaml", ".yml", ".txt", ".tex", ".lean", ".py", ".csv", ".svg", ".mmd"}
 )
+TEMPLATE_TOKEN_RE = re.compile(r"\{\{[^{}]+\}\}")
 
 
 class Validator:
@@ -187,10 +193,49 @@ class Validator:
         if bad == 0:
             self.ok("all text files are UTF-8 without BOM")
 
+    def check_structured(self) -> None:
+        """Strict parse of YAML (when PyYAML is available) and template-aware JSON."""
+        try:
+            import yaml
+        except ImportError:
+            yaml = None
+        bad_json = 0
+        bad_yaml = 0
+        json_checked = 0
+        yaml_checked = 0
+        for p in sorted(self.root.rglob("*")):
+            if not p.is_file() or ".git" in p.parts:
+                continue
+            suffix = p.suffix.lower()
+            if suffix == ".json":
+                json_checked += 1
+                text = p.read_text(encoding="utf-8")
+                masked = TEMPLATE_TOKEN_RE.sub('"TMPL"', text)
+                masked = TEMPLATE_TOKEN_RE.sub('0', text)
+                try:
+                    json.loads(masked)
+                except json.JSONDecodeError as exc:
+                    bad_json += 1
+                    self.bad(f"JSON parse error (after masking {{{{...}}}} templates): {p.relative_to(self.root)}: {exc}")
+            elif suffix in (".yaml", ".yml") and yaml is not None:
+                yaml_checked += 1
+                try:
+                    yaml.safe_load(p.read_text(encoding="utf-8"))
+                except Exception as exc:
+                    bad_yaml += 1
+                    self.bad(f"YAML parse error: {p.relative_to(self.root)}: {exc}")
+        if yaml is None:
+            print("note: PyYAML not installed; strict YAML parse skipped")
+        if bad_json == 0:
+            self.ok(f"all JSON files parse after masking {{{{...}}}} templates ({json_checked} files)")
+        if yaml is not None and bad_yaml == 0:
+            self.ok(f"all YAML files parse ({yaml_checked} files)")
+
     def run(self) -> int:
         print(f"Validating repository: {self.root}")
         self.check_marketplace()
         self.check_utf8()
+        self.check_structured()
         if self.errors:
             print(f"\n{len(self.errors)} problem(s) found.")
             return 1

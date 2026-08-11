@@ -33,3 +33,13 @@
 - README 重写: 流水线 mermaid 图, 仓库结构树, 校验与同步说明; 修正 lean-verify / workflow 插件 README 中的 marketplace 名 (`personal` → `math-research`).
 - 验证结果: validate_plugin x4 通过, quick_validate x4 通过, MANIFEST.sha256 43 条全匹配, validate_all 全绿.
 - 已 push 父仓库 `xsoc1/rigorous-open-math-research` (80b438c), 已通过 merge-upstream 同步 fork `Zhongshan-Big-Jun/rigorous-open-math-research` (fast-forward).
+
+### 2026-08-12 会话: 编排收尾核对与修复
+
+- 核对 GitHub 拓扑: `xsoc1/rigorous-open-math-research` = 父仓库 (fork=false), `Zhongshan-Big-Jun/rigorous-open-math-research` = fork, 与 README 一致.
+- 发现并修复真实缺陷: `plugins/lean-verify/agents/openai.yaml` 的 `long_description` 末尾裸冒号导致严格 YAML 解析失败 (pyyaml); 已改写消除裸冒号.
+- 强化 `scripts/validate_all.py`: 新增严格 YAML 解析 (PyYAML 可用时, 缺失则提示跳过) 与模板感知 JSON 校验 (掩蔽 `{{...}}` 占位符后解析; 模板设计上允许占位符); 本地 68 项检查全绿.
+- CI `.github/workflows/validate.yml` 增加 `pip install pyyaml`, 保证严格 YAML 检查在 GitHub Actions 上生效.
+- lean-verify 插件版本 cachebuster 更新为 `0.1.0+codex.20260812012356` (plugin-creator update_plugin_cachebuster.py).
+- 端到端冒烟: 临时 CODEX_HOME + codex CLI 添加本地 marketplace `math-research` 并安装 4 插件, 全部 installed/enabled; lean-verify 以新 cachebuster 安装成功.
+- 已 push 父仓库, 并 merge-upstream 同步 fork `Zhongshan-Big-Jun/rigorous-open-math-research`.

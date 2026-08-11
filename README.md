@@ -120,6 +120,7 @@ push / PR 时 GitHub Actions 自动运行 `scripts/validate_all.py`.
 
 ## 版本历史
 
+ - 2026-08-12: 编排收尾核对: 修复 lean-verify agents YAML 语法错误; validate_all.py 新增严格 YAML / 模板感知 JSON 校验 (CI 安装 PyYAML); lean-verify cachebuster 更新为 `0.1.0+codex.20260812012356`; 临时 CODEX_HOME 端到端安装冒烟通过 (4 插件 installed/enabled).
  - 2026-08-12: 编排为工作流插件仓库: 统一 4 插件元数据 (字段顺序 / developerName / 描述修复), workflow 插件补齐 agents 配置, marketplace 顺序调整为编排插件置顶, 插件版本 cachebuster 更新为 `0.1.0+codex.20260811160208`, 新增 LICENSE / validate_all.py / CI / 根 AGENTS.md, README 重写 (流水线图 + 结构树 + 校验与同步说明).
 - 2026-08-11: 仓库编排为标准 Codex marketplace (`.agents/plugins/marketplace.json`, 名 `math-research`); 4 个插件统一元数据 (author/repository/license/版本 cachebuster `0.1.0+codex.20260811`); README 安装方式改为 marketplace 优先.
 - 2026-08-11: 新增 `math-research-workflow` 一体化编排插件 (管理-研究-验证三阶段流水线 + 子 agent 分工 + 交接契约 + 阶段边界 git 同步).
