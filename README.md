@@ -39,6 +39,7 @@ Codex 数学研究技能集: 严格开放数学研究 (求解执行层) 与数�
 - 若项目根目录是 git 仓库, 两个 skill 会自动检查并保持仓库同步 (会话开始时 `git status`/`git fetch`, 阶段收尾时提交并推送), 详见 `manage-math-research-program/references/git-sync.md`.
 
 ## 版本
+- 2026-08-11: 子 agent 分工冒烟测试通过 (并行归纳/望远镜两路证明 + 独立审计抓出植入范围错误); 子任务包契约增强: 返回裸 JSON (禁止 markdown 代码围栏) 并附 artifact_sha256, 合并前按重算哈希核验工件 (rigorous-open-math-research).
 
 - 2026-08-11: 新增子 agent 分工模式 (rigorous-open-math-research): 路线探索/义务证明/反例猎手/文献审计/证明验证的并行子 agent 分工, 子任务包契约, 隔离与去相关, 合并协议, 失败机制入档, 动态资源分配与单 agent 顺序 fallback; 管理侧文档同步 (delegation-and-ingestion.md).
 - 2026-08-11: 新增 lean-verify 插件 (Lean 4 形式化验证: 陈述保真审计, 机器验证, 义务级独立审计, 结构化裁决与 hash 绑定运行清单).

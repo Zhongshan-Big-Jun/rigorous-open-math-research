@@ -547,7 +547,7 @@ Subtask packet contract (template in `assets/subtask-packet.template.md`):
 
 - `subgoal_id` binding to the obligation or route, and the exact claim attacked.
 - Input artifacts by exact path and hash, plus the minimal context slice, not the whole project.
-- Output contract: structured return (artifact path, status label, exact gap, failure mechanism).
+- Output contract: structured return (artifact path, artifact sha256, status label, exact gap, failure mechanism), raw JSON without a markdown code fence.
 - Constraints: do not claim global completion; do not mutate shared artifacts; do not repeat a
   recorded failure without new evidence.
 - Budget: explicit effort and deadline.
@@ -574,7 +574,7 @@ Resource policy:
 - Cap concurrency and total budget; stop correlated duplicates early.
 - If a sub-agent stalls or returns noise, record it and redirect resources.
 
-Single-agent fallback: execute these roles sequentially, write each role’s artifact before
+Single-agent fallback: execute these roles sequentially, write each role's artifact before
 switching, and perform the verifier pass with a fresh context or deliberately adversarial
 prompt. When spawn capability is unavailable, run sub-tasks one at a time in the same session,
 preserving the same packet contract and isolation rules.

@@ -67,6 +67,7 @@ Every spawned sub-agent receives a packet with these fields (template in
 
 Merge only audited modules:
 
+0. Verify every artifact by path and recomputed sha256 against the sub-agent's returned `artifact_sha256`; a mismatch means the artifact was not what the sub-agent reported.
 1. Check the Phase 7 interface rules for every transition (domains, notation, constants,
    simultaneous choices, gluing, interchange of limits).
 2. Resolve conflicts against the audited problem contract; a sub-agent cannot override it.
@@ -87,7 +88,7 @@ Merge only audited modules:
 
 Codex multi-agent spawn (when the `spawn_agent` capability is available): pass the subtask
 packet as the initial prompt, keep the sub-agent's context limited to its slice, wait for its
-final status, then verify its artifacts by path and hash before merging.
+final status, then verify its artifacts by path and recomputed sha256 (sub-agents return raw JSON, no code fence, including `artifact_sha256`) before merging.
 
 Sequential fallback: when spawn capability is unavailable, execute the same packets one at a
 time in the same session, writing each artifact before switching roles, and perform the verifier

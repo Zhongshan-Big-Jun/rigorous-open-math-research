@@ -34,11 +34,14 @@
 
 ## Return format
 
+Return the JSON raw (no markdown code fence).
+
 ```json
 {
   "subtask_id": "...",
   "status": "<label>",
   "artifact_path": "...",
+  "artifact_sha256": "...",
   "claim_tested": "...",
   "exact_gap": "...",
   "failure_mechanism": "...",
