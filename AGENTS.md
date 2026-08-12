@@ -85,3 +85,4 @@
 - 备注: 未修改任何 plugin.json 元数据, 因此无需更新 cachebuster; 新增脚本/测试不影响 MANIFEST.sha256 (该清单仅属 manage 插件).
 - 待办: 后续可把门禁脚本接到状态标签单点化 (`assets/status-vocabulary.json`) 与跨阶段 lineage.json; 本会话未实施这两项.
 - 维护: 本文件追加会话记录; 提交后 push 父仓库并直接 push 同步 fork.
+- 补记: 更新日志已补 - 根 `README.md`/`README_EN.md` 版本历史新增 2026-08-13 条目; workflow `SKILL.md` 新增 `## Changelog (2026-08-13)` 条目 (此前 workflow SKILL 无 Changelog).

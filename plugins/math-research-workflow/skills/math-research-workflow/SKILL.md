@@ -141,3 +141,14 @@ wants formalized:
 - `assets/pipeline-handoff.template.md` -- handoff record template.
 - `scripts/validate_pipeline.py` -- deterministic task-packet, hash-binding,
   run-manifest, and git gate checks for stage boundaries.
+
+## Changelog (2026-08-13)
+
+- Added a deterministic stage gate (`scripts/validate_pipeline.py`): required
+  task-packet fields, unfilled-template placeholder detection, task-type enum,
+  source-bundle and run-manifest hash bindings, lean-proof input hashes, optional
+  git cleanliness check, and a formalization gate (`已证` /
+  `CANDIDATE_COMPLETE_PROOF`) that reports non-gate statuses as warnings.
+- Stage A and the stage-boundary checks now require the gate to run; hard `FAIL`
+  findings must be resolved before dispatch or stage close.
+- CI smoke fixtures and runners live under `tests/` in the repository root.

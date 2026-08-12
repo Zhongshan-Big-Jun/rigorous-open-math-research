@@ -121,6 +121,7 @@ push / PR 时 GitHub Actions 自动运行 `scripts/validate_all.py`.
 - fork 副本: `Zhongshan-Big-Jun/rigorous-open-math-research` (同步方式: push 父仓库后, 在 fork 上执行 GitHub 的 Sync fork / merge-upstream)
 
 ## 版本历史
+- 2026-08-13: 编排层新增确定性阶段门禁校验器 `validate_pipeline.py` (任务包字段/未填充占位符/哈希绑定/运行清单/git 清洁检查, 形式化门禁外状态只警告不升级); workflow SKILL 接入门禁步骤; 新增 lean-verify 与门禁的 CI 冒烟 (`tests/smoke_*.py` + fixtures). 无插件元数据变更, cachebuster 不变.
 - 2026-08-12: AI4Math V2 方法蒸馏: 三 skill 新增发散检索契约/验证者自动 FAIL 清单/失败路由/陈述冻结/sorrifier/四道闸/首错定位/收敛检查/边际收益演化 (cachebuster `0.1.0+codex.20260812030804`).
 - 2026-08-12: 编排为工作流插件仓库: 统一插件元数据, 补 workflow agents, marketplace 排序, 新增 LICENSE/校验/CI/AGENTS.md (cachebuster `0.1.0+codex.20260811160208`); 修复 lean-verify agents YAML, 校验器加严格 YAML/JSON 检查 (cachebuster `0.1.0+codex.20260812012356`); validate_all 68 项全绿.
 - 2026-08-11: 编排为标准 marketplace (名 `math-research`, cachebuster `0.1.0+codex.20260811`); 新增 `math-research-workflow` 编排插件, 新增 `lean-verify` 插件; rigorous 新增子 agent 分工 + arXiv 语义检索 + 结构化验证输出.
