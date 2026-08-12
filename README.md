@@ -125,3 +125,10 @@ push / PR 时 GitHub Actions 自动运行 `scripts/validate_all.py`.
 - 2026-08-10: MRP 新增自动 git 仓库同步检查 (工作流第 0 步 + Rigor Phase 0/10/12).
 - 2026-08-09: 蒸馏 Blueprint v2.2 数学工具包, 整合进两个 skill.
 - 2026-08-05: `rigorous-open-math-research` 迭代自 `rigorous-mathematical-research`; 建立 `manage-math-research-program`.
+
+## 版权与免责声明
+
+- 原创内容: 本仓库的编排设计, 提示词, 文档与脚本为原创产物, 按 MIT 许可分发 (见 `LICENSE`), 版权归作者所有.
+- 方法来源: 部分工作方法受公开研究与开源项目启发, 各 SKILL.md 的 Changelog 已附来源链接, 引用以链接与要点转述形式呈现, 未复制受版权保护的论文正文或专有代码.
+- 第三方名称: 文中出现的项目, 组织与商标名称归各自所有者, 与本仓库无隶属或背书关系.
+- 使用风险: 本仓库按"现状"提供, 不保证无缺陷; 生成的研究结果, 证明, 代码与结论须由使用者独立核验后再使用, 作者不对任何直接或间接损失负责, 内容不构成专业或法律意见.
