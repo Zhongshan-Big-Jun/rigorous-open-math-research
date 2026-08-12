@@ -128,7 +128,7 @@ push / PR 时 GitHub Actions 自动运行 `scripts/validate_all.py`.
 
 ## 版权与免责声明
 
-- 原创内容: 本仓库的编排设计, 提示词, 文档与脚本为原创产物, 按 MIT 许可分发 (见 `LICENSE`), 版权归作者所有.
-- 方法来源: 部分工作方法受公开研究与开源项目启发, 各 SKILL.md 的 Changelog 已附来源链接, 引用以链接与要点转述形式呈现, 未复制受版权保护的论文正文或专有代码.
+- 版权归属: 本仓库的编排结构, 提示词组织, 文档与脚本由作者整合撰写, 按 MIT 许可分发 (见 `LICENSE`); 但其中的工作方法大量参考/改编自公开研究与开源项目 (如 MMAT, LeanMarathon, MechMath, M2F, FaithSieve, FormalRx, Archon-Horizon, EvE 等), 方法本身的思想与协议不归本仓库所有.
+- 方法来源: 各 SKILL.md 的 Changelog 已附来源链接 (MMAT, LeanMarathon, MechMath, M2F, FaithSieve, FormalRx, Archon-Horizon, EvE, Blueprint v2.x 等), 引用以链接与要点转述形式呈现, 未复制受版权保护的论文正文或专有代码; 若署名或归属有误, 欢迎指正, 我们会在确认后修正.
 - 第三方名称: 文中出现的项目, 组织与商标名称归各自所有者, 与本仓库无隶属或背书关系.
 - 使用风险: 本仓库按"现状"提供, 不保证无缺陷; 生成的研究结果, 证明, 代码与结论须由使用者独立核验后再使用, 作者不对任何直接或间接损失负责, 内容不构成专业或法律意见.

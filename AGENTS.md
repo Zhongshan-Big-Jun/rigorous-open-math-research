@@ -32,7 +32,7 @@
 - 版本: 三个插件 cachebuster 更新为 0.1.0+codex.20260812030804; manage MANIFEST.sha256 重新生成 (43 条); 全局 skill 副本已同步; validate_all 68 项全绿.
 - 已 push 父仓库, 并 merge-upstream 同步 fork Zhongshan-Big-Jun/rigorous-open-math-research; 本机 market math-research 已刷新重装.
 - 后续: README 版本历史简化合并 (11 条 -> 6 条), 内容不变.
-- 后续: README 新增「版权与免责声明」一节 (原创 MIT / 方法来源附链接 / 第三方商标 / as-is 使用风险).
+- 后续: README 新增「版权与免责声明」一节; 按用户指正修正原创表述 - 编排整合为原创 (MIT), 工作方法大量参考/改编自公开项目, 各 SKILL.md Changelog 附来源链接, 署名有误可指正.
 ### 2026-08-12 会话: 仓库结构复验与收尾
 
 - 核对 GitHub 拓扑: 父仓库 `xsoc1/rigorous-open-math-research` (User, fork=false), fork `Zhongshan-Big-Jun/rigorous-open-math-research` (Organization), 双方 main 同一提交 (3d02ab6).
