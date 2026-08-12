@@ -113,6 +113,25 @@ For each Lean declaration mapped to an obligation:
 4. Record the machine results exactly as observed: exit code, error text, scan hits. Do not
    summarize away failures.
 
+### Four gates and semantic review
+
+Any edited declaration proposed for acceptance must pass four gates: (1) compile check,
+(2) sorry/admit scan, (3) axiom-set check, and (4) a guard that protected statement
+signatures did not change since the last approval. After the gates, a human semantic review
+confirms the Lean statement still means what the source means; this last check cannot be
+delegated to the same LLM that wrote the statement. Any change to an already-approved
+statement requires a fresh statement re-audit and a new guard snapshot before proof work
+resumes.
+
+### Repair strategy (when the artifact is incomplete)
+
+When the build fails or obligations remain open, repair instead of regenerating from scratch:
+
+- **Statement freeze**: keep the statement signatures fixed while repairing proofs; a statement change is a new audit, not a repair.
+- **Sorrifier decomposition**: replace the failing proof block with `sorry`, re-check that the remaining skeleton compiles, extract the failing block as a clean subproblem, and solve it recursively.
+- **Error taxonomy first**: classify each failure (statement layer / proof layer / dependency layer / boundary-convention) before fixing; diagnose in the order 判定 -> 分类 -> 定位 -> 修正.
+- Track every `sorry`; the final artifact must contain none.
+
 ### Phase 4 - Independent audit
 
 Perform this pass as a separate role/pass from the formalizer. For each obligation:
@@ -129,6 +148,10 @@ Perform this pass as a separate role/pass from the formalizer. For each obligati
 6. When a localized defect is found, specify the smallest failing claim and a concrete repair;
    after repair, re-run the affected checks from the changed point onward. The auditor cannot
    self-certify closure of its own repair.
+
+7. Localize the **first** erroneous step (step index or smallest failing claim) for every
+   finding and classify its error layer (statement / proof / dependency /
+   boundary-convention); do not give vague comments.
 
 ### Phase 5 - Structured output and status label
 
@@ -170,7 +193,8 @@ Structured verdict JSON (schema enforced by `assets/verification_output.schema.j
   ],
   "critical_errors": [{"location": "...", "issue": "..."}],
   "gaps": [{"location": "...", "issue": "..."}],
-  "repair_hints": "..."
+  "repair_hints": "...",
+  "first_error": {"location": "...", "issue": "...", "category": "statement | proof | dependency | boundary-convention"}  // optional field
 }
 ```
 
@@ -194,3 +218,10 @@ non-complete verdict must include non-empty `repair_hints`. Aggregate without dr
 - Treating a Lean proof as settling fidelity or novelty.
 - Reporting a repair as independently verified by the same pass that made it.
 - Deleting failed checks or build errors from the record.
+
+## Changelog (2026-08-12)
+
+- 新增四道闸 + 人工语义复核 (Phase 3): 编译 / sorry 扫描 / axiom 集 / 陈述守护 + 人确认形式化陈述仍忠于来源; 已批准陈述的修改需重新过审与新 guard 快照.
+- 新增修复策略 (Phase 3): 陈述冻结 (修证明不动陈述签名) + sorrifier 分解 (失败块 sorry 化保留骨架, 子问题递归) + 错误分类优先 (判定 -> 分类 -> 定位 -> 修正), 最终 sorry 清零.
+- 新增首错定位与错误层分类 (Phase 4): 每个发现定位第一个错误步骤并分类 (陈述/证明/依赖/边界约定); 结构化输出新增可选 first_error 字段 (schema 同步).
+- 方法来源: M2F (https://github.com/optsuite/M2F), MechMath sorrifier (https://github.com/MechMath/MechMath-v1), MMAT fl-prover (https://github.com/MechMath/MechMath-agent-team), FaithSieve (https://github.com/TropicalFatFish/anonymous-faithsieve), FormalRx (https://github.com/LARK-AI-Lab/formalrx, arXiv:2607.04655).

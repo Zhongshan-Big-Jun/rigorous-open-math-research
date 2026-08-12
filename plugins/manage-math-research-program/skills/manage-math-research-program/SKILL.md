@@ -148,6 +148,17 @@ For each search cycle:
 
 Do not treat a title, abstract, or secondary summary as the exact statement of a theorem.
 
+### Divergent search contract
+
+Run each search cycle as a divergent pass: search wide, do not gatekeep.
+
+- The search role records what is interesting, whose result it is, and where it came from; it does not decide admissibility. Correctness auditing belongs to the solving layer (`$rigorous-open-math-research`); never discard a candidate preemptively.
+- Provenance honesty is the one hard constraint: every entry must be traceable to a real query result or source note, recorded as `query -> result -> locator`. Never fabricate a result, a statement, a locator, or a citation.
+- Before a search cycle, check the project tool library, paper indexes, and knowledge base first, to avoid re-tracing indexed results.
+- Layer the pipeline: keyword families (synonyms, notation variants, older vocabulary); arXiv/OpenAlex/zbMATH for surveys and provenance; general web (textbooks, lecture notes, blogs, MathOverflow/MSE, journal pages, GitHub) for constructions, counterexamples, and numerical evidence not in papers; then deep-read promising hits to extract the exact statement, preconditions, and a locator.
+- Store original sources immutably (hash-addressed when feasible) and keep compiled knowledge in indexed records; record complete analyses, partial proofs, and obstructions as first-class knowledge cards with source links. Prior partial progress and ruled-out paths are part of the knowledge base.
+
+
 ## 4. Analyze important papers
 
 For a paper important enough to affect the program:
@@ -170,6 +181,10 @@ Maintain project-level records for:
 - dependencies among directions, papers, tools, and problems;
 - management priority, expected leverage, novelty risk, and verification cost;
 - unresolved bibliographic questions and missing sources.
+
+Portfolio problem records carry a one-line evidence status (`OPEN` / `PARTIAL` / `NUMERICAL_EVIDENCE` / `PROVED` / `FORMALIZED`) and the research state (contract frozen? obligations open?) without duplicating upstream obligation graphs.
+
+Tool-library and portfolio evolution follows a marginal-benefit rule: a new tool entry or priority change is adopted when it resolves a known blocker, raises an evidence level, or reduces retrieval cost; record the marginal benefit in the maintenance log.
 
 Project priority scores are planning aids, not mathematical evidence. Keep their rationale visible.
 
@@ -210,6 +225,8 @@ After `$rigorous-open-math-research` returns:
 3. Update the problem portfolio's management state and next action without re-auditing the proof.
 4. Promote only explicitly supported, reusable knowledge into the tool library, with a precise pointer to the upstream proof or audit.
 5. Record rigorous intermediate results, exact failure mechanisms, remaining gaps, and follow-up dependencies at project level.
+
+5b. When an upstream audit reports gaps, record the first-error location and the error layer (statement / proof / dependency / boundary-convention) so follow-ups route to the smallest responsible owner.
 6. Update maps, indexes, budget accounting, `state/RESUME.md`, and the checkpoint.
 
 If an upstream artifact is missing or its status is unclear, record that fact. Do not infer success.
@@ -239,6 +256,10 @@ After every substantial literature batch, paper analysis, delegation, or ingesti
 - commit and push the stage: update `AGENTS.md` session records first, then `git add -A`, `git commit -m "<stage summary>"`, and `git push` (see `references/git-sync.md` for the proxy bypass); verify `git status` shows a clean tree in sync with the remote.
 
 At a stage boundary, write a project-level summary using `assets/stage-summary.template.md`. Preserve upstream result labels verbatim and link their independent proof and audit documents when present. If no proof was obtained, preserve the strongest rigorous intermediate results, failed mechanisms, and exact remaining gaps.
+
+### Fresh-context convergence check
+
+Before closing a stage, rebuild the program state from files only (indexes, `state/current.json`, `state/RESUME.md`, checkpoints, and the latest stage summaries) without conversational history, and answer whether the program is converging or diverging. File follow-up items without rewriting artifacts; record the check in the activity log.
 
 # Evidence and provenance rules
 
@@ -270,3 +291,11 @@ A program-management stage is complete when:
 - the stage summary states what changed, what remains, and what should happen next.
 
 This completion criterion says nothing about whether any underlying open problem is solved.
+
+## Changelog (2026-08-12)
+
+- 新增发散式检索契约 (第 3 节): 搜索宽不守门, 相关性判断与正确性审计分离, 来源诚实三要素 (query -> result -> locator), KB/工具库优先, 分层检索流水线, 原始源不可变存储 + 编译知识卡片 (完整分析/部分证明/受阻路径), 先前部分进展与排除路线也是知识.
+- 新增组合与工具库演化规则 (第 5 节): 问题记录带一行证据状态 (OPEN/PARTIAL/NUMERICAL_EVIDENCE/PROVED/FORMALIZED) 与研究状态; 工具条目按边际收益采纳 (解决已知阻塞/提升证据等级/降低检索成本) 并在维护日志登记.
+- 新增失败入档分类 (第 8 节 5b): 上游审计报告缺口记录首错位置与错误层 (陈述/证明/依赖/边界约定), 后续按最小责任路由.
+- 新增新鲜上下文收敛检查 (第 9 节): 阶段收尾只从文件重建程序状态, 判断收敛/发散, 只登记不重写.
+- 方法来源: MMAT kb-manager/searcher (https://github.com/MechMath/MechMath-agent-team), EvE (https://github.com/scaling-group/eve, arXiv:2605.09018), Archon-Horizon (https://github.com/frenzymath/Archon-Horizon).

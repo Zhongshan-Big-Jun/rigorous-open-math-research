@@ -119,6 +119,7 @@ push / PR 时 GitHub Actions 自动运行 `scripts/validate_all.py`.
 - fork 副本: `Zhongshan-Big-Jun/rigorous-open-math-research` (同步方式: push 父仓库后, 在 fork 上执行 GitHub 的 Sync fork / merge-upstream)
 
 ## 版本历史
+ - 2026-08-12: AI4Math V2 工作方法蒸馏采纳: 三个 skill (rigorous / manage / lean-verify) 新增发散式检索契约, 首次见证验证者标准与自动 FAIL 模式, 最小责任失败路由, 陈述冻结, sorrifier 分解, 四道闸 + 人工语义复核, 首错定位与错误层分类, 新鲜上下文收敛检查, 边际收益演化; 方法来源附链接; cachebuster 更新为 `0.1.0+codex.20260812030804` (rigorous/manage/lean-verify).
  - 2026-08-12: 仓库结构复验收尾: validate_all.py 清理死代码 (模板掩码重复赋值); 68 项校验复验全绿; 临时 CODEX_HOME 端到端冒烟复验 (4 插件最新 cachebuster installed/enabled); 本机 math-research 市场刷新至最新提交.
 
  - 2026-08-12: 编排收尾核对: 修复 lean-verify agents YAML 语法错误; validate_all.py 新增严格 YAML / 模板感知 JSON 校验 (CI 安装 PyYAML); lean-verify cachebuster 更新为 `0.1.0+codex.20260812012356`; 临时 CODEX_HOME 端到端安装冒烟通过 (4 插件 installed/enabled).

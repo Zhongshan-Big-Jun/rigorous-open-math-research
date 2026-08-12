@@ -143,6 +143,20 @@ Prefer a semantic theorem-retrieval service (an indexed arXiv theorem/lemma/defi
 
 When a canonical knowledge base exists (MRP `knowledge/` or Blueprint `statistics/`), bind this phase to it: run `snapshot`, then `math-closure --context <ID>` and `math-frontier --goal <ID> --context <ID>`; keep trusted claims, proved conditional inferences, and open research records in three separate classes; cite reused accepted results by node ID plus semantic hash. See `references/blueprint-math-graph-integration.md`.
 ## Phase 3 — Build the proof-obligation graph
+### Divergent search contract
+
+Run literature search as a divergent pass: search wide, do not gatekeep.
+
+- The search role decides what is interesting, whose result it is, and where it came from - not what is admissible. Correctness auditing belongs to a separate verifier pass; never discard a candidate preemptively to spare the audit.
+- Provenance honesty is the one hard constraint: every entry must be traceable to a real query result or source note. Record `query -> result -> locator` for every entry. Never fabricate a result, statement, locator, or citation.
+- Layer the pipeline and record what each layer contributed:
+  1. keyword families (synonyms, notation variants, and the older vocabulary a result may be stated in); search each family, then merge;
+  2. the project knowledge base and tool library first, to avoid re-tracing indexed results;
+  3. local references and recent query indexes;
+  4. arXiv / OpenAlex / zbMATH for surveys, theorem provenance, and reference chains;
+  5. general web search (textbooks, lecture notes, course pages, blogs, MathOverflow/MSE, journal pages, GitHub) - non-paper sources frequently carry constructions, counterexamples, and numerical evidence that never made it into a paper; treat such finds as legitimate results with honest provenance;
+  6. deep-read promising hits: extract the exact statement needed, its preconditions, and a locator; do not stop at the abstract.
+
 
 Represent the desired result as a dependency graph.
 
@@ -357,6 +371,27 @@ Audit categories:
 
 For each gap, identify the smallest failing claim and provide a counterexample or explicit missing proof obligation whenever possible.
 
+### First-time verifier standard and automatic failure patterns
+
+The verifier must treat the submission as a first-time proof: no memory of prior rounds, and the standard for `PASS` is that the verifier would stake its professional reputation on every step. The following patterns always produce `FAIL`, regardless of the rest of the proof:
+
+- circular reasoning (conclusion or an equivalent used as a premise);
+- wrong direction (proving A -> B when the lemma requires B -> A);
+- missing cases in a claimed exhaustive analysis;
+- incorrect theorem application outside its hypotheses;
+- scope error (a weaker statement proved than claimed);
+- added or strengthened hypotheses not present in the statement and not derived;
+- dependency misuse (using a dependency without its hypotheses, or beyond its conclusion);
+- unsupported target-defect claim (replacing the proof by the claim that the statement omitted a construction, map, or invariant, without a rigorous counterexample, contradiction, or impossible-precondition audit);
+- unresolved load-bearing obligation (the main implication rests on an asserted, vaguely cited, or deferred construction, estimate, case-exhaustion, or assembly step);
+- unwarranted source theorem (a named theorem or folklore result carries the proof but is not stated in the exact form used, lacks an independent source or derivation route, has unchecked preconditions, or is equivalent to the target);
+- guessed definition (proving or refuting a statement under a chosen interpretation of specialized notation that is not accepted from the statement, dependencies, or research context);
+- incomplete result presented as conclusion (the decisive claim is that a route, source, or construction is unavailable, without proving the statement or giving a verified counterexample);
+- premature target-defect claim (treating a repairable typo, harmless symbol collision, conventional shorthand, or boundary convention as a disproof without auditing accepted readings);
+- ignored global obstruction or compatibility constraint (local arguments never check a load-bearing global invariant, conservation law, boundary condition, compact-support condition, gluing compatibility, exactness, integrality/parity, regularity, or a known no-go theorem).
+
+Every non-`PASS` finding must localize the **first** erroneous step (step index or smallest failing claim) and classify the error layer (statement / proof / dependency / boundary-convention), instead of giving vague comments. Record it in the structured verification output as `first_error` when applicable.
+
 ### Structured verification output
 
 Record the audit in a machine-readable shape so downstream revision and ingestion can act on it:
@@ -387,6 +422,10 @@ For each gap:
 
 A verifier must recheck the revised proof from the changed point onward. The reviser cannot self-certify closure.
 
+### Failure routing by smallest owner
+
+Classify each failure by its owner: plan, source theorem, definition, final assembly, route strategy, or target obstruction. Route the repair to the smallest responsible role. Do not ask the same proof writer to rephrase the same failed route when the audit identifies a different owner. A regulator role may classify difficult failures and queue alternates, but must not prove, verify, or merge.
+
 ## Phase 10 — Formalization and reproducibility
 
 When using Lean, Coq, Isabelle, HOL, or another prover:
@@ -398,6 +437,18 @@ When using Lean, Coq, Isabelle, HOL, or another prover:
 - avoid opaque native-decision shortcuts unless their trust model is explicitly accepted;
 - provide clean build and audit commands;
 - retain the generated certificate or proof term when feasible.
+
+### Statement freeze before proof repair
+
+Compile the declarations first as a structural skeleton: translate every statement, allow proof holes (`sorry`) during compilation, and repair namespace, type, and signature consistency so the whole project compiles. Then freeze the statement signatures and only then iterate proof repair against verifier feedback. Any change to an already-approved statement requires a fresh statement re-audit (and, when the run uses a statement guard, a new guard snapshot) before proof work resumes.
+
+### Sorrifier decomposition
+
+When a proof block fails, replace that block with `sorry`, re-check that the remaining skeleton still compiles, extract the failing block as a clean subproblem, and solve it recursively. Do not regenerate the whole proof, and do not let context grow without bound. Track every `sorry`; the final artifact must contain none.
+
+### Four gates plus semantic review
+
+Before an edited declaration enters the accepted development, run: (1) compile check, (2) sorry/admit scan, (3) axiom-set check, and (4) a guard that protected statement signatures did not change. Then a human semantic review confirms the formal statement still means what the source means - this last check cannot be delegated to the same LLM that wrote the statement.
 
 If full formalization is too expensive, prioritize:
 
@@ -440,6 +491,10 @@ Claim a complete proof or disproof only when:
 4. computational components have general certificates or proofs;
 5. an independent audit returns `PASS` or only genuinely cosmetic issues;
 6. the result label accurately reflects the available verification level.
+
+### Fresh-context convergence check
+
+Before terminal reporting, and during long runs or after strategy pivots, run a fresh-context convergence check: rebuild the current state from files only (ledger, obligation graph, approach registry, status files, artifact list) without conversational history, and answer whether the research is converging or diverging. File concise issues or memory items; this pass does not edit source or mark tasks complete.
 
 
 Before promoting a proof or refutation canonically, freeze a content-hashed package (proof, refutation, or certificate) whose hash the inference node binds, and keep `transaction_status` separate from `research_status`: `transaction_status: merged` with `research_status: partial_progress` is correct when a partial lemma is accepted but the target is not yet in the trusted closure. Declare the goal solved only when its target is in the computed trusted closure for the intended context and the merged receipt is verified.
@@ -616,6 +671,10 @@ nontrivial unsupported step. Check quantifiers, hypotheses, edge cases, circular
 equivalent-strength missing lemmas, citations, and any computation-to-theorem leap.
 Return a verdict from the audit taxonomy, an exact gap list, and whether each gap
 is locally repairable. Do not rewrite the proof unless asked after the audit.
+Treat the proof as a first-time submission with no memory of prior rounds, and apply
+the automatic failure patterns (first-time verifier standard). Localize the FIRST
+erroneous step and classify its error layer (statement/proof/dependency/boundary-
+convention).
 ```
 
 ## Reviser
@@ -674,6 +733,15 @@ Available attachments/tools/constraints:
 
 
 ## Changelog (2026-08-11)
+## Changelog (2026-08-12)
+
+- 新增发散式检索契约 (Phase 2): 搜索宽不守门, 相关性判断与正确性审计分离, 来源诚实三要素 (query -> result -> locator), 分层检索流水线 (关键词族/KB 优先/本地引用/arXiv+OpenAlex+zbMATH/通用网页/深读正文).
+- 新增首次见证验证者标准与自动失败模式 (Phase 8): verifier 无记忆首次审稿, 14 类自动 FAIL 模式, 首错定位 + 错误层分类 (陈述/证明/依赖/边界约定), 结构化输出增加 first_error.
+- 新增最小责任失败路由 (Phase 9): 失败按归属分类 (计划/来源/定义/装配/路线策略/目标障碍), 派最小责任角色, regulator 只分类不代笔.
+- 新增形式化三机制 (Phase 10): 陈述冻结后再修证明 (已批准陈述修改需重新过审), sorrifier 分解 (失败块 sorry 化保留骨架 + 子问题递归), 四道闸 + 人工语义复核 (编译/sorry/axiom/guard + 陈述仍忠于来源).
+- 新增新鲜上下文收敛检查 (Phase 12): 收尾/长跑中段/策略转向后只从文件重建现状, 判断收敛与否, 只登记不修改.
+- 方法来源: MMAT nl-prover/fl-prover prompts (https://github.com/MechMath/MechMath-agent-team), LeanMarathon (https://github.com/YuanheZ/LeanMarathon), MechMath-v1 sorrifier (https://github.com/MechMath/MechMath-v1), M2F (https://github.com/optsuite/M2F), FaithSieve (https://github.com/TropicalFatFish/anonymous-faithsieve), FormalRx (https://github.com/LARK-AI-Lab/formalrx, arXiv:2607.04655), Archon-Horizon (https://github.com/frenzymath/Archon-Horizon).
+
 
 - 新增子 agent 分工模式 (Agent orchestration + references/subagent-delegation.md + assets/subtask-packet.template.md): 路线探索/义务证明/反例猎手/文献审计/证明验证的并行子 agent 分工, 子任务包契约 (subgoal_id, 输入 hash, 输出契约, 约束, 预算), 隔离与去相关, 合并协议 (只合并已审计模块 + Phase 7 接口检查), 失败机制入档, 动态资源分配与单 agent 顺序 fallback.
 - 新增 arXiv 定理语义检索机制 (Phase 2): 以完整数学陈述查询语义定理检索服务, 记录完整陈述/arXiv id/theorem id/paper id, 下载原文核验后再引用; 局部结果必须记录额外假设与真实障碍.

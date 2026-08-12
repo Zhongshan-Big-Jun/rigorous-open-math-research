@@ -22,6 +22,15 @@
 7. 如实记录: 不编造验证结果, 无法验证的能力明确标注为未验证.
 
 ## 会话记录
+### 2026-08-12 会话: AI4Math V2 工作方法蒸馏采纳 (三个 skill 增强)
+
+- 任务: 把 AI4Math V2 蒸馏路线图逐条写进 rigorous-open-math-research / manage-math-research-program / lean-verify 三个 SKILL.md.
+- rigorous 新增: Phase 2 发散式检索契约 (宽搜索不守门, 来源诚实三要素, 分层流水线); Phase 8 首次见证验证者标准 + 14 类自动 FAIL 模式 + 首错定位与错误层分类; Phase 9 最小责任失败路由; Phase 10 陈述冻结 / sorrifier 分解 / 四道闸 + 人工语义复核; Phase 12 新鲜上下文收敛检查; Verifier 角色 prompt 更新.
+- manage 新增: 第 3 节发散式检索契约 + 原始源不可变存储与知识卡片; 第 5 节证据状态行 + 边际收益演化规则; 第 8 节 5b 失败入档分类; 第 9 节新鲜上下文收敛检查.
+- lean-verify 新增: Phase 3 四道闸 + 人工语义复核 + 修复策略 (陈述冻结/sorrifier/错误分类四步); Phase 4 首错定位与错误层分类; 结构化输出与 schema 新增可选 first_error 字段 (additionalProperties=false 下可选, required 不变).
+- 各 SKILL.md 追加 Changelog (2026-08-12), 方法来源全部附链接 (MMAT/LeanMarathon/MechMath/M2F/FaithSieve/FormalRx/Archon-Horizon/EvE).
+- 版本: 三个插件 cachebuster 更新为 0.1.0+codex.20260812030804; manage MANIFEST.sha256 重新生成 (43 条); 全局 skill 副本已同步; validate_all 68 项全绿.
+- 已 push 父仓库, 并 merge-upstream 同步 fork Zhongshan-Big-Jun/rigorous-open-math-research; 本机 market math-research 已刷新重装.
 ### 2026-08-12 会话: 仓库结构复验与收尾
 
 - 核对 GitHub 拓扑: 父仓库 `xsoc1/rigorous-open-math-research` (User, fork=false), fork `Zhongshan-Big-Jun/rigorous-open-math-research` (Organization), 双方 main 同一提交 (3d02ab6).
