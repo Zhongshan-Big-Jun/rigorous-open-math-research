@@ -72,3 +72,16 @@
   - 校验: `python scripts/validate_all.py` 全绿; UTF-8 无 BOM, LF.
   - 已 push 父仓库, 并 merge-upstream 同步 fork `Zhongshan-Big-Jun/rigorous-open-math-research`.
   - 更正: 上行的 "merge-upstream" 表述不准确 - 实际为直接 push 同步 fork (双方 main 同提交 f86f81c, 与 merge-upstream 结果等价).
+
+### 2026-08-13 会话: 编排层确定性门禁 + CI 行为冒烟
+
+- 任务: 把工作流最脆弱的两处从 prose/checklist 下沉为可机器验证的机制: (1) 新增确定性阶段门禁校验器; (2) 为 lean-verify 脚本与门禁脚本接 CI 冒烟.
+- 完成:
+  - 新增 `plugins/math-research-workflow/scripts/validate_pipeline.py` (stdlib-only): 校验任务包必填字段与未填充模板占位符 (TASK-ID/PROJECT-ID/PROBLEM-ID/RUN_ROOT), 任务类型枚举, Source bundle 哈希绑定, 运行清单 JSON 与 task_packet_sha256 绑定, lean-proof/run-manifest.json 的 input_hashes 绑定, 可选 `--check-git`/`--allow-dirty`, 默认形式化门禁状态 `已证`/`CANDIDATE_COMPLETE_PROOF` (门禁外状态只 warn 不 promote). 不替代 solver/audit/verifier 的语义判断.
+  - workflow `SKILL.md` 与 `README.md` 更新: Stage A 增加门禁脚本步骤, 阶段边界增加硬 FAIL 规则, Reference files 与组成清单补充脚本.
+  - 新增 `tests/fixtures/lean-minimal/` (含 sorry + axiom + 干净定理), `tests/fixtures/pipeline-good/` (含哈希绑定的 Source bundle), `tests/fixtures/pipeline-bad/` (未填充占位符).
+  - 新增 `tests/smoke_lean_verify.py` 与 `tests/smoke_pipeline_gate.py`; `.github/workflows/validate.yml` 新增 `smoke` job (两个脚本).
+  - 本地验证: `validate_all.py` 68 项全绿; 两个 smoke 均通过 (lean-verify 命中 sorry+axiom 共 2 条, 坏 fixture 门禁 exit!=0).
+- 备注: 未修改任何 plugin.json 元数据, 因此无需更新 cachebuster; 新增脚本/测试不影响 MANIFEST.sha256 (该清单仅属 manage 插件).
+- 待办: 后续可把门禁脚本接到状态标签单点化 (`assets/status-vocabulary.json`) 与跨阶段 lineage.json; 本会话未实施这两项.
+- 维护: 本文件追加会话记录; 提交后 push 父仓库并直接 push 同步 fork.

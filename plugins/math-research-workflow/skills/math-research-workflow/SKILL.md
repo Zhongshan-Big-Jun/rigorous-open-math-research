@@ -65,7 +65,10 @@ Do **not** use this skill for a single proof request (use
    `manage-math-research-program`.
 2. Run the git-sync check (manage skill section 0): record dirty files,
    ahead/behind, current commit hash.
-3. For each task: build or refresh the **task packet** (contract, source
+3. Run the deterministic pipeline gate shipped with this plugin
+   (`scripts/validate_pipeline.py --project .`). Fix every hard `FAIL` before
+   dispatch; treat `warn:` lines as advisory notes to record, not as blockers.
+4. For each task: build or refresh the **task packet** (contract, source
    documents, obligations, verification criteria, hashes) and delegate.
 
 ### Stage B -- Research (solver)
@@ -111,6 +114,10 @@ wants formalized:
   recorded as such.
 - C -> done: verification.json verdict, audit report, STATUS matrix updated;
   git synced; AGENTS.md session log appended.
+- Every dispatch and every stage close re-runs
+  `scripts/validate_pipeline.py`; a hard `FAIL` must not be left open at a
+  stage boundary. Statuses outside the formalization gate are reported as
+  warnings, never silently promoted.
 
 ## Efficiency rules
 
@@ -132,3 +139,5 @@ wants formalized:
 - `references/workflow-design.md` -- full design: roles, handoff schemas,
   parallelism, checklists, and failure handling.
 - `assets/pipeline-handoff.template.md` -- handoff record template.
+- `scripts/validate_pipeline.py` -- deterministic task-packet, hash-binding,
+  run-manifest, and git gate checks for stage boundaries.

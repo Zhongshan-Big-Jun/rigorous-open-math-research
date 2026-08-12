@@ -16,3 +16,15 @@ jobs:
         run: pip install pyyaml
       - name: Validate repository layout
         run: python scripts/validate_all.py
+
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Smoke test lean-verify scanner
+        run: python tests/smoke_lean_verify.py
+      - name: Smoke test pipeline gate
+        run: python tests/smoke_pipeline_gate.py

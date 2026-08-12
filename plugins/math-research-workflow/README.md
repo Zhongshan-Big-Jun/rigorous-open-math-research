@@ -9,6 +9,7 @@
 - `skills/math-research-workflow/SKILL.md` -- 编排协议 (三阶段流水线 + 子 agent 分工)
 - `skills/math-research-workflow/references/workflow-design.md` -- 设计文档 (角色/交接/并行/失败处理)
 - `assets/pipeline-handoff.template.md` -- 阶段交接记录模板
+- `scripts/validate_pipeline.py` -- 确定性阶段门禁 (任务包字段/哈希绑定/运行清单/git 清洁检查)
 
 ## 依赖的 skill
 
