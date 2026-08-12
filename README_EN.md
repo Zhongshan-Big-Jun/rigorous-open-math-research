@@ -98,9 +98,13 @@ Each plugin has a uniform shape: `.codex-plugin/plugin.json` + `skills/<name>/SK
 ```bash
 # Local validation: marketplace + all plugins + SKILL frontmatter + MANIFEST + UTF-8/BOM
 python scripts/validate_all.py
+
+# Behavior smoke: lean-verify scanner + pipeline gate
+python tests/smoke_lean_verify.py
+python tests/smoke_pipeline_gate.py
 ```
 
-GitHub Actions automatically runs `scripts/validate_all.py` on push / PR.
+GitHub Actions automatically runs the validation and smoke tests on push / PR.
 
 ## Usage
 
@@ -120,13 +124,13 @@ GitHub Actions automatically runs `scripts/validate_all.py` on push / PR.
 - Fork copy: `Zhongshan-Big-Jun/rigorous-open-math-research` (sync method: after pushing to the parent, run GitHub's Sync fork / merge-upstream on the fork)
 
 ## Version history
-- 2026-08-13: Added a deterministic stage-gate validator (`validate_pipeline.py`: task-packet fields/unfilled placeholders, hash bindings, run manifests, git cleanliness; non-gate statuses warn rather than promote); wired the gate into the workflow SKILL; added lean-verify and gate CI smoke tests (`tests/smoke_*.py` + fixtures). No plugin metadata change, cachebusters unchanged.
-- 2026-08-12: AI4Math V2 method distillation: the three skills gained a divergent search contract / verifier auto-FAIL checklist / minimal-failure routing / statement freezing / sorrifier / four gates / first-error localization / convergence checks / marginal-benefit evolution (cachebuster `0.1.0+codex.20260812030804`).
-- 2026-08-12: Restructured as a workflow plugin repository: unified plugin metadata, workflow agents added, marketplace ordering, LICENSE/validation/CI/AGENTS.md added (cachebuster `0.1.0+codex.20260811160208`); lean-verify agents YAML fixed, validator strict YAML/JSON checks added (cachebuster `0.1.0+codex.20260812012356`); validate_all 68 checks green.
-- 2026-08-11: Restructured as a standard marketplace (named `math-research`, cachebuster `0.1.0+codex.20260811`); added the `math-research-workflow` orchestration plugin and the `lean-verify` plugin; rigorous gained sub-agent division of labor + arXiv semantic search + structured verification output.
+- 2026-08-13: Added the deterministic stage gate `validate_pipeline.py` + lean-verify/gate CI smoke tests.
+- 2026-08-12: AI4Math V2 method distillation (divergent search / verifier FAIL / failure routing / statement freeze / four gates / first-error localization).
+- 2026-08-12: Restructured as a workflow plugin repository (marketplace ordering / CI / LICENSE / AGENTS, strict YAML/JSON validation).
+- 2026-08-11: Standard marketplace (named math-research); added workflow and lean-verify plugins.
 - 2026-08-10: MRP gained automatic git repository sync checks (workflow step 0 + Rigor Phase 0/10/12).
-- 2026-08-09: Blueprint v2.2 mathematics toolkit distilled and integrated into the two skills.
-- 2026-08-05: `rigorous-open-math-research` iterated from `rigorous-mathematical-research`; `manage-math-research-program` established.
+- 2026-08-09: Distilled Blueprint v2.2 mathematics toolkit.
+- 2026-08-05: rigorous iterated from rigorous-mathematical-research; added manage plugin.
 
 ## Copyright and disclaimer
 

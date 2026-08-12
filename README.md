@@ -99,9 +99,13 @@ codex plugin add lean-verify@math-research
 ```bash
 # 本地校验: marketplace + 全部插件 + SKILL frontmatter + MANIFEST + UTF-8/BOM
 python scripts/validate_all.py
+
+# 行为冒烟: lean-verify 扫描器 + 编排层门禁
+python tests/smoke_lean_verify.py
+python tests/smoke_pipeline_gate.py
 ```
 
-push / PR 时 GitHub Actions 自动运行 `scripts/validate_all.py`.
+push / PR 时 GitHub Actions 自动运行以上校验与冒烟.
 
 ## 使用
 
@@ -121,13 +125,13 @@ push / PR 时 GitHub Actions 自动运行 `scripts/validate_all.py`.
 - fork 副本: `Zhongshan-Big-Jun/rigorous-open-math-research` (同步方式: push 父仓库后, 在 fork 上执行 GitHub 的 Sync fork / merge-upstream)
 
 ## 版本历史
-- 2026-08-13: 编排层新增确定性阶段门禁校验器 `validate_pipeline.py` (任务包字段/未填充占位符/哈希绑定/运行清单/git 清洁检查, 形式化门禁外状态只警告不升级); workflow SKILL 接入门禁步骤; 新增 lean-verify 与门禁的 CI 冒烟 (`tests/smoke_*.py` + fixtures). 无插件元数据变更, cachebuster 不变.
-- 2026-08-12: AI4Math V2 方法蒸馏: 三 skill 新增发散检索契约/验证者自动 FAIL 清单/失败路由/陈述冻结/sorrifier/四道闸/首错定位/收敛检查/边际收益演化 (cachebuster `0.1.0+codex.20260812030804`).
-- 2026-08-12: 编排为工作流插件仓库: 统一插件元数据, 补 workflow agents, marketplace 排序, 新增 LICENSE/校验/CI/AGENTS.md (cachebuster `0.1.0+codex.20260811160208`); 修复 lean-verify agents YAML, 校验器加严格 YAML/JSON 检查 (cachebuster `0.1.0+codex.20260812012356`); validate_all 68 项全绿.
-- 2026-08-11: 编排为标准 marketplace (名 `math-research`, cachebuster `0.1.0+codex.20260811`); 新增 `math-research-workflow` 编排插件, 新增 `lean-verify` 插件; rigorous 新增子 agent 分工 + arXiv 语义检索 + 结构化验证输出.
+- 2026-08-13: 新增确定性阶段门禁 `validate_pipeline.py` + lean-verify/门禁 CI 冒烟.
+- 2026-08-12: AI4Math V2 方法蒸馏 (发散检索/验证者 FAIL/失败路由/陈述冻结/四道闸/首错定位等).
+- 2026-08-12: 编排为工作流插件仓库 (marketplace 排序/CI/LICENSE/AGENTS, 校验器严格 YAML/JSON).
+- 2026-08-11: 编排为标准 marketplace (名 math-research), 新增 workflow 与 lean-verify 插件.
 - 2026-08-10: MRP 新增自动 git 仓库同步检查 (工作流第 0 步 + Rigor Phase 0/10/12).
-- 2026-08-09: 蒸馏 Blueprint v2.2 数学工具包, 整合进两个 skill.
-- 2026-08-05: `rigorous-open-math-research` 迭代自 `rigorous-mathematical-research`; 建立 `manage-math-research-program`.
+- 2026-08-09: 蒸馏 Blueprint v2.2 数学工具包.
+- 2026-08-05: rigorous 迭代自 rigorous-mathematical-research, 建立 manage 插件.
 
 ## 版权与免责声明
 

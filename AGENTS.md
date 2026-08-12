@@ -86,3 +86,12 @@
 - 待办: 后续可把门禁脚本接到状态标签单点化 (`assets/status-vocabulary.json`) 与跨阶段 lineage.json; 本会话未实施这两项.
 - 维护: 本文件追加会话记录; 提交后 push 父仓库并直接 push 同步 fork.
 - 补记: 更新日志已补 - 根 `README.md`/`README_EN.md` 版本历史新增 2026-08-13 条目; workflow `SKILL.md` 新增 `## Changelog (2026-08-13)` 条目 (此前 workflow SKILL 无 Changelog).
+
+### 2026-08-13 会话: README 优化 (版本历史精简 + 冒烟命令可发现)
+
+- 任务: 按"更新日志写简洁点"的要求做仓库级小优化.
+- 完成:
+  - 根 `README.md`/`README_EN.md` 版本历史压成逐条一句话, 移除 cachebuster 噪音, 保留功能要点; 中英两版口径一致.
+  - workflow `SKILL.md` 的 Changelog 由三句压成一句要点.
+  - 两版 README 的校验段补充 `tests/smoke_lean_verify.py` 与 `tests/smoke_pipeline_gate.py`, 冒烟测试从 CI 后台变成用户可发现/可本地运行.
+- 维护: 本文件追加会话记录; `validate_all.py` 68 项全绿; 提交后 push 父仓库并直接 push 同步 fork.
