@@ -61,3 +61,13 @@
 - lean-verify 插件版本 cachebuster 更新为 `0.1.0+codex.20260812012356` (plugin-creator update_plugin_cachebuster.py).
 - 端到端冒烟: 临时 CODEX_HOME + codex CLI 添加本地 marketplace `math-research` 并安装 4 插件, 全部 installed/enabled; lean-verify 以新 cachebuster 安装成功.
 - 已 push 父仓库, 并 merge-upstream 同步 fork `Zhongshan-Big-Jun/rigorous-open-math-research`.
+
+### 2026-08-12 会话: 根 README 新增英文版 README_EN.md 并同步双仓库
+
+- 任务: skill 仓库 (父仓库 `xsoc1/rigorous-open-math-research`) 附加英文版 README.
+- 完成:
+  - 新增 `README_EN.md`: 中文 README 全文英译, 结构与口径完全一致 (工作流总览/插件清单/依赖方向/安装 x2/仓库结构/校验/使用/同步/版本历史/版权与免责声明), 协议标签 (已证/CANDIDATE_COMPLETE_PROOF/数值证据/猜想/开放) 保留原样并附英文说明.
+  - `README.md` 顶部新增互链 `English: [README_EN.md](README_EN.md)` (英文版顶部对应 `中文版: [README.md](README.md)`).
+  - 内容未改动 (仅翻译); 无公式, 无需 LaTeX 渲染; 版权与免责声明口径与中文版一致.
+  - 校验: `python scripts/validate_all.py` 全绿; UTF-8 无 BOM, LF.
+  - 已 push 父仓库, 并 merge-upstream 同步 fork `Zhongshan-Big-Jun/rigorous-open-math-research`.

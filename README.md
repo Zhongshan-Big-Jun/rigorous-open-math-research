@@ -1,5 +1,7 @@
 # rigorous-open-math-research
 
+English: [README_EN.md](README_EN.md)
+
 Codex 数学研究工作流插件仓库 (marketplace): 一个仓库装下 管理 → 研究 → 验证 的完整数学研究工作流.
 
 本仓库是标准 Codex marketplace (名 `math-research`), 包含 4 个插件, 安装后可在 Codex 中调用对应 skill.
