@@ -31,6 +31,7 @@
 - 各 SKILL.md 追加 Changelog (2026-08-12), 方法来源全部附链接 (MMAT/LeanMarathon/MechMath/M2F/FaithSieve/FormalRx/Archon-Horizon/EvE).
 - 版本: 三个插件 cachebuster 更新为 0.1.0+codex.20260812030804; manage MANIFEST.sha256 重新生成 (43 条); 全局 skill 副本已同步; validate_all 68 项全绿.
 - 已 push 父仓库, 并 merge-upstream 同步 fork Zhongshan-Big-Jun/rigorous-open-math-research; 本机 market math-research 已刷新重装.
+- 后续: README 版本历史简化合并 (11 条 -> 6 条), 内容不变.
 ### 2026-08-12 会话: 仓库结构复验与收尾
 
 - 核对 GitHub 拓扑: 父仓库 `xsoc1/rigorous-open-math-research` (User, fork=false), fork `Zhongshan-Big-Jun/rigorous-open-math-research` (Organization), 双方 main 同一提交 (3d02ab6).

@@ -119,15 +119,9 @@ push / PR 时 GitHub Actions 自动运行 `scripts/validate_all.py`.
 - fork 副本: `Zhongshan-Big-Jun/rigorous-open-math-research` (同步方式: push 父仓库后, 在 fork 上执行 GitHub 的 Sync fork / merge-upstream)
 
 ## 版本历史
- - 2026-08-12: AI4Math V2 工作方法蒸馏采纳: 三个 skill (rigorous / manage / lean-verify) 新增发散式检索契约, 首次见证验证者标准与自动 FAIL 模式, 最小责任失败路由, 陈述冻结, sorrifier 分解, 四道闸 + 人工语义复核, 首错定位与错误层分类, 新鲜上下文收敛检查, 边际收益演化; 方法来源附链接; cachebuster 更新为 `0.1.0+codex.20260812030804` (rigorous/manage/lean-verify).
- - 2026-08-12: 仓库结构复验收尾: validate_all.py 清理死代码 (模板掩码重复赋值); 68 项校验复验全绿; 临时 CODEX_HOME 端到端冒烟复验 (4 插件最新 cachebuster installed/enabled); 本机 math-research 市场刷新至最新提交.
-
- - 2026-08-12: 编排收尾核对: 修复 lean-verify agents YAML 语法错误; validate_all.py 新增严格 YAML / 模板感知 JSON 校验 (CI 安装 PyYAML); lean-verify cachebuster 更新为 `0.1.0+codex.20260812012356`; 临时 CODEX_HOME 端到端安装冒烟通过 (4 插件 installed/enabled).
- - 2026-08-12: 编排为工作流插件仓库: 统一 4 插件元数据 (字段顺序 / developerName / 描述修复), workflow 插件补齐 agents 配置, marketplace 顺序调整为编排插件置顶, 插件版本 cachebuster 更新为 `0.1.0+codex.20260811160208`, 新增 LICENSE / validate_all.py / CI / 根 AGENTS.md, README 重写 (流水线图 + 结构树 + 校验与同步说明).
-- 2026-08-11: 仓库编排为标准 Codex marketplace (`.agents/plugins/marketplace.json`, 名 `math-research`); 4 个插件统一元数据 (author/repository/license/版本 cachebuster `0.1.0+codex.20260811`); README 安装方式改为 marketplace 优先.
-- 2026-08-11: 新增 `math-research-workflow` 一体化编排插件 (管理-研究-验证三阶段流水线 + 子 agent 分工 + 交接契约 + 阶段边界 git 同步).
-- 2026-08-11: 新增 `lean-verify` 插件 (Lean 4 形式化验证: 陈述保真审计, 机器验证, 义务级独立审计, 结构化裁决与 hash 绑定运行清单).
-- 2026-08-11: 子 agent 分工模式 (rigorous-open-math-research): 路线探索/义务证明/反例猎手/文献审计/证明验证并行分工, 子任务包契约 (裸 JSON + artifact_sha256, 合并前重算哈希核验); 新增 arXiv 定理语义检索与结构化验证输出规范.
-- 2026-08-10: 新增自动 git 仓库同步检查 (MRP 工作流第 0 步 + Rigor Phase 0/10/12).
-- 2026-08-09: 蒸馏 Blueprint v2.2 数学工具包 (数学超图/类型/状态语义/可信闭包/四审计/事务-研究状态分离), 整合进两个 skill.
+- 2026-08-12: AI4Math V2 方法蒸馏: 三 skill 新增发散检索契约/验证者自动 FAIL 清单/失败路由/陈述冻结/sorrifier/四道闸/首错定位/收敛检查/边际收益演化 (cachebuster `0.1.0+codex.20260812030804`).
+- 2026-08-12: 编排为工作流插件仓库: 统一插件元数据, 补 workflow agents, marketplace 排序, 新增 LICENSE/校验/CI/AGENTS.md (cachebuster `0.1.0+codex.20260811160208`); 修复 lean-verify agents YAML, 校验器加严格 YAML/JSON 检查 (cachebuster `0.1.0+codex.20260812012356`); validate_all 68 项全绿.
+- 2026-08-11: 编排为标准 marketplace (名 `math-research`, cachebuster `0.1.0+codex.20260811`); 新增 `math-research-workflow` 编排插件, 新增 `lean-verify` 插件; rigorous 新增子 agent 分工 + arXiv 语义检索 + 结构化验证输出.
+- 2026-08-10: MRP 新增自动 git 仓库同步检查 (工作流第 0 步 + Rigor Phase 0/10/12).
+- 2026-08-09: 蒸馏 Blueprint v2.2 数学工具包, 整合进两个 skill.
 - 2026-08-05: `rigorous-open-math-research` 迭代自 `rigorous-mathematical-research`; 建立 `manage-math-research-program`.
