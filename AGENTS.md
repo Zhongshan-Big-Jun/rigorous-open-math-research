@@ -71,3 +71,4 @@
   - 内容未改动 (仅翻译); 无公式, 无需 LaTeX 渲染; 版权与免责声明口径与中文版一致.
   - 校验: `python scripts/validate_all.py` 全绿; UTF-8 无 BOM, LF.
   - 已 push 父仓库, 并 merge-upstream 同步 fork `Zhongshan-Big-Jun/rigorous-open-math-research`.
+  - 更正: 上行的 "merge-upstream" 表述不准确 - 实际为直接 push 同步 fork (双方 main 同提交 f86f81c, 与 merge-upstream 结果等价).
