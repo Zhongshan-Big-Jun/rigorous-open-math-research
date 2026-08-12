@@ -147,3 +147,4 @@ wants formalized:
 - Added `scripts/validate_pipeline.py`, a deterministic stage gate (task
   packets, hash bindings, run manifests, git cleanliness, formalization-gate
   warnings). Stage A and stage boundaries now require it; hard `FAIL` blocks.
+- Cachebuster bumped to `0.1.0+codex.20260812164950` to propagate the gate.

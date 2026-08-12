@@ -95,3 +95,13 @@
   - workflow `SKILL.md` 的 Changelog 由三句压成一句要点.
   - 两版 README 的校验段补充 `tests/smoke_lean_verify.py` 与 `tests/smoke_pipeline_gate.py`, 冒烟测试从 CI 后台变成用户可发现/可本地运行.
 - 维护: 本文件追加会话记录; `validate_all.py` 68 项全绿; 提交后 push 父仓库并直接 push 同步 fork.
+
+### 2026-08-13 会话: workflow 插件 cachebuster 刷新 + 本地安装
+
+- 任务: 用户发现本地 Codex 未安装 workflow 插件, 要求安装; 因插件 SKILL/README/scripts 内容已更新而版本未动, 按要求刷新 cachebuster.
+- 完成:
+  - 本地诊断: `math-research` marketplace 已配置但 4 插件均 not installed; 市场检出已是最新 `95a96f6`.
+  - 本地安装: `codex plugin add math-research-workflow@math-research` -> installed, enabled.
+  - cachebuster: `update_plugin_cachebuster.py` 将 workflow 版本刷新为 `0.1.0+codex.20260812164950`; 根 README 两版版本历史与 workflow SKILL Changelog 同步标注.
+  - 重装: marketplace upgrade 后 `codex plugin add math-research-workflow@math-research` 以新版本生效.
+  - 校验: `validate_all.py` 68 项全绿; 提交后 push 父仓库并直接 push 同步 fork.

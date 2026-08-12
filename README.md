@@ -125,7 +125,7 @@ push / PR 时 GitHub Actions 自动运行以上校验与冒烟.
 - fork 副本: `Zhongshan-Big-Jun/rigorous-open-math-research` (同步方式: push 父仓库后, 在 fork 上执行 GitHub 的 Sync fork / merge-upstream)
 
 ## 版本历史
-- 2026-08-13: 新增确定性阶段门禁 `validate_pipeline.py` + lean-verify/门禁 CI 冒烟.
+- 2026-08-13: 新增确定性阶段门禁 `validate_pipeline.py` + lean-verify/门禁 CI 冒烟 (workflow cachebuster `0.1.0+codex.20260812164950`).
 - 2026-08-12: AI4Math V2 方法蒸馏 (发散检索/验证者 FAIL/失败路由/陈述冻结/四道闸/首错定位等).
 - 2026-08-12: 编排为工作流插件仓库 (marketplace 排序/CI/LICENSE/AGENTS, 校验器严格 YAML/JSON).
 - 2026-08-11: 编排为标准 marketplace (名 math-research), 新增 workflow 与 lean-verify 插件.
