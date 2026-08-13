@@ -1,0 +1,8 @@
+{
+  "project_id": "rigorous-open-math-research-skill-repo",
+  "name": "Rigorous Open Math Research - skill marketplace repository",
+  "slug": "rigorous-open-math-research",
+  "git_sync": {
+    "push_order": ["origin", "fork"]
+  }
+}

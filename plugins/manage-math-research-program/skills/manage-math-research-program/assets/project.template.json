@@ -17,5 +17,8 @@
   },
   "literature_cutoff": null,
   "upstream_skill": "$rigorous-open-math-research",
+  "git_sync": {
+    "push_order": ["origin"]
+  },
   "notes": []
 }

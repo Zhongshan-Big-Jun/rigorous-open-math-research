@@ -49,36 +49,39 @@ Do not change the user's global proxy configuration without asking.
 - On push failure (network or proxy), keep the local commit, record the failure in the activity log, and retry; never silently drop local work.
 - A clean synchronized repository is part of stage completion, not optional bookkeeping.
 
-## Parent-fork (parent/child) sync rule
+## Optional multi-remote sync (generic)
 
-The skill repositories use a parent + org-fork structure:
+A project repository may have any number of remotes (default remote, fork,
+upstream mirror, personal copy).  The default sync is a plain `git push` to
+the branch's upstream.  When the project declares a push order in
+`project.json`, every listed remote is pushed in that order:
 
-- Parent (authoritative): `xsoc1/rigorous-open-math-research` (public).
-- Child fork (mirror for the org): `Zhongshan-Big-Jun/rigorous-open-math-research` (fork of the parent).
-
-Sync direction is always **parent first, then operate the child fork**:
-
-1. Update and push the parent repository first.
-2. Then sync the child fork from the parent; never edit the child directly as the source of truth.
-
-Local staging area `C:\Users\HuangZY\AppData\Local\Temp\skills-upload-20260810` keeps both remotes:
-
-```bash
-git remote -v
-# origin   = https://github.com/Zhongshan-Big-Jun/rigorous-open-math-research.git  (child fork)
-# personal = https://github.com/xsoc1/rigorous-open-math-research.git              (parent)
+```json
+{
+  "git_sync": {
+    "push_order": ["origin", "fork"]
+  }
+}
 ```
 
-Sync the child after every parent update:
+- `push_order` is optional; when absent, only the default remote is pushed.
+- The order is the configuration: "parent first, then child fork" is simply
+  the `["origin", "fork"]` instance of this rule.  Never hard-code any
+  specific owner/repository topology in the skill.
+- The deterministic helper `scripts/sync_remotes.py --project ROOT` reads
+  `git_sync.push_order`, refuses to run on a dirty tree (use `--allow-dirty`
+  only when uncommitted artifacts are intentionally local), pushes the
+  current branch to each remote in order, and verifies `HEAD == <remote>/<branch>`
+  after each push.  Use `--dry-run` to preview.
+- After a multi-remote sync, record the order and the resulting commit hash
+  in the session log (`AGENTS.md`).
 
-```bash
-git -c http.proxy= -c https.proxy= fetch personal
-git -c http.proxy= -c https.proxy= push origin main
-git rev-parse HEAD personal/main origin/main   # all three must agree
-```
+If a fork relationship is lost (the GitHub API reports `fork=false` on a
+child that should be a fork), restore it with the repository owner's own
+fork flow:
 
-If the fork relationship is lost (API shows `fork=false` on the child while the repo still exists), restore it by:
-
-1. Renaming the detached child, e.g. `PATCH /repos/Zhongshan-Big-Jun/rigorous-open-math-research` with `{"name":"rigorous-open-math-research-detached"}`.
-2. Recreating the fork: `POST /repos/xsoc1/rigorous-open-math-research/forks` with `{"organization":"Zhongshan-Big-Jun"}`.
-3. Verifying the new child reports `fork=true`, `parent.full_name=xsoc1/rigorous-open-math-research`, and an identical HEAD commit.
+1. Optionally rename the detached child so the original name is free
+   (`PATCH /repos/<owner>/<repo>` with a temporary `name`).
+2. Recreate the fork from the parent via the GitHub web/API fork action.
+3. Verify the new child reports `fork=true` with the expected
+   `parent.full_name` and an identical HEAD commit.

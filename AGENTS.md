@@ -149,3 +149,31 @@
 - 校验: validate_all.py 全绿; 三个 smoke 本地全过; 真实项目门禁 0 FAIL.
 - 维护: 本文件追加会话记录; 提交后先 push 父仓库 origin (xsoc1), 再直接
   push 同步 fork (Zhongshan-Big-Jun).
+### 2026-08-13 会话: manage skill 通用远程拓扑 + 历史工件严格标签收尾
+
+- 任务: 承接上一会话, 执行两项遗留 - (1) manage skill 通用化多远程同步 (用户
+  明确个人自 fork 只是配置实例, 不得写死); (2) 历史工件 o1revise-2ED02A 补严格
+  标签 (门禁 warn 建议).
+- 完成 (manage 插件, cachebuster `0.1.0+codex.20260813093832`):
+  - 新增 `scripts/sync_remotes.py` (通用, stdlib-only): 从 project.json 读可选
+    `git_sync.push_order` (默认 ["origin"]), 按顺序 push 当前分支到各 remote,
+    每次 push 后核对 HEAD == <remote>/<branch>; dirty 工作树默认 FAIL
+    (--allow-dirty 转 warn, 绝不覆盖未提交工件); 支持 --dry-run/--json.
+  - `references/git-sync.md` 重写 Parent-fork 专名部分为通用多远程规则: 删除
+    写死的 xsoc1/Zhongshan-Big-Jun 仓库名与本地 staging 路径; "父先子后" 变为
+    push_order 配置实例; fork 关系丢失恢复步骤保留但用 <owner>/<repo> 占位.
+  - SKILL.md 第 0 步: 提交后若 project.json 声明 git_sync.push_order 则按顺序
+    推送全部 remote 并记录顺序与 commit hash; project.template.json 增加可选
+    git_sync.push_order 字段 (默认 ["origin"]).
+  - MANIFEST.sha256 重新生成 (44 文件, 含新脚本); 仓库根新增 project.json
+    (push_order ["origin","fork"]) 作为该通用机制的配置实例.
+  - 测试: 新增 tests/smoke_sync_remotes.py (本地 bare repo 双 remote, 验证
+    推送顺序与 dirty 树 FAIL, 无网络依赖); CI smoke job 接入.
+- 历史工件收尾 (Sturm-Liouville 项目): o1revise-2ED02A 的 audit_report.md 与
+  research_ledger.md 补 STRICT 声明行 (proof-level claims argued analytically /
+  proofs live in candidate_proof.md; 不改任何数学内容); 项目门禁重跑 0 FAIL
+  (6 个 gate 外状态 warn 属正常).
+- 校验: validate_all.py 68 项全绿; 四个 smoke (doctor/pipeline/sync_remotes/
+  lean-verify) 本地全过; sync_remotes.py 对 skill 仓库 dry-run 行为正确.
+- 维护: 本文件追加会话记录; 提交后按 project.json 的 push_order 先 push
+  origin (xsoc1, 父) 再 push fork (Zhongshan-Big-Jun, 子).

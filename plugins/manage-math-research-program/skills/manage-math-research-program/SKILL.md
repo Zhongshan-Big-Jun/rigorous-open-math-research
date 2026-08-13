@@ -99,10 +99,10 @@ When the project root is a git repository, check synchronization before doing ne
 1. At session start, run `git status --porcelain` and `git fetch` (use `git -c http.proxy= -c https.proxy= ...` when a local proxy is configured but not running). Report uncommitted changes, untracked files, and ahead/behind versus the remote branch.
 2. Do not build new work on a divergent or dirty state without recording it. If the working tree is not clean or the branch is behind the remote, first commit or pull according to the user's intent, or record the divergence explicitly in `state/current.json`.
 3. Before committing, update the `AGENTS.md` session records, and keep secrets, credentials, large binaries, and generated caches out of the repository via `.gitignore` (`__pycache__/`, `*.pyc`, `.DS_Store`, `Thumbs.db`).
-4. Commit with a descriptive message at every stage boundary, then push and verify with `git status` that the working tree is clean and the branch is neither ahead nor behind.
+4. Commit with a descriptive message at every stage boundary, then push and verify with `git status` that the working tree is clean and the branch is neither ahead nor behind. If `project.json` declares `git_sync.push_order`, push every listed remote in that order (e.g. parent first, then fork) using `scripts/sync_remotes.py --project .`, and record the order and commit hash in the session log.
 5. If the remote is unreachable, keep the local commit, record the failure in the activity log, and retry the push; never silently drop local work.
 
-Detailed commands and the proxy note are in `references/git-sync.md`.
+Detailed commands, the proxy note, and the generic multi-remote rule are in `references/git-sync.md`.
 
 ## 1. Classify the request
 

@@ -150,8 +150,8 @@ wants formalized:
   manager records paths and hashes verbatim.
 - Automatic git sync after every stage (manage skill section 0, generic
   remote-topology configuration). This plugin does not hard-code any fork
-  layout; if the project declares extra remotes in `project.json`, sync in
-  the declared order (e.g. parent first, child fork second) and state the
+  layout; if `project.json` declares `git_sync.push_order`, sync every listed
+  remote in that order (e.g. parent first, child fork second) and state the
   direction in the session log.
 
 ## Reference files
