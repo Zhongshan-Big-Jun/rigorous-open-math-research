@@ -63,12 +63,16 @@ Do **not** use this skill for a single proof request (use
 1. Read the project entry point (`AGENTS.md` if present), `lean-proof/STATUS.md`
    (formalization matrix) and the program index produced by
    `manage-math-research-program`.
-2. Run the git-sync check (manage skill section 0): record dirty files,
+2. Run the environment preflight (`scripts/doctor.py`). On a hard `FAIL`,
+   apply the printed repair command (usually `codex plugin add
+   math-research-workflow@math-research`) before any dispatch; the desktop app
+   may rewrite `config.toml` and drop plugin-enable entries between sessions.
+3. Run the git-sync check (manage skill section 0): record dirty files,
    ahead/behind, current commit hash.
-3. Run the deterministic pipeline gate shipped with this plugin
+4. Run the deterministic pipeline gate shipped with this plugin
    (`scripts/validate_pipeline.py --project .`). Fix every hard `FAIL` before
    dispatch; treat `warn:` lines as advisory notes to record, not as blockers.
-4. For each task: build or refresh the **task packet** (contract, source
+5. For each task: build or refresh the **task packet** (contract, source
    documents, obligations, verification criteria, hashes) and delegate.
 
 ### Stage B -- Research (solver)
@@ -87,6 +91,21 @@ manager).
 - The two alternate in bounded loops until either `CANDIDATE_COMPLETE_PROOF`
   or an exact gap report is reached. The audit agent never shares a chain of
   thought with the solver; only artifacts are exchanged.
+
+**Numerical evidence discipline (hard rule):**
+
+- Numerical computation is allowed for exploration, counterexample search, and
+  corroboration only. It is never a delivery: a result may not be labeled
+  `已证` / `CANDIDATE_COMPLETE_PROOF` / `FORMALLY_VERIFIED` on
+  numerical evidence alone.
+- Every deliverable that uses numerical labels must carry either a strict
+  label (`严格证明` / `定理已证` / `STRICT` /
+  `机器验证` / `形式化验证`) or an
+  explicit downgrade statement (e.g. "evidence only", "does not constitute
+  proof"). The stage gate (`validate_pipeline.py`) enforces this mechanically.
+- If a solver starts substituting numerical evidence for proof, the audit
+  agent must fail the run and report the exact missing obligations; the
+  manager records the F-xxx finding and does not advance the packet.
 
 ### Stage C -- Verification (formalizer)
 
@@ -129,10 +148,11 @@ wants formalized:
   artifacts prevent duplicate work.
 - One artifact per claim: never maintain two copies of a proof state; the
   manager records paths and hashes verbatim.
-- Automatic git sync after every stage (manage skill section 0). If the user
-  has a fork topology (parent repo + personal fork), sync the child fork by
-  pushing to the parent first, then updating the fork, and state the direction
-  in the session log.
+- Automatic git sync after every stage (manage skill section 0, generic
+  remote-topology configuration). This plugin does not hard-code any fork
+  layout; if the project declares extra remotes in `project.json`, sync in
+  the declared order (e.g. parent first, child fork second) and state the
+  direction in the session log.
 
 ## Reference files
 
@@ -140,11 +160,26 @@ wants formalized:
   parallelism, checklists, and failure handling.
 - `assets/pipeline-handoff.template.md` -- handoff record template.
 - `scripts/validate_pipeline.py` -- deterministic task-packet, hash-binding,
-  run-manifest, and git gate checks for stage boundaries.
+  run-manifest, numerical-evidence discipline, and git gate checks for stage
+  boundaries.
+- `scripts/doctor.py` -- environment preflight for the plugin, its dependency
+  skills, the marketplace, and the `config.toml` enable entry.
 
 ## Changelog (2026-08-13)
 
-- Added `scripts/validate_pipeline.py`, a deterministic stage gate (task
-  packets, hash bindings, run manifests, git cleanliness, formalization-gate
-  warnings). Stage A and stage boundaries now require it; hard `FAIL` blocks.
-- Cachebuster bumped to `0.1.0+codex.20260812164950` to propagate the gate.
+- Added `scripts/doctor.py`, an environment preflight: verifies the workflow
+  plugin, the three dependency skills, the marketplace, and the `config.toml`
+  enable entry; prints exact repair commands. Stage A runs it before dispatch
+  (guards against the desktop app rewriting `config.toml` and dropping the
+  plugin-enable entry).
+- `validate_pipeline.py` now enforces numerical-evidence discipline: a gate
+  status requires `candidate_proof.md` or `audit_report.md` in the run
+  directory; numerical labels mixed with strong claims need a strict label or
+  an explicit downgrade statement; `verification.json` verdict
+  `FORMALLY_VERIFIED` requires `machine.build_passed == true` and zero
+  sorry/axiom hits; `STATUS.md` cannot claim `FORMALLY_VERIFIED` without the
+  verdict file. Fixed lean-manifest input-hash resolution (paths are relative
+  to `lean-proof/` and may use Windows separators).
+- Fork-sync specifics removed from this plugin; git sync now defers to the
+  manage skill's generic remote-topology configuration.
+- Cachebuster bumped to `0.1.0+codex.20260813054312` to propagate the gate.

@@ -51,6 +51,10 @@ not by the formalizer.
 - F-xxx finding in source document: fix in place, record the correction and
   the counterexample/justification in the audit report; the formal statement
   always uses the corrected hypothesis.
+- Numerical-evidence substitution: if a deliverable promotes numerical checks
+  to a proof without a strict label or an explicit downgrade statement, the
+  gate fails it; the manager returns the packet with the exact missing labels
+  or obligations. The status is never silently promoted.
 - Machine verification failure: no verdict; iterate formalizer/verifier loop
   (bounded 5-15 rounds per file, then report the exact obstacle).
 - Git conflict or fork divergence: stop, record state, do not overwrite
@@ -58,6 +62,7 @@ not by the formalizer.
 
 ## 6. Efficiency checklist
 
+- [ ] Environment preflight (scripts/doctor.py) passed before dispatch
 - [ ] Tool library and STATUS.md consulted before new work
 - [ ] Task packet hash-bound before delegation
 - [ ] No duplicate artifact locations

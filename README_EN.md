@@ -124,6 +124,7 @@ GitHub Actions automatically runs the validation and smoke tests on push / PR.
 - Fork copy: `Zhongshan-Big-Jun/rigorous-open-math-research` (sync method: after pushing to the parent, run GitHub's Sync fork / merge-upstream on the fork)
 
 ## Version history
+- 2026-08-13: Hardened the workflow plugin - environment preflight `doctor.py` + numerical-evidence discipline and claim-consistency audit in the stage gate (cachebuster `0.1.0+codex.20260813054312`).
 - 2026-08-13: Added the deterministic stage gate `validate_pipeline.py` + lean-verify/gate CI smoke tests (workflow cachebuster `0.1.0+codex.20260812164950`).
 - 2026-08-12: AI4Math V2 method distillation (divergent search / verifier FAIL / failure routing / statement freeze / four gates / first-error localization).
 - 2026-08-12: Restructured as a workflow plugin repository (marketplace ordering / CI / LICENSE / AGENTS, strict YAML/JSON validation).

@@ -105,3 +105,47 @@
   - cachebuster: `update_plugin_cachebuster.py` 将 workflow 版本刷新为 `0.1.0+codex.20260812164950`; 根 README 两版版本历史与 workflow SKILL Changelog 同步标注.
   - 重装: marketplace upgrade 后 `codex plugin add math-research-workflow@math-research` 以新版本生效.
   - 校验: `validate_all.py` 68 项全绿; 提交后 push 父仓库并直接 push 同步 fork.
+### 2026-08-13 会话: workflow 插件加固 (环境自检 + 数值证据纪律门禁)
+
+- 任务: 用户反馈审计中反复出现数值证据冒充严谨证明的问题 (agent 自发用数值
+  检验代替数学论证交付), 要求通过插件更新解决; 同时确认范围 - fork 同步与发布
+  工具化属于仓库管理, 不进工作流插件; 项目级 fork 同步归 manage skill 且必须
+  通用 (个人自 fork 只是配置实例).
+- 完成 (workflow 插件, cachebuster `0.1.0+codex.20260813054312`):
+  - 新增 `plugins/math-research-workflow/scripts/doctor.py` 环境自检: 检查
+    workflow 插件与三个依赖 skill 是否 installed/enabled, 市场是否注册,
+    config.toml 启用条目是否完好; 硬 FAIL 时打印精确修复命令; 支持
+    `--list-file` (离线/测试) 与 `--json`. 针对性防护桌面应用重写
+    config.toml 抹掉启用条目的复发问题 (2026-08-13 已发生两次).
+  - `validate_pipeline.py` 新增数值证据纪律 (硬门禁):
+    (a) gate 状态 (`已证`/`CANDIDATE_COMPLETE_PROOF`) 的 run 必须携带
+    candidate_proof.md 或 audit_report.md; (b) 数值标签与强声明
+    (`已解决`/`定理已证`/`CANDIDATE_COMPLETE_PROOF`/`FORMALLY_VERIFIED`)
+    同块出现时必须带严格标签 (`严格证明`/`定理已证`/`STRICT`/`机器验证`/
+    `形式化验证`) 或显式降级声明 (evidence only / not constitute proof /
+    仅佐证 / cross-check only / no ... evidence ... used as), 否则 FAIL;
+    (c) verification.json verdict=FORMALLY_VERIFIED 必须有
+    machine.build_passed=true 且 sorry/axiom 命中为空; (d) STATUS.md 声称
+    FORMALLY_VERIFIED 时必须有 verification.json.
+  - 修复旧 bug: lean-proof/run-manifest.json 的 input_hashes 基准目录改为
+    manifest 所在目录 (lean-proof/), 且路径兼容 Windows 反斜杠分隔符
+    (此前对真实项目一直误报 referenced file missing).
+  - SKILL.md: Stage A 增加 doctor 前置检查; Stage B 增加数值证据纪律硬规则
+    (数值只作探索/反例/佐证, 不单独支撑交付状态; 审计 agent 必须 FAIL 并报
+    缺失义务); fork 具体表述删除, 改为引用 manage skill 的通用远程拓扑配置;
+    Changelog 与 Reference files 同步.
+  - 插件 README.md: 组成/使用更新 + 新增 "常见问题: 插件消失或未启用" 排障
+    章节 (原因: config.toml 被应用重写; 修复: plugin add 或应用面板重新启用).
+  - 测试: 新增 `tests/fixtures/pipeline-numerical-abuse` 与
+    `tests/fixtures/pipeline-gate-noevidence`; smoke_pipeline_gate.py 断言两类
+    FAIL 触发; 新增 `tests/smoke_doctor.py` (伪造 plugin list 全健康/缺插件两
+    场景, 断言修复命令); CI smoke job 接入 doctor.
+- 真实项目回归 (F:\LaTeX\BVE research): 门禁从 31 FAIL 降到 0 FAIL. 过程中
+  发现并就地更正历史工件 R-20260806T140000Z-keylemmaaudit-2F83B1/
+  candidate_proof.md 缺严格标签 (数值网格检查未声明仅作佐证), 已在文件头补
+  STRICT + do not constitute proof 声明, 未改任何数学内容; 其余历史 FAIL
+  均为 "evidence only"/"cross-check only"/"no evidence used as a result"
+  等显式降级声明, 门禁词表已覆盖, 转为温和 warn (建议补严格标签).
+- 校验: validate_all.py 全绿; 三个 smoke 本地全过; 真实项目门禁 0 FAIL.
+- 维护: 本文件追加会话记录; 提交后先 push 父仓库 origin (xsoc1), 再直接
+  push 同步 fork (Zhongshan-Big-Jun).

@@ -28,3 +28,5 @@ jobs:
         run: python tests/smoke_lean_verify.py
       - name: Smoke test pipeline gate
         run: python tests/smoke_pipeline_gate.py
+      - name: Smoke test workflow doctor
+        run: python tests/smoke_doctor.py

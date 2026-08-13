@@ -14,6 +14,17 @@ Checks:
   - run manifests under runs/** and lean-proof/run-manifest.json parse;
   - completed manager runs carry a non-empty upstream status, and statuses
     outside the formalization gate are reported;
+  - a run that claims a gate status (CANDIDATE_COMPLETE_PROOF / \u5df2\u8bc1)
+    must carry candidate_proof.md or audit_report.md in the same run directory;
+  - numerical-evidence labels must never be mixed with a strong claim
+    (\u5df2\u89e3\u51b3 / \u5b9a\u7406\u5df2\u8bc1 / CANDIDATE_COMPLETE_PROOF /
+    FORMALLY_VERIFIED) unless a strict-evidence label is present in the same
+    block or file (anti-abuse guard for numerical results masquerading as
+    proofs);
+  - lean-proof/verification.json with verdict FORMALLY_VERIFIED requires
+    machine.build_passed == true and zero sorry/axiom hits;
+  - lean-proof/STATUS.md must not claim FORMALLY_VERIFIED without a
+    verification.json present;
   - optionally, the git working tree is clean at a stage boundary.
 
 Usage:
@@ -38,6 +49,8 @@ from typing import Any, Iterable
 PACKET_GLOB = "agenda/task-packets/*.md"
 MANAGER_MANIFEST_GLOB = "runs/**/run-manifest.json"
 LEAN_MANIFEST = "lean-proof/run-manifest.json"
+LEAN_VERDICT = "lean-proof/verification.json"
+LEAN_STATUS = "lean-proof/STATUS.md"
 
 PLACEHOLDER_VALUES = {"TASK-ID", "PROJECT-ID", "PROBLEM-ID", "RUN_ROOT"}
 ALLOWED_TASK_TYPES = {"solve", "disprove", "construct", "formalize", "rigorously audit"}
@@ -48,6 +61,27 @@ REQUIRED_PACKET_HEADINGS = {
     "Required run location",
     "Upstream invocation",
 }
+
+NUMERICAL_LABEL_RE = re.compile(
+    r"\u6570\u503c\u8bc1\u636e|\u6570\u503c\u9a8c\u8bc1|\u6570\u503c\u68c0\u9a8c"
+    r"|\u6570\u503c\u5b9e\u9a8c|EVIDENCE|numerical evidence|numerical verification",
+    re.IGNORECASE,
+)
+STRONG_CLAIM_RE = re.compile(
+    r"\u5df2\u89e3\u51b3|\u5b9a\u7406\u5df2\u8bc1|CANDIDATE_COMPLETE_PROOF|FORMALLY_VERIFIED"
+)
+STRICT_EVIDENCE_RE = re.compile(
+    r"\u4e25\u683c\u8bc1\u660e|\u5b9a\u7406\u5df2\u8bc1|\bSTRICT\b|FORMALLY_VERIFIED"
+    r"|\u673a\u5668\u9a8c\u8bc1|\u5f62\u5f0f\u5316\u9a8c\u8bc1",
+    re.IGNORECASE,
+)
+NUMERICAL_DOWNGRADE_RE = re.compile(
+    r"not constitute proof|evidence only|evidence, not proof|evidence is not proof|cross-check only|no .{0,60}evidence.{0,60}used as"
+    r"|\u4e0d\u6784\u6210\u8bc1\u660e|\u4ec5\u4e3a\u8bc1\u636e|\u4ec5\u4f5c\u8bc1\u636e"
+    r"|\u4ec5\u662f\u8bc1\u636e|\u4e0d\u4f5c\u4e3a\u8bc1\u660e|\u4f50\u8bc1",
+    re.IGNORECASE,
+)
+CLAIM_FILE_GLOBS = ("docs/**/*.md", "runs/**/*.md")
 
 
 class Report:
@@ -182,7 +216,14 @@ def check_task_packet(path: Path, root: Path, report: Report) -> None:
 def check_referenced_hash(
     root: Path, rel_path: str, expected: str, report: Report, context: str
 ) -> None:
-    target = root / rel_path
+    # Windows-style separators in manifests are normalized so that
+    # lean-proof/run-manifest.json entries like "SL\\BalancedPhase.lean"
+    # resolve on any platform.
+    parts = [part for part in rel_path.replace("\\", "/").split("/") if part]
+    if not parts:
+        report.bad(f"{context}: empty referenced path")
+        return
+    target = root.joinpath(*parts)
     if not target.is_file():
         report.bad(f"{context}: referenced file missing: {rel_path}")
         return
@@ -200,24 +241,36 @@ def check_manager_manifest(
             report.bad(f"{path.relative_to(root)}: run manifest is not a JSON object")
         return
 
+    rel = path.relative_to(root)
     packet_path = data.get("task_packet_path")
     packet_hash = data.get("task_packet_sha256")
     if packet_path and packet_hash:
         check_referenced_hash(
-            root, packet_path, str(packet_hash), report, f"{path.relative_to(root)}: task packet"
+            root, packet_path, str(packet_hash), report, f"{rel}: task packet"
         )
 
     if data.get("completed_at") and not data.get("upstream_status_verbatim"):
         report.bad(
-            f"{path.relative_to(root)}: completed_at is set but upstream_status_verbatim is empty"
+            f"{rel}: completed_at is set but upstream_status_verbatim is empty"
         )
 
     status = data.get("upstream_status_verbatim")
     if status and gate_statuses and status not in gate_statuses:
         report.warn(
-            f"{path.relative_to(root)}: status {status!r} is outside the formalization gate "
+            f"{rel}: status {status!r} is outside the formalization gate "
             f"{sorted(gate_statuses)}"
         )
+
+    if status and status in gate_statuses:
+        run_dir = path.parent
+        has_proof = (run_dir / "candidate_proof.md").is_file() or (
+            run_dir / "audit_report.md"
+        ).is_file()
+        if not has_proof:
+            report.bad(
+                f"{rel}: gate status {status!r} without candidate_proof.md or "
+                "audit_report.md in the run directory"
+            )
 
 
 def check_lean_manifest(path: Path, root: Path, report: Report) -> None:
@@ -228,12 +281,125 @@ def check_lean_manifest(path: Path, root: Path, report: Report) -> None:
         return
     input_hashes = data.get("input_hashes")
     if isinstance(input_hashes, dict):
+        # input_hashes are relative to the manifest directory (lean-proof/),
+        # not to the project root.
+        base = path.parent
         for rel_path, expected in input_hashes.items():
             check_referenced_hash(
-                root, rel_path, str(expected), report, f"{path.relative_to(root)}: input hash"
+                base, rel_path, str(expected), report, f"{path.relative_to(root)}: input hash"
             )
     else:
         report.warn(f"{path.relative_to(root)}: no input_hashes map to verify")
+
+
+def check_lean_verdict(path: Path, root: Path, report: Report) -> None:
+    data = load_json(path, report)
+    if not isinstance(data, dict):
+        if data is not None:
+            report.bad(f"{path.relative_to(root)}: verification.json is not a JSON object")
+        return
+    verdict = data.get("verdict")
+    if verdict != "FORMALLY_VERIFIED":
+        return
+    machine = data.get("machine")
+    rel = path.relative_to(root)
+    if not isinstance(machine, dict) or machine.get("build_passed") is not True:
+        report.bad(
+            f"{rel}: verdict FORMALLY_VERIFIED without machine.build_passed == true"
+        )
+    hits = machine.get("sorry_axiom_hits") if isinstance(machine, dict) else None
+    if hits:
+        report.bad(f"{rel}: verdict FORMALLY_VERIFIED but sorry/axiom hits present: {hits}")
+
+
+def check_status_declaration(root: Path, report: Report) -> None:
+    status = root / LEAN_STATUS
+    verdict = root / LEAN_VERDICT
+    if not status.is_file():
+        return
+    text = status.read_text(encoding="utf-8", errors="replace")
+    if "FORMALLY_VERIFIED" not in text:
+        return
+    if not verdict.is_file():
+        report.bad(
+            f"{LEAN_STATUS} claims FORMALLY_VERIFIED but {LEAN_VERDICT} is missing"
+        )
+
+
+def iter_claim_files(root: Path) -> list[Path]:
+    files: list[Path] = []
+    for pattern in CLAIM_FILE_GLOBS:
+        files.extend(sorted(root.glob(pattern)))
+    for extra in ("README.md", LEAN_STATUS):
+        path = root / extra
+        if path.is_file():
+            files.append(path)
+    seen: set[Path] = set()
+    unique: list[Path] = []
+    for path in files:
+        if path not in seen:
+            seen.add(path)
+            unique.append(path)
+    return unique
+
+
+def check_numerical_abuse(path: Path, root: Path, report: Report) -> None:
+    """Reject numerical-evidence labels mixed with strong claims.
+
+    A block (blank-line separated) that carries a numerical-evidence label and
+    a strong claim must also carry a strict-evidence label; otherwise the text
+    reads as a numerical result promoted to a proof, which is the exact abuse
+    this gate blocks. A file that uses numerical labels and strong claims but
+    has no strict-evidence label anywhere is rejected outright.
+    """
+    text = path.read_text(encoding="utf-8", errors="replace")
+    rel = path.relative_to(root)
+    if not NUMERICAL_LABEL_RE.search(text) or not STRONG_CLAIM_RE.search(text):
+        return
+    if not STRICT_EVIDENCE_RE.search(text):
+        claim = STRONG_CLAIM_RE.search(text).group(0)
+        if NUMERICAL_DOWNGRADE_RE.search(text):
+            report.warn(
+                f"{rel}: numerical labels are explicitly downgraded "
+                "(evidence-only / not-a-proof) but no strict-evidence label is "
+                "present; add a strict label to the proof claim"
+            )
+        else:
+            report.bad(
+                f"{rel}: uses numerical-evidence labels and claims {claim!r} but has "
+                "no strict-evidence label (严格证明/定理已证/STRICT/FORMALLY_VERIFIED/"
+                "机器验证/形式化验证) anywhere in the file"
+            )
+            return
+    for index, block in enumerate(re.split(r"\n\s*\n", text), start=1):
+        if not NUMERICAL_LABEL_RE.search(block) or not STRONG_CLAIM_RE.search(block):
+            continue
+        if STRICT_EVIDENCE_RE.search(block) or NUMERICAL_DOWNGRADE_RE.search(block):
+            continue
+        claim = STRONG_CLAIM_RE.search(block).group(0)
+        report.bad(
+            f"{rel}: block {index} mixes numerical-evidence labels with claim "
+            f"{claim!r} and has no strict-evidence label in the block"
+        )
+
+
+def check_claim_evidence(root: Path, report: Report) -> None:
+    """Warn when strong claims exist without any project-level evidence anchor."""
+    evidence_anchors = list(root.glob("runs/**/run-manifest.json"))
+    evidence_anchors.extend(root.glob("lean-proof/verification.json"))
+    evidence_anchors.extend(root.glob("**/candidate_proof.md"))
+    evidence_anchors.extend(root.glob("**/audit_report.md"))
+    if evidence_anchors:
+        return
+    for path in iter_claim_files(root):
+        text = path.read_text(encoding="utf-8", errors="replace")
+        if STRONG_CLAIM_RE.search(text):
+            report.warn(
+                f"{path.relative_to(root)}: strong claim present but no evidence "
+                "anchors (run manifests / verification.json / candidate_proof.md / "
+                "audit_report.md) found anywhere in the project"
+            )
+            return
 
 
 def check_git(root: Path, report: Report, allow_dirty: bool) -> None:
@@ -299,6 +465,18 @@ def main() -> int:
         check_lean_manifest(lean_manifest, root, report)
     else:
         report.warn(f"no lean manifest at {LEAN_MANIFEST}")
+
+    verdict = root / LEAN_VERDICT
+    if verdict.is_file():
+        check_lean_verdict(verdict, root, report)
+
+    check_status_declaration(root, report)
+
+    claim_files = iter_claim_files(root)
+    report.ok(f"found {len(claim_files)} claim-bearing markdown file(s)")
+    for path in claim_files:
+        check_numerical_abuse(path, root, report)
+    check_claim_evidence(root, report)
 
     if args.check_git:
         check_git(root, report, args.allow_dirty)
