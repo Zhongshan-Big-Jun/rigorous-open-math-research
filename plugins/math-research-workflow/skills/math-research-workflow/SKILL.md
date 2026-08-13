@@ -75,6 +75,34 @@ Do **not** use this skill for a single proof request (use
 5. For each task: build or refresh the **task packet** (contract, source
    documents, obligations, verification criteria, hashes) and delegate.
 
+**Stage B0 -- Openness and novelty preflight (mandatory before dispatch):**
+
+Before any solver is dispatched, every concrete problem in the packet must
+carry a completed novelty preflight (recorded in the packet's
+`## Novelty preflight` section):
+
+1. **Openness check** (per `$rigorous-open-math-research` Phase 0/1): verify
+   whether the problem is genuinely open as of the research date, unless the
+   user explicitly requested a blind benchmark phase. Record the checked date
+   and the sources consulted.
+2. **Novelty audit**: run the divergent search contract (keyword families ->
+   project KB/tool library -> arXiv/OpenAlex/zbMATH -> general web), then
+   deep-read promising hits. Write/refresh the run's
+   `status_and_literature.md` with exact known theorems, citations recorded
+   as `query -> result -> locator`, and a novelty-risk line. Never fabricate
+   a paper, statement, or locator; abstract-only or paywalled evidence is
+   recorded as such and never promoted to theorem level.
+3. **Snapshot backfill**: ingest the audit conclusions into the manage
+   skill's literature frontier (paper records with stable links, portfolio
+   `novelty risk` field, evidence status) and bind them to the current
+   knowledge snapshot hash. On `SNAPSHOT_MISMATCH`, discard accumulated
+   retrieval and re-fetch before dispatch.
+4. **Gate**: a solver is dispatched only when the packet carries the
+   openness verdict, the audit path (or an explicit `skip:` record such as
+   `blind_benchmark` / `search_forbidden` with a scheduled post-discovery
+   audit), and the snapshot hash. A missing preflight is a hard `FAIL` at
+   the A -> B boundary (enforced by `validate_pipeline.py`).
+
 ### Stage B -- Research (solver)
 
 For every concrete problem in the packet, invoke `$rigorous-open-math-research`
@@ -126,8 +154,9 @@ wants formalized:
 
 ### Stage boundary checks (mandatory)
 
-- A -> B: packet contains contract + source paths + obligation list; no open
-  questions left unresolved.
+- A -> B: packet contains contract + source paths + obligation list; B0
+  novelty preflight recorded (openness verdict + audit path or skip +
+  snapshot hash); no open questions left unresolved.
 - B -> C: only results with an honest status label (`已证`, not numerical
   evidence) enter formalization; numerical/猜想 results are excluded and
   recorded as such.
@@ -183,3 +212,13 @@ wants formalized:
 - Fork-sync specifics removed from this plugin; git sync now defers to the
   manage skill's generic remote-topology configuration.
 - Cachebuster bumped to `0.1.0+codex.20260813054312` to propagate the gate.
+
+- Stage B now starts with a mandatory B0 novelty preflight: openness check
+  (genuinely open as of the research date), divergent novelty audit with
+  `query -> result -> locator` provenance, snapshot-hash backfill into the
+  manage skill's literature frontier, and a deterministic gate - every
+  solve/disprove/construct task packet must carry a `## Novelty preflight`
+  section (openness verdict + audit path or explicit skip + snapshot hash),
+  enforced by `validate_pipeline.py`. A missing preflight is a hard FAIL at
+  the A -> B boundary.
+- Cachebuster bumped to `0.1.0+codex.20260813101438` to propagate the B0 gate.

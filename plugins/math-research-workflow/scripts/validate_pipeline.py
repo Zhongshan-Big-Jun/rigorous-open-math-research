@@ -8,7 +8,8 @@ from files and hashes.
 
 Checks:
   - task packets in agenda/task-packets/*.md have the required fields and do
-    not leak unfilled template placeholders;
+    not leak unfilled template placeholders; solve/disprove/construct packets
+    must carry a completed Novelty preflight section (workflow B0 gate);
   - source-bundle hashes, task-packet hashes in run manifests, and lean-proof
     input hashes match the files they reference;
   - run manifests under runs/** and lean-proof/run-manifest.json parse;
@@ -54,6 +55,8 @@ LEAN_STATUS = "lean-proof/STATUS.md"
 
 PLACEHOLDER_VALUES = {"TASK-ID", "PROJECT-ID", "PROBLEM-ID", "RUN_ROOT"}
 ALLOWED_TASK_TYPES = {"solve", "disprove", "construct", "formalize", "rigorously audit"}
+SOLVER_TASK_TYPES = {"solve", "disprove", "construct"}
+NOVELTY_HEADING = "Novelty preflight (B0)"
 DEFAULT_GATE_STATUSES = {"\u5df2\u8bc1", "CANDIDATE_COMPLETE_PROOF"}
 
 REQUIRED_PACKET_HEADINGS = {
@@ -195,6 +198,8 @@ def check_task_packet(path: Path, root: Path, report: Report) -> None:
         if heading not in headings:
             report.bad(f"{rel}: missing required section {heading!r}")
 
+    check_novelty_preflight(fields, headings, rel, report)
+
     run_location = fields.get("Required run location", "")
     if run_location and strip_inline_code(run_location) in PLACEHOLDER_VALUES:
         report.bad(f"{rel}: Required run location still contains {run_location!r}")
@@ -211,6 +216,37 @@ def check_task_packet(path: Path, root: Path, report: Report) -> None:
         if re.match(r"^(https?|doi|arxiv)://|^10\.", source, re.IGNORECASE):
             continue
         check_referenced_hash(root, source, expected, report, f"{rel}: source bundle")
+
+
+def check_novelty_preflight(
+    fields: dict[str, str], headings: set[str], rel: Path, report: Report
+) -> None:
+    """B0 gate: solve/disprove/construct packets need a completed preflight.
+
+    The section is produced by the workflow stage B0 (openness check,
+    divergent novelty audit, snapshot backfill). A missing or placeholder
+    preflight is a hard FAIL so a solver is never dispatched blind.
+    """
+    if fields.get("Task type", "") not in SOLVER_TASK_TYPES:
+        return
+    if NOVELTY_HEADING not in headings:
+        report.bad(f"{rel}: missing required section {NOVELTY_HEADING!r} (B0 gate)")
+        return
+    verdict = strip_inline_code(fields.get("Openness verdict", ""))
+    if not verdict:
+        report.bad(f"{rel}: Novelty preflight has no Openness verdict (B0 gate)")
+    elif "|" in verdict or "YYYY-MM-DD" in verdict:
+        report.bad(f"{rel}: Openness verdict still contains the template placeholder (B0 gate)")
+    audit = fields.get("Novelty audit path", "").strip()
+    if not audit:
+        report.bad(f"{rel}: Novelty preflight has no audit path or skip record (B0 gate)")
+    elif audit.startswith("`RUN_ROOT") or "`skip" in audit or "or `skip" in audit:
+        report.bad(f"{rel}: Novelty audit path still contains the template placeholder (B0 gate)")
+    snapshot = strip_inline_code(fields.get("Snapshot hash", ""))
+    if not snapshot:
+        report.bad(f"{rel}: Novelty preflight has no snapshot hash (B0 gate)")
+    elif "<snapshot-hash>" in snapshot or snapshot in {"sha256:...", "sha256:<snapshot-hash>"}:
+        report.bad(f"{rel}: Snapshot hash still contains the template placeholder (B0 gate)")
 
 
 def check_referenced_hash(

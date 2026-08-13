@@ -167,7 +167,10 @@ class Validator:
                     continue
                 hexdigest, rel = line.split("  ", 1)
                 target = skill_dir / rel
-                if not target.exists() or hashlib.sha256(target.read_bytes()).hexdigest() != hexdigest:
+                # Normalize CRLF so MANIFEST hashes are valid in both a
+                # Windows worktree (core.autocrlf) and a Linux checkout.
+                data = target.read_bytes().replace(b"\r\n", b"\n") if target.exists() else b""
+                if not target.exists() or hashlib.sha256(data).hexdigest() != hexdigest:
                     bad += 1
                     self.bad(f"skill '{skill_dir.name}' MANIFEST.sha256 mismatch: {rel}")
             if bad == 0:

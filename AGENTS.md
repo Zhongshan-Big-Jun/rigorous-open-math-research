@@ -177,3 +177,35 @@
   lean-verify) 本地全过; sync_remotes.py 对 skill 仓库 dry-run 行为正确.
 - 维护: 本文件追加会话记录; 提交后按 project.json 的 push_order 先 push
   origin (xsoc1, 父) 再 push fork (Zhongshan-Big-Jun, 子).
+
+### 2026-08-13 会话 (Stage B0 新颖性前置门禁 + CI failure 修复)
+- 任务: (1) 按用户要求把 "open 判定 + novelty audit" 提升为 workflow Stage B
+  的显式前置门禁, 检索结论回填 manage literature 快照并哈希防漂移;
+  (2) 排查 xsoc1/rigorous-open-math-research 的 GitHub Actions failure.
+- Stage B0 门禁 (workflow cachebuster 0.1.0+codex.20260813101438):
+  - SKILL.md 新增 Stage B0 -- Openness and novelty preflight (强制, dispatch 前):
+    open 判定 (Phase 0/1, 除非用户要求 blind benchmark) -> 发散式新颖性审计
+    (query -> result -> locator 来源诚实, 付费墙/摘要级如实标注) -> 文献快照
+    回填 (manage literature frontier + 快照哈希绑定, SNAPSHOT_MISMATCH 重取)
+    -> 门禁放行 (包内须有 verdict + audit path 或显式 skip + snapshot hash).
+  - validate_pipeline.py 机械拦截: solve/disprove/construct 任务包必须携带
+    `## Novelty preflight (B0)` 区块 (Openness verdict / Novelty audit path /
+    Snapshot hash), 缺失或占位符即 hard FAIL; 4 个 gate fixtures 同步补齐.
+  - manage: task-packet.template.md 新增 Novelty preflight (B0) 区块与填写
+    说明; SKILL.md 第 6 节任务包要素增加 B0 一节; manage plugin.json 版本
+    同步为 0.1.0+codex.20260813101438; MANIFEST.sha256 重新生成.
+- CI failure 排查与修复 (根因均为平台/环境差异, 非逻辑错误):
+  - failure 1 (validate job, 自 f373971): MANIFEST.sha256 在 Windows CRLF
+    工作树字节上生成, 而 git 按 .gitattributes eol=lf 存储, Linux CI checkout
+    为 LF -> validate_all.py 字节级哈希校验失败. 修复: validate_all.py 校验前
+    规范化 CRLF (replace \r\n -> \n) 再哈希; MANIFEST.sha256 按 LF 规范化
+    内容重新生成 (44 文件, 双基准均匹配).
+  - failure 2 (smoke job, 自 d4cc8b0): smoke_doctor.py 硬断言 doctor 输出
+    "config.toml enables", 但 CI runner 无 ~/.codex/config.toml (doctor 只
+    warn), 本地有配置故本地通过. 修复: 断言放宽为 "0 problem(s)" + "installed
+    and enabled" (doctor 无 FAIL 即健康).
+  - 修复后本地验证: validate_all.py 68 项全绿; smoke_lean_verify /
+    smoke_pipeline_gate / smoke_doctor / smoke_sync_remotes 全部通过.
+- 根 README 版本历史 (中英) 追加 2026-08-13 条目.
+- 维护: 本文件追加会话记录; 提交后按 project.json 的 push_order 先 push
+  origin (xsoc1, 父) 再 push fork (Zhongshan-Big-Jun, 子).

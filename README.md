@@ -125,6 +125,7 @@ push / PR 时 GitHub Actions 自动运行以上校验与冒烟.
 - fork 副本: `Zhongshan-Big-Jun/rigorous-open-math-research` (同步方式: push 父仓库后, 在 fork 上执行 GitHub 的 Sync fork / merge-upstream)
 
 ## 版本历史
+- 2026-08-13: workflow 新增 Stage B0 强制前置门禁 - open 判定 + 发散式新颖性审计 + 文献快照哈希回填 (任务包必须携带 `## Novelty preflight (B0)`, `validate_pipeline.py` 机械拦截); manage 任务包模板同步 (cachebuster `0.1.0+codex.20260813101438`); 修复 CI: MANIFEST 哈希换行规范化 (CRLF/LF 双基准) 与 doctor 冒烟的环境依赖.
 - 2026-08-13: workflow 插件增强 - 环境自检 `doctor.py` + 门禁数值证据纪律与状态一致性审计 (cachebuster `0.1.0+codex.20260813054312`).
 - 2026-08-13: 新增确定性阶段门禁 `validate_pipeline.py` + lean-verify/门禁 CI 冒烟 (workflow cachebuster `0.1.0+codex.20260812164950`).
 - 2026-08-12: AI4Math V2 方法蒸馏 (发散检索/验证者 FAIL/失败路由/陈述冻结/四道闸/首错定位等).

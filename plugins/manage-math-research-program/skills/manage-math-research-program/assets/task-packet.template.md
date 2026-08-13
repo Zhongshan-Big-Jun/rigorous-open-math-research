@@ -37,6 +37,17 @@ List variant formulations, terminology differences, missing sources, corrections
 
 Record allowed searches, tools, attachments, formal systems, computing environment, time or token budget, and any blind-benchmark restrictions.
 
+## Novelty preflight (B0)
+
+Filled by the workflow stage B0 (or pre-filled by the manager before dispatch):
+this is the deterministic gate that stops blind solver dispatch. Keep every
+line below; replace the placeholders with real values.
+
+- **Openness verdict:** `OPEN | PARTIALLY_OPEN | ALREADY_SOLVED | NOT_VERIFIABLE` (checked YYYY-MM-DD)
+- **Novelty audit path:** `RUN_ROOT/status_and_literature.md` or `skip: blind_benchmark|search_forbidden` (+ post-discovery audit plan)
+- **Snapshot hash:** `sha256:<snapshot-hash>` of the literature/knowledge snapshot bound to this packet
+- **Backfill:** list literature records / portfolio problem IDs updated with the audit conclusions
+
 ## Required run location
 
 `RUN_ROOT`

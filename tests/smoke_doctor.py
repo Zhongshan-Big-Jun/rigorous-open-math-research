@@ -48,7 +48,10 @@ def main() -> int:
         print(ok.stdout)
         print(ok.stderr)
         return 1
-    if "installed and enabled" not in ok.stdout or "config.toml enables" not in ok.stdout:
+    # config.toml may be absent (e.g. CI runner home): doctor then warns and
+    # skips the enable-entry check, so only the plugin/skill health and the
+    # absence of FAILs are hard requirements here.
+    if "installed and enabled" not in ok.stdout or "0 problem(s)" not in ok.stdout:
         print("doctor did not report healthy state for the full listing")
         print(ok.stdout)
         return 1

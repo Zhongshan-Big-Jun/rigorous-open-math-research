@@ -198,7 +198,11 @@ Before delegating a concrete problem, create one task packet containing:
 - relevant tool entries as leads, never as automatically trusted premises;
 - known ambiguities and bibliographic risks;
 - user constraints, available tools, and the research budget for this run;
-- the requested run root and expected upstream artifacts.
+- the requested run root and expected upstream artifacts;
+- a `## Novelty preflight (B0)` section (openness verdict, audit path or
+  explicit skip, snapshot hash) - the workflow stage B0 fills or audits it,
+  and the deterministic gate (`validate_pipeline.py`) refuses to dispatch a
+  solver without it.
 
 Do not add a theorem contract, obligation graph, route plan, candidate proof, or audit rubric to the packet.
 
