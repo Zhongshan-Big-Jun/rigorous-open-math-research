@@ -9,6 +9,7 @@
 - `skills/math-research-workflow/SKILL.md` -- 编排协议 (三阶段流水线 + 子 agent 分工)
 - `skills/math-research-workflow/references/workflow-design.md` -- 设计文档 (角色/交接/并行/失败处理)
 - `assets/pipeline-handoff.template.md` -- 阶段交接记录模板
+- `assets/interruption-handoff.template.md` -- 中断交接记录模板 (已试路线/未完成义务/下一步动作, 供后续 agent 续接)
 - `scripts/validate_pipeline.py` -- 确定性阶段门禁 (任务包字段/哈希绑定/运行清单/数值证据纪律/git 清洁检查)
 - `scripts/doctor.py` -- 环境自检 (插件与依赖 skill 是否安装启用, 市场是否注册, config.toml 启用条目是否完好)
 
@@ -42,6 +43,11 @@ python plugins/math-research-workflow/scripts/validate_pipeline.py --project .
 门禁强制数值证据纪律: 数值检验只能作探索与佐证, 不得单独支撑
 `已证`/`CANDIDATE_COMPLETE_PROOF`/`FORMALLY_VERIFIED` 状态; 含数值标签的交付
 必须带严格标签或显式降级声明, 否则阶段边界 FAIL.
+
+工作中断 (预算耗尽/用户叫停/环境失败) 时, 中断方按
+`assets/interruption-handoff.template.md` 写交接记录 (含已尝试路线与结果
+标记、未完成义务、精确下一步), 后续 agent 依记录续接, 不得无新理由重跑已
+失败路线; 门禁校验交接记录字段完整性.
 
 ## 常见问题: 插件"消失"或未启用
 

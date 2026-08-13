@@ -125,6 +125,7 @@ push / PR 时 GitHub Actions 自动运行以上校验与冒烟.
 - fork 副本: `Zhongshan-Big-Jun/rigorous-open-math-research` (同步方式: push 父仓库后, 在 fork 上执行 GitHub 的 Sync fork / merge-upstream)
 
 ## 版本历史
+- 2026-08-13: workflow 新增中断交接协议 - 工作中断时写 `handoff-interrupted-<ts>.md` (已尝试路线带 `[FAILED|BLOCKED|PARTIAL|SUCCEEDED]` 标记、未完成义务、精确下一步、关键文件哈希), 后续 agent 依记录续接, 禁止无新理由重跑失败路线; `validate_pipeline.py` 硬校验交接记录字段, 新增 smoke_handoff 测试入 CI (cachebuster `0.1.0+codex.20260813144928`).
 - 2026-08-13: workflow 新增 Stage B0 强制前置门禁 - open 判定 + 发散式新颖性审计 + 文献快照哈希回填 (任务包必须携带 `## Novelty preflight (B0)`, `validate_pipeline.py` 机械拦截); manage 任务包模板同步 (cachebuster `0.1.0+codex.20260813101438`); 修复 CI: MANIFEST 哈希换行规范化 (CRLF/LF 双基准) 与 doctor 冒烟的环境依赖.
 - 2026-08-13: workflow 插件增强 - 环境自检 `doctor.py` + 门禁数值证据纪律与状态一致性审计 (cachebuster `0.1.0+codex.20260813054312`).
 - 2026-08-13: 新增确定性阶段门禁 `validate_pipeline.py` + lean-verify/门禁 CI 冒烟 (workflow cachebuster `0.1.0+codex.20260812164950`).

@@ -60,6 +60,21 @@ not by the formalizer.
 - Git conflict or fork divergence: stop, record state, do not overwrite
   uncommitted artifacts.
 
+## 5.1 Interruption handoff and resume
+
+Any stage that stops before completion writes an interruption handoff
+(`runs/<run_id>/handoff-interrupted-<ts>.md`, template
+`assets/interruption-handoff.template.md`) before returning control. It
+records: run/packet IDs, interrupt reason, task state, completed/open
+obligations, every attempted route with `[FAILED|BLOCKED|PARTIAL|SUCCEEDED]`
+outcome markers and failure mechanism, exact next actions, and hashed key
+artifacts. The successor reads handoff -> research_ledger (last entries
+first) -> approach_registry -> artifacts -> task packet, and never re-runs a
+FAILED route without a new recorded reason. `validate_pipeline.py` hard-fails
+incomplete handoffs. Project-level recovery (RESUME/checkpoints) remains the
+manage skill's job; this protocol covers run-level continuity for stages B
+and C.
+
 ## 6. Efficiency checklist
 
 - [ ] Environment preflight (scripts/doctor.py) passed before dispatch

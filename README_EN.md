@@ -124,6 +124,7 @@ GitHub Actions automatically runs the validation and smoke tests on push / PR.
 - Fork copy: `Zhongshan-Big-Jun/rigorous-open-math-research` (sync method: after pushing to the parent, run GitHub's Sync fork / merge-upstream on the fork)
 
 ## Version history
+- 2026-08-13: Workflow gained an interruption handoff protocol - on any interruption the stopping agent writes `handoff-interrupted-<ts>.md` (attempted routes with `[FAILED|BLOCKED|PARTIAL|SUCCEEDED]` outcome markers, open obligations, exact next actions, hashed key artifacts) so a successor agent resumes without blind re-exploration; `validate_pipeline.py` hard-checks handoff fields, new smoke_handoff test wired into CI (cachebuster `0.1.0+codex.20260813144928`).
 - 2026-08-13: Workflow gained a mandatory Stage B0 preflight - openness check + divergent novelty audit + literature snapshot-hash backfill (task packets must carry `## Novelty preflight (B0)`, enforced mechanically by `validate_pipeline.py`); manage task-packet template updated (cachebuster `0.1.0+codex.20260813101438`); CI fixes: MANIFEST hashing normalized across CRLF/LF worktrees and doctor smoke no longer depends on a local config.toml.
 - 2026-08-13: Hardened the workflow plugin - environment preflight `doctor.py` + numerical-evidence discipline and claim-consistency audit in the stage gate (cachebuster `0.1.0+codex.20260813054312`).
 - 2026-08-13: Added the deterministic stage gate `validate_pipeline.py` + lean-verify/gate CI smoke tests (workflow cachebuster `0.1.0+codex.20260812164950`).

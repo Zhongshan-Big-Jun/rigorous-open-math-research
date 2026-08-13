@@ -167,6 +167,35 @@ wants formalized:
   stage boundary. Statuses outside the formalization gate are reported as
   warnings, never silently promoted.
 
+### Interruption handoff and resume (mandatory)
+
+When any stage stops before completion (budget exhausted, user requests a
+stop, tool/environment failure, or any cross-session cut), the interrupting
+agent writes an interruption handoff before returning control:
+
+1. **Write the record**: use `assets/interruption-handoff.template.md`, saved
+   as `runs/<skill>/<run_id>/handoff-interrupted-<UTC timestamp>.md`. Record
+   the run ID, packet ID, date, interrupt reason, task state, completed/open
+   obligations, **every route and method already tried with outcome markers**
+   (`[FAILED|BLOCKED|PARTIAL|SUCCEEDED]` plus the failure mechanism or partial
+   progress), the exact next actions, and path + sha256 for every key
+   artifact. Do not promote numerical evidence here: reuse upstream status
+   labels verbatim.
+2. **Register**: the manager records the handoff path and hash in the project
+   index and appends a one-line session-log entry. Commit when the working
+   tree allows it.
+3. **Resume**: the successor agent starts by reading the latest handoff, then
+   `research_ledger.md` (last entries first), then `approach_registry.md`,
+   then the key artifacts, then the task packet. It continues only the listed
+   next actions; re-running a `[FAILED]` route requires a new reason recorded
+   in the handoff first.
+4. **Gate**: `validate_pipeline.py` hard-fails handoffs that miss required
+   fields/sections (run ID, packet ID, date, interrupt reason, task state,
+   obligations, attempted routes, next actions), so a successor never resumes
+   blind. Project-level recovery (`state/RESUME.md`, checkpoints) stays with
+   the manage skill (stage A); this protocol covers run-level details from
+   stages B and C.
+
 ## Efficiency rules
 
 - Parallelize where dependencies allow: stage B's audit agent may review
@@ -187,7 +216,11 @@ wants formalized:
 
 - `references/workflow-design.md` -- full design: roles, handoff schemas,
   parallelism, checklists, and failure handling.
-- `assets/pipeline-handoff.template.md` -- handoff record template.
+- `assets/pipeline-handoff.template.md` -- normal stage-transition
+  handoff record template.
+- `assets/interruption-handoff.template.md` -- interrupted-work handoff
+  template (routes tried, open obligations, next actions) for cross-session
+  resume.
 - `scripts/validate_pipeline.py` -- deterministic task-packet, hash-binding,
   run-manifest, numerical-evidence discipline, and git gate checks for stage
   boundaries.
@@ -222,3 +255,16 @@ wants formalized:
   enforced by `validate_pipeline.py`. A missing preflight is a hard FAIL at
   the A -> B boundary.
 - Cachebuster bumped to `0.1.0+codex.20260813101438` to propagate the B0 gate.
+
+- Interruption handoff and resume protocol: when a stage stops before
+  completion, the interrupting agent writes
+  `runs/<run_id>/handoff-interrupted-<ts>.md` from
+  `assets/interruption-handoff.template.md` - run/packet IDs, interrupt
+  reason, task state, completed/open obligations, every route tried with
+  `[FAILED|BLOCKED|PARTIAL|SUCCEEDED]` outcome markers, exact next actions,
+  and hashed artifact paths; the successor agent resumes from the handoff and
+  must not re-run a FAILED route without a new recorded reason.
+  `validate_pipeline.py` hard-fails handoffs missing required fields or
+  sections. Added `tests/smoke_handoff.py` (+ good/bad fixtures) and wired it
+  into CI.
+- Cachebuster bumped to `0.1.0+codex.20260813144928` to propagate the handoff protocol.

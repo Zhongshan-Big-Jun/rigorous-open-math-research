@@ -13,6 +13,8 @@ Checks:
   - source-bundle hashes, task-packet hashes in run manifests, and lean-proof
     input hashes match the files they reference;
   - run manifests under runs/** and lean-proof/run-manifest.json parse;
+  - interruption handoff records (runs/**/handoff-interrupted-*.md) carry
+    the required fields/sections so a successor agent can resume work;
   - completed manager runs carry a non-empty upstream status, and statuses
     outside the formalization gate are reported;
   - a run that claims a gate status (CANDIDATE_COMPLETE_PROOF / \u5df2\u8bc1)
@@ -57,6 +59,25 @@ PLACEHOLDER_VALUES = {"TASK-ID", "PROJECT-ID", "PROBLEM-ID", "RUN_ROOT"}
 ALLOWED_TASK_TYPES = {"solve", "disprove", "construct", "formalize", "rigorously audit"}
 SOLVER_TASK_TYPES = {"solve", "disprove", "construct"}
 NOVELTY_HEADING = "Novelty preflight (B0)"
+HANDOFF_GLOB = "**/handoff-interrupted-*.md"
+REQUIRED_HANDOFF_FIELDS = (
+    "Run ID",
+    "Task packet ID",
+    "Date",
+    "Interrupt reason",
+    "Task state",
+)
+REQUIRED_HANDOFF_HEADINGS = {
+    "Completed obligations",
+    "Open obligations",
+    "Attempted routes",
+    "Next actions",
+}
+HANDOFF_STATE_VALUES = {"IN_PROGRESS", "BLOCKED"}
+HANDOFF_ROUTE_RESULT_RE = re.compile(
+    r"\[(FAILED|BLOCKED|PARTIAL|SUCCEEDED)\]",
+    re.IGNORECASE,
+)
 DEFAULT_GATE_STATUSES = {"\u5df2\u8bc1", "CANDIDATE_COMPLETE_PROOF"}
 
 REQUIRED_PACKET_HEADINGS = {
@@ -438,6 +459,56 @@ def check_claim_evidence(root: Path, report: Report) -> None:
             return
 
 
+def check_interruption_handoffs(root: Path, report: Report) -> None:
+    """Validate interruption handoff records (workflow interruption protocol).
+
+    A handoff must identify the run and packet, say why work stopped, list
+    completed/open obligations, and - critically - record the routes already
+    tried with outcome markers plus the exact next actions. Missing sections
+    are hard FAILs so a successor agent never resumes blind.
+    """
+    files = sorted(root.glob(HANDOFF_GLOB))
+    if files:
+        report.ok(f"found {len(files)} interruption handoff record(s)")
+    for path in files:
+        rel = path.relative_to(root)
+        fields, headings, text = parse_packet(path)
+        for key in REQUIRED_HANDOFF_FIELDS:
+            value = strip_inline_code(fields.get(key, ""))
+            if not value:
+                report.bad(f"{rel}: missing required field {key!r} (interruption handoff)")
+            elif key == "Interrupt reason" and "|" in value:
+                report.bad(f"{rel}: Interrupt reason still contains the template choices (interruption handoff)")
+            elif key == "Task state":
+                if "|" in value:
+                    report.bad(f"{rel}: Task state still contains the template choices (interruption handoff)")
+                elif not (value.startswith("IN_PROGRESS") or value.startswith("BLOCKED")):
+                    report.warn(f"{rel}: unexpected Task state {value!r} (expected IN_PROGRESS or BLOCKED)")
+        for heading in REQUIRED_HANDOFF_HEADINGS:
+            if heading not in headings:
+                report.bad(f"{rel}: missing required section {heading!r} (interruption handoff)")
+                continue
+            body = extract_section(text, heading)
+            if heading in {"Attempted routes", "Next actions"} and not body.strip():
+                report.bad(f"{rel}: section {heading!r} is empty (interruption handoff)")
+        routes = extract_section(text, "Attempted routes")
+        unmarked = [ln.strip() for ln in routes.splitlines() if ln.strip().startswith("-") and not HANDOFF_ROUTE_RESULT_RE.search(ln)]
+        if unmarked:
+            report.warn(
+                f"{rel}: {len(unmarked)} route line(s) without a "
+                "[FAILED|BLOCKED|PARTIAL|SUCCEEDED] outcome marker"
+            )
+
+
+def extract_section(text: str, heading: str) -> str:
+    marker = f"## {heading}"
+    parts = text.split(marker, 1)
+    if len(parts) < 2:
+        return ""
+    body = parts[1].split("\n## ", 1)[0]
+    return body
+
+
 def check_git(root: Path, report: Report, allow_dirty: bool) -> None:
     proc = subprocess.run(
         ["git", "-C", str(root), "status", "--porcelain"],
@@ -507,6 +578,7 @@ def main() -> int:
         check_lean_verdict(verdict, root, report)
 
     check_status_declaration(root, report)
+    check_interruption_handoffs(root, report)
 
     claim_files = iter_claim_files(root)
     report.ok(f"found {len(claim_files)} claim-bearing markdown file(s)")

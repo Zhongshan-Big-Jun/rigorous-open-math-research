@@ -209,3 +209,27 @@
 - 根 README 版本历史 (中英) 追加 2026-08-13 条目.
 - 维护: 本文件追加会话记录; 提交后按 project.json 的 push_order 先 push
   origin (xsoc1, 父) 再 push fork (Zhongshan-Big-Jun, 子).
+### 2026-08-13 会话 (workflow 中断交接功能)
+- 任务: 给工作流插件加"交接未完成工作"功能 - 工作做一半中断时, 后续 agent
+  能接上进度, 记录已尝试的方法和路线.
+- 完成 (workflow cachebuster 0.1.0+codex.20260813144928):
+  - 新增 assets/interruption-handoff.template.md: 中断交接模板, 含 run/packet
+    ID, 中断原因 (RESOURCE_BOUND/USER_REQUEST/TOOL_FAILURE/UNKNOWN), 任务状态,
+    已完成/未完成义务, 已尝试路线 (每条带 [FAILED|BLOCKED|PARTIAL|SUCCEEDED]
+    结果标记与失败机制), 精确下一步, 关键文件路径+sha256, 恢复读序.
+  - SKILL.md 新增 "Interruption handoff and resume (mandatory)" 协议: 中断前
+    必写交接记录 -> manager 登记哈希 -> 后续 agent 按读序续接, 禁止无新理由
+    重跑 [FAILED] 路线; 项目级恢复 (state/RESUME.md, checkpoint) 归 manage,
+    本协议覆盖 run 级 (Stage B/C) 连续性.
+  - validate_pipeline.py 机械门禁: 扫描 runs/**/handoff-interrupted-*.md,
+    必填字段 (Run ID/Task packet ID/Date/Interrupt reason/Task state) 与必填
+    区块 (Completed/Open obligations, Attempted routes, Next actions) 缺失或
+    占位即 hard FAIL; 路线条目缺结果标记给 warn.
+  - 测试: tests/smoke_handoff.py + fixtures pipeline-handoff-good/bad; CI
+    validate.yml smoke job 接入.
+  - workflow-design.md 新增 5.1 节; 插件 README 与根 README (中英) 版本历史
+    更新.
+- 校验: 本地 smoke_handoff 通过 (good 过, bad 因缺 Next actions/空 routes
+  FAIL); 全套测试待提交前复跑.
+- 维护: 本文件追加会话记录; 提交后按 project.json push_order 先 push origin
+  (xsoc1) 再 push fork (Zhongshan-Big-Jun).
