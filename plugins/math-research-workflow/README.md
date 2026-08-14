@@ -10,6 +10,7 @@
 - `skills/math-research-workflow/references/workflow-design.md` -- 设计文档 (角色/交接/并行/失败处理)
 - `assets/pipeline-handoff.template.md` -- 阶段交接记录模板
 - `assets/interruption-handoff.template.md` -- 中断交接记录模板 (已试路线/未完成义务/下一步动作, 供后续 agent 续接)
+- `assets/whiteboard.template.md` -- 求解循环白板模板 (当前计划/路线历史/待回想法/未完成义务/工件索引)
 - `scripts/validate_pipeline.py` -- 确定性阶段门禁 (任务包字段/哈希绑定/运行清单/数值证据纪律/git 清洁检查)
 - `scripts/doctor.py` -- 环境自检 (插件与依赖 skill 是否安装启用, 市场是否注册, config.toml 启用条目是否完好)
 
@@ -43,6 +44,13 @@ python plugins/math-research-workflow/scripts/validate_pipeline.py --project .
 门禁强制数值证据纪律: 数值检验只能作探索与佐证, 不得单独支撑
 `已证`/`CANDIDATE_COMPLETE_PROOF`/`FORMALLY_VERIFIED` 状态; 含数值标签的交付
 必须带严格标签或显式降级声明, 否则阶段边界 FAIL.
+
+阶段 B 求解按 OpenProver 式循环运行 (2026-08-14 蒸馏自
+arXiv:2607.09217): 求解主导者 (Planner) 维护每 run 一个紧凑 `whiteboard.md`
+(当前计划/路线历史/待回想法/未完成义务/工件索引), 并行独立 Worker 只领各自
+交付物, 审计 agent 独立复核 Worker 产出; Lean 片段经 `lean_verify` 机器验证
+后才入库, `lean_search` 先查 Mathlib 既有声明, `lean_store` 累积已验证上下文.
+2026-08-14 之后开始的求解 run 必须携带 whiteboard, 门禁硬校验.
 
 工作中断 (预算耗尽/用户叫停/环境失败) 时, 中断方按
 `assets/interruption-handoff.template.md` 写交接记录 (含已尝试路线与结果

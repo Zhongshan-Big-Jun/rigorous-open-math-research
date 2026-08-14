@@ -30,6 +30,8 @@ jobs:
         run: python tests/smoke_pipeline_gate.py
       - name: Smoke test interruption handoff
         run: python tests/smoke_handoff.py
+      - name: Smoke test whiteboard gate
+        run: python tests/smoke_whiteboard.py
       - name: Smoke test workflow doctor
         run: python tests/smoke_doctor.py
       - name: Smoke test multi-remote sync

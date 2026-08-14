@@ -233,3 +233,39 @@
   FAIL); 全套测试待提交前复跑.
 - 维护: 本文件追加会话记录; 提交后按 project.json push_order 先 push origin
   (xsoc1) 再 push fork (Zhongshan-Big-Jun).
+### 2026-08-14 会话: 蒸馏 OpenProver 方法进 workflow 求解循环
+
+- 任务: 把 arXiv:2607.09217 (OpenProver, CICM 2026, Kripner & Straka,
+  github.com/kripner/OpenProver) 的 Planner-Worker-Verifier 方法直接蒸馏进
+  math-research-workflow 插件 (Stage B/C), 保留 B0 门禁与数值证据纪律.
+- 完成 (workflow cachebuster 0.1.0+codex.20260814120000):
+  - 新增 assets/whiteboard.template.md: 每 run 紧凑白板模板 (Run ID/Task
+    packet ID/Last updated + Current plan/Route history/Ideas to return to/
+    Open obligations/Key artifacts), 即 OpenProver Whiteboard + Repository
+    (slug) 记忆模型的适配.
+  - SKILL.md Stage B 新增 "OpenProver-style solve loop (distilled,
+    mandatory)": 求解主导者 (Planner) 每步重写并读取 whiteboard; 独立并行
+    Worker 互不见推理痕迹; 审计 agent 独立复核 Worker 产出 (verdict +
+    critical errors + gaps + repair hints); 仓库按 slug 寻址且 Lean 片段仅
+    机器验证通过后入库, 否则错误/警告回喂 Worker; Lean 实时验证回路三工具
+    lean_verify / lean_search (LeanExplore, arXiv:2506.11085) / lean_store
+    (上下文累积到 runs/<run_id>/lean_scratch/context.lean); 交互式人工引导
+    (呈现计划/重定向 Worker/接受或拒绝下一步).
+  - SKILL.md Stage C 新增 "Formalization feedback loop (mandatory)":
+    Lean 失败按层分类修复, 证明层缺陷路由回求解主导者修 NL 证明后重形式化,
+    不静默绕开.
+  - validate_pipeline.py 新增 whiteboard 门禁: 扫描 runs/**/whiteboard.md
+    硬校验必填字段与 5 个区块; 以 research_ledger.md 识别 Stage B 求解 run,
+    2026-08-14 之后开始的 run 必须携带 whiteboard (解析 run 目录名 R-YYYYMMDD
+    做 cutover, 存量 run 不追溯, 避免破坏历史记录).
+  - 测试: tests/smoke_whiteboard.py + fixtures pipeline-whiteboard-good/bad
+    (缺 whiteboard / 缺区块均 FAIL); CI validate.yml smoke job 接入.
+  - references/workflow-design.md 新增 7.1-7.6 节 (Planner/仓库/独立性/Lean
+    回路/反馈环/交互引导); 插件 README 与根 README (中英) 版本历史更新.
+- 方法来源: OpenProver (arXiv:2607.09217, CC BY-SA 4.0), 仅协议转述, 未复制
+  其代码或论文正文.
+- 校验: 本地 smoke_whiteboard 通过; 全套校验 (validate_all + 5 个 smoke +
+  真实项目门禁回归) 提交前复跑.
+- 维护: 本文件追加会话记录; 提交后按 project.json push_order 先 push origin
+  (xsoc1) 再 push fork (Zhongshan-Big-Jun); 最后本地 marketplace upgrade +
+  plugin add 刷新已安装插件.
