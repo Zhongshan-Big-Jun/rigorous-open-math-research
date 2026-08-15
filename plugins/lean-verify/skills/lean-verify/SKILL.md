@@ -113,6 +113,22 @@ For each Lean declaration mapped to an obligation:
 4. Record the machine results exactly as observed: exit code, error text, scan hits. Do not
    summarize away failures.
 
+**Single structured judgment (gate protocol).** Every machine check emits one
+structured judgment - `build_passed`, `sorry_axiom_hits`, `first_error`
+(location + error layer) - in the machine-readable verdict; free-text parsing
+of build logs is never acceptable as evidence. The judgment separates the two
+branches explicitly: a clean build is the *proved* branch, a build failure is
+localized counter-evidence (first error + smallest failing claim), never a
+vague "did not compile". (Distilled from forge-gates:
+https://github.com/jinguanghai/deepseek-harness-forge-plugins.)
+
+**Atomic, bounded, stateless checks.** Run each check in a request-scoped
+temporary directory against the pinned environment; the check retains no
+proof-state session and no source beyond its own inputs. A check result is a
+typed value consumed by the obligation map, so the same check can be composed
+into later stages. (Distilled from jacobian lean.check:
+https://github.com/morluto/jacobian.)
+
 ### Four gates and semantic review
 
 Any edited declaration proposed for acceptance must pass four gates: (1) compile check,
@@ -130,6 +146,10 @@ When the build fails or obligations remain open, repair instead of regenerating 
 - **Statement freeze**: keep the statement signatures fixed while repairing proofs; a statement change is a new audit, not a repair.
 - **Sorrifier decomposition**: replace the failing proof block with `sorry`, re-check that the remaining skeleton compiles, extract the failing block as a clean subproblem, and solve it recursively.
 - **Error taxonomy first**: classify each failure (statement layer / proof layer / dependency layer / boundary-convention) before fixing; diagnose in the order 判定 -> 分类 -> 定位 -> 修正.
+- **Same-gap convergence**: when the same obligation is blocked by the same gap for three
+  consecutive repair rounds, stop repairing; record the strongest derivation reached plus the
+  exact gap (and the counterexample when one exists) and downgrade the verdict accordingly.
+  Infinite repair loops are worse than an honest `REPAIRABLE_GAP`.
 - Track every `sorry`; the final artifact must contain none.
 
 ### Phase 4 - Independent audit
@@ -172,6 +192,13 @@ Status labels (first line of any report):
 - `REPAIRABLE_GAP` - localized defect found and specified, conclusion unaffected.
 - `FATAL_GAP` - a required obligation is false, unsupported, or unfaithful.
 - `VERIFICATION_INCOMPLETE` - any required check is missing; report what remains.
+
+Falsification-first verdict rule: one obligation refuted by a verified
+counterexample or contradiction vetoes the whole verdict (no partial
+`FORMALLY_VERIFIED` around a refuted obligation), and obligations whose status
+is uncertain never count as passed - all-uncertain means the verdict is not
+`FORMALLY_VERIFIED`. (Distilled from Vibe-Mathematics:
+https://github.com/ChongCyrus/Vibe-Mathematics.)
 
 Do not present `MACHINE_ACCEPTED_PENDING_AUDIT` as `FORMALLY_VERIFIED`. Do not bury a fatal gap
 in a footnote.
@@ -225,3 +252,14 @@ non-complete verdict must include non-empty `repair_hints`. Aggregate without dr
 - 新增修复策略 (Phase 3): 陈述冻结 (修证明不动陈述签名) + sorrifier 分解 (失败块 sorry 化保留骨架, 子问题递归) + 错误分类优先 (判定 -> 分类 -> 定位 -> 修正), 最终 sorry 清零.
 - 新增首错定位与错误层分类 (Phase 4): 每个发现定位第一个错误步骤并分类 (陈述/证明/依赖/边界约定); 结构化输出新增可选 first_error 字段 (schema 同步).
 - 方法来源: M2F (https://github.com/optsuite/M2F), MechMath sorrifier (https://github.com/MechMath/MechMath-v1), MMAT fl-prover (https://github.com/MechMath/MechMath-agent-team), FaithSieve (https://github.com/TropicalFatFish/anonymous-faithsieve), FormalRx (https://github.com/LARK-AI-Lab/formalrx, arXiv:2607.04655).
+
+## Changelog (2026-08-16, distilled methods round 2)
+- Phase 3 机器核查升级: 单一结构化判定 gate 协议 (build_passed/sorry_axiom_hits/
+  first_error 进机器可读裁决, 禁止自由文本解析当证据; 干净构建 = proved 分支,
+  构建失败 = 局部反证分支, 定位首错 + 最小失败声明; 来自 forge-gates);
+  原子/有界/无状态检查 (请求级临时目录 + 固定环境, 不保留会话与源码, 结果作为
+  类型化值供义务图消费; 来自 jacobian lean.check).
+- 修复策略新增同缺口收敛规则: 同一义务同一缺口连续三轮未修复即停止, 记录最强
+  推导 + 精确缺口 (有反例则记录) 并降级裁决 (来自 dsh-rigorquant 三级停止).
+- 裁决新增证伪优先规则: 任一义务被已核验反例/矛盾否决即整体否决; 状态不确定的
+  义务不得当作通过, 全不确定不得 FORMALLY_VERIFIED (来自 Vibe-Mathematics).

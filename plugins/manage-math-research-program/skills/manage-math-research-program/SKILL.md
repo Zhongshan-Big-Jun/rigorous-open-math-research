@@ -157,6 +157,8 @@ Run each search cycle as a divergent pass: search wide, do not gatekeep.
 - Before a search cycle, check the project tool library, paper indexes, and knowledge base first, to avoid re-tracing indexed results.
 - Layer the pipeline: keyword families (synonyms, notation variants, older vocabulary); arXiv/OpenAlex/zbMATH for surveys and provenance; general web (textbooks, lecture notes, blogs, MathOverflow/MSE, journal pages, GitHub) for constructions, counterexamples, and numerical evidence not in papers; then deep-read promising hits to extract the exact statement, preconditions, and a locator.
 - Store original sources immutably (hash-addressed when feasible) and keep compiled knowledge in indexed records; record complete analyses, partial proofs, and obstructions as first-class knowledge cards with source links. Prior partial progress and ruled-out paths are part of the knowledge base.
+- Record the retrieval evidence contract for every search cycle: each entry carries a fetch status (`fetched-verified` | `abstract-only` | `paywalled` | `unreachable`), and the cycle separates `uncertainty` (epistemic doubt about a fact: conflicts, likely-outdated numbers) from `warnings` (how the retrieval was produced: engine fallback, degraded stand-in). An abstract-level hit is never registered as settling a theorem. (Distilled from modsearch: https://github.com/liustack/modsearch, argo: https://github.com/taxueseek/argo.)
+- Query the local read-literature index before external search: pull bounded evidence fragments (explicit character/passage budgets) and cite section names or record IDs, never bare line numbers. Reuse prior search-log keys so an already-answered question is not re-traced from scratch. (Distilled from dsh-zotero: https://github.com/Vncntvx/dsh-zotero, dsh-kb-sieve: https://github.com/omdsh-dev/dsh-kb-sieve, dsh-web-search-pro: https://github.com/anweat/dsh-web-search-pro.)
 
 
 ## 4. Analyze important papers
@@ -184,7 +186,7 @@ Maintain project-level records for:
 
 Portfolio problem records carry a one-line evidence status (`OPEN` / `PARTIAL` / `NUMERICAL_EVIDENCE` / `PROVED` / `FORMALIZED`) and the research state (contract frozen? obligations open?) without duplicating upstream obligation graphs.
 
-Tool-library and portfolio evolution follows a marginal-benefit rule: a new tool entry or priority change is adopted when it resolves a known blocker, raises an evidence level, or reduces retrieval cost; record the marginal benefit in the maintenance log.
+Tool-library and portfolio evolution follows a marginal-benefit rule: a new tool entry or priority change is adopted when it resolves a known blocker, raises an evidence level, or reduces retrieval cost; record the marginal benefit in the maintenance log. Tool entries carry artifact provenance: the producing run/command, inputs, environment, source hash, and an append-only verification note (what was checked, at which precision, and by whom); a tool entry without provenance is a lead, not a reusable tool. (Distilled from dsh-science: https://github.com/biociao/dsh-science.)
 
 Project priority scores are planning aids, not mathematical evidence. Keep their rationale visible.
 
@@ -246,6 +248,7 @@ When the user authorizes acceptance and an upstream run produced reusable knowle
 5. Integrate only through the deterministic receiver with `python knowledge/tools/receive_blueprint.py --blueprint-root knowledge --submission submissions/<SUBMISSION_ID> --integrator-agent-id <AGENT_ID>`. Never edit `knowledge/blueprint.json` or `knowledge/evidence_inventory.csv` by hand.
 6. Record the resulting snapshot hashes from `python knowledge/tools/blueprint_query.py snapshot` in the checkpoint and `state/current.json`. For mathematics, verify the post-merge state with `python knowledge/tools/blueprint_query.py math-closure --context <CONTEXT_ID>`; keep transaction status separate from research status.
 7. Mirror the epistemic class into the paper record, tool entry, or project result record, and link the receipt path. Bind future task packets and research sub-agents to the snapshot; on `SNAPSHOT_MISMATCH`, discard accumulated retrieval and re-fetch. A merged partial lemma is `transaction_status: merged` with `research_status: partial_progress`, never `solved`.
+8. **Evidence boundary.** Chat output, plain stdout, and interactive-terminal output never become formal evidence by themselves; only artifacts of a controlled run (hash-bound inputs, frozen environment) that pass independent review may be promoted. Formal computations should bind an immutable code/data snapshot and a fixed execution environment; a claim resting on an uncontrolled run is not accepted knowledge. (Distilled from dsh-scholar: https://github.com/lzszq/dsh-scholar.)
 
 Full contracts and CLI details are in `references/accepted-knowledge-pipeline.md`.
 
@@ -358,3 +361,15 @@ This completion criterion says nothing about whether any underlying open problem
   不变; 证据规则 13 与项目完成清单同步; 新增模板
   `assets/proof-paper.template.tex`; init/validate 创建并校验 `papers/`
   (目录 + README), MANIFEST.sha256 重新生成.
+
+## Changelog (2026-08-16, distilled methods round 2)
+- 检索证据契约 (第 3 节): 每条检索条目携带 fetch status (fetched-verified /
+  abstract-only / paywalled / unreachable), uncertainty vs warnings 二分,
+  摘要级命中不得视为定理已定; 本地已读文献先查 (有界证据片段 + 章节名引用),
+  检索历史键复用防重走. 方法来源: modsearch, argo, dsh-zotero, dsh-kb-sieve,
+  dsh-web-search-pro.
+- 工具库溯源 (第 5 节): 工具条目必须带产物溯源 (产生 run/命令/输入/环境/源
+  hash + 追加型验证注记), 无溯源的工具条目只是线索. 方法来源: dsh-science.
+- 已接受知识流水线新增第 8 条证据边界 (8b): Chat/stdout/交互终端输出本身不
+  成为正式证据, 只有受控 run 产物 (hash 绑定输入 + 冻结环境) 经独立评审才可
+  晋升; 正式计算须绑定不可变快照与固定环境. 方法来源: dsh-scholar.

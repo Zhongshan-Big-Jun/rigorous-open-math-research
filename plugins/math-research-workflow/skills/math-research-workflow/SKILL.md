@@ -119,6 +119,12 @@ manager).
 - The two alternate in bounded loops until either `CANDIDATE_COMPLETE_PROOF`
   or an exact gap report is reached. The audit agent never shares a chain of
   thought with the solver; only artifacts are exchanged.
+- **Claim before work.** Every obligation is claimed by exactly one worker at
+  a time: the ledger records the owner before solving starts and releases the
+  claim on completion, so two agents never prove the same obligation. A
+  re-claim requires the previous owner's result or an explicit release.
+  (Distilled from dsh-suite plugin-team-board:
+  https://github.com/whyihaveyou/dsh-suite/tree/main/packages/plugins/plugin-team-board.)
 
 **OpenProver-style solve loop (distilled, mandatory for stage B runs):**
 
@@ -173,6 +179,10 @@ replace the theorem contract, B0 gate, or evidence discipline.
    until `CANDIDATE_COMPLETE_PROOF`, an exact gap report, or the compute
    budget runs out. Do not use fixed worker counts as a principle; allocate
    dynamically by marginal information gain.
+   **Gap re-injection (mandatory):** every non-pass review output must be
+   consumed by a revision round or recorded as a routed obligation; a
+   finding that is silently dropped is a gate failure. (Distilled from
+   dsh-proof: https://github.com/EvilIrving/dsh-proof.)
 7. **Interactive steering.** When the user is in the loop, present each plan
    or action set before executing it, allow the user to redirect Workers,
    interrupt unpromising routes, and accept or reject the next actions with
@@ -226,6 +236,14 @@ label without a decision fails.
    record them as F-xxx in the audit report (do not silently change sources).
 4. Machine evidence required: build exit 0, zero sorry/admit/axiom hits,
    obligation map complete. No machine evidence => no "FORMALLY_VERIFIED".
+
+**Lean escalation lane (proof-critical claims):** when a proof-critical
+claim is load-bearing (the final status depends on it) and machine
+verification is available, formalize that claim before the completion status
+is claimed, not as a post-hoc audit: escalate the lemma into the Lean project
+first, verify it, then claim the label. This is a prioritization rule - key
+claims go through Lean early - not a replacement for the final stage gate.
+(Distilled from dsh-rigorquant: https://github.com/linxichen/dsh-rigorquant.)
 
 **Formalization feedback loop (mandatory):**
 
@@ -290,7 +308,14 @@ agent writes an interruption handoff before returning control:
 
 - Parallelize where dependencies allow: stage B's audit agent may review
   obligations while the solver opens the next route; stage C's verifier may
-  scan files as the formalizer writes them.
+  scan files as the formalizer writes them. When several members run in
+  parallel, aggregate every member's failures into the report (first-fail
+  short-circuit hides independent errors). (Distilled from
+  dsh-agent-team-gui: https://github.com/toolclub/dsh-agent-team-gui.)
+- Detect loops from the route/obligation history: re-attempting a failed
+  route without a materially new mechanism is a loop, not progress; block it
+  and record the witness. (Distilled from
+  dsh-trajectory-governance: https://github.com/dfycaly98931680/dsh-trajectory-governance.)
 - Reuse before redo: check the tool library (`tools/`), the accepted-knowledge
   base, and `STATUS.md` before starting a route or a formalization; hash-bound
   artifacts prevent duplicate work.
@@ -387,3 +412,13 @@ agent writes an interruption handoff before returning control:
   门禁机械强制 (validate_pipeline.py), 缺失决策即 FAIL.
 - 任务包模板新增可选 Verify: yes|no|not-requested 字段 (manage skill).
 - 新增 tests/smoke_formalization.py + 三个 fixtures (good/missing/requested).
+
+## Changelog (2026-08-16, distilled methods round 2)
+- 多 agent 协作增强 (纯增量): Stage B 新增义务认领协议 (claim before work -
+  ledger 记录唯一所有者, 防重复证明; 来自 dsh-suite plugin-team-board);
+  Loop control 新增缺口回灌硬规则 (非 PASS 评审输出必须被修订轮消费或登记为
+  路由义务, 静默丢弃 = 门禁失败; 来自 dsh-proof); Efficiency rules 新增并行
+  失败聚合 (收集全部成员失败, 不短路; 来自 dsh-agent-team-gui) 与循环检测
+  (无新机制重试失败路线即阻断并记录见证; 来自 dsh-trajectory-governance).
+- Stage C 新增 Lean 升级通道: 证明关键且可机器验证的断言先形式化验证再声称
+  完成状态 (先 Lean 再落地, 非事后补验; 来自 dsh-rigorquant).

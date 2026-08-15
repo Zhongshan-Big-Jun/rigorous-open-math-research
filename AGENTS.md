@@ -298,3 +298,32 @@
 - 维护: 本文件追加会话记录; 提交后按 project.json push_order 先 push origin
   (xsoc1) 再 push fork (Zhongshan-Big-Jun); 随后在 DSH 适配仓库重跑
   sync-from-parent.py 继承本变更.
+### 2026-08-16 会话: 社区方法蒸馏第二轮 (四插件, 四方向)
+
+- 任务: 按用户要求在 awesome-dsh-plugin 生态中寻找可改良本插件的方法/思想/工具,
+  方向包括网络搜索 (arXiv 等确认问题状态)、多 agent 协作效率、Lean 验证、数学研究方法.
+- 调研: 4 个并行子代理深挖 28 个仓库 README (全部 MIT/可蒸馏; dsh-eval-harness
+  许可证未确认仅作思想参考). Top 来源: argo, modsearch, dsh-zotero, dsh-kb-sieve,
+  dsh-web-search-pro, dsh-exa-mcp, dsh-suite plugin-team-board, dsh-proof,
+  dsh-agent-team-gui, dsh-trajectory-governance, forge-gates, jacobian,
+  dsh-rigorquant, Vibe-Mathematics, Aegis, dsh-science, dsh-scholar,
+  dsh-design-skills, dsh-ops-kit, dsh-finance.
+- 实施 (四插件 cachebuster 0.1.0+codex.20260815171704):
+  - rigorous: phase-23 检索证据契约 (status 三态/uncertainty-warnings/引擎尝试/禁编
+    造分数/本地文献有界片段+章节名引用/检索历史复用) + 目标问题状态确认小节
+    (fetch_required, fetch status 四态, 分层确认, 证据强度排序启发, 缺口侦察清单,
+    跨会话回填); phase-78 反例-only 对抗 + 双导线 ground-truth + 结构化输出新增
+    covered_scope/residual_risk; phase-45 路线假说状态机 + forward-only + 循环检测;
+    phase-01 Phase 0 fetch_required + 契约新增 Forbidden moves.
+  - workflow: Stage B 义务认领 (claim before work) + 缺口回灌硬规则; Efficiency
+    rules 并行失败聚合 + 循环检测; Stage C Lean 升级通道 (关键断言先 Lean 再落地).
+  - lean-verify: Phase 3 单一结构化判定 gate 协议 + 原子/有界/无状态检查;
+    Repair strategy 同缺口三轮收敛; 裁决证伪优先 (反例否决/不确定不通过).
+  - manage: §3 检索证据契约 + 本地文献先查/历史复用; §5 工具溯源字段; 8b 新增
+    第 8 条证据边界 (非受控输出不成为正式证据, 受控 run 冻结环境).
+  - 根 README 中英版本历史追加条目.
+- 校验: validate_all 68 项全绿; MANIFEST 45 条重新生成; 冒烟不受影响 (无测试
+  依赖被改动).
+- 维护: 本文件追加会话记录; 提交后按 push_order 先 push origin (xsoc1) 再 push
+  fork (Zhongshan-Big-Jun); 随后 DSH 适配仓库 sync-from-parent.py 继承 + README
+  蒸馏表更新.
