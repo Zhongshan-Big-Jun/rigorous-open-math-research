@@ -1,6 +1,6 @@
 {
   "name": "math-research-workflow",
-  "version": "0.1.0+codex.20260814120000",
+  "version": "0.1.0+codex.20260814155902",
   "description": "Orchestrates the full mathematics research pipeline: program management (manage-math-research-program) to rigorous problem research (rigorous-open-math-research) to Lean formal verification (lean-verify), with sub-agent division of labor, artifact handoff contracts, hash binding, and automatic git sync at every stage boundary.",
   "author": {
     "name": "xsoc1"
@@ -16,11 +16,11 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Math Research Workflow",
-    "shortDescription": "管理-研究-验证一体化数学研究流水线编排 (manage + rigorous + lean-verify).",
+    "shortDescription": "绠＄悊-鐮旂┒-楠岃瘉涓€浣撳寲鏁板鐮旂┒娴佹按绾跨紪鎺?(manage + rigorous + lean-verify).",
     "longDescription": "One orchestrator for the three-skill pipeline: stage A program management and task packets, stage B rigorous problem research with solver/audit sub-agents, stage C Lean formalization with machine verification and obligation-level audits. Enforces handoff contracts, honest status labels, and git sync at every stage boundary.",
     "developerName": "xsoc1",
     "category": "Developer Tools",
     "capabilities": [],
-    "defaultPrompt": "帮我跑一个数学项目的研究+验证全流程 (管理-研究-Lean形式化)."
+    "defaultPrompt": "甯垜璺戜竴涓暟瀛﹂」鐩殑鐮旂┒+楠岃瘉鍏ㄦ祦绋?(绠＄悊-鐮旂┒-Lean褰㈠紡鍖?."
   }
 }

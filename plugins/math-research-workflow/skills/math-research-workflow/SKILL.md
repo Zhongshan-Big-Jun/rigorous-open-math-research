@@ -198,6 +198,23 @@ replace the theorem contract, B0 gate, or evidence discipline.
 For every result labeled `已证` / `CANDIDATE_COMPLETE_PROOF` that the user
 wants formalized:
 
+Every run that closes with a completion label records its formalization
+decision in `run-manifest.json` (`formalization: requested | not_requested |
+skipped`): a skipped lean-verify step must be a recorded decision, never a
+silent omission.
+
+- `requested` -- the formalizer/verifier agents MUST run, and the run must
+  reference the produced `lean-proof/run-manifest.json` in
+  `formalization_manifest`; `lean-proof/verification.json` must exist with a
+  clean machine verdict;
+- `skipped` -- requires a non-placeholder `formalization_reason` (for example
+  a tool outage) and the re-verification obligation must stay open in the
+  obligation graph;
+- `not_requested` -- the user did not ask for formalization for this result.
+
+The stage gate enforces all three mechanically: a run claiming a completion
+label without a decision fails.
+
 1. Create/update the Lean project (`lean-proof/`), map each obligation to a
    `.lean` declaration (obligation map O1..On).
 2. **Formalizer agent** writes the Lean files; **verifier agent** runs
@@ -361,3 +378,12 @@ agent writes an interruption handoff before returning control:
   sections. Added `tests/smoke_handoff.py` (+ good/bad fixtures) and wired it
   into CI.
 - Cachebuster bumped to `0.1.0+codex.20260813144928` to propagate the handoff protocol.
+
+## Changelog (2026-08-14, formalization decision gate)
+- 修复静默跳过 Lean 验证: 声称完成状态 (已证/CANDIDATE_COMPLETE_PROOF) 的 run 必须在
+  run-manifest 记录形式化决策 (formalization: requested | not_requested | skipped);
+  requested 要求 formalization_manifest 指向存在文件 + lean-proof/verification.json
+  干净机器裁决; skipped 要求非占位 formalization_reason 且重新验证义务保持开放;
+  门禁机械强制 (validate_pipeline.py), 缺失决策即 FAIL.
+- 任务包模板新增可选 Verify: yes|no|not-requested 字段 (manage skill).
+- 新增 tests/smoke_formalization.py + 三个 fixtures (good/missing/requested).
