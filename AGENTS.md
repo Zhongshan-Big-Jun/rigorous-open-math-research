@@ -269,3 +269,32 @@
 - 维护: 本文件追加会话记录; 提交后按 project.json push_order 先 push origin
   (xsoc1) 再 push fork (Zhongshan-Big-Jun); 最后本地 marketplace upgrade +
   plugin add 刷新已安装插件.
+### 2026-08-16 会话: manage 新增人类可读 LaTeX 双语证明交付规范 (工作流 8c)
+
+- 任务: 按用户要求给 manage-math-research-program 加一条规范 - Lean 验证之后,
+  必须有存放 LaTeX 格式证明的文件夹, 供人类用自然语言阅读, 参考 arXiv 论文规范,
+  中英两个版本.
+- 完成 (manage 插件, cachebuster `0.1.0+codex.20260815170001`):
+  - SKILL.md 新增强制工作流 8c "Deliver human-readable proofs as arXiv-style
+    LaTeX (papers/)": Lean 验证通过 (FORMALLY_VERIFIED + build_passed + 零
+    sorry/axiom) 的定理必须在 `papers/<SLUG>/` 交付 `<SLUG>-en.tex` (英文,
+    arXiv 规范: amsart + amsthm/amsmath/hyperref, 标题/作者/日期/摘要/编号定理
+    环境/带 DOI 或 arXiv 链接的参考文献, xelatex 零警告) 与 `<SLUG>-zh.tex`
+    (中文对照, 同一陈述/证明结构/文献); 文档头绑定机器验证契约 (Lean 路径/
+    验证提交哈希/lake build/零 sorry-axiom); 陈述必须与形式化一致, 人类证明是
+    重述不是替代; STRICT vs EVIDENCE 标签纪律保留; 源 tex 哈希登记入 run 记录
+    与工件索引.
+  - 证据规则新增第 13 条 + 项目完成清单新增 papers/ 交付项.
+  - `references/project-repository-spec.md`: 布局树新增 papers/, 所有权表新增
+    manager 行, 完整性检查新增 papers 相关两项.
+  - `scripts/init_project.py`: 新建项目创建 `papers/` 目录与 `papers/README.md`
+    (规范说明); `scripts/validate_project.py`: REQUIRED_DIRECTORIES +
+    REQUIRED_FILES 各加 papers 项.
+  - 新增模板 `assets/proof-paper.template.tex` (可编译 amsart 骨架 + 形式化契约
+    表格 + 证据纪律注释 + 中文版切换说明).
+  - MANIFEST.sha256 重新生成 (45 条); 根 README 中英版本历史追加条目.
+- 校验: validate_all 68 项全绿 (MANIFEST 匹配); 上游 tests 无 init/validate
+  依赖, 冒烟不受影响.
+- 维护: 本文件追加会话记录; 提交后按 project.json push_order 先 push origin
+  (xsoc1) 再 push fork (Zhongshan-Big-Jun); 随后在 DSH 适配仓库重跑
+  sync-from-parent.py 继承本变更.

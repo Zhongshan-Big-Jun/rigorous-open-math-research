@@ -1,6 +1,6 @@
 {
   "name": "manage-math-research-program",
-  "version": "0.1.0+codex.20260813101438",
+  "version": "0.1.0+codex.20260815170001",
   "description": "Manage long-running, cross-paper, cross-problem mathematics research programs: project workspaces, literature curation, paper maps, open-problem portfolios, tool libraries, budgets, checkpoints, task packets, delegation to rigorous-open-math-research, and a hash-bound reviewed accepted-knowledge base with blueprint integration. Chinese trigger: 鏁板鐮旂┒椤圭洰绠＄悊, 璺ㄤ細璇濈淮鎶?",
   "author": {
     "name": "xsoc1"

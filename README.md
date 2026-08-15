@@ -125,6 +125,7 @@ push / PR 时 GitHub Actions 自动运行以上校验与冒烟.
 - fork 副本: `Zhongshan-Big-Jun/rigorous-open-math-research` (同步方式: push 父仓库后, 在 fork 上执行 GitHub 的 Sync fork / merge-upstream)
 
 ## 版本历史
+- 2026-08-16: manage 新增人类可读证明交付规范 (工作流 8c) - Lean 验证通过 (FORMALLY_VERIFIED + build_passed + 零 sorry/axiom) 的定理必须在 `papers/<SLUG>/` 交付 LaTeX 证明文档: 英文 arXiv 规范版 (amsart + amsthm/amsmath/hyperref, 摘要/编号定理环境/DOI 或 arXiv 链接参考文献, xelatex 零警告) + 中文对照版, 文档头绑定机器验证契约; 证据规则 13 + 项目完成清单 + 模板 `assets/proof-paper.template.tex` + init/validate 门禁 (cachebuster `0.1.0+codex.20260815170001`).
 - 2026-08-14: workflow 蒸馏 OpenProver 方法 (arXiv:2607.09217) - Planner-Worker-Verifier 求解循环: 每 run 强制紧凑 whiteboard (计划/路线历史/待回想法/未完成义务/工件索引), 独立并行 Worker 与独立 Verifier 反馈, Lean 实时验证回路 (lean_verify/lean_search/lean_store), 形式化反馈环, 人工引导; 门禁硬校验 2026-08-14 后求解 run 的 whiteboard (cachebuster `0.1.0+codex.20260814120000`).
 - 2026-08-13: workflow 新增中断交接协议 - 工作中断时写 `handoff-interrupted-<ts>.md` (已尝试路线带 `[FAILED|BLOCKED|PARTIAL|SUCCEEDED]` 标记、未完成义务、精确下一步、关键文件哈希), 后续 agent 依记录续接, 禁止无新理由重跑失败路线; `validate_pipeline.py` 硬校验交接记录字段, 新增 smoke_handoff 测试入 CI (cachebuster `0.1.0+codex.20260813144928`).
 - 2026-08-13: workflow 新增 Stage B0 强制前置门禁 - open 判定 + 发散式新颖性审计 + 文献快照哈希回填 (任务包必须携带 `## Novelty preflight (B0)`, `validate_pipeline.py` 机械拦截); manage 任务包模板同步 (cachebuster `0.1.0+codex.20260813101438`); 修复 CI: MANIFEST 哈希换行规范化 (CRLF/LF 双基准) 与 doctor 冒烟的环境依赖.
