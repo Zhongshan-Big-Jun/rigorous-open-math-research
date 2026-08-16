@@ -1,0 +1,33 @@
+name: sync-fork
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync-fork:
+    # Requires a PAT with push access to Zhongshan-Big-Jun/rigorous-open-math-research.
+    # Store it as a repository secret named FORK_PAT. The job is skipped when absent.
+    if: ${{ secrets.FORK_PAT != '' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Push main to fork
+        run: |
+          git remote add fork "https://x-access-token:${FORK_PAT}@github.com/Zhongshan-Big-Jun/rigorous-open-math-research.git"
+          git push fork main
+        env:
+          FORK_PAT: ${{ secrets.FORK_PAT }}
+      - name: Verify fork/main matches origin/main
+        run: |
+          git fetch fork main
+          origin_head="$(git rev-parse origin/main)"
+          fork_head="$(git rev-parse fork/main)"
+          if [ "$origin_head" != "$fork_head" ]; then
+            echo "FAIL: fork/main is at $fork_head, origin/main is at $origin_head" >&2
+            exit 1
+          fi
+          echo "OK: fork/main == origin/main ($origin_head)"

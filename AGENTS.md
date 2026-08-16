@@ -329,3 +329,16 @@
 - 维护: 本文件追加会话记录; 提交后按 push_order 先 push origin (xsoc1) 再 push
   fork (Zhongshan-Big-Jun); 随后 DSH 适配仓库 sync-from-parent.py 继承 + README
   蒸馏表更新.
+### 2026-08-16 会话: 优化方向落地 (fork 同步自动化)
+- 任务: 用户选定优化方向后, 为父仓库补充 fork 同步自动化与本地脚本.
+- 完成:
+  - 新增 `scripts/sync-fork.sh`: 本地手动同步 origin -> fork (fetch/ff-only/push/verify).
+  - 新增 `.github/workflows/sync-fork.yml`: push 到 main 后自动推送到
+    Zhongshan-Big-Jun/rigorous-open-math-research; 需要仓库 secret `FORK_PAT`,
+    未配置时 job 自动跳过.
+  - 本地 `_xsoc1_work` 已从 323bfd8 fast-forward 到 3279e1a, 与远程 main 一致;
+    `.gitignore` 增加 `verify_out/`.
+- 校验: 父仓库 validate_all 待跑 (新增文件不影响插件 MANIFEST); DSH 适配仓库
+  已同步最新 upstream 且 51 项校验/10 smoke 全绿.
+- 维护: 提交后按 push_order 先 push origin (xsoc1) 再 push fork; fork 自动同步
+  可选用 workflow (配置 FORK_PAT) 或本地脚本.
