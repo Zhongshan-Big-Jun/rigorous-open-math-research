@@ -372,6 +372,13 @@ Run the verification pipeline on the submitted proof:
    - a partial/structural result requires a Lean scaffold (workflow 8d).
 5. Record the machine verdict, fidelity results, critical errors, gaps, and
    repair hints in the submission audit record.
+6. Run the **dual-track audit**: the informal (Danus-style) audit and the Lean
+   formal track must both be recorded in the submission audit as a verification
+   matrix. Use `references/dual-track-audit.md` (rigorous skill) for the
+   four-layer protocol and conflict-resolution rules; adopt the Danus hard
+   prohibitions (no citing problem.md as a math source, no unproven conditional
+   premises, no vague "well-known" gestures, self-contained statements, citation
+   chain checks).
 
 ### Stage 3: Add by rules
 
@@ -494,3 +501,5 @@ This completion criterion says nothing about whether any underlying open problem
   `LEMMA_INDEX.md` 复用索引); 引入 Tier 0/1/2 分级验证.
 - Rethlas 蒸馏: 问题记录维护反例库与失败综合记录; 8e 提交审计 Stage 1 先查反例库,
   已被反例/失败阻塞的提交直接拒绝或转修订.
+- 双轨审计: 8e Stage 2 增加非正式审计 + Lean 形式化双轨验证矩阵, 冲突按
+  `references/dual-track-audit.md` 规则裁决; 采纳 Danus 硬禁止项.

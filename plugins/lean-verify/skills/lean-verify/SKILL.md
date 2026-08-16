@@ -128,6 +128,20 @@ When this skill is used as part of the proof submission audit pipeline
 3. Record the audit trail in the submission audit record so the manager can
    apply the "add by rules" stage.
 
+## Coexistence with informal audit
+
+Lean verification is the machine track; it does not replace the informal
+(Danus-style) natural-language audit. For a complete delivery, both must pass:
+
+- The informal audit checks semantics, definitions, external citations, and
+  proof flow.
+- Lean checks the machine-checkable formal statement and proof.
+- Conflict rule: an informal gap trumps a passing Lean check; a Lean failure
+  trumps a passing informal check; a paper-level failure trumps both.
+
+Record both tracks in the verification matrix of the submission audit
+(see `references/dual-track-audit.md` in the rigorous skill).
+
 ## Workflow
 
 ### Phase 0 - Environment and input inventory
@@ -345,3 +359,8 @@ non-complete verdict must include non-empty `repair_hints`. Aggregate without dr
 ## Changelog (2026-08-16, verification tiers)
 - 新增 Verification tiers: Tier 0 (scaffold skeleton) / Tier 1 (machine-checked
   lemma) / Tier 2 (full FORMALLY_VERIFIED); 使用能满足当前问题的最低档位.
+
+## Changelog (2026-08-16, dual-track audit)
+- 新增 Coexistence with informal audit: Lean 是机器轨, 不替代非正式审计; 完整交付
+  要求双轨都过, 冲突按 非正式 gap > Lean 通过, Lean 失败 > 非正式通过, 论文级失败
+  > 两者 裁决.
