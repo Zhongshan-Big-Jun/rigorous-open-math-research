@@ -21,6 +21,21 @@
 6. 同步顺序: 先 push 父仓库 `xsoc1/rigorous-open-math-research`, 再用 GitHub merge-upstream 同步 fork `Zhongshan-Big-Jun/rigorous-open-math-research`.
 7. 如实记录: 不编造验证结果, 无法验证的能力明确标注为未验证.
 
+## 注意事项 (Notes for future agents)
+
+- **推送顺序**: `project.json` 配置 `git_sync.push_order = ["origin", "fork"]`, 提交后
+  先 push `xsoc1/rigorous-open-math-research` (父仓库), 再 push
+  `Zhongshan-Big-Jun/rigorous-open-math-research` (fork).
+- **fork 自动同步**: 已提供 `.github/workflows/sync-fork.yml`, 但需要仓库 secret
+  `FORK_PAT` 才会生效; 未配置时用 `scripts/sync-fork.sh` 手动同步.
+- **本地 canonical clone**: DSH 适配仓库的同步源是
+  `~/.dsh/_math-research-upstream/rigorous-open-math-research`, 不是工作区里的
+  `_xsoc1_work`; 保持该 canonical clone 与 origin/main 同步.
+- **DSH 适配依赖**: `xsoc1/math-research-dsh` 单向消费本仓库内容; 本仓库内容变更后,
+  需在 DSH 仓库重跑 `scripts/sync-from-parent.py` 继承.
+- **cachebuster**: 修改插件元数据或 SKILL 内容后必须用 plugin-creator 的
+  `update_plugin_cachebuster.py` 更新版本, 否则市场/客户端可能不识别更新.
+
 ## 会话记录
 ### 2026-08-12 会话: AI4Math V2 工作方法蒸馏采纳 (三个 skill 增强)
 
