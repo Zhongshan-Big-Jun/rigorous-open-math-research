@@ -322,7 +322,7 @@ After every substantial literature batch, paper analysis, delegation, or ingesti
 - run `python scripts/validate_project.py PROJECT_ROOT` when available.
 - commit and push the stage: update `AGENTS.md` session records first, then `git add -A`, `git commit -m "<stage summary>"`, and `git push` (see `references/git-sync.md` for the proxy bypass); verify `git status` shows a clean tree in sync with the remote.
 
-At a stage boundary, write a project-level summary using `assets/stage-summary.template.md`. Preserve upstream result labels verbatim and link their independent proof and audit documents when present. If no proof was obtained, preserve the strongest rigorous intermediate results, failed mechanisms, and exact remaining gaps.
+At a stage boundary, write a project-level summary using `assets/stage-summary.template.md`. Preserve upstream result labels verbatim and link their independent proof and audit documents when present. If no proof was obtained, preserve the strongest rigorous intermediate results, failed mechanisms, and exact remaining gaps. When a run is interrupted, require the workflow handoff record to be independent and to include completed work progress plus tools/methods tried (see `$math-research-workflow` interruption handoff protocol); the manager registers its path and hash.
 
 ### Fresh-context convergence check
 
@@ -406,3 +406,5 @@ This completion criterion says nothing about whether any underlying open problem
   `lean-proof/STATUS.md` / `README.md` / `formalization_progress.md`, 并记录
   scaffold 路径 + sha256; scaffold 不得声称 FORMALLY_VERIFIED.
 - 证据规则新增第 14 条: 未登记或未 scaffold 的结果不算完整摄入.
+- 交接增强: 中断 run 的交接记录必须独立成文, 包含已完成工作进度与尝试过的
+  工具/方法 (配合 workflow handoff 模板与门禁).
