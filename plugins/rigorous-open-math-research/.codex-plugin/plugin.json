@@ -1,6 +1,6 @@
 {
   "name": "rigorous-open-math-research",
-  "version": "0.1.0+codex.20260816200000",
+  "version": "0.1.0+codex.20260816210000",
   "description": "Rigorous open mathematics research: explicit theorem contracts, diverse search, persistent research ledgers, executable checks, adversarial proof audits, literature verification, calibrated reporting, sub-agent division of labor, and blueprint snapshot-bound knowledge-graph integration. Chinese trigger: \u5b9a\u7406\u8bc1\u660e, \u731c\u60f3\u653b\u5173, \u53cd\u4f8b\u641c\u7d22, \u7ed3\u6784\u5206\u7c7b, \u7b49\u4ef7\u523b\u753b, \u590d\u6742\u63a8\u5bfc, \u4e25\u683c\u5ba1\u8ba1\u7b49\u56f0\u96be\u6570\u5b66\u95ee\u9898.",
   "author": {
     "name": "xsoc1"

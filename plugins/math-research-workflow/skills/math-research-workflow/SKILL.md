@@ -195,6 +195,15 @@ replace the theorem contract, B0 gate, or evidence discipline.
    interrupt unpromising routes, and accept or reject the next actions with
    feedback. In autonomous mode skip the prompts but keep everything else.
 
+**Failure synthesis and counterexample reuse (distilled from Rethlas):**
+when a batch of plans/routes fails, synthesize the common stuck points into a
+`key_failures_summary`, store it in the whiteboard/ledger, and use it to propose
+the next generation of plans. Maintain a reusable counterexample library; before
+attacking a fragile claim, query stored counterexamples first. Search is a
+support tool, not a substitute for deep reasoning: when retrieval stops being
+useful, continue with non-search skills and record why the results were not
+useful.
+
 **Numerical evidence discipline (hard rule):**
 
 - Numerical computation is allowed for exploration, counterexample search, and
@@ -514,3 +523,5 @@ agent writes an interruption handoff before returning control:
   审计 -> 依规则加入 三阶段流程 (由 manage 8e 负责).
 - 效率优化: 引入 Tier 0/1/2 分级验证 (scaffold / 单引理机器验证 / 全量验证);
   新增 lemma reuse index, 证明前先查 `lean-proof/LEMMA_INDEX.md` 避免重复证明.
+- Rethlas 蒸馏: Stage B 增加失败综合与反例复用 (key_failures_summary + 反例库),
+  并明确搜索是支撑不是替代.

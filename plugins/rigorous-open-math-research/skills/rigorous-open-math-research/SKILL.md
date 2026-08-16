@@ -85,6 +85,7 @@ executing a phase; every phase file repeats this contract at its top.
 | 9-11 revision, formalization, novelty | `references/phase-91011.md` |
 | 12 stopping and reporting (+ Result template) | `references/phase-12-reporting.md` |
 | delegation, sub-agents, role prompts | `references/agent-orchestration.md` |
+| Rethlas-distilled methods (memory/failure synthesis/counterexample reuse/search discipline) | `references/rethlas-distilled.md` |
 
 Global contracts (epistemic rules, artifacts, Output protocol, anti-patterns)
 stay in this file and bind every phase.
@@ -206,3 +207,7 @@ Available attachments/tools/constraints:
 ## Changelog (2026-08-16, efficiency)
 - Phase 10 增加 Tier 0/1/2 分级验证与 lemma reuse index: 用最低足够档位验证,
   证明前先查 `lean-proof/LEMMA_INDEX.md` 避免重复证明.
+## Changelog (2026-08-16, Rethlas distillation)
+- 新增 `references/rethlas-distilled.md`: 蒸馏 Rethlas 方法精髓 - 持久结构化记忆,
+  失败综合驱动下一代方案, 分解计划组合筛选与递归并行, 反例复用库, 搜索是支撑不是
+  替代, 外部引用非黑盒, 严格零错误零缺口接受, 论文式蓝图输出.
