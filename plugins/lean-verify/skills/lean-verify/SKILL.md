@@ -99,6 +99,20 @@ result, record the earlier entry as `superseded` with a pointer to the newer
 result. Keep the old files and verdicts in history; do not delete them, and do
 not present a superseded result as the current state.
 
+## Verification tiers
+
+Use the cheapest tier that answers the current question:
+
+- **Tier 0 - Statement scaffold**: write the declarations with `sorry` proof
+  holes and confirm the skeleton parses/compiles. Use this for every new
+  result before investing in a full proof.
+- **Tier 1 - Machine-checked lemma**: run `lean_verify` on a load-bearing
+  lemma or snippet and record a clean machine check for that snippet. Use this
+  for intermediate research checkpoints.
+- **Tier 2 - Full verification**: complete `lake build`, zero sorry/axiom,
+  statement fidelity audit, and independent per-obligation audit. This is
+  required only for completion labels (`FORMALLY_VERIFIED`).
+
 ## Submission audit
 
 When this skill is used as part of the proof submission audit pipeline
@@ -327,3 +341,7 @@ non-complete verdict must include non-empty `repair_hints`. Aggregate without dr
 - 新增 Submission audit 说明: 作为证明文件提交审计流程的一部分时, 输出必须支持
   接受决策 (FORMALLY_VERIFIED / SCAFFOLDED / REPAIRABLE_GAP / FATAL_GAP /
   VERIFICATION_INCOMPLETE), 并检查与仓库状态的一致性.
+
+## Changelog (2026-08-16, verification tiers)
+- 新增 Verification tiers: Tier 0 (scaffold skeleton) / Tier 1 (machine-checked
+  lemma) / Tier 2 (full FORMALLY_VERIFIED); 使用能满足当前问题的最低档位.
