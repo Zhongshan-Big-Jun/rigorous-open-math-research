@@ -48,6 +48,7 @@ Treat the **entire research configuration** as the input: problem statement, att
 10. At a resource boundary, report the strongest audited progress and exact remaining gaps. Only the **completion label** is withheld until the proof is complete; useful partial results must not be suppressed.
 11. Every material progress item is first-class: register it immediately in the ledger, route registry, and tool library, and when a formalization project exists create a Lean scaffold for the new result before moving on. Partial progress is progress; it must be auditable and formalization-tracked, not deferred until a complete proof exists.
 12. Lean verification is not only for the final conclusion: machine-check key intermediate lemmas as soon as they become load-bearing, so errors are caught before a route is invested further. A later, more advanced result may supersede an earlier partial/scaffold result; keep the old record in history but mark it superseded in the formalization progress and knowledge base.
+13. A candidate proof submitted for repository acceptance must pass the proof submission audit pipeline (manage workflow 8e): repository comparison, Lean verification/audit, then rule-based integration. The submission audit record must accompany the proof.
 
 ## Default research artifacts
 
@@ -199,3 +200,6 @@ Available attachments/tools/constraints:
 - 契约增强 (phase-01): 目标问题状态命中一律 fetch_required; 契约新增
   `## Forbidden moves` 每问题禁用清单. 方法来源: argo, dsh-design-skills.
   (https://github.com/Anionex/dsh-vision-toolkit).
+## Changelog (2026-08-16, submission audit)
+- 新增规则 13: 候选证明提交仓库前必须经过证明文件提交审计流程 (manage 8e:
+  仓库比对 -> Lean 验证与审计 -> 依规则加入), 并附带提交审计记录.

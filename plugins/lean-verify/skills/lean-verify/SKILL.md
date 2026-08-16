@@ -99,6 +99,21 @@ result, record the earlier entry as `superseded` with a pointer to the newer
 result. Keep the old files and verdicts in history; do not delete them, and do
 not present a superseded result as the current state.
 
+## Submission audit
+
+When this skill is used as part of the proof submission audit pipeline
+(manage workflow 8e), the output must support an acceptance decision:
+
+1. After machine verification and independent audit, state whether the
+   submission is acceptable as `FORMALLY_VERIFIED`, acceptable only as a
+   scaffold (`SCAFFOLDED`), or not acceptable (`REPAIRABLE_GAP` /
+   `FATAL_GAP` / `VERIFICATION_INCOMPLETE`).
+2. Check consistency with the repository state (existing declarations,
+   STATUS.md entries, superseded records) and report any duplicate or
+   conflicting formalization.
+3. Record the audit trail in the submission audit record so the manager can
+   apply the "add by rules" stage.
+
 ## Workflow
 
 ### Phase 0 - Environment and input inventory
@@ -307,3 +322,8 @@ non-complete verdict must include non-empty `repair_hints`. Aggregate without dr
 - 明确 Lean 验证也是研究途中的校验工具: 承重中间引理尽早验证, 避免走弯路.
 - 更先进结果可覆盖旧结果: 旧 scaffold/partial/verified 记录标记 `superseded`
   并指向新结果, 保留历史但不得作为当前状态.
+
+## Changelog (2026-08-16, submission audit)
+- 新增 Submission audit 说明: 作为证明文件提交审计流程的一部分时, 输出必须支持
+  接受决策 (FORMALLY_VERIFIED / SCAFFOLDED / REPAIRABLE_GAP / FATAL_GAP /
+  VERIFICATION_INCOMPLETE), 并检查与仓库状态的一致性.
