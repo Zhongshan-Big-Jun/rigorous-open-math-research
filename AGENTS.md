@@ -35,6 +35,8 @@
   需在 DSH 仓库重跑 `scripts/sync-from-parent.py` 继承.
 - **cachebuster**: 修改插件元数据或 SKILL 内容后必须用 plugin-creator 的
   `update_plugin_cachebuster.py` 更新版本, 否则市场/客户端可能不识别更新.
+- **GitHub 网络**: 直连 github.com 失败时, 用本地代理 push:
+  `git -c http.proxy=http://127.0.0.1:7897 push origin main` (本机实测可用).
 
 ## 会话记录
 ### 2026-08-12 会话: AI4Math V2 工作方法蒸馏采纳 (三个 skill 增强)
