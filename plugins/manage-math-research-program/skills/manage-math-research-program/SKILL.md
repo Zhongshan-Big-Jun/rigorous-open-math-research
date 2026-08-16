@@ -184,7 +184,7 @@ Maintain project-level records for:
 - management priority, expected leverage, novelty risk, and verification cost;
 - unresolved bibliographic questions and missing sources.
 
-Portfolio problem records carry a one-line evidence status (`OPEN` / `PARTIAL` / `NUMERICAL_EVIDENCE` / `PROVED` / `FORMALIZED`) and the research state (contract frozen? obligations open?) without duplicating upstream obligation graphs. Every material progress item is registered: partial results, structural theorems, failed routes with precise failure mechanisms, and new reusable tools all become first-class records (problem record, route/tool index, knowledge card, or formalization progress). Nothing that changes the problem state is left only in a chat transcript.
+Portfolio problem records carry a one-line evidence status (`OPEN` / `PARTIAL` / `NUMERICAL_EVIDENCE` / `PROVED` / `FORMALIZED`) and the research state (contract frozen? obligations open?) without duplicating upstream obligation graphs. Every material progress item is registered: partial results, structural theorems, failed routes with precise failure mechanisms, and new reusable tools all become first-class records (problem record, route/tool index, knowledge card, or formalization progress). Nothing that changes the problem state is left only in a chat transcript. When a newer, more advanced result covers an earlier partial/scaffold result, mark the earlier record as `superseded` with a pointer to the newer result; keep the history, but never present the superseded record as the current state.
 
 Tool-library and portfolio evolution follows a marginal-benefit rule: a new tool entry or priority change is adopted when it resolves a known blocker, raises an evidence level, or reduces retrieval cost; record the marginal benefit in the maintenance log. Tool entries carry artifact provenance: the producing run/command, inputs, environment, source hash, and an append-only verification note (what was checked, at which precision, and by whom); a tool entry without provenance is a lead, not a reusable tool. (Distilled from dsh-science: https://github.com/biociao/dsh-science.) Promotion and retirement triggers: a technique enters the library only after repeated confirmed use (e.g. three successful applications) or one machine-verified proof; an anti-pattern is retired after two confirmed failures with recorded mechanisms. (Distilled from dsh-task-planner: https://github.com/ztl34245881-commits/dsh-task-planner.)
 
@@ -311,6 +311,13 @@ the solver rule in `$rigorous-open-math-research` Phase 10.
 4. **Keep it current.** After each subsequent result or repair, update the
    scaffold and the formalization progress immediately, so the problem's
    formalization state never lags behind the research state.
+5. **Intermediate verification.** Machine-check load-bearing intermediate
+   lemmas as they appear; a verified intermediate result is a valid checkpoint
+   and helps avoid re-running failed routes.
+6. **Supersession.** When a newer result covers an older scaffold/partial
+   result, mark the older entry `superseded` in `lean-proof/STATUS.md` and the
+   formalization progress, with a pointer to the newer result. Keep history;
+   do not delete it.
 
 ## 9. Checkpoint and close a stage
 
@@ -408,3 +415,5 @@ This completion criterion says nothing about whether any underlying open problem
 - 证据规则新增第 14 条: 未登记或未 scaffold 的结果不算完整摄入.
 - 交接增强: 中断 run 的交接记录必须独立成文, 包含已完成工作进度与尝试过的
   工具/方法 (配合 workflow handoff 模板与门禁).
+- Lean 中间验证与覆盖: 承重中间引理尽早机器验证; 更新的结果可标记旧结果为
+  `superseded` 并保留历史, 不得把旧结果当作当前状态.
