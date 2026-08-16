@@ -205,25 +205,34 @@ replace the theorem contract, B0 gate, or evidence discipline.
 
 ### Stage C -- Verification (formalizer)
 
-For every result labeled `已证` / `CANDIDATE_COMPLETE_PROOF` that the user
-wants formalized:
+Every run with material progress - including partial results such as
+`RIGOROUS_PARTIAL_RESULT` - must record a formalization decision and, when a
+`lean-proof/` project exists, create a Lean scaffold for each new result. Full
+Lean verification is still reserved for results labeled `已证` /
+`CANDIDATE_COMPLETE_PROOF` that the user wants formalized.
 
-Every run that closes with a completion label records its formalization
-decision in `run-manifest.json` (`formalization: requested | not_requested |
-skipped`): a skipped lean-verify step must be a recorded decision, never a
-silent omission.
+Every run records its formalization decision in `run-manifest.json`
+(`formalization: requested | not_requested | skipped | scaffold`): a skipped
+lean-verify step must be a recorded decision, never a silent omission.
 
 - `requested` -- the formalizer/verifier agents MUST run, and the run must
   reference the produced `lean-proof/run-manifest.json` in
   `formalization_manifest`; `lean-proof/verification.json` must exist with a
   clean machine verdict;
+- `scaffold` -- a Lean scaffold file was created for the new result(s); the
+  run must reference it in `formalization_manifest` (a `.lean` file or
+  `formalization_progress.md`). Scaffolds are not verified artifacts and must
+  not be reported as `FORMALLY_VERIFIED`;
 - `skipped` -- requires a non-placeholder `formalization_reason` (for example
   a tool outage) and the re-verification obligation must stay open in the
   obligation graph;
-- `not_requested` -- the user did not ask for formalization for this result.
+- `not_requested` -- the user did not ask for formalization for this result
+  (allowed only for runs without material progress or before the scaffold
+  cutover).
 
-The stage gate enforces all three mechanically: a run claiming a completion
-label without a decision fails.
+The stage gate enforces all four mechanically: a run claiming a completion
+label without a decision fails, and new runs (started on/after 2026-08-16)
+with material progress must record `scaffold` or `requested`.
 
 1. Create/update the Lean project (`lean-proof/`), map each obligation to a
    `.lean` declaration (obligation map O1..On).
@@ -236,6 +245,14 @@ label without a decision fails.
    record them as F-xxx in the audit report (do not silently change sources).
 4. Machine evidence required: build exit 0, zero sorry/admit/axiom hits,
    obligation map complete. No machine evidence => no "FORMALLY_VERIFIED".
+
+**Scaffold path for partial results (mandatory since 2026-08-16):** when a run
+closes with a partial/structural result (e.g. `RIGOROUS_PARTIAL_RESULT`), the
+formalizer writes a Lean scaffold file under `lean-proof/` that states the new
+declarations and open obligations, marks unfinished blocks with `sorry` and a
+`-- SCAFFOLD` header, and updates `lean-proof/STATUS.md` /
+`lean-proof/README.md` / `formalization_progress.md`. This is not full
+verification and must never be labeled `FORMALLY_VERIFIED`.
 
 **Lean escalation lane (proof-critical claims):** when a proof-critical
 claim is load-bearing (the final status depends on it) and machine
@@ -265,9 +282,12 @@ then repair at the correct layer:
 - A -> B: packet contains contract + source paths + obligation list; B0
   novelty preflight recorded (openness verdict + audit path or skip +
   snapshot hash); no open questions left unresolved.
-- B -> C: only results with an honest status label (`已证`, not numerical
-  evidence) enter formalization; numerical/猜想 results are excluded and
-  recorded as such.
+- B -> C: full Lean verification is reserved for results with an honest
+  completion label (`已证` / `CANDIDATE_COMPLETE_PROOF`); partial/structural
+  results still enter Stage C in **scaffold mode** (create/update Lean scaffold
+  + formalization progress). Numerical/猜想 results are excluded from full
+  verification but, when they represent new material progress, still require a
+  scaffold/registration per the 2026-08-16 rule.
 - C -> done: verification.json verdict, audit report, STATUS matrix updated;
   git synced; AGENTS.md session log appended.
 - Every dispatch and every stage close re-runs
@@ -422,3 +442,13 @@ agent writes an interruption handoff before returning control:
   (无新机制重试失败路线即阻断并记录见证; 来自 dsh-trajectory-governance).
 - Stage C 新增 Lean 升级通道: 证明关键且可机器验证的断言先形式化验证再声称
   完成状态 (先 Lean 再落地, 非事后补验; 来自 dsh-rigorquant).
+
+## Changelog (2026-08-16, progress registration + formalization scaffolding)
+- Stage B/C: 每个新结果 (含 RIGOROUS_PARTIAL_RESULT / 结构定理 / 反例 /
+  约化) 都必须登记并创建 Lean scaffold; 只有完成标签 (已证 /
+  CANDIDATE_COMPLETE_PROOF) 才做完整 Lean 验证.
+- run-manifest 形式化决策新增 `scaffold`: 必须指向存在的 scaffold 文件
+  (.lean 或 formalization_progress.md), 不要求 verification.json, 不得声称
+  FORMALLY_VERIFIED.
+- 门禁 (validate_pipeline.py): 2026-08-16 之后开始且有实质进展的 run 必须记录
+  `formalization: scaffold | requested`, 否则 FAIL; 旧 run 不追溯.

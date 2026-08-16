@@ -68,6 +68,24 @@ formal statement, not its fidelity to the original problem, and not its novelty.
 8. At a resource boundary, report the strongest verified status and the exact remaining gaps.
    Only the completion label is withheld until verification actually closes.
 
+## Scaffold mode
+
+When the input result is partial/structural (e.g. `RIGOROUS_PARTIAL_RESULT`)
+or a new result that is not yet a complete proof, the formalizer should create
+a **scaffold** rather than run full verification:
+
+1. Write a `.lean` file under `lean-proof/` that states the new declarations
+   and open proof obligations. Mark unfinished proof blocks with `sorry` and a
+   header comment:
+   `-- SCAFFOLD: <result slug> <status> <open obligations>`.
+2. If a build is available, run `lake build` and record whether the skeleton
+   compiles; a scaffold may contain `sorry`, so a clean build is not required.
+3. Do **not** run the full independent audit as if the result were final.
+   Record the scaffold in `lean-proof/STATUS.md` / `README.md` /
+   `formalization_progress.md` with status `SCAFFOLDED`.
+4. A scaffold must never be reported as `FORMALLY_VERIFIED`; only a later full
+   verification pass may upgrade it.
+
 ## Workflow
 
 ### Phase 0 - Environment and input inventory
@@ -183,6 +201,8 @@ Write three artifacts:
 
 Status labels (first line of any report):
 
+- `SCAFFOLDED` - a Lean scaffold exists for a new/partial result; it may contain
+  `sorry` and is not a verified artifact.
 - `FORMALLY_VERIFIED` - build passes, no leaked sorry/axiom, statement fidelity audited, and an
   independent audit closes every obligation.
 - `MACHINE_ACCEPTED_PENDING_AUDIT` - build passes with no sorry/axiom leak, but fidelity or
@@ -209,7 +229,7 @@ Structured verdict JSON (schema enforced by `assets/verification_output.schema.j
 
 ```json
 {
-  "verdict": "FORMALLY_VERIFIED | MACHINE_ACCEPTED_PENDING_AUDIT | CANDIDATE_VERIFIED | REPAIRABLE_GAP | FATAL_GAP | VERIFICATION_INCOMPLETE",
+  "verdict": "SCAFFOLDED | FORMALLY_VERIFIED | MACHINE_ACCEPTED_PENDING_AUDIT | CANDIDATE_VERIFIED | REPAIRABLE_GAP | FATAL_GAP | VERIFICATION_INCOMPLETE",
   "machine": {
     "lean_version": "...",
     "build_passed": true,
@@ -263,3 +283,9 @@ non-complete verdict must include non-empty `repair_hints`. Aggregate without dr
   推导 + 精确缺口 (有反例则记录) 并降级裁决 (来自 dsh-rigorquant 三级停止).
 - 裁决新增证伪优先规则: 任一义务被已核验反例/矛盾否决即整体否决; 状态不确定的
   义务不得当作通过, 全不确定不得 FORMALLY_VERIFIED (来自 Vibe-Mathematics).
+
+## Changelog (2026-08-16, scaffold mode)
+- 新增 Scaffold mode: 部分/结构结果必须先创建 Lean scaffold (声明 + 开放义务 +
+  `-- SCAFFOLD` 头注释, 允许 `sorry`), 登记到 STATUS/README/formalization_progress,
+  状态 `SCAFFOLDED`, 不得声称 FORMALLY_VERIFIED.
+- 输出协议新增 `SCAFFOLDED` 状态.
