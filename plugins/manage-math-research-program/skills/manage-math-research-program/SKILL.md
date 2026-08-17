@@ -201,6 +201,12 @@ Before delegating a concrete problem, create one task packet containing:
 - known ambiguities and bibliographic risks;
 - user constraints, available tools, and the research budget for this run;
 - the requested run root and expected upstream artifacts;
+- optional `theorem.lean` skeleton (with `sorry`) when the target statement is
+  already known - formalization starts from this skeleton (OpenProver-style);
+- optional `budget` block (see `assets/budget-state.template.json`) with
+  `total_tokens`, mode (`per_round` / `per_phase` / `hard_total` /
+  `soft_warning`), and resume policy: budget exhaustion pauses and hands off,
+  it never deletes work;
 - a `## Novelty preflight (B0)` section (openness verdict, audit path or
   explicit skip, snapshot hash) - the workflow stage B0 fills or audits it,
   and the deterministic gate (`validate_pipeline.py`) refuses to dispatch a
@@ -235,6 +241,7 @@ After `$rigorous-open-math-research` returns:
 5b. When an upstream audit reports gaps, record the first-error location and the error layer (statement / proof / dependency / boundary-convention) so follow-ups route to the smallest responsible owner.
 6. Update maps, indexes, budget accounting, `state/RESUME.md`, and the checkpoint.
 7. Register formalization progress: every new result (including partial/structural ones) must have a Lean scaffold in `lean-proof/` and an updated entry in `lean-proof/STATUS.md` / `lean-proof/README.md`; record the scaffold path and hash in the run record and `formalization_progress.md`.
+8. Record budget state: if `budget_state.json` exists, update `consumed_tokens`, mark `status` (`active` / `paused_budget` / `resumed`), and link it in the run record. A `paused_budget` run resumes from its handoff + budget state; it is never discarded.
 
 If an upstream artifact is missing or its status is unclear, record that fact. Do not infer success.
 
@@ -503,3 +510,6 @@ This completion criterion says nothing about whether any underlying open problem
   已被反例/失败阻塞的提交直接拒绝或转修订.
 - 双轨审计: 8e Stage 2 增加非正式审计 + Lean 形式化双轨验证矩阵, 冲突按
   `references/dual-track-audit.md` 规则裁决; 采纳 Danus 硬禁止项.
+- OpenProver token-conscious 吸收: 任务包支持可选 `theorem.lean` 骨架与
+  `budget` 块; 新增 `assets/budget-state.template.json`; run 摄入时登记
+  `budget_state.json`, `paused_budget` 从 handoff+状态恢复, 不丢弃工作.

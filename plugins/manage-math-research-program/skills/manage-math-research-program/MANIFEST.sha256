@@ -1,4 +1,4 @@
-db5e6c563055c045978f97dd4891bdd8402afad8140d10ea1b9f1b3042e8e7e1  ./SKILL.md
+eeacae81c21fc80c107950771ff515d3e332fee2755a0274b039e842866a32ad  ./SKILL.md
 43e2070061e65de94256394adb4614881abeb75f4799fe0f92c23f9e24407163  ./assets/blueprint-accepted-knowledge/.blueprint/config.json
 76b762377f699e78570839abbac3ffe478f59088791c4f4374390474e8c47807  ./assets/blueprint-accepted-knowledge/README.md
 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b  ./assets/blueprint-accepted-knowledge/backups/.gitkeep
@@ -17,6 +17,7 @@ d78b9d40eab044bd31b056aee6fd21b5278c10a27e561380f2c4c7b841a37cd7  ./assets/bluep
 624f39ec99afdfc82310b318efbba2ee202c542f05f19473989bf7688030251b  ./assets/blueprint-accepted-knowledge/viewer/blueprint-viewer.css
 b161b01080121752d134615e1019737f8c9869febdb8efcd0164783b41cba053  ./assets/blueprint-accepted-knowledge/viewer/blueprint-viewer.js
 12479ab9acb62823c88384be649264786aa76549a949e12514a384982c514784  ./assets/blueprint-accepted-knowledge/viewer/index.html
+043cd99027fbf71f546ed064ef1aec8f667b26357924f89dd24c1dbee1adac08  ./assets/budget-state.template.json
 061550879a99328810ffe69b09ac220e1750359cb8eee58af27926c17bbf3e5b  ./assets/checkpoint.template.md
 f44bae2d84b2b1e4285cc8d52df0a626b73d877c85bfb6ec480acffbea40f52d  ./assets/current-state.template.json
 e19927c1197312b5934db790e8fc31692ad0b66016c5afb2485701666c65b48b  ./assets/open-problem-record.template.json

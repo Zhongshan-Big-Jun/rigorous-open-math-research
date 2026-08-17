@@ -1,6 +1,6 @@
 {
   "name": "math-research-workflow",
-  "version": "0.1.0+codex.20260816220000",
+  "version": "0.1.0+codex.20260816230000",
   "description": "Orchestrates the full mathematics research pipeline: program management (manage-math-research-program) to rigorous problem research (rigorous-open-math-research) to Lean formal verification (lean-verify), with sub-agent division of labor, artifact handoff contracts, hash binding, and automatic git sync at every stage boundary.",
   "author": {
     "name": "xsoc1"

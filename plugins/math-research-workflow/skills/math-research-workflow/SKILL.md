@@ -204,6 +204,23 @@ support tool, not a substitute for deep reasoning: when retrieval stops being
 useful, continue with non-search skills and record why the results were not
 useful.
 
+**Token-conscious Planner/repo/budget protocol (distilled from OpenProver):**
+follow `references/openprover-absorption.md`. In short:
+
+- Planner steps emit a compact CoT + machine-readable action list
+  (`spawn`, `read_items`, `write_items`, `read_theorem`, `write_whiteboard`,
+  `submit_proof`, `submit_lean_proof`, `literature_search`).
+- Long content lives in `runs/<run_id>/repo/`; the Planner sees only
+  `repo_index.md` slugs and one-line summaries and reads items on demand.
+- Each task packet may include a `theorem.lean` skeleton with `sorry`; formalize
+  from it after the informal proof is found.
+- Planner steps are appended to `runs/<run_id>/planner_history.jsonl`; only the
+  last 3–5 steps are fed to the model.
+- Token budget is checked at safe boundaries. On exhaustion: persist
+  whiteboard/repo/history/facts, write an interruption handoff, mark
+  `PAUSED_BUDGET`, and resume later with an added budget. Budget exhaustion
+  never deletes work.
+
 **Numerical evidence discipline (hard rule):**
 
 - Numerical computation is allowed for exploration, counterexample search, and
@@ -429,6 +446,9 @@ agent writes an interruption handoff before returning control:
   boundaries.
 - `scripts/doctor.py` -- environment preflight for the plugin, its dependency
   skills, the marketplace, and the `config.toml` enable entry.
+- `references/openprover-absorption.md` -- token-conscious OpenProver
+  absorption: Planner action protocol, Repository item system, `theorem.lean`
+  skeleton, Planner history, and token budget pause/handoff/resume discipline.
 
 ## Changelog (2026-08-14)
 
@@ -533,3 +553,6 @@ agent writes an interruption handoff before returning control:
   并明确搜索是支撑不是替代.
 - 双轨审计: Stage C 增加非正式审计 + Lean 形式化双轨验证矩阵, 冲突裁决规则
   (非正式 gap > Lean 通过; Lean 失败 > 非正式通过; 论文级失败 > 两者).
+- OpenProver token-conscious 吸收: 新增 `references/openprover-absorption.md`;
+  Stage B 增加 Planner action 协议、Repository item 系统、`theorem.lean`
+  前置骨架、Planner history、token budget pause+handoff+resume.
