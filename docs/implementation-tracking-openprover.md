@@ -43,6 +43,16 @@ explicit token-budget control and pause/handoff/resume semantics.
     pause+handoff discipline documented in `openprover-absorption.md` and
     phase-12.
 
+## Post-sync DSH verification
+
+| Check | Result |
+| --- | --- |
+| DSH `validate_all.py` (51 checks) | PASS |
+| DSH `dsh-check-bundle.py` | BUNDLE OK |
+| DSH smoke tests (11) | ALL PASS |
+| DSH `package.json` | bump 0.1.10 -> 0.1.11 |
+| Push to all remotes (parent origin+fork, DSH origin) | done, clean trees |
+
 ## How a paused budget resumes
 
 1. On exhaustion, write `budget_state.json` (`status: paused_budget`), an
