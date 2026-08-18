@@ -65,8 +65,9 @@ When persistent files are available, maintain the following. If files are unavai
 - `audit_report.md` — independent verification results and unresolved issues.
 - `reproducibility/` — code, exact commands, seeds, certificates, and formalization files.
 - `formalization_progress.md` — when a formalization project exists, track every new result's Lean scaffold/status here (or in the project's `lean-proof/STATUS.md`).
+- `research_map.md` — the human-readable, continuously updated survey of the problem: routes/methods tried, intermediate results, unexpected findings, failures and reasons, tools, open directions, an avoid list, and human/other-agent contributions (maintained per manage workflow 8f).
 
-Update the ledger immediately after any substantial computation, proof attempt, literature discovery, or route decision. Do not begin a near-duplicate exploration until the previous result and failure mechanism are recorded.
+Update the ledger immediately after any substantial computation, proof attempt, literature discovery, or route decision. Do not begin a near-duplicate exploration until the previous result and failure mechanism are recorded. Publish every material finding, surprise, and failure reason to the research map (or ensure its source is aggregated there) so partial progress is never lost and later humans/agents can build on it.
 
 # Workflow
 
@@ -216,3 +217,6 @@ Available attachments/tools/constraints:
 - 新增 `references/dual-track-audit.md`: Danus 式非正式审计与 Lean 形式化验证
   共存的四层协议 (非正式审计 -> Lean scaffold -> Lean 完整验证 -> 论文级再验证),
   冲突裁决规则, Danus 硬禁止项, 双轨验证矩阵.
+## Changelog (2026-08-16, research map)
+- 默认工件新增 `research_map.md` (人类可读、持续更新的研究综述); 中间结果、
+  意外发现、失败原因必须发布进地图 (或确保其来源被聚合), 部分进展不丢失.
