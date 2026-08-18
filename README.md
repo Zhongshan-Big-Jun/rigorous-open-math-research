@@ -126,28 +126,27 @@ push / PR 时 GitHub Actions 自动运行以上校验与冒烟.
 - fork 副本: `Zhongshan-Big-Jun/rigorous-open-math-research` (同步方式: push 父仓库后, 在 fork 上执行 GitHub 的 Sync fork / merge-upstream)
 
 ## 版本历史
-- 2026-08-16: 四插件社区方法蒸馏第二轮 - 检索证据契约与目标问题状态确认 (fetch_required/status 三态/uncertainty-warnings, 来源: modsearch/argo/dsh-zotero/dsh-exa-mcp/dsh-kb-sieve/dsh-web-search-pro), 多 agent 协作增强 (义务认领防重复/缺口回灌/并行失败聚合/循环检测/Lean 升级通道, 来源: dsh-suite team-board/dsh-proof/dsh-agent-team-gui/dsh-trajectory-governance/dsh-rigorquant), Lean 验证增强 (单一结构化判定 gate 协议/原子有界检查/同缺口三轮收敛/证伪优先裁决, 来源: forge-gates/jacobian/dsh-rigorquant/Vibe-Mathematics), 研究方法论增强 (covered_scope+residual_risk/反例-only 对抗/双导线 ground-truth/假说状态机/证据边界/工具溯源/禁用清单, 来源: Aegis/dsh-rigorquant/dsh-science/dsh-scholar/dsh-design-skills/dsh-ops-kit; 四插件 cachebuster `0.1.0+codex.20260815171704`).
-- 2026-08-16: manage 新增人类可读证明交付规范 (工作流 8c) - Lean 验证通过 (FORMALLY_VERIFIED + build_passed + 零 sorry/axiom) 的定理必须在 `papers/<SLUG>/` 交付 LaTeX 证明文档: 英文 arXiv 规范版 (amsart + amsthm/amsmath/hyperref, 摘要/编号定理环境/DOI 或 arXiv 链接参考文献, xelatex 零警告) + 中文对照版, 文档头绑定机器验证契约; 证据规则 13 + 项目完成清单 + 模板 `assets/proof-paper.template.tex` + init/validate 门禁 (cachebuster `0.1.0+codex.20260815170001`).
-- 2026-08-16: 新增“进展全登记 + 每个新结果形式化 scaffold”规则 - 问题进展/失败路线/新工具必须登记; 每个新结果 (含 RIGOROUS_PARTIAL_RESULT) 在存在 `lean-proof/` 时必须创建 Lean scaffold 并更新形式化进度; run-manifest 形式化决策新增 `scaffold`, `validate_pipeline.py` 对 2026-08-16 后新 run 强制 scaffold/requested; lean-verify 新增 Scaffold mode 与 `SCAFFOLDED` 状态 (四插件 cachebuster `0.1.0+codex.20260816180000`).
-- 2026-08-16: 交接手续改良 - 交接记录独立成文并必须包含 `Completed work progress` (已完成进度, 后续不得重做) 与 `Tools and methods tried` (尝试过的工具/方法/命令 + 结果标记 + 证据路径 + sha256); 门禁新增两个必需 section (workflow/manage cachebuster `0.1.0+codex.20260816183000`).
-- 2026-08-16: Lean 验证定位微调 - 中间承重引理尽早机器验证 (避免走弯路), 更先进结果可把旧 scaffold/partial 标记 `superseded` 并保留历史; 四插件 cachebuster `0.1.0+codex.20260816190000`.
-- 2026-08-16: 新增证明文件提交审计流程 (manage 8e) - 提交证明文件必须依次经过 仓库比对 -> Lean 验证与审计 -> 依规则加入; 新增模板 `assets/proof-submission-audit.template.md`, 四插件 cachebuster `0.1.0+codex.20260816193000`.
-- 2026-08-16: 插件效率优化 - 新增 `scripts/scaffold_result.py` (自动生成 scaffold/STATUS/progress/audit) 与 `scripts/index_lean_lemmas.py` (生成 `LEMMA_INDEX.md` 复用索引); 引入 Tier 0/1/2 分级验证; 证明前先查复用索引避免重复证明 (四插件 cachebuster `0.1.0+codex.20260816200000`).
-- 2026-08-16: Rethlas 方法蒸馏 - 新增 `references/rethlas-distilled.md`: 持久结构化记忆、失败综合驱动下一代方案、分解计划组合筛选与递归并行、反例复用库、搜索是支撑不是替代、外部引用非黑盒、严格零错误零缺口接受、论文式蓝图输出 (rigorous/manage/workflow cachebuster `0.1.0+codex.20260816210000`).
-- 2026-08-16: 双轨审计蒸馏 - 新增 `references/dual-track-audit.md`: Danus 式非正式审计与 Lean 形式化验证共存 (非正式审计 -> Lean scaffold -> Lean 完整验证 -> 论文级再验证), 冲突裁决规则, Danus 硬禁止项, 验证矩阵 (四插件 cachebuster `0.1.0+codex.20260816220000`).
-- 2026-08-16: OpenProver token-conscious 吸收 - 新增 `references/openprover-absorption.md` (workflow): Planner action 协议、Repository item 系统、`theorem.lean` 前置骨架、Planner history、token budget pause+handoff+resume (预算耗尽不丢工作); manage 新增 `assets/budget-state.template.json` (rigorous/manage/workflow cachebuster `0.1.0+codex.20260816230000`).
-- 2026-08-16: 研究地图 - 每个项目维护人类可读、持续更新的 `research_map.md` (路线/方法、中间结果与意外发现、失败原因、工具库、开放方向、avoid list、人类/其他 agent 补充); 新增 `assets/research-map.template.md` + `scripts/update_research_map.py` (manage 8f), Stage A/B/C 边界强制更新, 防钻牛角尖, 部分进展也入图 (rigorous/manage/workflow cachebuster `0.1.0+codex.20260816240000`).
-- 2026-08-14: workflow 蒸馏 OpenProver 方法 (arXiv:2607.09217) - Planner-Worker-Verifier 求解循环: 每 run 强制紧凑 whiteboard (计划/路线历史/待回想法/未完成义务/工件索引), 独立并行 Worker 与独立 Verifier 反馈, Lean 实时验证回路 (lean_verify/lean_search/lean_store), 形式化反馈环, 人工引导; 门禁硬校验 2026-08-14 后求解 run 的 whiteboard (cachebuster `0.1.0+codex.20260814120000`).
-- 2026-08-13: workflow 新增中断交接协议 - 工作中断时写 `handoff-interrupted-<ts>.md` (已尝试路线带 `[FAILED|BLOCKED|PARTIAL|SUCCEEDED]` 标记、未完成义务、精确下一步、关键文件哈希), 后续 agent 依记录续接, 禁止无新理由重跑失败路线; `validate_pipeline.py` 硬校验交接记录字段, 新增 smoke_handoff 测试入 CI (cachebuster `0.1.0+codex.20260813144928`).
-- 2026-08-13: workflow 新增 Stage B0 强制前置门禁 - open 判定 + 发散式新颖性审计 + 文献快照哈希回填 (任务包必须携带 `## Novelty preflight (B0)`, `validate_pipeline.py` 机械拦截); manage 任务包模板同步 (cachebuster `0.1.0+codex.20260813101438`); 修复 CI: MANIFEST 哈希换行规范化 (CRLF/LF 双基准) 与 doctor 冒烟的环境依赖.
-- 2026-08-13: workflow 插件增强 - 环境自检 `doctor.py` + 门禁数值证据纪律与状态一致性审计 (cachebuster `0.1.0+codex.20260813054312`).
-- 2026-08-13: 新增确定性阶段门禁 `validate_pipeline.py` + lean-verify/门禁 CI 冒烟 (workflow cachebuster `0.1.0+codex.20260812164950`).
-- 2026-08-12: AI4Math V2 方法蒸馏 (发散检索/验证者 FAIL/失败路由/陈述冻结/四道闸/首错定位等).
-- 2026-08-12: 编排为工作流插件仓库 (marketplace 排序/CI/LICENSE/AGENTS, 校验器严格 YAML/JSON).
-- 2026-08-11: 编排为标准 marketplace (名 math-research), 新增 workflow 与 lean-verify 插件.
-- 2026-08-10: MRP 新增自动 git 仓库同步检查 (工作流第 0 步 + Rigor Phase 0/10/12).
-- 2026-08-09: 蒸馏 Blueprint v2.2 数学工具包.
-- 2026-08-05: rigorous 迭代自 rigorous-mathematical-research, 建立 manage 插件.
+
+| 版本 | 日期 | 摘要 |
+| --- | --- | --- |
+| `0.1.0+codex.20260816240000` | 2026-08-16 | 研究地图: 实时记录路线/方法/中间结果/失败/工具/人类补充, 防钻牛角尖 |
+| `0.1.0+codex.20260816230000` | 2026-08-16 | OpenProver token-conscious: Planner action/repo/theorem.lean/history + 预算 pause-resume |
+| `0.1.0+codex.20260816220000` | 2026-08-16 | 双轨审计: Danus 式非正式审计 + Lean 形式化共存 |
+| `0.1.0+codex.20260816210000` | 2026-08-16 | Rethlas 方法蒸馏 |
+| `0.1.0+codex.20260816200000` | 2026-08-16 | 效率优化: scaffold/审计脚本 + Lean 分级验证 + lemma 索引 |
+| `0.1.0+codex.20260816193000` | 2026-08-16 | 证明文件提交审计 8e |
+| `0.1.0+codex.20260816190000` | 2026-08-16 | Lean 中间验证 + superseded 覆盖 |
+| `0.1.0+codex.20260816183000` | 2026-08-16 | 交接手续独立成文 |
+| `0.1.0+codex.20260816180000` | 2026-08-16 | 进展全登记 + 每个新结果 scaffold |
+| `0.1.0+codex.20260815171704` | 2026-08-16 | 社区方法蒸馏第二轮 (检索/多agent/Lean/方法论) |
+| `0.1.0+codex.20260815170001` | 2026-08-16 | manage 8c: 人类可读 LaTeX 双语证明交付 |
+| `0.1.0+codex.20260814120000` | 2026-08-14 | workflow: OpenProver Planner-Worker-Verifier + whiteboard 门禁 |
+| `0.1.0+codex.20260813144928` | 2026-08-13 | workflow: 中断交接协议 |
+| `0.1.0+codex.20260813101438` | 2026-08-13 | workflow: Stage B0 新颖性前置门禁 + CI 修复 |
+| `0.1.0+codex.20260813054312` | 2026-08-13 | workflow: 环境自检 + 数值证据纪律门禁 |
+| `0.1.0+codex.20260812164950` | 2026-08-13 | 确定性阶段门禁 + CI 冒烟 |
+| — (早期) | 2026-08-09..12 | AI4Math V2 蒸馏 + 编排为工作流 marketplace + Blueprint v2.2 蒸馏 |
+| — (早期) | 2026-08-05..10 | rigorous 迭代 + manage 创建 + git 同步检查 |
 
 ## 版权与免责声明
 
