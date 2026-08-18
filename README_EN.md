@@ -21,6 +21,7 @@ flowchart LR
 
 - Stage boundaries enforce handoff contracts (`assets/pipeline-handoff.template.md`) and automatic git sync (parent repository first, then fork).
 - Only `已证` / `CANDIDATE_COMPLETE_PROOF` results enter Stage C; `数值证据` / `猜想` / `开放` are explicitly labeled and never enter formalization.
+- All branches and terminal states of a full run: [`docs/pipeline-full-flow.md`](docs/pipeline-full-flow.md).
 
 ## Plugin list
 

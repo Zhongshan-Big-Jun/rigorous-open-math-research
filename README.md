@@ -22,6 +22,7 @@ flowchart LR
 
 - 阶段边界强制交接契约 (`assets/pipeline-handoff.template.md`) 与自动 git 同步 (先父仓库, 后 fork).
 - 只有 `已证` / `CANDIDATE_COMPLETE_PROOF` 的结果进入阶段 C; `数值证据` / `猜想` / `开放` 显式标注且不进入形式化.
+- 一轮完整运行的所有分支与终态见 [`docs/pipeline-full-flow.md`](docs/pipeline-full-flow.md).
 
 ## 插件清单
 
