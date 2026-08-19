@@ -128,6 +128,8 @@ GitHub Actions automatically runs the validation and smoke tests on push / PR.
 
 | Version | Date | Summary |
 | --- | --- | --- |
+| `0.1.0+codex.20260816250000` | 2026-08-16 | lean-verify: lake build loop / repeated mathlib4 clone guard |
+| `0.1.0+codex.20260816243000` | 2026-08-16 | workflow: pipeline gate skips nested git repos + smoke_nested_repo |
 | `0.1.0+codex.20260816240000` | 2026-08-16 | Research map: real-time recording of routes/methods/results/failures/tools/human input, anti-rabbit-hole |
 | `0.1.0+codex.20260816230000` | 2026-08-16 | OpenProver token-conscious: planner action/repo/theorem.lean/history + budget pause-resume |
 | `0.1.0+codex.20260816220000` | 2026-08-16 | Dual-track audit: Danus-style informal + Lean formal verification |
