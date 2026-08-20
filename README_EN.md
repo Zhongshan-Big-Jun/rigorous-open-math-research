@@ -128,27 +128,11 @@ GitHub Actions automatically runs the validation and smoke tests on push / PR.
 
 | Version | Date | Summary |
 | --- | --- | --- |
-| `0.1.0+codex.20260816260000` | 2026-08-16 | lean-verify: build robustness - targeted file checks / use-cache / configurable timeout |
-| `0.1.0+codex.20260816250000` | 2026-08-16 | lean-verify: lake build loop / repeated mathlib4 clone guard |
-| `0.1.0+codex.20260816243000` | 2026-08-16 | workflow: pipeline gate skips nested git repos + smoke_nested_repo |
-| `0.1.0+codex.20260816240000` | 2026-08-16 | Research map: real-time recording of routes/methods/results/failures/tools/human input, anti-rabbit-hole |
-| `0.1.0+codex.20260816230000` | 2026-08-16 | OpenProver token-conscious: planner action/repo/theorem.lean/history + budget pause-resume |
-| `0.1.0+codex.20260816220000` | 2026-08-16 | Dual-track audit: Danus-style informal + Lean formal verification |
-| `0.1.0+codex.20260816210000` | 2026-08-16 | Rethlas method distillation |
-| `0.1.0+codex.20260816200000` | 2026-08-16 | Efficiency: scaffold/audit scripts + Lean tiered verification + lemma index |
-| `0.1.0+codex.20260816193000` | 2026-08-16 | Proof submission audit 8e |
-| `0.1.0+codex.20260816190000` | 2026-08-16 | Lean intermediate verification + superseded |
-| `0.1.0+codex.20260816183000` | 2026-08-16 | Self-contained handoff procedure |
-| `0.1.0+codex.20260816180000` | 2026-08-16 | Register all progress + scaffold every new result |
-| `0.1.0+codex.20260815171704` | 2026-08-16 | Community method distillation round 2 (search/multi-agent/Lean/methodology) |
-| `0.1.0+codex.20260815170001` | 2026-08-16 | manage 8c: human-readable bilingual LaTeX proof delivery |
-| `0.1.0+codex.20260814120000` | 2026-08-14 | Workflow: OpenProver Planner-Worker-Verifier + whiteboard gate |
-| `0.1.0+codex.20260813144928` | 2026-08-13 | Workflow: interruption handoff protocol |
-| `0.1.0+codex.20260813101438` | 2026-08-13 | Workflow: Stage B0 novelty preflight + CI fixes |
-| `0.1.0+codex.20260813054312` | 2026-08-13 | Workflow: environment doctor + numerical-evidence discipline gate |
-| `0.1.0+codex.20260812164950` | 2026-08-13 | Deterministic stage gate + CI smoke |
-| — (early) | 2026-08-09..12 | AI4Math V2 distillation + workflow marketplace restructure + Blueprint v2.2 |
-| — (early) | 2026-08-05..10 | rigorous iteration + manage creation + git sync checks |
+| `1.1.0` | 2026-08-16 | Research map / dual-track audit / OpenProver-Rethlas-Danus distillation / lake build guard + robustness / performance |
+| `1.0.0` | 2026-08-16 | Initial stable release: four-plugin workflow + submission audit + progress/scaffold + handoff |
+
+Versioning rule: major = architecture/capability generation; minor = feature batch; patch = pure fixes.
+The former date-based cachebusters (0.1.0+codex.date) were consolidated into this table and are no longer used.
 
 ## Copyright and disclaimer
 

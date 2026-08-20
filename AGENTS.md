@@ -15,7 +15,7 @@
 
 1. 每次变更后运行 `python scripts/validate_all.py` (Python 3.10+, 建议 `PYTHONUTF8=1`).
 2. 修改 `skills/<name>/` 内文件后, 若该 skill 带 `MANIFEST.sha256`, 必须重新生成并提交 (sha256 逐文件).
-3. 修改插件元数据后, 用 plugin-creator 的 `update_plugin_cachebuster.py` 更新版本 cachebuster (`0.1.0+codex.YYYYMMDDHHMMSS`).
+3. 修改插件元数据或 SKILL 内容后, 按语义化版本升级 `version` (大版本 = 架构/能力代际, 小版本 = 功能批次, 补丁 = 纯修复); 不再使用日期后缀.
 4. marketplace 插件顺序即 Codex UI 渲染顺序; 编排插件置顶, 新增插件追加到列表末尾.
 5. 所有文本文件 UTF-8 无 BOM, 换行 LF (`.gitattributes` 已强制).
 6. 同步顺序: 先 push 父仓库 `xsoc1/rigorous-open-math-research`, 再用 GitHub merge-upstream 同步 fork `Zhongshan-Big-Jun/rigorous-open-math-research`.
@@ -33,8 +33,9 @@
   `_xsoc1_work`; 保持该 canonical clone 与 origin/main 同步.
 - **DSH 适配依赖**: `xsoc1/math-research-dsh` 单向消费本仓库内容; 本仓库内容变更后,
   需在 DSH 仓库重跑 `scripts/sync-from-parent.py` 继承.
-- **cachebuster**: 修改插件元数据或 SKILL 内容后必须用 plugin-creator 的
-  `update_plugin_cachebuster.py` 更新版本, 否则市场/客户端可能不识别更新.
+- **版本管理**: 修改插件元数据或 SKILL 内容后按语义化版本升级
+  `version` (大版本 = 架构/能力代际, 小版本 = 功能批次, 补丁 = 纯修复);
+  不再使用 cachebuster 日期后缀. 四个插件当前统一为 `1.1.0`.
 - **GitHub 网络**: 直连 github.com 失败时, 用本地代理 push:
   `git -c http.proxy=http://127.0.0.1:7897 push origin main` (本机实测可用).
 

@@ -129,27 +129,11 @@ push / PR 时 GitHub Actions 自动运行以上校验与冒烟.
 
 | 版本 | 日期 | 摘要 |
 | --- | --- | --- |
-| `0.1.0+codex.20260816260000` | 2026-08-16 | lean-verify: lake build 鲁棒性 - 单文件检查/use-cache/可配超时 (build robustness) |
-| `0.1.0+codex.20260816250000` | 2026-08-16 | lean-verify: lake build 循环/反复 clone mathlib4 防护 (build loop guard) |
-| `0.1.0+codex.20260816243000` | 2026-08-16 | workflow: 门禁跳过嵌套 git 仓库 + smoke_nested_repo |
-| `0.1.0+codex.20260816240000` | 2026-08-16 | 研究地图: 实时记录路线/方法/中间结果/失败/工具/人类补充, 防钻牛角尖 |
-| `0.1.0+codex.20260816230000` | 2026-08-16 | OpenProver token-conscious: Planner action/repo/theorem.lean/history + 预算 pause-resume |
-| `0.1.0+codex.20260816220000` | 2026-08-16 | 双轨审计: Danus 式非正式审计 + Lean 形式化共存 |
-| `0.1.0+codex.20260816210000` | 2026-08-16 | Rethlas 方法蒸馏 |
-| `0.1.0+codex.20260816200000` | 2026-08-16 | 效率优化: scaffold/审计脚本 + Lean 分级验证 + lemma 索引 |
-| `0.1.0+codex.20260816193000` | 2026-08-16 | 证明文件提交审计 8e |
-| `0.1.0+codex.20260816190000` | 2026-08-16 | Lean 中间验证 + superseded 覆盖 |
-| `0.1.0+codex.20260816183000` | 2026-08-16 | 交接手续独立成文 |
-| `0.1.0+codex.20260816180000` | 2026-08-16 | 进展全登记 + 每个新结果 scaffold |
-| `0.1.0+codex.20260815171704` | 2026-08-16 | 社区方法蒸馏第二轮 (检索/多agent/Lean/方法论) |
-| `0.1.0+codex.20260815170001` | 2026-08-16 | manage 8c: 人类可读 LaTeX 双语证明交付 |
-| `0.1.0+codex.20260814120000` | 2026-08-14 | workflow: OpenProver Planner-Worker-Verifier + whiteboard 门禁 |
-| `0.1.0+codex.20260813144928` | 2026-08-13 | workflow: 中断交接协议 |
-| `0.1.0+codex.20260813101438` | 2026-08-13 | workflow: Stage B0 新颖性前置门禁 + CI 修复 |
-| `0.1.0+codex.20260813054312` | 2026-08-13 | workflow: 环境自检 + 数值证据纪律门禁 |
-| `0.1.0+codex.20260812164950` | 2026-08-13 | 确定性阶段门禁 + CI 冒烟 |
-| — (早期) | 2026-08-09..12 | AI4Math V2 蒸馏 + 编排为工作流 marketplace + Blueprint v2.2 蒸馏 |
-| — (早期) | 2026-08-05..10 | rigorous 迭代 + manage 创建 + git 同步检查 |
+| `1.1.0` | 2026-08-16 | 研究地图 / 双轨审计 / OpenProver·Rethlas·Danus 蒸馏 / lake build 防护与鲁棒性 / 性能优化 |
+| `1.0.0` | 2026-08-16 | 初始稳定版: 四插件工作流 + 提交审计 + 进展登记/scaffold + 交接协议 |
+
+版本规则: 大版本 = 工作流架构/能力代际; 小版本 = 新功能批次; 补丁 = 纯修复。
+历史 cachebuster (0.1.0+codex.日期) 已并入上表, 不再使用日期后缀。
 
 ## 版权与免责声明
 
