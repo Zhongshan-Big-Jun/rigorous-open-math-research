@@ -129,6 +129,7 @@ push / PR 时 GitHub Actions 自动运行以上校验与冒烟.
 
 | 版本 | 日期 | 摘要 |
 | --- | --- | --- |
+| `0.1.0+codex.20260816260000` | 2026-08-16 | lean-verify: lake build 鲁棒性 - 单文件检查/use-cache/可配超时 (build robustness) |
 | `0.1.0+codex.20260816250000` | 2026-08-16 | lean-verify: lake build 循环/反复 clone mathlib4 防护 (build loop guard) |
 | `0.1.0+codex.20260816243000` | 2026-08-16 | workflow: 门禁跳过嵌套 git 仓库 + smoke_nested_repo |
 | `0.1.0+codex.20260816240000` | 2026-08-16 | 研究地图: 实时记录路线/方法/中间结果/失败/工具/人类补充, 防钻牛角尖 |
