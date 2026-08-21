@@ -207,6 +207,9 @@ Before delegating a concrete problem, create one task packet containing:
   `total_tokens`, mode (`per_round` / `per_phase` / `hard_total` /
   `soft_warning`), and resume policy: budget exhaustion pauses and hands off,
   it never deletes work;
+- optional `max_cost_tier` (`0`-`3`) and `escalation_policy`
+  (`light-first`, the default) to cap how heavy the delegated run may become
+  before it must hand off or report a resource boundary;
 - a `## Novelty preflight (B0)` section (openness verdict, audit path or
   explicit skip, snapshot hash) - the workflow stage B0 fills or audits it,
   and the deterministic gate (`validate_pipeline.py`) refuses to dispatch a
@@ -542,3 +545,8 @@ This completion criterion says nothing about whether any underlying open problem
   (路线/方法/中间结果/失败原因/工具库/开放方向/avoid list/人类补充);
   新增 `assets/research-map.template.md` 与 `scripts/update_research_map.py`;
   阶段边界持续更新, 防钻牛角尖, 部分进展也入图.
+
+## Changelog (2026-08-16, escalation ladder)
+- 任务包模板新增可选 `Max cost tier` (`0`-`3`) 与 `Escalation policy`
+  (`light-first`, 默认); 第 6 节任务包要素同步增加这两个字段, 委托 run 可显式
+  设定成本上限, 防止未记录理由直接跳级到重型并行或完整形式化.

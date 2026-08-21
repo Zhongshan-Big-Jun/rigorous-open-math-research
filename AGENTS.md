@@ -35,7 +35,7 @@
   需在 DSH 仓库重跑 `scripts/sync-from-parent.py` 继承.
 - **版本管理**: 修改插件元数据或 SKILL 内容后按语义化版本升级
   `version` (大版本 = 架构/能力代际, 小版本 = 功能批次, 补丁 = 纯修复);
-  不再使用 cachebuster 日期后缀. 四个插件当前统一为 `1.1.0`.
+  不再使用 cachebuster 日期后缀. 四个插件当前统一为 `1.2.0`.
 - **GitHub 网络**: 直连 github.com 失败时, 用本地代理 push:
   `git -c http.proxy=http://127.0.0.1:7897 push origin main` (本机实测可用).
 
@@ -360,3 +360,21 @@
   已同步最新 upstream 且 51 项校验/10 smoke 全绿.
 - 维护: 提交后按 push_order 先 push origin (xsoc1) 再 push fork; fork 自动同步
   可选用 workflow (配置 FORK_PAT) 或本地脚本.
+### 2026-08-16 会话: 轻量优先成本分级升级协议 (escalation ladder)
+- 任务: 让 AI 研究问题先做轻量化小改动, 再按记录证据逐步升级到更困难复杂的做法.
+- 完成:
+  - 新增 `plugins/rigorous-open-math-research/skills/rigorous-open-math-research/references/escalation-ladder.md`:
+    Tier 0 查与测 / Tier 1 小改动 / Tier 2 中等系统化 / Tier 3 重型并行;
+    行动按信息增益/成本排序; 升级触发器 (two zero-gain / counterexample /
+    load-bearing gap / user request); 重型失败回退机制; `escalation_ladder.md`
+    运行级记录模板.
+  - rigorous SKILL: Phase 索引与默认工件增加 escalation-ladder / escalation_ladder.md;
+    Phase 4 route card 增加 `cost_tier` / `minimal_first_step` /
+    `escalation_criteria`; Phase 5 增加第 0 步 cheapest admissible probe.
+  - workflow SKILL: Stage B 增加 cost-tiered escalation (light first), 并行 fan-out
+    视为 Tier 3, 白板模板增加 `current_cost_tier` / `last_escalation_reason`.
+  - manage: 任务包模板与 SKILL 第 6 节增加可选 `Max cost tier` / `Escalation policy`.
+- 版本: 四个插件统一 `1.2.0`; 根 README 中英版本历史新增 1.2.0 条目; 父仓库
+  validate_all 68 项全绿, MANIFEST 重新生成 (51 条).
+- 维护: 提交后按 push_order 先 push origin (xsoc1) 再 push fork; 随后 DSH 适配仓库
+  sync-from-parent.py 继承 + package.json/README 版本同步.
