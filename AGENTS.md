@@ -385,3 +385,9 @@
   最低产物集; 新 STRICT/partial 结果必须补 Lean scaffold.
 - 修改: workflow SKILL + references/reuse-protocol.md; manage SKILL §5;
   rigorous 默认工件; 四插件版本统一 1.3.0; README 中英版本历史.
+### 2026-08-23 会话: 工具类作用域生命周期 (v1.4.0)
+- 按用户意见, 工具退休/归档改为按问题类作用域: 工具在类 C 退休不影响类 D;
+  全部类 retired 时进入 archived, 不删除, 显式检索仍可调用.
+- 新增 scripts/manage_tool_lifecycle.py (list/status/set-class);
+  tool-library-spec 与 tool-entry.template 增加 applicability/failure_records;
+  workflow reuse-protocol 明确按类选择工具.
