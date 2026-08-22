@@ -206,6 +206,15 @@ load-bearing gap that machine checking can close faster, or an explicit user
 request. See
 `$rigorous-open-math-research` `references/escalation-ladder.md`.
 
+**Lightweight reuse protocol (mandatory default):** before major derivation,
+run a compact pre-scan over `research_map.md`, `tools/README.md` plus relevant
+tool summaries, `lean-proof/LEMMA_INDEX.md`, and the latest relevant
+`final_report.md` / handoff. Do not require per-route REUSE tags. At run close,
+write `reuse_summary.md` with actual reused items, duplicate work avoided,
+remaining duplicate work, new methods, and a one-line cost assessment. Every
+material run must also meet the minimum artifact checklist. Full details:
+`references/reuse-protocol.md`.
+
 **Failure synthesis and counterexample reuse (distilled from Rethlas):**
 when a batch of plans/routes fails, synthesize the common stuck points into a
 `key_failures_summary`, store it in the whiteboard/ledger, and use it to propose
@@ -472,6 +481,9 @@ agent writes an interruption handoff before returning control:
 - `references/openprover-absorption.md` -- token-conscious OpenProver
   absorption: Planner action protocol, Repository item system, `theorem.lean`
   skeleton, Planner history, and token budget pause/handoff/resume discipline.
+- `references/reuse-protocol.md` -- lightweight reuse protocol: compact
+  pre-scan, minimum artifact set, post-run `reuse_summary.md`, no per-route
+  tags, mandatory Lean scaffold.
 
 ## Changelog (2026-08-14)
 
@@ -590,3 +602,11 @@ agent writes an interruption handoff before returning control:
   Tier 2/3; 并行 fan-out 视为 Tier 3, 禁止无记录直接并行; 白板模板新增
   `current_cost_tier` 与 `last_escalation_reason`; 详细协议见 rigorous
   `references/escalation-ladder.md`.
+
+## Changelog (2026-08-23, lightweight reuse protocol)
+- Stage B 新增轻量 reuse 协议 (mandatory default): compact pre-scan (research_map +
+  tools/README + LEMMA_INDEX + latest final/handoff), 不再要求 per-route REUSE
+  标记; 每个实质 run 必须写 `reuse_summary.md` 并满足最低产物清单; 新 STRICT/
+  partial 结果必须补 Lean scaffold. 详细协议见 `references/reuse-protocol.md`.
+- 来源: 三轮受控 plugin 性能实验 (A6 / B3 / DensBC O1'), 轻量协议在硬问题上
+  显著减少步骤/工具调用/cache, 同时保留可审计产物.

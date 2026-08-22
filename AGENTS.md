@@ -378,3 +378,10 @@
   validate_all 68 项全绿, MANIFEST 重新生成 (51 条).
 - 维护: 提交后按 push_order 先 push origin (xsoc1) 再 push fork; 随后 DSH 适配仓库
   sync-from-parent.py 继承 + package.json/README 版本同步.
+### 2026-08-23 会话: 轻量 reuse 协议 (v1.3.0)
+- 基于三轮受控插件性能实验 (A6 / B3 / DensBC O1') 落地轻量 reuse 协议:
+  紧凑预扫描 (research_map + tools/README + LEMMA_INDEX + 最新 final/handoff),
+  不再要求 per-route REUSE 标记; 每个实质 run 写 `reuse_summary.md` 并满足
+  最低产物集; 新 STRICT/partial 结果必须补 Lean scaffold.
+- 修改: workflow SKILL + references/reuse-protocol.md; manage SKILL §5;
+  rigorous 默认工件; 四插件版本统一 1.3.0; README 中英版本历史.

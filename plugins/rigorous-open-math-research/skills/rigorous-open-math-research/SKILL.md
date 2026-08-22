@@ -67,6 +67,7 @@ When persistent files are available, maintain the following. If files are unavai
 - `formalization_progress.md` — when a formalization project exists, track every new result's Lean scaffold/status here (or in the project's `lean-proof/STATUS.md`).
 - `research_map.md` — the human-readable, continuously updated survey of the problem: routes/methods tried, intermediate results, unexpected findings, failures and reasons, tools, open directions, an avoid list, and human/other-agent contributions (maintained per manage workflow 8f).
 - `escalation_ladder.md` — when cost-tiered escalation is used, the run-level log of cheap probes attempted, tier changes, triggers, failure mechanisms, and the current cost tier (see `references/escalation-ladder.md`).
+- `reuse_summary.md` — when the workflow lightweight reuse protocol is active, the post-run record of actual reused items, duplicate work avoided/remaining, new methods, and a one-line cost assessment (see workflow `references/reuse-protocol.md`).
 
 Update the ledger immediately after any substantial computation, proof attempt, literature discovery, or route decision. Do not begin a near-duplicate exploration until the previous result and failure mechanism are recorded. Publish every material finding, surprise, and failure reason to the research map (or ensure its source is aggregated there) so partial progress is never lost and later humans/agents can build on it.
 
@@ -229,3 +230,7 @@ Available attachments/tools/constraints:
   gap/用户授权触发, 重型失败后回退寻找更小变体; Phase 4 route card 增加
   `cost_tier` / `minimal_first_step` / `escalation_criteria`, Phase 5 增加第 0 步
   cheapest admissible probe, 默认工件新增 `escalation_ladder.md`.
+
+## Changelog (2026-08-23, lightweight reuse protocol)
+- 默认工件新增 `reuse_summary.md` (配合 workflow 轻量 reuse 协议): 记录实际
+  复用、避免/仍未避免的重复工作、新方法、成本评价.
