@@ -215,6 +215,17 @@ remaining duplicate work, new methods, and a one-line cost assessment. Every
 material run must also meet the minimum artifact checklist. Full details:
 `references/reuse-protocol.md`.
 
+**Performance observability and user alerts:** when performance metrics are
+available, compare the run against a comparable baseline with
+`scripts/performance_alert.py`. If a cost metric increases materially without
+a compensating improvement in output/artifacts/reuse, write
+`performance_alert.md` (template `assets/performance-alert.template.md`), add a
+short "Performance alert" section to `final_report.md`, and surface it to the
+user as a candidate regression. Alerts are candidates, not verdicts: a single
+run can be misleading, so require a repeat run or a different-class baseline
+before drawing a conclusion. Full protocol:
+`references/performance-observability.md`.
+
 **Failure synthesis and counterexample reuse (distilled from Rethlas):**
 when a batch of plans/routes fails, synthesize the common stuck points into a
 `key_failures_summary`, store it in the whiteboard/ledger, and use it to propose
@@ -484,6 +495,11 @@ agent writes an interruption handoff before returning control:
 - `references/reuse-protocol.md` -- lightweight reuse protocol: compact
   pre-scan, minimum artifact set, post-run `reuse_summary.md`, no per-route
   tags, mandatory Lean scaffold.
+- `references/performance-observability.md` -- performance metrics, baselines,
+  alert levels, and the rule that single-run alerts are candidates requiring
+  confirmation.
+- `scripts/performance_alert.py` -- compare a run metrics file against a
+  baseline and write `performance_alert.md`.
 
 ## Changelog (2026-08-14)
 
@@ -610,3 +626,12 @@ agent writes an interruption handoff before returning control:
   partial 结果必须补 Lean scaffold. 详细协议见 `references/reuse-protocol.md`.
 - 来源: 三轮受控 plugin 性能实验 (A6 / B3 / DensBC O1'), 轻量协议在硬问题上
   显著减少步骤/工具调用/cache, 同时保留可审计产物.
+
+## Changelog (2026-08-23, performance observability)
+- Stage B 新增性能可观测与示警: 运行后若有 performance.json, 用
+  `scripts/performance_alert.py` 与可比 baseline 比较; 成本指标大幅上升且
+  产物/复用未改善时, 写 `performance_alert.md` 并在 final_report 中向用户
+  示警. 告警是候选, 不是定论: 单次实验可能误导 (e.g. reuse-gate 在简单/困难
+  问题上呈现不同权衡), 需同问题类重跑或换问题类验证后才下结论.
+- 新增 `references/performance-observability.md` 与
+  `assets/performance-alert.template.md`.

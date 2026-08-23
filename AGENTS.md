@@ -391,3 +391,10 @@
 - 新增 scripts/manage_tool_lifecycle.py (list/status/set-class);
   tool-library-spec 与 tool-entry.template 增加 applicability/failure_records;
   workflow reuse-protocol 明确按类选择工具.
+### 2026-08-23 会话: 性能可观测与示警 (v1.5.0)
+- 新增 workflow `references/performance-observability.md`,
+  `assets/performance-alert.template.md`, `scripts/performance_alert.py`.
+- Stage B 运行后: 有 performance.json 则与可比 baseline 比较, 成本异常上升且
+  产物/复用未改善时写 performance_alert.md 并在 final_report 向用户示警.
+- 明确: 告警是候选, 单次实验可能误导 (reuse-gate 简单/困难问题不同权衡),
+  需同问题类重跑或换类验证后再下结论.
