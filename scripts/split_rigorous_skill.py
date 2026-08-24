@@ -15,9 +15,9 @@ Usage (from the repository root):
 SKILL.md from `git show HEAD:...` (the split is a one-time migration from the
 commit before it lands) and refuses to overwrite an existing phase file unless
 --force is given.
---verify rebuilds the expected outputs from `git show HEAD:` SKILL.md in
-memory and compares them with the files on disk byte for byte, then reports
-line-coverage statistics.
+--verify checks the current progressive-disclosure layout, phase pointers,
+and output-template placement. The historical pure-move reconstruction is no
+longer byte-stable after later feature releases.
 """
 
 from __future__ import annotations
@@ -108,6 +108,41 @@ PHASE_FILE_HEADER = (
     "scripts/) resolve against the skill root (the directory containing "
     "SKILL.md).\n"
 )
+
+
+def verify_current_split() -> int:
+    driver = SKILL_MD.read_text(encoding="utf-8").replace("\r\n", "\n")
+    phase_files = tuple(dict.fromkeys(dest for _, _, dest in PLAN))
+    problems: list[str] = []
+    total_reference_bytes = 0
+    for relative in phase_files:
+        path = ROOT / SKILL / relative
+        if not path.is_file():
+            problems.append(f"missing phase file: {relative}")
+            continue
+        content = path.read_text(encoding="utf-8").replace("\r\n", "\n")
+        total_reference_bytes += len(content.encode("utf-8"))
+        if f"`{relative}`" not in driver:
+            problems.append(f"driver does not point to: {relative}")
+    phase12 = ROOT / SKILL / "references/phase-12-reporting.md"
+    if phase12.is_file():
+        reporting = phase12.read_text(encoding="utf-8")
+        if "## Result template" not in reporting or "# Result" not in reporting:
+            problems.append("phase-12-reporting.md is missing the result template")
+    if "Then use the result template in `references/phase-12-reporting.md`" not in driver:
+        problems.append("driver output protocol does not route to the result template")
+    if "# Anti-patterns" not in driver:
+        problems.append("driver is missing the anti-pattern contract")
+    print(
+        f"driver: {len(driver.encode('utf-8'))} bytes; "
+        f"phase references: {total_reference_bytes} bytes"
+    )
+    if problems:
+        for problem in problems:
+            print("FAIL: " + problem)
+        return 1
+    print("verify OK: current progressive-disclosure layout is complete")
+    return 0
 
 
 def parse_sections(lines: list[str]) -> list[tuple[int, int, str]]:
@@ -232,57 +267,12 @@ def main() -> int:
     force = "--force" in sys.argv
 
     if mode == "--verify":
-        original = original_from_git()
-        driver, files, stats = build(original)
-        problems = []
-        disk_driver = SKILL_MD.read_text(encoding="utf-8").replace("\r\n", "\n")
-        if disk_driver != driver:
-            problems.append("SKILL.md differs from the expected driver")
-        for rel, expected in files.items():
-            path = ROOT / SKILL / rel
-            if not path.is_file():
-                problems.append(f"missing phase file: {rel}")
-                continue
-            disk = path.read_text(encoding="utf-8").replace("\r\n", "\n")
-            if disk != expected:
-                problems.append(f"phase file differs from expected: {rel}")
-        # pure-move check: every output line is either an original line or a
-        # documented addition, and every original line appears exactly once
-        original_lines = original.splitlines()
-        additions = stats["added_lines"]
-        from collections import Counter
-
-        outputs = [disk_driver] if not problems else []
-        if not problems:
-            for rel in files:
-                outputs.append((ROOT / SKILL / rel).read_text(encoding="utf-8").replace("\r\n", "\n"))
-        if not problems:
-            output_lines: list[str] = []
-            for out in outputs:
-                output_lines.extend(out.splitlines())
-            unknown = [line for line in output_lines if line not in original_lines and line not in additions]
-            if unknown:
-                problems.append(f"{len(unknown)} output lines are not original content (first: {unknown[0]!r})")
-            counts = Counter(line for line in output_lines if line in original_lines)
-            orig_counts = Counter(original_lines)
-            missing = [line for line, c in orig_counts.items() if counts.get(line, 0) == 0]
-            if missing:
-                problems.append(f"{len(missing)} original lines are missing from the outputs")
-            if problems:
-                pass
-        print(
-            f"original: {stats['original_lines']} lines / {stats['original_bytes']} bytes; "
-            f"moved: {stats['moved_lines']} lines; driver: {stats['driver_lines']} lines / "
-            f"{stats['driver_bytes']} bytes"
-        )
-        if problems:
-            for line in problems[:20]:
-                print("FAIL: " + line)
-            return 1
-        print("verify OK: outputs reconstruct the pre-split SKILL.md (pure move)")
-        return 0
+        return verify_current_split()
 
     # --apply
+    if all((ROOT / SKILL / dest).is_file() for _, _, dest in PLAN):
+        print("split already applied; use --verify for the maintained layout")
+        return 2
     original = original_from_git()
     driver, files, stats = build(original)
     existing = [rel for rel in files if (ROOT / SKILL / rel).exists()]

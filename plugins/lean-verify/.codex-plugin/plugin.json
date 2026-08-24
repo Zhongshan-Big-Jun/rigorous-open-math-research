@@ -1,6 +1,6 @@
 {
   "name": "lean-verify",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "Strict verification workflow for Lean 4 formalizations: statement-fidelity audit, machine checks (lake build, sorry/axiom scan), per-obligation independent audit, structured verdicts, and hash-bound run manifests.",
   "author": {
     "name": "xsoc1"

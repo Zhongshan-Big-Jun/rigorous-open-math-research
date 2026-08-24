@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+import os
 import subprocess
 import sys
 import tempfile
@@ -30,10 +31,13 @@ def run(list_text: str, *extra: str) -> subprocess.CompletedProcess[str]:
     with tempfile.TemporaryDirectory() as tmp:
         list_file = Path(tmp) / "plugin-list.txt"
         list_file.write_text(list_text, encoding="utf-8")
+        env = os.environ.copy()
+        env["CODEX_HOME"] = str(Path(tmp) / "codex-home")
         return subprocess.run(
             [sys.executable, str(SCRIPT), "--list-file", str(list_file), *extra],
             capture_output=True,
             text=True,
+            env=env,
         )
 
 

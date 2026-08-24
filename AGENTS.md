@@ -35,7 +35,7 @@
   需在 DSH 仓库重跑 `scripts/sync-from-parent.py` 继承.
 - **版本管理**: 修改插件元数据或 SKILL 内容后按语义化版本升级
   `version` (大版本 = 架构/能力代际, 小版本 = 功能批次, 补丁 = 纯修复);
-  不再使用 cachebuster 日期后缀. 四个插件当前统一为 `1.2.0`.
+  不再使用 cachebuster 日期后缀. 四个插件当前统一为 `1.6.0`.
 - **GitHub 网络**: 直连 github.com 失败时, 用本地代理 push:
   `git -c http.proxy=http://127.0.0.1:7897 push origin main` (本机实测可用).
 
@@ -398,3 +398,12 @@
   产物/复用未改善时写 performance_alert.md 并在 final_report 向用户示警.
 - 明确: 告警是候选, 单次实验可能误导 (reuse-gate 简单/困难问题不同权衡),
   需同问题类重跑或换类验证后再下结论.
+### 2026-08-24 会话: Codex 入口上下文优化与 fence 修复 (v1.6.0)
+- 四个 SKILL 的历史 changelog 移入 `references/changelog.md`, 入口总字节从
+  124,443 降至 97,802 (-21.4%); rigorous 入口从 19,618 降至 11,184 (-43.0%).
+- 修复 91293b0 渐进式拆分遗留的 rigorous Output protocol 断裂 fence;
+  `validate_all.py` 新增 Markdown fence 与各 skill 入口上下文预算门禁.
+- workflow 增加 Codex 索引发现, 目标切片读取, 有界 programmable batching,
+  语义决策边界和 compaction 前 artifact 重建规则; 四插件统一升级 1.6.0.
+- 修复 manage/workflow plugin.json 的中文 UI mojibake; smoke_doctor 隔离
+  `CODEX_HOME`, 消除本机真实 config.toml 对离线 fixture 的污染.

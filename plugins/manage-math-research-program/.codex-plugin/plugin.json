@@ -1,7 +1,7 @@
 {
   "name": "manage-math-research-program",
-  "version": "1.5.0",
-  "description": "Manage long-running, cross-paper, cross-problem mathematics research programs: project workspaces, literature curation, paper maps, open-problem portfolios, tool libraries, budgets, checkpoints, task packets, delegation to rigorous-open-math-research, and a hash-bound reviewed accepted-knowledge base with blueprint integration. Chinese trigger: 鏁板鐮旂┒椤圭洰绠＄悊, 璺ㄤ細璇濈淮鎶?",
+  "version": "1.6.0",
+  "description": "Manage long-running, cross-paper, cross-problem mathematics research programs: project workspaces, literature curation, paper maps, open-problem portfolios, tool libraries, budgets, checkpoints, task packets, delegation to rigorous-open-math-research, and a hash-bound reviewed accepted-knowledge base with blueprint integration. Chinese trigger: 数学研究项目管理, 跨会话维护.",
   "author": {
     "name": "xsoc1"
   },
@@ -16,11 +16,11 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Math Research Program Manager",
-    "shortDescription": "鏁板鐮旂┒椤圭洰绠＄悊: 鏂囩尞, 寮€鏀鹃棶棰? 浠诲姟鍖? 宸叉帴鍙楃煡璇嗗簱.",
+    "shortDescription": "数学研究项目管理: 文献, 开放问题, 任务包, 已接受知识库.",
     "longDescription": "Program management layer for mathematics research: initialize and validate project workspaces, curate literature, maintain paper maps and open-problem portfolios, delegate concrete problems to rigorous-open-math-research, ingest audited artifacts by reference, and maintain a hash-bound, reviewed, canonical accepted-knowledge base.",
     "developerName": "xsoc1",
     "category": "Education & Research",
     "capabilities": [],
-    "defaultPrompt": "甯垜绠＄悊涓€涓暱鏈熸暟瀛︾爺绌堕」鐩?(鍒濆鍖?缁存姢椤圭洰浠撳簱)."
+    "defaultPrompt": "帮我管理一个长期数学研究项目(初始化, 维护项目仓库)."
   }
 }

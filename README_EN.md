@@ -97,7 +97,7 @@ Each plugin has a uniform shape: `.codex-plugin/plugin.json` + `skills/<name>/SK
 ## Validation
 
 ```bash
-# Local validation: marketplace + all plugins + SKILL frontmatter + MANIFEST + UTF-8/BOM
+# Local validation: marketplace + plugin structure + SKILL frontmatter/context budgets + Markdown fences + MANIFEST + UTF-8/BOM
 python scripts/validate_all.py
 
 # Behavior smoke: lean-verify scanner + pipeline gate
@@ -128,6 +128,7 @@ GitHub Actions automatically runs the validation and smoke tests on push / PR.
 
 | Version | Date | Summary |
 | --- | --- | --- |
+| `1.6.0` | 2026-08-24 | Codex performance optimization: moved changelogs out of all four SKILL entrypoints, repaired the rigorous output-protocol fence, added context-budget and Markdown gates, and introduced indexed discovery plus bounded tool batching |
 | `1.5.0` | 2026-08-23 | Performance observability and alerts: metrics/baseline comparison, writes performance_alert and warns user on cost regressions; single-run alerts require confirmation |
 | `1.4.0` | 2026-08-23 | Class-scoped tool lifecycle: per-class retirement/archive, tools never deleted, explicit retrieval, manage_tool_lifecycle.py |
 | `1.3.0` | 2026-08-23 | Lightweight reuse protocol (compact pre-scan + minimum artifact set + reuse_summary + mandatory Lean scaffold) |
@@ -141,6 +142,6 @@ The former date-based cachebusters (0.1.0+codex.date) were consolidated into thi
 ## Copyright and disclaimer
 
 - Copyright: the orchestration structure, prompt organization, documents and scripts in this repository were compiled and written by the author and are distributed under the MIT license (see `LICENSE`); however, the working methods substantially reference/adapt public research and open-source projects (e.g., MMAT, LeanMarathon, MechMath, M2F, FaithSieve, FormalRx, Archon-Horizon, EvE, etc.), and the ideas and protocols of the methods themselves do not belong to this repository.
-- Method sources: each SKILL.md's Changelog includes source links (MMAT, LeanMarathon, MechMath, M2F, FaithSieve, FormalRx, Archon-Horizon, EvE, Blueprint v2.x, etc.); citations are presented as links and point-form paraphrases, and no copyright-protected paper text or proprietary code is copied; if attribution is incorrect, corrections are welcome and will be fixed after confirmation.
+- Method sources: each skill's `references/changelog.md` includes source links (MMAT, LeanMarathon, MechMath, M2F, FaithSieve, FormalRx, Archon-Horizon, EvE, Blueprint v2.x, etc.); citations are presented as links and point-form paraphrases, and no copyright-protected paper text or proprietary code is copied; if attribution is incorrect, corrections are welcome and will be fixed after confirmation.
 - Third-party names: project, organization and trademark names appearing in this repository belong to their respective owners and have no affiliation or endorsement relationship with this repository.
 - Use at your own risk: this repository is provided "as is" without warranty of any kind; generated research results, proofs, code and conclusions must be independently verified by users before use; the author is not liable for any direct or indirect loss, and the content does not constitute professional or legal advice.

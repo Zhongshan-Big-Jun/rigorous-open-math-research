@@ -98,7 +98,7 @@ codex plugin add lean-verify@math-research
 ## 校验
 
 ```bash
-# 本地校验: marketplace + 全部插件 + SKILL frontmatter + MANIFEST + UTF-8/BOM
+# 本地校验: marketplace + 插件结构 + SKILL frontmatter/上下文预算 + Markdown fence + MANIFEST + UTF-8/BOM
 python scripts/validate_all.py
 
 # 行为冒烟: lean-verify 扫描器 + 编排层门禁
@@ -129,6 +129,7 @@ push / PR 时 GitHub Actions 自动运行以上校验与冒烟.
 
 | 版本 | 日期 | 摘要 |
 | --- | --- | --- |
+| `1.6.0` | 2026-08-24 | Codex 性能优化: 四个 SKILL 入口移出 changelog, 修复 rigorous 输出协议 fence, 增加上下文预算与 Markdown 门禁, 加入索引检索和有界工具批处理规则 |
 | `1.5.0` | 2026-08-23 | 性能可观测与示警: performance.json + baseline 对比, 成本异常上升时写 performance_alert 并向用户示警, 单次告警需复验 |
 | `1.4.0` | 2026-08-23 | 工具按问题类作用域生命周期: 类级退休/归档, 工具不删除仍可显式检索, manage_tool_lifecycle.py |
 | `1.3.0` | 2026-08-23 | 轻量 reuse 协议 (紧凑预扫描 + 最低产物集 + reuse_summary + 强制 Lean scaffold) |
@@ -142,6 +143,6 @@ push / PR 时 GitHub Actions 自动运行以上校验与冒烟.
 ## 版权与免责声明
 
 - 版权归属: 本仓库的编排结构, 提示词组织, 文档与脚本由作者整合撰写, 按 MIT 许可分发 (见 `LICENSE`); 但其中的工作方法大量参考/改编自公开研究与开源项目 (如 MMAT, LeanMarathon, MechMath, M2F, FaithSieve, FormalRx, Archon-Horizon, EvE 等), 方法本身的思想与协议不归本仓库所有.
-- 方法来源: 各 SKILL.md 的 Changelog 已附来源链接 (MMAT, LeanMarathon, MechMath, M2F, FaithSieve, FormalRx, Archon-Horizon, EvE, Blueprint v2.x 等), 引用以链接与要点转述形式呈现, 未复制受版权保护的论文正文或专有代码; 若署名或归属有误, 欢迎指正, 我们会在确认后修正.
+- 方法来源: 各 skill 的 `references/changelog.md` 已附来源链接 (MMAT, LeanMarathon, MechMath, M2F, FaithSieve, FormalRx, Archon-Horizon, EvE, Blueprint v2.x 等), 引用以链接与要点转述形式呈现, 未复制受版权保护的论文正文或专有代码; 若署名或归属有误, 欢迎指正, 我们会在确认后修正.
 - 第三方名称: 文中出现的项目, 组织与商标名称归各自所有者, 与本仓库无隶属或背书关系.
 - 使用风险: 本仓库按"现状"提供, 不保证无缺陷; 生成的研究结果, 证明, 代码与结论须由使用者独立核验后再使用, 作者不对任何直接或间接损失负责, 内容不构成专业或法律意见.

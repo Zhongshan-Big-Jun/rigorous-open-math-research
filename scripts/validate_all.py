@@ -15,6 +15,8 @@ Checks (stdlib only, no network):
      (templates with placeholders are valid by design); every YAML file parses
      when PyYAML is installed (CI installs it; locally the check is skipped with a
      note if PyYAML is missing).
+  6. Markdown fences are balanced. Skill entrypoints keep release history in a
+     disclosed reference and stay within repository-specific context budgets.
 
 Usage:
     python scripts/validate_all.py [repo-root]
@@ -44,6 +46,14 @@ TEXT_SUFFIXES = frozenset(
     {".md", ".json", ".yaml", ".yml", ".txt", ".tex", ".lean", ".py", ".csv", ".svg", ".mmd"}
 )
 TEMPLATE_TOKEN_RE = re.compile(r"\{\{[^{}]+\}\}")
+MARKDOWN_FENCE_RE = re.compile(r"^\s*(`{3,}|~{3,})(.*)$")
+INLINE_CHANGELOG_RE = re.compile(r"^## Changelog", re.MULTILINE)
+SKILL_ENTRYPOINT_BUDGET_BYTES = {
+    "rigorous-open-math-research": 15_000,
+    "manage-math-research-program": 42_000,
+    "math-research-workflow": 32_768,
+    "lean-verify": 22_000,
+}
 
 
 class Validator:
@@ -141,7 +151,8 @@ class Validator:
         self.check(skill_md.is_file(), f"skill '{skill_dir.name}' has SKILL.md")
         if not skill_md.is_file():
             return
-        lines = skill_md.read_text(encoding="utf-8").splitlines()
+        text = skill_md.read_text(encoding="utf-8")
+        lines = text.splitlines()
         self.check(len(lines) >= 3 and lines[0].strip() == "---", f"skill '{skill_dir.name}' frontmatter opens with ---")
         fm: list[str] = []
         closed = False
@@ -158,6 +169,23 @@ class Validator:
             any(line.startswith("name:") for line in fm) and "description:" in joined,
             f"skill '{skill_dir.name}' frontmatter has name/description",
         )
+        history = skill_dir / "references" / "changelog.md"
+        self.check(
+            INLINE_CHANGELOG_RE.search(text) is None,
+            f"skill '{skill_dir.name}' keeps changelog out of the entrypoint",
+        )
+        self.check(
+            "references/changelog.md" in text and history.is_file(),
+            f"skill '{skill_dir.name}' discloses release history by reference",
+        )
+        budget = SKILL_ENTRYPOINT_BUDGET_BYTES.get(skill_dir.name)
+        if budget is not None:
+            entrypoint_bytes = len(text.encode("utf-8"))
+            self.check(
+                entrypoint_bytes <= budget,
+                f"skill '{skill_dir.name}' entrypoint is within context budget "
+                f"({entrypoint_bytes}/{budget} bytes)",
+            )
         manifest = skill_dir / "MANIFEST.sha256"
         if manifest.exists():
             bad = 0
@@ -195,6 +223,47 @@ class Validator:
                     self.bad(f"file is not valid UTF-8: {p.relative_to(self.root)}")
         if bad == 0:
             self.ok("all text files are UTF-8 without BOM")
+
+    @staticmethod
+    def unclosed_markdown_fence(text: str) -> tuple[int, str] | None:
+        open_fence: tuple[str, int, int] | None = None
+        for line_number, line in enumerate(text.splitlines(), start=1):
+            match = MARKDOWN_FENCE_RE.match(line)
+            if match is None:
+                continue
+            marker = match.group(1)
+            remainder = match.group(2)
+            if open_fence is None:
+                open_fence = (marker[0], len(marker), line_number)
+                continue
+            fence_char, fence_length, _ = open_fence
+            if (
+                marker[0] == fence_char
+                and len(marker) >= fence_length
+                and not remainder.strip()
+            ):
+                open_fence = None
+        if open_fence is None:
+            return None
+        return open_fence[2], open_fence[0] * open_fence[1]
+
+    def check_markdown(self) -> None:
+        bad = 0
+        checked = 0
+        for path in sorted(self.root.rglob("*.md")):
+            if ".git" in path.parts:
+                continue
+            checked += 1
+            problem = self.unclosed_markdown_fence(path.read_text(encoding="utf-8"))
+            if problem is not None:
+                bad += 1
+                line_number, marker = problem
+                self.bad(
+                    f"unclosed Markdown fence '{marker}' at "
+                    f"{path.relative_to(self.root)}:{line_number}"
+                )
+        if bad == 0:
+            self.ok(f"all Markdown fences are balanced ({checked} files)")
 
     def check_structured(self) -> None:
         """Strict parse of YAML (when PyYAML is available) and template-aware JSON."""
@@ -237,6 +306,7 @@ class Validator:
         print(f"Validating repository: {self.root}")
         self.check_marketplace()
         self.check_utf8()
+        self.check_markdown()
         self.check_structured()
         if self.errors:
             print(f"\n{len(self.errors)} problem(s) found.")
