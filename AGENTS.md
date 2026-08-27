@@ -35,7 +35,8 @@
   需在 DSH 仓库重跑 `scripts/sync-from-parent.py` 继承.
 - **版本管理**: 修改插件元数据或 SKILL 内容后按语义化版本升级
   `version` (大版本 = 架构/能力代际, 小版本 = 功能批次, 补丁 = 纯修复);
-  不再使用 cachebuster 日期后缀. 四个插件当前统一为 `1.6.0`.
+  不再使用 cachebuster 日期后缀. rigorous/workflow 当前为 `1.7.0`,
+  manage/lean-verify 当前为 `1.6.0`.
 - **GitHub 网络**: 直连 github.com 失败时, 用本地代理 push:
   `git -c http.proxy=http://127.0.0.1:7897 push origin main` (本机实测可用).
 
@@ -407,3 +408,12 @@
   语义决策边界和 compaction 前 artifact 重建规则; 四插件统一升级 1.6.0.
 - 修复 manage/workflow plugin.json 的中文 UI mojibake; smoke_doctor 隔离
   `CODEX_HOME`, 消除本机真实 config.toml 对离线 fixture 的污染.
+### 2026-08-27 会话: benchmark 驱动的 closure-first 优化 (v1.7.0)
+- 根据 pilot v5 实测定位调度冲突: light-first 协议要求 cheap probe, 但 agent 编排仍
+  默认多路线与持续全局审计, 导致承重义务未定位前发生高成本 fan-out.
+- rigorous 新增 closure-first 协议与模板: coordinator 先直接求解并廉价证伪首个
+  承重义务, spawn 必须声明可改变的决策, 后续轮次必须返回 `decision_delta`.
+- workflow Stage B 同步门禁; 空白/重复/no-delta 返回不再购买独立全局审计;
+  load-bearing 与可复用结果仍保持独立审计. rigorous/workflow 升级 1.7.0.
+- 新增 `tests/smoke_closure_first.py`, 固定协议入口, 模板字段, workflow 继承与版本
+  绑定, 防止后续维护重新引入调度冲突.

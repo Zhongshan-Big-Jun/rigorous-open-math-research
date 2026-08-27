@@ -128,6 +128,7 @@ GitHub Actions automatically runs the validation and smoke tests on push / PR.
 
 | Version | Date | Summary |
 | --- | --- | --- |
+| `1.7.0` | 2026-08-27 | Rigorous/workflow closure-first optimization: directly attack and falsify the first load-bearing obligation before sub-agent expansion, require decision deltas, materialize artifacts lazily, and defer global audits to completion or handoff boundaries |
 | `1.6.0` | 2026-08-24 | Codex performance optimization: moved changelogs out of all four SKILL entrypoints, repaired the rigorous output-protocol fence, added context-budget and Markdown gates, and introduced indexed discovery plus bounded tool batching |
 | `1.5.0` | 2026-08-23 | Performance observability and alerts: metrics/baseline comparison, writes performance_alert and warns user on cost regressions; single-run alerts require confirmation |
 | `1.4.0` | 2026-08-23 | Class-scoped tool lifecycle: per-class retirement/archive, tools never deleted, explicit retrieval, manage_tool_lifecycle.py |

@@ -129,6 +129,7 @@ push / PR 时 GitHub Actions 自动运行以上校验与冒烟.
 
 | 版本 | 日期 | 摘要 |
 | --- | --- | --- |
+| `1.7.0` | 2026-08-27 | rigorous/workflow closure-first 性能优化: 先直接求解并证伪首个承重义务, 再按明确决策增量扩展子 agent; 延迟生成非必要工件, 全局审计移至完成或交接边界 |
 | `1.6.0` | 2026-08-24 | Codex 性能优化: 四个 SKILL 入口移出 changelog, 修复 rigorous 输出协议 fence, 增加上下文预算与 Markdown 门禁, 加入索引检索和有界工具批处理规则 |
 | `1.5.0` | 2026-08-23 | 性能可观测与示警: performance.json + baseline 对比, 成本异常上升时写 performance_alert 并向用户示警, 单次告警需复验 |
 | `1.4.0` | 2026-08-23 | 工具按问题类作用域生命周期: 类级退休/归档, 工具不删除仍可显式检索, manage_tool_lifecycle.py |
