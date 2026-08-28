@@ -417,3 +417,19 @@
   load-bearing 与可复用结果仍保持独立审计. rigorous/workflow 升级 1.7.0.
 - 新增 `tests/smoke_closure_first.py`, 固定协议入口, 模板字段, workflow 继承与版本
   绑定, 防止后续维护重新引入调度冲突.
+### 2026-08-28 会话: fast-close 结构化证书 (v1.8.0)
+- 用户在 pilot v6 三臂完成后要求继续优化插件, 并明确要求同步维护
+  `docs/pipeline-full-flow.md`. 本轮不启动新的高耗额数学 arm.
+- 根据 v1.6/v1.7/v1.8 benchmark 现象, 将 root obligations 闭合后的 Stage B 收口
+  固化为 fast-close: canonical `obligation_graph.json` 与
+  `completion_manifest.json` 冻结 contract, graph, proof, dependencies 和 root
+  anchors; 不同 reviewer 的 `completion_audit.json` 必须绑定 manifest 且零缺口 PASS.
+- 新增确定性校验和对抗 smoke: root 集合精确相等, proof anchor 实存,
+  reviewer 独立, freeze/review 时间顺序, hash/path 安全, non-PASS 拒绝,
+  同一 manifest 仅一个 completion audit, post-cutover 缺 gate 拒绝.
+- STOP 后禁止追加 Stage B 研究模型调用. 唯一可选 frontier call 使用独立
+  `frontier_upgrade.json`, 绑定原证书与 path/hash/locator 授权, sequence 1,
+  正整数预算和停止条件; 同一 base certificate 只能使用一次.
+- `docs/pipeline-full-flow.md` 已改为 closure-first 主线并纳入 smoke markers.
+  发布前门禁: validate_all 81/81, 7 CI smoke, plugin validators, skill validators
+  与 diff check 全部通过; 独立前向审查的两轮 P1 反例均已转成回归用例.

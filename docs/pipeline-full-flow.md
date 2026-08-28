@@ -10,7 +10,7 @@ all major branches and terminal states.
 ```mermaid
 flowchart LR
   A["输入数学问题"] --> S1["Stage A 任务准备<br/>manage-math-research-program"]
-  S1 --> S2["Stage B 求解<br/>rigorous-open-math-research + 多子agent"]
+  S1 --> S2["Stage B 求解<br/>closure-first + 按 decision_delta 有界派发"]
   S2 --> S3["Stage C 验证<br/>lean-verify + 双轨审计"]
   S3 --> S4["提交审计 8e<br/>manage"]
   S4 --> Z["结果汇报 / 入库"]
@@ -28,40 +28,42 @@ flowchart TD
   A3 -->|"与已有结果矛盾"| E1["报告冲突/拒绝"]
   A3 -->|"通过"| B0["Stage B: 读问题, 建定理契约"]
 
-  B0 --> B1["检索 arXiv + 网页"]
-  B1 -->|"检索有用"| B2
-  B1 -->|"检索空转"| B2x["转入深度推理（不再依赖检索）"]
-  B2x --> B2
-  B2["立即结论 (标记是否脆弱)"] --> B3["构造 toy examples / counterexamples"]
-  B3 -->|"反例成立"| E2["该声明被否证<br/>REFUTED / COUNTEREXAMPLE"]
-  B3 -->|"未否证"| B4["提出多个分解计划"]
-  B4 --> B5["逐计划 direct proving"]
-  B5 -->|"某计划全解"| P0["组装 Blueprint"]
-  B5 -->|"卡住"| B6["对该子目标立即构造反例"]
-  B5 -->|"全败"| B7["递归并行子agent（每计划一个）"]
-  B7 -->|"任一成功"| P0
-  B7 -->|"全败"| B8["identify-key-failures<br/>综合共同卡点 → 下一代计划"]
-  B8 --> B4
+  B0 --> B1["紧凑预扫描<br/>research_map + tools + 最新 handoff"]
+  B1 --> B2["closure-first gate<br/>定位首个 open load-bearing obligation"]
+  B2 --> B3["coordinator direct attempt<br/>+ cheapest falsification probe"]
+  B3 -->|"FALSIFIED"| E2["该声明被否证<br/>REFUTED / COUNTEREXAMPLE"]
+  B3 -->|"CLOSED"| B4{"全部 root obligations<br/>是否 CLOSED?"}
+  B4 -->|"否"| B2
+  B3 -->|"OPEN_EXACT_GAP"| B5{"是否存在可改变决策的<br/>decision_delta?"}
+  B5 -->|"否"| BP["严格部分结果 / 精确缺口<br/>停止或 handoff"]
+  B5 -->|"是"| B6["有界 Worker / 子 agent<br/>只领取明确 obligation"]
+  B6 -->|"有效 decision_delta"| B2
+  B6 -->|"空白/重复/no-delta"| BP
 
-  P0 --> V1["调用非正式 verifier"]
-  V1 -->|"correct（零错误零缺口）"| C0
-  V1 -->|"wrong"| V1x["按 repair_hints 修订"] --> B2
+  B4 -->|"是"| F0["写 completion_manifest.json<br/>绑定 canonical obligation_graph.json + contract/proof/dependencies"]
+  F0 --> V1["fresh independent package audit<br/>写 completion_audit.json"]
+  V1 -->|"non-PASS"| V1x["只回灌精确 gaps"] --> B2
+  V1 -->|"PASS + gaps=[]"| FC["Fast-close STOP<br/>禁止后续 Stage B 研究模型调用"]
+  FC --> FU{"是否有单次 frontier 授权?"}
+  FU -->|"无"| C0
+  FU -->|"有"| FUR["frontier_upgrade.json<br/>sequence=1 + 绑定证书 + 正整数预算 + stop condition"]
+  FUR --> FUC["执行一次有界 frontier call<br/>root proof 保持冻结"] --> C0
 
-  B5 -.->|"预算检查（每步边界）"| BK
+  B3 -.->|"预算检查（每步边界）"| BK
+  B6 -.->|"预算检查"| BK
   BK["预算检查"]
-  BK -->|"足够"| B,继续
+  BK -->|"足够"| B2
   BK -->|"接近完成但不够"| B9["request_extension（请求追加）"]
   BK -->|"耗尽"| B10["PAUSED_BUDGET: 保存whiteboard/repo/history/facts + 写handoff<br/>后续可恢复"]
 
-  C0["Stage C: 双重审计"]
-  C0 --> C1["① 非正式审计（Danus式）<br/>零错误零缺口"]
-  C1 -->|"失败"| C1x["修订证明"] --> B2
-  C1 -->|"通过"| C2["② Lean scaffold (Tier 0) 锁陈述"]
-  C2 --> C3["③ Lean 完整验证 (Tier 2, 完成标签)"]
-  C3 -->|"通过"| C4["④ 论文级再验证"]
+  C0["Stage C: 执行任务包中的 formalization decision"]
+  C0 --> C2["① Lean scaffold (Tier 0) 锁陈述"]
+  C2 --> C3["② Lean 完整验证 (Tier 2, 完成标签)"]
+  C3 -->|"通过"| C4["③ statement fidelity + 论文级再验证"]
   C3 -->|"失败"| C3x["修 Lean (statement freeze / sorrifier)"] --> C2
   C4 -->|"通过"| D0["提交审计 8e"]
-  C4 -->|"失败"| C4x["修论文，不静默跳过"]
+  C4 -->|"证明层失败"| C4x["回 Stage B 修自然语言证明"] --> B2
+  C4 -->|"形式化层失败"| C3x
 
   D0["仓库比对"]
   D0 -->|"重复"| E3["REJECT"]
@@ -75,17 +77,37 @@ flowchart TD
 | 位置 | 分支 | 结果 |
 | --- | --- | --- |
 | B0 新颖性 | 已解决 / 矛盾 / 通过 | 停止 / 拒绝 / 继续 |
-| 检索 | 有用 / 空转 | 继续 / 转深度推理 |
-| 反例 | 成立 / 未成立 | 否证 / 继续 |
-| 分解 | 某计划解 / 全败+递归 | 组装 / 失败综合下一轮 |
+| closure-first | FALSIFIED / CLOSED / OPEN_EXACT_GAP | 否证 / 下一个 root / 精确缺口 |
+| spawn gate | 有 decision_delta / 无 decision_delta | 有界派发 / 部分结果或 handoff |
+| completion audit | PASS 且零缺口 / non-PASS | STOP / 仅回灌精确 gaps |
+| STOP 后 | 无授权 / 单次有效授权 | 结束 Stage B / 一次有界 frontier call |
 | 预算 | 够 / 追加 / 耗尽 | 继续 / 请求追加 / PAUSED_BUDGET |
-| 非正式验证 | correct / wrong | Stage C / 修订 |
 | Lean 验证 | 通过 / 失败 | 形式化通过 / 修 Lean 或回 NL |
 | 论文级验证 | 通过 / 失败 | 交付 / 修论文 |
 | 8e 比对 | 重复 / 矛盾 / 干净 | REJECT / 停止 / 入库 |
 
+## Fast-close certificate
+
+`closure_gate.md` 只保存人类可读摘要与两个 hash binding. `STOP` 的确定性依据在:
+
+- `completion_manifest.json`: 绑定 contract, canonical `obligation_graph.json`,
+  candidate proof, dependencies, author 与 freeze timestamp. Manifest 的 root
+  array 必须与 graph 完全相等, 每个 proof anchor 必须真实存在于冻结证明中.
+- `completion_audit.json`: 由不同 reviewer 生成, 绑定 completion manifest hash,
+  且必须满足 `review_type=fresh_independent_package`, `verdict=PASS`,
+  `load_bearing_gaps=[]`, review time 不早于 freeze time.
+- 可选 `frontier_upgrade.json`: 不改变 `STOP`, 只能 `sequence=1`, 必须绑定上面两个
+  证书, 以 path/hash/locator 绑定用户请求或 pre-existing frontier, 并给出正整数
+  预算与精确停止条件. 同一 base manifest/audit pair 只能出现一次.
+
+`validate_pipeline.py` 会复算全部文件 hash, 验证 root closure, reviewer independence,
+timestamps 与 frontier budget. 2026-08-29 起, 具有标准日期 run ID 的 Stage B run
+若存在 `research_ledger.md` 但没有 `closure_gate.md`, 门禁失败. 旧 run 不追溯改写.
+
 ## Terminal states
 
+- `Fast-close decision: STOP` — Stage B 已由结构化证书闭合; 仅允许确定性边界操作,
+  任务包已预先要求的 Stage C, 或一次单独授权的 bounded frontier call.
 - `FORMALLY_VERIFIED_PROOF` — 完整 + 机器验证
 - `INDEPENDENTLY_AUDITED_PROOF` — 独立审计通过
 - `CANDIDATE_COMPLETE_PROOF` — 候选完整证明
@@ -140,49 +162,49 @@ Stage A · 任务准备 (manage-math-research-program)
         └─ 通过 ─────────────→ 进入 Stage B
    │
    ▼
-Stage B · 求解 (rigorous-open-math-research + 多子 agent)
+Stage B · 求解 (rigorous-open-math-research; closure-first, 有条件子 agent)
    ├─ 读问题 → 建定理契约 / obligation graph
    ├─ [实时记录] 新路线/新工具出现 → 立即写入 research_map + tools/ 方法库
-   ├─ 检索 (arXiv 定理搜索 + 网页)
-   │    ├─ 检索有用 → 记录来源
-   │    └─ 检索空转 → 转入深度推理 (不再依赖检索)
-   ├─ 立即结论 (标记是否脆弱)
-   │    └─ 脆弱 → 先构造反例
-   ├─ 构造 toy examples / counterexamples
-   │    ├─ [实时记录] 反例入库 (可复用反例库)
-   │    └─ 反例成立 → 该声明被否证 → REFUTED / 分支死亡
-   ├─ 提出多个分解计划 (materially different)
-   │    ├─ [实时记录] 分解计划与失败综合写进 research_map
-   │    ├─ 逐计划 direct proving
-   │    │    ├─ 某计划全解 → 组装 Blueprint
-   │    │    ├─ 卡住 → 对该子目标立即构造反例
-   │    │    └─ 全败 → 递归并行子 agent (每计划一个)
-   │    │         ├─ 任一成功 → 组装 Blueprint
-   │    │         └─ 全败 → identify-key-failures
-   │    │              └─ 综合共同卡点 → 下一代计划 → 回到「提出计划」
-   │    └─ 预算检查 (每步边界)
-   │         ├─ 足够 → 继续
-   │         ├─ 接近完成但不够 → request_extension (请求追加)
-   │         └─ 耗尽 → PAUSED_BUDGET: 保存 whiteboard/repo/history/facts
-   │              + 写 handoff → 后续可恢复
+   ├─ 紧凑预扫描: research_map / tools / LEMMA_INDEX / 最新 handoff
+   ├─ closure-first: 定位首个 open load-bearing obligation
+   ├─ coordinator direct attempt + cheapest falsification probe
+   │    ├─ FALSIFIED → REFUTED / COUNTEREXAMPLE
+   │    ├─ CLOSED → 继续下一个 root obligation
+   │    └─ OPEN_EXACT_GAP
+   │         ├─ 无 decision_delta → 严格部分结果 / handoff
+   │         └─ 有 decision_delta → 有界 Worker / 子 agent
+   │              ├─ 有效增量 → 合并后回到 closure-first
+   │              └─ 空白/重复/no-delta → 不再购买全局审计, 停止或 handoff
+   ├─ 预算检查 (每步边界)
+   │    ├─ 足够 → 继续
+   │    ├─ 接近完成但不够 → request_extension (请求追加)
+   │    └─ 耗尽 → PAUSED_BUDGET: 保存 whiteboard/repo/history/facts
+   │         + 写 handoff → 后续可恢复
+   └─ 全部 root obligations CLOSED
+        ├─ 写 canonical obligation_graph.json
+        ├─ 写 completion_manifest.json 并冻结 hashes/root anchors
+        ├─ fresh independent reviewer 写 completion_audit.json
+        ├─ non-PASS → 只回灌精确 gaps
+        └─ PASS + load_bearing_gaps=[] → Fast-close STOP
+             ├─ 不再启动 Stage B 研究模型调用
+             ├─ 只完成确定性 boundary records
+             └─ 可选一次 frontier_upgrade.json 授权调用
+                  ├─ sequence=1 + 原证书 hash bindings
+                  ├─ user request / pre-existing frontier 引用
+                  └─ 正整数预算 + 精确 stop condition
    │
-   ▼ (Blueprint 组装完成)
-调用非正式 verifier
-   ├─ correct (零错误零缺口) → 进入 Stage C
-   └─ wrong → 按 repair_hints 修订 → 回到 Stage B
+   ▼ (Stage B STOP; root proof 已冻结)
+执行任务包中已记录的 formalization decision
    │
    ▼
 Stage C · 验证 (lean-verify + 双轨审计)
-   ├─ ① 非正式审计 (Danus 式)
-   │    ├─ 失败 → 修订证明 → 回 Stage B / 本地修订
-   │    └─ 通过
-   ├─ ② Lean scaffold (Tier 0) → 锁陈述、搭骨架
+   ├─ ① Lean scaffold (Tier 0) → 锁陈述、搭骨架
    │    └─ [实时记录] scaffold 登记到 STATUS / formalization_progress
-   ├─ ③ Lean 完整验证 (Tier 2)
+   ├─ ② Lean 完整验证 (Tier 2)
    │    ├─ 通过
    │    └─ 失败 → 修 Lean (statement freeze / sorrifier)
    │         └─ 若证明本身有缺陷 → 回自然语言证明
-   ├─ ④ 论文级再验证 (如有 paper)
+   ├─ ③ statement fidelity + 论文级再验证 (如有 paper)
    │    ├─ 整篇 correct → 交付
    │    └─ 失败 → 修论文，不静默跳过
    │
@@ -208,6 +230,7 @@ Stage C · 验证 (lean-verify + 双轨审计)
 All possible terminal states:
 
 ```text
+Fast-close decision: STOP (Stage B certificate boundary)
 FORMALLY_VERIFIED_PROOF / INDEPENDENTLY_AUDITED_PROOF
 CANDIDATE_COMPLETE_PROOF        RIGOROUS_PARTIAL_RESULT
 COUNTEREXAMPLE_CANDIDATE/REFUTED  PAUSED_BUDGET (可恢复)

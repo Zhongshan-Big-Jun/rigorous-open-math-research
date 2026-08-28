@@ -52,6 +52,14 @@ arXiv:2607.09217): 求解主导者 (Planner) 维护每 run 一个紧凑 `whitebo
 后才入库, `lean_search` 先查 Mathlib 既有声明, `lean_store` 累积已验证上下文.
 2026-08-14 之后开始的求解 run 必须携带 whiteboard, 门禁硬校验.
 
+单目标 run 在全部 root obligations 闭合后进入 fast-close certificate: 用
+`completion_manifest.json` 冻结 contract, obligation graph, candidate proof,
+root anchors, dependencies 与 hashes, 再由不同 reviewer 写 hash-bound
+`completion_audit.json`. 零缺口 `PASS` 后进入 `STOP`: 除一个单独授权的 frontier
+call 外不再允许 Stage B 研究模型调用, 只完成确定性 Stage B 边界记录. 任务契约中
+已要求的 Stage C 形式化/验证是后续独立阶段, 不属于 post-close bonus. 该可选调用必须写
+`frontier_upgrade.json`, 绑定原证书, 使用 sequence 1, 正整数预算和精确停止条件.
+
 工作中断 (预算耗尽/用户叫停/环境失败) 时, 中断方按
 `assets/interruption-handoff.template.md` 写交接记录 (含已尝试路线与结果
 标记、未完成义务、精确下一步), 后续 agent 依记录续接, 不得无新理由重跑已
