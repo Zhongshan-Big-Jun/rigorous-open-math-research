@@ -10,8 +10,10 @@
 - `skills/math-research-workflow/references/workflow-design.md` -- 设计文档 (角色/交接/并行/失败处理)
 - `assets/pipeline-handoff.template.md` -- 阶段交接记录模板
 - `assets/interruption-handoff.template.md` -- 中断交接记录模板 (已试路线/未完成义务/下一步动作, 供后续 agent 续接)
+- `assets/interruption-state.template.json` -- 配额边界语义状态模板 (义务/in-flight/do-not-repeat/计分累计量/恢复动作)
 - `assets/whiteboard.template.md` -- 求解循环白板模板 (当前计划/路线历史/待回想法/未完成义务/工件索引)
 - `scripts/validate_pipeline.py` -- 确定性阶段门禁 (任务包字段/哈希绑定/运行清单/数值证据纪律/git 清洁检查)
+- `scripts/checkpoint_resume.py` -- 不可变 checkpoint 的 seal/verify 与 resume receipt 工具
 - `scripts/doctor.py` -- 环境自检 (插件与依赖 skill 是否安装启用, 市场是否注册, config.toml 启用条目是否完好)
 
 ## 依赖的 skill
@@ -60,10 +62,13 @@ call 外不再允许 Stage B 研究模型调用, 只完成确定性 Stage B 边�
 已要求的 Stage C 形式化/验证是后续独立阶段, 不属于 post-close bonus. 该可选调用必须写
 `frontier_upgrade.json`, 绑定原证书, 使用 sequence 1, 正整数预算和精确停止条件.
 
-工作中断 (预算耗尽/用户叫停/环境失败) 时, 中断方按
-`assets/interruption-handoff.template.md` 写交接记录 (含已尝试路线与结果
-标记、未完成义务、精确下一步), 后续 agent 依记录续接, 不得无新理由重跑已
-失败路线; 门禁校验交接记录字段完整性.
+工作中断 (预算耗尽/用户叫停/环境失败) 时, 中断方先写结构化
+`interruption_state-NN.json`, 再用 `checkpoint_resume.py seal` 封存不可变
+checkpoint, 并在 handoff 中绑定两者. 恢复前 `verify` 必须返回 `READY`, 然后
+resume receipt 锁定最小读取集和首个动作; 未决 worker 先核对, 已完成/已失败动作
+不得因额度恢复而重跑. 计分实验绑定 prompt/harness/source/workspace/hidden gold,
+并跨 segment 累加原 wall/response/tool/token 指标. 详见
+`skills/math-research-workflow/references/quota-interruption-recovery.md`.
 
 ## 常见问题: 插件"消失"或未启用
 

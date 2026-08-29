@@ -81,7 +81,8 @@ or manually copy the corresponding skill directories to `~/.codex/skills/` (Wind
 │   ├── math-research-workflow/           # orchestration plugin (flagship): three-stage pipeline orchestration
 │   │   ├── .codex-plugin/plugin.json
 │   │   ├── agents/openai.yaml
-│   │   ├── assets/pipeline-handoff.template.md
+│   │   ├── assets/                     # handoff/whiteboard/interruption-state templates
+│   │   ├── scripts/checkpoint_resume.py # deterministic quota checkpoint/resume tool
 │   │   └── skills/math-research-workflow/ (SKILL.md + references/workflow-design.md)
 │   ├── rigorous-open-math-research/      # solving/execution layer
 │   ├── manage-math-research-program/     # project management layer
@@ -103,6 +104,7 @@ python scripts/validate_all.py
 # Behavior smoke: lean-verify scanner + pipeline gate
 python tests/smoke_lean_verify.py
 python tests/smoke_pipeline_gate.py
+python tests/smoke_checkpoint_resume.py
 ```
 
 GitHub Actions automatically runs the validation and smoke tests on push / PR.
@@ -128,6 +130,7 @@ GitHub Actions automatically runs the validation and smoke tests on push / PR.
 
 | Version | Date | Summary |
 | --- | --- | --- |
+| `1.9.0` | 2026-08-29 | Rigorous/workflow quota recovery: structure completed/open/in-flight/do-not-repeat state, recheck every hash before resume, bind each segment to one predecessor receipt, and gate the minimal read set, first action, cumulative scored metrics, and reviewed status transitions |
 | `1.8.0` | 2026-08-28 | Rigorous/workflow fast-close certificate: structurally freeze the contract, obligation graph, proof, root anchors, and dependencies; a hash-bound independent audit triggers deterministic STOP, while one frontier upgrade must bind the certificate, authorization, positive budget, and stop condition |
 | `1.7.0` | 2026-08-27 | Rigorous/workflow closure-first optimization: directly attack and falsify the first load-bearing obligation before sub-agent expansion, require decision deltas, materialize artifacts lazily, and defer global audits to completion or handoff boundaries |
 | `1.6.0` | 2026-08-24 | Codex performance optimization: moved changelogs out of all four SKILL entrypoints, repaired the rigorous output-protocol fence, added context-budget and Markdown gates, and introduced indexed discovery plus bounded tool batching |

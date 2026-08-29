@@ -35,7 +35,7 @@
   需在 DSH 仓库重跑 `scripts/sync-from-parent.py` 继承.
 - **版本管理**: 修改插件元数据或 SKILL 内容后按语义化版本升级
   `version` (大版本 = 架构/能力代际, 小版本 = 功能批次, 补丁 = 纯修复);
-  不再使用 cachebuster 日期后缀. rigorous/workflow 当前为 `1.7.0`,
+  不再使用 cachebuster 日期后缀. rigorous/workflow 当前为 `1.9.0`,
   manage/lean-verify 当前为 `1.6.0`.
 - **GitHub 网络**: 直连 github.com 失败时, 用本地代理 push:
   `git -c http.proxy=http://127.0.0.1:7897 push origin main` (本机实测可用).
@@ -433,3 +433,27 @@
 - `docs/pipeline-full-flow.md` 已改为 closure-first 主线并纳入 smoke markers.
   发布前门禁: validate_all 81/81, 7 CI smoke, plugin validators, skill validators
   与 diff check 全部通过; 独立前向审查的两轮 P1 反例均已转成回归用例.
+### 2026-08-29 会话: quota-safe interruption recovery (v1.9.0)
+- 用户要求在五小时额度中断前建立低开销恢复机制, 并继续插件优化.
+  本轮不重跑数学 benchmark arm, 避免将发布开销混入计分实验.
+- 新增确定性 `scripts/checkpoint_resume.py` 和
+  `assets/interruption-state.template.json`: 通过 canonical state, immutable checkpoint,
+  unique resume receipt 与 contiguous predecessor chain 保存数学前沿,
+  do-not-repeat 集合, exact action ID 和最小读取集.
+- 计分实验续段必须保持 arm/task/workspace/prompt/harness/source/gold 绑定,
+  有限非负的累计 response/tool/token/wall/cost 指标, 且不得丢失已完成义务.
+  结果状态升级需新证据, 新审计和显式 transition.
+- 在途 worker 不得静默消失. 恢复首动作必须为 `RECONCILE_INFLIGHT`,
+  后续状态通过 `inflight_reconciliation` 和 hash-bound evidence 记录
+  `INGESTED`, `INTERRUPTED` 或 `NO_RETURN`.
+- 维护 `docs/pipeline-full-flow.md`, workflow/rigorous 入口, 设计文档,
+  handoff 模板, changelog, README 和 CI. 新增对抗
+  `tests/smoke_checkpoint_resume.py`, 覆盖跨段指标重置, arm 更换,
+  双 receipt, transcript 回放, NaN, 时间倒置, 在途 worker 丢失,
+  verify/write TOCTOU, 隔段旧 proof/audit 回放, 旧字节改名和 proof/audit 同工件别名.
+- 当前门禁: validate_all 81/81, 8 CI smoke, 2 plugin validators,
+  2 skill validators, Python compile 与 `git diff --check` 全部通过.
+  Windows 上 skill quick validator 显式使用 `PYTHONUTF8=1` 避免 GBK 解码污染.
+- 独立前向审查逐轮构造的 predecessor, receipt, metric, action,
+  read-set, worker session, TOCTOU 与 lineage alias 反例均已转成回归;
+  最终复审 PASS, 无新 P1/P2.

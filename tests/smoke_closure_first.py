@@ -121,8 +121,8 @@ def main() -> None:
 	)
 	for plugin in (RIGOROUS, WORKFLOW):
 		manifest = json.loads((plugin / ".codex-plugin" / "plugin.json").read_text(encoding="utf-8"))
-		if manifest["version"] != "1.8.0":
-			raise AssertionError(f"{manifest['name']} version is not 1.8.0")
+		if manifest["version"] != "1.9.0":
+			raise AssertionError(f"{manifest['name']} version is not 1.9.0")
 
 	good = validate_fixture(FAST_CLOSE_GOOD)
 	if good.returncode != 0:
