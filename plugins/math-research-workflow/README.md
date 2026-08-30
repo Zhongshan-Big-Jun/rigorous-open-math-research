@@ -44,6 +44,16 @@ python plugins/math-research-workflow/scripts/doctor.py
 python plugins/math-research-workflow/scripts/validate_pipeline.py --project .
 ```
 
+若项目含 `blueprint-project.json`, 先从当前启用的
+`manage-math-research-program` 插件根解析 `runtime/blueprintctl.py`, 并只运行一次:
+
+```text
+py -3 <active-manage-plugin>/runtime/blueprintctl.py ensure --project .
+```
+
+后续 Blueprint validate/query/validate-submission/integrate 全部走该入口. 禁止运行或
+复制项目内 `tools/*.py`; artifact 由 layout/config 指定的独立根解析.
+
 若新实验是旧仓库内的自包含逻辑项目, 可从物理仓库根执行:
 
 ```text

@@ -35,8 +35,8 @@
   需在 DSH 仓库重跑 `scripts/sync-from-parent.py` 继承.
 - **版本管理**: 修改插件元数据或 SKILL 内容后按语义化版本升级
   `version` (大版本 = 架构/能力代际, 小版本 = 功能批次, 补丁 = 纯修复);
-  不再使用 cachebuster 日期后缀. rigorous 当前为 `1.10.0`, workflow 当前为 `1.13.0`,
-  manage/lean-verify 当前为 `1.6.0`.
+  不再使用 cachebuster 日期后缀. rigorous 当前为 `1.11.0`, workflow 当前为 `1.14.0`,
+  manage 当前为 `1.7.0`, lean-verify 当前为 `1.6.0`.
 - **GitHub 网络**: 直连 github.com 失败时, 用本地代理 push:
   `git -c http.proxy=http://127.0.0.1:7897 push origin main` (本机实测可用).
 
@@ -514,3 +514,19 @@
   关闭 overwrite TOCTOU.
 - workflow SKILL 仅 27,657/32,768 bytes; 详细语义在按需 handoff reference.
   validate_all 81/81, 13 smoke, plugin/skill validator, py_compile 和 diff check PASS.
+### 2026-08-31 会话: Blueprint v2.2 active runtime gateway (v1.14.0)
+- manage v1.7.0 新增 plugin-owned `runtime/blueprintctl.py`. 对存在
+  `blueprint-project.json` 的项目先 `ensure` 一次, 绑定 runtime/layout/config,
+  后续 canonical validate/query/proposal validation/integration 只走该入口.
+- 修复内部 query 的跨根 artifact 解析和 receiver 对 project-local validator 的
+  隐式依赖. BVE 精确隔离副本的 canonical validate, snapshot 和 artifact hash
+  查询均 PASS, 未执行或复制项目内 Python tools.
+- rigorous v1.11.0 的 Blueprint retrieval reference 同步切换到 active gateway,
+  防止 Stage B 绕过 Stage A 的 layout/runtime 绑定.
+- 新增 `tests/smoke_blueprint_gateway.py`, 覆盖 pre-ensure fail-closed,
+  ensure 幂等, poisoned project-local validator, external artifact root,
+  no-op proposal validation, layout escape 和 config mismatch.
+- 维护 manage/workflow SKILL 与 changelog, README 中英版,
+  `docs/pipeline-full-flow.md` 和 CI; workflow 升级 1.14.0.
+- 父仓库门禁: validate_all 81/81, 14 smoke, 3 plugin validators,
+  3 skill validators, py_compile 与 diff check 全部 PASS.

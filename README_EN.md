@@ -29,7 +29,7 @@ flowchart LR
 | --- | --- | --- |
 | `math-research-workflow` | Integrated workflow orchestration | Orchestration layer (flagship): manage-research-verify three-stage pipeline, sub-agent division of labor, handoff contracts, stage-boundary git sync |
 | `rigorous-open-math-research` | Rigorous open mathematics research | Solving/execution layer: theorem contracts, multi-route search, research ledger, adversarial audit, literature verification (citations must include links and must not be fabricated), sub-agent division of labor |
-| `manage-math-research-program` | Mathematics research program management | Project management layer: workspace initialization, literature curation, open-problem portfolios, tool library, task-package dispatch, accepted-knowledge pipeline |
+| `manage-math-research-program` | Mathematics research program management | Project management layer: workspace initialization, literature curation, open-problem portfolios, tool library, task-package dispatch, accepted-knowledge pipeline, and plugin-owned Blueprint gateway |
 | `lean-verify` | Lean 4 formal verification | Verification layer: statement-fidelity audit, machine verification (lake build + sorry/axiom scan), obligation-level independent audit, hash-bound run manifests |
 
 Dependency direction (one-way, no reverse calls):
@@ -107,6 +107,7 @@ python tests/smoke_pipeline_gate.py
 python tests/smoke_scoped_pipeline.py
 python tests/smoke_formalization_handoff.py
 python tests/smoke_checkpoint_resume.py
+python tests/smoke_blueprint_gateway.py
 ```
 
 GitHub Actions automatically runs the validation and smoke tests on push / PR.
@@ -132,6 +133,7 @@ GitHub Actions automatically runs the validation and smoke tests on push / PR.
 
 | Version | Date | Summary |
 | --- | --- | --- |
+| `1.14.0` | 2026-08-31 | Blueprint v2.2 active runtime gateway: manage v1.7.0 adds `runtime/blueprintctl.py`, rigorous v1.11.0 and workflow share one ensure-once layout/config binding, canonical validation/query/proposal/integration use plugin-owned code, cross-root artifacts resolve correctly, and project-local tool injection is rejected |
 | `1.13.0` | 2026-08-30 | Workflow canonical formalization consumption: `consume/verify-consumption` writes one immutable sibling record after an exact-copy receipt is `READY`, explicitly preserves mathematical and verification status, permits legitimate later Stage C destination-scaffold evolution, and uses exclusive creation to close overwrite TOCTOU |
 | `1.12.0` | 2026-08-30 | Workflow cross-root formalization handoff: an immutable exact-copy Tier 0 scaffold receipt binds the Stage B scope and Stage C Lean project identities, source manifest/proof/scaffold, destination copy, and durable registration anchors; full requested packages remain unsupported and no FORMALLY_VERIFIED promotion occurs |
 | `1.11.0` | 2026-08-30 | Workflow scoped gate: `--scope` treats a self-contained nested directory as a complete logical project and confines discovery plus bindings to it; legacy debt outside the scope is excluded, and the result explicitly cannot be reported as a whole-project PASS |

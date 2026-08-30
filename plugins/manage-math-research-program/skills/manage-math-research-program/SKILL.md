@@ -90,6 +90,26 @@ Read only the references needed for the current operation:
 
 Use templates from `assets/`. Use scripts only for deterministic repository initialization or validation.
 
+## Blueprint v2.2 runtime boundary
+
+When the project root contains `blueprint-project.json`, that marker is the
+physical-layout authority. Resolve the active plugin root from this loaded
+`SKILL.md` path and use only `<plugin-root>/runtime/blueprintctl.py` for
+canonical validation, retrieval, proposal validation, and integration.
+
+Run `ensure --project <PROJECT_ROOT>` exactly once after loading or updating
+the active plugin. The disposable state binds the project identity and root,
+the runtime-code hash, layout marker, and Blueprint configuration. Every later
+gateway operation fails closed if this binding is missing or stale. Never run
+or copy a project-local `tools/*.py` implementation. The
+gateway resolves canonical files under the configured Blueprint root,
+artifacts under the configured artifact root, and disposable state under the
+configured work root.
+
+Projects without `blueprint-project.json` remain on the documented legacy
+`knowledge/` layout until they receive an explicit, receipt-backed migration.
+Do not infer or perform that migration automatically.
+
 # Workflow
 
 ## 0. Automatic git repository sync
@@ -253,11 +273,11 @@ If an upstream artifact is missing or its status is unclear, record that fact. D
 When the user authorizes acceptance and an upstream run produced reusable knowledge, promote it through the accepted-knowledge pipeline instead of ad-hoc copying:
 
 1. Classify the knowledge with one epistemic type: generic roles (`basic_assumption`, `definition_contract`, `theory_from_assumptions`, `numerical_method`, `numerical_result`, `numerical_experiment_design`, `theory_from_numerics`, `superseded`) plus mathematics roles (`problem_hypothesis`, `external_mathematical_result`, `mathematical_claim`, `mathematical_inference`, `verified_counterexample`, `research_goal`, `proof_obligation`, `research_attempt`). Claims carry a `truth_status`; inferences carry a `proof_status`. Only `proved` inferences propagate conclusions.
-2. Freeze the candidate as `knowledge/submissions/<SUBMISSION_ID>/proposal.json` with exact base snapshot hashes and complete write/read sets. A basic assumption must carry exact literature sources, stable identifiers, locators, and a consensus explanation. A proved inference must bind a content-hashed proof package with `unresolved_obligations: []`; a refutation binds a refutation package; a verified counterexample binds a certificate. Never invent a citation or a conclusion.
-3. Validate deterministically with `python knowledge/tools/receive_blueprint.py --blueprint-root knowledge --submission submissions/<SUBMISSION_ID> --validate-only --actor-agent-id <AGENT_ID>`. Never send a proposal to review unless `valid` is true.
+2. Freeze the candidate under the configured Blueprint submissions directory as `<SUBMISSION_ID>/proposal.json` with exact base snapshot hashes and complete write/read sets. A basic assumption must carry exact literature sources, stable identifiers, locators, and a consensus explanation. A proved inference must bind a content-hashed proof package with `unresolved_obligations: []`; a refutation binds a refutation package; a verified counterexample binds a certificate. Never invent a citation or a conclusion.
+3. Validate deterministically with `py -3 <plugin-root>/runtime/blueprintctl.py validate-submission --project <PROJECT_ROOT> --submission submissions/<SUBMISSION_ID> --actor-agent-id <AGENT_ID>`. Never send a proposal to review unless `valid` is true.
 4. Have an independent reviewer (reviewer ID must differ from the author) write an immutable `review.json` that binds the proposal and validation hashes. Acceptance review checks evidence completeness, classification, hash binding, and mathematics coverage only; it does not re-audit the proof. A proof approval must record passing definition, logic, boundary, and adversarial audits bound to the exact proof-package hash.
-5. Integrate only through the deterministic receiver with `python knowledge/tools/receive_blueprint.py --blueprint-root knowledge --submission submissions/<SUBMISSION_ID> --integrator-agent-id <AGENT_ID>`. Never edit `knowledge/blueprint.json` or `knowledge/evidence_inventory.csv` by hand.
-6. Record the resulting snapshot hashes from `python knowledge/tools/blueprint_query.py snapshot` in the checkpoint and `state/current.json`. For mathematics, verify the post-merge state with `python knowledge/tools/blueprint_query.py math-closure --context <CONTEXT_ID>`; keep transaction status separate from research status.
+5. Integrate only through `py -3 <plugin-root>/runtime/blueprintctl.py integrate --project <PROJECT_ROOT> --submission submissions/<SUBMISSION_ID> --integrator-agent-id <AGENT_ID>`. Never edit the configured canonical graph or evidence inventory by hand.
+6. Record the resulting snapshot hashes from `py -3 <plugin-root>/runtime/blueprintctl.py query --project <PROJECT_ROOT> snapshot` in the checkpoint and `state/current.json`. For mathematics, verify the post-merge state with the same gateway and `query ... math-closure --context <CONTEXT_ID>`; keep transaction status separate from research status.
 7. Mirror the epistemic class into the paper record, tool entry, or project result record, and link the receipt path. Bind future task packets and research sub-agents to the snapshot; on `SNAPSHOT_MISMATCH`, discard accumulated retrieval and re-fetch. A merged partial lemma is `transaction_status: merged` with `research_status: partial_progress`, never `solved`.
 8. **Evidence boundary.** Chat output, plain stdout, and interactive-terminal output never become formal evidence by themselves; only artifacts of a controlled run (hash-bound inputs, frozen environment) that pass independent review may be promoted. Formal computations should bind an immutable code/data snapshot and a fixed execution environment; a claim resting on an uncontrolled run is not accepted knowledge. (Distilled from dsh-scholar: https://github.com/lzszq/dsh-scholar.)
 
@@ -456,7 +476,7 @@ Before closing a stage, rebuild the program state from files only (indexes, `sta
 7. Prefer one canonical record with aliases and version links over duplicate copies.
 8. Every cited or registered paper must carry a stable verifiable link (DOI, arXiv, or permanent URL). Never fabricate a paper, a citation, a theorem, or a conclusion; any statement about what a paper proves must be checked against the actual source and version.
 9. Classify reusable knowledge with the accepted epistemic taxonomy (generic roles plus `problem_hypothesis`, `external_mathematical_result`, `mathematical_claim`, `mathematical_inference`, `verified_counterexample`, `research_goal`, `proof_obligation`, and `research_attempt`) and record the class in paper records, tool entries, and result records.
-10. The canonical accepted-knowledge base changes only through the deterministic receiver. Never edit `knowledge/blueprint.json`, `knowledge/evidence_inventory.csv`, or any submission artifact by hand.
+10. The canonical accepted-knowledge base changes only through the deterministic receiver behind the active Blueprint gateway. Never edit the configured canonical graph, evidence inventory, or any submission artifact by hand.
 11. Bind task packets and research sub-agents to a knowledge snapshot hash. A snapshot mismatch invalidates all accumulated retrieval.
 12. Keep transaction status separate from research status. A merged partial lemma means the record was accepted, not that the goal is solved; report `research_status` such as `partial_progress` until the target belongs to the post-merge trusted closure.
 13. Every Lean-verified theorem must ship a human-readable LaTeX proof under `papers/` (English arXiv-style version + Chinese companion) bound to the machine verification as described in workflow 8c; no formally verified result is complete without it.

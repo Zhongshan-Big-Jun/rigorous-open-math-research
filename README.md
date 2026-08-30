@@ -30,7 +30,7 @@ flowchart LR
 | --- | --- | --- |
 | `math-research-workflow` | 一体化工作流编排 | 编排层 (旗舰): 管理-研究-验证三阶段流水线, 子 agent 分工, 交接契约, 阶段边界 git 同步 |
 | `rigorous-open-math-research` | 严格开放数学研究 | 求解执行层: 定理契约, 多路线搜索, 研究台账, 对抗性审计, 文献核验 (引用必须附链接且不得编造), 子 agent 分工 |
-| `manage-math-research-program` | 数学研究项目管理 | 项目管理层: 工作区初始化, 文献策展, 开放问题组合, 工具库, 任务包派发, 已接受知识流水线 |
+| `manage-math-research-program` | 数学研究项目管理 | 项目管理层: 工作区初始化, 文献策展, 开放问题组合, 工具库, 任务包派发, 已接受知识流水线与 plugin-owned Blueprint gateway |
 | `lean-verify` | Lean 4 形式化验证 | 验证层: 陈述保真审计, 机器验证 (lake build + sorry/axiom 扫描), 义务级独立审计, hash 绑定运行清单 |
 
 依赖方向 (单向, 无反向调用):
@@ -108,6 +108,7 @@ python tests/smoke_pipeline_gate.py
 python tests/smoke_scoped_pipeline.py
 python tests/smoke_formalization_handoff.py
 python tests/smoke_checkpoint_resume.py
+python tests/smoke_blueprint_gateway.py
 ```
 
 push / PR 时 GitHub Actions 自动运行以上校验与冒烟.
@@ -133,6 +134,7 @@ push / PR 时 GitHub Actions 自动运行以上校验与冒烟.
 
 | 版本 | 日期 | 摘要 |
 | --- | --- | --- |
+| `1.14.0` | 2026-08-31 | Blueprint v2.2 active runtime gateway: manage v1.7.0 新增 `runtime/blueprintctl.py`, rigorous v1.11.0 与 workflow 统一使用 ensure-once layout/config 绑定, canonical validate/query/proposal/integrate 全部走 plugin-owned code, 修复跨根 artifact 解析并拒绝 project-local tool 注入 |
 | `1.13.0` | 2026-08-30 | workflow canonical formalization consumption: `consume/verify-consumption` 在 exact-copy receipt `READY` 后生成唯一 immutable sibling record, 显式保持数学/验证状态不变, 并允许 Stage C 后续合法演化目标 scaffold; exclusive-create 关闭 overwrite TOCTOU |
 | `1.12.0` | 2026-08-30 | workflow cross-root formalization handoff: immutable exact-copy Tier 0 scaffold receipt 绑定 Stage B scope 与 Stage C Lean 项目身份, 源 manifest/proof/scaffold, 目标副本和 durable registration anchors; 明确不支持完整 requested 包, 不升级 FORMALLY_VERIFIED |
 | `1.11.0` | 2026-08-30 | workflow 隔离作用域门禁: `--scope` 把仓库内自包含目录作为完整逻辑项目根, 所有发现和路径绑定均限制在 scope 内; scope 外历史债务不参与局部裁决, 输出明确禁止把 scoped PASS 当作全仓 PASS |
