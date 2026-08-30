@@ -35,7 +35,7 @@
   需在 DSH 仓库重跑 `scripts/sync-from-parent.py` 继承.
 - **版本管理**: 修改插件元数据或 SKILL 内容后按语义化版本升级
   `version` (大版本 = 架构/能力代际, 小版本 = 功能批次, 补丁 = 纯修复);
-  不再使用 cachebuster 日期后缀. rigorous/workflow 当前为 `1.10.0`,
+  不再使用 cachebuster 日期后缀. rigorous 当前为 `1.10.0`, workflow 当前为 `1.11.0`,
   manage/lean-verify 当前为 `1.6.0`.
 - **GitHub 网络**: 直连 github.com 失败时, 用本地代理 push:
   `git -c http.proxy=http://127.0.0.1:7897 push origin main` (本机实测可用).
@@ -475,3 +475,16 @@
   py_compile 与 diff check 全过. 对 v1.9 G1 prime live artifact 做无模型 replay:
   sequence 01 仍 `READY`, advance sequence 02 成功, 两个 copy hash 相等,
   原 checkpoint 不变, draft seal 按预期拒绝.
+### 2026-08-30 会话: scoped pipeline validation (v1.11.0)
+- workflow `validate_pipeline.py` 新增 `--scope <relative-logical-root>`:
+  scope 必须是带 `project.json` 或 `blueprint-project.json` 的自包含逻辑项目根;
+  discovery, source/task/formalization/hash/checkpoint binding 和 git pathspec 均限制
+  在该根内. absolute/escape/markerless/nested-git scope 预检失败, scoped PASS 明确
+  不等于 whole-project PASS.
+- 新增 `tests/smoke_scoped_pipeline.py` 与 CI 项, 并加固相对 source/formalization
+  路径不可逃逸. 父仓库 validate_all 81/81, 12 个 smoke, plugin/skill validator,
+  py_compile 与 diff check 均通过.
+- BVE v1.9 G1 prime 隔离工作区直接校验和 scoped 校验均为 0 problem/2 warning;
+  scoped git cleanliness PASS, BVE 全仓仍诚实报告 67 problem/20 warning. 当前安装
+  环境未发现 active `runtime/blueprintctl.py`, 因而未运行或复制旧 project-local
+  Blueprint tools; Blueprint v2.2 gateway/artifact-root 迁移留待网关可用后处理.

@@ -119,10 +119,13 @@ def main() -> None:
 		FULL_FLOW,
 		("completion_manifest.json", "Fast-close STOP", "frontier_upgrade.json"),
 	)
-	for plugin in (RIGOROUS, WORKFLOW):
+	expected_versions = {RIGOROUS: "1.10.0", WORKFLOW: "1.11.0"}
+	for plugin, expected_version in expected_versions.items():
 		manifest = json.loads((plugin / ".codex-plugin" / "plugin.json").read_text(encoding="utf-8"))
-		if manifest["version"] != "1.10.0":
-			raise AssertionError(f"{manifest['name']} version is not 1.10.0")
+		if manifest["version"] != expected_version:
+			raise AssertionError(
+				f"{manifest['name']} version is not {expected_version}"
+			)
 
 	good = validate_fixture(FAST_CLOSE_GOOD)
 	if good.returncode != 0:

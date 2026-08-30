@@ -43,6 +43,17 @@ python plugins/math-research-workflow/scripts/doctor.py
 python plugins/math-research-workflow/scripts/validate_pipeline.py --project .
 ```
 
+若新实验是旧仓库内的自包含逻辑项目, 可从物理仓库根执行:
+
+```text
+python plugins/math-research-workflow/scripts/validate_pipeline.py \
+  --project <repository-root> --scope <relative-logical-root>
+```
+
+scope 根必须包含 `project.json` 或 `blueprint-project.json`; task packet, run,
+Lean, checkpoint 和所有相对路径绑定都限制在该根内. scope 外历史债务不参与本次
+裁决, 因此 scoped PASS 只证明该逻辑项目通过, 绝不等价于 whole-project PASS.
+
 门禁强制数值证据纪律: 数值检验只能作探索与佐证, 不得单独支撑
 `已证`/`CANDIDATE_COMPLETE_PROOF`/`FORMALLY_VERIFIED` 状态; 含数值标签的交付
 必须带严格标签或显式降级声明, 否则阶段边界 FAIL.

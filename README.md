@@ -105,6 +105,7 @@ python scripts/validate_all.py
 # 行为冒烟: lean-verify 扫描器 + 编排层门禁
 python tests/smoke_lean_verify.py
 python tests/smoke_pipeline_gate.py
+python tests/smoke_scoped_pipeline.py
 python tests/smoke_checkpoint_resume.py
 ```
 
@@ -131,6 +132,7 @@ push / PR 时 GitHub Actions 自动运行以上校验与冒烟.
 
 | 版本 | 日期 | 摘要 |
 | --- | --- | --- |
+| `1.11.0` | 2026-08-30 | workflow 隔离作用域门禁: `--scope` 把仓库内自包含目录作为完整逻辑项目根, 所有发现和路径绑定均限制在 scope 内; scope 外历史债务不参与局部裁决, 输出明确禁止把 scoped PASS 当作全仓 PASS |
 | `1.10.0` | 2026-08-30 | rigorous/workflow checkpoint 可用性优化: `advance` 自动版本化 bound whiteboard/closure 并生成防误封 draft; 修复 project-prefixed path 与 PowerShell 7 位时间戳; typed obligation lineage 自动退休旧 action |
 | `1.9.0` | 2026-08-29 | rigorous/workflow 配额中断恢复: 结构化保存 completed/open/in-flight/do-not-repeat 状态, 用不可变 checkpoint 在恢复前复算全部 hash; 唯一 predecessor receipt 锁定跨 segment 谱系, 最小读取集/首个动作/计分累计量/状态变更均受确定性门禁保护 |
 | `1.8.0` | 2026-08-28 | rigorous/workflow fast-close 证书: 结构化冻结 contract/obligation graph/proof/root anchors/dependencies, 用 hash-bound 独立审计触发确定性 STOP; 禁止追加 Stage B 路线与重复全局审计, 单次 frontier 升级必须绑定原证书, 授权, 正整数预算和停止条件 |
