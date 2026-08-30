@@ -35,7 +35,7 @@
   需在 DSH 仓库重跑 `scripts/sync-from-parent.py` 继承.
 - **版本管理**: 修改插件元数据或 SKILL 内容后按语义化版本升级
   `version` (大版本 = 架构/能力代际, 小版本 = 功能批次, 补丁 = 纯修复);
-  不再使用 cachebuster 日期后缀. rigorous 当前为 `1.10.0`, workflow 当前为 `1.11.0`,
+  不再使用 cachebuster 日期后缀. rigorous 当前为 `1.10.0`, workflow 当前为 `1.12.0`,
   manage/lean-verify 当前为 `1.6.0`.
 - **GitHub 网络**: 直连 github.com 失败时, 用本地代理 push:
   `git -c http.proxy=http://127.0.0.1:7897 push origin main` (本机实测可用).
@@ -488,3 +488,18 @@
   scoped git cleanliness PASS, BVE 全仓仍诚实报告 67 problem/20 warning. 当前安装
   环境未发现 active `runtime/blueprintctl.py`, 因而未运行或复制旧 project-local
   Blueprint tools; Blueprint v2.2 gateway/artifact-root 迁移留待网关可用后处理.
+### 2026-08-30 会话: cross-root Tier 0 formalization handoff (v1.12.0)
+- 新增确定性 `scripts/formalization_handoff.py`, 只接收 `formalization=scaffold`
+  和 `copy_mode=exact` 的 Tier 0 Lean scaffold. immutable receipt 同时绑定 source
+  run manifest, proof, source/destination scaffold, logical-root marker/project ID,
+  destination registration anchors 和 seal-time hashes; path escape, nested git,
+  overwrite, artifact 缺失, hash 漂移和 anchor 删除均 fail closed.
+- 明确不支持完整 `formalization=requested` package, receipt 不提升数学状态且不得
+  标为 `FORMALLY_VERIFIED`. Stage C 详细协议移入按需
+  `references/stage-c-formalization.md`, 常驻 workflow SKILL 从 v1.11 的 31,931
+  字节降至 27,619 字节, 同时完整保留决策, verification tier, dual-track audit,
+  reuse, supersession, escalation 和 repair 规则.
+- 新增 `tests/smoke_formalization_handoff.py`, 父仓库 validate_all 81/81 和全部
+  13 个 smoke PASS; plugin validator, UTF-8 skill validator, py_compile 和
+  `git diff --check` PASS. WindowsApps `python.exe` 是返回 9009 的占位程序,
+  本轮固定使用 `py -3`, skill quick validator 使用 `-X utf8`.

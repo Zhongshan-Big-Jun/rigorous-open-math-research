@@ -105,6 +105,7 @@ python scripts/validate_all.py
 python tests/smoke_lean_verify.py
 python tests/smoke_pipeline_gate.py
 python tests/smoke_scoped_pipeline.py
+python tests/smoke_formalization_handoff.py
 python tests/smoke_checkpoint_resume.py
 ```
 
@@ -131,6 +132,7 @@ GitHub Actions automatically runs the validation and smoke tests on push / PR.
 
 | Version | Date | Summary |
 | --- | --- | --- |
+| `1.12.0` | 2026-08-30 | Workflow cross-root formalization handoff: an immutable exact-copy Tier 0 scaffold receipt binds the Stage B scope and Stage C Lean project identities, source manifest/proof/scaffold, destination copy, and durable registration anchors; full requested packages remain unsupported and no FORMALLY_VERIFIED promotion occurs |
 | `1.11.0` | 2026-08-30 | Workflow scoped gate: `--scope` treats a self-contained nested directory as a complete logical project and confines discovery plus bindings to it; legacy debt outside the scope is excluded, and the result explicitly cannot be reported as a whole-project PASS |
 | `1.10.0` | 2026-08-30 | Rigorous/workflow checkpoint usability: `advance` versions bound whiteboard/closure files and creates a guarded draft; project-prefixed paths and PowerShell seven-digit timestamps work; typed obligation lineage retires predecessor actions automatically |
 | `1.9.0` | 2026-08-29 | Rigorous/workflow quota recovery: structure completed/open/in-flight/do-not-repeat state, recheck every hash before resume, bind each segment to one predecessor receipt, and gate the minimal read set, first action, cumulative scored metrics, and reviewed status transitions |

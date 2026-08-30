@@ -14,6 +14,7 @@
 - `assets/whiteboard.template.md` -- 求解循环白板模板 (当前计划/路线历史/待回想法/未完成义务/工件索引)
 - `scripts/validate_pipeline.py` -- 确定性阶段门禁 (任务包字段/哈希绑定/运行清单/数值证据纪律/git 清洁检查)
 - `scripts/checkpoint_resume.py` -- 不可变 checkpoint 的 seal/verify/resume, canonical timestamp, next-segment advance 工具
+- `scripts/formalization_handoff.py` -- 隔离 Stage B scope 到父 Stage C Lean 项目的 exact-copy Tier 0 scaffold 收据
 - `scripts/doctor.py` -- 环境自检 (插件与依赖 skill 是否安装启用, 市场是否注册, config.toml 启用条目是否完好)
 
 ## 依赖的 skill
@@ -53,6 +54,11 @@ python plugins/math-research-workflow/scripts/validate_pipeline.py \
 scope 根必须包含 `project.json` 或 `blueprint-project.json`; task packet, run,
 Lean, checkpoint 和所有相对路径绑定都限制在该根内. scope 外历史债务不参与本次
 裁决, 因此 scoped PASS 只证明该逻辑项目通过, 绝不等价于 whole-project PASS.
+
+若 Stage B scope 与 Stage C Lean 项目根不同, 在 Stage C 消费副本前用
+`formalization_handoff.py seal/verify` 绑定源 run manifest, proof, scaffold,
+目标 scaffold 和注册 anchors. v1 只支持字节完全相同的 Tier 0 scaffold, 不处理
+完整 `requested` 验证包, 也不升级数学状态.
 
 门禁强制数值证据纪律: 数值检验只能作探索与佐证, 不得单独支撑
 `已证`/`CANDIDATE_COMPLETE_PROOF`/`FORMALLY_VERIFIED` 状态; 含数值标签的交付
