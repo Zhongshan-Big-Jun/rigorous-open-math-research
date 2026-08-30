@@ -530,3 +530,5 @@
   `docs/pipeline-full-flow.md` 和 CI; workflow 升级 1.14.0.
 - 父仓库门禁: validate_all 81/81, 14 smoke, 3 plugin validators,
   3 skill validators, py_compile 与 diff check 全部 PASS.
+- 网关工具根同时解析 Codex plugin 布局与 DSH 扁平 skill 布局; 两者仍只调用
+  同一份受版本绑定的插件工具, 不启用 project-local fallback.

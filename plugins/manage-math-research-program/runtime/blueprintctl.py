@@ -20,13 +20,18 @@ RUNTIME_VERSION = "manage-math-research-program/1.7.0"
 RESPONSE_SCHEMA = "blueprint-runtime-response/v1"
 LAYOUT_SCHEMA = "blueprint-project-layout/v1"
 PLUGIN_ROOT = Path(__file__).resolve().parents[1]
-TOOLS_ROOT = (
+TOOLS_ROOT_CANDIDATES = (
 	PLUGIN_ROOT
 	/ "skills"
 	/ "manage-math-research-program"
 	/ "assets"
 	/ "blueprint-accepted-knowledge"
-	/ "tools"
+	/ "tools",
+	PLUGIN_ROOT / "assets" / "blueprint-accepted-knowledge" / "tools",
+)
+TOOLS_ROOT = next(
+	(Candidate for Candidate in TOOLS_ROOT_CANDIDATES if Candidate.is_dir()),
+	TOOLS_ROOT_CANDIDATES[0],
 )
 REQUIRED_TOOLS = {
 	"query": "blueprint_query.py",
