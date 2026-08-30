@@ -35,7 +35,7 @@
   需在 DSH 仓库重跑 `scripts/sync-from-parent.py` 继承.
 - **版本管理**: 修改插件元数据或 SKILL 内容后按语义化版本升级
   `version` (大版本 = 架构/能力代际, 小版本 = 功能批次, 补丁 = 纯修复);
-  不再使用 cachebuster 日期后缀. rigorous 当前为 `1.10.0`, workflow 当前为 `1.12.0`,
+  不再使用 cachebuster 日期后缀. rigorous 当前为 `1.10.0`, workflow 当前为 `1.13.0`,
   manage/lean-verify 当前为 `1.6.0`.
 - **GitHub 网络**: 直连 github.com 失败时, 用本地代理 push:
   `git -c http.proxy=http://127.0.0.1:7897 push origin main` (本机实测可用).
@@ -503,3 +503,14 @@
   13 个 smoke PASS; plugin validator, UTF-8 skill validator, py_compile 和
   `git diff --check` PASS. WindowsApps `python.exe` 是返回 9009 的占位程序,
   本轮固定使用 `py -3`, skill quick validator 使用 `-X utf8`.
+### 2026-08-30 会话: canonical formalization consumption (v1.13.0)
+- `formalization_handoff.py` 新增 `consume/verify-consumption`: receipt live
+  `READY` 后只允许生成一个 canonical immutable sibling `FHC-<id>.json`, 绑定
+  receipt path/hash, consumer logical root, consumption-time artifact hash 和已在
+  receipt 中登记的 Stage C anchor. 未绑定 anchor, relocation 和 duplicate fail closed.
+- consumption effects 固定为 mathematical/verification `UNCHANGED`. Stage C 后续
+  合法修改 destination scaffold 不抹除 consumption history; receipt/source drift,
+  project ID 变化, anchor 删除或状态伪升级仍失败. seal/consume 改用 exclusive-create,
+  关闭 overwrite TOCTOU.
+- workflow SKILL 仅 27,657/32,768 bytes; 详细语义在按需 handoff reference.
+  validate_all 81/81, 13 smoke, plugin/skill validator, py_compile 和 diff check PASS.
