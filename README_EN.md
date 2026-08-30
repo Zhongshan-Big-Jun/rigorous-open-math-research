@@ -130,6 +130,7 @@ GitHub Actions automatically runs the validation and smoke tests on push / PR.
 
 | Version | Date | Summary |
 | --- | --- | --- |
+| `1.10.0` | 2026-08-30 | Rigorous/workflow checkpoint usability: `advance` versions bound whiteboard/closure files and creates a guarded draft; project-prefixed paths and PowerShell seven-digit timestamps work; typed obligation lineage retires predecessor actions automatically |
 | `1.9.0` | 2026-08-29 | Rigorous/workflow quota recovery: structure completed/open/in-flight/do-not-repeat state, recheck every hash before resume, bind each segment to one predecessor receipt, and gate the minimal read set, first action, cumulative scored metrics, and reviewed status transitions |
 | `1.8.0` | 2026-08-28 | Rigorous/workflow fast-close certificate: structurally freeze the contract, obligation graph, proof, root anchors, and dependencies; a hash-bound independent audit triggers deterministic STOP, while one frontier upgrade must bind the certificate, authorization, positive budget, and stop condition |
 | `1.7.0` | 2026-08-27 | Rigorous/workflow closure-first optimization: directly attack and falsify the first load-bearing obligation before sub-agent expansion, require decision deltas, materialize artifacts lazily, and defer global audits to completion or handoff boundaries |

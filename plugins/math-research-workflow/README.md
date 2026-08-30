@@ -13,7 +13,7 @@
 - `assets/interruption-state.template.json` -- 配额边界语义状态模板 (义务/in-flight/do-not-repeat/计分累计量/恢复动作)
 - `assets/whiteboard.template.md` -- 求解循环白板模板 (当前计划/路线历史/待回想法/未完成义务/工件索引)
 - `scripts/validate_pipeline.py` -- 确定性阶段门禁 (任务包字段/哈希绑定/运行清单/数值证据纪律/git 清洁检查)
-- `scripts/checkpoint_resume.py` -- 不可变 checkpoint 的 seal/verify 与 resume receipt 工具
+- `scripts/checkpoint_resume.py` -- 不可变 checkpoint 的 seal/verify/resume, canonical timestamp, next-segment advance 工具
 - `scripts/doctor.py` -- 环境自检 (插件与依赖 skill 是否安装启用, 市场是否注册, config.toml 启用条目是否完好)
 
 ## 依赖的 skill
@@ -65,8 +65,10 @@ call 外不再允许 Stage B 研究模型调用, 只完成确定性 Stage B 边�
 工作中断 (预算耗尽/用户叫停/环境失败) 时, 中断方先写结构化
 `interruption_state-NN.json`, 再用 `checkpoint_resume.py seal` 封存不可变
 checkpoint, 并在 handoff 中绑定两者. 恢复前 `verify` 必须返回 `READY`, 然后
-resume receipt 锁定最小读取集和首个动作; 未决 worker 先核对, 已完成/已失败动作
-不得因额度恢复而重跑. 计分实验绑定 prompt/harness/source/workspace/hidden gold,
+resume receipt 锁定最小读取集和首个动作. `advance` 自动版本化 checkpoint-bound
+whiteboard/closure 并生成下一段 draft, 防止续跑编辑破坏前序 hash. Typed
+`REFINES`/`SUPERSEDES` 允许新精确缺口继承旧 obligation 并自动退休旧 action.
+未决 worker 先核对, 已完成/已失败动作不得因额度恢复而重跑. 计分实验绑定 prompt/harness/source/workspace/hidden gold,
 并跨 segment 累加原 wall/response/tool/token 指标. 详见
 `skills/math-research-workflow/references/quota-interruption-recovery.md`.
 

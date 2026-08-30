@@ -131,6 +131,7 @@ push / PR 时 GitHub Actions 自动运行以上校验与冒烟.
 
 | 版本 | 日期 | 摘要 |
 | --- | --- | --- |
+| `1.10.0` | 2026-08-30 | rigorous/workflow checkpoint 可用性优化: `advance` 自动版本化 bound whiteboard/closure 并生成防误封 draft; 修复 project-prefixed path 与 PowerShell 7 位时间戳; typed obligation lineage 自动退休旧 action |
 | `1.9.0` | 2026-08-29 | rigorous/workflow 配额中断恢复: 结构化保存 completed/open/in-flight/do-not-repeat 状态, 用不可变 checkpoint 在恢复前复算全部 hash; 唯一 predecessor receipt 锁定跨 segment 谱系, 最小读取集/首个动作/计分累计量/状态变更均受确定性门禁保护 |
 | `1.8.0` | 2026-08-28 | rigorous/workflow fast-close 证书: 结构化冻结 contract/obligation graph/proof/root anchors/dependencies, 用 hash-bound 独立审计触发确定性 STOP; 禁止追加 Stage B 路线与重复全局审计, 单次 frontier 升级必须绑定原证书, 授权, 正整数预算和停止条件 |
 | `1.7.0` | 2026-08-27 | rigorous/workflow closure-first 性能优化: 先直接求解并证伪首个承重义务, 再按明确决策增量扩展子 agent; 延迟生成非必要工件, 全局审计移至完成或交接边界 |

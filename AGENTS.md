@@ -35,7 +35,7 @@
   需在 DSH 仓库重跑 `scripts/sync-from-parent.py` 继承.
 - **版本管理**: 修改插件元数据或 SKILL 内容后按语义化版本升级
   `version` (大版本 = 架构/能力代际, 小版本 = 功能批次, 补丁 = 纯修复);
-  不再使用 cachebuster 日期后缀. rigorous/workflow 当前为 `1.9.0`,
+  不再使用 cachebuster 日期后缀. rigorous/workflow 当前为 `1.10.0`,
   manage/lean-verify 当前为 `1.6.0`.
 - **GitHub 网络**: 直连 github.com 失败时, 用本地代理 push:
   `git -c http.proxy=http://127.0.0.1:7897 push origin main` (本机实测可用).
@@ -457,3 +457,21 @@
 - 独立前向审查逐轮构造的 predecessor, receipt, metric, action,
   read-set, worker session, TOCTOU 与 lineage alias 反例均已转成回归;
   最终复审 PASS, 无新 P1/P2.
+### 2026-08-30 会话: checkpoint recovery usability (v1.10.0)
+- 根据真实 v1.9 live recovery 暴露的失败优化确定性 CLI. 新增 `advance` 命令:
+  verify predecessor pair 后自动把 checkpoint-bound `whiteboard` 和
+  `closure_gate` 复制为下一 sequence 路径, 重写 binding, 写带
+  `advance_draft=true` 的 next state; 未完成 draft 不可 seal, 原 checkpoint
+  保持可验证.
+- 修复 project-prefixed cwd-relative path 被 project root 重复拼接, 支持
+  PowerShell 7 位 fractional timestamp, 增加 canonical UTC timestamp/default.
+  新增 typed `REFINES`/`SUPERSEDES` obligation lineage, 新 gap 可重命名继承
+  predecessor, 自动退休并跨 receipt 传播旧 action, 无需保留旧 open ID 或手工
+  补 `do_not_repeat`.
+- 维护 workflow/rigorous SKILL, changelog, README 中英版与
+  `docs/pipeline-full-flow.md`; rigorous/workflow 升级 1.10.0.
+- 回归: 扩展 checkpoint smoke 覆盖三类真实缺陷和 advance guard. 11 个 smoke
+  全过, validate_all 81/81, 2 plugin validators, 2 UTF-8 skill validators,
+  py_compile 与 diff check 全过. 对 v1.9 G1 prime live artifact 做无模型 replay:
+  sequence 01 仍 `READY`, advance sequence 02 成功, 两个 copy hash 相等,
+  原 checkpoint 不变, draft seal 按预期拒绝.
