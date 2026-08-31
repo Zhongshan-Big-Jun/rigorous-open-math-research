@@ -35,7 +35,7 @@
   需在 DSH 仓库重跑 `scripts/sync-from-parent.py` 继承.
 - **版本管理**: 修改插件元数据或 SKILL 内容后按语义化版本升级
   `version` (大版本 = 架构/能力代际, 小版本 = 功能批次, 补丁 = 纯修复);
-  不再使用 cachebuster 日期后缀. rigorous 当前为 `1.11.0`, workflow 当前为 `1.14.0`,
+  不再使用 cachebuster 日期后缀. rigorous 当前为 `1.11.0`, workflow 当前为 `1.14.1`,
   manage 当前为 `1.7.0`, lean-verify 当前为 `1.6.0`.
 - **GitHub 网络**: 直连 github.com 失败时, 用本地代理 push:
   `git -c http.proxy=http://127.0.0.1:7897 push origin main` (本机实测可用).
@@ -532,3 +532,17 @@
   3 skill validators, py_compile 与 diff check 全部 PASS.
 - 网关工具根同时解析 Codex plugin 布局与 DSH 扁平 skill 布局; 两者仍只调用
   同一份受版本绑定的插件工具, 不启用 project-local fallback.
+
+### 2026-08-31 会话: checkpoint-current scoped validator 修复 (v1.14.1)
+- BVE KP-DET 实跑暴露真实兼容缺口: sequence-00 whiteboard/closure 已被不可变
+  checkpoint 绑定, `advance` 后当前状态位于 numbered artifacts, 但 workflow
+  validator 仍只扫描祖先 basename, 误报 11 个格式问题.
+- `validate_pipeline.py` 现在先验证每个 run 的最新 sealed checkpoint 全谱系, 再从
+  其 state 选择当前 whiteboard/closure. 最新 checkpoint `STALE` 时 fail closed,
+  禁止回退祖先; 无 checkpoint 的 run 维持原行为.
+- checkpoint smoke 新增 legacy ancestor -> compliant versioned successor ->
+  post-seal tamper 回归. 同步维护 quota reference, SKILL, README 中英版和
+  `docs/pipeline-full-flow.md`; workflow 补丁版本升级为 `1.14.1`.
+- BVE 实工件回归: 新 selector 正确选中 sequence-02 并暴露 12 个当前 schema
+  缺口; 通过 deterministic advance 生成 sequence-03 后, scoped validator 为
+  0 problem/1 expected warning. sequence 00-02 均保持可验证.

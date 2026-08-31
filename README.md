@@ -134,6 +134,7 @@ push / PR 时 GitHub Actions 自动运行以上校验与冒烟.
 
 | 版本 | 日期 | 摘要 |
 | --- | --- | --- |
+| `1.14.1` | 2026-08-31 | workflow checkpoint-current validator 修复: scoped 门禁先验证最新 sealed checkpoint, 再校验其 state 绑定的版本化 whiteboard/closure; 不再误读不可变祖先, `STALE` 时禁止回退 |
 | `1.14.0` | 2026-08-31 | Blueprint v2.2 active runtime gateway: manage v1.7.0 新增 `runtime/blueprintctl.py`, rigorous v1.11.0 与 workflow 统一使用 ensure-once layout/config 绑定, canonical validate/query/proposal/integrate 全部走 plugin-owned code, 修复跨根 artifact 解析并拒绝 project-local tool 注入 |
 | `1.13.0` | 2026-08-30 | workflow canonical formalization consumption: `consume/verify-consumption` 在 exact-copy receipt `READY` 后生成唯一 immutable sibling record, 显式保持数学/验证状态不变, 并允许 Stage C 后续合法演化目标 scaffold; exclusive-create 关闭 overwrite TOCTOU |
 | `1.12.0` | 2026-08-30 | workflow cross-root formalization handoff: immutable exact-copy Tier 0 scaffold receipt 绑定 Stage B scope 与 Stage C Lean 项目身份, 源 manifest/proof/scaffold, 目标副本和 durable registration anchors; 明确不支持完整 requested 包, 不升级 FORMALLY_VERIFIED |

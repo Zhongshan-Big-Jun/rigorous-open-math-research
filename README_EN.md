@@ -133,6 +133,7 @@ GitHub Actions automatically runs the validation and smoke tests on push / PR.
 
 | Version | Date | Summary |
 | --- | --- | --- |
+| `1.14.1` | 2026-08-31 | Workflow checkpoint-current validator fix: the scoped gate verifies the latest sealed checkpoint and then validates its state-bound versioned whiteboard/closure records; immutable ancestors are not misread as current, and `STALE` never falls back |
 | `1.14.0` | 2026-08-31 | Blueprint v2.2 active runtime gateway: manage v1.7.0 adds `runtime/blueprintctl.py`, rigorous v1.11.0 and workflow share one ensure-once layout/config binding, canonical validation/query/proposal/integration use plugin-owned code, cross-root artifacts resolve correctly, and project-local tool injection is rejected |
 | `1.13.0` | 2026-08-30 | Workflow canonical formalization consumption: `consume/verify-consumption` writes one immutable sibling record after an exact-copy receipt is `READY`, explicitly preserves mathematical and verification status, permits legitimate later Stage C destination-scaffold evolution, and uses exclusive creation to close overwrite TOCTOU |
 | `1.12.0` | 2026-08-30 | Workflow cross-root formalization handoff: an immutable exact-copy Tier 0 scaffold receipt binds the Stage B scope and Stage C Lean project identities, source manifest/proof/scaffold, destination copy, and durable registration anchors; full requested packages remain unsupported and no FORMALLY_VERIFIED promotion occurs |

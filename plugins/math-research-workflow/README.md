@@ -97,6 +97,9 @@ checkpoint, 并在 handoff 中绑定两者. 恢复前 `verify` 必须返回 `REA
 resume receipt 锁定最小读取集和首个动作. `advance` 自动版本化 checkpoint-bound
 whiteboard/closure 并生成下一段 draft, 防止续跑编辑破坏前序 hash. Typed
 `REFINES`/`SUPERSEDES` 允许新精确缺口继承旧 obligation 并自动退休旧 action.
+门禁先验证最新 sealed checkpoint 的完整 lineage, 再校验其 state 绑定的当前
+whiteboard/closure; 不会把不可变祖先误作当前状态, 也不会在最新 checkpoint
+`STALE` 时回退旧记录.
 未决 worker 先核对, 已完成/已失败动作不得因额度恢复而重跑. 计分实验绑定 prompt/harness/source/workspace/hidden gold,
 并跨 segment 累加原 wall/response/tool/token 指标. 详见
 `skills/math-research-workflow/references/quota-interruption-recovery.md`.
