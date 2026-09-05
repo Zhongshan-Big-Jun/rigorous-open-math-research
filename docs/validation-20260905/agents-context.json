@@ -1,0 +1,20 @@
+{
+  "kind": "STATIC_AGENTS_HISTORY_ARCHIVE",
+  "measure": "UTF-8 bytes, not model tokens or solver runtime",
+  "repositories": [
+    {
+      "repository": "F:\\LaTeX\\BVE research\\_xsoc1_work",
+      "before_bytes": 46976,
+      "after_bytes": 3444,
+      "reduction_percent": 92.67,
+      "history_preserved": true
+    },
+    {
+      "repository": "C:\\Users\\HuangZY\\.dsh\\math-research-dsh",
+      "before_bytes": 38947,
+      "after_bytes": 3873,
+      "reduction_percent": 90.06,
+      "history_preserved": true
+    }
+  ]
+}

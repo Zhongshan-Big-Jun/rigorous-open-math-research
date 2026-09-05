@@ -138,6 +138,7 @@ push / PR 时 GitHub Actions 自动运行以上校验与冒烟.
 
 | 版本 | 日期 | 摘要 |
 | --- | --- | --- |
+| `manage 1.8.1` | 2026-09-05 | 实项目回放修复旧卡片 YAML 不规范和缺少结束标记的兼容性; 显式待检查指针, 保留归档限制, 统一 PDF 页分隔符的抽取行号. 77 张真实卡片和 sequence-26 隔离回放通过 |
 | `1.15.0` | 2026-09-05 | workflow 恢复入口和额度检查, 同名技能来源诊断与严格指标比较; manage 1.8.0 文献内容库及 agent 批注指针; rigorous 1.12.0 协议冲突修复 |
 | `1.14.1` | 2026-08-31 | workflow checkpoint-current validator 修复: scoped 门禁先验证最新 sealed checkpoint, 再校验其 state 绑定的版本化 whiteboard/closure; 不再误读不可变祖先, `STALE` 时禁止回退 |
 | `1.14.0` | 2026-08-31 | Blueprint v2.2 active runtime gateway: manage v1.7.0 新增 `runtime/blueprintctl.py`, rigorous v1.11.0 与 workflow 统一使用 ensure-once layout/config 绑定, canonical validate/query/proposal/integrate 全部走 plugin-owned code, 修复跨根 artifact 解析并拒绝 project-local tool 注入 |

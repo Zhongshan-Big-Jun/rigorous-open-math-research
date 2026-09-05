@@ -1,0 +1,67 @@
+{
+	"annotation_id": "ab99b2b57dbf6ef94ee6b5f5ae3830dd8611bc989a3795a42bc061b11d56693d",
+	"checkpoint_id": "sha256:192a9e92cbdd5366a5c6405327d98c296f6debf429a77297106e31e66f47f980",
+	"checkpoint_sequence": 26,
+	"copied_recovery_files": 187,
+	"dispatched_workers": 0,
+	"do_not_repeat_ids_preserved": 27,
+	"kind": "L0_NO_MODEL_REAL_ARTIFACT_REPLAY",
+	"legacy_rows_preserved": 3,
+	"library": {
+		"index": "index/tools.json",
+		"indexed": 77,
+		"needs_metadata_review": [
+			"tools/band-selfconsistency-equivariance.md",
+			"tools/denseness-criteria.md",
+			"tools/endpoint-collapse-reduction.md",
+			"tools/gap-n1-reduction.md",
+			"tools/good-root-global-lemma.md",
+			"tools/green-half-inertia.md",
+			"tools/half-problem-regularized-green.md",
+			"tools/left-definite-orthogonal-systems.md",
+			"tools/phase-ratio-rigidity.md",
+			"tools/second-variation-weighted-eigenvalues.md",
+			"tools/symline-n1-monotonicity.md",
+			"tools/tension-ratio-chain.md",
+			"tools/true-curve-region-decomposition.md",
+			"tools/two-block-gap-bounds.md"
+		],
+		"retained_unscanned": 0
+	},
+	"model_calls": 0,
+	"new_mathematical_claims": 0,
+	"original_files_unchanged": 267,
+	"receipt_reused": true,
+	"replay_script_sha256": "a5e5ed5d2c9e4b28bf638285694251f46569a3504c0daf14e7646184357e3a6a",
+	"result_status": "RIGOROUS_PARTIAL_RESULT",
+	"runtime_sha256": {
+		"checkpoint_resume.py": "55a513e851385d660da41906838f1cee893671d52fc4cefdb72edf8f7569456b",
+		"recovery_status.py": "0df8d56c769af118b3b425da5065b7fba1fc3b7858eb8d962c182c0fa12b5f08",
+		"research_library.py": "4b73ff5c0f3ff4c257bc5d9a1847276359854e7e5756450262c9fd268cffa7f8"
+	},
+	"scoring": "Local operation times only; no solver speedup inference.",
+	"stale_latest_blocked": true,
+	"timings": [
+		{
+			"operation": "index_real_cards",
+			"seconds": 0.4379960999940522
+		},
+		{
+			"operation": "query_real_cards_with_annotation",
+			"seconds": 0.09610339999198914
+		},
+		{
+			"operation": "inspect_real_latest_checkpoint",
+			"seconds": 6.679802600003313
+		},
+		{
+			"operation": "prepare_real_resume",
+			"seconds": 19.51506760000484
+		},
+		{
+			"operation": "retry_real_resume",
+			"seconds": 13.096637999988161
+		}
+	],
+	"verdict": "PASS"
+}

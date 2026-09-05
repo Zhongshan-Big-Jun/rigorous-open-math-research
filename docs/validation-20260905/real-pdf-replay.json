@@ -1,0 +1,30 @@
+{
+	"annotation_id": "1b126065cccd3e5435aef51c72071559a465990313add83886214db278e9ed8c",
+	"chunks": 29,
+	"exact_reassembly": true,
+	"extracted_bytes": 140497,
+	"idempotent_capture": true,
+	"indexed_notes": 1,
+	"kind": "REAL_PDF_TRANSPORT_AND_ANNOTATION",
+	"limitation": "Byte transport only; visual inspection, mathematical comprehension and formula fidelity are not certified by this script.",
+	"model_calls_in_replay": 0,
+	"non_layout_control_characters": 242,
+	"pdf_bytes": 470532,
+	"replay_script_sha256": "6a5405e451d2133ef932fb4ea530001859efdbcdd50386c4efd2ed730ff197e6",
+	"runtime_sha256": "4b73ff5c0f3ff4c257bc5d9a1847276359854e7e5756450262c9fd268cffa7f8",
+	"source": {
+		"extraction_method": "pdftotext -layout -enc UTF-8",
+		"line_count": 2268,
+		"raw_sha256": "7b4b308d14cd82528f1417a0324f76a695883ba27a021f827174ee4c07eff130",
+		"schema_version": 1,
+		"source": "research/library/sources/4d41282f7de729649702cb7b321d600489a48b7be6ba14c5a8dd30d8d922cdfe/source.json",
+		"source_id": "4d41282f7de729649702cb7b321d600489a48b7be6ba14c5a8dd30d8d922cdfe",
+		"source_kind": "primary",
+		"text_sha256": "20fbddf5a72c726a56c0aa9e3a1ca876d5d9193fac0ff97bbb44fe402bd48f85",
+		"title": "Eigenvalues of Sturm-Liouville Operators with Distributional Potentials",
+		"trust": "UNVERIFIED_SOURCE_CONTENT",
+		"url": "https://arxiv.org/pdf/1711.07032v1",
+		"version": "arXiv:1711.07032v1"
+	},
+	"verdict": "PASS"
+}
