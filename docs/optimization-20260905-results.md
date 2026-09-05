@@ -82,7 +82,8 @@ Moved the complete old maintenance histories to same-directory
 `AGENTS_HISTORY.md` files, retaining current rules and concise session pointers.
 The parent entry changed from 46976 to 3444 UTF-8 bytes (-92.67%); the DSH entry
 from 38947 to 3873 bytes (-90.06%). Historical text preservation was checked.
-These are [static byte measurements](validation-20260905/agents-context.json),
+These are [static byte measurements](validation-20260905/agents-context.json)
+at archival time, before subsequent concise release notes,
 not measured token savings or end-to-end runtime improvements.
 
 ## Limits and next measurement
@@ -103,3 +104,7 @@ individually atomic, with documented retry recovery between their writes.
 Main BVE research conclusions, Q9 workers and accepted graph were not modified.
 Release/sync/install status is recorded in
 [maintenance progress](optimization-20260905-progress.md).
+The final manage 1.8.1 parent CI and DSH 1.15.1 CI passed. Codex installation
+and the active DSH junction match the released library helper hash. Retained
+same-name skill copies are diagnosed explicitly; their runtime selection is
+not inferred or silently changed.

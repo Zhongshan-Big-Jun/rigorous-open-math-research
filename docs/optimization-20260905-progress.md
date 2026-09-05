@@ -1,6 +1,6 @@
 # Optimization implementation progress
 
-Updated: 2026-09-05. State: PATCH_VALIDATED_RELEASE_SYNC_PENDING.
+Updated: 2026-09-06. State: FIRST_BATCH_RELEASED_AND_VERIFIED.
 
 ## Contract
 
@@ -19,11 +19,29 @@ User approved the optimization plan and added actual source reading, agent-annot
 
 ## Next actions
 
-1. Commit and push manage 1.8.1 patch and replay evidence to parent, then fork, using existing SSH authentication.
-2. Fast-forward the canonical clone at C:/Users/HuangZY/.dsh/_math-research-upstream/rigorous-open-math-research. In C:/Users/HuangZY/.dsh/math-research-dsh, sync through scripts/sync-from-parent.py, validate package 1.15.1 and commit/push. Existing junction installation follows that checkout.
-3. Upgrade Codex marketplace math-research and add manage-math-research-program@math-research; verify 1.8.1 installed helper hash and doctor, then record remote CI results.
-4. Do not start expensive L1/L2 solver experiments as part of this release. Those remain the approved plan's next separately frozen measurement stage.
+The implementation batch is complete. The next research-performance work is the
+plan's separately frozen L1/L2 experiment; no solver-speedup claim is made here.
+Resolve the actual loaded skill path before using helpers: the physical source
+inventory still reports retained same-name direct/personal copies and does not
+infer runtime selection from their existence.
+
+## Publication and installation
+
+- Parent and fork patch: 0af24619ccb57170d3d53f8477ee163cb5cc6604. Parent
+  [validation](https://github.com/xsoc1/rigorous-open-math-research/actions/runs/33967089706)
+  and [fork sync](https://github.com/xsoc1/rigorous-open-math-research/actions/runs/33967089709)
+  passed. Existing SSH authentication avoided the HTTPS credential prompt.
+- DSH package 1.15.1: 2b80ea4cb546f66eaf21eaf7129e86ff7d6013bd, inherited via
+  the canonical parent clone and sync script. Its
+  [CI passed](https://github.com/xsoc1/math-research-dsh/actions/runs/33967225740).
+  Subsequent documentation-only parent commits may update the lock without
+  changing the released runtime or package version.
+- Codex marketplace math-research refreshed; manage 1.8.1 installed. The source,
+  installed Codex helper and live DSH junction helper all have SHA256
+  4b73ff5c0f3ff4c257bc5d9a1847276359854e7e5756450262c9fd268cffa7f8.
+  [Doctor report](validation-20260905/installed-doctor.json): 0 failures. The
+  JSON object is extracted from the doctor's existing mixed text/JSON stdout.
 
 ## Recovery boundaries
 
-No Q9 worker or research solver has been dispatched. No BVE accepted graph or checkpoint-bound mathematical artifact has been changed. No reset credit is authorized. The last account snapshot was five-hour used 80%, weekly used 44%; shared usage is not task consumption. Resume this maintenance from this file and git diff, not by replaying old mathematical work.
+No Q9 worker or research solver has been dispatched. No BVE accepted graph or checkpoint-bound mathematical artifact has been changed. No reset credit is authorized. At the 2026-09-06 continuation, the account reported five-hour used 2%, weekly used 47%; shared usage is not task consumption. Future work starts from these release records, not by replaying old mathematical work.

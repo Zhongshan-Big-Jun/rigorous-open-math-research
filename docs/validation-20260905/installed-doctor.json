@@ -1,0 +1,168 @@
+{
+  "checks": [
+    {
+      "status": "ok",
+      "message": "plugin math-research-workflow@math-research is installed and enabled (installed, enabled)"
+    },
+    {
+      "status": "ok",
+      "message": "skill manage-math-research-program is available as plugin manage-math-research-program@math-research (installed, enabled)"
+    },
+    {
+      "status": "ok",
+      "message": "skill rigorous-open-math-research is available as plugin rigorous-open-math-research@math-research (installed, enabled)"
+    },
+    {
+      "status": "ok",
+      "message": "skill lean-verify is available as plugin lean-verify@personal (installed, enabled)"
+    },
+    {
+      "status": "ok",
+      "message": "config.toml enables math-research-workflow@math-research"
+    },
+    {
+      "status": "ok",
+      "message": "marketplace math-research is registered"
+    },
+    {
+      "status": "warn",
+      "message": "skill lean-verify has copies with different hashes; resolve the loaded SKILL.md path"
+    },
+    {
+      "status": "warn",
+      "message": "skill manage-math-research-program has copies with different hashes; resolve the loaded SKILL.md path"
+    },
+    {
+      "status": "warn",
+      "message": "skill rigorous-open-math-research has copies with different hashes; resolve the loaded SKILL.md path"
+    }
+  ],
+  "failures": 0,
+  "codex_home": "C:\\Users\\HuangZY\\.codex",
+  "source_inventory": {
+    "skills": [
+      {
+        "name": "lean-verify",
+        "copies": [
+          {
+            "path": "C:\\Users\\HuangZY\\plugins\\lean-verify\\skills\\lean-verify\\SKILL.md",
+            "kind": "marketplace_source",
+            "plugin": "lean-verify@personal",
+            "listed_enabled": true,
+            "bytes": 10339,
+            "sha256": "3088e0fdbac7b7b14d2f07dea94788f6f7decde00f119cd45d4057aabfbeb3bf"
+          },
+          {
+            "path": "C:\\Users\\HuangZY\\.codex\\plugins\\cache\\personal\\lean-verify\\0.1.0+codex.20260811140558\\skills\\lean-verify\\SKILL.md",
+            "kind": "listed_version_cache",
+            "plugin": "lean-verify@personal",
+            "listed_enabled": true,
+            "bytes": 10339,
+            "sha256": "3088e0fdbac7b7b14d2f07dea94788f6f7decde00f119cd45d4057aabfbeb3bf"
+          },
+          {
+            "path": "C:\\Users\\HuangZY\\.codex\\.tmp\\marketplaces\\math-research\\plugins\\lean-verify\\skills\\lean-verify\\SKILL.md",
+            "kind": "marketplace_source",
+            "plugin": "lean-verify@math-research",
+            "listed_enabled": true,
+            "bytes": 19218,
+            "sha256": "f593726c79b9a0a1760809fe8c29c03b27032e7741d517e338ed419addced5e6"
+          },
+          {
+            "path": "C:\\Users\\HuangZY\\.codex\\plugins\\cache\\math-research\\lean-verify\\1.6.0\\skills\\lean-verify\\SKILL.md",
+            "kind": "listed_version_cache",
+            "plugin": "lean-verify@math-research",
+            "listed_enabled": true,
+            "bytes": 19218,
+            "sha256": "f593726c79b9a0a1760809fe8c29c03b27032e7741d517e338ed419addced5e6"
+          }
+        ],
+        "different_content": true
+      },
+      {
+        "name": "manage-math-research-program",
+        "copies": [
+          {
+            "path": "C:\\Users\\HuangZY\\.codex\\skills\\manage-math-research-program\\SKILL.md",
+            "kind": "plain_skill",
+            "plugin": null,
+            "listed_enabled": null,
+            "bytes": 22605,
+            "sha256": "a37895d14ba71538db32e64d9e7161bea73973046576dcf9d105647229c642f4"
+          },
+          {
+            "path": "C:\\Users\\HuangZY\\.codex\\.tmp\\marketplaces\\math-research\\plugins\\manage-math-research-program\\skills\\manage-math-research-program\\SKILL.md",
+            "kind": "marketplace_source",
+            "plugin": "manage-math-research-program@math-research",
+            "listed_enabled": true,
+            "bytes": 39337,
+            "sha256": "c78a20e9690e55d697f49a6cbcaab67a03d7db53e8ca579464063aaffc541427"
+          },
+          {
+            "path": "C:\\Users\\HuangZY\\.codex\\plugins\\cache\\math-research\\manage-math-research-program\\1.8.1\\skills\\manage-math-research-program\\SKILL.md",
+            "kind": "listed_version_cache",
+            "plugin": "manage-math-research-program@math-research",
+            "listed_enabled": true,
+            "bytes": 39337,
+            "sha256": "c78a20e9690e55d697f49a6cbcaab67a03d7db53e8ca579464063aaffc541427"
+          }
+        ],
+        "different_content": true
+      },
+      {
+        "name": "math-research-workflow",
+        "copies": [
+          {
+            "path": "C:\\Users\\HuangZY\\.codex\\.tmp\\marketplaces\\math-research\\plugins\\math-research-workflow\\skills\\math-research-workflow\\SKILL.md",
+            "kind": "marketplace_source",
+            "plugin": "math-research-workflow@math-research",
+            "listed_enabled": true,
+            "bytes": 29175,
+            "sha256": "ae9161745ec033ef86120e03a614cfc734ccc59609044f413d7e65755ad143e6"
+          },
+          {
+            "path": "C:\\Users\\HuangZY\\.codex\\plugins\\cache\\math-research\\math-research-workflow\\1.15.0\\skills\\math-research-workflow\\SKILL.md",
+            "kind": "listed_version_cache",
+            "plugin": "math-research-workflow@math-research",
+            "listed_enabled": true,
+            "bytes": 29175,
+            "sha256": "ae9161745ec033ef86120e03a614cfc734ccc59609044f413d7e65755ad143e6"
+          }
+        ],
+        "different_content": false
+      },
+      {
+        "name": "rigorous-open-math-research",
+        "copies": [
+          {
+            "path": "C:\\Users\\HuangZY\\.codex\\skills\\rigorous-open-math-research\\SKILL.md",
+            "kind": "plain_skill",
+            "plugin": null,
+            "listed_enabled": null,
+            "bytes": 44978,
+            "sha256": "fbd8c0513dd540131a103ce9f57b09e0b770bcaed45fe8f74a1314bcebaf5674"
+          },
+          {
+            "path": "C:\\Users\\HuangZY\\.codex\\.tmp\\marketplaces\\math-research\\plugins\\rigorous-open-math-research\\skills\\rigorous-open-math-research\\SKILL.md",
+            "kind": "marketplace_source",
+            "plugin": "rigorous-open-math-research@math-research",
+            "listed_enabled": true,
+            "bytes": 13794,
+            "sha256": "d03ad315cc17525051fe959f77aa9628198e456db32088ec81234be5716a33d0"
+          },
+          {
+            "path": "C:\\Users\\HuangZY\\.codex\\plugins\\cache\\math-research\\rigorous-open-math-research\\1.12.0\\skills\\rigorous-open-math-research\\SKILL.md",
+            "kind": "listed_version_cache",
+            "plugin": "rigorous-open-math-research@math-research",
+            "listed_enabled": true,
+            "bytes": 13794,
+            "sha256": "d03ad315cc17525051fe959f77aa9628198e456db32088ec81234be5716a33d0"
+          }
+        ],
+        "different_content": true
+      }
+    ],
+    "selection": "NOT_INFERRED",
+    "instruction": "Resolve the loaded SKILL.md path before running its helpers. Physical copies do not prove which skill was loaded or its token cost."
+  }
+}
