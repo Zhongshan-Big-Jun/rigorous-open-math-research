@@ -1,0 +1,92 @@
+[
+  {
+    "test": "smoke_blueprint_gateway.py",
+    "exit_code": 0,
+    "wall_seconds": 2.4356729
+  },
+  {
+    "test": "smoke_checkpoint_resume.py",
+    "exit_code": 0,
+    "wall_seconds": 20.2172602
+  },
+  {
+    "test": "smoke_closure_first.py",
+    "exit_code": 0,
+    "wall_seconds": 3.0987256
+  },
+  {
+    "test": "smoke_doctor.py",
+    "exit_code": 0,
+    "wall_seconds": 0.4350496
+  },
+  {
+    "test": "smoke_formalization_handoff.py",
+    "exit_code": 0,
+    "wall_seconds": 3.1173077
+  },
+  {
+    "test": "smoke_formalization.py",
+    "exit_code": 0,
+    "wall_seconds": 0.6059018
+  },
+  {
+    "test": "smoke_handoff.py",
+    "exit_code": 0,
+    "wall_seconds": 0.436496
+  },
+  {
+    "test": "smoke_lake_build_guard.py",
+    "exit_code": 0,
+    "wall_seconds": 0.6574325
+  },
+  {
+    "test": "smoke_lean_verify.py",
+    "exit_code": 0,
+    "wall_seconds": 3.0153178
+  },
+  {
+    "test": "smoke_nested_repo.py",
+    "exit_code": 0,
+    "wall_seconds": 0.4804936
+  },
+  {
+    "test": "smoke_performance_metrics.py",
+    "exit_code": 0,
+    "wall_seconds": 0.2438186
+  },
+  {
+    "test": "smoke_pipeline_gate.py",
+    "exit_code": 0,
+    "wall_seconds": 0.8028491
+  },
+  {
+    "test": "smoke_recovery_status.py",
+    "exit_code": 0,
+    "wall_seconds": 1.1470578
+  },
+  {
+    "test": "smoke_research_library.py",
+    "exit_code": 0,
+    "wall_seconds": 0.6312454
+  },
+  {
+    "test": "smoke_scoped_pipeline.py",
+    "exit_code": 0,
+    "wall_seconds": 1.0451555
+  },
+  {
+    "test": "smoke_skill_sources.py",
+    "exit_code": 0,
+    "wall_seconds": 0.2136912
+  },
+  {
+    "test": "smoke_sync_remotes.py",
+    "exit_code": 0,
+    "wall_seconds": 3.3603202
+  },
+  {
+    "test": "smoke_whiteboard.py",
+    "exit_code": 0,
+    "wall_seconds": 0.4968362
+  }
+]

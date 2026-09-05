@@ -14,6 +14,8 @@
 - `assets/whiteboard.template.md` -- 求解循环白板模板 (当前计划/路线历史/待回想法/未完成义务/工件索引)
 - `scripts/validate_pipeline.py` -- 确定性阶段门禁 (任务包字段/哈希绑定/运行清单/数值证据纪律/git 清洁检查)
 - `scripts/checkpoint_resume.py` -- 不可变 checkpoint 的 seal/verify/resume, canonical timestamp, next-segment advance 工具
+- `scripts/recovery_status.py` -- 最新状态检查, 幂等恢复凭据和额度快照检查, 详见 skill 内 `references/quota-interruption-recovery.md`
+- `scripts/skill_sources.py` -- `doctor.py --source-inventory --json` 的同名技能路径与哈希诊断
 - `scripts/formalization_handoff.py` -- 隔离 Stage B scope 到父 Stage C Lean 项目的 exact-copy Tier 0 scaffold 收据与 canonical consumption record
 - `scripts/doctor.py` -- 环境自检 (插件与依赖 skill 是否安装启用, 市场是否注册, config.toml 启用条目是否完好)
 

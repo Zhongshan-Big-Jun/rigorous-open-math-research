@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "F:\LaTeX\BVE research\_xsoc1_work\tests\smoke_closure_first.py", line 292, in <module>
+    main()
+  File "F:\LaTeX\BVE research\_xsoc1_work\tests\smoke_closure_first.py", line 126, in main
+    raise AssertionError(
+AssertionError: rigorous-open-math-research version is not 1.11.0

@@ -38,6 +38,7 @@ import subprocess
 import sys
 from pathlib import Path
 from typing import Any
+from skill_sources import source_inventory
 
 DEFAULT_PLUGIN = "math-research-workflow"
 DEFAULT_MARKETPLACE = "math-research"
@@ -225,6 +226,7 @@ def main() -> int:
     parser.add_argument("--skills", default=",".join(DEFAULT_SKILLS))
     parser.add_argument("--list-file", help="read a saved `codex plugin list` transcript")
     parser.add_argument("--json", action="store_true", help="emit a JSON report")
+    parser.add_argument("--source-inventory", action="store_true", help="report same-name skill paths and hashes without changing them")
     args = parser.parse_args()
 
     report = Report()
@@ -239,6 +241,7 @@ def main() -> int:
         listing = parse_plugin_list(text)
     else:
         proc = run_codex(["plugin", "list"])
+        text = proc.stdout if proc.returncode == 0 else ""
         if proc.returncode != 0:
             report.bad(
                 "cannot run `codex plugin list`",
@@ -254,6 +257,13 @@ def main() -> int:
     if not args.list_file:
         check_marketplace(args.marketplace, report)
 
+    inventory = None
+    if args.source_inventory:
+        inventory = source_inventory(home, text, [args.plugin, *args.skills.split(",")])
+        for item in inventory["skills"]:
+            if item["different_content"]:
+                report.warn(f"skill {item['name']} has copies with different hashes; resolve the loaded SKILL.md path")
+
     failures = [e for e in report.entries if e["status"] == "FAIL"]
     print(
         f"{len(failures)} problem(s) found, "
@@ -267,6 +277,7 @@ def main() -> int:
                     "checks": report.entries,
                     "failures": len(failures),
                     "codex_home": str(home),
+                    "source_inventory": inventory,
                 },
                 ensure_ascii=False,
                 indent=2,

@@ -46,3 +46,30 @@ jobs:
         run: python tests/smoke_doctor.py
       - name: Smoke test multi-remote sync
         run: python tests/smoke_sync_remotes.py
+      - name: Smoke test nested repositories
+        run: python tests/smoke_nested_repo.py
+      - name: Smoke test formalization decisions
+        run: python tests/smoke_formalization.py
+      - name: Smoke test Lean build guard
+        run: python tests/smoke_lake_build_guard.py
+
+  maintenance-runtime:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install library dependency
+        run: pip install pyyaml
+      - name: Test source reading, annotation and pointers
+        run: python -X utf8 tests/smoke_research_library.py
+      - name: Test recovery and quota observation
+        run: python -X utf8 tests/smoke_recovery_status.py
+      - name: Test metric comparisons
+        run: python -X utf8 tests/smoke_performance_metrics.py
+      - name: Test skill source diagnostics
+        run: python -X utf8 tests/smoke_skill_sources.py

@@ -9,6 +9,10 @@ Codex 数学研究工作流插件仓库 (marketplace): 一个仓库装下 管理
 
 ## 工作流总览
 
+2026-09-05 更新: 文献实际内容保存与按需读取, agent 批注工具卡与指针表,
+额度中断后的最新状态检查与幂等恢复入口. 方案和验证范围见
+[优化结果](docs/optimization-20260905-results.md). 本批不宣称新的数学 A/B 加速结果.
+
 ```mermaid
 flowchart LR
   A["阶段 A 管理<br/>$manage-math-research-program"] -->|"任务包 Q-<date>-<tag>-<hash8>"| B["阶段 B 研究<br/>$rigorous-open-math-research"]
@@ -134,6 +138,7 @@ push / PR 时 GitHub Actions 自动运行以上校验与冒烟.
 
 | 版本 | 日期 | 摘要 |
 | --- | --- | --- |
+| `1.15.0` | 2026-09-05 | workflow 恢复入口和额度检查, 同名技能来源诊断与严格指标比较; manage 1.8.0 文献内容库及 agent 批注指针; rigorous 1.12.0 协议冲突修复 |
 | `1.14.1` | 2026-08-31 | workflow checkpoint-current validator 修复: scoped 门禁先验证最新 sealed checkpoint, 再校验其 state 绑定的版本化 whiteboard/closure; 不再误读不可变祖先, `STALE` 时禁止回退 |
 | `1.14.0` | 2026-08-31 | Blueprint v2.2 active runtime gateway: manage v1.7.0 新增 `runtime/blueprintctl.py`, rigorous v1.11.0 与 workflow 统一使用 ensure-once layout/config 绑定, canonical validate/query/proposal/integrate 全部走 plugin-owned code, 修复跨根 artifact 解析并拒绝 project-local tool 注入 |
 | `1.13.0` | 2026-08-30 | workflow canonical formalization consumption: `consume/verify-consumption` 在 exact-copy receipt `READY` 后生成唯一 immutable sibling record, 显式保持数学/验证状态不变, 并允许 Stage C 后续合法演化目标 scaffold; exclusive-create 关闭 overwrite TOCTOU |

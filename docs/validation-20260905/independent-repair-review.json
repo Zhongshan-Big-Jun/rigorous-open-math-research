@@ -1,0 +1,55 @@
+{
+  "metadata_fix": "PASS",
+  "preserved_applicability": [
+    {
+      "class": "gap-bound",
+      "failure_records": [
+        {
+          "evidence_run": "R-prior",
+          "mechanism": "endpoint hypothesis fails"
+        }
+      ],
+      "status": "retired"
+    }
+  ],
+  "lifecycle": "archived",
+  "default_matches": 0,
+  "include_archived_matches": 1,
+  "documented_find_and_read": {
+    "verdict": "PASS",
+    "title_hits": 2,
+    "url_hits": 2,
+    "version_hits": 1,
+    "reads": [
+      {
+        "version": "v2",
+        "chunks": 1,
+        "next_offsets": [
+          null
+        ],
+        "exact_reassembly": true
+      },
+      {
+        "version": "v1",
+        "chunks": 2,
+        "next_offsets": [
+          12000,
+          null
+        ],
+        "exact_reassembly": true
+      }
+    ]
+  },
+  "recovery_races": [
+    {
+      "verdict": "PENDING_DRAFT",
+      "next_step": "RECONCILE_DRAFT_AND_RUNTIME",
+      "dispatch_performed": false
+    },
+    {
+      "verdict": "STATE_CHANGED",
+      "next_step": "REINSPECT_LATEST_CHECKPOINT",
+      "dispatch_performed": false
+    }
+  ]
+}

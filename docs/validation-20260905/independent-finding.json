@@ -1,0 +1,64 @@
+{
+  "before": {
+    "tool_id": "comparison",
+    "location": "tools/comparison.md",
+    "summary": "retired comparison bound",
+    "aliases": [
+      "legacy-bound"
+    ],
+    "kind": "method",
+    "lifecycle": "archived",
+    "applicability": [
+      {
+        "status": "retired",
+        "failure_records": [
+          {
+            "mechanism": "endpoint hypothesis fails",
+            "evidence_run": "R-prior"
+          }
+        ],
+        "class": "gap-bound"
+      }
+    ],
+    "custom_reviewer": "independent-audit",
+    "evidence_refs": [
+      "E-prior"
+    ]
+  },
+  "after": {
+    "aliases": [
+      "legacy-bound"
+    ],
+    "annotations": [],
+    "applicability": [],
+    "custom_reviewer": "independent-audit",
+    "evidence_refs": [
+      "E-prior"
+    ],
+    "kind": "method",
+    "lifecycle": "unclassified",
+    "location": "tools/comparison.md",
+    "pointer_state": "CURRENT",
+    "sha256": "448ecbb52a67dd6bb227858af32d1caf1fe419784c8ac6a32cb3e81bfe61c6e7",
+    "summary": "retired comparison bound",
+    "title": "Comparison lemma\r",
+    "tool_id": "comparison",
+    "trust": "RETRIEVAL_ONLY_REVALIDATE_APPLICATION"
+  },
+  "default_query": {
+    "verdict": "RETRIEVAL_ONLY",
+    "hits": [
+      {
+        "score": 1,
+        "tool_id": "comparison",
+        "title": "Comparison lemma\r",
+        "location": "tools/comparison.md",
+        "sha256": "448ecbb52a67dd6bb227858af32d1caf1fe419784c8ac6a32cb3e81bfe61c6e7",
+        "summary": "retired comparison bound",
+        "trust": "RETRIEVAL_ONLY_REVALIDATE_APPLICATION",
+        "annotations": []
+      }
+    ],
+    "total_matches": 1
+  }
+}

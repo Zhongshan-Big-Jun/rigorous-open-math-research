@@ -35,8 +35,8 @@
   需在 DSH 仓库重跑 `scripts/sync-from-parent.py` 继承.
 - **版本管理**: 修改插件元数据或 SKILL 内容后按语义化版本升级
   `version` (大版本 = 架构/能力代际, 小版本 = 功能批次, 补丁 = 纯修复);
-  不再使用 cachebuster 日期后缀. rigorous 当前为 `1.11.0`, workflow 当前为 `1.14.1`,
-  manage 当前为 `1.7.0`, lean-verify 当前为 `1.6.0`.
+  不再使用 cachebuster 日期后缀. rigorous 当前为 `1.12.0`, workflow 当前为 `1.15.0`,
+  manage 当前为 `1.8.0`, lean-verify 当前为 `1.6.0`.
 - **GitHub 网络**: 直连 github.com 失败时, 用本地代理 push:
   `git -c http.proxy=http://127.0.0.1:7897 push origin main` (本机实测可用).
 
@@ -546,3 +546,15 @@
 - BVE 实工件回归: 新 selector 正确选中 sequence-02 并暴露 12 个当前 schema
   缺口; 通过 deterministic advance 生成 sequence-03 后, scoped validator 为
   0 problem/1 expected warning. sequence 00-02 均保持可验证.
+
+### 2026-09-05 会话: 当前 Codex 性能优化方案
+- 用户要求结合 BVE 本体与插件的维护记录和 benchmark 标准提出方案. 核查远端快照, 本地 Codex/skill 来源, 历史预注册, 指标实现与调度规则, 新增 `docs/codex-performance-optimization-plan-2026-09-05.md`. 后续性能维护先读该方案, 按同模型基线, 指标统一, 条件读取和独立审计质量门禁推进. 本轮仅文档, 未改插件行为或安装配置, 未运行新数学 benchmark.
+- 用户随后批准实施, 追加文献读取与可注记工具库/指针表, 以及额度中断续接优化. 当前进度与精确后续步骤在 `docs/optimization-20260905-progress.md`, 阶段边界检查额度并优先保存已有工件.
+
+### 2026-09-05 会话: 文献工具库和额度续接优化
+
+- 用户批准性能优化方案, 明确工具库及其 agent 批注/指针表是核心功能, 并要求额度耗尽后可续接. 额度恢复后接续已落盘实现, 未重启数学研究或消耗 reset credit.
+- 发布批次: workflow 1.15.0, rigorous 1.12.0, manage 1.8.0. 新增实际来源保存/版本检索/有界读取, 卡片哈希批注及指针生成, latest-state 恢复入口, 幂等 receipt, 配额快照检查, 同名技能路径诊断和严格指标比较.
+- 工作方法: 独立临时目录行为测试, 先保存进展再进入昂贵步骤, 保持数学审计/Blueprint 接受门禁. 独立审查发现旧卡片归档/适用范围丢失, 修复后复审 PASS. 原 reviewer 因额度中断无结论, 未算作 PASS.
+- 验证: validate_all 81 项通过, MANIFEST 55 文件; 18 smoke 均通过. 更新版本断言, Windows 子进程需继承 PYTHONUTF8=1. 新 CI 覆盖 Linux/Windows 维护模块. 本批未运行新数学 A/B.
+- 具体方案/结果/续接动作: docs/codex-performance-optimization-plan-2026-09-05.md, docs/optimization-20260905-results.md, docs/optimization-20260905-progress.md.

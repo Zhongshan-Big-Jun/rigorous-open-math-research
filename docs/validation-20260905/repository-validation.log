@@ -1,0 +1,84 @@
+Validating repository: F:\LaTeX\BVE research\_xsoc1_work
+ok: marketplace file exists: .agents\plugins\marketplace.json
+ok: marketplace has a top-level name
+ok: marketplace has interface.displayName
+ok: marketplace lists at least one plugin
+ok: marketplace entry 'math-research-workflow' has name/source/policy/category
+ok: marketplace entry 'math-research-workflow' has policy.installation/authentication
+ok: marketplace entry 'math-research-workflow' installation is an allowed value
+ok: marketplace entry 'math-research-workflow' authentication is an allowed value
+ok: marketplace entry 'math-research-workflow' source path exists: ./plugins/math-research-workflow
+ok: marketplace entry 'math-research-workflow' folder basename matches
+ok: plugin 'math-research-workflow' has .codex-plugin/plugin.json
+ok: plugin 'math-research-workflow' manifest name matches folder
+ok: plugin 'math-research-workflow' manifest has required fields
+ok: plugin 'math-research-workflow' interface has displayName/shortDescription/developerName/category
+ok: plugin 'math-research-workflow' has skills/ dir
+ok: skill 'math-research-workflow' has SKILL.md
+ok: skill 'math-research-workflow' frontmatter opens with ---
+ok: skill 'math-research-workflow' frontmatter has name/description
+ok: skill 'math-research-workflow' keeps changelog out of the entrypoint
+ok: skill 'math-research-workflow' discloses release history by reference
+ok: skill 'math-research-workflow' entrypoint is within context budget (29175/32768 bytes)
+ok: plugin 'math-research-workflow' agents/openai.yaml has interface/policy
+ok: marketplace entry 'rigorous-open-math-research' has name/source/policy/category
+ok: marketplace entry 'rigorous-open-math-research' has policy.installation/authentication
+ok: marketplace entry 'rigorous-open-math-research' installation is an allowed value
+ok: marketplace entry 'rigorous-open-math-research' authentication is an allowed value
+ok: marketplace entry 'rigorous-open-math-research' source path exists: ./plugins/rigorous-open-math-research
+ok: marketplace entry 'rigorous-open-math-research' folder basename matches
+ok: plugin 'rigorous-open-math-research' has .codex-plugin/plugin.json
+ok: plugin 'rigorous-open-math-research' manifest name matches folder
+ok: plugin 'rigorous-open-math-research' manifest has required fields
+ok: plugin 'rigorous-open-math-research' interface has displayName/shortDescription/developerName/category
+ok: plugin 'rigorous-open-math-research' has skills/ dir
+ok: skill 'rigorous-open-math-research' has SKILL.md
+ok: skill 'rigorous-open-math-research' frontmatter opens with ---
+ok: skill 'rigorous-open-math-research' frontmatter has name/description
+ok: skill 'rigorous-open-math-research' keeps changelog out of the entrypoint
+ok: skill 'rigorous-open-math-research' discloses release history by reference
+ok: skill 'rigorous-open-math-research' entrypoint is within context budget (13794/15000 bytes)
+ok: plugin 'rigorous-open-math-research' agents/openai.yaml has interface/policy
+ok: marketplace entry 'manage-math-research-program' has name/source/policy/category
+ok: marketplace entry 'manage-math-research-program' has policy.installation/authentication
+ok: marketplace entry 'manage-math-research-program' installation is an allowed value
+ok: marketplace entry 'manage-math-research-program' authentication is an allowed value
+ok: marketplace entry 'manage-math-research-program' source path exists: ./plugins/manage-math-research-program
+ok: marketplace entry 'manage-math-research-program' folder basename matches
+ok: plugin 'manage-math-research-program' has .codex-plugin/plugin.json
+ok: plugin 'manage-math-research-program' manifest name matches folder
+ok: plugin 'manage-math-research-program' manifest has required fields
+ok: plugin 'manage-math-research-program' interface has displayName/shortDescription/developerName/category
+ok: plugin 'manage-math-research-program' has skills/ dir
+ok: skill 'manage-math-research-program' has SKILL.md
+ok: skill 'manage-math-research-program' frontmatter opens with ---
+ok: skill 'manage-math-research-program' frontmatter has name/description
+ok: skill 'manage-math-research-program' keeps changelog out of the entrypoint
+ok: skill 'manage-math-research-program' discloses release history by reference
+ok: skill 'manage-math-research-program' entrypoint is within context budget (39337/42000 bytes)
+ok: skill 'manage-math-research-program' MANIFEST.sha256 matches
+ok: plugin 'manage-math-research-program' agents/openai.yaml has interface/policy
+ok: marketplace entry 'lean-verify' has name/source/policy/category
+ok: marketplace entry 'lean-verify' has policy.installation/authentication
+ok: marketplace entry 'lean-verify' installation is an allowed value
+ok: marketplace entry 'lean-verify' authentication is an allowed value
+ok: marketplace entry 'lean-verify' source path exists: ./plugins/lean-verify
+ok: marketplace entry 'lean-verify' folder basename matches
+ok: plugin 'lean-verify' has .codex-plugin/plugin.json
+ok: plugin 'lean-verify' manifest name matches folder
+ok: plugin 'lean-verify' manifest has required fields
+ok: plugin 'lean-verify' interface has displayName/shortDescription/developerName/category
+ok: plugin 'lean-verify' has skills/ dir
+ok: skill 'lean-verify' has SKILL.md
+ok: skill 'lean-verify' frontmatter opens with ---
+ok: skill 'lean-verify' frontmatter has name/description
+ok: skill 'lean-verify' keeps changelog out of the entrypoint
+ok: skill 'lean-verify' discloses release history by reference
+ok: skill 'lean-verify' entrypoint is within context budget (19218/22000 bytes)
+ok: plugin 'lean-verify' agents/openai.yaml has interface/policy
+ok: all text files are UTF-8 without BOM
+ok: all Markdown fences are balanced (95 files)
+ok: all JSON files parse after masking {{...}} templates (36 files)
+ok: all YAML files parse (6 files)
+
+All checks passed (81 checks).
