@@ -558,3 +558,5 @@
 - 工作方法: 独立临时目录行为测试, 先保存进展再进入昂贵步骤, 保持数学审计/Blueprint 接受门禁. 独立审查发现旧卡片归档/适用范围丢失, 修复后复审 PASS. 原 reviewer 因额度中断无结论, 未算作 PASS.
 - 验证: validate_all 81 项通过, MANIFEST 55 文件; 18 smoke 均通过. 更新版本断言, Windows 子进程需继承 PYTHONUTF8=1. 新 CI 覆盖 Linux/Windows 维护模块. 本批未运行新数学 A/B.
 - 具体方案/结果/续接动作: docs/codex-performance-optimization-plan-2026-09-05.md, docs/optimization-20260905-results.md, docs/optimization-20260905-progress.md.
+
+- 2026-09-05 release follow-up: parent validate CI and DSH validate CI passed. Fixed the pre-existing sync-fork job-level secrets condition using step-level env conditions per GitHub context availability. Preparing a no-model actual-artifact L0 replay after user-reported quota recovery; no research worker dispatch.

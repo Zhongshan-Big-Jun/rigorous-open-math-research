@@ -1,6 +1,6 @@
 # Optimization implementation progress
 
-Updated: 2026-09-05. State: RELEASE_VALIDATION.
+Updated: 2026-09-05. State: RELEASED_REAL_ARTIFACT_REPLAY.
 
 ## Contract
 
@@ -21,8 +21,9 @@ User approved the optimization plan and added source reading, agent-annotatable 
 ## Next actions
 
 1. Release checks complete: all 18 smoke scripts, 81 repository checks, 4 plugin validators and 4 skill validators passed. Evidence and results report are archived. The affected version/encoding tests were rerun successfully.
-2. Commit and push parent origin then fork; update canonical parent clone, DSH adaptation/lock/version and installed Codex packages. Keep remote and install results explicit. DSH package version and doctor/test-path adaptation are prepared but not yet synchronized or validated.
-3. No mathematical benchmark has run in this optimization batch.
+2. Release code de540c0 pushed to parent and fork using existing SSH authentication after HTTPS credential prompting failed. DSH release 48652bf plus documentation repair 87b4ce4 pushed; 51 checks, 22 smoke scripts, bundle and sync checks passed. Local Codex installs and source hashes match, doctor has 0 failures. DSH junction reflects the synchronized checkout.
+3. Parent validate CI and DSH validate CI passed. Existing sync-fork YAML failed before creating jobs because secrets are unavailable in a job-level if. A minimal step-level environment-condition repair is prepared; remote CI will verify it.
+4. User reported another quota recovery: five-hour used 4%, weekly used 32%. Finish a no-model L0 replay on isolated copies of actual BVE tool cards and the latest checkpoint, preserving the main research state. No mathematical benchmark has run in this optimization batch.
 
 ## Recovery boundaries
 
