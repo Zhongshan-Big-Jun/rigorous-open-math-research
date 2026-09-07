@@ -199,3 +199,9 @@ lock, verify every link resolves to a regular file inside the stopped workspace,
 materialize only the frozen copy, and compare all source/copy hashes before and
 after. Record this as packaging reconciliation with zero added solver time or
 model calls. Preserve the original workspace and the pre-reconciliation state.
+
+Before B external audit, the same no-prior-verdict requirement also removes
+its two-line nonmathematical footer reporting the internal audit PASS. The
+leading status and footer are recorded by exact original line numbers and
+bytes in the binding; all proof text and formal-verification limitations remain
+unchanged. C/A have no such footer, so their submitted inputs do not change.

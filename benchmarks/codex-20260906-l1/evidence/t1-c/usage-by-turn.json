@@ -1,0 +1,36 @@
+{
+	"scope": "Unique returned response records grouped by actual thread_id and turn_id. Initial/continued turn costs remain in the overall totals; no causal overhead attribution.",
+	"turns": [
+		{
+			"thread_id": "01a076b7-6a23-7fb0-bb84-115e1d497eb0",
+			"turn_id": "01a076b7-6a35-7ec0-8254-f66a76092a8a",
+			"first_recorded_at": "2026-09-06T12:35:36.817Z",
+			"last_recorded_at": "2026-09-06T12:42:39.156Z",
+			"usage": {
+				"input_tokens": 127626,
+				"cached_input_tokens": 86272,
+				"output_tokens": 13231,
+				"reasoning_output_tokens": 5122,
+				"uncached_input_tokens": 41354,
+				"responses_with_usage": 7
+			},
+			"first_response_usage": {
+				"input_tokens": 11226,
+				"cached_input_tokens": 0,
+				"output_tokens": 135,
+				"reasoning_output_tokens": 0,
+				"uncached_input_tokens": 11226,
+				"responses_with_usage": 1
+			},
+			"response_ids": [
+				"resp_077f2c9a4a2e24f6016a9d5e2f9e8087d0b59a5e669fe5927d",
+				"resp_077f2c9a4a2e24f6016a9d5e367f8487d0b18e5c2dde52eceb",
+				"resp_077f2c9a4a2e24f6016a9d5e91311087d0b4554627d1da7e98",
+				"resp_077f2c9a4a2e24f6016a9d5efe2d9c87d08f4a2fd2bc5e68d4",
+				"resp_077f2c9a4a2e24f6016a9d5f5706ac87d0b3208a4aea940231",
+				"resp_077f2c9a4a2e24f6016a9d5f85e9ac87d08b4d8bad7176d971",
+				"resp_077f2c9a4a2e24f6016a9d5f9f59f087d0a520d1fe0b98b81c"
+			]
+		}
+	]
+}

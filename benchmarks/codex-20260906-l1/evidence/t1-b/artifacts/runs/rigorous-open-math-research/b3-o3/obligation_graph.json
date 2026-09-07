@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "contract_version": 1,
+  "root_obligations": [
+    {
+      "id": "O0",
+      "status": "CLOSED",
+      "proof_anchor": "candidate_proof.md#o4-pullback-complete-count-and-simplicity-for-g"
+    },
+    {
+      "id": "O1",
+      "status": "CLOSED",
+      "proof_anchor": "candidate_proof.md#o1-matrix-recurrence"
+    },
+    {
+      "id": "O2",
+      "status": "CLOSED",
+      "proof_anchor": "candidate_proof.md#o2-polynomial-representation-and-degree"
+    },
+    {
+      "id": "O3",
+      "status": "CLOSED",
+      "proof_anchor": "candidate_proof.md#o3-exact-location-and-simplicity-of-the-scalar-roots"
+    },
+    {
+      "id": "O4",
+      "status": "CLOSED",
+      "proof_anchor": "candidate_proof.md#o4-pullback-complete-count-and-simplicity-for-g"
+    },
+    {
+      "id": "O5",
+      "status": "CLOSED",
+      "proof_anchor": "candidate_proof.md#o5-separate-audits-of-the-required-cases"
+    }
+  ],
+  "status_semantics": "CLOSED means the frozen candidate supplies a complete argument; independent acceptance is recorded in completion_audit.json.",
+  "dependencies": {
+    "O0": [
+      "O1",
+      "O2",
+      "O3",
+      "O4",
+      "O5"
+    ],
+    "O1": [],
+    "O2": [
+      "O1"
+    ],
+    "O3": [],
+    "O4": [
+      "O2",
+      "O3"
+    ],
+    "O5": []
+  },
+  "external_dependencies": [
+    "Intermediate value theorem, stated and hypotheses checked in O3",
+    "Polynomial factor theorem, stated and derived through division in O3"
+  ],
+  "optional_formalization": {
+    "status": "UNVERIFIED_SCAFFOLD",
+    "part_of_mathematical_completion": false
+  }
+}

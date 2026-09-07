@@ -1,0 +1,13 @@
+{
+	"recorded_at": "2026-09-07T07:29:29.507670+00:00",
+	"reason": "Continue the registered second development regression after all T1 audits completed. T1 cost targets were not met; retain the fixed treatments and second-task design without tuning after seeing T1.",
+	"t1_comparison_sha256": "ad197b94db282e1f2c3188986d29c1e7a8f5d0c02482fb6b12d3bd886723ad3f",
+	"task_sha256": "6859e0af922ba8454758e2195fcefcfe8fa164a40e2c23022ec7ebb2da228943",
+	"order": [
+		"B",
+		"A",
+		"C"
+	],
+	"changed_treatments": false,
+	"external_model_calls_in_preflight": 0
+}

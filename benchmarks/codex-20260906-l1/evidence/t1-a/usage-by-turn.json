@@ -1,0 +1,106 @@
+{
+	"scope": "Unique returned response records grouped by actual thread_id and turn_id. Initial/continued turn costs remain in the overall totals; no causal overhead attribution.",
+	"turns": [
+		{
+			"thread_id": "01a076cc-139f-76f1-aede-3af2443f3a4a",
+			"turn_id": "01a076cc-13c7-7a82-b9ed-3d6f874a7aed",
+			"first_recorded_at": "2026-09-06T12:58:15.174Z",
+			"last_recorded_at": "2026-09-06T13:05:26.143Z",
+			"usage": {
+				"input_tokens": 231909,
+				"cached_input_tokens": 187904,
+				"output_tokens": 8691,
+				"reasoning_output_tokens": 2521,
+				"uncached_input_tokens": 44005,
+				"responses_with_usage": 7
+			},
+			"first_response_usage": {
+				"input_tokens": 12031,
+				"cached_input_tokens": 0,
+				"output_tokens": 232,
+				"reasoning_output_tokens": 0,
+				"uncached_input_tokens": 12031,
+				"responses_with_usage": 1
+			},
+			"response_ids": [
+				"resp_0b07f0735b6c6b80016a9d637ad88887d1b8e1a60518f8de53",
+				"resp_0b07f0735b6c6b80016a9d638494e887d1b59867b7f777c034",
+				"resp_0b07f0735b6c6b80016a9d6392555087d1bd6fa355699de8c6",
+				"resp_0b07f0735b6c6b80016a9d643fb2bc87d186d1249c473cd1cb",
+				"resp_0b07f0735b6c6b80016a9d644c88e887d1b57e760c07c10ea8",
+				"resp_0b07f0735b6c6b80016a9d64ee245887d1b0404caa2459f293",
+				"resp_0b07f0735b6c6b80016a9d65056b4887d1b87a8ecfe0d236b9"
+			]
+		},
+		{
+			"thread_id": "01a076cc-139f-76f1-aede-3af2443f3a4a",
+			"turn_id": "01a076d8-cfc3-73e0-b11c-c788b7b1d870",
+			"first_recorded_at": "2026-09-06T13:12:11.410Z",
+			"last_recorded_at": "2026-09-06T13:25:38.184Z",
+			"usage": {
+				"input_tokens": 1200832,
+				"cached_input_tokens": 1151488,
+				"output_tokens": 19851,
+				"reasoning_output_tokens": 6405,
+				"uncached_input_tokens": 49344,
+				"responses_with_usage": 17
+			},
+			"first_response_usage": {
+				"input_tokens": 54600,
+				"cached_input_tokens": 38784,
+				"output_tokens": 176,
+				"reasoning_output_tokens": 106,
+				"uncached_input_tokens": 15816,
+				"responses_with_usage": 1
+			},
+			"response_ids": [
+				"resp_05527e17d3146f25016a9d66bc0f1087d0bf44ab9bb8b0cdd2",
+				"resp_05527e17d3146f25016a9d66c8890887d08af435d81f662d02",
+				"resp_05527e17d3146f25016a9d66d7a97487d0839e067d21197357",
+				"resp_05527e17d3146f25016a9d6739142487d0ae8cf7279ed6b357",
+				"resp_05527e17d3146f25016a9d67949c0087d0a396759edc183c9f",
+				"resp_05527e17d3146f25016a9d679f5ad487d0811de7d4819a98a9",
+				"resp_05527e17d3146f25016a9d67a464ac87d0b248ef2249b93f54",
+				"resp_05527e17d3146f25016a9d67add5d887d0ae605232388817e2",
+				"resp_05527e17d3146f25016a9d67c83b4887d0ac47561721493156",
+				"resp_05527e17d3146f25016a9d6843a93c87d0bc2fe294b59d839f",
+				"resp_05527e17d3146f25016a9d684dbdf887d0be8d3ed83126b94a",
+				"resp_05527e17d3146f25016a9d6886140087d0880ced7b11aff477",
+				"resp_05527e17d3146f25016a9d68be34bc87d0974a44564ecb7e6d",
+				"resp_05527e17d3146f25016a9d68e39ad887d095ffd90af87b127e",
+				"resp_05527e17d3146f25016a9d68eb756087d08588582262568aae",
+				"resp_05527e17d3146f25016a9d6973904c87d0a2f6072a0749e05e",
+				"resp_05527e17d3146f25016a9d6995d29887d0a147a73820468f12"
+			]
+		},
+		{
+			"thread_id": "01a076dc-f493-7c23-96ba-fbad85c69fb6",
+			"turn_id": "01a076dc-f4b6-7683-a9e0-a9fb4dc611c0",
+			"first_recorded_at": "2026-09-06T13:16:44.475Z",
+			"last_recorded_at": "2026-09-06T13:20:57.851Z",
+			"usage": {
+				"input_tokens": 116041,
+				"cached_input_tokens": 86016,
+				"output_tokens": 7172,
+				"reasoning_output_tokens": 1797,
+				"uncached_input_tokens": 30025,
+				"responses_with_usage": 5
+			},
+			"first_response_usage": {
+				"input_tokens": 12012,
+				"cached_input_tokens": 0,
+				"output_tokens": 370,
+				"reasoning_output_tokens": 40,
+				"uncached_input_tokens": 12012,
+				"responses_with_usage": 1
+			},
+			"response_ids": [
+				"resp_0ffb2c029dbff4a0016a9d67cc30a887d0b3675779a86728e8",
+				"resp_0ffb2c029dbff4a0016a9d67d9af3087d094406408a2055fe5",
+				"resp_0ffb2c029dbff4a0016a9d68299ad487d0b20588a454fb585d",
+				"resp_0ffb2c029dbff4a0016a9d68bbdf7087d098003be1add75d92",
+				"resp_0ffb2c029dbff4a0016a9d68ced0b087d0b21c7455a0d05fc8"
+			]
+		}
+	]
+}

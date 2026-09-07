@@ -1,18 +1,30 @@
 # L1 three-arm regression status
 
-Updated: 2026-09-07. State: T1_C_A_AUDITED_B_RUNNING.
+Updated: 2026-09-07. State: T1_COMPLETE_T2_B_RUNNING.
 
 User requested continuation. Preparation and one infrastructure-invalid attempt
-are recorded. Completed solver runs: 2 (T1 C and A). Scored/audited runs: 2.
-T1 C and A blind audits both PASS, 100/100, no load-bearing gap or repair.
+are recorded. Completed solver runs: 3 (T1 C, A and B). Scored/audited runs: 3.
+All T1 blind audits PASS, 100/100, no load-bearing gap or repair.
 A solver used 1277.998200 active seconds; its external audit used 432.192049.
 T1 B launched at 2026-09-07T01:48:49Z. Inspect t1/b/run/state.json before dispatch.
 Its first segment exited after 12.037755 seconds because the isolated refresh
 token was already used. Only private same-account authentication was refreshed.
 Session 01a0798d-cd6d-7b22-bbd2-bb4b4a1fdb43 resumed at 01:51:36Z with that time
 still charged. No new attempt or config change was introduced.
+B then exhausted quota during internal audit after 538.843714 cumulative active
+seconds. The user requested continuation again; segment 03 resumed the same
+session at 2026-09-07T07:03:44Z with 1261.156286 seconds left. Its existing private
+access token remained valid. Candidate proof and research records are retained.
+B returned normally and froze at 07:13:58Z after 1151.973121 active seconds.
+It returned 244895 uncached input, 2307072 cached input and 38060 output tokens.
+External B audit launched at 07:16:20Z. Mapping: r1/control/audit-t1-B.json.
+Opaque root: /home/huangzy/codex-benchmark/blind-audits/63711bf5-ec61-453e-b47b-715ee6b7cbb8.
+That audit returned normally at 07:22:22Z after 362.029277 seconds. All 17
+checked claims pass. T1 comparison and cost limitations are in RESULTS.md and
+comparison-t1.json. No T1 solver or auditor should be dispatched again.
 The intended experiment remains old plugin A / new plugin B / blank Codex C,
-with T1 order C,A,B and T2 order B,A,C. T2 is prepared but not sealed.
+with T1 order C,A,B and T2 order B,A,C. T2 is sealed and its B arm started at
+2026-09-07T13:18:47Z with fresh same-account private authentication.
 
 ## Current verified execution path
 
@@ -25,14 +37,15 @@ with T1 order C,A,B and T2 order B,A,C. T2 is prepared but not sealed.
   B commit: 6d6d739645981a5a2970b5faa26adda49a724113.
   All arms use gpt-6-astra / max and the same basic tools and child limit.
 - Existing WSL loopback proxy now works. No previously rejected bridge was run.
-- All T1 arms passed filesystem and network isolation, expected skill metadata,
+- All T1 and T2 arms passed filesystem and network isolation, expected skill metadata,
   actual functions.exec sandbox execution and synthetic same-session resume.
   These stub tests used no external model calls and no real auth credentials.
-- control/SEALED.json binds the manifest, harness code and six successful gates.
-  At sealing, replacement homes had zero solver sessions. T1 C has since finished.
+- control/SEALED.json binds the manifest, harness code and all twelve successful
+  task/arm gates. T2 homes had zero solver sessions when their gates were sealed.
+  The previous T1-only seal is retained in control/SEALED-before-t2.json.
 - Four deterministic runner checks and all 81 repository checks passed.
-- B launch quota snapshot: 2026-09-07T01:48:49Z, five-hour remaining 50%, weekly
-  remaining 76%. Historical snapshot only. The user has removed both reserve thresholds.
+- T2 B launch quota snapshot: 2026-09-07T13:18:47Z, five-hour remaining 99%, weekly
+  remaining 52%. Historical snapshot only. The user has removed both reserve thresholds.
   Read live quota before dispatch; no reset redemption was authorized.
 
 ## A quota interruption and continuation
@@ -61,22 +74,22 @@ with T1 order C,A,B and T2 order B,A,C. T2 is prepared but not sealed.
    (UTC ISO timestamp), five_hour_remaining and weekly_remaining. These are
    account-level data, not treatment costs. The user explicitly removed quota reserves. Launch with positive available
    quota; stop on actual exhaustion, stale snapshots or the fixed wall cap.
-3. T1 C and A, including both external audits, are complete. Do not repeat them.
-   Inspect t1/b/run/state.json. If B paused or exited due to quota, continue the
-   existing session with its unspent 1800-second allowance:
+3. All T1 solvers and audits are complete. T2 is sealed and B has started.
+   Inspect t2/b/run/state.json before any dispatch. If it pauses or exits due
+   to quota, reuse the original session and remaining allowance:
 
-   python3 -X utf8 scripts/benchmark_runner.py --root /home/huangzy/codex-benchmark/L1-20260906-ASTRA-ABC-r1 --task t1 --arm B --resume
+   python3 -X utf8 scripts/benchmark_runner.py --root /home/huangzy/codex-benchmark/L1-20260906-ASTRA-ABC-r1 --task t2 --arm B --resume
 4. Refresh the quota file during execution. It expires after five minutes;
    actual exhaustion or creating run/STOP causes cancellation and checkpoint.
    The runner retains segment logs, root ID, observed child sessions and elapsed
    budget. An ordinary PAUSED state can use --resume with the same task/arm;
    --reconcile handles uncertain exits without creating another attempt.
-5. After B returns, freeze and measure it, then prepare its independent external
-   audit with benchmark_audit.py --task t1 --arm B. Apply the recorded leading
-   status-line blinding rule if needed. Complete usage deduplication
+5. T2 order is B,A,C, each followed by the same separately budgeted blind audit.
+   Measure B's returned answer and audit before starting A. Refresh each fresh
+   arm's private same-account authentication before launch. Complete usage deduplication
    before aggregate cost comparisons. Missing returns or usage stay UNKNOWN.
-6. T2, feature literature-to-tool reuse, controlled research interruption, L2
-   and model/effort ablations remain later work. Do not dispatch them implicitly.
+6. Feature literature-to-tool reuse, controlled research interruption, L2 and
+   model/effort ablations remain later work. They do not alter these offline arms.
 
 ## Preserved invalid attempt and earlier evidence
 

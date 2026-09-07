@@ -1,0 +1,151 @@
+{
+  "verdict": "PASS",
+  "scores": {
+    "correctness": 40,
+    "fidelity": 20,
+    "strict_progress": 15,
+    "calibration": 10,
+    "evidence": 10,
+    "reproducibility": 5
+  },
+  "total_score": 100,
+  "earliest_substantive_gap": null,
+  "load_bearing_gaps": [],
+  "checked_claims": [
+    {
+      "id": "C01",
+      "location": "CANDIDATE.md:19-24",
+      "claim": "The parameter inequalities hold for every R>1.",
+      "status": "VERIFIED",
+      "evidence": "s=sqrt(R)>1 gives 0<r=1/s<1, h-2=(s-1)^2/s>0, and K=h+2=(s+1)^2/s>0. All later strict inequalities therefore hold throughout the requested parameter range. No upper bound on n or R is imposed."
+    },
+    {
+      "id": "C02",
+      "location": "CANDIDATE.md:28-46",
+      "claim": "The matrix identities imply the scalar recurrence for every m>=2.",
+      "status": "VERIFIED",
+      "evidence": "Expanding the determinant gives (c^2+q^2)^2=1, and the trace is 2c^2-hq^2=Kc^2-h=2z(c). The stated identity for an arbitrary real 2-by-2 matrix follows entrywise. Left multiplication by E C^(m-2) gives g_m=2z(c)g_(m-1)-g_(m-2), without requiring E and C to commute."
+    },
+    {
+      "id": "C03",
+      "location": "CANDIDATE.md:48-67",
+      "claim": "The initial values and recurrence establish G(y)=sin(y) P_n(z(cos(y))) for every real y.",
+      "status": "VERIFIED",
+      "evidence": "Direct multiplication gives g_0=q and g_1=q[(2+r)c^2-sq^2]=q(Kc^2-s)=q(2z+r). P_0=1 and P_1=2z+r satisfy precisely the same recurrence. The submitted induction proves the identity uniformly in n, including q=0 because it does not divide by q."
+    },
+    {
+      "id": "C04",
+      "location": "CANDIDATE.md:57-81,122-131",
+      "claim": "Q has a unique even polynomial extension of degree exactly 2n and leading coefficient K^n.",
+      "status": "VERIFIED",
+      "evidence": "For -1<x<1 the positive denominator equals sin(arccos x), so the defining quotient equals P_n((Kx^2-h)/2). The recurrence gives degree m and leading coefficient 2^m for U_m; adding r U_(n-1) cannot cancel the leading term of U_n. Composition gives degree 2n and coefficient K^n, which is nonzero. The stated factor theorem also justifies uniqueness from agreement on an interval."
+    },
+    {
+      "id": "C05",
+      "location": "CANDIDATE.md:85-108",
+      "claim": "The sine formula and all scalar sign evaluations are exact.",
+      "status": "VERIFIED",
+      "evidence": "The sine addition identity matches the U recurrence and its initial values on 0<theta<pi, where sin(theta)>0. At theta=k pi/(n+1), sin(n theta)=(-1)^(k+1) sin(theta), giving P_n(t_k)=r(-1)^(k+1). Endpoint recurrence gives P_n(-1)=(-1)^n(n+1-rn), with positive bracket 1+n(1-r)."
+    },
+    {
+      "id": "C06",
+      "location": "CANDIDATE.md:95-120",
+      "claim": "The submitted intervals produce n distinct roots in (-1,1).",
+      "status": "VERIFIED",
+      "evidence": "The ordering -1<t_n<...<t_1<1 is correct. The signs at -1 and t_n are (-1)^n and (-1)^(n+1); signs at consecutive t_k also oppose. There are exactly 1+(n-1)=n disjoint open intervals. Polynomial continuity and the nonzero opposite signs meet the explicitly stated intermediate value theorem hypotheses. For n=1 the sole interval is (-1,0), so there is no missing base case."
+    },
+    {
+      "id": "C07",
+      "location": "CANDIDATE.md:122-130",
+      "claim": "These n scalar roots exhaust P_n and each has multiplicity one.",
+      "status": "VERIFIED",
+      "evidence": "The n distinct linear factors divide the degree-n polynomial by the stated factor theorem. Matching the leading coefficient gives P_n(z)=2^n product_j(z-zeta_j). There is no remaining factor. At each root the displayed derivative is a product of nonzero root differences, so it is nonzero. The candidate supplies this argument rather than relying on a degree bound alone."
+    },
+    {
+      "id": "C08",
+      "location": "CANDIDATE.md:135-152",
+      "claim": "Pulling the scalar roots back gives exactly 2n distinct polynomial roots strictly inside (-1,1).",
+      "status": "VERIFIED",
+      "evidence": "For a_j=(h+2 zeta_j)/K, the strict bounds -1<zeta_j<1 give 0<((s-1)/(s+1))^2<a_j<1. The affine map has positive slope, so the a_j are distinct. Substitution in the scalar factorization gives exactly Q(x)=K^n product_j(x^2-a_j). Thus the roots are precisely the distinct numbers +/-sqrt(a_j), with (s-1)/(s+1)<|x|<1."
+    },
+    {
+      "id": "C09",
+      "location": "CANDIDATE.md:154-158",
+      "claim": "Each root of Q is simple.",
+      "status": "VERIFIED",
+      "evidence": "The derivative z'(x)=Kx gives Q'(x)=Kx P_n'(z(x)). At a root, K>0, x is nonzero by the proved location bound, and P_n' is nonzero by the scalar factorization. The possible degeneracy at the turning point x=0 is explicitly excluded."
+    },
+    {
+      "id": "C10",
+      "location": "CANDIDATE.md:160-171",
+      "claim": "G has exactly 2n zeros in (0,pi), all simple.",
+      "status": "VERIFIED",
+      "evidence": "Cosine is a bijection from (0,pi) to (-1,1), and sine is strictly positive there. Hence G(y)=sin(y)Q(cos(y)) gives a bijection of the relevant root sets. At each such root, G'(y)=-sin(y)^2 Q'(cos(y)) is nonzero. Both the count and the analytic multiplicities are established."
+    },
+    {
+      "id": "C11",
+      "location": "CANDIDATE.md:175-182",
+      "claim": "The exact n=1 special case is correct.",
+      "status": "VERIFIED",
+      "evidence": "Q_(1,s)(x)=Kx^2-s has roots +/-sqrt(s/K)=+/-s/(s+1), which are distinct, nonzero, and interior for all s>1. The two stated y values follow from cosine symmetry. Substituting Q'=2Kx in the derivative of G gives the claimed nonzero -2K cos(y) sin(y)^2."
+    },
+    {
+      "id": "C12",
+      "location": "CANDIDATE.md:184-189",
+      "claim": "The y=0 endpoint is audited and excluded.",
+      "status": "VERIFIED",
+      "evidence": "At y=0, E=C=I, so G(0)=0. Also z(1)=1 and P_n(1)=n+1+n/s>0, giving Q(1)=G'(0)=n+1+n/s. The endpoint is a simple zero of G, is not a root of Q, and is not counted among the 2n interior zeros."
+    },
+    {
+      "id": "C13",
+      "location": "CANDIDATE.md:191-197",
+      "claim": "The y=pi endpoint is audited and excluded.",
+      "status": "VERIFIED",
+      "evidence": "At y=pi, E=-I and C=I, so G(pi)=0. Evenness gives Q(-1)=n+1+n/s>0, and differentiation gives G'(pi)=-(n+1+n/s). This endpoint is likewise simple for G, not a polynomial root, and excluded from the interior count."
+    },
+    {
+      "id": "C14",
+      "location": "CANDIDATE.md:199-205",
+      "claim": "The y=pi/2 special case is not a zero.",
+      "status": "VERIFIED",
+      "evidence": "At the midpoint, C=diag(-1/s,-s) and E has first row (0,1). Consequently (E C^n)_12=(-s)^n, which is nonzero for every permitted n and s. Since sin(pi/2)=1, Q(0)=(-s)^n as stated."
+    },
+    {
+      "id": "C15",
+      "location": "CANDIDATE.md:207-215",
+      "claim": "The boundary R=1 has the stated exact count, simplicity, and midpoint value.",
+      "status": "VERIFIED",
+      "evidence": "At s=1 the double-angle formulas give C_1(y)=E(2y), and matrix multiplication with the addition formulas gives E(a)E(b)=E(a+b). Thus G_(n,1)(y)=sin((2n+1)y). Its interior zeros are exactly k pi/(2n+1) for 1<=k<=2n, with derivatives (2n+1)(-1)^k. Endpoints are excluded, and its midpoint value is (-1)^n. This separate argument does not assume h>2 at the boundary."
+    },
+    {
+      "id": "C16",
+      "location": "CANDIDATE.md:216-219",
+      "claim": "The boundary quotient is U_(2n), with the claimed degree, location, and simplicity.",
+      "status": "VERIFIED",
+      "evidence": "The already established sine identity with m=2n identifies the quotient with U_(2n)(x) on (-1,1). Its degree and leading coefficient are 2n and 2^(2n). The 2n displayed cosine roots are distinct and in (-1,1); the stated factor theorem then proves exhaustion and simplicity."
+    },
+    {
+      "id": "C17",
+      "location": "CANDIDATE.md:38-39,116-131,221-228",
+      "claim": "The proof is self-contained at the stated elementary level and its completion claim is justified.",
+      "status": "VERIFIED",
+      "evidence": "The intermediate value theorem is stated with continuity, ordered endpoints, and opposite-sign hypotheses, all checked. The factor theorem is stated and applied at distinct real roots. The matrix identity is given for arbitrary real 2-by-2 matrices and is directly verifiable. Trigonometric identities and differentiation apply to the explicit smooth functions. No spectral theorem, numerical root scan, or unverified formal scaffold supports a load-bearing step."
+    }
+  ],
+  "score_rationale": {
+    "correctness": "Every load-bearing implication is valid; the submitted proof itself establishes uniform location, complete count, and simplicity.",
+    "fidelity": "The exact matrices and quotient are used, and all five expressly requested special cases are separately addressed without counting endpoint zeros.",
+    "strict_progress": "The original submission closes the full task, including the polynomial extension and multiplicity obligations.",
+    "calibration": "The completion claim is warranted. The submission does not claim numerical evidence is a proof or claim formal machine verification.",
+    "evidence": "The recurrence, sign values, interval count, factorizations, derivative tests, and boundary formulas are all supplied explicitly and can be checked exactly.",
+    "reproducibility": "The argument defines its polynomials recursively and states the needed root theorems; independent checking needs no external source or unavailable artifact."
+  },
+  "audit_method": {
+    "inputs": ["TASK.md", "CANDIDATE.md"],
+    "method": "Independent exact verification of the submitted derivations and their hypotheses, with local scratch algebra as corroboration. No other source, repository history, or prior verdict was consulted.",
+    "supplementary_checks": "A Python 3 scratch calculation using integer-coefficient Laurent polynomials in c,q,s, reduced by q^2=1-c^2, confirmed det(C)=1, tr(C)=Kc^2-h, the initial g_1 formula, C^2-(Kc^2-h)C+I=0, and the parameter identities. Direct symbolic matrix-power comparisons for n=0 through 6 also agreed.",
+    "computational_limit": "The finite matrix-power comparisons are corroboration only. The uniform count, location, and simplicity are justified by the induction, sign intervals, degree factorization, and derivative arguments already present in CANDIDATE.md."
+  },
+  "repairs_supplied": [],
+  "rationale": "PASS: no substantive gap, missing load-bearing proof, or false mathematical claim was found. The candidate supplies n disjoint sign-change intervals for a degree-n scalar polynomial, explicitly proves exhaustion and simplicity by factorization, and then pulls these roots back to exactly 2n distinct simple interior roots of the requested function. The polynomial formulation is justified, all requested special cases are proved, and the R=1 boundary is handled separately. The score assesses the original submission; no repair or additional load-bearing argument was supplied. PASS is based on full proof closure, not merely on meeting the historical score threshold."
+}

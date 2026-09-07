@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "run_id": "R-20260907T015148Z-B3-O3",
+  "started_at": "2026-09-07T01:51:48+00:00",
+  "resumed_at": "2026-09-07T07:04:37.945366+00:00",
+  "task_packet_path": "agenda/task-packets/T-B3-O3-20260907.md",
+  "task_packet_sha256": "1a46b2cbc38d413dc7127255dade070eb95dfe21a5951d8c965a306a65b4ec41",
+  "upstream_status_verbatim": "INDEPENDENTLY_AUDITED_PROOF",
+  "formalization": "scaffold",
+  "formalization_manifest": "runs/rigorous-open-math-research/b3-o3/formalization_progress.md",
+  "formalization_reason": "Lean and Lake unavailable on PATH; explicit unverified statement scaffold, no formal verification claim.",
+  "blind_restrictions": "No internet, prior solutions, other projects, git/repository/history, sessions or memory inspection.",
+  "remaining_shared_wall_seconds_on_latest_resume": 1261,
+  "candidate_proof_sha256": "4a1fcc46e20b8ac122f68a391ec49628cfc4b749427f3891c08b329ab3d25b29",
+  "completion_manifest_sha256": "a56e7ea8aa052d9d84fd4bb666ed83033b57e8496a93239564f558ddac8757c3",
+  "completed_at": "2026-09-07T07:10:42.569792+00:00",
+  "research_status": "INDEPENDENTLY_AUDITED_PROOF",
+  "transaction_status": "workspace_delivery_only_no_repository_integration",
+  "completion_audit_sha256": "b89584269a89d0b135b2e7e50bfa88eb8bbb4b9a09f0c4507220eb3349f0fb6e",
+  "audit_report_sha256": "d2b3257b9d44d49a57d7d4bff7bcaa8214453d2c44ab9d01ff9d2a10d0a23899",
+  "answer_sha256": "4695d6f4dd56da627c1833d1e3ec37feebf6f37d930940e21546386b410defef",
+  "answer_export": {
+    "source": "candidate_proof.md",
+    "source_sha256": "4a1fcc46e20b8ac122f68a391ec49628cfc4b749427f3891c08b329ab3d25b29",
+    "transformation": "Audited status, verbatim matrix definitions extracted from the audited TASK.md, exact frozen proof body, and verification-level footer."
+  },
+  "fast_close_decision": "STOP",
+  "mathematical_gaps": [],
+  "formal_verification": "not performed; eight explicit scaffold proof holes",
+  "post_close_research_authorized": false,
+  "final_pipeline_gate": {
+    "exit_code": 0,
+    "log": "pipeline_gate.log",
+    "sha256": "233c797d548ef64908bc7bc2e046aba13ad033c1e9f04807bae912e5f22e682f",
+    "command": "python3 -B <installed workflow>/scripts/validate_pipeline.py --project . --gate-status CANDIDATE_COMPLETE_PROOF,INDEPENDENTLY_AUDITED_PROOF"
+  }
+}

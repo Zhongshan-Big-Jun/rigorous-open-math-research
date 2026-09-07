@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "candidate_author_id": "/root",
+  "frozen_at": "2026-09-07T01:58:01.651214+00:00",
+  "contract": {
+    "path": "problem_contract.md",
+    "sha256": "60293062bebe70a64528f097590fbff5b13556afde62641f6a8644b11a165f9c"
+  },
+  "obligation_graph": {
+    "path": "obligation_graph.json",
+    "sha256": "7ab98b7664c36cd5f2e407d3236aabdb52f846f240bb4e417a64595c8a763c8a"
+  },
+  "candidate_proof": {
+    "path": "candidate_proof.md",
+    "sha256": "4a1fcc46e20b8ac122f68a391ec49628cfc4b749427f3891c08b329ab3d25b29"
+  },
+  "dependencies": [],
+  "root_obligations": [
+    {
+      "id": "O0",
+      "status": "CLOSED",
+      "proof_anchor": "candidate_proof.md#o4-pullback-complete-count-and-simplicity-for-g"
+    },
+    {
+      "id": "O1",
+      "status": "CLOSED",
+      "proof_anchor": "candidate_proof.md#o1-matrix-recurrence"
+    },
+    {
+      "id": "O2",
+      "status": "CLOSED",
+      "proof_anchor": "candidate_proof.md#o2-polynomial-representation-and-degree"
+    },
+    {
+      "id": "O3",
+      "status": "CLOSED",
+      "proof_anchor": "candidate_proof.md#o3-exact-location-and-simplicity-of-the-scalar-roots"
+    },
+    {
+      "id": "O4",
+      "status": "CLOSED",
+      "proof_anchor": "candidate_proof.md#o4-pullback-complete-count-and-simplicity-for-g"
+    },
+    {
+      "id": "O5",
+      "status": "CLOSED",
+      "proof_anchor": "candidate_proof.md#o5-separate-audits-of-the-required-cases"
+    }
+  ]
+}

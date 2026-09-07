@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "formalization": "scaffold",
+  "created_at": "2026-09-07T07:06:27.716527+00:00",
+  "input_hashes": {
+    "B3O3.lean": "94d4087c2aeefdcb1b0a8bead152b87d84fcc36a3cc07ff777c5fb5bbd80aeb3"
+  },
+  "machine": {
+    "lean_version": null,
+    "lake_version": null,
+    "build_passed": false,
+    "build_attempted": false,
+    "reason": "Neither Lean nor Lake is available on PATH"
+  },
+  "verdict": "SCAFFOLDED",
+  "mathematical_proof_reference": "runs/rigorous-open-math-research/b3-o3/candidate_proof.md"
+}

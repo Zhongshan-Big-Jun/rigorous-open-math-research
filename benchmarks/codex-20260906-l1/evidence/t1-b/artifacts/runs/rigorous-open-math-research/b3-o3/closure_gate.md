@@ -1,0 +1,21 @@
+# Closure gate
+
+- Target ID: O0
+- Target claim: For all n>=1 and s>1, G has exactly 2n simple zeros in (0,pi).
+- Shortest dependency chain: O1 -> O2 -> O3 -> O4 -> O0; O5 boundary audit.
+- First open load-bearing claim: O1 matrix-to-polynomial recurrence, now derived.
+- Why it is load-bearing: It supplies the exact scalar object whose roots are counted.
+- Existing support: only TASK.md; no external mathematical sources.
+- Coordinator direct attempt: candidate_proof.md, complete direct recurrence and sign proof.
+- Cheapest falsification probe: exact n=1 multiplication and y=0,pi,pi/2 substitutions; consistent.
+- Gate decision: CLOSED
+- Spawn trigger: a fresh independent audit can accept the frozen package or identify a precise defect.
+- Next decision-changing action: none; only deterministic boundary consolidation and delivery remain.
+- Root obligations: CLOSED
+- Completion manifest: path=completion_manifest.json; sha256=a56e7ea8aa052d9d84fd4bb666ed83033b57e8496a93239564f558ddac8757c3
+- Fresh package audit: path=completion_audit.json; sha256=b89584269a89d0b135b2e7e50bfa88eb8bbb4b9a09f0c4507220eb3349f0fb6e
+- Load-bearing gaps: 0
+- Fast-close decision: STOP
+- Frontier upgrade: none
+- Post-close research authorization: user forbids additional research after task completion.
+- Last updated: 2026-09-07T07:10:42.569792+00:00

@@ -1,0 +1,7 @@
+ok: found 1 task packet(s)
+ok: found 1 manager run manifest(s)
+ok: found 1 run whiteboard(s)
+ok: found 1 closure gate(s)
+FAIL: runs/rigorous-open-math-research/b3-o3/closure_gate.md: Frontier upgrade has no path
+ok: found 13 claim-bearing markdown file(s)
+whole-project result: 1 problem(s) found, 0 warning(s), 6 check(s).

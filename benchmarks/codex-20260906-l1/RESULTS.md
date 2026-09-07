@@ -1,8 +1,9 @@
 # L1 measured results
 
-Development-task REGRESSION only. Updated 2026-09-07. T1 C and A have completed;
-B is running. C and A both passed the independent external audit at 100/100.
-No plugin benefit can yet be inferred.
+Development-task REGRESSION only. Updated 2026-09-07. T1 is complete: C, A and B
+all passed the independent external audit at 100/100, with no load-bearing gap
+or repair. B does not meet the observed T1 cost targets. T2 remains outstanding;
+these interrupted development runs do not establish a causal plugin-only effect.
 
 | T1 stage | Verdict | Score | Active seconds | Uncached input | Cached input | Output | Responses with usage |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -12,6 +13,14 @@ No plugin benefit can yet be inferred.
 | A old solver, including internal audit | Frozen, independently accepted | - | 1277.998 | 123374 | 1425408 | 35714 | 29 |
 | A independent blind audit | PASS, no load-bearing gap or repair | 100/100 | 432.192 | 62734 | 101120 | 12304 | 7 |
 | A solver + external audit | Accepted | 100/100 | 1710.190 | 186108 | 1526528 | 48018 | 36 |
+| B new solver, including internal audit | Frozen, independently accepted | - | 1151.973 | 244895 | 2307072 | 38060 | 41 |
+| B independent blind audit | PASS, no load-bearing gap or repair | 100/100 | 362.029 | 30508 | 145920 | 9221 | 8 |
+| B solver + external audit | Accepted | 100/100 | 1514.002 | 275403 | 2452992 | 47281 | 49 |
+
+Full-delivery B/A ratios are 1.480 for uncached input and 0.885 for timed active
+stages: B used 48.0% more uncached input and 11.5% less active time. Blank C has
+the lowest observed cost at equal proof quality. Machine-readable totals, ratios
+and unknown fields are in [comparison-t1.json](comparison-t1.json).
 
 C proved the exact uniform polynomial root count and simplicity, with all
 requested n=1, endpoint, midpoint and R=1 checks. The independent auditor
@@ -64,5 +73,42 @@ At equal T1 proof quality, observed A/C solver ratios are 2.98 for uncached inpu
 and 2.88 for active wall time. Full solver-plus-external-audit ratios are 2.51
 for uncached input and 2.05 for active wall time. A includes two natural quota
 continuations, so these raw observations do not isolate plugin overhead from
-recovery overhead. B is required to assess the optimization; one development
-task cannot establish a general performance advantage.
+recovery overhead. One development task cannot establish a general performance
+advantage; T2 is still required by the registered L1 comparison.
+
+B returned after an authentication failure, a quota interruption and two
+same-session continuations. Its internal audit resumed the original child task;
+both root and child returned usage are included. B/A solver ratios are 1.985
+for uncached input and 0.901 for active wall time. Neither meets the provisional
+single-task targets of <=0.75 and <=0.80. B's continuation crossed about five
+hours of quota waiting; keep all observed recovery and cache costs in these
+ratios, without treating them as an isolated causal effect of plugin code.
+
+B's auditor copy removes only the standalone leading workflow status and the
+two-line footer disclosing the previous internal audit verdict. Mathematical
+claims and verification limitations are unchanged. See [binding](evidence/t1-b/blind-audit-binding.json).
+
+B's external auditor checked 17 claims and accepted the stronger root-location
+bound as well as all requested cases. Its exact scratch commands are retained
+verbatim because no separate checker file was written. See
+[audit](evidence/t1-b/audit/audit.json) and
+[commands](evidence/t1-b/audit/verification-commands.json).
+
+Per-turn usage pinpoints a cache difference. A's root continuation first response
+contained 54600 input tokens, 38784 cached. After B's five-hour interruption,
+the first root response had 79780 input tokens with zero cached; its continuing
+audit child's first response had 28377 with zero cached. Those costs remain in
+the full totals. Grouping by actual thread and turn IDs also confirms that B's
+audit continuation used the original child ID. See
+[A turn usage](evidence/t1-a/usage-by-turn.json) and
+[B turn usage](evidence/t1-b/usage-by-turn.json).
+
+Elapsed dispatch-to-external-audit-return times were 1142.683 seconds for C,
+46124.377 for A and 20012.582 for B. These include quota waits and coordinator
+setup; the active-stage table above excludes those gaps. Do not confuse either
+measure with summed root-plus-child active time, which remains unknown.
+
+T2 B started at 2026-09-07T13:18:47Z after all six T2 preflight gates passed
+without external model calls. Treatments, task and scoring remain unchanged.
+The registered second task allows an honest exact partial result with a stated
+first unresolved obligation. T2 has no scored result yet.
