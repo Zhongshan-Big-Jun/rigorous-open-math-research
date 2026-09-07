@@ -1,0 +1,23 @@
+{
+  "purpose": "Falsification only; absence of a counterexample is not proof.",
+  "tested_times": [
+    1,
+    60
+  ],
+  "findings": [
+    {
+      "claim": "Every H_t^L(s,w) is unimodal in s along the allowed parity",
+      "counterexample": {
+        "t": 6,
+        "L": 4,
+        "w": 2,
+        "counts": [
+          1,
+          0,
+          1
+        ],
+        "denominator": 64
+      }
+    }
+  ]
+}

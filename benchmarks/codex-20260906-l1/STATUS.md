@@ -1,9 +1,9 @@
 # L1 three-arm regression status
 
-Updated: 2026-09-07. State: T1_COMPLETE_T2_B_RUNNING.
+Updated: 2026-09-08. State: T1_COMPLETE_T2_B_EXTERNAL_AUDIT_RUNNING.
 
 User requested continuation. Preparation and one infrastructure-invalid attempt
-are recorded. Completed solver runs: 3 (T1 C, A and B). Scored/audited runs: 3.
+are recorded. Completed solver runs: 4 (T1 C, A, B and T2 B). Scored/audited runs: 3.
 All T1 blind audits PASS, 100/100, no load-bearing gap or repair.
 A solver used 1277.998200 active seconds; its external audit used 432.192049.
 T1 B launched at 2026-09-07T01:48:49Z. Inspect t1/b/run/state.json before dispatch.
@@ -25,6 +25,21 @@ comparison-t1.json. No T1 solver or auditor should be dispatched again.
 The intended experiment remains old plugin A / new plugin B / blank Codex C,
 with T1 order C,A,B and T2 order B,A,C. T2 is sealed and its B arm started at
 2026-09-07T13:18:47Z with fresh same-account private authentication.
+T2 B then hit the actual quota limit after 1172.987794 active seconds. The user
+requested continuation on 2026-09-08 local time. Session
+01a07c05-7813-7f23-89c6-f4aea5101e6a resumed at 2026-09-07T23:34:50Z with
+627.012206 seconds remaining. The saved answer and candidate proof survived.
+T2 B returned normally at 2026-09-07T23:44:32Z after 1754.826646 active seconds.
+Its frozen candidate claims c=1/2, C=10^12 and t0=1024; external acceptance is
+pending. Solver usage: 277157 uncached input, 2351360 cached input, 69407 output,
+55 returned responses across the root and two children. No extra budget was used.
+Its external audit started at 23:47:10Z; mapping is control/audit-t2-B.json,
+opaque root /home/huangzy/codex-benchmark/blind-audits/0123470f-b6de-45a5-bd7e-fabe1d7af8e4.
+The audit paused at 23:52:12Z after 302.375437 seconds because the coordinator's
+quota snapshot exceeded five minutes, not because account quota was exhausted.
+After a fresh positive snapshot, audit session
+01a07e44-c25b-7913-977c-d2f3fb87dc2e resumed at 23:54:39Z with 597.624563
+seconds remaining. The original candidate, task and audit allowance are unchanged.
 
 ## Current verified execution path
 
@@ -44,8 +59,8 @@ with T1 order C,A,B and T2 order B,A,C. T2 is sealed and its B arm started at
   task/arm gates. T2 homes had zero solver sessions when their gates were sealed.
   The previous T1-only seal is retained in control/SEALED-before-t2.json.
 - Four deterministic runner checks and all 81 repository checks passed.
-- T2 B launch quota snapshot: 2026-09-07T13:18:47Z, five-hour remaining 99%, weekly
-  remaining 52%. Historical snapshot only. The user has removed both reserve thresholds.
+- T2 B continuation quota snapshot: 2026-09-07T23:34:50Z, five-hour remaining 99%, weekly
+  remaining 36%. Historical snapshot only. The user has removed both reserve thresholds.
   Read live quota before dispatch; no reset redemption was authorized.
 
 ## A quota interruption and continuation
@@ -74,11 +89,11 @@ with T1 order C,A,B and T2 order B,A,C. T2 is sealed and its B arm started at
    (UTC ISO timestamp), five_hour_remaining and weekly_remaining. These are
    account-level data, not treatment costs. The user explicitly removed quota reserves. Launch with positive available
    quota; stop on actual exhaustion, stale snapshots or the fixed wall cap.
-3. All T1 solvers and audits are complete. T2 is sealed and B has started.
-   Inspect t2/b/run/state.json before any dispatch. If it pauses or exits due
-   to quota, reuse the original session and remaining allowance:
+3. All T1 solvers/audits and T2 B solver are complete. Do not repeat them.
+   Inspect the mapped T2 B audit root's candidate/c/run/state.json. If it pauses
+   or exits due to quota, use its original audit session and remaining allowance:
 
-   python3 -X utf8 scripts/benchmark_runner.py --root /home/huangzy/codex-benchmark/L1-20260906-ASTRA-ABC-r1 --task t2 --arm B --resume
+   python3 -X utf8 scripts/benchmark_audit.py --campaign /home/huangzy/codex-benchmark/L1-20260906-ASTRA-ABC-r1 --task t2 --arm B --resume
 4. Refresh the quota file during execution. It expires after five minutes;
    actual exhaustion or creating run/STOP causes cancellation and checkpoint.
    The runner retains segment logs, root ID, observed child sessions and elapsed

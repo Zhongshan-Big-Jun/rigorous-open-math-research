@@ -1,0 +1,156 @@
+{
+	"scope": "Unique returned response records grouped by actual thread_id and turn_id. No causal overhead attribution.",
+	"turns": [
+		{
+			"thread_id": "01a07c05-7813-7f23-89c6-f4aea5101e6a",
+			"turn_id": "01a07c05-783c-74f3-bb9d-3ced507094c8",
+			"first_recorded_at": "2026-09-07T13:19:02.707Z",
+			"last_recorded_at": "2026-09-07T13:38:18.107Z",
+			"usage": {
+				"input_tokens": 980408,
+				"cached_input_tokens": 887936,
+				"output_tokens": 27085,
+				"reasoning_output_tokens": 12913,
+				"uncached_input_tokens": 92472,
+				"responses_with_usage": 20
+			},
+			"first_response_usage": {
+				"input_tokens": 12004,
+				"cached_input_tokens": 0,
+				"output_tokens": 213,
+				"reasoning_output_tokens": 0,
+				"uncached_input_tokens": 12004,
+				"responses_with_usage": 1
+			},
+			"response_ids": [
+				"resp_06f90d59335b18f5016a9eb9db2ae887d1aff91212cfd39030",
+				"resp_06f90d59335b18f5016a9eb9e4352487d18f8d2f0d73449daf",
+				"resp_06f90d59335b18f5016a9eb9f2b34c87d1ace9e089e9183a28",
+				"resp_06f90d59335b18f5016a9eba11f9ec87d19d17e11a54466f3d",
+				"resp_06f90d59335b18f5016a9eba67d51887d18f02a5a801efa97f",
+				"resp_06f90d59335b18f5016a9eba7e91cc87d1804142552aca3448",
+				"resp_06f90d59335b18f5016a9ebadf43b887d1b1bfe04bd530810a",
+				"resp_06f90d59335b18f5016a9ebb1eaf1c87d19ebf0c022dada7cc",
+				"resp_06f90d59335b18f5016a9ebbe11e2887d196aff3c79d437e7e",
+				"resp_06f90d59335b18f5016a9ebbf0a55087d1b4f715c02c2edd1f",
+				"resp_06f90d59335b18f5016a9ebc2f2d5887d1968825b8628a50e9",
+				"resp_06f90d59335b18f5016a9ebc47c55087d1b739eaa3b02a6d66",
+				"resp_06f90d59335b18f5016a9ebc98bb7887d195437cadcf9e405a",
+				"resp_06f90d59335b18f5016a9ebca0278087d195199038154b68da",
+				"resp_06f90d59335b18f5016a9ebca34b8087d1a2354f69321cda9f",
+				"resp_06f90d59335b18f5016a9ebcfa3a6487d1854091caa96ac880",
+				"resp_06f90d59335b18f5016a9ebd26921887d1a357ee23eda972a9",
+				"resp_06f90d59335b18f5016a9ebd2db75c87d1a8c3d467f13e3931",
+				"resp_06f90d59335b18f5016a9ebd67942887d1a9b3679d49cbe968",
+				"resp_06f90d59335b18f5016a9ebd87493887d1bd4a752df030ea1e"
+			]
+		},
+		{
+			"thread_id": "01a07c08-50dd-76c2-b03c-fa7f82ae17b4",
+			"turn_id": "01a07c08-50fd-7143-bda7-1096a803aec3",
+			"first_recorded_at": "2026-09-07T13:22:07.538Z",
+			"last_recorded_at": "2026-09-07T13:34:21.689Z",
+			"usage": {
+				"input_tokens": 459574,
+				"cached_input_tokens": 413184,
+				"output_tokens": 19967,
+				"reasoning_output_tokens": 11446,
+				"uncached_input_tokens": 46390,
+				"responses_with_usage": 15
+			},
+			"first_response_usage": {
+				"input_tokens": 11813,
+				"cached_input_tokens": 0,
+				"output_tokens": 194,
+				"reasoning_output_tokens": 22,
+				"uncached_input_tokens": 11813,
+				"responses_with_usage": 1
+			},
+			"response_ids": [
+				"resp_01c5b843bc33e241016a9eba94fe4c87d1977ab51b2b0e7f0e",
+				"resp_01c5b843bc33e241016a9eba9c8df487d185192c40f4c4c648",
+				"resp_01c5b843bc33e241016a9ebaa49ed087d184bcd66f096aa619",
+				"resp_01c5b843bc33e241016a9ebac9ed7087d19921085407b12b5d",
+				"resp_01c5b843bc33e241016a9ebad1285c87d1b2d724b546eaa2cb",
+				"resp_01c5b843bc33e241016a9ebb3508c087d18881f0881b2bf0cc",
+				"resp_01c5b843bc33e241016a9ebbf96ecc87d197da1085e1f7d4eb",
+				"resp_01c5b843bc33e241016a9ebc15823c87d1ba07e45530ba0e02",
+				"resp_01c5b843bc33e241016a9ebc49287c87d18e9fca39af534c2d",
+				"resp_01c5b843bc33e241016a9ebd167da087d196c465f4bb05b8b7",
+				"resp_01c5b843bc33e241016a9ebd1c8a9087d1b746631c82ab61b3",
+				"resp_01c5b843bc33e241016a9ebd1f220c87d1a8663997b0470b11",
+				"resp_01c5b843bc33e241016a9ebd33800087d19ae85745ab7442e8",
+				"resp_01c5b843bc33e241016a9ebd68ffe487d18f226bac6bfdacf8",
+				"resp_01c5b843bc33e241016a9ebd6f705887d1b47ae20b1396e7b3"
+			]
+		},
+		{
+			"thread_id": "01a07c05-7813-7f23-89c6-f4aea5101e6a",
+			"turn_id": "01a07e39-7995-75d3-a23d-7dce209171a4",
+			"first_recorded_at": "2026-09-07T23:35:04.646Z",
+			"last_recorded_at": "2026-09-07T23:44:28.945Z",
+			"usage": {
+				"input_tokens": 937656,
+				"cached_input_tokens": 836352,
+				"output_tokens": 13869,
+				"reasoning_output_tokens": 2930,
+				"uncached_input_tokens": 101304,
+				"responses_with_usage": 11
+			},
+			"first_response_usage": {
+				"input_tokens": 78928,
+				"cached_input_tokens": 0,
+				"output_tokens": 157,
+				"reasoning_output_tokens": 69,
+				"uncached_input_tokens": 78928,
+				"responses_with_usage": 1
+			},
+			"response_ids": [
+				"resp_014ae0b579d7b966016a9f4a3c685487d09dbb3c0cf5faa7d2",
+				"resp_014ae0b579d7b966016a9f4a4591a887d09adf84b8b226fd50",
+				"resp_014ae0b579d7b966016a9f4a51046c87d0b271e26e5b28f098",
+				"resp_014ae0b579d7b966016a9f4a76820887d0851c4473cd63719c",
+				"resp_014ae0b579d7b966016a9f4a8b4f1c87d0a63f6c44d609846a",
+				"resp_014ae0b579d7b966016a9f4afa48a887d0af999085c9269c7a",
+				"resp_06f90d59335b18f5016a9f4b43454487d1a3397f2c6995e8e1",
+				"resp_06f90d59335b18f5016a9f4b4c6fbc87d194b9ab6f297fcf28",
+				"resp_06f90d59335b18f5016a9f4b9efa8087d1aa96843792c7bab8",
+				"resp_06f90d59335b18f5016a9f4badec5087d19a2f54bf81d4365a",
+				"resp_06f90d59335b18f5016a9f4bd9340087d185c4bbea1c62f60c"
+			]
+		},
+		{
+			"thread_id": "01a07e3a-bdb6-7b51-bdec-b093629bce5c",
+			"turn_id": "01a07e3a-bdd7-7eb3-abda-21fd461e9b7a",
+			"first_recorded_at": "2026-09-07T23:36:25.724Z",
+			"last_recorded_at": "2026-09-07T23:41:09.768Z",
+			"usage": {
+				"input_tokens": 250879,
+				"cached_input_tokens": 213888,
+				"output_tokens": 8486,
+				"reasoning_output_tokens": 3806,
+				"uncached_input_tokens": 36991,
+				"responses_with_usage": 9
+			},
+			"first_response_usage": {
+				"input_tokens": 11959,
+				"cached_input_tokens": 0,
+				"output_tokens": 210,
+				"reasoning_output_tokens": 32,
+				"uncached_input_tokens": 11959,
+				"responses_with_usage": 1
+			},
+			"response_ids": [
+				"resp_0578127e19db7076016a9f4a8e7bfc87d0ad3ae31680e66603",
+				"resp_0578127e19db7076016a9f4a96a5b887d093fdfd509f8b3bb1",
+				"resp_0578127e19db7076016a9f4aa2655487d0b5e345b8c14a2ccb",
+				"resp_0578127e19db7076016a9f4aacc3fc87d0bab4760b0004bd6b",
+				"resp_0578127e19db7076016a9f4ad27a4487d08e77985c6bb2eda1",
+				"resp_0578127e19db7076016a9f4af8728087d0a57e31b55a1bed62",
+				"resp_0578127e19db7076016a9f4b39fbe087d087af5831b6d32515",
+				"resp_0578127e19db7076016a9f4ba2950887d08c5df48b0722f1b9",
+				"resp_0578127e19db7076016a9f4bab778c87d08a45e2921cb0aaa5"
+			]
+		}
+	]
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "root_obligations": [
+    "O1",
+    "O2"
+  ],
+  "nodes": [
+    {
+      "id": "O1",
+      "status": "CLOSED",
+      "statement": "Full-chain upper bound 10^12/sqrt(t) for integer t>=1024",
+      "depends_on": [
+        "L1",
+        "L2"
+      ],
+      "proof_anchor": "../../answer.md#6-boundary-support-assembly-and-theorem-audit"
+    },
+    {
+      "id": "O2",
+      "status": "CLOSED",
+      "statement": "Full-chain lower bound 1/(2sqrt(t)) for integer t>=1",
+      "proof_anchor": "../../answer.md#2-elementary-free-walk-estimates-and-the-lower-bound"
+    },
+    {
+      "id": "L1",
+      "status": "CLOSED",
+      "statement": "Exact conditional lamp kernel and TV contraction",
+      "proof_anchor": "../../answer.md#1-the-exact-lamp-law-and-the-reduction"
+    },
+    {
+      "id": "L2",
+      "status": "CLOSED",
+      "statement": "Joint range/endpoint upper bound",
+      "depends_on": [
+        "H"
+      ],
+      "proof_anchor": "../../answer.md#3-exact-interval-kernels"
+    },
+    {
+      "id": "H",
+      "status": "CLOSED",
+      "statement": "Gaussian bound for third free-walk difference",
+      "proof_anchor": "../../answer.md#2-elementary-free-walk-estimates-and-the-lower-bound"
+    }
+  ]
+}

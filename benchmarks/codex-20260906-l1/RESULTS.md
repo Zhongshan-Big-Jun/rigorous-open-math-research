@@ -111,4 +111,17 @@ measure with summed root-plus-child active time, which remains unknown.
 T2 B started at 2026-09-07T13:18:47Z after all six T2 preflight gates passed
 without external model calls. Treatments, task and scoring remain unchanged.
 The registered second task allows an honest exact partial result with a stated
-first unresolved obligation. T2 has no scored result yet.
+first unresolved obligation. T2 B returned a complete-proof candidate, but has
+no external score yet. Its unchanged answer was sent for blind audit at
+2026-09-07T23:47:10Z, without any process-verdict redaction being needed.
+
+| T2 stage | Verdict | Score | Active seconds | Uncached input | Cached input | Output | Responses with usage |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| B new solver, including research child and internal audit | Frozen; external audit pending | - | 1754.827 | 277157 | 2351360 | 69407 | 55 |
+
+The candidate claims the required bound for every t>=1024 with c=1/2 and C=10^12.
+It retains the lower-bound proof, rejected shortcuts and the final interval-kernel
+route. These are development benchmark artifacts, not a novelty claim or an
+update to the main project's accepted mathematics. See [candidate](evidence/t2-b/answer.md),
+[binding](evidence/t2-b/blind-audit-binding.json), and
+[continuation](evidence/t2-b/quota-continuation.json).

@@ -1,0 +1,16 @@
+{
+  "resumed_at": "2026-09-07T23:35:53.433898+00:00",
+  "user_remaining_wall_seconds": 627,
+  "resume_clock_utc": "2026-09-07 23:35:15 UTC",
+  "deadline_utc": "2026-09-07 23:45:42 UTC",
+  "consolidation_status": "already_consolidating",
+  "returned_worker": "range_worker",
+  "worker_result_sha256": "cf234c07d2d36a6356a9ec3f678afc022c8b138bf22ba3566c1902c1e67407f7",
+  "active_workers_at_reconciliation": 0,
+  "unresolved_obligation": "fresh independent completion audit only",
+  "artifact_hash_reconciliation": "all previously frozen hashes matched",
+  "change_after_reconciliation": "added explicit HTML proof anchors only, refreshed manifest before its first audit",
+  "candidate_proof_sha256": "9f86ec2c20f883bbb038acd1afaf73773f8c0c68307194862d68f8a401dbf7f8",
+  "manifest_sha256": "3f0c2bbb40f5456e14ddf7f4ea4fee7ef39d61486513364ed5b055f209d465a1",
+  "research_routes_frozen": true
+}

@@ -1,0 +1,25 @@
+{
+  "status": "INDEPENDENTLY_AUDITED_PROOF",
+  "completed_at": "2026-09-07T23:41:48.281986+00:00",
+  "fast_close": "STOP",
+  "constants": {
+    "c": "1/2",
+    "C": "10^12",
+    "t0": 1024
+  },
+  "remaining_mathematical_gaps": [],
+  "formal_verification": "not requested, not claimed",
+  "artifacts": {
+    "problem_contract.md": "605926692a3192c43d7e3e7521c32529b4bc2265125c706070467dbc3989ee71",
+    "obligation_graph.json": "1c793fd1fd08c244d7470e2516cd5c01a07b33ae34a391e77e385c7eb46c4e12",
+    "completion_manifest.json": "3f0c2bbb40f5456e14ddf7f4ea4fee7ef39d61486513364ed5b055f209d465a1",
+    "completion_audit.json": "87fd1ba5db7683022a0c11abd53f9ded1d24c71924d08e5c39af0099cfe126c3",
+    "audit_report.md": "daa262d04d93d70a60055b1a125f6e1a5d63ea79013182f52d47d3efbb5ba424",
+    "deterministic_validation.json": "a8c088fd03d2b9708b937547d110f7afbc668ee27aced8a678d5f7fdff13ee60",
+    "final_report.md": "1ea3090a64a8d402ba86cc97345830a3fed602c782981ea778f3399cdeb5d948"
+  },
+  "answer": {
+    "path": "../../answer.md",
+    "sha256": "9f86ec2c20f883bbb038acd1afaf73773f8c0c68307194862d68f8a401dbf7f8"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "check": "confined completion manifest/root/anchor/independence validation",
+  "verdict": "PASS",
+  "audit_status": "PASS",
+  "failures": [],
+  "manifest_sha256": "3f0c2bbb40f5456e14ddf7f4ea4fee7ef39d61486513364ed5b055f209d465a1",
+  "proof_sha256": "9f86ec2c20f883bbb038acd1afaf73773f8c0c68307194862d68f8a401dbf7f8"
+}
