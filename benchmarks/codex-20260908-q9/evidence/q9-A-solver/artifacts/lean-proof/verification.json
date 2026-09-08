@@ -1,0 +1,17 @@
+{
+  "verdict": "SCAFFOLDED",
+  "machine": {
+    "lean_version": null,
+    "build_passed": false,
+    "build_attempted": false,
+    "sorry_axiom_hits": []
+  },
+  "statement_fidelity": "static statement scaffold; not elaborated",
+  "gaps": [
+    {
+      "location": "Q9Scaffold.lean",
+      "issue": "No Lean formal proof or compilation; independent mathematical proof in answer.md"
+    }
+  ],
+  "repair_hints": "A future separately authorized environment with Lean and Mathlib can formalize the recorded propositions."
+}

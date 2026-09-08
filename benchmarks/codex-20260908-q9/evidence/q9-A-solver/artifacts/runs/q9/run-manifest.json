@@ -1,0 +1,21 @@
+{
+  "run_id": "q9",
+  "started_at": "2026-09-08T13:19:07+00:00",
+  "upstream_status_verbatim": "INDEPENDENTLY_AUDITED_PROOF",
+  "evidence_class": "STRICT",
+  "task_packet_path": "agenda/task-packets/Q9.md",
+  "task_packet_sha256": "80dacc9046b3532ee5e77cbf33e0fbe947e5a9f504404ccc47cf9a7e8b5e38c4",
+  "formalization": "scaffold",
+  "formalization_manifest": "lean-proof/Q9Scaffold.lean",
+  "formalization_reason": "Lean and lake unavailable; no machine verification claim",
+  "candidate_proof": "answer.md",
+  "candidate_sha256": "386038fcc8e26b44f20a2cf9c8e02ebd1da28de996ccfe62c521999984c8cb2a",
+  "completed_at": "2026-09-08T13:56:34.336050+00:00",
+  "git_status": "Unavailable under sandbox; read-only .git and /dev/null access denied. No commit or remote synchronization.",
+  "completion_manifest_sha256": "04a7643f3e546e359bb35a1d0663e4e025318ee83229f76795dd58b857283567",
+  "completion_audit_sha256": "c6186298706487e18b90c52e78ac9ec0b0b43ab3eec229864c998989e7f0fff3",
+  "audit_report_sha256": "29c242c21fb456e7994fd7109fc0d27860d9877f418f1d4d782c94bc0f54beca",
+  "elapsed_seconds_at_boundary": 2247.336723,
+  "research_stopped": true,
+  "remaining_mathematical_gaps": []
+}

@@ -1,0 +1,6 @@
+ok: found 1 task packet(s)
+ok: found 1 manager run manifest(s)
+ok: found 1 run whiteboard(s)
+ok: found 2 closure gate(s)
+ok: found 23 claim-bearing markdown file(s)
+whole-project result: 0 problem(s) found, 0 warning(s), 5 check(s).

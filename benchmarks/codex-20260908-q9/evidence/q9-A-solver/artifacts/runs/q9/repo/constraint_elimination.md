@@ -1,0 +1,4 @@
+# Exact monotone elimination (proved, pending independent audit)
+For m>1, 0<c<1 and 0<=s<1, set a_s(z)=asin(s sin z) for z in [0,pi/2]. Extend H_m continuously by H_m(pi/2)=pi/2. The C2 function H_m(a_s(z))+H_m(z)/c is continuous and strictly increasing from 0 to H_m(asin(s))+pi/(2c)>pi/2, so there is a unique g in (0,pi/2). It depends continuously on the parameters (monotone-root continuity or the implicit function theorem).
+
+Because cos²(a_s(z))-cos²z=(1-s²)sin²z>=0, 0<=a_s'(z)=s cos z/cos(a_s(z))<=s. Thus p(z)=z-c a_s(z) has p'>=1-cs>0. Let q=g+c a_s(g). There exists a unique B in (g,pi/2) satisfying C3 if and only if s>0 and q<pi/2-c asin(s). Indeed p(g)<q and p(pi/2)>q exactly give this via the intermediate value theorem. For s=0 the unique extended solution is B=g. C1 is then the one unsquared residual E=H_m(B)-cH_m(a_s(B))-(1-c)pi=0. No root of E is lost where the B-existence condition holds.

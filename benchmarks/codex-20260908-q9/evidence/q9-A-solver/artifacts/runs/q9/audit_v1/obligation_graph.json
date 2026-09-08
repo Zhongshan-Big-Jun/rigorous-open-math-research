@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "root_obligations": [
+    {
+      "id": "Q9",
+      "status": "CLOSED",
+      "proof_anchor": "answer.md#q9-is-true"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "Q9",
+      "status": "CLOSED",
+      "proof": "answer.md, equations (1)-(4)"
+    },
+    {
+      "id": "QBOUND",
+      "status": "CLOSED",
+      "proof": "answer.md, Section 2"
+    },
+    {
+      "id": "SMALL_S",
+      "status": "CLOSED",
+      "proof": "answer.md, Section 3 and certificate"
+    },
+    {
+      "id": "LARGE_S_EXCLUSION",
+      "status": "CLOSED",
+      "proof": "answer.md, Sections 4-6"
+    },
+    {
+      "id": "LEAN_REVERIFICATION",
+      "status": "OPEN",
+      "root_dependency": false,
+      "reason": "Lean and lake unavailable; no formal verification claimed"
+    }
+  ]
+}

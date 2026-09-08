@@ -1,0 +1,13 @@
+{
+  "status": "SCAFFOLDED",
+  "input_hashes": {
+    "Q9Scaffold.lean": "1c9d8349997781f68d4e682266096c3706049f1c732d6a30093240d48ac470bd"
+  },
+  "machine": {
+    "lean_version": null,
+    "build_passed": false,
+    "build_attempted": false,
+    "reason": "lean and lake unavailable"
+  },
+  "proof_artifact": "answer.md"
+}

@@ -1,0 +1,2 @@
+# Probe contract
+Returned objects: floating-point approximate tuples solving C1-C3. Objective: seek Q>0, R<=0. Validity separate: c in (2/3,1), m>1, 0<r<c², 0<g<B<pi/2, unsquared residuals. Sampling initially fixed small structured grid, no random seed. Cheap run <=30 seconds. No numerical output is proof. Successful candidates require interval existence and strict sign certification; failure gives no universal conclusion.

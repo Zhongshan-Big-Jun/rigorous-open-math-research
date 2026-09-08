@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "review_type": "fresh_independent_package",
+  "candidate_author_id": "/root",
+  "reviewer_id": "/root/counterexample",
+  "reviewed_at": "2026-09-08T13:52:13.792626+00:00",
+  "audited_manifest_sha256": "cb11a77dbd5f078f4dfe92b8cd1bdf623f3e7502bb25eb40e33d803e7676e0ef",
+  "verdict": "PASS",
+  "research_status": "INDEPENDENTLY_AUDITED_PROOF",
+  "critical_errors": [],
+  "gaps": [],
+  "load_bearing_gaps": [],
+  "first_error": null,
+  "repair_hints": null,
+  "covered_scope": "Original Q9 for all m>1, 2/3<c<1, 0<r<c², 0<g<B<pi/2, with principal branches and exact simultaneous C1–C3. Audited all analytic reductions, inequalities and strictness, denominator signs, cotangent inversion, w and argument bounds, complete parameter-range coverage, rational angle contradictions, manifest binding, and every polynomial certificate coefficient.",
+  "residual_risk": "No load-bearing mathematical gap identified. Lean was unavailable and no formal-verification claim is made. The exact calculations trust ordinary Python integer/Fraction arithmetic and interpreter correctness; a separately implemented exact interpolation checker agrees with the candidate verifier. External novelty was not assessed.",
+  "definition_audit": "PASS",
+  "logic_audit": "PASS",
+  "boundary_audit": "PASS",
+  "adversarial_audit": "PASS",
+  "candidate_proof": {
+    "path": "answer.md",
+    "sha256": "386038fcc8e26b44f20a2cf9c8e02ebd1da28de996ccfe62c521999984c8cb2a"
+  },
+  "audit_report": {
+    "path": "runs/q9/audit_report.md",
+    "sha256": "cbe91b72c39b1ba072198a469b55306c95a68f71960ac167c30061c086e1753b"
+  },
+  "machine_checks": [
+    {
+      "name": "embedded_candidate_verifier",
+      "result": "PASS",
+      "exact_arithmetic": true,
+      "embedded_matches_frozen_dependency": true,
+      "small_positive_coefficients": 30,
+      "complementary_nonnegative_coefficients": 1890,
+      "complementary_zero_coefficients": 12
+    },
+    {
+      "name": "independent_tensor_interpolation",
+      "result": "PASS",
+      "command": "python3 runs/q9/reproducibility/independent_audit_checker.py",
+      "exit_code": 0,
+      "implementation": {
+        "path": "runs/q9/reproducibility/independent_audit_checker.py",
+        "sha256": "76f3f9f855a6f289729a3b5865ee0f06ddff9cbca36e93c933f6857efc65825f"
+      },
+      "stdout": {
+        "path": "runs/q9/reproducibility/independent_audit_output.txt",
+        "sha256": "00fb3f10cd0a01c64d18d7edcede6814791a2b1187d1483d10c01917763ebd12"
+      },
+      "exact_arithmetic": true,
+      "small_positive_coefficients": 30,
+      "complementary_nonnegative_coefficients": 1890,
+      "complementary_zero_coefficients": 12,
+      "ordered_complementary_coefficients_sha256": "d143cc7132405be4ab147b06982774841f30bf6048078ff0a52ca974a5b2f11c"
+    }
+  ],
+  "frozen_package_modified_by_reviewer": false
+}

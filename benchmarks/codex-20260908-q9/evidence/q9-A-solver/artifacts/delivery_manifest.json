@@ -1,0 +1,16 @@
+{
+  "status": "INDEPENDENTLY_AUDITED_PROOF",
+  "created_at": "2026-09-08T13:56:34.336050+00:00",
+  "artifacts": {
+    "answer.md": "386038fcc8e26b44f20a2cf9c8e02ebd1da28de996ccfe62c521999984c8cb2a",
+    "TASK.md": "c7133b97e440e90095088927f105c9f88fcdc54f4a4772ee9f85ba5a139e6330",
+    "runs/q9/completion_manifest.json": "04a7643f3e546e359bb35a1d0663e4e025318ee83229f76795dd58b857283567",
+    "runs/q9/completion_audit.json": "c6186298706487e18b90c52e78ac9ec0b0b43ab3eec229864c998989e7f0fff3",
+    "runs/q9/audit_report.md": "29c242c21fb456e7994fd7109fc0d27860d9877f418f1d4d782c94bc0f54beca",
+    "runs/q9/reproducibility/verify_certificate.py": "13fd5361de8e594f3fe5213b749744974a86df1d2d33208e6a0d6f5387411ed5",
+    "runs/q9/reproducibility/certificate_output.txt": "0018d07a57bd0f42dba3f023c44a9722688458695b64708cf19e76c76812ebc8",
+    "runs/q9/reproducibility/independent_audit_checker.py": "76f3f9f855a6f289729a3b5865ee0f06ddff9cbca36e93c933f6857efc65825f",
+    "runs/q9/reproducibility/independent_audit_output.txt": "00fb3f10cd0a01c64d18d7edcede6814791a2b1187d1483d10c01917763ebd12",
+    "lean-proof/Q9Scaffold.lean": "1c9d8349997781f68d4e682266096c3706049f1c732d6a30093240d48ac470bd"
+  }
+}

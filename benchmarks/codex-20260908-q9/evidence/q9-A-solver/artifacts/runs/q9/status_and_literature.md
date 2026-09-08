@@ -1,0 +1,2 @@
+Search status: skip: search_forbidden; blind benchmark. Date: 2026-09-08. Only TASK.md, the user statement, current workspace, and installed skill instructions are permitted. External openness and novelty are unknown. A post-discovery external audit is also forbidden. No novelty claim will be made.
+Snapshot: sha256:c7133b97e440e90095088927f105c9f88fcdc54f4a4772ee9f85ba5a139e6330 (TASK.md; no knowledge base exists).

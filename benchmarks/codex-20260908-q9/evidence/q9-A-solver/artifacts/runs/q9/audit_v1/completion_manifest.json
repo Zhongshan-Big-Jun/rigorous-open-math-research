@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "candidate_author_id": "/root",
+  "frozen_at": "2026-09-08T13:44:03.162789+00:00",
+  "contract": {
+    "path": "runs/q9/problem_contract.md",
+    "sha256": "c7133b97e440e90095088927f105c9f88fcdc54f4a4772ee9f85ba5a139e6330"
+  },
+  "obligation_graph": {
+    "path": "runs/q9/obligation_graph.json",
+    "sha256": "c092346a757552fa42c61a29b84ffafc54b10530c72bc7984821b8b162d83ab1"
+  },
+  "candidate_proof": {
+    "path": "answer.md",
+    "sha256": "386038fcc8e26b44f20a2cf9c8e02ebd1da28de996ccfe62c521999984c8cb2a"
+  },
+  "dependencies": [
+    {
+      "path": "runs/q9/reproducibility/verify_certificate.py",
+      "sha256": "13fd5361de8e594f3fe5213b749744974a86df1d2d33208e6a0d6f5387411ed5"
+    },
+    {
+      "path": "runs/q9/reproducibility/certificate_output.txt",
+      "sha256": "0018d07a57bd0f42dba3f023c44a9722688458695b64708cf19e76c76812ebc8"
+    }
+  ],
+  "root_obligations": [
+    {
+      "id": "Q9",
+      "status": "CLOSED",
+      "proof_anchor": "answer.md#q9-is-true"
+    }
+  ]
+}

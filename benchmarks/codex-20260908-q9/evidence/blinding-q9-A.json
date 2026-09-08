@@ -1,0 +1,7 @@
+{
+	"mode": "BYTE_IDENTICAL",
+	"original_sha256": "386038fcc8e26b44f20a2cf9c8e02ebd1da28de996ccfe62c521999984c8cb2a",
+	"blinded_sha256": "386038fcc8e26b44f20a2cf9c8e02ebd1da28de996ccfe62c521999984c8cb2a",
+	"removed_lines": [],
+	"reason": "No prior audit verdict or treatment metadata in answer.md; certificate PASS output is mathematical evidence and retained."
+}

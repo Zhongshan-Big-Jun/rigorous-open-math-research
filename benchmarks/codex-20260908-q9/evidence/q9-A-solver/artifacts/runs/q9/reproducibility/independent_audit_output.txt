@@ -1,0 +1,2 @@
+PASS: independent rational interpolation; 30 positive and 1890 nonnegative coefficients; 12 zeros.
+d143cc7132405be4ab147b06982774841f30bf6048078ff0a52ca974a5b2f11c

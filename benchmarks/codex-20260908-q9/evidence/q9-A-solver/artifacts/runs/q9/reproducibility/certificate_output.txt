@@ -1,0 +1,2 @@
+PASS: 30 positive small-s coefficients; 1890 nonnegative
+complementary coefficients (12 zero); all rational angle bounds.
