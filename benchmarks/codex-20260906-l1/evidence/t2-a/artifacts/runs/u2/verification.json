@@ -1,0 +1,21 @@
+{
+  "verdict": "VERIFICATION_INCOMPLETE",
+  "machine": {
+    "lean_version": null,
+    "build_passed": false,
+    "sorry_axiom_hits": null,
+    "first_error": {
+      "category": "dependency",
+      "location": "environment",
+      "issue": "Lean and Lake executables unavailable; no build attempted"
+    }
+  },
+  "informal_audit": "pending completion_audit.json",
+  "repair_hints": "Formal verification requires a separately provisioned Lean environment and a full faithful formalization; it is outside this run.",
+  "gaps": [
+    {
+      "location": "formal verification",
+      "issue": "No machine-checked formal proof"
+    }
+  ]
+}

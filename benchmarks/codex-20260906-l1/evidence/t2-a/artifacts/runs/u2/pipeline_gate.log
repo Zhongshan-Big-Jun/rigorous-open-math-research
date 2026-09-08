@@ -1,0 +1,10 @@
+ok: found 0 task packet(s)
+ok: found 0 manager run manifest(s)
+warn: no lean manifest at lean-proof/run-manifest.json
+ok: found 1 run whiteboard(s)
+FAIL: runs/u2/whiteboard.md: missing required field 'Run ID' (whiteboard)
+FAIL: runs/u2/whiteboard.md: missing required field 'Task packet ID' (whiteboard)
+ok: found 1 closure gate(s)
+ok: found 18 claim-bearing markdown file(s)
+warn: runs/u2/approach_registry.md: strong claim present but no evidence anchors (run manifests / verification.json / candidate_proof.md / audit_report.md) found anywhere in the project
+whole-project result: 2 problem(s) found, 2 warning(s), 9 check(s).

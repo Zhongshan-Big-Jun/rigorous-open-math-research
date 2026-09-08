@@ -1,0 +1,40 @@
+{
+	"root_thread_id": "01a07f60-ad98-7b10-b036-3be86f11c5dc",
+	"segments": [
+		{
+			"path": "/home/huangzy/codex-benchmark/L1-20260906-ASTRA-ABC-r1/t2/a/run/segment-01",
+			"active_seconds": 1022.3943365150044,
+			"exit_code": 1,
+			"stop_reason": "QUOTA_EXHAUSTED"
+		},
+		{
+			"path": "/home/huangzy/codex-benchmark/L1-20260906-ASTRA-ABC-r1/t2/a/run/segment-02",
+			"active_seconds": 780.3895193109929,
+			"exit_code": 1,
+			"stop_reason": "WALL_BUDGET"
+		}
+	],
+	"events": [
+		{
+			"segment": "segment-01",
+			"line": 1,
+			"event": {
+				"type": "thread.started",
+				"thread_id": "01a07f60-ad98-7b10-b036-3be86f11c5dc"
+			}
+		},
+		{
+			"segment": "segment-02",
+			"line": 1,
+			"event": {
+				"type": "thread.started",
+				"thread_id": "01a07f60-ad98-7b10-b036-3be86f11c5dc"
+			}
+		}
+	],
+	"extra_budget_seconds": 0,
+	"classification": "Segment 01: actual quota exhaustion. Segment 02: original session continued with current desktop account, stopped at original wall cap. Cleanup elapsed is included.",
+	"active_account_changed_at_continuation": true,
+	"task_solver_cap_seconds": 1800,
+	"observed_elapsed_beyond_cap_seconds": 2.783855825997307
+}

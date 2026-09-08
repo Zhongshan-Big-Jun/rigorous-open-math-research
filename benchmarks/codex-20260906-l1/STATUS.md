@@ -1,9 +1,10 @@
 # L1 three-arm regression status
 
-Updated: 2026-09-08. State: T1_COMPLETE_T2_B_AUDITED_A_RUNNING.
+Updated: 2026-09-08. State: T1_COMPLETE_T2_B_AUDITED_A_EXTERNAL_AUDIT_RUNNING.
 
 User requested continuation. Preparation and one infrastructure-invalid attempt
 are recorded. Completed solver runs: 4 (T1 C, A, B and T2 B). Scored/audited runs: 4.
+T2 A additionally has a frozen wall-limited delivery; it did not return normally.
 All T1 blind audits PASS, 100/100, no load-bearing gap or repair.
 A solver used 1277.998200 active seconds; its external audit used 432.192049.
 T1 B launched at 2026-09-07T01:48:49Z. Inspect t1/b/run/state.json before dispatch.
@@ -61,6 +62,14 @@ A resumed the same root session at 2026-09-08T07:33:37Z using the currently
 selected desktop account. Its quota snapshot reports one seven-day window,
 100% remaining. There is no reported five-hour value. The changed runner hash
 and unchanged treatment gates are bound in evidence/quota-window-amendment.json.
+A reached its original wall cap at 2026-09-08T07:46:38Z, status BUDGET_EXHAUSTED.
+Elapsed time including cancellation cleanup is 1802.783856 seconds. Its complete
+answer and internal audit report were saved before freezing. Actual returned
+usage: 303881 uncached input, 2906624 cached input, 59829 output, 65 responses
+across the root and three child tasks. There is no extra solver continuation.
+Its external blind audit started at 07:48:20Z. Mapping: control/audit-t2-A.json.
+Opaque root: /home/huangzy/codex-benchmark/blind-audits/3117d5d0-ba4d-497d-af47-3085f7a57f0b.
+The unchanged answer is hash-bound; c=1/4, C=10^10, t0=32 remain externally unscored.
 
 ## Current verified execution path
 
@@ -112,11 +121,12 @@ and unchanged treatment gates are bound in evidence/quota-window-amendment.json.
    plan and any spend block; do not assume primary means five hours. These are
    account-level data, not treatment costs. The user explicitly removed quota reserves. Launch with positive available
    quota; stop on actual exhaustion, stale snapshots or the fixed wall cap.
-3. All T1 solvers/audits and T2 B solver/audit are complete. Do not repeat them.
-   Inspect T2 A's t2/a/run/state.json. If it pauses or exits due to quota, use
-   its original solver session and remaining allowance:
+3. All T1 solvers/audits and T2 B solver/audit are complete. T2 A's solver has
+   exhausted its wall allowance and must not resume. Inspect the mapped T2 A
+   audit's candidate/c/run/state.json. If that audit pauses due to quota, use
+   its original audit session and remaining allowance:
 
-   python3 -X utf8 scripts/benchmark_runner.py --root /home/huangzy/codex-benchmark/L1-20260906-ASTRA-ABC-r1 --task t2 --arm A --resume
+   python3 -X utf8 scripts/benchmark_audit.py --campaign /home/huangzy/codex-benchmark/L1-20260906-ASTRA-ABC-r1 --task t2 --arm A --resume
 4. Refresh the quota file during execution. It expires after five minutes;
    actual exhaustion or creating run/STOP causes cancellation and checkpoint.
    The runner retains segment logs, root ID, observed child sessions and elapsed

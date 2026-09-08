@@ -1,0 +1,3 @@
+{"step": "resume_reconcile", "decision": "reuse returned exact artifacts; no repeated search"}
+{"step": "candidate_close", "decision": "all roots closed; freeze answer.md and dispatch exactly one fresh package audit", "constants": {"c": "1/4", "C": 10000000000, "t0": 32}}
+{"step": "consolidation", "decision": "no further research; await exact audit while producing deterministic records"}

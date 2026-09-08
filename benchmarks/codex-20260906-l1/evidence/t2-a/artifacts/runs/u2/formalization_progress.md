@@ -1,0 +1,2 @@
+# Formalization decision
+Decision: skipped. No Lean or Lake executable is available (environment.json records PATH discovery), and the user requested a self-contained mathematical proof within the shared wall budget. No Lean project was supplied. No formalization, scaffold compilation, build, sorry/axiom scan or machine-verification claim is made. Re-verification obligation F1 remains open independently of the informal theorem. No external project or package was fetched.

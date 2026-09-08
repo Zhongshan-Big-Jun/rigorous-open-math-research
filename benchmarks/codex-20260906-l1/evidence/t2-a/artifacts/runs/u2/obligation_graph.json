@@ -1,0 +1,34 @@
+{
+  "root_obligations": [
+    "O1",
+    "O2",
+    "O3"
+  ],
+  "obligations": [
+    {
+      "id": "O1",
+      "status": "PROVED",
+      "proof_anchor": "answer.md#1-the-lamp-convention-and-the-lower-bound"
+    },
+    {
+      "id": "O2",
+      "status": "PROVED",
+      "proof_anchor": "answer.md#1-the-lamp-convention-and-the-lower-bound"
+    },
+    {
+      "id": "O3",
+      "status": "PROVED",
+      "proof_anchor": "answer.md#4-exact-ranges-exceptional-paths-and-the-summation"
+    }
+  ],
+  "audit_obligation": {
+    "id": "O4",
+    "status": "PENDING",
+    "owner": "fresh auditor"
+  },
+  "formalization_obligation": {
+    "id": "F1",
+    "status": "NOT_MACHINE_VERIFIED",
+    "reason": "Lean and Lake unavailable; formalization not requested"
+  }
+}

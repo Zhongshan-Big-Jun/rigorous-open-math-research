@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "candidate_author_id": "/root",
+  "frozen_at": "2026-09-08T07:40:57.252242+00:00",
+  "contract": {
+    "path": "runs/u2/problem_contract.md",
+    "sha256": "6ad9b5e431af4324739f13f1204b49e9c530ee5bb84f6c957177f218988cc436"
+  },
+  "obligation_graph": {
+    "path": "runs/u2/obligation_graph.json",
+    "sha256": "090e2d42e45bcd88c69ef07c915193397a256cb11fe482f15a781ef50c00c8bf"
+  },
+  "candidate_proof": {
+    "path": "answer.md",
+    "sha256": "05884d2c49613f30d2c0bb0a6fd4d62ddefb25a2eead41504ce7e5a878a7c573"
+  },
+  "dependencies": [
+    {
+      "path": "runs/u2/fourier_lemma.md",
+      "sha256": "b83017f8bc6a6f2040043d92e36a506f2dd472ff39b4685007b278c360f5942f"
+    },
+    {
+      "path": "runs/u2/kernel_identity_audit.md",
+      "sha256": "1b1e6bdc2dc7eab4dc694313bb3c1140844c65e17d069977aff5f3dc54f8f463"
+    },
+    {
+      "path": "runs/u2/spectral_estimate.md",
+      "sha256": "9acd669c914e884c502332bc380a14e64410d36eeb99ad68d52c68b11aaf789a"
+    },
+    {
+      "path": "runs/u2/assembly.md",
+      "sha256": "4b55532e3cf1f015e11ebc082eeb68d8c985cd4cb729ba1d875412d89b834cb6"
+    },
+    {
+      "path": "runs/u2/lower_bound.md",
+      "sha256": "7987763db788db7a4ce2dbe889d715e99ae062a2345c042ac5d6106275c8e6ad"
+    }
+  ],
+  "root_obligations": [
+    {
+      "id": "O1",
+      "status": "CLOSED",
+      "proof_anchor": "answer.md#1-the-lamp-convention-and-the-lower-bound"
+    },
+    {
+      "id": "O2",
+      "status": "CLOSED",
+      "proof_anchor": "answer.md#1-the-lamp-convention-and-the-lower-bound"
+    },
+    {
+      "id": "O3",
+      "status": "CLOSED",
+      "proof_anchor": "answer.md#4-exact-ranges-exceptional-paths-and-the-summation"
+    }
+  ]
+}

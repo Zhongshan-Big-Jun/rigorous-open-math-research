@@ -128,6 +128,7 @@ the external audit at 100/100. Its unchanged answer was sent for blind audit at
 | B new solver, including research child and internal audit | Frozen, independently accepted | - | 1754.827 | 277157 | 2351360 | 69407 | 55 |
 | B independent blind audit | PASS, no load-bearing gap or repair | 100/100 | 670.341 | 138385 | 231040 | 17145 | 11 |
 | B solver + external audit | Accepted | 100/100 | 2425.167 | 415542 | 2582400 | 86552 | 66 |
+| A old solver, including three children | Wall-limited frozen answer; external audit pending | - | 1802.784 | 303881 | 2906624 | 59829 | 65 |
 
 The candidate claims the required bound for every t>=1024 with c=1/2 and C=10^12.
 It retains the lower-bound proof, rejected shortcuts and the final interval-kernel
@@ -166,3 +167,14 @@ and retains A's 777.605663 seconds of remaining allowance. The current account
 is used from the same-session continuation at 2026-09-08T07:33:37Z. Account/plan
 changes add another performance confound. Task, model/effort, plugin snapshots,
 tools and scoring are unchanged; no quota percentages are converted to tokens.
+
+A reached the original wall cap at 2026-09-08T07:46:38Z with its full answer and
+internal audit report saved. Status is BUDGET_EXHAUSTED, not a normal return.
+The observed 1802.783856 seconds include 2.783856 seconds beyond the nominal
+1800-second cap for polling and cancellation cleanup, within the documented
+cleanup allowance. All elapsed time and returned root/child costs are retained.
+Its unchanged answer claims c=1/4, C=10^10, t0=32 and entered external blind
+audit at 07:48:20Z. No further solver continuation is allowed. See
+[answer](evidence/t2-a/answer.md), [state](evidence/t2-a/state.json),
+[binding](evidence/t2-a/blind-audit-binding.json), and
+[continuation](evidence/t2-a/quota-continuation.json).

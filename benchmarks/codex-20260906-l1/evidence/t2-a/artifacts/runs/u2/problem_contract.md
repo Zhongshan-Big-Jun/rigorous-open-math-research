@@ -1,0 +1,4 @@
+# Frozen problem contract
+At integer t>=0 use exactly the stated SWS chain on finitely supported Z_2 lamps over Z: independent fair resampling at departure, symmetric nearest-neighbour movement, independent fair resampling at arrival. Starts x=(all-zero lamps,0), y=(all-zero lamps,2). Prove explicit c,C>0 and integer t0 with c/sqrt(t)<=TV(P_t^x,P_t^y)<=C/sqrt(t) for all integer t>=t0; TV=sup event difference=half l1.
+Audit parity, small times, all-zero initial lamps at 0 and 2, and every conditioning/coupling marginal. State and check external theorems or prove ingredients. Numerical work only for falsification. No internet, repositories/history, prior work, sessions, memory, or other projects.
+Start: 2026-09-08 04:57:35 UTC. Consolidation by 05:22:35. Stop by 05:27:35. Deliver answer.md and final. Full Lean formalization not requested; no supplied Lean project.
