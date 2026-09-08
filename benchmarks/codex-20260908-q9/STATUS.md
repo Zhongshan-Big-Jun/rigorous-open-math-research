@@ -1,6 +1,6 @@
 # Q9 comparison recovery entry
 
-State: R2_A_EXTERNAL_AUDIT_RUNNING. Both initial A attempts are invalid and preserved without
+State: R2_C_RUNNING; A_COMPLETE_PASS. Both initial A attempts are invalid and preserved without
 scores. Do not resume either original or r1. See CHILD_ISOLATION_AMENDMENT.md.
 
 - User request: a harder repository problem and an old/new/blank comparison.
@@ -20,11 +20,18 @@ A root UUID: 01a0812b-e1b4-7203-a59b-9dff0757e677. Already dispatched.
 Solver returned and froze after 2477.650182 seconds. Do not resume it.
 External audit root: /home/huangzy/codex-benchmark/blind-audits/b67267e4-974a-418c-8716-eeb5f016001f.
 Solver: 320926 uncached input, 7586944 cached input, 96822 output tokens,
-116 unique returned responses. Full Q9 proof is still awaiting external verdict.
+116 unique returned responses. External verdict: PASS 100/100, PROVED, root_closed=true, no gaps.
+External audit: 548.878768 seconds, 48991 uncached input and 16637 output tokens.
+Full A delivery: 3026.528950 seconds, 369917 uncached input, 113459 output tokens.
 Retain all infrastructure costs separately. After freezing A, export unique
 response usage and submit unchanged mathematics to the registered blind audit.
 Continue C then B. Do not give any solver historical mathematical hints.
 
-A answer is sent byte-for-byte, with no blinding edits. C and B have not started.
+A answer is sent byte-for-byte, with no blinding edits. C is the next dispatch; B has not started.
 
 A external audit UUID: 01a08155-6c5c-7501-add1-94840ddf1185.
+
+A solver and external audit are complete and immutable. Launch C once, then
+its independent audit; finally run B and its independent audit. Do not resume A.
+
+C solver UUID: 01a0815e-b361-7b81-86f5-847de62d2841. Already dispatched.

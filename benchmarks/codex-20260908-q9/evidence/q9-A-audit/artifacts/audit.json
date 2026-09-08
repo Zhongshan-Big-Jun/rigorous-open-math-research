@@ -1,0 +1,178 @@
+{
+  "verdict": "PASS",
+  "target_status": "PROVED",
+  "root_closed": true,
+  "scores": {
+    "correctness": 40,
+    "fidelity": 20,
+    "strict_progress": 15,
+    "calibration": 10,
+    "evidence": 10,
+    "reproducibility": 5
+  },
+  "total_score": 100,
+  "score_rationale": {
+    "correctness": "Every load-bearing analytic implication and exact polynomial certificate checks. No missing argument or false mathematical claim was identified.",
+    "fidelity": "The proof establishes the strict Q9 implication for every tuple in the specified domain satisfying C1-C3, without adding a mass-balance equation or other hypothesis. Establishing the stronger result using C2-C3 alone validly includes every tuple satisfying all three constraints.",
+    "strict_progress": "15/15 because the universal target is fully proved. The new bounds from Q>0 and C3, the certified small-s polynomial inequality, and the exclusion of s>=12/25 using C2 prove the supplied sufficient condition rather than merely restating or assuming it.",
+    "calibration": "The claimed complete resolution and use of exact rational arithmetic are supported. The submission does not claim formal verification or external novelty; historical provenance statements are not needed for the mathematical verdict.",
+    "evidence": "All load-bearing certificate definitions, coefficient rules, analytic arguments, and a runnable verifier are embedded in CANDIDATE.md. Exact independent verification supports the uniform signs, not just sample values.",
+    "reproducibility": "The embedded standard-library verifier executed successfully. A separately written exact interpolation implementation independently verified the polynomial identities, all complementary Bernstein signs and degrees, their counts, and the rational angle comparisons. Both checkers and independent results are retained."
+  },
+  "earliest_substantive_gap": null,
+  "load_bearing_gaps": [],
+  "partial_progress_gaps": [],
+  "repairs_supplied": [],
+  "proved_new_claims": [
+    {
+      "statement": "Writing s=sqrt(r), w=(m^2-1)sin(g)^2 and P=1+2c^2-3cs-3c^2s^2+c(2+c^2)s^3, Q_quad>0 implies w<(c-s)(1-c^2s^2)/(sP), with P>0.",
+      "domain": "The stated domain m>1, 2/3<c<1, 0<s<c, 0<g<B<pi/2, with A and d as defined, and C3. Neither C1 nor C2 is needed for this bound.",
+      "proof_locator": "CANDIDATE.md:60-131, equations (5)-(7)",
+      "relevance": "A new necessary quantitative bound from Q_quad>0 and the exact angular constraint; not among the supplied starting facts."
+    },
+    {
+      "statement": "If Q_quad>0 and 0<s<=12/25, then S=c^2-s^2-(m^2-1)(1-c^2)s^2 sin(B)^2>0.",
+      "domain": "The stated domain and C3, with 0<s<=12/25. C1 and C2 are unnecessary for this subdomain result.",
+      "proof_locator": "CANDIDATE.md:134-166, equation (8), with its verifier at lines 398-415",
+      "relevance": "Closes a proper infinite parameter range by proving the supplied sufficient condition from Q_quad>0. The 30 strictly positive Bernstein coefficients certify the needed uniform polynomial inequality."
+    },
+    {
+      "statement": "Q_quad>0 forces s<12/25, equivalently r<144/625.",
+      "domain": "The stated domain with C2 and C3, hence also the full C1-C3 admissible domain.",
+      "proof_locator": "CANDIDATE.md:168-275, equations (9)-(15), and lines 417-457 of the verifier",
+      "relevance": "Excludes the entire complementary parameter range using exact polynomial upper bounds and a strict contradiction to C2."
+    },
+    {
+      "statement": "Q_quad>0 implies S>0 and therefore R_quad>0, equivalently (c^2-r)/((m^2-1)(1-c^2))>T_quad.",
+      "domain": "Every tuple m>1, 2/3<c<1, 0<r<c^2, 0<g<B<pi/2 satisfying all three exact constraints C1-C3 and the prescribed principal branches. The proof also establishes the implication under C2-C3 alone.",
+      "proof_locator": "CANDIDATE.md:45-58 and 277-278, using Sections 2-6",
+      "relevance": "Fully closes Target Q9, including its strict consequent."
+    }
+  ],
+  "checked_claims": [
+    {
+      "id": "domain_and_target",
+      "claim": "The candidate uses the exact task quantities and admissible domain.",
+      "status": "VERIFIED",
+      "proof_locator": "TASK.md:12-59; CANDIDATE.md:17-43",
+      "evidence": "The substitution r=s^2 exactly reproduces Q_quad, U and V. It gives 0<s<c<1, k>0 and e>0. Principal branches yield 0<d<A<B<pi/2 and d<g. C1 is retained as a hypothesis; proving a consequence from the weaker hypotheses C2-C3 is sufficient for the simultaneous C1-C3 target. No additional mass-balance or admissibility condition is introduced."
+    },
+    {
+      "id": "positive_reduction",
+      "claim": "S>0 implies the requested strict inequality.",
+      "status": "VERIFIED",
+      "proof_locator": "CANDIDATE.md:45-58, equations (3)-(4)",
+      "evidence": "The differentiated F identity gives V>pi. Direct expansion verifies V sin(B)^2-U=H(g)(sin(B)^2-sin(g)^2)+m(B-g)sin(B)^2>0. Therefore R_quad=S V+k e r(V sin(B)^2-U)>0. Multiplication by k e V>0 preserves the equivalence to the task's T_quad inequality. These supplied identities are not counted as new progress."
+    },
+    {
+      "id": "angular_ratio",
+      "claim": "C3 implies sin(B)/sin(g)<=(1+cs)/(1-cs).",
+      "status": "VERIFIED",
+      "proof_locator": "CANDIDATE.md:70-80, equation (5)",
+      "evidence": "The derivative of arcsin(s sin(z)) lies in (0,s], giving B-g=c(A+d)<=cs(B+g). Since 1-cs>0 this bounds B/g. The stated decreasing sinc argument applies to 0<g<B<pi/2 and yields the sine ratio bound."
+    },
+    {
+      "id": "strict_cotangent_bound",
+      "claim": "C3 implies equation (6) and f tan(g)<L.",
+      "status": "VERIFIED",
+      "proof_locator": "CANDIDATE.md:83-101",
+      "evidence": "For 0<A+d<pi and 0<c<1, strict sine concavity gives sin(B-g)>c sin(A+d). Dividing the expanded identity by sin(B)sin(g)>0 gives precisely Y-X>cs(sqrt(Y^2+1-s^2)+sqrt(X^2+1-s^2)). Each radical exceeds its positive cotangent, so X/Y<(1-cs)/(1+cs). Also f<(c-s)X and c-s>0, yielding the stated strict L bound."
+    },
+    {
+      "id": "q_to_w",
+      "claim": "Q_quad>0 yields inequality (7) after legitimate rearrangement.",
+      "status": "VERIFIED",
+      "proof_locator": "CANDIDATE.md:104-131",
+      "evidence": "Multiplication by tan(g) gives the displayed exact Q identity. Because d<g, rho=s cos(g)/cos(d) lies strictly between 0 and s; substituting s increases the positive denominator and decreases the subtracted positive fraction. Combining with f tan(g)<L gives the claimed strict inequality. Expanding its coefficient of w gives exactly sP, and its constant numerator is (c-s)(1-c^2 s^2)."
+    },
+    {
+      "id": "sign_of_p",
+      "claim": "P>0 throughout 0<s<c<1, so division by sP preserves orientation.",
+      "status": "VERIFIED",
+      "proof_locator": "CANDIDATE.md:123-131",
+      "evidence": "Differentiation gives P_s=3c((2+c^2)s^2-2cs-1). The convex quadratic in parentheses has endpoint values -1 and c^4-1<0 on [0,c], hence is negative throughout. Thus P>=P(c,c)=(1-c^2)(1-c^4)>0."
+    },
+    {
+      "id": "small_range_reduction",
+      "claim": "The ratio in Section 3 is strictly below 1 when E>0.",
+      "status": "VERIFIED",
+      "proof_locator": "CANDIDATE.md:136-146",
+      "evidence": "Substitution of w<W and the squared sine-ratio bound cancels the positive factor c-s and gives exactly e s(1+cs)^3/((c+s)(1-cs)P). Its denominator is positive, and E is that denominator minus its numerator. Thus E>0 proves the claimed strict S>0."
+    },
+    {
+      "id": "small_range_certificate",
+      "claim": "Equation (8) is exact and E>0 on the entire closed certificate rectangle.",
+      "status": "VERIFIED",
+      "proof_locator": "CANDIDATE.md:145-166 and 403-415",
+      "evidence": "The submitted verifier reproduces every entry of the 5 by 6 matrix with denominator 1054687500. An independent check verifies the identity by exact polynomial unisolvence with a proved bidegree bound, not sampled positivity. All 30 entries are strictly positive; the minimum normalized coefficient is 3151778/263671875. The Bernstein basis is nonnegative and sums to one, including the rectangle's boundary."
+    },
+    {
+      "id": "inverse_branch_and_uniqueness",
+      "claim": "Q_quad>0 and equation (6) give X>X0 and Y>Y0 with the displayed positive branches.",
+      "status": "VERIFIED",
+      "proof_locator": "CANDIDATE.md:173-196",
+      "evidence": "Q_quad>0 forces f>0. Squaring cX>s sqrt(X^2+1-s^2) is legitimate because both sides are positive and c^2-s^2>0. The maps y -> y +/- cs sqrt(y^2+1-s^2) are strictly increasing; the minus derivative is greater than 1-cs>0. The supplied inverse formula solves the unsquared equality with positive branches and is unique. In its substitution, h^2+(1-s^2)(1-c^2 s^2)=c^2(1-s^2)(1+s^2)^2/(c^2-s^2), yielding exactly the stated Y0."
+    },
+    {
+      "id": "z_and_t_bounds",
+      "claim": "The identities and monotonicity in (9)-(10) bound both arctangent arguments.",
+      "status": "VERIFIED",
+      "proof_locator": "CANDIDATE.md:198-221",
+      "evidence": "With ell=tan(g)^2, z^2=w+(1+w)ell and t^2=s^2(w+(1+w)ell)/(1+(1-s^2)ell) follow directly from w=(m^2-1)sin(g)^2 and sin(d)=s sin(g). Both are strictly increasing in w and ell; the displayed ell derivative for t^2 is correct, and its w derivative is s^2(1+ell)/(1+(1-s^2)ell)>0. Since ell<Lambda and w<W, the strict bounds z^2<Z and t^2<D_star follow."
+    },
+    {
+      "id": "rational_certificate_correspondence",
+      "claim": "The polynomials in (13)-(14) certify precisely the table's rational bounds.",
+      "status": "VERIFIED",
+      "proof_locator": "CANDIDATE.md:280-306",
+      "evidence": "The displayed numerators and denominators give W=Nw/Dw, Lambda=N_ell/D_ell, Z=Nz/Dz and D_star=Nt/Dt exactly. Dw=sP>0 and D_ell=s^2(1-s^2)(1+2c^2+c^2s^2)^2>0 on the application domain; Dt is also positive. Clearing these denominators preserves the inequalities. Polynomial verification at closed endpoints does not entail division at excluded singular endpoints."
+    },
+    {
+      "id": "table_certificate_and_counts",
+      "claim": "All four table rows have the specified Bernstein degrees and nonnegative coefficients: 1890 total, exactly 12 zero.",
+      "status": "VERIFIED",
+      "proof_locator": "CANDIDATE.md:227-232, 300-336 and 417-447",
+      "evidence": "Both the embedded verifier and the independent exact collocation implementation pass. Row counts for (Z,D_star) are (260,280), (260,280), (130,140), (260,280), with degrees exactly (19,12)/(19,13) in rows 1,2,4 and (9,12)/(9,13) in row 3. The only zeros are six in each polynomial of row 4. The coefficient formula and binomial-theorem justification are correct. Independently proved degree bounds make exact interpolation an identity certificate, so these are uniform signs rather than a finite numerical scan."
+    },
+    {
+      "id": "angular_contradictions",
+      "claim": "Every table row contradicts C2 with a strict rationally certified margin.",
+      "status": "VERIFIED",
+      "proof_locator": "CANDIDATE.md:234-275 and 449-457",
+      "evidence": "Arctangent concavity gives its global tangent upper bound at 1. The integrated geometric-sum upper bound is strict for each positive argument used. The four constants in (11) follow using c's respective lower endpoints. The positive-branch addition formula and lower geometric sums prove pi>284663/90720>25/8. Already using pi>25/8, the four bounds in (11) fall short of pi/2 by more than 13/1600, 13/1400, 7/2400 and 3/80, respectively."
+    },
+    {
+      "id": "coverage_endpoints_and_strictness",
+      "claim": "No parameter endpoint or equality case needed by Q9 is lost.",
+      "status": "VERIFIED",
+      "proof_locator": "CANDIDATE.md:134-171, 227-234, 277-278 and 300-306",
+      "evidence": "The small range includes s=12/25, and the complementary contradiction also excludes this equality when C2 and Q>0 hold. The table covers all 2/3<c<1 and 12/25<=s<c, including seams c=7/10, c=3/4 and s=3/5. Closed polynomial certificates include c=2/3, c=1 and s=c where relevant, but divisions are only used with c<1 and s<c. The original restrictions m>1, s>0 and 0<g<B<pi/2 ensure all strict signs used. Q=0 is outside the antecedent; R=0 is ruled out by the strict positive reduction."
+    },
+    {
+      "id": "complete_target_closure",
+      "claim": "The submitted proof establishes Q9 rather than a conditional restatement of its supplied sufficient condition.",
+      "status": "VERIFIED",
+      "proof_locator": "CANDIDATE.md:3-13, 52-58 and 277-278",
+      "evidence": "Under Q>0, the complementary range is impossible by C2-C3. On the remaining range, C3 and the exact certificate imply S>0, closing the previously unproved sufficient inequality. Equation (4) then proves R_quad>0. No counterexample or existence/multiplicity claim for admissible tuples is made or needed. No repair was supplied to reach this conclusion."
+    }
+  ],
+  "reproducibility": {
+    "source_scope": ["TASK.md", "CANDIDATE.md"],
+    "external_sources_used": false,
+    "input_sha256": {
+      "TASK.md": "c7133b97e440e90095088927f105c9f88fcdc54f4a4772ee9f85ba5a139e6330",
+      "CANDIDATE.md": "386038fcc8e26b44f20a2cf9c8e02ebd1da28de996ccfe62c521999984c8cb2a"
+    },
+    "runtime": "Python 3.14.4; standard library only",
+    "commands": [
+      "python3 audit_scratch/verify_submitted.py",
+      "python3 audit_scratch/independent_check.py"
+    ],
+    "submitted_verifier_exit_code": 0,
+    "submitted_verifier_output": "PASS: 30 positive small-s coefficients; 1890 nonnegative\ncomplementary coefficients (12 zero); all rational angle bounds.",
+    "independent_checker_exit_code": 0,
+    "independent_results": "audit_scratch/independent_results.json",
+    "independent_method": "Exact rational Bernstein collocation matrix inversion with proved polynomial degree bounds, plus an independent identity check for equation (8) and exact angle comparisons. This verifies the submitted certificate; it does not repair or replace a missing argument."
+  },
+  "rationale": "PASS: the candidate gives a complete uniform exact proof of Q9. The earliest potential load-bearing issues—the strict angular relaxation, sign needed to isolate w, inverse-root branch, correspondence of polynomial certificates to rational bounds, and strict transcendental contradiction—all check. Both exact certificate implementations confirm every claimed coefficient sign, degree and count. The proof derives the stronger S>0 from Q_quad>0 and C2-C3, then uses the supplied identity to obtain R_quad>0 for every C1-C3 admissible tuple. There is no substantive gap, no remaining partial-progress core, and no repair added by the auditor. The full score reflects demonstrated target closure and valid evidence, not document length or file creation."
+}

@@ -1,0 +1,152 @@
+{
+	"records": {
+		"resp_0bd4bef03aec783f016aa016028ecc87d2b04653d90b862a99": {
+			"value": {
+				"thread_id": "01a08155-6c5c-7501-add1-94840ddf1185",
+				"usage": {
+					"input_tokens": 12456,
+					"cached_input_tokens": 0,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 153,
+					"reasoning_output_tokens": 0,
+					"total_tokens": 12609
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/blind-audits/b67267e4-974a-418c-8716-eeb5f016001f/candidate/c/home/sessions/2026/09/08/rollout-2026-09-08T22-04-14-01a08155-6c5c-7501-add1-94840ddf1185.jsonl",
+					"line": 14
+				}
+			]
+		},
+		"resp_0bd4bef03aec783f016aa0160aaac487d2b2fe952d3d1f4b6a": {
+			"value": {
+				"thread_id": "01a08155-6c5c-7501-add1-94840ddf1185",
+				"usage": {
+					"input_tokens": 20302,
+					"cached_input_tokens": 12288,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 689,
+					"reasoning_output_tokens": 347,
+					"total_tokens": 20991
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/blind-audits/b67267e4-974a-418c-8716-eeb5f016001f/candidate/c/home/sessions/2026/09/08/rollout-2026-09-08T22-04-14-01a08155-6c5c-7501-add1-94840ddf1185.jsonl",
+					"line": 23
+				}
+			]
+		},
+		"resp_0bd4bef03aec783f016aa01622f2e487d2a0bf2e849ab767ca": {
+			"value": {
+				"thread_id": "01a08155-6c5c-7501-add1-94840ddf1185",
+				"usage": {
+					"input_tokens": 29707,
+					"cached_input_tokens": 20096,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 6462,
+					"reasoning_output_tokens": 3624,
+					"total_tokens": 36169
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/blind-audits/b67267e4-974a-418c-8716-eeb5f016001f/candidate/c/home/sessions/2026/09/08/rollout-2026-09-08T22-04-14-01a08155-6c5c-7501-add1-94840ddf1185.jsonl",
+					"line": 47
+				}
+			]
+		},
+		"resp_0bd4bef03aec783f016aa016e88ec487d2b224bbcb153fe9c5": {
+			"value": {
+				"thread_id": "01a08155-6c5c-7501-add1-94840ddf1185",
+				"usage": {
+					"input_tokens": 37561,
+					"cached_input_tokens": 29568,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 53,
+					"reasoning_output_tokens": 11,
+					"total_tokens": 37614
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/blind-audits/b67267e4-974a-418c-8716-eeb5f016001f/candidate/c/home/sessions/2026/09/08/rollout-2026-09-08T22-04-14-01a08155-6c5c-7501-add1-94840ddf1185.jsonl",
+					"line": 56
+				}
+			]
+		},
+		"resp_0bd4bef03aec783f016aa016eebcf487d2b2f9742eea738777": {
+			"value": {
+				"thread_id": "01a08155-6c5c-7501-add1-94840ddf1185",
+				"usage": {
+					"input_tokens": 39116,
+					"cached_input_tokens": 37376,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 8870,
+					"reasoning_output_tokens": 3106,
+					"total_tokens": 47986
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/blind-audits/b67267e4-974a-418c-8716-eeb5f016001f/candidate/c/home/sessions/2026/09/08/rollout-2026-09-08T22-04-14-01a08155-6c5c-7501-add1-94840ddf1185.jsonl",
+					"line": 74
+				}
+			]
+		},
+		"resp_0bd4bef03aec783f016aa01808db6c87d282f8f218ff0ee71b": {
+			"value": {
+				"thread_id": "01a08155-6c5c-7501-add1-94840ddf1185",
+				"usage": {
+					"input_tokens": 48089,
+					"cached_input_tokens": 38912,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 410,
+					"reasoning_output_tokens": 275,
+					"total_tokens": 48499
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/blind-audits/b67267e4-974a-418c-8716-eeb5f016001f/candidate/c/home/sessions/2026/09/08/rollout-2026-09-08T22-04-14-01a08155-6c5c-7501-add1-94840ddf1185.jsonl",
+					"line": 83
+				}
+			]
+		}
+	},
+	"duplicate_records": 0,
+	"outer_calls": {
+		"call_Gs1smAE5rHxxbXb5eAgNExsm": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_q4HrCey37THgeR6XmGxBIT0v": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_krPBpV4BbRKuPruUOIMTUc4Y": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_k8VHqEmtz5JdMFyrj10rSeM3": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_psAWCeidlu3KCidEdzVTcQCd": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		}
+	},
+	"models": [
+		"gpt-6-astra"
+	],
+	"efforts": [
+		"max"
+	]
+}

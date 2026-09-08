@@ -1,0 +1,179 @@
+{
+  "status": "PASS",
+  "method": "Exact rational polynomial interpolation with proved degree bounds, followed by Bernstein coefficient signs; no floating-point arithmetic or submitted code import.",
+  "python": "3.14.4 (main, Jun 18 2026, 14:25:02) [GCC 15.2.0]",
+  "input_sha256": {
+    "TASK.md": "c7133b97e440e90095088927f105c9f88fcdc54f4a4772ee9f85ba5a139e6330",
+    "CANDIDATE.md": "386038fcc8e26b44f20a2cf9c8e02ebd1da28de996ccfe62c521999984c8cb2a"
+  },
+  "small_s": {
+    "status": "PASS",
+    "exact_identity_grid": [
+      6,
+      6
+    ],
+    "degree_bound_for_identity_difference": [
+      5,
+      5
+    ],
+    "positive_coefficients": 30,
+    "minimum_coefficient": "3151778/263671875"
+  },
+  "table": [
+    {
+      "row": 1,
+      "quantity": "Z",
+      "bidegree": [
+        19,
+        12
+      ],
+      "coefficient_count": 260,
+      "zero_count": 0,
+      "zero_positions": [],
+      "minimum_positive_coefficient": "5107609832019431658077/931322574615478515625000"
+    },
+    {
+      "row": 1,
+      "quantity": "D_star",
+      "bidegree": [
+        19,
+        13
+      ],
+      "coefficient_count": 280,
+      "zero_count": 0,
+      "zero_positions": [],
+      "minimum_positive_coefficient": "2373602185389293962857/931322574615478515625000"
+    },
+    {
+      "row": 2,
+      "quantity": "Z",
+      "bidegree": [
+        19,
+        12
+      ],
+      "coefficient_count": 260,
+      "zero_count": 0,
+      "zero_positions": [],
+      "minimum_positive_coefficient": "35977230801890324739/4768371582031250000000"
+    },
+    {
+      "row": 2,
+      "quantity": "D_star",
+      "bidegree": [
+        19,
+        13
+      ],
+      "coefficient_count": 280,
+      "zero_count": 0,
+      "zero_positions": [],
+      "minimum_positive_coefficient": "1118065077911167659/190734863281250000000"
+    },
+    {
+      "row": 3,
+      "quantity": "Z",
+      "bidegree": [
+        9,
+        12
+      ],
+      "coefficient_count": 130,
+      "zero_count": 0,
+      "zero_positions": [],
+      "minimum_positive_coefficient": "409754750140007339561/40054321289062500000000"
+    },
+    {
+      "row": 3,
+      "quantity": "D_star",
+      "bidegree": [
+        9,
+        13
+      ],
+      "coefficient_count": 140,
+      "zero_count": 0,
+      "zero_positions": [],
+      "minimum_positive_coefficient": "22648736/3662109375"
+    },
+    {
+      "row": 4,
+      "quantity": "Z",
+      "bidegree": [
+        19,
+        12
+      ],
+      "coefficient_count": 260,
+      "zero_count": 6,
+      "zero_positions": [
+        [
+          17,
+          12
+        ],
+        [
+          18,
+          11
+        ],
+        [
+          18,
+          12
+        ],
+        [
+          19,
+          10
+        ],
+        [
+          19,
+          11
+        ],
+        [
+          19,
+          12
+        ]
+      ],
+      "minimum_positive_coefficient": "27/8075"
+    },
+    {
+      "row": 4,
+      "quantity": "D_star",
+      "bidegree": [
+        19,
+        13
+      ],
+      "coefficient_count": 280,
+      "zero_count": 6,
+      "zero_positions": [
+        [
+          17,
+          13
+        ],
+        [
+          18,
+          12
+        ],
+        [
+          18,
+          13
+        ],
+        [
+          19,
+          11
+        ],
+        [
+          19,
+          12
+        ],
+        [
+          19,
+          13
+        ]
+      ],
+      "minimum_positive_coefficient": "64/154375"
+    }
+  ],
+  "angle_checks": {
+    "pi_lower_bound": "284663/90720",
+    "strict_row_margins_using_pi_gt_25_over_8": [
+      "13/1600",
+      "13/1400",
+      "7/2400",
+      "3/80"
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+{
+	"audit.md": "3d328732460a36f9ead5494b0943bef0c4d3aabcc6fc4f08b14afe6f22f6044d",
+	"PROMPT.md": "70212a3442481a3c1f7f29935dd0cb9c41366d63eeeb3242a1920eede7d965a0",
+	"TASK.md": "c7133b97e440e90095088927f105c9f88fcdc54f4a4772ee9f85ba5a139e6330",
+	"audit.json": "41031517b125966837960d68e5a158396c5971ebbc1060efe84f1a3b356859b5",
+	"CANDIDATE.md": "386038fcc8e26b44f20a2cf9c8e02ebd1da28de996ccfe62c521999984c8cb2a",
+	"audit_scratch/verify_submitted.py": "13fd5361de8e594f3fe5213b749744974a86df1d2d33208e6a0d6f5387411ed5",
+	"audit_scratch/independent_check.py": "ddbe921b3f5acda92efa0ba2e32557b68f3c2326cea84b0ea624ca79949187af",
+	"audit_scratch/independent_results.json": "d06921111b2824598d472aab02ddaebecaafaff0dd4a6b471d78033ad789e9cc"
+}

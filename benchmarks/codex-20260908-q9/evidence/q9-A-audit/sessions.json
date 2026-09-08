@@ -1,0 +1,26 @@
+[
+	{
+		"id": "01a08155-6c5c-7501-add1-94840ddf1185",
+		"source": "exec",
+		"path": "/home/huangzy/codex-benchmark/blind-audits/b67267e4-974a-418c-8716-eeb5f016001f/candidate/c/home/sessions/2026/09/08/rollout-2026-09-08T22-04-14-01a08155-6c5c-7501-add1-94840ddf1185.jsonl",
+		"models": [
+			"gpt-6-astra"
+		],
+		"efforts": [
+			"max"
+		],
+		"token_usage": {
+			"input_tokens": 187231,
+			"cached_input_tokens": 138240,
+			"cache_write_input_tokens": 0,
+			"output_tokens": 16637,
+			"reasoning_output_tokens": 7363,
+			"total_tokens": 203868
+		},
+		"token_usage_scope": "FILE_CUMULATIVE_UNDEDUPLICATED",
+		"outer_tool_calls": 5,
+		"response_count": null,
+		"aggregate_active_seconds": null,
+		"forbidden_skill_metadata": []
+	}
+]
