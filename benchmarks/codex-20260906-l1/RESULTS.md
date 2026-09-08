@@ -128,7 +128,9 @@ the external audit at 100/100. Its unchanged answer was sent for blind audit at
 | B new solver, including research child and internal audit | Frozen, independently accepted | - | 1754.827 | 277157 | 2351360 | 69407 | 55 |
 | B independent blind audit | PASS, no load-bearing gap or repair | 100/100 | 670.341 | 138385 | 231040 | 17145 | 11 |
 | B solver + external audit | Accepted | 100/100 | 2425.167 | 415542 | 2582400 | 86552 | 66 |
-| A old solver, including three children | Wall-limited frozen answer; external audit pending | - | 1802.784 | 303881 | 2906624 | 59829 | 65 |
+| A old solver, including three children | Wall-limited frozen answer, independently accepted | - | 1802.784 | 303881 | 2906624 | 59829 | 65 |
+| A independent blind audit | PASS, no load-bearing gap or repair | 100/100 | 621.203 | 47863 | 320128 | 16583 | 11 |
+| A solver + external audit | Accepted; solver hit wall cap | 100/100 | 2423.987 | 351744 | 3226752 | 76412 | 76 |
 
 The candidate claims the required bound for every t>=1024 with c=1/2 and C=10^12.
 It retains the lower-bound proof, rejected shortcuts and the final interval-kernel
@@ -178,3 +180,15 @@ audit at 07:48:20Z. No further solver continuation is allowed. See
 [answer](evidence/t2-a/answer.md), [state](evidence/t2-a/state.json),
 [binding](evidence/t2-a/blind-audit-binding.json), and
 [continuation](evidence/t2-a/quota-continuation.json).
+
+A's external audit returned normally after 621.203151 seconds and verified
+19 claims at PASS 100/100, with no load-bearing gap, false claim, or repair.
+The verdict accepts the frozen proof; it does not change the solver's
+BUDGET_EXHAUSTED process status. The exact scratch commands are retained
+because no standalone checker file was written. See [audit](evidence/t2-a/audit/audit.json),
+[commands](evidence/t2-a/audit/verification-commands.json), and
+[coordinator checks](evidence/t2-a/audit/coordinator-validation.json).
+
+C started at 2026-09-08T08:00:13Z in its presealed blank environment using the
+current desktop account. Its task, tools, model/effort and 1800-second allowance
+are the registered settings. C is the last unscored L1 delivery.

@@ -1,0 +1,191 @@
+{
+  "verdict": "PASS",
+  "scores": {
+    "correctness": 40,
+    "fidelity": 20,
+    "strict_progress": 15,
+    "calibration": 10,
+    "evidence": 10,
+    "reproducibility": 5
+  },
+  "total_score": 100,
+  "load_bearing_gaps": [],
+  "earliest_substantive_gap": null,
+  "false_claims": [],
+  "repairs_supplied": [],
+  "checked_claims": [
+    {
+      "id": "C01",
+      "location": "TASK.md:7-39; CANDIDATE.md:1-30",
+      "claim": "The proof treats the specified switch-walk-switch chain and the two all-zero configurations with base starts 0 and 2.",
+      "status": "PROVED",
+      "assessment": "The departure and arrival lamps are independently resampled, and (0,2) is correctly interpreted as a base displacement. Both forced initial zero lamps are covered: a visited site loses its initial value, while an unvisited site keeps zero. No different lamp convention is substituted."
+    },
+    {
+      "id": "C02",
+      "location": "CANDIDATE.md:17-41, equation (1)",
+      "claim": "For t >= 1, the full law is obtained from the range-and-endpoint law through one common probability kernel, which contracts total variation.",
+      "status": "PROVED",
+      "assessment": "Nearest-neighbor paths visit every integer between their extrema. Every visited site is resampled, including the initial departure and final arrival. Conditional on the base path, the last resampling indices at different sites select distinct independent fair bits. The resulting conditional law depends only on the triple, so conditioning on the triple preserves it. The displayed l1 triangle inequality gives contraction with the correct TV normalization."
+    },
+    {
+      "id": "C03",
+      "location": "CANDIDATE.md:43-64, equation (2)",
+      "claim": "The full-chain TV distance is at least 1/(4 sqrt(t)) for every integer t >= 1.",
+      "status": "PROVED",
+      "assessment": "The base events with thresholds 0 for even t and 1 for odd t give differences p_t(0) and p_t(1), respectively. The induction for b_n >= 1/(2 sqrt(n)) has the correct ratio inequality and base case. Both time parities imply the stated weaker constant, and t = 1 is checked separately. Taking preimages under the base projection is valid."
+    },
+    {
+      "id": "C04",
+      "location": "CANDIDATE.md:66-77, equation (3)",
+      "claim": "max_j p_t(j) <= 2/sqrt(t) for all integer t >= 1.",
+      "status": "PROVED",
+      "assessment": "Unimodality follows from the consecutive binomial ratio. The induction b_n <= 1/sqrt(n+1) starts at b_0 = 1, and the cleared numerator difference is indeed 3n+2. The even and odd central probabilities, including t = 1, give the asserted bound."
+    },
+    {
+      "id": "C05",
+      "location": "CANDIDATE.md:80-99, equations (4)-(5)",
+      "claim": "The compact-frequency interpolation satisfies f_t(j) = p_t(j) on the parity class j congruent to t modulo 2.",
+      "status": "PROVED",
+      "assessment": "The exponential expansion on the full Fourier interval extracts the binomial probability. On the stated parity class the integrand has period pi, making the half-interval integral with factor 1/pi equal to that probability. No identity on the opposite parity class is required or claimed."
+    },
+    {
+      "id": "C06",
+      "location": "CANDIDATE.md:101-137, equations (6)-(7)",
+      "claim": "The image sum equals the finite spectral expression, with prefactor 4/L, for every real l < r and real a,z.",
+      "status": "PROVED",
+      "assessment": "The stated Fourier inversion theorem applies to g = 2 B_t in C_c^2. Two integrations by parts give integrable quadratic decay and locally uniform periodization. Unfolding yields Fourier coefficient B_t(pi j/L)/L. Only finitely many coefficients survive, and the stated uniqueness theorem applies to the continuous periodic function. The cosine difference gives exactly the factor 4/L."
+    },
+    {
+      "id": "C07",
+      "location": "CANDIDATE.md:139-148",
+      "claim": "At compatible integer parameters, H is the killed transition probability, including zero values for boundary starts or endpoints.",
+      "status": "PROVED",
+      "assessment": "Every image argument has the needed parity. The image expression with p_s can be considered at every nonnegative integer s independently of the smooth interpolation: it has the nearest-neighbor recurrence, the interior point-mass initial condition, and zero absorbing boundaries by symmetry and reindexing. These characterize the killed law by induction. A start on either boundary makes the two image sums cancel."
+    },
+    {
+      "id": "C08",
+      "location": "CANDIDATE.md:150-156, 401-418",
+      "claim": "The parameter derivatives through order three exist and can be taken termwise in the image sum.",
+      "status": "PROVED",
+      "assessment": "At t >= 32 the cutoff B_t is C^3, and the spectral series is locally finite on L > 0. For the image-series argument, six integrations by parts apply to the Fourier integrands for f_t and its first three derivatives, with vanishing boundary terms. On parameter compact sets, coefficients grow at most cubically in k while those derivatives decay as |k|^-6, giving summable |k|^-3 domination."
+    },
+    {
+      "id": "C09",
+      "location": "CANDIDATE.md:158-226, equations (8)-(10)",
+      "claim": "|f_t'''(x)| <= 9000000 t^-2 (1+|x|/sqrt(t))^-6 uniformly for real x and integer t >= 32.",
+      "status": "PROVED",
+      "assessment": "The derivative recurrence and its coefficient majorants are correct, as are the four stated rows. The Gaussian moment formula and product rule yield the integral constants 53616, 55008, 21240, and 3360, totaling 133224. Six integrations by parts give the tail estimate; the direct integral gives 4/(pi t^2). Combining them with the displayed minimum inequality gives the stated constant, including x = 0."
+    },
+    {
+      "id": "C10",
+      "location": "CANDIDATE.md:228-243, equations (11)-(12)",
+      "claim": "For l <= a,z <= r, |H_alr| <= 32 A t L^-6 with A = 9000000.",
+      "status": "PROVED",
+      "assessment": "The mixed derivative has coefficients +4k^2 and +4k(k+1), with the stated signs. The first image family contributes at most 8 j^2 per paired index. In the second family k = 0,-1 vanish and the remaining pair contributes at most 16 j^2. The argument lower bounds are valid even when a or z equals a boundary. Thus the factor 24 and the subsequent sum of j^-4 bounded by 4/3 are correct."
+    },
+    {
+      "id": "C11",
+      "location": "CANDIDATE.md:245-291, equations (13)-(14)",
+      "claim": "The differentiated spectral summand satisfies the polynomial and exponential bounds used for narrow intervals.",
+      "status": "PROVED",
+      "assessment": "The coordinate operators are correctly transformed to partial_r = partial_L and partial_l = -partial_L-partial_u-partial_v. Differentiating B_t(q/L) gives the stated s and 3s+s^2 majorants. The trigonometric derivative and product-rule coefficients give the displayed F_LL and F_uL,F_vL bounds. Their sum is bounded by 4 q^3 (32+13s+s^2) L^-4 exp(-s/4), hence by 1568 q^3 L^-4 exp(-s/8). Cutoff terms and their relevant derivatives vanish continuously."
+    },
+    {
+      "id": "C12",
+      "location": "CANDIDATE.md:293-307, equation (13)",
+      "claim": "|H_alr| <= 1500000 L^-4 exp(-t/(2L^2)) for 0 < L <= sqrt(t).",
+      "status": "PROVED",
+      "assessment": "For alpha >= 1 and j >= 1, the inequalities 3 < pi < 4 and alpha j^2 >= (alpha+j^2)/2 give the stated separated exponential sum. The comparison on each interval [j-1,j] is pointwise in the correct direction. The total comparison integral is 5+4 times the half-Gaussian integral and is less than 13. The resulting constant is 1568*64*13 = 1304576 < 1500000."
+    },
+    {
+      "id": "C13",
+      "location": "CANDIDATE.md:309-324, equation (15)",
+      "claim": "Four killed kernels give the exact minimum, maximum, and endpoint probability on every common range.",
+      "status": "PROVED",
+      "assessment": "Inclusion-exclusion subtracts paths missing each endpoint of [m,M]. For common ranges m <= 0 and M >= 2, both actual starts and all allowed endpoints lie inside or on the boundaries of every one of the four intervals. The zero-boundary convention handles all endpoint coincidences. Both starts are even, so z congruent to t gives the required parity at all four corners."
+    },
+    {
+      "id": "C14",
+      "location": "CANDIDATE.md:326-333, equation (16)",
+      "claim": "The difference between the two exact-range probabilities is the negative triple integral of H_alr.",
+      "status": "PROVED",
+      "assessment": "The finite-difference signs in (15) give the minus sign in (16). The verified C^3 regularity permits the three applications of the fundamental theorem of calculus. Throughout the full interpolation box, a is in [0,2], l <= a,z <= r, and L > 0. Thus the estimates are never applied to a start outside the interval."
+    },
+    {
+      "id": "C15",
+      "location": "CANDIDATE.md:335-341",
+      "claim": "Common ranges of width N contribute at most N^2 times the uniform derivative bound.",
+      "status": "PROVED",
+      "assessment": "The integers m range from 2-N through 0, giving exactly N-1 choices. Each has at most N+1 endpoints. Their product N^2-1 is at most N^2. The a-integral has length two, canceling the one-half in TV; the other integration lengths are one. Also N <= L <= N+2 <= 2N for all N >= 2."
+    },
+    {
+      "id": "C16",
+      "location": "CANDIDATE.md:343-362, equations (17)-(18)",
+      "claim": "The common-range sum is at most (6000000+6144000000)/sqrt(t) for all integer t >= 32.",
+      "status": "PROVED",
+      "assessment": "For N <= sqrt(t)/2 the entire width interval satisfies L <= sqrt(t); L >= N and L <= 2N give the stated exponential summand. Each such summand is at most 8/t, and the count is at most sqrt(t)/2. For N > v = sqrt(t)/2, integrating x^-4 from floor(v) gives the tail bound, and floor(v) >= v/2 holds at and above t = 32. Substitution yields exactly 2048 A/(3 sqrt(t)). Extending finite probability supports to convergent positive upper sums is legitimate."
+    },
+    {
+      "id": "C17",
+      "location": "CANDIDATE.md:364-381, equation (19)",
+      "claim": "The exceptional-range contribution to TV is P_0(M_t < 2) <= 4/sqrt(t).",
+      "status": "PROVED",
+      "assessment": "Outside common ranges, the start-zero law has M_t < 2 and the start-two law has m_t > 0, each unsupported by the other law. The reflection S_s -> 2-S_s equates their masses, so their combined half-l1 contribution equals either mass. Reflection after the first hit of 2 bijects paths ending at z <= 1 after that hit with paths ending at 4-z >= 3. Symmetry then gives the exact sum from -2 through 1, with exactly two parity-compatible terms."
+    },
+    {
+      "id": "C18",
+      "location": "CANDIDATE.md:383-399; TASK.md:26-42",
+      "claim": "Both requested inequalities hold with c = 1/4, C = 10^10, and t_0 = 32, for every integer t >= t_0.",
+      "status": "PROVED",
+      "assessment": "The total upper coefficient is 6000000+6144000000+4 = 6150000004 < 10^10. Combining it with the common-kernel contraction and the base-event lower bound proves the exact requested special case uniformly. The proof explicitly handles t = 0 as TV = 1, restricts the fair-lamp representation to t >= 1, and imposes t >= 32 for all analytic upper-bound arguments. No excluded small time is used to support the claimed threshold."
+    },
+    {
+      "id": "C19",
+      "location": "CANDIDATE.md:116-137, 150-156, 401-422; TASK.md:36-42",
+      "claim": "External analytic tools are stated in the forms used and their relevant hypotheses are checked.",
+      "status": "PROVED",
+      "assessment": "Fourier inversion and Fourier uniqueness are explicitly stated. Dominated differentiation, absolute-integrability Fubini, and the uniform-derivative rule are stated with the needed domination or convergence supplied. The fundamental theorem is applied to smooth functions on compact intervals, and integrations by parts have vanishing boundary terms. The probabilistic identities are proved by elementary path and bit arguments. No limit theorem, numerical premise, or unproved coupling is used."
+    }
+  ],
+  "rationale": "PASS. No substantive gap or false claim was found. The submitted proof itself supplies both load-bearing parts of the upper bound: exact range probabilities are interpolated by killed kernels, and explicit mixed-derivative estimates are summable over all common ranges. Exceptional ranges have an exact reflection bound. The lower bound follows from a parity-correct base event and an explicit binomial induction. All constants, multiplicities, boundary cases, conditioning steps, and the quantifier over every integer t >= 32 are supported. This assessment verifies the submitted arguments; it does not add a missing load-bearing argument. Scratch computations were used only to seek counterexamples and did not establish any uniform claim. No repair was supplied or credited.",
+  "score_rationale": {
+    "correctness": "All requested bounds and their load-bearing implications have valid exact proofs.",
+    "fidelity": "The exact chain, initial states, TV convention, explicit constants, theorem hypotheses, parity, and small-time scope are addressed.",
+    "strict_progress": "The submission closes both requested inequalities rather than leaving an asymptotic estimate or conditional obligation.",
+    "calibration": "The completion claim is justified; coarse constants and the scope of the proof are accurately described.",
+    "evidence": "The submission provides verifiable recurrences, integral bounds, derivative coefficients, counts, and path bijections.",
+    "reproducibility": "The proof is independently checkable from the two supplied files; exact finite falsification checks are described below."
+  },
+  "reproducibility": {
+    "input_sha256": {
+      "TASK.md": "6859e0af922ba8454758e2195fcefcfe8fa164a40e2c23022ec7ebb2da228943",
+      "CANDIDATE.md": "05884d2c49613f30d2c0bb0a6fd4d62ddefb25a2eead41504ce7e5a878a7c573"
+    },
+    "scope": "Read only TASK.md and CANDIDATE.md. Used local Python 3 standard-library integer arithmetic and clock tools. No external sources or sub-agents.",
+    "proof_method": "Manually verified every numbered equation (1)-(19), the stated analytic hypotheses, all common-range counts and parameter restrictions, and both parity classes. Finite computations below were falsification attempts only.",
+    "finite_falsification_checks": [
+      {
+        "check": "Derivative-majorant recurrence and arithmetic",
+        "recipe": "Starting with H[0,0]=1, iterate H[m+1,r]=(r+1)H[m,r+1]+H[m,r-1] through m=6. Multiply the displayed Gaussian moments by the four product-rule coefficients and compare with (10); independently recompute the spectral and final constants.",
+        "result": "All four rows and integral constants matched. Their total was 133224; the spectral constant was 1304576 and the final upper coefficient was 6150000004."
+      },
+      {
+        "check": "Killed image identity",
+        "recipe": "Use integer path counts p_count(t,z)=binom(t,(t+z)/2), or zero outside support/parity. For l=-3,...,1, L=1,...,9, a,z in [l,l+L], and t=0,...,40, compare the image sum with an independent nearest-neighbor dynamic program that deletes boundary hits. Sum image indices k=-t-10,...,t+10, which includes every possible nonzero term for these parameters.",
+        "result": "78720 exact comparisons, including boundary starts and endpoints, found no counterexample."
+      },
+      {
+        "check": "Exact ranges and reflection",
+        "recipe": "For starts a=0 and a=2, iterate integer counts of (minimum,maximum,endpoint) through t=40. On each supported common-range triple compare its count to the four image sums in (15). For start zero at each t=0,...,40 compare the count of M<2 to sum_{j=-2}^1 p_count(t,j).",
+        "result": "61600 common-range comparisons and 41 reflection comparisons found no counterexample."
+      },
+      {
+        "check": "Actual lamp chain versus range kernel at small times",
+        "recipe": "For each start and t=1,...,6, independently enumerate the eight equally likely departure-bit, base-step, and arrival-bit choices per transition. Compare the resulting full-state integer counts, with denominator 8^t, against the base-triple counts followed by uniform lamps on [m,M]. A triple of lamp-interval size w contributes its base path count times 2^(2t-w) to each of its 2^w lamp configurations.",
+        "result": "12 distribution comparisons covering 2236 state entries found no counterexample. Exact full-chain TV values for t=1,...,6 were 3/4, 3/4, 21/32, 21/32, 153/256, 153/256."
+      }
+    ],
+    "limitation": "Passing finite checks cannot prove a uniform inequality. The verdict and scores rest on the exact arguments already present in CANDIDATE.md."
+  }
+}
