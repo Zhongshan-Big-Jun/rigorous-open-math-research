@@ -1,0 +1,7 @@
+{
+	"mode": "BYTE_IDENTICAL",
+	"original_sha256": "75df6dde44173612434ab6050458e4dadd6e03445c1d27c553c2ed4d18b89f40",
+	"blinded_sha256": "75df6dde44173612434ab6050458e4dadd6e03445c1d27c553c2ed4d18b89f40",
+	"removed_lines": [],
+	"reason": "No prior audit verdict or treatment metadata in answer.md; all mathematical statements and exact certificate code retained."
+}

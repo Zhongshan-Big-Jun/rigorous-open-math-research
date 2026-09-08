@@ -1,0 +1,235 @@
+**Q9 is true.** The self-contained proof and complete exact arithmetic certificate are in [answer.md](/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC-r2/q9/c/work/answer.md). The standalone [certificate checker](/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC-r2/q9/c/work/verify_certificate.py) passes.
+
+The proof establishes the stronger statements
+\[
+Q_{\rm quad}>0\implies r<\frac19,
+\qquad
+r\le\frac19\implies R_{\rm quad}>0,
+\]
+using (C2) and (C3). Thus it applies to every tuple satisfying all three constraints. The only computational step below is an exact rational polynomial certificate; numerical searches are not premises.
+
+Put
+\[
+s=\sqrt r,\quad h=1-s^2,\quad e=1-c^2,\quad k=m^2-1,
+\]
+and write \(H=H_m\).
+
+First suppose \(s\le1/3\). By (C2),
+\[
+H(g)=c\bigl(\pi/2-H(d)\bigr).
+\]
+Strict convexity of tangent on \((0,\pi/2)\) gives
+\[
+m^2\tan g\tan d<c,
+\qquad
+m^2s^2\sin^2g<cs\cos g\cos d<cs.                 \tag{1}
+\]
+Also, \(\phi(z)=\arcsin(s\sin z)\) satisfies \(\phi'(z)<s\) for \(z>0\). Hence \(A<sB,\ d<sg\), and (C3) implies
+\[
+\frac Bg<\lambda:=\frac{1+cs}{1-cs}.
+\]
+Since \(\sin z/z\) decreases,
+\[
+ke s^2\sin^2B<ecs\lambda^2.                     \tag{2}
+\]
+For
+\[
+J(c,s)=\frac{(1-c^2)cs}{c^2-s^2}
+       \left(\frac{1+cs}{1-cs}\right)^2,
+\]
+\(J\) increases with \(s\), while on \(c\ge2/3,\ s\le1/3\),
+\[
+\partial_c\log J
+=\frac{1-3c^2}{c(1-c^2)}
+-\frac{2c}{c^2-s^2}
++\frac{4s}{1-c^2s^2}<0.
+\]
+The three terms are respectively negative, less than \(-2\), and at most \(3/2\). Therefore
+\[
+J(c,s)\le J(2/3,1/3)=\frac{1210}{1323}<1.
+\]
+Together with (2), this proves
+\[
+c^2-s^2>ke s^2\sin^2B.                         \tag{3}
+\]
+Now \(V>\pi>0\), and direct subtraction gives
+\[
+V\sin^2B-U
+=H(g)(\sin^2B-\sin^2g)+m(B-g)\sin^2B>0.
+\]
+Consequently (3) implies \(R_{\rm quad}>0\).
+
+It remains to exclude \(Q_{\rm quad}>0\) when \(s\ge1/3\).
+
+An exact consequence of (C2), valid throughout the domain, is
+\[
+m^2\tan^2g>\ell(s):=\frac{3+2s}{1+6s+3s^2}.     \tag{4}
+\]
+To prove it, put \(w=m\tan g\) and
+\[
+\eta=\frac{\tan d}{\tan g}
+=\frac{s\cos g}{\cos d}<s.
+\]
+Since \(c>2/3\), (C2) implies
+\[
+\Theta(w):=3\arctan w+2\arctan(sw)>\pi.
+\]
+The function \(\Theta\) strictly increases from \(0\) to \(5\pi/2\), and
+\[
+\sin\Theta(w)=
+\frac{w\,[s^2X^2-(1+6s+3s^2)X+3+2s]}
+{(1+w^2)^{3/2}(1+s^2w^2)},\qquad X=w^2.
+\]
+The smaller positive root of the numerator corresponds to \(\Theta=\pi\); the larger corresponds to \(\Theta=2\pi\). Writing \(W=1+6s+3s^2,\ Z=3+2s\), the smaller root is
+\[
+X_-=\frac{2Z}{W+\sqrt{W^2-4s^2Z}}>\frac ZW.
+\]
+Here
+\[
+W^2-4s^2Z=1+12s+30s^2+28s^3+9s^4>0.
+\]
+Thus \(w^2>X_->\ell(s)\), proving (4) with the trigonometric orientation retained.
+
+Write \(Q_{\rm quad}=Q_1-Q_2\), where
+\[
+Q_1=c\cot B-s^2\cot A,\qquad Q_2>0.
+\]
+Strict concavity of sine, applied to (C3), gives
+\[
+\sin(B-g)=\sin(c(A+d))>c\sin(A+d),
+\]
+and hence
+\[
+\cot B+cs^2\cot A<\cot g-cs^2\cot d.            \tag{5}
+\]
+Set
+\[
+x=\cot g,\quad M=\sqrt{x^2+h},\quad
+v=M/x=\sqrt{1+h\tan^2g}>1.
+\]
+For \(b=\cot B\), equation (5) becomes
+\[
+b+cs\sqrt{b^2+h}<x-csM.
+\]
+Inverting the increasing function on the left, and then using that
+\(b\mapsto cb-s\sqrt{b^2+h}\) is increasing, yields
+\[
+\frac{Q_1}{x}<\alpha-\beta v,                  \tag{6}
+\]
+where
+\[
+\Delta=1-c^2s^2,\quad
+\alpha=\frac{c[1+(c^2+2)s^2]}{\Delta},\quad
+\beta=\frac{s(1+2c^2+c^2s^2)}{\Delta}.
+\]
+For verification, the equality solution in the inversion is
+\[
+b_0=\frac{(1+c^2s^2)x-2csM}{1-c^2s^2},
+\quad
+\sqrt{b_0^2+h}
+=\frac{(1+c^2s^2)M-2csx}{1-c^2s^2}.
+\]
+All square-root branches are positive. Also,
+\[
+\alpha-\beta=\frac{(c-s)(1-cs)}{1+cs}>0.
+\]
+The second term rewrites exactly as
+\[
+Q_2=
+\frac{ckh^2xM}
+{M(1+x^2+k)+csx(1+x^2+ks^2)},                 \tag{7}
+\]
+which strictly increases with \(k\ge0\) when \(c,s,x\) are fixed.
+
+The following algebraic fact closes the proof. For
+\[
+2/3\le c<1,\quad1/3\le s<c,\quad
+\omega=1+\ell h,\quad v_*=\alpha/\beta,
+\]
+one has \(\omega>v_*^2\) and
+\[
+N(v):=chv(\omega-v^2)
+-(\alpha-\beta v)\,[v(1+\ell)+cs(v^2+s^2\ell)]>0
+\quad(1\le v\le v_*).                         \tag{8}
+\]
+
+Here is an exact certificate of this fact. Define
+\[
+a=cs,\quad
+C=c[1+(c^2+2)s^2],\quad D=s(1+2c^2+c^2s^2),
+\]
+and retain \(W=1+6s+3s^2,\ Z=3+2s\). Then
+\[
+\Delta WN(v)=n_0+n_1v+n_2v^2+n_3v^3,
+\]
+with
+\[
+\begin{aligned}
+n_3&=W(Da-ch\Delta),\\
+n_2&=D(W+Z)-CaW,\\
+n_1&=ch(W+Zh)\Delta-C(W+Z)+Das^2Z,\\
+n_0&=-Cas^2Z.
+\end{aligned}
+\]
+Put
+\[
+\begin{aligned}
+E_0&=n_0+n_1+n_2+n_3,\\
+E_1&=n_1+2n_2+3n_3,\\
+E_2&=n_2,\\
+E_3&=n_1D^2+2n_2CD+3n_3C^2.
+\end{aligned}
+\]
+
+Substitute \(c=(2+X)/3,\ s=(1+2Y)/3\). If the resulting polynomial is
+\(\sum A_{pq}X^pY^q\), of degrees \(n,m\), its Bernstein coefficients are
+\[
+b_{ij}=\sum_{p\le i,\ q\le j}
+A_{pq}\frac{\binom{i}{p}}{\binom{n}{p}}
+       \frac{\binom{j}{q}}{\binom{m}{q}}.
+\]
+The binomial theorem directly proves this basis conversion. The basis functions are nonnegative and sum to one on \([0,1]^2\).
+
+Exact rational calculation gives:
+
+| Polynomial | Degrees | Smallest Bernstein coefficient |
+|---|---:|---:|
+| \(E_0\) | \((4,6)\) | \(0\) |
+| \(E_1\) | \((4,6)\) | \(9382/6561\) |
+| \(E_2\) | \((4,5)\) | \(25553/6561\) |
+| \(E_3\) | \((9,12)\) | \(134561396/387420489\) |
+
+For \(E_0\), additionally \(b_{00}=15169/59049>0\), whose basis function is positive when \(c<1,s<1\). These finite coefficient claims are checked entirely with rational arithmetic by the complete code embedded in `answer.md`.
+
+Thus
+\[
+N(1)>0,\quad N'(1)>0,\quad n_2>0,\quad N'(v_*)>0.
+\]
+If \(n_3\ge0\), \(N'\) increases for \(v\ge1\). If \(n_3<0\), \(N'\) is concave and positive at both endpoints of \([1,v_*]\). Either way, \(N'>0\) throughout that interval, proving (8). Evaluating at \(v_*\) gives
+\[
+0<N(v_*)=chv_*(\omega-v_*^2),
+\]
+so \(\omega>v_*^2\).
+
+Finally, suppose \(s\ge1/3\) and \(Q_{\rm quad}>0\). Since \(Q_2>0\), (6) implies \(1<v<v_*\). Therefore
+\[
+k_0:=\ell x^2-1>0,
+\]
+because \(x^2=h/(v^2-1)\) and \(v^2<\omega\). Equation (4) gives \(k>k_0\). Substituting \(k_0\) into (7) and using monotonicity,
+\[
+\frac{Q_2}{x}>
+\frac{chv(\omega-v^2)}
+{v(1+\ell)+cs(v^2+s^2\ell)}
+>\alpha-\beta v
+>\frac{Q_1}{x},
+\]
+where the middle inequality is (8). This contradicts \(Q_{\rm quad}>0\).
+
+Hence \(Q_{\rm quad}>0\) forces \(r<1/9\), and the first part proves \(R_{\rm quad}>0\). Therefore
+\[
+\boxed{\displaystyle
+Q_{\rm quad}>0\implies
+\frac{c^2-r}{k(1-c^2)}>T_{\rm quad}.}
+\]
+
+There is no remaining gap.

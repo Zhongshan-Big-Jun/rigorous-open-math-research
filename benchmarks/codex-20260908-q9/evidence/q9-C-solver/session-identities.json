@@ -1,0 +1,76 @@
+{
+	"rule": "FIRST_SESSION_METADATA_BOUND_TO_ROLLOUT_FILENAME",
+	"sessions": [
+		{
+			"id": "01a0815e-b361-7b81-86f5-847de62d2841",
+			"source": "exec",
+			"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC-r2/q9/c/home/sessions/2026/09/08/rollout-2026-09-08T22-14-22-01a0815e-b361-7b81-86f5-847de62d2841.jsonl",
+			"sha256": "6c956274cc5797c6738fbca32692d92e6dc8d2f5b71d6b4b70aee9228e04c4b1",
+			"raw_metadata_ids": [
+				"01a0815e-b361-7b81-86f5-847de62d2841"
+			]
+		},
+		{
+			"id": "01a0815f-078c-7603-b079-24f17be99390",
+			"source": {
+				"subagent": {
+					"thread_spawn": {
+						"parent_thread_id": "01a0815e-b361-7b81-86f5-847de62d2841",
+						"depth": 1,
+						"agent_path": "/root/analytic",
+						"agent_nickname": "Dewey",
+						"agent_role": null
+					}
+				}
+			},
+			"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC-r2/q9/c/home/sessions/2026/09/08/rollout-2026-09-08T22-14-43-01a0815f-078c-7603-b079-24f17be99390.jsonl",
+			"sha256": "9f61982eed2b391f940fc67726f7cebcc5a94d5272a2188122d3466e65d8c89d",
+			"raw_metadata_ids": [
+				"01a0815f-078c-7603-b079-24f17be99390",
+				"01a0815e-b361-7b81-86f5-847de62d2841"
+			]
+		},
+		{
+			"id": "01a0815f-2440-7581-b3f3-06299687e40a",
+			"source": {
+				"subagent": {
+					"thread_spawn": {
+						"parent_thread_id": "01a0815e-b361-7b81-86f5-847de62d2841",
+						"depth": 1,
+						"agent_path": "/root/search",
+						"agent_nickname": "Hypatia",
+						"agent_role": null
+					}
+				}
+			},
+			"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC-r2/q9/c/home/sessions/2026/09/08/rollout-2026-09-08T22-14-51-01a0815f-2440-7581-b3f3-06299687e40a.jsonl",
+			"sha256": "d38c1ceee9c09e401c6abc4c97b0dd6de733a1d0fe504fa6eb2f858faef478ad",
+			"raw_metadata_ids": [
+				"01a0815f-2440-7581-b3f3-06299687e40a",
+				"01a0815e-b361-7b81-86f5-847de62d2841"
+			]
+		},
+		{
+			"id": "01a0815f-4eb5-7010-92cb-c664ba04bb6c",
+			"source": {
+				"subagent": {
+					"thread_spawn": {
+						"parent_thread_id": "01a0815e-b361-7b81-86f5-847de62d2841",
+						"depth": 1,
+						"agent_path": "/root/structure",
+						"agent_nickname": "Zeno",
+						"agent_role": null
+					}
+				}
+			},
+			"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC-r2/q9/c/home/sessions/2026/09/08/rollout-2026-09-08T22-15-02-01a0815f-4eb5-7010-92cb-c664ba04bb6c.jsonl",
+			"sha256": "80985a8c70c17392d3ad5300946a3a7000acc1d959df0db0d6fd4269c10c7c6b",
+			"raw_metadata_ids": [
+				"01a0815f-4eb5-7010-92cb-c664ba04bb6c",
+				"01a0815e-b361-7b81-86f5-847de62d2841"
+			]
+		}
+	],
+	"thread_count": 4,
+	"child_thread_count": 3
+}
