@@ -1,0 +1,27 @@
+{
+  "audit_id": "REAUDIT-DIRECT-E-BINDING-01",
+  "reviewer_role": "narrow independent E-binding re-auditor",
+  "independence": "The reviewer did not author the Route 10 repair, read only the three authorized hash-bound inputs, used no web search, and used no numerical evidence.",
+  "input_hashes": {
+    "route-08-common-beta-orientation/prover_result.md": "6ecc0ae44f6841414a8a8be8077ed919f1d66d285dc66abbdc79f85660c44d6d",
+    "route-10-psi-quadrature/audit/independent_audit.json": "cc54e0dc73e2d8de402a669818f3145176f4d7e94e5f4f15fad869642998dd04",
+    "route-10-psi-quadrature/repair/e_binding_repair.md": "f5956bc3c6b00c28ed02237095fda7b0478bb5718f6c88098db588753172bf3c"
+  },
+  "verdict": "PASS",
+  "first_error": null,
+  "critical_errors": [],
+  "gaps": [],
+  "repair_hints": [],
+  "checked_equations": {
+    "E0": "The repair reproduces the exact denominator-safe E formula in Route 08 equation (13).",
+    "E1": "All four substitutions follow from r=sigma^(-2), M=1+k, and sin(d)^2=r sin(g)^2 on the positive acute branch.",
+    "E2": "The E0 numerator has the exact factor r^(-3/2).",
+    "E3": "Factoring r^(-1/2) from the E0 denominator gives the displayed positive bracket exactly.",
+    "E4": "Dividing E2 by E3 gives the displayed identity for mrE with no omitted factor.",
+    "E5": "The accepted q formula gives the displayed identity for mrq exactly.",
+    "E6": "Subtracting E4 from E5 gives Q_quad=mr(q-E), and mr>0 preserves the strict sign."
+  },
+  "sign_audit": "On the acute branch, m>1, r>0, c>0, k>0, and all displayed sines and cosines are positive. Each summand of the E4 denominator is positive, so no cancellation or sign reversal is hidden.",
+  "scope_boundary": "Accepted Q1-Q6 were not reopened. Q9 was neither attempted nor approved. No numerical statement was used.",
+  "global_status": "REPAIRED RIGOROUS_PARTIAL_RESULT. The sole dependency gap in Q7-Q8 is closed, so the exact denominator-safe identity q-E=Q_quad/(mr) is accepted with strict sign preservation. Q9, complete c>2/3 PHI-SIGN, and KP-DET remain open."
+}

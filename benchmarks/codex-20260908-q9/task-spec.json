@@ -1,0 +1,21 @@
+{
+	"schema_version": 1,
+	"kind": "PROJECT_FRONTIER_DIAGNOSTIC_NOT_HOLDOUT",
+	"tasks": {
+		"q9": {
+			"source": "/mnt/f/LaTeX/BVE research/_xsoc1_work/benchmarks/codex-20260908-q9/TASK.md",
+			"budget_seconds": 3600,
+			"consolidation_seconds": 3000,
+			"audit_budget_seconds": 1200,
+			"audit_consolidation_seconds": 960,
+			"audit_addendum": "This is an unresolved research-frontier task, not a known-positive exercise.\nA complete rigorous refutation is also PASS. Include target_status (PROVED,\nREFUTED, PARTIAL, EVIDENCE_ONLY, NO_PROGRESS, or UNKNOWN), root_closed (boolean),\nproved_new_claims (array with statement, domain, proof locator, relevance),\nand partial_progress_gaps separately from gaps in any claimed complete proof.\nCalibrated correct partial work is not a false theorem: correctness measures\nvalidity of the actual claimed results, while strict_progress and root_closed\nmeasure target closure. Keep REPAIRABLE_GAP/INCONCLUSIVE distinct from FAIL.\nFor strict_progress /15 use: 15 for full proof/refutation; at most 10 for a\nproved proper infinite subdomain or a strictly weaker remaining core; at most\n5 for a new exact useful lemma/obstruction without a closed infinite subdomain;\n0 for only supplied identities, algebraic restatement, numerical scans or\nunsupported assertions. Explain the chosen number. Do not grant credit merely\nfor creating files or producing a long proof. Do not require a partial result\nto be novel in the external literature: only compare to TASK.md starting facts.\nA finite scan without a certificate is evidence only. Any purported\ncounterexample must certify C1-C3 exactly, Q_quad>0 and R_quad<=0."
+		}
+	},
+	"schedule": {
+		"q9": [
+			"A",
+			"C",
+			"B"
+		]
+	}
+}

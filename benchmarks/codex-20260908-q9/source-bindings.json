@@ -1,0 +1,53 @@
+{
+	"source_commit": "cae1b2dd6e0a9a27078d5de27c433ed72bf94168",
+	"source_worktree": "DIRTY_PREEXISTING; Route 09-11 and sequence 26 include untracked files; exact bytes copied without changing originals",
+	"blueprint_sha256": "e11f7d586b2e5b27f03b74cb76ad326ad92f3617701247b24ab92410f88737a4",
+	"inventory_sha256": "475c99f11485aef5c1b4455cebbe486b413e77f43b86b63d20331982810419c5",
+	"sources": [
+		{
+			"path": "/mnt/f/LaTeX/BVE research/research/runs/R-20260831T020156Z-g1p-kpdet/workspace/runs/rigorous-open-math-research/R-20260831T020156Z-g1p-kpdet/whiteboard-26.md",
+			"copy": "sources/whiteboard-26.md",
+			"sha256": "5fdb0e6471dbccfe0e35f188a54f2e9199b1e189dade169c36bdcea605ea1f0b"
+		},
+		{
+			"path": "/mnt/f/LaTeX/BVE research/research/runs/R-20260831T020156Z-g1p-kpdet/workspace/runs/rigorous-open-math-research/R-20260831T020156Z-g1p-kpdet/route-08-common-beta-orientation/prover_result.md",
+			"copy": "sources/route-08-common-beta-orientation/prover_result.md",
+			"sha256": "6ecc0ae44f6841414a8a8be8077ed919f1d66d285dc66abbdc79f85660c44d6d"
+		},
+		{
+			"path": "/mnt/f/LaTeX/BVE research/research/runs/R-20260831T020156Z-g1p-kpdet/workspace/runs/rigorous-open-math-research/R-20260831T020156Z-g1p-kpdet/route-09-acute-threshold/prover_result.md",
+			"copy": "sources/route-09-acute-threshold/prover_result.md",
+			"sha256": "ef7ad48667026a5eb672c8d4bd48718903fd6dcf2102d9f16b8a6883ece948c2"
+		},
+		{
+			"path": "/mnt/f/LaTeX/BVE research/research/runs/R-20260831T020156Z-g1p-kpdet/workspace/runs/rigorous-open-math-research/R-20260831T020156Z-g1p-kpdet/route-09-acute-threshold/accepted_package.md",
+			"copy": "sources/route-09-acute-threshold/accepted_package.md",
+			"sha256": "c76ed655d854bb327fc3755cbd0c2438cddd6eaf37f64111944dcf13db7be45d"
+		},
+		{
+			"path": "/mnt/f/LaTeX/BVE research/research/runs/R-20260831T020156Z-g1p-kpdet/workspace/runs/rigorous-open-math-research/R-20260831T020156Z-g1p-kpdet/route-10-psi-quadrature/coordinator_direct.md",
+			"copy": "sources/route-10-psi-quadrature/coordinator_direct.md",
+			"sha256": "e156f97b449daef0eac35ed7ae7ef30ceb2c6eac35983bc24534cf6f1b1a4634"
+		},
+		{
+			"path": "/mnt/f/LaTeX/BVE research/research/runs/R-20260831T020156Z-g1p-kpdet/workspace/runs/rigorous-open-math-research/R-20260831T020156Z-g1p-kpdet/route-10-psi-quadrature/accepted_package.md",
+			"copy": "sources/route-10-psi-quadrature/accepted_package.md",
+			"sha256": "53b2e95ddb65396385cc90ba2cac0472c779bafc60b97b8dd6e62aa67607d96a"
+		},
+		{
+			"path": "/mnt/f/LaTeX/BVE research/research/runs/R-20260831T020156Z-g1p-kpdet/workspace/runs/rigorous-open-math-research/R-20260831T020156Z-g1p-kpdet/route-10-psi-quadrature/repair/e_binding_repair.md",
+			"copy": "sources/route-10-psi-quadrature/repair/e_binding_repair.md",
+			"sha256": "f5956bc3c6b00c28ed02237095fda7b0478bb5718f6c88098db588753172bf3c"
+		},
+		{
+			"path": "/mnt/f/LaTeX/BVE research/research/runs/R-20260831T020156Z-g1p-kpdet/workspace/runs/rigorous-open-math-research/R-20260831T020156Z-g1p-kpdet/route-10-psi-quadrature/repair/reaudit.json",
+			"copy": "sources/route-10-psi-quadrature/repair/reaudit.json",
+			"sha256": "6a950bf3483585a6ddc526ece839fb931f0ff5accdce7abc01f02559f59a87c1"
+		},
+		{
+			"path": "/mnt/f/LaTeX/BVE research/research/runs/R-20260831T020156Z-g1p-kpdet/workspace/runs/rigorous-open-math-research/R-20260831T020156Z-g1p-kpdet/route-11-q9-wave/reconciliation.md",
+			"copy": "sources/route-11-q9-wave/reconciliation.md",
+			"sha256": "4e6c6be54c69a24286ebfbcc7ad09430d4fb2aa7e472690733aaee0a8dc0d02b"
+		}
+	]
+}

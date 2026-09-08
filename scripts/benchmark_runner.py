@@ -117,9 +117,13 @@ def assert_sealed(root, task, arm):
 		raise RuntimeError("changed code-mode host")
 	Base, Home, Work = B.arm_paths(root, task, arm)
 	Binding = next(Item for Item in Manifest["arms"] if Item["task"] == task and Item["arm"] == arm)
+	if("plugin_hashes" in Binding and B.plugin_hashes(Home) != Binding["plugin_hashes"]):
+		raise RuntimeError("changed installed plugin snapshot")
 	for File, Key in [(Home / "config.toml", "config_sha256"), (Work / "PROMPT.md", "prompt_sha256")]:
 		if(file_hash(File) != Binding[Key]):
 			raise RuntimeError("changed arm config or prompt")
+	if(file_hash(Work / "TASK.md") != Manifest["tasks"][task]["sha256"]):
+		raise RuntimeError("changed task statement")
 	Gates = Seal["tasks"][task][arm]
 	if(len(Gates) != 2 or {Gate["kind"] for Gate in Gates} != {"filesystem", "tools"}):
 		raise RuntimeError("incomplete gate set")
@@ -228,6 +232,7 @@ def supervise(command, cwd, env, output, state, quota, budget):
 def run(args):
 	Root = Path(args.root).resolve()
 	Manifest, Base, Home, Work = assert_sealed(Root, args.task, args.arm)
+	Budget = B.task_budget(Manifest, args.task)
 	Output = Base / "run"
 	Output.mkdir(exist_ok=True)
 	if((Output / "invalid-attempt.json").exists()):
@@ -266,14 +271,14 @@ def run(args):
 			raise RuntimeError("STOP still present; reconcile the stop reason first")
 		Command = [Manifest["binary"], "exec", "--strict-config", "--json", "--skip-git-repo-check", "--ignore-rules", "-C", str(Work), "-o", str(Output / "last-message.txt")]
 		if(args.resume):
-			Remaining = max(0, 1800 - State["active_seconds"])
+			Remaining = max(0, Budget - State["active_seconds"])
 			Command.extend(["resume", State["root_thread_id"],
 				f"Continue the same attempt after interruption. Reconcile returned artifacts before dispatch. The remaining shared wall budget is {Remaining:.0f} seconds. Preserve the original theorem and output contract."])
 		else:
 			Command.append((Work / "PROMPT.md").read_text(encoding="utf-8"))
 		Env = B.environment(Home, Work, Manifest["python"], Manifest["proxy"])
 		Env["PATH"] = str(Path(Manifest["binary"]).parent) + os.pathsep + Env["PATH"]
-		State = supervise(Command, Work, Env, Output, State, Root / "control/quota.json", 1800)
+		State = supervise(Command, Work, Env, Output, State, Root / "control/quota.json", Budget)
 		Inventory = session_inventory(Home)
 		persist(Output / "sessions.json", Inventory)
 		Models = {Model for Item in Inventory for Model in Item["models"]}
@@ -302,7 +307,7 @@ def run(args):
 def main():
 	Parser = argparse.ArgumentParser(description=__doc__)
 	Parser.add_argument("--root", required=True)
-	Parser.add_argument("--task", choices=["t1", "t2"], required=True)
+	Parser.add_argument("--task", required=True)
 	Parser.add_argument("--arm", choices=["A", "B", "C"], required=True)
 	Parser.add_argument("--resume", action="store_true")
 	Parser.add_argument("--reconcile", action="store_true")

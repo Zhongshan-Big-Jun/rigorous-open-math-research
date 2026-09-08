@@ -7,6 +7,7 @@ import io
 import json
 import os
 from pathlib import Path
+import re
 import shutil
 import socket
 import subprocess
@@ -35,6 +36,12 @@ def sha256(data):
 	return hashlib.sha256(data).hexdigest()
 
 
+def plugin_hashes(home):
+	Cache = home / "plugins/cache"
+	return {Path.relative_to(Cache).as_posix(): sha256(Path.read_bytes())
+		for Path in sorted(Cache.rglob("*")) if Path.is_file()}
+
+
 def write_text(path, text):
 	Path(path).parent.mkdir(parents=True, exist_ok=True)
 	Path(path).write_text(text, encoding="utf-8", newline="\n")
@@ -45,8 +52,42 @@ def write_json(path, data):
 
 
 def arm_paths(root, task, arm):
+	if(not re.fullmatch(r"[a-z][a-z0-9_-]{0,31}", task) or arm not in ["A", "B", "C"]):
+		raise ValueError("invalid task or arm identifier")
 	Base = root / task / arm.lower()
 	return Base, Base / "home", Base / "work"
+
+
+def task_budget(manifest, task, role="solver"):
+	Key = "budget_seconds" if role == "solver" else "audit_budget_seconds"
+	Default = 1800 if role == "solver" else 900
+	Value = manifest["tasks"][task].get(Key, Default)
+	if(type(Value) is not int or Value <= 0):
+		raise ValueError("budget must be a positive integer")
+	return Value
+
+
+def load_task_spec(path, source):
+	if(path is None):
+		return dict(kind="REGRESSION_NOT_NOVELTY", tasks=dict(
+			t1=dict(source=str(source / "runs/plugin-benchmark-20260824-calibration/frozen_task.md")),
+			t2=dict(source=str(source / "runs/three-arm-pilot-v2/pilot-v5-codex-u2/frozen_task.md"))),
+			schedule=dict(t1=["C", "A", "B"], t2=["B", "A", "C"]))
+	Spec = json.loads(Path(path).read_text(encoding="utf-8"))
+	if(not Spec.get("tasks") or set(Spec["tasks"]) != set(Spec.get("schedule", {}))):
+		raise ValueError("each registered task requires a schedule")
+	for Task, Binding in Spec["tasks"].items():
+		arm_paths(Path("."), Task, "A")
+		if(sorted(Spec["schedule"][Task]) != ["A", "B", "C"]):
+			raise ValueError("each task must schedule each arm exactly once")
+		if(not Path(Binding["source"]).is_file()):
+			raise ValueError("missing task source")
+		for Role, Key in [("solver", "consolidation_seconds"), ("audit", "audit_consolidation_seconds")]:
+			Budget = task_budget(Spec, Task, Role)
+			Consolidate = Binding.get(Key, Budget * 4 // 5)
+			if(type(Consolidate) is not int or not 0 < Consolidate < Budget):
+				raise ValueError("consolidation must precede the fixed budget")
+	return Spec
 
 
 def environment(home, work, python=None, proxy="http://127.0.0.1:7897"):
@@ -91,7 +132,9 @@ def configure(home, work, binary, plugins, python, auth_source=None):
 	Denied = [REPO.parent, OriginalHome, Path.home() / ".codex", Campaign / "control",
 		home / "auth.json", home / "sessions"]
 	Denied.extend(Path for Path in Campaign.parent.iterdir() if Path.is_dir() and Path != Campaign)
-	Denied.extend(Campaign / Task / Arm for Task in ["t1", "t2"] for Arm in ["a", "b", "c"]
+	TaskNames = {"t1", "t2", "candidate", work.parent.parent.name}
+	TaskNames.update(Item.name for Item in Campaign.iterdir() if Item.is_dir() and Item.name != "control")
+	Denied.extend(Campaign / Task / Arm for Task in sorted(TaskNames) for Arm in ["a", "b", "c"]
 		if Campaign / Task / Arm != work.parent)
 	Rows.extend(json.dumps(Path.as_posix()) + ' = "deny"' for Path in dict.fromkeys(Denied))
 	Rows.extend(['[permissions.benchmark.network]', 'enabled = false',
@@ -118,8 +161,11 @@ def prepare(args):
 		raise FileExistsError("prepared campaign already exists; inspect it instead of reinitializing")
 	Binary = Path(args.binary or shutil.which("codex")).resolve()
 	Source = Path(args.project).resolve()
-	TaskPaths = dict(t1=Source / "runs/plugin-benchmark-20260824-calibration/frozen_task.md",
-		t2=Source / "runs/three-arm-pilot-v2/pilot-v5-codex-u2/frozen_task.md")
+	SpecPath = getattr(args, "spec", None)
+	Spec = load_task_spec(SpecPath, Source)
+	TaskPaths = {Task: Path(Binding["source"]).resolve() for Task, Binding in Spec["tasks"].items()}
+	for Task in TaskPaths:
+		(Root / Task).mkdir(parents=True, exist_ok=True)
 	Snapshots = dict()
 	for Arm, Commit in [("A", BASELINE), ("B", CANDIDATE)]:
 		Archive = command(["git", "archive", "--format=zip", Commit, "plugins", ".agents/plugins/marketplace.json"], REPO)
@@ -128,13 +174,15 @@ def prepare(args):
 		with zipfile.ZipFile(io.BytesIO(Archive)) as Zip:
 			Zip.extractall(Snapshot)
 		Snapshots[Arm] = Snapshot
-	Manifest = dict(schema_version=1, kind="REGRESSION_NOT_NOVELTY", root=str(Root),
+	Manifest = dict(schema_version=1, kind=Spec["kind"], root=str(Root),
 		binary=str(Binary), binary_sha256=sha256(Binary.read_bytes()),
 		python=str(Path(args.python).resolve()), python_sha256=sha256(Path(args.python).read_bytes()),
 		proxy=args.proxy, platform=sys.platform,
 		cli_version=command([Binary, "--version"], REPO).decode().strip(),
 		model="gpt-6-astra", effort="max", arm_commits=dict(A=BASELINE, B=CANDIDATE, C=None),
-		schedule=dict(t1=["C", "A", "B"], t2=["B", "A", "C"]), arms=[], tasks=dict())
+		schedule=Spec["schedule"], arms=[], tasks=dict())
+	if(SpecPath):
+		Manifest["task_spec_sha256"] = sha256(Path(SpecPath).read_bytes())
 	Catalog = command([Binary, "debug", "models", "--bundled"], REPO)
 	(Root / "control/model-catalog.json").write_bytes(Catalog)
 	Manifest["model_catalog_sha256"] = sha256(Catalog)
@@ -143,14 +191,17 @@ def prepare(args):
 		Manifest["code_mode_host_sha256"] = sha256(Host.read_bytes())
 	for Task, TaskPath in TaskPaths.items():
 		TaskBytes = TaskPath.read_bytes()
-		Manifest["tasks"][Task] = dict(source=str(TaskPath), sha256=sha256(TaskBytes))
+		Manifest["tasks"][Task] = dict(Spec["tasks"][Task], source=str(TaskPath), sha256=sha256(TaskBytes))
+		Budget = task_budget(Manifest, Task)
+		Consolidate = Manifest["tasks"][Task].get("consolidation_seconds", 1500)
+		Common = COMMON if not SpecPath else COMMON.replace("30 minute", f"{Budget} second").replace("by minute 25", f"by active second {Consolidate}")
 		for Arm in ("A", "B", "C"):
 			Base, Home, Work = arm_paths(Root, Task, Arm)
 			Home.mkdir(parents=True, exist_ok=False)
 			(Work / "tmp").mkdir(parents=True, exist_ok=False)
 			(Work / "TASK.md").write_bytes(TaskBytes)
 			Prefix = "Use the installed math-research-workflow skill and its research dependencies for this task.\n" if Arm != "C" else ""
-			write_text(Work / "PROMPT.md", Prefix + COMMON + "\n" + TaskBytes.decode("utf-8-sig"))
+			write_text(Work / "PROMPT.md", Prefix + Common + "\n" + TaskBytes.decode("utf-8-sig"))
 			configure(Home, Work, Binary, Arm != "C", args.python, args.auth_source)
 			shutil.copyfile(args.auth_source, Home / "auth.json")
 			(Home / "auth.json").chmod(0o600)
@@ -160,7 +211,8 @@ def prepare(args):
 				for Plugin in ["math-research-workflow", "rigorous-open-math-research", "manage-math-research-program", "lean-verify"]:
 					command([Binary, "plugin", "add", Plugin + "@math-research", "--json"], Work, Env)
 			Manifest["arms"].append(dict(task=Task, arm=Arm, base=str(Base), home=str(Home), work=str(Work),
-				prompt_sha256=sha256((Work / "PROMPT.md").read_bytes()), config_sha256=sha256((Home / "config.toml").read_bytes())))
+				prompt_sha256=sha256((Work / "PROMPT.md").read_bytes()), config_sha256=sha256((Home / "config.toml").read_bytes()),
+				plugin_hashes=plugin_hashes(Home)))
 	write_json(ManifestPath, Manifest)
 	print(json.dumps(dict(verdict="PREPARED", manifest=str(ManifestPath), arms=len(Manifest["arms"]))))
 
@@ -371,7 +423,8 @@ def main():
 	Parser.add_argument("action", choices=["prepare", "probe", "probe-tools"])
 	Parser.add_argument("--root", required=True)
 	Parser.add_argument("--project", required=True)
-	Parser.add_argument("--task", choices=["t1", "t2"], default="t1")
+	Parser.add_argument("--task", default="t1")
+	Parser.add_argument("--spec", help="Frozen custom task paths, budgets and schedules (prepare only).")
 	Parser.add_argument("--arm", choices=["A", "B", "C"], default="C")
 	Parser.add_argument("--python", default=sys.executable)
 	Parser.add_argument("--binary")

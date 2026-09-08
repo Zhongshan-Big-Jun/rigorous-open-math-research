@@ -1,0 +1,437 @@
+{
+  "blueprint_root": "/mnt/f/LaTeX/BVE research/blueprint",
+  "ok": true,
+  "operation": "find",
+  "result": {
+    "match_count": 5,
+    "nodes": [
+      {
+        "artifacts": [
+          {
+            "exists": true,
+            "external_to_artifact_root": false,
+            "external_to_statistics_root": true,
+            "locator": "runs/R-20260831T020156Z-g1p-kpdet/workspace/runs/rigorous-open-math-research/R-20260831T020156Z-g1p-kpdet/candidate_proof.md",
+            "resolved_path": "/mnt/f/LaTeX/BVE research/research/runs/R-20260831T020156Z-g1p-kpdet/workspace/runs/rigorous-open-math-research/R-20260831T020156Z-g1p-kpdet/candidate_proof.md",
+            "result_id": "EV-SL-B4-KP-PIVOT-PHASE-REDUCTION-V1",
+            "size_bytes": 4023
+          }
+        ],
+        "canonical_node": {
+          "claim_kind": "theorem",
+          "context_id": "CTX-DEFAULT",
+          "epistemic_type": "mathematical_claim",
+          "grade": "C",
+          "id": "CLM-SL-B4-KP-PIVOT-PHASE-REDUCTION-V1",
+          "inference_inputs": [
+            "INF-SL-B4-KP-PIVOT-PHASE-REDUCTION-V1"
+          ],
+          "mainline": "mathematics",
+          "refutation_inputs": [],
+          "statement": "At every finite-interior n=2 symmetric INF branch point with R>1 in the exact M3 contract, the normalized odd-sector matrix M=[[a0-gamma1,b0],[b0,b0-gamma2]] has b0>0 and gamma2>b0, so its lower-right entry is strictly negative and det M>0 is equivalent to S_KP=a0-gamma1+b0^2/(gamma2-b0)<0. Under the exact five-phase spectral, band, mass, and mode-index system of the proof package, S_KP<0 is equivalent to the explicit elementary inequality Phi<0 and equality is equivalent to Phi=0. Any same-sign kernel obeys the common projective-flux identity, has a unique simple downward locking point in the stated interval, and has positive endpoint impulse ratio (gamma2-b0)/b0. These are exact reductions only: the sign of Phi, det Kp_odd>0 for all finite-interior points, KO-DET, and global G1-prime remain open.",
+          "status": "established",
+          "title": "Finite-interior Kp odd pivot and exact phase reduction",
+          "truth_status": "established",
+          "type": "claim"
+        },
+        "direct_dependent_edges": [],
+        "direct_dependents": [],
+        "direct_input_edges": [
+          {
+            "legacy_pair": false,
+            "role": "inference_input",
+            "source": "INF-SL-B4-KP-PIVOT-PHASE-REDUCTION-V1",
+            "target": "CLM-SL-B4-KP-PIVOT-PHASE-REDUCTION-V1"
+          }
+        ],
+        "direct_inputs": [
+          "INF-SL-B4-KP-PIVOT-PHASE-REDUCTION-V1"
+        ],
+        "evidence": [
+          {
+            "blueprint_node_id": "CLM-SL-B4-KP-PIVOT-PHASE-REDUCTION-V1",
+            "epistemic_type": "mathematical_claim",
+            "grade": "C",
+            "headline_value": "gamma2>b0>0 globally on the finite-interior chart; det Kp_odd>0 iff S_KP<0 iff Phi<0, with exact Jacobi flux and locking-point geometry.",
+            "main_limitation": "The branch-uniform sign Phi<0, complete KP-DET, KO-DET, non-symmetric roots, and global G1-prime remain open.",
+            "mainline": "mathematics",
+            "primary_artifact": "runs/R-20260831T020156Z-g1p-kpdet/workspace/runs/rigorous-open-math-research/R-20260831T020156Z-g1p-kpdet/candidate_proof.md",
+            "result_id": "EV-SL-B4-KP-PIVOT-PHASE-REDUCTION-V1",
+            "scope": "Exact finite-interior real symmetric band-consistent n=2 INF M3 branch points, R>1.",
+            "status": "established",
+            "title": "Finite-interior Kp odd pivot and exact phase reduction"
+          }
+        ],
+        "historical_or_noncurrent": false,
+        "linked_result_ids": [
+          "EV-SL-B4-KP-PIVOT-PHASE-REDUCTION-V1"
+        ],
+        "math_semantics": {
+          "context_id": "CTX-DEFAULT",
+          "proof_input_eligible": true,
+          "record_kind": "claim",
+          "refuted_in_context": false,
+          "truth_status": "established"
+        },
+        "retrieval": {
+          "matched_fields": [
+            "id",
+            "title",
+            "statement",
+            "metadata",
+            "evidence"
+          ],
+          "score": 770
+        },
+        "semantic_sha256": "semantic-sha256:f290f866e28e785253291e2ce6c3bb9c3a70f38f3546fd2794eec977f5ee4d1e",
+        "typed_inputs": {
+          "inference_inputs": [
+            "INF-SL-B4-KP-PIVOT-PHASE-REDUCTION-V1"
+          ],
+          "refutation_inputs": []
+        }
+      },
+      {
+        "artifacts": [],
+        "canonical_node": {
+          "context_id": "CTX-DEFAULT",
+          "epistemic_type": "definition_contract",
+          "grade": "C",
+          "id": "DEF-SL-B4-M3-OBS-DET-NORMALIZATION-V1",
+          "mainline": "support",
+          "source_kind": "project",
+          "statement": "On the finite-interior n=2 symmetric INF germ, Cbr denotes the positive branch coefficient in k3 = K(u)u + Cbr(u)u^5 and is distinct from Chi_up = 1 + B(u)K(u)/2 + 3pi/(2K(u)) - K(u)^2/12. The quantities m3D and m3N are the exact D-side and N-side third-block masses from the closed residual. Kp_odd and Ko are the full two-by-two sector matrices in the exact orthonormal mirror bases, with the source spectral pole convention and reduced-Green finite part Gt = L0 + Lminus/2 fixed by the bound normalization package.",
+          "status": "active",
+          "title": "Corrected M3 observable and determinant normalization",
+          "truth_bearing": false,
+          "type": "definition"
+        },
+        "direct_dependent_edges": [
+          {
+            "legacy_pair": false,
+            "role": "definition_input",
+            "source": "DEF-SL-B4-M3-OBS-DET-NORMALIZATION-V1",
+            "target": "INF-R003-CORRECTED-M3-CLOSURE-V1"
+          },
+          {
+            "legacy_pair": false,
+            "role": "definition_input",
+            "source": "DEF-SL-B4-M3-OBS-DET-NORMALIZATION-V1",
+            "target": "INF-SL-B4-KP-PIVOT-PHASE-REDUCTION-V1"
+          }
+        ],
+        "direct_dependents": [
+          "INF-R003-CORRECTED-M3-CLOSURE-V1",
+          "INF-SL-B4-KP-PIVOT-PHASE-REDUCTION-V1"
+        ],
+        "direct_input_edges": [],
+        "direct_inputs": [],
+        "evidence": [],
+        "historical_or_noncurrent": false,
+        "linked_result_ids": [],
+        "math_semantics": {
+          "context_id": "CTX-DEFAULT",
+          "definition_input_eligible": true,
+          "record_kind": "definition",
+          "truth_bearing": false
+        },
+        "retrieval": {
+          "matched_fields": [
+            "id",
+            "title",
+            "statement",
+            "metadata"
+          ],
+          "score": 470
+        },
+        "semantic_sha256": "semantic-sha256:a6131cf49d7f79c233539fd91d87d71a389c09787563a22de97133791b682a61",
+        "typed_inputs": {}
+      },
+      {
+        "artifacts": [
+          {
+            "exists": true,
+            "external_to_artifact_root": false,
+            "external_to_statistics_root": true,
+            "locator": "artifacts/blueprint-rigorous-math/R-20260825T100044Z-b4-m3-blueprint/round-002/route-003-observable-determinant-closure/observable_determinant_refutation.md",
+            "resolved_path": "/mnt/f/LaTeX/BVE research/research/artifacts/blueprint-rigorous-math/R-20260825T100044Z-b4-m3-blueprint/round-002/route-003-observable-determinant-closure/observable_determinant_refutation.md",
+            "result_id": "EV-SL-B4-M3-CORRECTED-CLOSURE-V1",
+            "size_bytes": 10755
+          }
+        ],
+        "canonical_node": {
+          "claim_kind": "theorem",
+          "context_id": "CTX-DEFAULT",
+          "epistemic_type": "mathematical_claim",
+          "grade": "C",
+          "id": "CLM-SL-B4-M3-TARGET-V1",
+          "inference_inputs": [
+            "INF-R003-CORRECTED-M3-CLOSURE-V1"
+          ],
+          "mainline": "mathematics",
+          "refutation_inputs": [],
+          "statement": "On the exact locally unique branch of CLM-R001-FINITE-R-BRANCH-V1, which is the only branch in the admitted finite nonzero interior class of CLM-R002-FINITE-INTERIOR-SCALE-EXHAUSTIVENESS-V1, let kappa^3 = 18pi - 48/pi. There exists a finite, not numerically asserted, R0 such that for every R > R0, with u = R^(-1/6), m3D - m3N = -(4/kappa^5)u^4 + O(u^6) < 0, Chi_up = 3/2 + 4/(pi kappa) + O(u^2) > 0, det Kp_odd = (128kappa^2/pi^2)u^20 + O(u^22) = (128kappa^2/pi^2)R^(-10/3) + O(R^(-11/3)) > 0, and det Ko = (2048kappa^2/pi^4)u^26 + O(u^28) = (2048kappa^2/pi^4)R^(-13/3) + O(R^(-14/3)) > 0. All four signs hold on the exact finite-R roots through the analytic normalized-quotient and compact derivative-supremum bridge, and Chi_up is distinct from Cbr(u) = 16/(pi kappa) + O(u^2) > 0.",
+          "status": "established",
+          "title": "Corrected M3 observable and sector-determinant closure",
+          "truth_status": "established",
+          "type": "claim"
+        },
+        "direct_dependent_edges": [
+          {
+            "legacy_pair": false,
+            "role": "target_input",
+            "source": "CLM-SL-B4-M3-TARGET-V1",
+            "target": "GOAL-SL-B4-M3-V1"
+          }
+        ],
+        "direct_dependents": [
+          "GOAL-SL-B4-M3-V1"
+        ],
+        "direct_input_edges": [
+          {
+            "legacy_pair": false,
+            "role": "inference_input",
+            "source": "INF-R003-CORRECTED-M3-CLOSURE-V1",
+            "target": "CLM-SL-B4-M3-TARGET-V1"
+          }
+        ],
+        "direct_inputs": [
+          "INF-R003-CORRECTED-M3-CLOSURE-V1"
+        ],
+        "evidence": [
+          {
+            "blueprint_node_id": "CLM-SL-B4-M3-TARGET-V1",
+            "epistemic_type": "mathematical_claim",
+            "grade": "C",
+            "headline_value": "m3D-m3N = -(4/kappa^5)u^4 + O(u^6); Chi_up > 0; det Kp_odd ~ (128kappa^2/pi^2)R^(-10/3); det Ko ~ (2048kappa^2/pi^4)R^(-13/3), both positive.",
+            "main_limitation": "Depends on the proved finite-interior branch chain; the finite sign threshold R0 is existential and not numerically optimized.",
+            "mainline": "mathematics",
+            "primary_artifact": "artifacts/blueprint-rigorous-math/R-20260825T100044Z-b4-m3-blueprint/round-002/route-003-observable-determinant-closure/observable_determinant_refutation.md",
+            "result_id": "EV-SL-B4-M3-CORRECTED-CLOSURE-V1",
+            "scope": "Exact finite-R n=2 symmetric INF branch, M3 only",
+            "status": "established",
+            "title": "Corrected M3 observable and determinant closure"
+          }
+        ],
+        "historical_or_noncurrent": false,
+        "linked_result_ids": [
+          "EV-SL-B4-M3-CORRECTED-CLOSURE-V1"
+        ],
+        "math_semantics": {
+          "context_id": "CTX-DEFAULT",
+          "proof_input_eligible": true,
+          "record_kind": "claim",
+          "refuted_in_context": false,
+          "truth_status": "established"
+        },
+        "retrieval": {
+          "matched_fields": [
+            "title",
+            "statement",
+            "metadata",
+            "evidence"
+          ],
+          "score": 360
+        },
+        "semantic_sha256": "semantic-sha256:215474312928e28c4f7e2e736ee45ab66ddad22a73ff41a1f37d37b4e6a99d65",
+        "typed_inputs": {
+          "inference_inputs": [
+            "INF-R003-CORRECTED-M3-CLOSURE-V1"
+          ],
+          "refutation_inputs": []
+        }
+      },
+      {
+        "artifacts": [],
+        "canonical_node": {
+          "conclusion": "CLM-SL-B4-KP-PIVOT-PHASE-REDUCTION-V1",
+          "context_id": "CTX-DEFAULT",
+          "definition_inputs": [
+            "DEF-SL-B4-M3-OBS-DET-NORMALIZATION-V1"
+          ],
+          "epistemic_type": "mathematical_inference",
+          "grade": "C",
+          "id": "INF-SL-B4-KP-PIVOT-PHASE-REDUCTION-V1",
+          "mainline": "mathematics",
+          "premise_inputs": [
+            "HYP-SL-B4-M3-SYSTEM-V1"
+          ],
+          "proof_package": {
+            "path": "runs/R-20260831T020156Z-g1p-kpdet/workspace/runs/rigorous-open-math-research/R-20260831T020156Z-g1p-kpdet/candidate_proof.md",
+            "sha256": "sha256:e9305a8795b31cd528555108c5268b92664e63f48ab728592f2947336a050188"
+          },
+          "proof_status": "proved",
+          "statement": "The exact n=2 symmetric INF M3 contract and the bound odd-sector normalization imply the finite-interior pivot and phase-reduction theorem by the final-layer Green quotient calculation, the two-by-two Schur identity, exact transfer elimination with reconstruction, and the projective-flux and locking-point argument.",
+          "status": "proved",
+          "title": "Exact endpoint, transfer, and Jacobi reduction proof",
+          "type": "inference",
+          "unresolved_obligations": []
+        },
+        "direct_dependent_edges": [
+          {
+            "legacy_pair": false,
+            "role": "inference_input",
+            "source": "INF-SL-B4-KP-PIVOT-PHASE-REDUCTION-V1",
+            "target": "CLM-SL-B4-KP-PIVOT-PHASE-REDUCTION-V1"
+          }
+        ],
+        "direct_dependents": [
+          "CLM-SL-B4-KP-PIVOT-PHASE-REDUCTION-V1"
+        ],
+        "direct_input_edges": [
+          {
+            "legacy_pair": false,
+            "role": "definition_input",
+            "source": "DEF-SL-B4-M3-OBS-DET-NORMALIZATION-V1",
+            "target": "INF-SL-B4-KP-PIVOT-PHASE-REDUCTION-V1"
+          },
+          {
+            "legacy_pair": false,
+            "role": "premise_input",
+            "source": "HYP-SL-B4-M3-SYSTEM-V1",
+            "target": "INF-SL-B4-KP-PIVOT-PHASE-REDUCTION-V1"
+          }
+        ],
+        "direct_inputs": [
+          "DEF-SL-B4-M3-OBS-DET-NORMALIZATION-V1",
+          "HYP-SL-B4-M3-SYSTEM-V1"
+        ],
+        "evidence": [],
+        "historical_or_noncurrent": false,
+        "linked_result_ids": [],
+        "math_semantics": {
+          "context_id": "CTX-DEFAULT",
+          "proof_status": "proved",
+          "record_kind": "inference",
+          "truth_propagating": true
+        },
+        "retrieval": {
+          "matched_fields": [
+            "id",
+            "metadata"
+          ],
+          "score": 300
+        },
+        "semantic_sha256": "semantic-sha256:ec86827aea1ce3361512ccbe9958db4fb42f46853060eea5b9440a71fbebec27",
+        "typed_inputs": {
+          "definition_inputs": [
+            "DEF-SL-B4-M3-OBS-DET-NORMALIZATION-V1"
+          ],
+          "premise_inputs": [
+            "HYP-SL-B4-M3-SYSTEM-V1"
+          ]
+        }
+      },
+      {
+        "artifacts": [],
+        "canonical_node": {
+          "conclusion": "CLM-SL-B4-M3-TARGET-V1",
+          "context_id": "CTX-DEFAULT",
+          "definition_inputs": [
+            "DEF-SL-B4-M3-OBS-DET-NORMALIZATION-V1"
+          ],
+          "epistemic_type": "mathematical_inference",
+          "grade": "C",
+          "id": "INF-R003-CORRECTED-M3-CLOSURE-V1",
+          "mainline": "mathematics",
+          "premise_inputs": [
+            "HYP-SL-B4-M3-SYSTEM-V1",
+            "CLM-R001-FINITE-R-BRANCH-V1",
+            "CLM-R002-FINITE-INTERIOR-SCALE-EXHAUSTIVENESS-V1"
+          ],
+          "proof_package": {
+            "path": "artifacts/blueprint-rigorous-math/R-20260825T100044Z-b4-m3-blueprint/round-002/route-003-observable-determinant-closure/observable_determinant_refutation.md",
+            "sha256": "sha256:6d1c8cbbc7cb68b569675fcad5854288692f4fbc17ae87a76d8768ea8afd0dd8"
+          },
+          "proof_status": "proved",
+          "statement": "The exact M3 hypothesis, the proved finite-R branch, the admitted-class uniqueness result, and the bound observable and sector normalizations imply the corrected observable identities, determinant coefficients, alternative R exponents, and uniform finite-R signs in CLM-SL-B4-M3-TARGET-V1.",
+          "status": "proved",
+          "title": "Corrected observable and determinant theorem",
+          "type": "inference",
+          "unresolved_obligations": []
+        },
+        "direct_dependent_edges": [
+          {
+            "legacy_pair": false,
+            "role": "inference_input",
+            "source": "INF-R003-CORRECTED-M3-CLOSURE-V1",
+            "target": "CLM-SL-B4-M3-TARGET-V1"
+          }
+        ],
+        "direct_dependents": [
+          "CLM-SL-B4-M3-TARGET-V1"
+        ],
+        "direct_input_edges": [
+          {
+            "legacy_pair": false,
+            "role": "premise_input",
+            "source": "CLM-R001-FINITE-R-BRANCH-V1",
+            "target": "INF-R003-CORRECTED-M3-CLOSURE-V1"
+          },
+          {
+            "legacy_pair": false,
+            "role": "premise_input",
+            "source": "CLM-R002-FINITE-INTERIOR-SCALE-EXHAUSTIVENESS-V1",
+            "target": "INF-R003-CORRECTED-M3-CLOSURE-V1"
+          },
+          {
+            "legacy_pair": false,
+            "role": "definition_input",
+            "source": "DEF-SL-B4-M3-OBS-DET-NORMALIZATION-V1",
+            "target": "INF-R003-CORRECTED-M3-CLOSURE-V1"
+          },
+          {
+            "legacy_pair": false,
+            "role": "premise_input",
+            "source": "HYP-SL-B4-M3-SYSTEM-V1",
+            "target": "INF-R003-CORRECTED-M3-CLOSURE-V1"
+          }
+        ],
+        "direct_inputs": [
+          "CLM-R001-FINITE-R-BRANCH-V1",
+          "CLM-R002-FINITE-INTERIOR-SCALE-EXHAUSTIVENESS-V1",
+          "DEF-SL-B4-M3-OBS-DET-NORMALIZATION-V1",
+          "HYP-SL-B4-M3-SYSTEM-V1"
+        ],
+        "evidence": [],
+        "historical_or_noncurrent": false,
+        "linked_result_ids": [],
+        "math_semantics": {
+          "context_id": "CTX-DEFAULT",
+          "proof_status": "proved",
+          "record_kind": "inference",
+          "truth_propagating": true
+        },
+        "retrieval": {
+          "matched_fields": [
+            "title",
+            "statement",
+            "metadata"
+          ],
+          "score": 195
+        },
+        "semantic_sha256": "semantic-sha256:9d4129758375b38e73feb607fbcb76e317c6a1d3bf50270eb5f34bf3b6320f6d",
+        "typed_inputs": {
+          "definition_inputs": [
+            "DEF-SL-B4-M3-OBS-DET-NORMALIZATION-V1"
+          ],
+          "premise_inputs": [
+            "HYP-SL-B4-M3-SYSTEM-V1",
+            "CLM-R001-FINITE-R-BRANCH-V1",
+            "CLM-R002-FINITE-INTERIOR-SCALE-EXHAUSTIVENESS-V1"
+          ]
+        }
+      }
+    ],
+    "query": "KP-DET",
+    "returned_count": 5,
+    "truncated": false
+  },
+  "schema_version": "blueprint-query/v2",
+  "snapshot": {
+    "blueprint_sha256": "sha256:e11f7d586b2e5b27f03b74cb76ad326ad92f3617701247b24ab92410f88737a4",
+    "inventory_sha256": "sha256:475c99f11485aef5c1b4455cebbe486b413e77f43b86b63d20331982810419c5"
+  },
+  "statistics_root": "/mnt/f/LaTeX/BVE research/blueprint",
+  "warnings": []
+}

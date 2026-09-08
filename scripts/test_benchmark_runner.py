@@ -8,11 +8,68 @@ from pathlib import Path
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 
 import benchmark_runner as R
 
 
 class RunnerTests(unittest.TestCase):
+	def test_custom_task_registration_and_legacy_budgets(self):
+		with tempfile.TemporaryDirectory() as Directory:
+			Root = Path(Directory)
+			Task = Root / "TASK.md"
+			Task.write_text("exact frozen task")
+			Spec = dict(kind="PROJECT_FRONTIER_DIAGNOSTIC", tasks=dict(q9=dict(source=str(Task),
+				budget_seconds=3600, audit_budget_seconds=1200, consolidation_seconds=3000,
+				audit_consolidation_seconds=960)), schedule=dict(q9=["A", "C", "B"]))
+			File = Root / "spec.json"
+			R.persist(File, Spec)
+			self.assertEqual(R.B.load_task_spec(File, Root), Spec)
+			self.assertEqual(R.B.task_budget(Spec, "q9"), 3600)
+			self.assertEqual(R.B.task_budget(Spec, "q9", "audit"), 1200)
+			Legacy = R.B.load_task_spec(None, Root)
+			self.assertEqual(R.B.task_budget(Legacy, "t1"), 1800)
+			self.assertEqual(R.B.task_budget(Legacy, "t2", "audit"), 900)
+			for Key, Value in [("budget_seconds", True), ("audit_budget_seconds", 0), ("consolidation_seconds", 3600)]:
+				Broken = json.loads(json.dumps(Spec))
+				Broken["tasks"]["q9"][Key] = Value
+				R.persist(File, Broken)
+				with self.assertRaises(ValueError):
+					R.B.load_task_spec(File, Root)
+			Spec["schedule"]["q9"] = ["A", "A", "C"]
+			R.persist(File, Spec)
+			with self.assertRaises(ValueError):
+				R.B.load_task_spec(File, Root)
+			for TaskId in ["../q9", "q9/a", "/tmp/q9", "Q9"]:
+				with self.assertRaises(ValueError):
+					R.B.arm_paths(Root, TaskId, "A")
+
+	def test_custom_budget_reaches_dispatch_and_same_session_resume(self):
+		from argparse import Namespace
+		with tempfile.TemporaryDirectory() as Directory:
+			Root = Path(Directory)
+			(Root / "control").mkdir()
+			Base, Home, Work = R.B.arm_paths(Root, "q9", "A")
+			Work.mkdir(parents=True)
+			Home.mkdir()
+			(Work / "PROMPT.md").write_text("frozen common task")
+			R.persist(Root / "control/quota.json", dict(captured_at=R.utc_now(), five_hour_remaining=99, weekly_remaining=99))
+			Manifest = dict(binary="/usr/bin/false", python=sys.executable, proxy="http://127.0.0.1:1",
+				model="gpt-6-astra", effort="max", tasks=dict(q9=dict(budget_seconds=3600)))
+			Commands = []
+			def fake_supervise(Command, Cwd, Env, Output, State, Quota, Budget):
+				Commands.append((Command, Budget))
+				State.update(root_thread_id="retained-root", active_seconds=73, stop_reason="COORDINATOR_STOP", exit_code=-2)
+				return State
+			Args = Namespace(root=str(Root), task="q9", arm="A", reconcile=False, resume=False)
+			with patch.object(R, "assert_sealed", return_value=(Manifest, Base, Home, Work)), patch.object(R, "supervise", side_effect=fake_supervise), patch("builtins.print"):
+				R.run(Args)
+				Args.resume = True
+				R.run(Args)
+			self.assertEqual([Budget for Command, Budget in Commands], [3600, 3600])
+			self.assertEqual(Commands[1][0][-2], "retained-root")
+			self.assertIn("3527 seconds", Commands[1][0][-1])
+
 	def test_quota_exhaustion_and_staleness(self):
 		with tempfile.TemporaryDirectory() as Directory:
 			Path = R.Path(Directory) / "quota.json"

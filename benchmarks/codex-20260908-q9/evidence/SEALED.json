@@ -1,0 +1,52 @@
+{
+	"schema_version": 1,
+	"sealed_at": "2026-09-08T12:02:04.640654+00:00",
+	"manifest_sha256": "76aa61b94a1fca358cac43dc5d9f05c948cff76029a41e449521c01111e50162",
+	"runner_sha256": "c74e7c0d66a8210751836269b81f1ee833ff8a9112236aa118a0d9d883dd396d",
+	"preparation_sha256": "7b6a3041e36acd2a088fdfc4e8a10bf172125e3e91a88991d90d4eed24fe39ab",
+	"audit_runner_sha256": "6447f41a6801fd735df070f1fbb4daee0f1017bf8f890fc7a72238b299bc947a",
+	"preregistration_sha256": "7876a665970690bf618276cee088453f17f90309da62d531e330383eb3b25d83",
+	"contract_review_sha256": "30cc46652a08268c435b8d7dd610002e1d6f3afa92c1b3efc3ae2b5dc3ce981c",
+	"task_spec_sha256": "2638e5e413c2c2730ebbdf22e15be3a59b6d706db472f94345798bcb4b760132",
+	"tasks": {
+		"q9": {
+			"A": [
+				{
+					"kind": "filesystem",
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/preflight-01/summary.json",
+					"sha256": "77f1b32f1626b6ee911e99d3ce02e08005555e37b0f46d248fbcaf263d47e306"
+				},
+				{
+					"kind": "tools",
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/tools-yg2i80yo/summary.json",
+					"sha256": "2a332b226128f543d9bce80a548ecaa3c9d7c2aa1914b63ae3007f6c8bc08dba"
+				}
+			],
+			"C": [
+				{
+					"kind": "filesystem",
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/c/preflight-01/summary.json",
+					"sha256": "516b2dea3ed38fe38d4a7d80e2c76a8ad096386fa59b493cc290f8950c585c99"
+				},
+				{
+					"kind": "tools",
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/c/tools-t0qiuwtd/summary.json",
+					"sha256": "d1af25817ceb7d45f08bcab81cf50c30264993f2fdd32c9da67e659a05a9ce77"
+				}
+			],
+			"B": [
+				{
+					"kind": "filesystem",
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/b/preflight-01/summary.json",
+					"sha256": "f2af425093234fddddcc31b27914321e0dc5637c2cf6367ff89cad1747f22a9c"
+				},
+				{
+					"kind": "tools",
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/b/tools-y2degojd/summary.json",
+					"sha256": "172ec78db77a9bdf3df97f99131b0b4e9ad7e005b395d52f1240a3aceb08d61a"
+				}
+			]
+		}
+	},
+	"solver_sessions_before_seal": 0
+}

@@ -46,6 +46,11 @@ def prepare(campaign, task, arm):
 		if(R.file_hash(Frozen / Name) != Hashes[Name]):
 			raise RuntimeError("candidate changed after freeze")
 	Manifest = R.read_json(campaign / "control/manifest.json")
+	Budget = B.task_budget(Manifest, task, "audit")
+	Consolidate = Manifest["tasks"][task].get("audit_consolidation_seconds", 720)
+	Prompt = PROMPT if Budget == 900 and Consolidate == 720 else PROMPT.replace("15 minute", f"{Budget} second").replace("by minute 12", f"by active second {Consolidate}")
+	if(Manifest["tasks"][task].get("audit_addendum")):
+		Prompt += "\n" + Manifest["tasks"][task]["audit_addendum"] + "\n"
 	Root = campaign.parent / "blind-audits" / str(uuid.uuid4())
 	Base, Home, Work = B.arm_paths(Root, "candidate", "C")
 	Home.mkdir(parents=True)
@@ -54,7 +59,7 @@ def prepare(campaign, task, arm):
 	shutil.copyfile(campaign / "control/model-catalog.json", Root / "control/model-catalog.json")
 	shutil.copyfile(Frozen / "TASK.md", Work / "TASK.md")
 	shutil.copyfile(Frozen / "answer.md", Work / "CANDIDATE.md")
-	B.write_text(Work / "PROMPT.md", PROMPT)
+	B.write_text(Work / "PROMPT.md", Prompt)
 	B.write_text(Root / "candidate/a/work/TASK.md", "FOREIGN_AUDIT_CANARY\n")
 	Auth = Source / "home/auth.json"
 	B.configure(Home, Work, Path(Manifest["binary"]), False, Manifest["python"], Auth)
@@ -64,7 +69,8 @@ def prepare(campaign, task, arm):
 	R.persist(Root / "control/manifest.json", AuditManifest)
 	Mapping = dict(root=str(Root), task_sha256=R.file_hash(Work / "TASK.md"),
 		candidate_sha256=R.file_hash(Work / "CANDIDATE.md"), prompt_sha256=R.file_hash(Work / "PROMPT.md"),
-		config_sha256=R.file_hash(Home / "config.toml"), created_at=R.utc_now(), budget_seconds=900)
+		config_sha256=R.file_hash(Home / "config.toml"), created_at=R.utc_now(), budget_seconds=Budget,
+		audit_runner_sha256=R.file_hash(__file__), runner_sha256=R.file_hash(R.__file__), preparation_sha256=R.file_hash(B.__file__))
 	R.persist(campaign / f"control/audit-{task}-{arm}.json", Mapping)
 	return Mapping
 
@@ -73,6 +79,10 @@ def run(args):
 	Campaign = Path(args.campaign).resolve()
 	MapPath = Campaign / f"control/audit-{args.task}-{args.arm}.json"
 	Mapping = R.read_json(MapPath) if MapPath.exists() else prepare(Campaign, args.task, args.arm)
+	Budget = Mapping["budget_seconds"]
+	for File, Key in [(__file__, "audit_runner_sha256"), (R.__file__, "runner_sha256"), (B.__file__, "preparation_sha256")]:
+		if(Key in Mapping and R.file_hash(File) != Mapping[Key]):
+			raise RuntimeError("changed sealed audit harness")
 	Root = Path(Mapping["root"])
 	Base, Home, Work = B.arm_paths(Root, "candidate", "C")
 	Manifest = R.read_json(Root / "control/manifest.json")
@@ -114,10 +124,10 @@ def run(args):
 		if(args.resume):
 			if(not State.get("root_thread_id")):
 				raise RuntimeError("unknown audit session")
-			Command.extend(["resume", State["root_thread_id"], f"Continue the same audit after reconciling saved work. Remaining shared wall budget: {max(0, 900-State['active_seconds']):.0f} seconds."])
+			Command.extend(["resume", State["root_thread_id"], f"Continue the same audit after reconciling saved work. Remaining shared wall budget: {max(0, Budget-State['active_seconds']):.0f} seconds."])
 		else:
-			Command.append(PROMPT)
-		State = R.supervise(Command, Work, B.environment(Home, Work, Manifest["python"], Manifest["proxy"]), Output, State, Campaign / "control/quota.json", 900)
+			Command.append((Work / "PROMPT.md").read_text(encoding="utf-8"))
+		State = R.supervise(Command, Work, B.environment(Home, Work, Manifest["python"], Manifest["proxy"]), Output, State, Campaign / "control/quota.json", Budget)
 		State["status"] = "PAUSED" if State.get("stop_reason") else ("RETURNED_UNREVIEWED" if State["exit_code"] == 0 else "INFRA_EXIT")
 		R.persist(Output / "sessions.json", R.session_inventory(Home))
 		if(State["status"] == "RETURNED_UNREVIEWED"):
@@ -132,7 +142,7 @@ def run(args):
 def main():
 	Parser = argparse.ArgumentParser(description=__doc__)
 	Parser.add_argument("--campaign", required=True)
-	Parser.add_argument("--task", required=True, choices=["t1", "t2"])
+	Parser.add_argument("--task", required=True)
 	Parser.add_argument("--arm", required=True, choices=["A", "B", "C"])
 	Parser.add_argument("--project", default=str(B.REPO.parent))
 	Parser.add_argument("--prepare-only", action="store_true")
