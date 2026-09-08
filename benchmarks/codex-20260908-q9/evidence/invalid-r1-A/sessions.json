@@ -1,0 +1,56 @@
+[
+	{
+		"id": "01a08115-0ba3-7820-8d98-735256aa8e6c",
+		"source": "exec",
+		"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC-r1/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-53-55-01a08115-0ba3-7820-8d98-735256aa8e6c.jsonl",
+		"models": [
+			"gpt-6-astra"
+		],
+		"efforts": [
+			"max"
+		],
+		"token_usage": {
+			"input_tokens": 385788,
+			"cached_input_tokens": 350208,
+			"cache_write_input_tokens": 0,
+			"output_tokens": 6660,
+			"reasoning_output_tokens": 1908,
+			"total_tokens": 392448
+		},
+		"token_usage_scope": "FILE_CUMULATIVE_UNDEDUPLICATED",
+		"outer_tool_calls": 10,
+		"response_count": null,
+		"aggregate_active_seconds": null,
+		"forbidden_skill_metadata": []
+	},
+	{
+		"id": "01a08118-df41-7602-b0e2-3e7fcf78d839",
+		"source": {
+			"subagent": {
+				"thread_spawn": {
+					"parent_thread_id": "01a08115-0ba3-7820-8d98-735256aa8e6c",
+					"depth": 1,
+					"agent_path": "/root/analytic_bound",
+					"agent_nickname": "Pauli",
+					"agent_role": null
+				}
+			}
+		},
+		"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC-r1/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-58-06-01a08118-df41-7602-b0e2-3e7fcf78d839.jsonl",
+		"models": [
+			"gpt-6-astra"
+		],
+		"efforts": [
+			"max"
+		],
+		"token_usage": null,
+		"token_usage_scope": "FILE_CUMULATIVE_UNDEDUPLICATED",
+		"outer_tool_calls": 0,
+		"response_count": null,
+		"aggregate_active_seconds": null,
+		"forbidden_skill_metadata": [
+			"deep-research-work",
+			"plugin-management"
+		]
+	}
+]

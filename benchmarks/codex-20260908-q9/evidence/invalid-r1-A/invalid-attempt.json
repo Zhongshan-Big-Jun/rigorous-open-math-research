@@ -1,0 +1,19 @@
+{
+	"recorded_at": "2026-09-08T13:05:34.358707+00:00",
+	"reason": "FORBIDDEN_CHILD_SKILL_METADATA",
+	"status": "INVALID_EXCLUDED_FROM_COMPARISON",
+	"mathematical_score": null,
+	"mathematical_quality_used_for_exclusion": false,
+	"active_seconds": 274.3057983930048,
+	"root_thread_id": "01a08115-0ba3-7820-8d98-735256aa8e6c",
+	"returned_usage": {
+		"input_tokens": 385788,
+		"cached_input_tokens": 350208,
+		"output_tokens": 6660,
+		"reasoning_output_tokens": 1908,
+		"uncached_input_tokens": 35580,
+		"responses_with_usage": 10
+	},
+	"resume_forbidden": true,
+	"followup": "Real child-input preflight required before a fresh replacement."
+}

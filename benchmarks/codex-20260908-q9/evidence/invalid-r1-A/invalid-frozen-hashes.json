@@ -1,0 +1,14 @@
+{
+	"PROMPT.md": "3959acebca25a78dfcb4456c570e92bd4fa2491c36a61b73e1f34e371ab1a371",
+	"TASK.md": "c7133b97e440e90095088927f105c9f88fcdc54f4a4772ee9f85ba5a139e6330",
+	"research_map.md": "f15140d9b22ddd5eb6d8f952ca78fda6bacc128cd397e75dffe2c378441d1e03",
+	"runs/q9/research_ledger.md": "8cade37021a1d9d70589457d81a2ea13e2f3dfe5e9495ab7914566165150a154",
+	"runs/q9/closure_gate.md": "adbd1caf32b7b133904d367c3afbf427a0513655ab93cea65533a85aa5f29526",
+	"runs/q9/problem_contract.md": "b4382b8eb36be260e12f36a8c6f5c04042d6d3d3452ba0f25faf774ccc9ac983",
+	"runs/q9/obligation_graph.md": "de3fd7dc6e818a889366606215d227a5ba883eb83bb0a7fee7632971ee17c99f",
+	"runs/q9/status_and_literature.md": "08d21fd2651cbe72181564198db52f59203e4a04809c7954953ba72951db8c5e",
+	"runs/q9/computation_contract.md": "cde09e1b4b562411dd382d2e287c8eb50ebfc1bd0990d57bb89df9beef1ae493",
+	"runs/q9/whiteboard.md": "021261472728e82d99f561bfbb884a647c9a4584a3f54f79c9aca12f4ddec19d",
+	"runs/q9/reproducibility/probe.py": "41c78a8d2ff5e194c98717504fdbcf432d8f620504db9662a56604ebe1d8e4f1",
+	"runs/q9/reproducibility/probe_results.json": "fd515718fe750d4b1caed7cbdaee34821732a98438dec5fc40102e65d68181ad"
+}

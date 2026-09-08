@@ -1,0 +1,40 @@
+{
+	"verdict": "PASS",
+	"checks": {
+		"child_returned": true,
+		"root_and_child_observed": true,
+		"identity_matched": true,
+		"forbidden_metadata_absent": true,
+		"assigned_skills_matched": true,
+		"child_tools_passed": true,
+		"process_returned": true
+	},
+	"operational_checks": {
+		"workspace_write": true,
+		"foreign_read_blocked": true,
+		"project_read_blocked": true,
+		"auth_read_blocked": true,
+		"sibling_read_blocked": true,
+		"forbidden_plugin_read_blocked": true,
+		"outside_write_blocked": true,
+		"plugin_files_readable": true,
+		"network_blocked": true
+	},
+	"delayed_spawn_seconds": 35,
+	"requests": 5,
+	"external_model_calls": 0,
+	"account_metadata_sync_enabled": true,
+	"quota_queries": 0,
+	"fixture_usage_not_scored": true,
+	"helper_sha256": "38cb6d49b86b0eef07c207c5ccafa8ecc8907170527e1bb0fe54ca8778f990bb",
+	"config_sha256": "395bec0708cbca7734bdb5aa9210a05d399bcb145eb52735a6b7bcd4128d69c9",
+	"assigned_skill_counts": [
+		4,
+		4,
+		4,
+		4,
+		4
+	],
+	"model": "gpt-6-astra",
+	"effort": "max"
+}

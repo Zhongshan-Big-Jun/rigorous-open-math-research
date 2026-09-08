@@ -120,6 +120,8 @@ def assert_sealed(root, task, arm):
 		raise RuntimeError("unsealed task or changed manifest")
 	if("quota_policy_sha256" in Seal and file_hash(root / "control/quota-policy.json") != Seal["quota_policy_sha256"]):
 		raise RuntimeError("changed user quota policy")
+	if("child_probe_sha256" in Seal and file_hash(Path(__file__).with_name("benchmark_child_probe.py")) != Seal["child_probe_sha256"]):
+		raise RuntimeError("changed child preflight harness")
 	if(Manifest["platform"] != "linux" or file_hash(Manifest["binary"]) != Manifest["binary_sha256"]):
 		raise RuntimeError("wrong platform or changed CLI")
 	if(file_hash(root / "control/model-catalog.json") != Manifest["model_catalog_sha256"] or file_hash(Manifest["python"]) != Manifest["python_sha256"]):
@@ -145,6 +147,8 @@ def assert_sealed(root, task, arm):
 			raise RuntimeError("failed or stale preflight")
 		if(Gate["kind"] == "tools" and (not Data.get("operational_checks") or not all(Data["operational_checks"].values()) or not Data.get("resume_same_session"))):
 			raise RuntimeError("tool execution and resume must pass, not just schemas")
+		if(Gate["kind"] == "tools" and Seal.get("child_probe_sha256") and Data.get("child_preflight", {}).get("verdict") != "PASS"):
+			raise RuntimeError("actual delayed child preflight must pass")
 	return Manifest, Base, Home, Work
 
 

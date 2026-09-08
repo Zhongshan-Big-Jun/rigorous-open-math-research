@@ -1,0 +1,43 @@
+{
+	"fixture_root": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC-r1/control/child-probe-j8icgjxc",
+	"external_model_calls": 0,
+	"quota_queries": 0,
+	"delay_before_spawn_seconds": 35,
+	"requests_sha256": "324c78e00990d81b9bc021ee5a2b930037f9314e2f3d7453e5c34319defb7a4d",
+	"config_sha256": "c0201bfa274dc21197ac8beac374a65ac5e4662d5cdcb8f25494d4bc686f23d7",
+	"sessions": [
+		{
+			"id": "01a08123-d493-7821-a7c7-b1ffdb97cf8f",
+			"source": "exec",
+			"models": [
+				"gpt-6-astra"
+			],
+			"efforts": [
+				"max"
+			],
+			"forbidden_skill_metadata": []
+		},
+		{
+			"id": "01a08124-7166-7662-b004-eb4fc4c462a8",
+			"source": {
+				"subagent": {
+					"thread_spawn": {
+						"parent_thread_id": "01a08123-d493-7821-a7c7-b1ffdb97cf8f",
+						"depth": 1,
+						"agent_path": "/root/input_probe",
+						"agent_nickname": "Ampere",
+						"agent_role": null
+					}
+				}
+			},
+			"models": [
+				"gpt-6-astra"
+			],
+			"efforts": [
+				"max"
+			],
+			"forbidden_skill_metadata": []
+		}
+	],
+	"forbidden_child_metadata_observed": false
+}

@@ -1,0 +1,46 @@
+{
+	"fixture_root": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC-r1/control/child-probe-zuyhnw1s",
+	"external_model_calls": 0,
+	"quota_queries": 0,
+	"delay_before_spawn_seconds": 35,
+	"requests_sha256": "df010e3bbf36c2e3a30203e98471a38fc91aeb833c81bd158a713b772757490f",
+	"config_sha256": "5f5acb930e4a60b0fc5deb26fb5f14fbfd4753d741f5efba351c34a55ba2b26e",
+	"sessions": [
+		{
+			"id": "01a08121-a12b-7112-b052-606a6d7dd4af",
+			"source": "exec",
+			"models": [
+				"gpt-6-astra"
+			],
+			"efforts": [
+				"max"
+			],
+			"forbidden_skill_metadata": []
+		},
+		{
+			"id": "01a08122-3dea-7ca0-b448-342e7cadb70c",
+			"source": {
+				"subagent": {
+					"thread_spawn": {
+						"parent_thread_id": "01a08121-a12b-7112-b052-606a6d7dd4af",
+						"depth": 1,
+						"agent_path": "/root/input_probe",
+						"agent_nickname": "Jason",
+						"agent_role": null
+					}
+				}
+			},
+			"models": [
+				"gpt-6-astra"
+			],
+			"efforts": [
+				"max"
+			],
+			"forbidden_skill_metadata": [
+				"deep-research-work",
+				"plugin-management"
+			]
+		}
+	],
+	"forbidden_child_metadata_observed": true
+}

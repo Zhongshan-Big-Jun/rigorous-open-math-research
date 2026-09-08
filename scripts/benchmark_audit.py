@@ -62,6 +62,9 @@ def prepare(campaign, task, arm):
 	B.write_text(Work / "PROMPT.md", Prompt)
 	B.write_text(Root / "candidate/a/work/TASK.md", "FOREIGN_AUDIT_CANARY\n")
 	Auth = Source / "home/auth.json"
+	RemoteCache = Source / "home/plugins/cache/openai-curated-remote"
+	if(RemoteCache.exists()):
+		shutil.copytree(RemoteCache, Home / "plugins/cache/openai-curated-remote")
 	B.configure(Home, Work, Path(Manifest["binary"]), False, Manifest["python"], Auth)
 	shutil.copyfile(Auth, Home / "auth.json")
 	(Home / "auth.json").chmod(0o600)
@@ -70,7 +73,8 @@ def prepare(campaign, task, arm):
 	Mapping = dict(root=str(Root), task_sha256=R.file_hash(Work / "TASK.md"),
 		candidate_sha256=R.file_hash(Work / "CANDIDATE.md"), prompt_sha256=R.file_hash(Work / "PROMPT.md"),
 		config_sha256=R.file_hash(Home / "config.toml"), created_at=R.utc_now(), budget_seconds=Budget,
-		audit_runner_sha256=R.file_hash(__file__), runner_sha256=R.file_hash(R.__file__), preparation_sha256=R.file_hash(B.__file__))
+		audit_runner_sha256=R.file_hash(__file__), runner_sha256=R.file_hash(R.__file__), preparation_sha256=R.file_hash(B.__file__),
+		child_probe_sha256=R.file_hash(Path(__file__).with_name("benchmark_child_probe.py")))
 	R.persist(campaign / f"control/audit-{task}-{arm}.json", Mapping)
 	return Mapping
 
@@ -80,7 +84,7 @@ def run(args):
 	MapPath = Campaign / f"control/audit-{args.task}-{args.arm}.json"
 	Mapping = R.read_json(MapPath) if MapPath.exists() else prepare(Campaign, args.task, args.arm)
 	Budget = Mapping["budget_seconds"]
-	for File, Key in [(__file__, "audit_runner_sha256"), (R.__file__, "runner_sha256"), (B.__file__, "preparation_sha256")]:
+	for File, Key in [(__file__, "audit_runner_sha256"), (R.__file__, "runner_sha256"), (B.__file__, "preparation_sha256"), (Path(__file__).with_name("benchmark_child_probe.py"), "child_probe_sha256")]:
 		if(Key in Mapping and R.file_hash(File) != Mapping[Key]):
 			raise RuntimeError("changed sealed audit harness")
 	Root = Path(Mapping["root"])

@@ -40,7 +40,7 @@ def sha256(data):
 def plugin_hashes(home):
 	Cache = home / "plugins/cache"
 	return {Path.relative_to(Cache).as_posix(): sha256(Path.read_bytes())
-		for Path in sorted(Cache.rglob("*")) if Path.is_file()}
+		for Path in sorted(Cache.rglob("*")) if Path.is_file() and Path.name != "benchmark-denied-canary.txt"}
 
 
 def write_text(path, text):
@@ -154,6 +154,9 @@ def configure(home, work, binary, plugins, python, auth_source=None):
 			Rows.extend(['[plugins.' + json.dumps(Plugin + "@math-research") + ']', 'enabled = true'])
 	for Plugin in REMOTE_PLUGINS_OFF:
 		Rows.extend(['[plugins.' + json.dumps(Plugin + "@openai-curated-remote") + ']', 'enabled = false'])
+	RemoteSkills = sorted((home / "plugins/cache/openai-curated-remote").glob("**/SKILL.md"))
+	for Skill in RemoteSkills:
+		Rows.extend(['[[skills.config]]', 'path = ' + json.dumps(str(Skill)), 'enabled = false'])
 	write_text(home / "config.toml", "\n".join(Rows) + "\n")
 
 
@@ -237,6 +240,9 @@ def probe(args):
 	Output.mkdir(exist_ok=False)
 	RemoteCanary = Home / "plugins/cache/openai-curated-remote/benchmark-denied-canary.txt"
 	write_text(RemoteCanary, "REMOTE_PLUGIN_CACHE_MUST_BE_UNREADABLE\n")
+	RemoteSkills = sorted((Home / "plugins/cache/openai-curated-remote").glob("**/SKILL.md"))
+	if(RemoteSkills):
+		RemoteCanary = RemoteSkills[0]
 	Prompt = command([Binary, "-C", Work, "debug", "prompt-input", "PREFLIGHT_ONLY_NO_MATHEMATICS"], Work, Env)
 	(Output / "prompt-input.json").write_bytes(Prompt)
 	Decoded = Prompt.decode("utf-8")
@@ -371,13 +377,13 @@ def probe_tools(args):
 		Command.extend(["-c", Key + "=" + json.dumps(Value)])
 	Command.append("PREFLIGHT_ONLY_NO_MATHEMATICS")
 	try:
-		Result = subprocess.run(Command, env=Env, cwd=Work, capture_output=True, timeout=30)
+		Result = subprocess.run(Command, env=Env, cwd=Work, capture_output=True, stdin=subprocess.DEVNULL, timeout=30)
 		(Output / "stdout.jsonl").write_bytes(Result.stdout)
 		(Output / "stderr.txt").write_bytes(Result.stderr)
 		Events = [json.loads(Line) for Line in Result.stdout.decode().splitlines() if Line.strip()]
 		ThreadId = next(Item["thread_id"] for Item in Events if Item.get("type") == "thread.started")
 		Resumed = subprocess.run(Command[:-1] + ["resume", ThreadId, "PREFLIGHT_RESUME_NO_MATHEMATICS"],
-			env=Env, cwd=Work, capture_output=True, timeout=30)
+			env=Env, cwd=Work, capture_output=True, stdin=subprocess.DEVNULL, timeout=30)
 		(Output / "resume-stdout.jsonl").write_bytes(Resumed.stdout)
 		(Output / "resume-stderr.txt").write_bytes(Resumed.stderr)
 		ResumeEvents = [json.loads(Line) for Line in Resumed.stdout.decode().splitlines() if Line.strip()]
@@ -425,6 +431,9 @@ def probe_tools(args):
 	print(json.dumps(Summary))
 	if(Summary["verdict"] != "PASS"):
 		raise RuntimeError("tool exposure preflight failed")
+	import benchmark_child_probe as ChildProbe
+	Summary["child_preflight"] = ChildProbe.run(args, Output / "child-preflight")
+	write_json(Output / "summary.json", Summary)
 
 
 def main():

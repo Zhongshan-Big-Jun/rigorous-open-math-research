@@ -1,0 +1,60 @@
+[
+	{
+		"id": "01a08129-1ce3-7be0-a244-8890fff94b00",
+		"source": "exec",
+		"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC-r2/q9/c/tools-y5imaidn/child-preflight/home/sessions/2026/09/08/rollout-2026-09-08T21-15-50-01a08129-1ce3-7be0-a244-8890fff94b00.jsonl",
+		"models": [
+			"gpt-6-astra"
+		],
+		"efforts": [
+			"max"
+		],
+		"token_usage": {
+			"input_tokens": 0,
+			"cached_input_tokens": 0,
+			"cache_write_input_tokens": 0,
+			"output_tokens": 0,
+			"reasoning_output_tokens": 0,
+			"total_tokens": 0
+		},
+		"token_usage_scope": "FILE_CUMULATIVE_UNDEDUPLICATED",
+		"outer_tool_calls": 2,
+		"response_count": null,
+		"aggregate_active_seconds": null,
+		"forbidden_skill_metadata": []
+	},
+	{
+		"id": "01a08129-aff6-75b3-b829-d79cf6d4a36a",
+		"source": {
+			"subagent": {
+				"thread_spawn": {
+					"parent_thread_id": "01a08129-1ce3-7be0-a244-8890fff94b00",
+					"depth": 1,
+					"agent_path": "/root/input_probe",
+					"agent_nickname": "Laplace",
+					"agent_role": null
+				}
+			}
+		},
+		"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC-r2/q9/c/tools-y5imaidn/child-preflight/home/sessions/2026/09/08/rollout-2026-09-08T21-16-28-01a08129-aff6-75b3-b829-d79cf6d4a36a.jsonl",
+		"models": [
+			"gpt-6-astra"
+		],
+		"efforts": [
+			"max"
+		],
+		"token_usage": {
+			"input_tokens": 0,
+			"cached_input_tokens": 0,
+			"cache_write_input_tokens": 0,
+			"output_tokens": 0,
+			"reasoning_output_tokens": 0,
+			"total_tokens": 0
+		},
+		"token_usage_scope": "FILE_CUMULATIVE_UNDEDUPLICATED",
+		"outer_tool_calls": 1,
+		"response_count": null,
+		"aggregate_active_seconds": null,
+		"forbidden_skill_metadata": []
+	}
+]

@@ -1,0 +1,97 @@
+{
+	"schema_version": 1,
+	"sealed_at": "2026-09-08T13:18:50.401184+00:00",
+	"manifest_sha256": "365b95f646d1c0cc9bcdcb50aba47ad1ecc44b6b237b8a41636fdea78104b249",
+	"runner_sha256": "6045d945aff64197752dcf11103c33571585d203fea0e286e561a5f01ca5d1a7",
+	"preparation_sha256": "7ce4a1e8d8f7ed6c4e59e28e3a9de973ee4c25f67ab8a63f82c01aec1b994998",
+	"audit_runner_sha256": "1162063ae11dad926feacccee3f01d3ff92f4d9a8fac099937a81e9584f2a3d4",
+	"child_probe_sha256": "38cb6d49b86b0eef07c207c5ccafa8ecc8907170527e1bb0fe54ca8778f990bb",
+	"preregistration_sha256": "7876a665970690bf618276cee088453f17f90309da62d531e330383eb3b25d83",
+	"contract_review_sha256": "30cc46652a08268c435b8d7dd610002e1d6f3afa92c1b3efc3ae2b5dc3ce981c",
+	"task_spec_sha256": "2638e5e413c2c2730ebbdf22e15be3a59b6d706db472f94345798bcb4b760132",
+	"quota_policy_sha256": "7f53651cd108052b78e5570737e0835aeb9a9077b6560d6354d379f1153bb40d",
+	"replacement_amendment_sha256": "887bfb0d8b6911913b2a06635db2ff00de6636c975fb622636433bff5cbe7a1e",
+	"tasks": {
+		"q9": {
+			"A": [
+				{
+					"kind": "filesystem",
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC-r2/q9/a/preflight-01/summary.json",
+					"sha256": "1c500fcd71696339bf5e31cee56decb4e030ccf3d1708c6f9316a7b031f3a5fe"
+				},
+				{
+					"kind": "tools",
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC-r2/q9/a/tools-86jri23t/summary.json",
+					"sha256": "79e2d1b937ca56e1dba90e85c883c4c09d16de3382bad93d13ab89e0d1d99146",
+					"child_evidence": {
+						"requests.json": {
+							"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC-r2/q9/a/tools-86jri23t/child-preflight/requests.json",
+							"sha256": "7aa5ec92ef4bb20f4f8b6f93f133d9b1f41c77ab910749825f4543a8338d25ce"
+						},
+						"sessions.json": {
+							"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC-r2/q9/a/tools-86jri23t/child-preflight/sessions.json",
+							"sha256": "26f6985aefa80045b9dfaf2bb8daf75eb3dd7db53f35c77afd3225b7734ae2d0"
+						},
+						"summary.json": {
+							"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC-r2/q9/a/tools-86jri23t/child-preflight/summary.json",
+							"sha256": "f88c5498000d19fe3333450a56dfd8a40b692ae7a6fd056ef2cf90abe80bc682"
+						}
+					}
+				}
+			],
+			"C": [
+				{
+					"kind": "filesystem",
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC-r2/q9/c/preflight-01/summary.json",
+					"sha256": "7eb520063cc220acd543cefc4c4ba3fd70dccc33d2499ae9b4fd4ce9aad70dc7"
+				},
+				{
+					"kind": "tools",
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC-r2/q9/c/tools-y5imaidn/summary.json",
+					"sha256": "6209f50018f91c469338d1e547b6e4ca68f629a2f75ff0ebe12fd547c95b7421",
+					"child_evidence": {
+						"requests.json": {
+							"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC-r2/q9/c/tools-y5imaidn/child-preflight/requests.json",
+							"sha256": "20ff8aeb02806b1937e8e1546dc2e24bf5b3251631490da030e286612c41b126"
+						},
+						"sessions.json": {
+							"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC-r2/q9/c/tools-y5imaidn/child-preflight/sessions.json",
+							"sha256": "593ec0f346248f02cbf66e56a46c9fac125ae9f45f44c4ed529d2799a8819b42"
+						},
+						"summary.json": {
+							"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC-r2/q9/c/tools-y5imaidn/child-preflight/summary.json",
+							"sha256": "622f14a81dabff1c22a49bc145fb2d90262c662337479bce616b8e7795fe738b"
+						}
+					}
+				}
+			],
+			"B": [
+				{
+					"kind": "filesystem",
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC-r2/q9/b/preflight-01/summary.json",
+					"sha256": "2317393b22a6b01a172f8fda69b17726670d2e2c50572d1a9087f904621f7134"
+				},
+				{
+					"kind": "tools",
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC-r2/q9/b/tools-kz5im8ry/summary.json",
+					"sha256": "fd35486d6ff1075a2ed09e61be34166f80ddd15cc177927cbe64a4ca22df519e",
+					"child_evidence": {
+						"requests.json": {
+							"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC-r2/q9/b/tools-kz5im8ry/child-preflight/requests.json",
+							"sha256": "abc6a3f37cd2c8148618580f3b47d99543a4e10c21dfe9fb7895df084378ca0f"
+						},
+						"sessions.json": {
+							"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC-r2/q9/b/tools-kz5im8ry/child-preflight/sessions.json",
+							"sha256": "c74902474d827ab0420f64da3ccdc023cf297f98ead74e58f8315cae49c5651c"
+						},
+						"summary.json": {
+							"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC-r2/q9/b/tools-kz5im8ry/child-preflight/summary.json",
+							"sha256": "88146e765070c191442564bcf0a2b49942523bc8c6f2a6649d7690d25eab67e8"
+						}
+					}
+				}
+			]
+		}
+	},
+	"solver_sessions_before_seal": 0
+}

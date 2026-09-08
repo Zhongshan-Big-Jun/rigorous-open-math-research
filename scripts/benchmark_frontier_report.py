@@ -56,6 +56,8 @@ def export_stage(campaign, task, arm, phase, output):
 	Summary = U.measure(Base)
 	if(Summary["models"] != [Manifest["model"]] or Summary["efforts"] != [Manifest["effort"]]):
 		raise RuntimeError("observed identity is unknown or mismatched")
+	if(any(Item["forbidden_skill_metadata"] for Item in R.session_inventory(Home))):
+		raise RuntimeError("observed forbidden skill metadata; stage is not scoreable")
 	Stage = output / "evidence" / f"{task}-{arm}-{phase}"
 	Stage.mkdir(parents=True, exist_ok=True)
 	for Name in ["state.json", "sessions.json", "frozen-hashes.json", "usage-summary.json", "usage-records.json", "last-message.txt"]:
