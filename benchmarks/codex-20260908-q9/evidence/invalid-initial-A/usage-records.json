@@ -1,0 +1,1189 @@
+{
+	"records": {
+		"resp_08a63db640683aa3016a9ff97c665087d2b33ba5409986a164": {
+			"value": {
+				"thread_id": "01a080e5-fe27-7231-b1e0-ad74e3d92501",
+				"usage": {
+					"input_tokens": 12936,
+					"cached_input_tokens": 0,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 249,
+					"reasoning_output_tokens": 0,
+					"total_tokens": 13185
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-02-31-01a080e5-fe27-7231-b1e0-ad74e3d92501.jsonl",
+					"line": 14
+				}
+			]
+		},
+		"resp_08a63db640683aa3016a9ff987c29087d2a7a96810d4246fbc": {
+			"value": {
+				"thread_id": "01a080e5-fe27-7231-b1e0-ad74e3d92501",
+				"usage": {
+					"input_tokens": 19980,
+					"cached_input_tokens": 12800,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 258,
+					"reasoning_output_tokens": 0,
+					"total_tokens": 20238
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-02-31-01a080e5-fe27-7231-b1e0-ad74e3d92501.jsonl",
+					"line": 23
+				}
+			]
+		},
+		"resp_08a63db640683aa3016a9ff995d41487d2970a5bcce49f25d6": {
+			"value": {
+				"thread_id": "01a080e5-fe27-7231-b1e0-ad74e3d92501",
+				"usage": {
+					"input_tokens": 29496,
+					"cached_input_tokens": 19840,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 912,
+					"reasoning_output_tokens": 516,
+					"total_tokens": 30408
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-02-31-01a080e5-fe27-7231-b1e0-ad74e3d92501.jsonl",
+					"line": 29
+				}
+			]
+		},
+		"resp_08a63db640683aa3016a9ff9b48c5087d2a904d59d0a37d9c0": {
+			"value": {
+				"thread_id": "01a080e5-fe27-7231-b1e0-ad74e3d92501",
+				"usage": {
+					"input_tokens": 33661,
+					"cached_input_tokens": 29312,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 265,
+					"reasoning_output_tokens": 29,
+					"total_tokens": 33926
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-02-31-01a080e5-fe27-7231-b1e0-ad74e3d92501.jsonl",
+					"line": 40
+				}
+			]
+		},
+		"resp_08a63db640683aa3016a9ff9c1849887d28e979d922740d7bf": {
+			"value": {
+				"thread_id": "01a080e5-fe27-7231-b1e0-ad74e3d92501",
+				"usage": {
+					"input_tokens": 34639,
+					"cached_input_tokens": 33536,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 482,
+					"reasoning_output_tokens": 37,
+					"total_tokens": 35121
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-02-31-01a080e5-fe27-7231-b1e0-ad74e3d92501.jsonl",
+					"line": 49
+				}
+			]
+		},
+		"resp_08a63db640683aa3016a9ff9d3c78087d2834fb81877544eac": {
+			"value": {
+				"thread_id": "01a080e5-fe27-7231-b1e0-ad74e3d92501",
+				"usage": {
+					"input_tokens": 41838,
+					"cached_input_tokens": 34432,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 2096,
+					"reasoning_output_tokens": 516,
+					"total_tokens": 43934
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-02-31-01a080e5-fe27-7231-b1e0-ad74e3d92501.jsonl",
+					"line": 58
+				}
+			]
+		},
+		"resp_08a63db640683aa3016a9ffa1a450c87d2a362360ee933cf07": {
+			"value": {
+				"thread_id": "01a080e5-fe27-7231-b1e0-ad74e3d92501",
+				"usage": {
+					"input_tokens": 44028,
+					"cached_input_tokens": 41600,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 1511,
+					"reasoning_output_tokens": 516,
+					"total_tokens": 45539
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-02-31-01a080e5-fe27-7231-b1e0-ad74e3d92501.jsonl",
+					"line": 65
+				}
+			]
+		},
+		"resp_08a63db640683aa3016a9ffa4bd5e087d2bd747c9573d694e4": {
+			"value": {
+				"thread_id": "01a080e5-fe27-7231-b1e0-ad74e3d92501",
+				"usage": {
+					"input_tokens": 47584,
+					"cached_input_tokens": 43904,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 287,
+					"reasoning_output_tokens": 97,
+					"total_tokens": 47871
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-02-31-01a080e5-fe27-7231-b1e0-ad74e3d92501.jsonl",
+					"line": 72
+				}
+			]
+		},
+		"resp_08a63db640683aa3016a9ffa59f04887d2972ecce0951f8082": {
+			"value": {
+				"thread_id": "01a080e5-fe27-7231-b1e0-ad74e3d92501",
+				"usage": {
+					"input_tokens": 49170,
+					"cached_input_tokens": 47360,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 916,
+					"reasoning_output_tokens": 176,
+					"total_tokens": 50086
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-02-31-01a080e5-fe27-7231-b1e0-ad74e3d92501.jsonl",
+					"line": 80
+				}
+			]
+		},
+		"resp_08a63db640683aa3016a9ffa7a139c87d2b19bff79a341f593": {
+			"value": {
+				"thread_id": "01a080e5-fe27-7231-b1e0-ad74e3d92501",
+				"usage": {
+					"input_tokens": 50717,
+					"cached_input_tokens": 49024,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 458,
+					"reasoning_output_tokens": 0,
+					"total_tokens": 51175
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-02-31-01a080e5-fe27-7231-b1e0-ad74e3d92501.jsonl",
+					"line": 86
+				}
+			]
+		},
+		"resp_08a63db640683aa3016a9ffa8cf3bc87d2a3da3d28c0658cd1": {
+			"value": {
+				"thread_id": "01a080e5-fe27-7231-b1e0-ad74e3d92501",
+				"usage": {
+					"input_tokens": 51196,
+					"cached_input_tokens": 50560,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 1309,
+					"reasoning_output_tokens": 338,
+					"total_tokens": 52505
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-02-31-01a080e5-fe27-7231-b1e0-ad74e3d92501.jsonl",
+					"line": 96
+				}
+			]
+		},
+		"resp_08a63db640683aa3016a9ffaba69b087d29ccc8ff4bb8c7c6f": {
+			"value": {
+				"thread_id": "01a080e5-fe27-7231-b1e0-ad74e3d92501",
+				"usage": {
+					"input_tokens": 52563,
+					"cached_input_tokens": 51072,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 567,
+					"reasoning_output_tokens": 516,
+					"total_tokens": 53130
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-02-31-01a080e5-fe27-7231-b1e0-ad74e3d92501.jsonl",
+					"line": 103
+				}
+			]
+		},
+		"resp_08a63db640683aa3016a9ffad25d6c87d2bb6ba11774ebf8ac": {
+			"value": {
+				"thread_id": "01a080e5-fe27-7231-b1e0-ad74e3d92501",
+				"usage": {
+					"input_tokens": 54483,
+					"cached_input_tokens": 52352,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 191,
+					"reasoning_output_tokens": 24,
+					"total_tokens": 54674
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-02-31-01a080e5-fe27-7231-b1e0-ad74e3d92501.jsonl",
+					"line": 110
+				}
+			]
+		},
+		"resp_08a63db640683aa3016a9ffadd167087d299365c5da6744fca": {
+			"value": {
+				"thread_id": "01a080e5-fe27-7231-b1e0-ad74e3d92501",
+				"usage": {
+					"input_tokens": 54686,
+					"cached_input_tokens": 54272,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 2223,
+					"reasoning_output_tokens": 1897,
+					"total_tokens": 56909
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-02-31-01a080e5-fe27-7231-b1e0-ad74e3d92501.jsonl",
+					"line": 123
+				}
+			]
+		},
+		"resp_08a63db640683aa3016a9ffb2a494887d288704b82d8f328a4": {
+			"value": {
+				"thread_id": "01a080e5-fe27-7231-b1e0-ad74e3d92501",
+				"usage": {
+					"input_tokens": 57334,
+					"cached_input_tokens": 54528,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 206,
+					"reasoning_output_tokens": 74,
+					"total_tokens": 57540
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-02-31-01a080e5-fe27-7231-b1e0-ad74e3d92501.jsonl",
+					"line": 130
+				}
+			]
+		},
+		"resp_08a63db640683aa3016a9ffb34284c87d299fc066a85340bef": {
+			"value": {
+				"thread_id": "01a080e5-fe27-7231-b1e0-ad74e3d92501",
+				"usage": {
+					"input_tokens": 58137,
+					"cached_input_tokens": 57216,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 142,
+					"reasoning_output_tokens": 0,
+					"total_tokens": 58279
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-02-31-01a080e5-fe27-7231-b1e0-ad74e3d92501.jsonl",
+					"line": 135
+				}
+			]
+		},
+		"resp_08a63db640683aa3016a9ffb55c89087d29b86a358b880366e": {
+			"value": {
+				"thread_id": "01a080e5-fe27-7231-b1e0-ad74e3d92501",
+				"usage": {
+					"input_tokens": 59005,
+					"cached_input_tokens": 58112,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 777,
+					"reasoning_output_tokens": 479,
+					"total_tokens": 59782
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-02-31-01a080e5-fe27-7231-b1e0-ad74e3d92501.jsonl",
+					"line": 146
+				}
+			]
+		},
+		"resp_08a63db640683aa3016a9ffb74a9d487d2927328f40d7e61d1": {
+			"value": {
+				"thread_id": "01a080e5-fe27-7231-b1e0-ad74e3d92501",
+				"usage": {
+					"input_tokens": 59925,
+					"cached_input_tokens": 58880,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 458,
+					"reasoning_output_tokens": 0,
+					"total_tokens": 60383
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-02-31-01a080e5-fe27-7231-b1e0-ad74e3d92501.jsonl",
+					"line": 151
+				}
+			]
+		},
+		"resp_08a63db640683aa3016a9ffb86188087d283b0d048e54a2b01": {
+			"value": {
+				"thread_id": "01a080e5-fe27-7231-b1e0-ad74e3d92501",
+				"usage": {
+					"input_tokens": 60404,
+					"cached_input_tokens": 59776,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 271,
+					"reasoning_output_tokens": 36,
+					"total_tokens": 60675
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-02-31-01a080e5-fe27-7231-b1e0-ad74e3d92501.jsonl",
+					"line": 161
+				}
+			]
+		},
+		"resp_08a63db640683aa3016a9ffb926f1887d2932e80155a23798c": {
+			"value": {
+				"thread_id": "01a080e5-fe27-7231-b1e0-ad74e3d92501",
+				"usage": {
+					"input_tokens": 63977,
+					"cached_input_tokens": 60288,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 594,
+					"reasoning_output_tokens": 97,
+					"total_tokens": 64571
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-02-31-01a080e5-fe27-7231-b1e0-ad74e3d92501.jsonl",
+					"line": 168
+				}
+			]
+		},
+		"resp_08a63db640683aa3016a9ffba8b61487d2ae653ba8f447aa4a": {
+			"value": {
+				"thread_id": "01a080e5-fe27-7231-b1e0-ad74e3d92501",
+				"usage": {
+					"input_tokens": 65061,
+					"cached_input_tokens": 63744,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 702,
+					"reasoning_output_tokens": 177,
+					"total_tokens": 65763
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-02-31-01a080e5-fe27-7231-b1e0-ad74e3d92501.jsonl",
+					"line": 175
+				}
+			]
+		},
+		"resp_08a63db640683aa3016a9ffbc26e7087d2be5af42b3bd9c4a9": {
+			"value": {
+				"thread_id": "01a080e5-fe27-7231-b1e0-ad74e3d92501",
+				"usage": {
+					"input_tokens": 66066,
+					"cached_input_tokens": 64896,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 558,
+					"reasoning_output_tokens": 516,
+					"total_tokens": 66624
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-02-31-01a080e5-fe27-7231-b1e0-ad74e3d92501.jsonl",
+					"line": 184
+				}
+			]
+		},
+		"resp_03fa239ed9ad65fa016a9ffa915fcc87d2bd586ad86e33a01f": {
+			"value": {
+				"thread_id": "01a080ea-3c11-70d0-8383-d05202eb69be",
+				"usage": {
+					"input_tokens": 12249,
+					"cached_input_tokens": 0,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 213,
+					"reasoning_output_tokens": 27,
+					"total_tokens": 12462
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-07-09-01a080ea-3c11-70d0-8383-d05202eb69be.jsonl",
+					"line": 16
+				}
+			]
+		},
+		"resp_03fa239ed9ad65fa016a9ffa9b4ce487d2b5beefebbac812ac": {
+			"value": {
+				"thread_id": "01a080ea-3c11-70d0-8383-d05202eb69be",
+				"usage": {
+					"input_tokens": 16711,
+					"cached_input_tokens": 12032,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 240,
+					"reasoning_output_tokens": 8,
+					"total_tokens": 16951
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-07-09-01a080ea-3c11-70d0-8383-d05202eb69be.jsonl",
+					"line": 24
+				}
+			]
+		},
+		"resp_03fa239ed9ad65fa016a9ffaa676d087d2910d64220c397636": {
+			"value": {
+				"thread_id": "01a080ea-3c11-70d0-8383-d05202eb69be",
+				"usage": {
+					"input_tokens": 19646,
+					"cached_input_tokens": 16512,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 571,
+					"reasoning_output_tokens": 516,
+					"total_tokens": 20217
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-07-09-01a080ea-3c11-70d0-8383-d05202eb69be.jsonl",
+					"line": 33
+				}
+			]
+		},
+		"resp_03fa239ed9ad65fa016a9ffabbac6887d2bd38f4c4f2007627": {
+			"value": {
+				"thread_id": "01a080ea-3c11-70d0-8383-d05202eb69be",
+				"usage": {
+					"input_tokens": 21186,
+					"cached_input_tokens": 19456,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 1252,
+					"reasoning_output_tokens": 30,
+					"total_tokens": 22438
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-07-09-01a080ea-3c11-70d0-8383-d05202eb69be.jsonl",
+					"line": 40
+				}
+			]
+		},
+		"resp_03fa239ed9ad65fa016a9ffae48a0087d2b854c25ddceda845": {
+			"value": {
+				"thread_id": "01a080ea-3c11-70d0-8383-d05202eb69be",
+				"usage": {
+					"input_tokens": 22685,
+					"cached_input_tokens": 20992,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 43,
+					"reasoning_output_tokens": 0,
+					"total_tokens": 22728
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-07-09-01a080ea-3c11-70d0-8383-d05202eb69be.jsonl",
+					"line": 48
+				}
+			]
+		},
+		"resp_03fa239ed9ad65fa016a9ffb48e2e887d2894c8b4527027474": {
+			"value": {
+				"thread_id": "01a080ea-3c11-70d0-8383-d05202eb69be",
+				"usage": {
+					"input_tokens": 25646,
+					"cached_input_tokens": 22784,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 208,
+					"reasoning_output_tokens": 20,
+					"total_tokens": 25854
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-07-09-01a080ea-3c11-70d0-8383-d05202eb69be.jsonl",
+					"line": 69
+				}
+			]
+		},
+		"resp_03fa239ed9ad65fa016a9ffb538c7487d2a0ec586336e54786": {
+			"value": {
+				"thread_id": "01a080ea-3c11-70d0-8383-d05202eb69be",
+				"usage": {
+					"input_tokens": 25866,
+					"cached_input_tokens": 25472,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 446,
+					"reasoning_output_tokens": 9,
+					"total_tokens": 26312
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-07-09-01a080ea-3c11-70d0-8383-d05202eb69be.jsonl",
+					"line": 77
+				}
+			]
+		},
+		"resp_03fa239ed9ad65fa016a9ffb64f22487d2bdc7f7f2a2dc0be1": {
+			"value": {
+				"thread_id": "01a080ea-3c11-70d0-8383-d05202eb69be",
+				"usage": {
+					"input_tokens": 26354,
+					"cached_input_tokens": 25728,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 1963,
+					"reasoning_output_tokens": 1904,
+					"total_tokens": 28317
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-07-09-01a080ea-3c11-70d0-8383-d05202eb69be.jsonl",
+					"line": 90
+				}
+			]
+		},
+		"resp_03fa239ed9ad65fa016a9ffbae962087d2ba32470b1d5a5e94": {
+			"value": {
+				"thread_id": "01a080ea-3c11-70d0-8383-d05202eb69be",
+				"usage": {
+					"input_tokens": 28391,
+					"cached_input_tokens": 26112,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 252,
+					"reasoning_output_tokens": 13,
+					"total_tokens": 28643
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-07-09-01a080ea-3c11-70d0-8383-d05202eb69be.jsonl",
+					"line": 98
+				}
+			]
+		},
+		"resp_03fa239ed9ad65fa016a9ffbb9ded087d2ae0d22b5b7bd9fda": {
+			"value": {
+				"thread_id": "01a080ea-3c11-70d0-8383-d05202eb69be",
+				"usage": {
+					"input_tokens": 28655,
+					"cached_input_tokens": 28160,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 694,
+					"reasoning_output_tokens": 507,
+					"total_tokens": 29349
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-07-09-01a080ea-3c11-70d0-8383-d05202eb69be.jsonl",
+					"line": 105
+				}
+			]
+		},
+		"resp_03fa239ed9ad65fa016a9ffbd5ba2087d29a75224c20040d30": {
+			"value": {
+				"thread_id": "01a080ea-3c11-70d0-8383-d05202eb69be",
+				"usage": {
+					"input_tokens": 29597,
+					"cached_input_tokens": 28416,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 763,
+					"reasoning_output_tokens": 155,
+					"total_tokens": 30360
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-07-09-01a080ea-3c11-70d0-8383-d05202eb69be.jsonl",
+					"line": 111
+				}
+			]
+		},
+		"resp_03fa239ed9ad65fa016a9ffbf1850087d28a96d85a93a14ed1": {
+			"value": {
+				"thread_id": "01a080ea-3c11-70d0-8383-d05202eb69be",
+				"usage": {
+					"input_tokens": 30890,
+					"cached_input_tokens": 29440,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 3289,
+					"reasoning_output_tokens": 2357,
+					"total_tokens": 34179
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-07-09-01a080ea-3c11-70d0-8383-d05202eb69be.jsonl",
+					"line": 127
+				}
+			]
+		},
+		"resp_03fa239ed9ad65fa016a9ffc67813887d281ea1f4db78ee983": {
+			"value": {
+				"thread_id": "01a080ea-3c11-70d0-8383-d05202eb69be",
+				"usage": {
+					"input_tokens": 34280,
+					"cached_input_tokens": 30720,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 59,
+					"reasoning_output_tokens": 14,
+					"total_tokens": 34339
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-07-09-01a080ea-3c11-70d0-8383-d05202eb69be.jsonl",
+					"line": 133
+				}
+			]
+		},
+		"resp_03fa239ed9ad65fa016a9ffc6c0df487d295846d3d8941cd18": {
+			"value": {
+				"thread_id": "01a080ea-3c11-70d0-8383-d05202eb69be",
+				"usage": {
+					"input_tokens": 34860,
+					"cached_input_tokens": 34048,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 951,
+					"reasoning_output_tokens": 0,
+					"total_tokens": 35811
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-07-09-01a080ea-3c11-70d0-8383-d05202eb69be.jsonl",
+					"line": 138
+				}
+			]
+		},
+		"resp_03fa239ed9ad65fa016a9ffc8d04a087d2a7bd9b6146ccb832": {
+			"value": {
+				"thread_id": "01a080ea-3c11-70d0-8383-d05202eb69be",
+				"usage": {
+					"input_tokens": 35835,
+					"cached_input_tokens": 34688,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 1772,
+					"reasoning_output_tokens": 1512,
+					"total_tokens": 37607
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-07-09-01a080ea-3c11-70d0-8383-d05202eb69be.jsonl",
+					"line": 150
+				}
+			]
+		},
+		"resp_03fa239ed9ad65fa016a9ffcc73fa087d2aa404dcf494e6304": {
+			"value": {
+				"thread_id": "01a080ea-3c11-70d0-8383-d05202eb69be",
+				"usage": {
+					"input_tokens": 37619,
+					"cached_input_tokens": 9856,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 237,
+					"reasoning_output_tokens": 112,
+					"total_tokens": 37856
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-07-09-01a080ea-3c11-70d0-8383-d05202eb69be.jsonl",
+					"line": 156
+				}
+			]
+		},
+		"resp_03fa239ed9ad65fa016a9ffcd1eb5c87d2aeac87de8afafb83": {
+			"value": {
+				"thread_id": "01a080ea-3c11-70d0-8383-d05202eb69be",
+				"usage": {
+					"input_tokens": 38054,
+					"cached_input_tokens": 37504,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 1577,
+					"reasoning_output_tokens": 617,
+					"total_tokens": 39631
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-07-09-01a080ea-3c11-70d0-8383-d05202eb69be.jsonl",
+					"line": 167
+				}
+			]
+		},
+		"resp_084188e13807637f016a9ffb8aa58487d1b035787307bad79b": {
+			"value": {
+				"thread_id": "01a080ee-0c4f-7700-975d-aa4e6f6e9f06",
+				"usage": {
+					"input_tokens": 12250,
+					"cached_input_tokens": 9856,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 272,
+					"reasoning_output_tokens": 60,
+					"total_tokens": 12522
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-11-19-01a080ee-0c4f-7700-975d-aa4e6f6e9f06.jsonl",
+					"line": 19
+				}
+			]
+		},
+		"resp_084188e13807637f016a9ffb973ac087d181b5878d9a3bb19a": {
+			"value": {
+				"thread_id": "01a080ee-0c4f-7700-975d-aa4e6f6e9f06",
+				"usage": {
+					"input_tokens": 16967,
+					"cached_input_tokens": 12032,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 232,
+					"reasoning_output_tokens": 0,
+					"total_tokens": 17199
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-11-19-01a080ee-0c4f-7700-975d-aa4e6f6e9f06.jsonl",
+					"line": 23
+				}
+			]
+		},
+		"resp_084188e13807637f016a9ffba43ff087d18d66540b5cb46692": {
+			"value": {
+				"thread_id": "01a080ee-0c4f-7700-975d-aa4e6f6e9f06",
+				"usage": {
+					"input_tokens": 19637,
+					"cached_input_tokens": 16768,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 555,
+					"reasoning_output_tokens": 516,
+					"total_tokens": 20192
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-11-19-01a080ee-0c4f-7700-975d-aa4e6f6e9f06.jsonl",
+					"line": 32
+				}
+			]
+		},
+		"resp_084188e13807637f016a9ffbbbeecc87d1a3ba1c26a2cbc784": {
+			"value": {
+				"thread_id": "01a080ee-0c4f-7700-975d-aa4e6f6e9f06",
+				"usage": {
+					"input_tokens": 20249,
+					"cached_input_tokens": 19456,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 3627,
+					"reasoning_output_tokens": 1034,
+					"total_tokens": 23876
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-11-19-01a080ee-0c4f-7700-975d-aa4e6f6e9f06.jsonl",
+					"line": 43
+				}
+			]
+		},
+		"resp_084188e13807637f016a9ffc2e311c87d1ad7faceb7d42cab5": {
+			"value": {
+				"thread_id": "01a080ee-0c4f-7700-975d-aa4e6f6e9f06",
+				"usage": {
+					"input_tokens": 23900,
+					"cached_input_tokens": 0,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 49,
+					"reasoning_output_tokens": 0,
+					"total_tokens": 23949
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-11-19-01a080ee-0c4f-7700-975d-aa4e6f6e9f06.jsonl",
+					"line": 48
+				}
+			]
+		},
+		"resp_084188e13807637f016a9ffc34925c87d18bcade6a00063788": {
+			"value": {
+				"thread_id": "01a080ee-0c4f-7700-975d-aa4e6f6e9f06",
+				"usage": {
+					"input_tokens": 26692,
+					"cached_input_tokens": 23680,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 710,
+					"reasoning_output_tokens": 485,
+					"total_tokens": 27402
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-11-19-01a080ee-0c4f-7700-975d-aa4e6f6e9f06.jsonl",
+					"line": 55
+				}
+			]
+		},
+		"resp_084188e13807637f016a9ffc50b34c87d1bb5e1316a4130bae": {
+			"value": {
+				"thread_id": "01a080ee-0c4f-7700-975d-aa4e6f6e9f06",
+				"usage": {
+					"input_tokens": 34496,
+					"cached_input_tokens": 26496,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 207,
+					"reasoning_output_tokens": 10,
+					"total_tokens": 34703
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-11-19-01a080ee-0c4f-7700-975d-aa4e6f6e9f06.jsonl",
+					"line": 63
+				}
+			]
+		},
+		"resp_084188e13807637f016a9ffc5b6c5887d19e50d4ee0c62c08b": {
+			"value": {
+				"thread_id": "01a080ee-0c4f-7700-975d-aa4e6f6e9f06",
+				"usage": {
+					"input_tokens": 34715,
+					"cached_input_tokens": 34304,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 1038,
+					"reasoning_output_tokens": 921,
+					"total_tokens": 35753
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-11-19-01a080ee-0c4f-7700-975d-aa4e6f6e9f06.jsonl",
+					"line": 71
+				}
+			]
+		},
+		"resp_084188e13807637f016a9ffc80e40487d1851a54695e2edd3f": {
+			"value": {
+				"thread_id": "01a080ee-0c4f-7700-975d-aa4e6f6e9f06",
+				"usage": {
+					"input_tokens": 36498,
+					"cached_input_tokens": 34560,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 4831,
+					"reasoning_output_tokens": 2588,
+					"total_tokens": 41329
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-11-19-01a080ee-0c4f-7700-975d-aa4e6f6e9f06.jsonl",
+					"line": 88
+				}
+			]
+		},
+		"resp_084188e13807637f016a9ffd160d0087d1a6cb50d328af08c8": {
+			"value": {
+				"thread_id": "01a080ee-0c4f-7700-975d-aa4e6f6e9f06",
+				"usage": {
+					"input_tokens": 41353,
+					"cached_input_tokens": 36352,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 50,
+					"reasoning_output_tokens": 0,
+					"total_tokens": 41403
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-11-19-01a080ee-0c4f-7700-975d-aa4e6f6e9f06.jsonl",
+					"line": 93
+				}
+			]
+		}
+	},
+	"duplicate_records": 0,
+	"outer_calls": {
+		"call_3oR8vlKeI67fleBxKuwuMshm": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_Gduzch7UV5wQsNGJJbKR42eO": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_KB8GLpJb95Uhc2uLzhgcQAEO": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_MWUxcl2Myr3H7fGtxVvuYNsI": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_MJExAKM3Aw5YRioq2JtfKwjg": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_1URTxQOMpyp3NBAaBnvbHJ8y": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_OM3xIgtRns1YKuyuay7iNj8J": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_fINP0VyVNqJpuWiD7OXOvowP": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_lfaBqJAYZJ1eROiYGyF6mPnG": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_0glwrV9zyCdY7MsVOM7HX04w": {
+			"type": "function_call",
+			"name": "spawn_agent",
+			"namespace": "collaboration"
+		},
+		"call_p7IzVGhhePEPh92skclmg7xW": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_ZV7tLaL9aWnNMEN2zbZGE6hc": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_zlXNwdCVOqmYKXNsO9ieqoBk": {
+			"type": "function_call",
+			"name": "send_message",
+			"namespace": "collaboration"
+		},
+		"call_Aad9vgNSYba0tJIhHTC0dUKG": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_Z9EwqGhM8MHPibhA5ulLe06a": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_VInEDXIZm3YkNnKkuYsKaX5u": {
+			"type": "function_call",
+			"name": "send_message",
+			"namespace": "collaboration"
+		},
+		"call_JlLsmCzN1AnlnjiSywSZr9eu": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_w1CBDRMhhjtwXLYRISX68bJ7": {
+			"type": "function_call",
+			"name": "spawn_agent",
+			"namespace": "collaboration"
+		},
+		"call_OoH6KHHwaIjLU4dlRQ0tAUUg": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_HcQ2AfI6nvRt4eABx2ISpS3l": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_K8AsXySXABd0PBfTif753Dqq": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_0gC6XizAs06rjn3lhBxH1BJZ": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_2ZIUSRIs3cKIy36Wlehv6Fu6": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_pRVXCwNtJmvALeBm3nu5LYP8": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_8YKj6zHWbZa46rsaYYIyIzCV": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_mFpXDJXOCvfNfbbsMCr3mNe0": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_1MHfxfCwSoETI0I9dSpuVpQs": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_qVj6Dww0UyZuUgu6WcudOKJu": {
+			"type": "function_call",
+			"name": "send_message",
+			"namespace": "collaboration"
+		},
+		"call_cR7tEZabbK44ARaXwWl6ohG5": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_YA99VVHuzWfkp1u88kroDRFn": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_Bfc9bw6p2ZsIBwLxtRzuB4lw": {
+			"type": "function_call",
+			"name": "send_message",
+			"namespace": "collaboration"
+		},
+		"call_yGq7v0chjwNOaL7WceDub6HL": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_yBjdZH6KdiMPR766jcdmCMWG": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_0bbDHXSN0yhYPiLmDmKuaOSx": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_uoUFKr5EWlCybDhvqmB01kFZ": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_nAvkpSJffVOZf5vJMnCOSDdp": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_786eB59VGFyxmJkvwmDRHqe3": {
+			"type": "function_call",
+			"name": "send_message",
+			"namespace": "collaboration"
+		},
+		"call_1wk1GENrO6CMVJDIKpIE6zzE": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_n8aYT7FehQCAVzHdt1aCELKy": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_OEkMrMwHDioaQR9njF2cJHLW": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_730KnMQ6dEtTPDcsLCHqdilJ": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_47n5vNQRvg7FfLKesDOxCHb0": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_1S2dt7ihIHKicAD785TofuSD": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_PyuXiwx5O9qGrU3GCxT3znAL": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_lQYjzL8xQlmnKpuhAMNLtEsk": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_gcowNpIs377WOhtjU3c7xi13": {
+			"type": "function_call",
+			"name": "send_message",
+			"namespace": "collaboration"
+		},
+		"call_9lomhyQUlbb1QLw1FRe2F6Uz": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_Se9T57Lkm9tbMGKWXim9pNEg": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_pvT4ekSXqjQ0Z1K8x8xUyFzJ": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		}
+	},
+	"models": [
+		"gpt-6-astra"
+	],
+	"efforts": [
+		"max"
+	]
+}

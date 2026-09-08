@@ -44,6 +44,11 @@ def file_hash(path):
 
 def quota_reason(path, launching=False):
 	try:
+		PolicyPath = Path(path).with_name("quota-policy.json")
+		if(PolicyPath.exists()):
+			Policy = read_json(PolicyPath)
+			if(Policy.get("mode") == "DISABLED_BY_USER" and Policy.get("source") == "USER_INSTRUCTION" and Policy.get("instruction")):
+				return None
 		Quota = read_json(path)
 		Age = (datetime.now(timezone.utc) - datetime.fromisoformat(Quota["captured_at"])).total_seconds()
 		if(Age < 0 or Age > (120 if launching else 300)):
@@ -73,7 +78,7 @@ def quota_reason(path, launching=False):
 def session_inventory(home):
 	Sessions = []
 	for Path in sorted((home / "sessions").glob("**/*.jsonl")):
-		Meta, Usage, Models, Efforts, Calls = {}, None, set(), set(), set()
+		Meta, Usage, Models, Efforts, Calls, ForbiddenSkills = {}, None, set(), set(), set(), set()
 		with Path.open(encoding="utf-8") as Stream:
 			for Line in Stream:
 				try:
@@ -92,12 +97,16 @@ def session_inventory(home):
 							Usage = Info["total_token_usage"]
 					elif(Row.get("type") == "response_item" and Payload.get("type") in ["function_call", "custom_tool_call"]):
 						Calls.add(Payload.get("call_id") or Payload.get("id") or Line)
+					elif(Row.get("type") == "response_item" and Payload.get("type") == "message" and Payload.get("role") == "developer"):
+						Text = "\n".join(Block.get("text", "") for Block in Payload.get("content", []) if isinstance(Block, dict))
+						ForbiddenSkills.update(Name for Name in B.REMOTE_PLUGINS_OFF if "- " + Name + ":" in Text)
 				except (json.JSONDecodeError, TypeError):
 					continue
 		Sessions.append(dict(id=Meta.get("id"), source=Meta.get("source"), path=str(Path),
 			models=sorted(Models), efforts=sorted(Efforts), token_usage=Usage,
 			token_usage_scope="FILE_CUMULATIVE_UNDEDUPLICATED",
-			outer_tool_calls=len(Calls), response_count=None, aggregate_active_seconds=None))
+			outer_tool_calls=len(Calls), response_count=None, aggregate_active_seconds=None,
+			forbidden_skill_metadata=sorted(ForbiddenSkills)))
 	return Sessions
 
 
@@ -109,6 +118,8 @@ def assert_sealed(root, task, arm):
 		raise RuntimeError("runner changed after seal")
 	if(Seal["manifest_sha256"] != file_hash(ManifestPath) or task not in Seal["tasks"]):
 		raise RuntimeError("unsealed task or changed manifest")
+	if("quota_policy_sha256" in Seal and file_hash(root / "control/quota-policy.json") != Seal["quota_policy_sha256"]):
+		raise RuntimeError("changed user quota policy")
 	if(Manifest["platform"] != "linux" or file_hash(Manifest["binary"]) != Manifest["binary_sha256"]):
 		raise RuntimeError("wrong platform or changed CLI")
 	if(file_hash(root / "control/model-catalog.json") != Manifest["model_catalog_sha256"] or file_hash(Manifest["python"]) != Manifest["python_sha256"]):
@@ -195,6 +206,8 @@ def supervise(command, cwd, env, output, state, quota, budget):
 					persist(output / "sessions-live.json", Inventory)
 					if(any(set(Item["models"]) - {"gpt-6-astra"} or set(Item["efforts"]) - {"max"} for Item in Inventory)):
 						Reason = "MODEL_OR_EFFORT_MISMATCH"
+					if(any(Item["forbidden_skill_metadata"] for Item in Inventory)):
+						Reason = "FORBIDDEN_SKILL_METADATA"
 					LastInventory = time.monotonic()
 				if((output / "STOP").exists()):
 					Reason = "COORDINATOR_STOP"
@@ -285,7 +298,7 @@ def run(args):
 		Efforts = {Effort for Item in Inventory for Effort in Item["efforts"]}
 		State["identity_verdict"] = "PASS" if Models == {Manifest["model"]} and Efforts == {Manifest["effort"]} else "UNKNOWN_OR_MISMATCH"
 		if(State["stop_reason"]):
-			State["status"] = {"WALL_BUDGET": "BUDGET_EXHAUSTED", "INFRA_TOOL_RUNTIME": "INFRA_EXIT"}.get(State["stop_reason"], "PAUSED")
+			State["status"] = {"WALL_BUDGET": "BUDGET_EXHAUSTED", "INFRA_TOOL_RUNTIME": "INFRA_EXIT", "FORBIDDEN_SKILL_METADATA": "INFRA_EXIT"}.get(State["stop_reason"], "PAUSED")
 		elif(State["exit_code"] != 0):
 			State["status"] = "INFRA_EXIT"
 		else:

@@ -1,0 +1,25 @@
+{
+	"schema_version": 1,
+	"dispatch_id": "q9-A",
+	"created_at": "2026-09-08T12:02:31.236212+00:00",
+	"root_thread_id": "01a080e5-fe27-7231-b1e0-ad74e3d92501",
+	"active_seconds": 950.6715293199959,
+	"segments": [
+		{
+			"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/run/segment-01",
+			"active_seconds": 950.6715293199959,
+			"exit_code": -9,
+			"stop_reason": "QUOTA_SNAPSHOT_STALE"
+		}
+	],
+	"status": "PAUSED",
+	"updated_at": "2026-09-08T12:18:21.910470+00:00",
+	"runner_pid": 186385,
+	"process_pid": 186393,
+	"process_start_ticks": "12547181",
+	"boot_id": "c22695bd-fbd7-4f23-a329-d67445f00ddc",
+	"current_segment": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/run/segment-01",
+	"exit_code": -9,
+	"stop_reason": "QUOTA_SNAPSHOT_STALE",
+	"identity_verdict": "PASS"
+}

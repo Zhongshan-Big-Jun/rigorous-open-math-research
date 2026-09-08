@@ -17,6 +17,7 @@ import zipfile
 REPO = Path(__file__).resolve().parents[1]
 BASELINE = "516037f14f340107da8448b6e42df17317d9fc63"
 CANDIDATE = "6d6d739645981a5a2970b5faa26adda49a724113"
+REMOTE_PLUGINS_OFF = ["deep-research-work", "openai-templates", "plugin-management"]
 COMMON = """Solve the task below using only its statement, this workspace, and your available tools.
 Do not inspect other projects, prior solutions, sessions, memory or internet sources.
 Available subagents may be used within the configured limit; their work shares your wall budget.
@@ -130,7 +131,7 @@ def configure(home, work, binary, plugins, python, auth_source=None):
 	Rows.extend(json.dumps(Path, ensure_ascii=False) + ' = "read"' for Path in ReadPaths)
 	OriginalHome = Path(auth_source).parent if auth_source else Path.home() / ".codex"
 	Denied = [REPO.parent, OriginalHome, Path.home() / ".codex", Campaign / "control",
-		home / "auth.json", home / "sessions"]
+		home / "auth.json", home / "sessions", home / "plugins/cache/openai-curated-remote"]
 	Denied.extend(Path for Path in Campaign.parent.iterdir() if Path.is_dir() and Path != Campaign)
 	TaskNames = {"t1", "t2", "candidate", work.parent.parent.name}
 	TaskNames.update(Item.name for Item in Campaign.iterdir() if Item.is_dir() and Item.name != "control")
@@ -151,6 +152,8 @@ def configure(home, work, binary, plugins, python, auth_source=None):
 			'source = ' + json.dumps(Snapshot.as_posix())])
 		for Plugin in ["math-research-workflow", "rigorous-open-math-research", "manage-math-research-program", "lean-verify"]:
 			Rows.extend(['[plugins.' + json.dumps(Plugin + "@math-research") + ']', 'enabled = true'])
+	for Plugin in REMOTE_PLUGINS_OFF:
+		Rows.extend(['[plugins.' + json.dumps(Plugin + "@openai-curated-remote") + ']', 'enabled = false'])
 	write_text(home / "config.toml", "\n".join(Rows) + "\n")
 
 
@@ -198,6 +201,9 @@ def prepare(args):
 		for Arm in ("A", "B", "C"):
 			Base, Home, Work = arm_paths(Root, Task, Arm)
 			Home.mkdir(parents=True, exist_ok=False)
+			if(getattr(args, "remote_cache_source", None)):
+				shutil.copytree(args.remote_cache_source, Home / "plugins/cache/openai-curated-remote")
+			write_text(Home / "plugins/cache/openai-curated-remote/benchmark-denied-canary.txt", "REMOTE_PLUGIN_CACHE_MUST_BE_UNREADABLE\n")
 			(Work / "tmp").mkdir(parents=True, exist_ok=False)
 			(Work / "TASK.md").write_bytes(TaskBytes)
 			Prefix = "Use the installed math-research-workflow skill and its research dependencies for this task.\n" if Arm != "C" else ""
@@ -229,6 +235,8 @@ def probe(args):
 		Number += 1
 		Output = Base / f"preflight-{Number:02d}"
 	Output.mkdir(exist_ok=False)
+	RemoteCanary = Home / "plugins/cache/openai-curated-remote/benchmark-denied-canary.txt"
+	write_text(RemoteCanary, "REMOTE_PLUGIN_CACHE_MUST_BE_UNREADABLE\n")
 	Prompt = command([Binary, "-C", Work, "debug", "prompt-input", "PREFLIGHT_ONLY_NO_MATHEMATICS"], Work, Env)
 	(Output / "prompt-input.json").write_bytes(Prompt)
 	Decoded = Prompt.decode("utf-8")
@@ -237,7 +245,7 @@ def probe(args):
 	write_text(Canary, "THIS_FILE_MUST_BE_UNREADABLE_TO_THE_SOLVER\n")
 	Sibling = Root / args.task / ("a" if args.arm == "C" else "c") / "work/TASK.md"
 	Outside = Root / "control" / (f"write-probe-{args.task}-{args.arm}.txt")
-	PluginFiles = sorted((Home / "plugins/cache").glob("*/*/*/skills/*/SKILL.md"))
+	PluginFiles = sorted((Home / "plugins/cache/math-research").glob("*/*/skills/*/SKILL.md"))
 	from urllib.parse import urlsplit
 	Proxy = urlsplit(Manifest["proxy"])
 	Endpoint = (Proxy.hostname, Proxy.port)
@@ -252,7 +260,7 @@ try:
 except OSError:
 	Result['workspace_write'] = False
 for Name, Path in """ + repr(dict(foreign=str(Canary), project=str(Path(args.project) / "AGENTS.md"),
-		auth=str(Home / "auth.json"), sibling=str(Sibling))) + """.items():
+		auth=str(Home / "auth.json"), sibling=str(Sibling), forbidden_plugin=str(RemoteCanary))) + """.items():
 	try:
 		pathlib.Path(Path).read_bytes()
 		Result[Name + '_read_blocked'] = False
@@ -284,11 +292,12 @@ print(json.dumps(Result))
 		config_sha256=sha256((Home / "config.toml").read_bytes()),
 		binary_sha256=Manifest["binary_sha256"],
 		workflow_visible="math-research-workflow" in Decoded,
+		forbidden_skills_visible=any(Plugin in Decoded for Plugin in REMOTE_PLUGINS_OFF),
 		legacy_project_visible="KP-DET" in Decoded or "Q_quad" in Decoded,
 		foreign_session_visible="01a06f46-dd03-7c83-9267-32048412c359" in Decoded)
 	Checks["verdict"] = "PASS" if all(Checks[Key] for Key in ["workspace_write", "foreign_read_blocked",
 		"project_read_blocked", "auth_read_blocked", "sibling_read_blocked", "outside_write_blocked",
-		"network_blocked", "plugin_files_readable"]) and len(PluginFiles) == (4 if args.arm != "C" else 0) and not Checks["legacy_project_visible"] and not Checks["foreign_session_visible"] and Checks["workflow_visible"] == (args.arm != "C") else "FAIL"
+		"network_blocked", "plugin_files_readable", "forbidden_plugin_read_blocked"]) and len(PluginFiles) == (4 if args.arm != "C" else 0) and not Checks["legacy_project_visible"] and not Checks["foreign_session_visible"] and not Checks["forbidden_skills_visible"] and Checks["workflow_visible"] == (args.arm != "C") else "FAIL"
 	write_json(Output / "summary.json", Checks)
 	shutil.copyfile(Check, Output / "sandbox_probe.py")
 	for Owned in [Check, Work / "sandbox-write.txt", Outside]:
@@ -425,6 +434,7 @@ def main():
 	Parser.add_argument("--project", required=True)
 	Parser.add_argument("--task", default="t1")
 	Parser.add_argument("--spec", help="Frozen custom task paths, budgets and schedules (prepare only).")
+	Parser.add_argument("--remote-cache-source", help="Identical disabled account-plugin cache for isolation testing (prepare only).")
 	Parser.add_argument("--arm", choices=["A", "B", "C"], default="C")
 	Parser.add_argument("--python", default=sys.executable)
 	Parser.add_argument("--binary")

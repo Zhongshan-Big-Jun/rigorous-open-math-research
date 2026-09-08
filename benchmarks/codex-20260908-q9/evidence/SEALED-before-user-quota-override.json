@@ -2,7 +2,7 @@
 	"schema_version": 1,
 	"sealed_at": "2026-09-08T12:02:04.640654+00:00",
 	"manifest_sha256": "76aa61b94a1fca358cac43dc5d9f05c948cff76029a41e449521c01111e50162",
-	"runner_sha256": "71480489b1102d1d77792aa1d1a315d42d1213cb13f854a45201097618dd7278",
+	"runner_sha256": "c74e7c0d66a8210751836269b81f1ee833ff8a9112236aa118a0d9d883dd396d",
 	"preparation_sha256": "7b6a3041e36acd2a088fdfc4e8a10bf172125e3e91a88991d90d4eed24fe39ab",
 	"audit_runner_sha256": "6447f41a6801fd735df070f1fbb4daee0f1017bf8f890fc7a72238b299bc947a",
 	"preregistration_sha256": "7876a665970690bf618276cee088453f17f90309da62d531e330383eb3b25d83",
@@ -48,9 +48,5 @@
 			]
 		}
 	},
-	"solver_sessions_before_seal": 0,
-	"quota_policy_sha256": "7f53651cd108052b78e5570737e0835aeb9a9077b6560d6354d379f1153bb40d",
-	"previous_seal_sha256": "3a3f3b0c68cfb3065b5c8c5efb543a404318b0c7c61007d34e6417d4f4d53c0b",
-	"user_quota_override_at": "2026-09-08T12:38:27.641715+00:00",
-	"user_quota_override_sha256": "f04794eecc5d086ac01e1e4b14e0d1ded4dccdf53531ad6c2a06f1983ce3a99b"
+	"solver_sessions_before_seal": 0
 }

@@ -14,6 +14,27 @@ import benchmark_runner as R
 
 
 class RunnerTests(unittest.TestCase):
+	def test_unexpected_child_skill_metadata_is_visible_to_monitor(self):
+		with tempfile.TemporaryDirectory() as Directory:
+			Home = Path(Directory)
+			(Home / "sessions").mkdir()
+			Rows = [dict(type="session_meta", payload=dict(id="synthetic-child")),
+				dict(type="response_item", payload=dict(type="message", role="developer", content=[dict(type="input_text", text="- deep-research-work:deep-research: unexpected extra skill")]))]
+			(Home / "sessions/child.jsonl").write_text("\n".join(json.dumps(Row) for Row in Rows))
+			self.assertEqual(R.session_inventory(Home)[0]["forbidden_skill_metadata"], ["deep-research-work"])
+
+	def test_explicit_user_disables_quota_gates_without_inventing_usage(self):
+		with tempfile.TemporaryDirectory() as Directory:
+			Quota = Path(Directory) / "quota.json"
+			Policy = Quota.with_name("quota-policy.json")
+			R.persist(Policy, dict(mode="DISABLED_BY_USER", source="USER_INSTRUCTION", instruction="Quota is sufficient; ignore quota monitoring."))
+			self.assertIsNone(R.quota_reason(Quota, launching=True))
+			self.assertFalse(Quota.exists())
+			R.persist(Quota, dict(captured_at="2020-01-01T00:00:00+00:00", windows=[]))
+			self.assertIsNone(R.quota_reason(Quota))
+			Policy.unlink()
+			self.assertEqual(R.quota_reason(Quota), "QUOTA_SNAPSHOT_STALE")
+
 	def test_custom_task_registration_and_legacy_budgets(self):
 		with tempfile.TemporaryDirectory() as Directory:
 			Root = Path(Directory)

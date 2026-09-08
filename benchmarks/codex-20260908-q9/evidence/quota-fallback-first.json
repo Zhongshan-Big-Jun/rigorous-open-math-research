@@ -1,0 +1,18 @@
+{
+	"captured_at": "2026-09-08T12:18:16.945+00:00",
+	"limit_id": "codex",
+	"plan_type": "pro",
+	"windows": [
+		{
+			"window_duration_mins": 10080,
+			"remaining_percent": 96.0,
+			"resets_at": 1789457409
+		}
+	],
+	"spend_control_reached": null,
+	"source": "RETURNED_CODEX_RATE_LIMIT_EVENT",
+	"source_path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T20-11-19-01a080ee-0c4f-7700-975d-aa4e6f6e9f06.jsonl",
+	"source_line": 95,
+	"source_line_sha256": "1d7b0687c6278402b4987cddf10a02d0d5046396de16f1efda295f38ab152353",
+	"desktop_same_account": true
+}

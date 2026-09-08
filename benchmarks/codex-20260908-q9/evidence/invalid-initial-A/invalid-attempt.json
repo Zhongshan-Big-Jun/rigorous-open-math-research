@@ -1,0 +1,11 @@
+{
+	"recorded_at": "2026-09-08T12:47:14.440752+00:00",
+	"verdict": "INFRASTRUCTURE_INVALID",
+	"reason": "Two child developer inputs included unregistered account-level deep-research-work and plugin-management skill metadata after remote cache hydration.",
+	"root_thread_id": "01a080e5-fe27-7231-b1e0-ad74e3d92501",
+	"active_seconds": 950.6715293199959,
+	"mathematical_score": null,
+	"mathematical_quality_used_for_exclusion": false,
+	"replacement": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC-r1",
+	"zero_scored_runs": true
+}

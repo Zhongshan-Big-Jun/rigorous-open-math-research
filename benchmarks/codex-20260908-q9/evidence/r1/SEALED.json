@@ -1,0 +1,55 @@
+{
+	"schema_version": 1,
+	"sealed_at": "2026-09-08T12:53:53.779585+00:00",
+	"manifest_sha256": "42462c9f9a592d8689c5e6fec0b38ee50f267753244e1f67d05e4f2ec0eb44f4",
+	"runner_sha256": "6353460a4960ae85de381a4af2cfe2a0e3e661873377f763adab1d3566fe2f9b",
+	"preparation_sha256": "f0b0e712b15c2c2e9963f3ccb5b01d095d77c5e8fe99c2a3cee7f21944a0d312",
+	"audit_runner_sha256": "6447f41a6801fd735df070f1fbb4daee0f1017bf8f890fc7a72238b299bc947a",
+	"preregistration_sha256": "7876a665970690bf618276cee088453f17f90309da62d531e330383eb3b25d83",
+	"contract_review_sha256": "30cc46652a08268c435b8d7dd610002e1d6f3afa92c1b3efc3ae2b5dc3ce981c",
+	"task_spec_sha256": "2638e5e413c2c2730ebbdf22e15be3a59b6d706db472f94345798bcb4b760132",
+	"quota_policy_sha256": "7f53651cd108052b78e5570737e0835aeb9a9077b6560d6354d379f1153bb40d",
+	"replacement_amendment_sha256": "038a9d79ccbe4cbb46a4dc054bd6cdc672fe8c415cb63ba5727ea416bc1ea5d9",
+	"invalid_initial_attempt_sha256": "9dba091922530fd59af3b6e4e05ebf97755aafa12a2b27f3cf3fe1642d9ee933",
+	"tasks": {
+		"q9": {
+			"A": [
+				{
+					"kind": "filesystem",
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC-r1/q9/a/preflight-01/summary.json",
+					"sha256": "e0708f9262ffe2cc28b6ffb9525f69baf4602e23d0a3dd79b0151d17853cbc33"
+				},
+				{
+					"kind": "tools",
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC-r1/q9/a/tools-rqgu64np/summary.json",
+					"sha256": "395c71172bc1e799d98adf0fb98db38b8596d3a6f7e85ee90181243f4dd65bc3"
+				}
+			],
+			"C": [
+				{
+					"kind": "filesystem",
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC-r1/q9/c/preflight-01/summary.json",
+					"sha256": "2ba3f9f70f0f998d55a5fbedf4205c5cda6b423eb2da3f0e1265dc006f8ce9ab"
+				},
+				{
+					"kind": "tools",
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC-r1/q9/c/tools-asyw6inu/summary.json",
+					"sha256": "25664855d1ebb83fc31a21bd69024108434fa5115621a955b343ebf17b87fcb5"
+				}
+			],
+			"B": [
+				{
+					"kind": "filesystem",
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC-r1/q9/b/preflight-01/summary.json",
+					"sha256": "144e1bd8d638d3bc87b245c3d3968f306bfb8ac855fd57f9b3020d52f4d6f973"
+				},
+				{
+					"kind": "tools",
+					"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC-r1/q9/b/tools-kv9qr_8q/summary.json",
+					"sha256": "683834eb22176f4c536ebfe7e5f29a460bd66b5aefebad0f0a12759bee9742cf"
+				}
+			]
+		}
+	},
+	"solver_sessions_before_seal": 0
+}
