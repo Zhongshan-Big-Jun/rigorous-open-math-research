@@ -1,0 +1,18 @@
+{
+	"recorded_at": "2026-09-08T07:33:14.684727+00:00",
+	"previous_runner_sha256": "2f3a96e4b635247f90fec91e41091cec6268a4513986eba0c410165d49807577",
+	"runner_sha256": "cd15dea943620c6b27ddb08b72f6251fc5ab80a9d5fe3318e3e22a6313b2c1cd",
+	"previous_seal_sha256": "7cc6b7b7c8b32b9c57a01663746e52ab4deeb5959fe69a222c69173c8c1a7466",
+	"seal_sha256": "c24da3d9acbd86c26554f79799e11fd8449c2b95a0999b30e72e1ceb8a34eab8",
+	"manifest_unchanged": true,
+	"treatment_gates_unchanged": true,
+	"active_account_changed": true,
+	"plan_observed": "pro",
+	"reported_window_duration_mins": [
+		10080
+	],
+	"five_hour_window": null,
+	"runner_test_count": 6,
+	"extra_budget_seconds": 0,
+	"paused_state_sha256": "303879254a1326ee6d072edd02299a30988fa710c14b59ecc4eec38862a42c75"
+}

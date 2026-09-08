@@ -51,6 +51,38 @@ class RunnerTests(unittest.TestCase):
 			with self.assertRaises(RuntimeError):
 				R.supervise([sys.executable, "-c", "pass"], Root, {}, Root, State, Quota, First)
 
+	def test_reported_windows_support_weekly_only_quota(self):
+		with tempfile.TemporaryDirectory() as Directory:
+			Path = R.Path(Directory) / "quota.json"
+			Data = dict(captured_at=R.utc_now(), limit_id="codex", windows=[dict(window_duration_mins=10080, remaining_percent=100)])
+			R.persist(Path, Data)
+			self.assertIsNone(R.quota_reason(Path, launching=True))
+			Data["windows"].append(dict(window_duration_mins=300, remaining_percent=0))
+			R.persist(Path, Data)
+			self.assertEqual(R.quota_reason(Path), "QUOTA_EXHAUSTED")
+			Data["windows"].pop()
+			Data["spend_control_reached"] = True
+			R.persist(Path, Data)
+			self.assertEqual(R.quota_reason(Path), "QUOTA_EXHAUSTED")
+			Data["spend_control_reached"] = False
+			Data["captured_at"] = (datetime.now(timezone.utc) - timedelta(seconds=301)).isoformat()
+			R.persist(Path, Data)
+			self.assertEqual(R.quota_reason(Path), "QUOTA_SNAPSHOT_STALE")
+
+	def test_missing_or_invalid_windows_are_unknown(self):
+		with tempfile.TemporaryDirectory() as Directory:
+			Path = R.Path(Directory) / "quota.json"
+			Invalid = [None, [], [None], [dict(window_duration_mins=10080, remaining_percent=None)],
+				[dict(window_duration_mins=0, remaining_percent=100)],
+				[dict(window_duration_mins=10080, remaining_percent=True)],
+				[dict(window_duration_mins=10080, remaining_percent=float("nan"))]]
+			for Windows in Invalid:
+				with self.subTest(windows=Windows):
+					R.persist(Path, dict(captured_at=R.utc_now(), limit_id="codex", windows=Windows))
+					self.assertEqual(R.quota_reason(Path), "QUOTA_UNKNOWN")
+			R.persist(Path, dict(captured_at=R.utc_now(), limit_id="codex_bengalfox", windows=[dict(window_duration_mins=300, remaining_percent=100)]))
+			self.assertEqual(R.quota_reason(Path), "QUOTA_UNKNOWN")
+
 	def test_lock_excludes_duplicate_dispatch(self):
 		with tempfile.TemporaryDirectory() as Directory:
 			with (Path(Directory) / "lock").open("a") as First, (Path(Directory) / "lock").open("a") as Second:

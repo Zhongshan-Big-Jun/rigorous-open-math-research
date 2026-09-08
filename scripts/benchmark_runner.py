@@ -48,7 +48,22 @@ def quota_reason(path, launching=False):
 		Age = (datetime.now(timezone.utc) - datetime.fromisoformat(Quota["captured_at"])).total_seconds()
 		if(Age < 0 or Age > (120 if launching else 300)):
 			return "QUOTA_SNAPSHOT_STALE"
-		if(Quota["five_hour_remaining"] <= 0 or Quota["weekly_remaining"] <= 0):
+		if("windows" in Quota):
+			Windows = Quota["windows"]
+			if(Quota.get("limit_id") != "codex" or not isinstance(Windows, list) or not Windows):
+				return "QUOTA_UNKNOWN"
+			Remaining = []
+			for Window in Windows:
+				Duration = Window["window_duration_mins"]
+				Value = Window["remaining_percent"]
+				if(type(Duration) is not int or Duration <= 0 or type(Value) not in [int, float] or not 0 <= Value <= 100):
+					return "QUOTA_UNKNOWN"
+				Remaining.append(Value)
+		else:
+			Remaining = [Quota["five_hour_remaining"], Quota["weekly_remaining"]]
+			if(any(type(Value) not in [int, float] or not 0 <= Value <= 100 for Value in Remaining)):
+				return "QUOTA_UNKNOWN"
+		if(Quota.get("spend_control_reached") is True or any(Value <= 0 for Value in Remaining)):
 			return "QUOTA_EXHAUSTED"
 	except (OSError, ValueError, KeyError, TypeError):
 		return "QUOTA_UNKNOWN"

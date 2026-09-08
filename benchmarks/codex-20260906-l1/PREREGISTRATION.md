@@ -1,5 +1,26 @@
 # L1 old/new/blank regression protocol
 
+## Quota-window and active-account amendment, 2026-09-08
+
+Before resuming T2 A after 1022.394337 active seconds, the account tool reported
+a Pro plan with a single primary 10080-minute window and a null secondary
+window. Private comparison also confirmed that the desktop's active account
+differs from the account copied at the original launch. The user requested
+continuation through completion of this round. Subsequent calls use the current
+desktop account, with credential-free receipts recording the account change.
+No reset credit is redeemed. Account and plan changes are additional confounds;
+these runs cannot support a causal plugin-only performance claim.
+
+The runner now checks nonempty, explicitly reported Codex windows by their
+actual duration. It does not invent a five-hour percentage or interpret null
+as zero or unlimited. Invalid/empty windows remain QUOTA_UNKNOWN; any reported
+exhausted window or spend block stops work. Snapshot freshness, single-writer
+locking, model/effort checks, task/plugin/tool hashes, and the original shared
+wall remainder are preserved. Six deterministic runner tests include weekly-only
+windows, exhaustion, malformed data, other-model buckets, and stale snapshots.
+The preceding seal and runner hash are retained before binding this amendment.
+Completed runs are not rerun, and there is no new mathematical attempt.
+
 Date: 2026-09-06. Status: T1_REPLACEMENT_R1_SEALED_WAITING_QUOTA.
 Task bytes and treatment commits are selected. T1 uses the Linux CLI 0.153.4
 and a pinned bundled model catalog; its three arms passed filesystem and

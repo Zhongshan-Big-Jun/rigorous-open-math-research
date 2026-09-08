@@ -22,6 +22,14 @@ stages: B used 48.0% more uncached input and 11.5% less active time. Blank C has
 the lowest observed cost at equal proof quality. Machine-readable totals, ratios
 and unknown fields are in [comparison-t1.json](comparison-t1.json).
 
+For the solver-cost target, the T1 B/A uncached-input ratio is exactly
+244895/123374. Using the usual median of two finite values, any nonnegative T2
+ratio leaves the two-task median at least 244895/246748 = 0.992490314, above
+the 0.75 target. Thus the observed solver uncached-input target cannot be met
+by this two-task campaign. This is a cost-scope diagnostic, not a general or
+causal plugin verdict; T2 A and C remain necessary for the registered quality
+and blank-control comparison. See [exact calculation](solver-cost-feasibility.json).
+
 C proved the exact uniform polynomial root count and simplicity, with all
 requested n=1, endpoint, midpoint and R=1 checks. The independent auditor
 checked 17 claims and retained an additional exact algebra checker. The
@@ -149,3 +157,12 @@ T2 B's actual dispatch-to-external-audit-return elapsed time was 56197.786263
 seconds, including quota waits and coordinator work. T2 A started at
 2026-09-08T04:57:17Z with fresh same-account private authentication. A and C
 remain unscored, so no complete T2 treatment comparison is available yet.
+
+A exhausted the launch account's quota after 1022.394337 active seconds, before
+writing answer.md. At continuation, the desktop selected a different Pro account
+whose quota response contains only a seven-day window. The recorded resource
+amendment adapts the runner to the reported windows, preserves the old seal,
+and retains A's 777.605663 seconds of remaining allowance. The current account
+is used from the same-session continuation at 2026-09-08T07:33:37Z. Account/plan
+changes add another performance confound. Task, model/effort, plugin snapshots,
+tools and scoring are unchanged; no quota percentages are converted to tokens.

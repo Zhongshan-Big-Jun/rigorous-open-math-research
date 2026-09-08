@@ -1,0 +1,23 @@
+{
+	"recorded_at": "2026-09-08T05:05:39.194514+00:00",
+	"source": "benchmarks/codex-20260906-l1/comparison-t1.json",
+	"source_sha256": "ad197b94db282e1f2c3188986d29c1e7a8f5d0c02482fb6b12d3bd886723ad3f",
+	"scope": "Two registered task-level solver ratios, retaining all observed interruption costs.",
+	"median_definition": "For two finite ratios r1 and r2, median=(r1+r2)/2.",
+	"t1_ratio": {
+		"numerator": 244895,
+		"denominator": 123374,
+		"value": 1.9849806280091429
+	},
+	"t2_ratio_constraint": "Nonnegative when defined; an undefined denominator does not demonstrate target attainment.",
+	"two_task_median_lower_bound": {
+		"numerator": 244895,
+		"denominator": 246748,
+		"value": 0.9924903140045714
+	},
+	"target_maximum": 0.75,
+	"observed_solver_uncached_target_attainable": false,
+	"full_delivery_scope": "This bound concerns solver ratios only; external audit costs have their separate reported scope.",
+	"decision": "Complete registered T2 A and C for proof-quality and blank-control comparison. Do not replace attempts or retune frozen treatments.",
+	"causal_plugin_effect_established": false
+}

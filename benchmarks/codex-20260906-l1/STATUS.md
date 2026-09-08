@@ -49,6 +49,18 @@ Full B delivery: 2425.167273 active seconds, 415542 uncached input, 86552 output
 T2 A started at 2026-09-08T04:57:17Z after refreshing private same-account auth.
 Root session: 01a07f60-ad98-7b10-b036-3be86f11c5dc. Inspect t2/a/run/state.json
 before any dispatch; it has the original 1800-second solver allowance.
+T2 A paused at 2026-09-08T05:14:19Z after 1022.394337 seconds because the live
+account snapshot reached zero. The saved Fourier and kernel estimates remain
+in its workspace, but answer.md had not yet been written. The next continuation
+has 777.605663 seconds remaining, not a new 1800-second allowance.
+The desktop now selects a different Pro account with one reported seven-day
+Codex window. The preregistration amendment records this resource confound and
+the runner's support for actual reported window durations. The old seal remains
+in control/SEALED-before-quota-windows.json. No five-hour value is fabricated.
+A resumed the same root session at 2026-09-08T07:33:37Z using the currently
+selected desktop account. Its quota snapshot reports one seven-day window,
+100% remaining. There is no reported five-hour value. The changed runner hash
+and unchanged treatment gates are bound in evidence/quota-window-amendment.json.
 
 ## Current verified execution path
 
@@ -95,7 +107,9 @@ before any dispatch; it has the original 1800-second solver allowance.
 1. Read this file, git status and r1 control/SEALED.json. Do not prepare another
    campaign or reinstall the plugin. Inspect any run/state.json before dispatch.
 2. Obtain a fresh account snapshot. Update r1 control/quota.json with captured_at
-   (UTC ISO timestamp), five_hour_remaining and weekly_remaining. These are
+   (UTC ISO timestamp), limit_id=codex, and nonempty windows containing each
+   actually returned window_duration_mins and remaining_percent. Preserve the
+   plan and any spend block; do not assume primary means five hours. These are
    account-level data, not treatment costs. The user explicitly removed quota reserves. Launch with positive available
    quota; stop on actual exhaustion, stale snapshots or the fixed wall cap.
 3. All T1 solvers/audits and T2 B solver/audit are complete. Do not repeat them.
