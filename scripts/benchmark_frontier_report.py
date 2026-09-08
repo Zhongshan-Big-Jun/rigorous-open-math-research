@@ -38,6 +38,24 @@ def frozen_checks(base):
 	return dict(verdict="PASS", files_verified=len(Hashes), owned_process_exited=True)
 
 
+def session_identities(home):
+	Sessions = []
+	for File in sorted((home / "sessions").glob("**/*.jsonl")):
+		Metadata = []
+		for Line in File.read_text(encoding="utf-8").splitlines():
+			Row = R.json.loads(Line)
+			if(Row.get("type") == "session_meta"):
+				Metadata.append(Row["payload"])
+		if(not Metadata or not Metadata[0].get("id") or not File.stem.endswith("-" + Metadata[0]["id"])):
+			raise RuntimeError("session identity does not match its rollout filename")
+		Sessions.append(dict(id=Metadata[0]["id"], source=Metadata[0].get("source"),
+			path=str(File), sha256=R.file_hash(File), raw_metadata_ids=[Item.get("id") for Item in Metadata]))
+	Threads = {Item["id"] for Item in Sessions}
+	Children = {Item["id"] for Item in Sessions if isinstance(Item["source"], dict) and "subagent" in Item["source"]}
+	return dict(rule="FIRST_SESSION_METADATA_BOUND_TO_ROLLOUT_FILENAME", sessions=Sessions,
+		thread_count=len(Threads), child_thread_count=len(Children))
+
+
 def export_stage(campaign, task, arm, phase, output):
 	Manifest = R.read_json(campaign / "control/manifest.json")
 	Mapping = None
@@ -60,6 +78,13 @@ def export_stage(campaign, task, arm, phase, output):
 		raise RuntimeError("observed forbidden skill metadata; stage is not scoreable")
 	Stage = output / "evidence" / f"{task}-{arm}-{phase}"
 	Stage.mkdir(parents=True, exist_ok=True)
+	Identities = session_identities(Home)
+	if(set(Summary["per_thread"]) - {Item["id"] for Item in Identities["sessions"]}):
+		raise RuntimeError("usage contains an unbound thread identity")
+	IdentityFile = Stage / "session-identities.json"
+	if(IdentityFile.exists() and R.read_json(IdentityFile) != Identities):
+		raise RuntimeError("session identities changed after export")
+	R.persist(IdentityFile, Identities)
 	for Name in ["state.json", "sessions.json", "frozen-hashes.json", "usage-summary.json", "usage-records.json", "last-message.txt"]:
 		if((Base / "run" / Name).is_file()):
 			copy_immutable(Base / "run" / Name, Stage / Name)
@@ -70,7 +95,8 @@ def export_stage(campaign, task, arm, phase, output):
 	if(Mapping):
 		copy_immutable(campaign / f"control/audit-{task}-{arm}.json", Stage / "input-binding.json")
 	R.persist(Stage / "checks.json", dict(Checks, recorded_at=R.utc_now(), task_sha256=R.file_hash(Frozen / "TASK.md")))
-	return dict(phase=phase, arm=arm, checks=Checks, usage=Summary)
+	return dict(phase=phase, arm=arm, checks=Checks, usage=Summary,
+		thread_count=Identities["thread_count"], child_thread_count=Identities["child_thread_count"])
 
 
 def check_audit(data):
@@ -94,9 +120,11 @@ def compare(campaign, task, output):
 	Arms, SeenResponses, Stages = {}, set(), []
 	for Arm in Manifest["schedule"][task]:
 		Collected = {}
+		ThreadCounts = {}
 		for Phase in ["solver", "audit"]:
 			Result = export_stage(campaign, task, Arm, Phase, output)
 			Collected[Phase] = Result["usage"]
+			ThreadCounts[Phase] = dict(threads=Result["thread_count"], children=Result["child_thread_count"])
 			Stage = output / "evidence" / f"{task}-{Arm}-{Phase}"
 			Records = R.read_json(Stage / "usage-records.json")["records"]
 			if(SeenResponses.intersection(Records)):
@@ -110,7 +138,7 @@ def compare(campaign, task, output):
 			Values = [Collected[Phase]["returned_usage"][Key] for Phase in ["solver", "audit"]]
 			Full[Key] = sum(Values) if None not in Values else None
 		Full["active_seconds"] = sum(Item["root_active_wall_seconds"] for Item in Collected.values())
-		Arms[Arm] = dict(solver=Collected["solver"], external_audit=Collected["audit"], full_delivery=Full,
+		Arms[Arm] = dict(solver=Collected["solver"], external_audit=Collected["audit"], full_delivery=Full, observed_threads=ThreadCounts,
 			verdict=Verdict["verdict"], target_status=Verdict["target_status"], root_closed=Verdict["root_closed"],
 			score=Verdict["total_score"], scores=Verdict["scores"], proved_new_claims=Verdict["proved_new_claims"],
 			load_bearing_gaps=Verdict["load_bearing_gaps"], first_proof_seconds=None)

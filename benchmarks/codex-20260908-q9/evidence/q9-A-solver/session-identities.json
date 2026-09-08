@@ -1,0 +1,54 @@
+{
+	"rule": "FIRST_SESSION_METADATA_BOUND_TO_ROLLOUT_FILENAME",
+	"sessions": [
+		{
+			"id": "01a0812b-e1b4-7203-a59b-9dff0757e677",
+			"source": "exec",
+			"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC-r2/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T21-18-51-01a0812b-e1b4-7203-a59b-9dff0757e677.jsonl",
+			"sha256": "0c0fb5fa0098a8c9afa8df525866720a729750ef60310257d2539013763b55f5",
+			"raw_metadata_ids": [
+				"01a0812b-e1b4-7203-a59b-9dff0757e677"
+			]
+		},
+		{
+			"id": "01a0812f-fc7f-7ba2-a4fa-76b25a0af688",
+			"source": {
+				"subagent": {
+					"thread_spawn": {
+						"parent_thread_id": "01a0812b-e1b4-7203-a59b-9dff0757e677",
+						"depth": 1,
+						"agent_path": "/root/stronger_bound",
+						"agent_nickname": "Planck",
+						"agent_role": null
+					}
+				}
+			},
+			"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC-r2/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T21-23-20-01a0812f-fc7f-7ba2-a4fa-76b25a0af688.jsonl",
+			"sha256": "407554844ba58a1b207a04d57f75bbd7b39a9abcb07cb21fa209d77871db1258",
+			"raw_metadata_ids": [
+				"01a0812f-fc7f-7ba2-a4fa-76b25a0af688"
+			]
+		},
+		{
+			"id": "01a08134-d57c-7ff2-98f0-7db1c8dc3c93",
+			"source": {
+				"subagent": {
+					"thread_spawn": {
+						"parent_thread_id": "01a0812b-e1b4-7203-a59b-9dff0757e677",
+						"depth": 1,
+						"agent_path": "/root/counterexample",
+						"agent_nickname": "Bacon",
+						"agent_role": null
+					}
+				}
+			},
+			"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC-r2/q9/a/home/sessions/2026/09/08/rollout-2026-09-08T21-28-38-01a08134-d57c-7ff2-98f0-7db1c8dc3c93.jsonl",
+			"sha256": "26c6fd5ea5f44d915b30f71c91142a4b74ba33b6ea3a9dbda2a3320bcea3c309",
+			"raw_metadata_ids": [
+				"01a08134-d57c-7ff2-98f0-7db1c8dc3c93"
+			]
+		}
+	],
+	"thread_count": 3,
+	"child_thread_count": 2
+}

@@ -8,6 +8,24 @@ import benchmark_frontier_report as F
 
 
 class FrontierReportTests(unittest.TestCase):
+	def test_inherited_parent_metadata_does_not_replace_child_identity(self):
+		with tempfile.TemporaryDirectory() as Directory:
+			Home = Path(Directory)
+			Sessions = Home / "sessions"
+			Sessions.mkdir()
+			File = Sessions / "rollout-example-child.jsonl"
+			Rows = [dict(type="session_meta", payload=dict(id="child", source=dict(subagent=dict(parent_thread_id="root")))),
+				dict(type="session_meta", payload=dict(id="root", source="exec"))]
+			File.write_text("\n".join(F.R.json.dumps(Row) for Row in Rows) + "\n")
+			Result = F.session_identities(Home)
+			self.assertEqual(Result["thread_count"], 1)
+			self.assertEqual(Result["child_thread_count"], 1)
+			self.assertEqual(Result["sessions"][0]["id"], "child")
+			self.assertEqual(Result["sessions"][0]["raw_metadata_ids"], ["child", "root"])
+			File.rename(Sessions / "rollout-example-wrong.jsonl")
+			with self.assertRaises(RuntimeError):
+				F.session_identities(Home)
+
 	def test_frozen_tampering_and_external_path_rejected(self):
 		with tempfile.TemporaryDirectory() as Directory:
 			Base = Path(Directory)
