@@ -1,6 +1,6 @@
 # Q9 comparison recovery entry
 
-State: R2_C_AUDIT_RUNNING; A_COMPLETE_PASS. Both initial A attempts are invalid and preserved without
+State: R2_B_RUNNING; A_C_COMPLETE_PASS. Both initial A attempts are invalid and preserved without
 scores. Do not resume either original or r1. See CHILD_ISOLATION_AMENDMENT.md.
 
 - User request: a harder repository problem and an old/new/blank comparison.
@@ -27,20 +27,30 @@ Retain all infrastructure costs separately. After freezing A, export unique
 response usage and submit unchanged mathematics to the registered blind audit.
 Continue C then B. Do not give any solver historical mathematical hints.
 
-A answer is sent byte-for-byte, with no blinding edits. C solver has completed; B has not started.
+A and C answers were sent byte-for-byte, with no blinding edits. B is running.
 
 A external audit UUID: 01a08155-6c5c-7501-add1-94840ddf1185.
 
-A solver and external audit are complete and immutable. Complete C's independent
-audit; finally run B and its independent audit. Do not resume A or C solver.
+A/C solvers and external audits are complete and immutable. Finish B and its
+independent audit. Do not resume any A/C stage.
 
 C solver UUID: 01a0815e-b361-7b81-86f5-847de62d2841. Already dispatched.
 Returned and froze after 1955.805844 seconds. Solver: 423251 uncached input,
 7739392 cached input, 122462 output tokens, 204 unique returned responses.
 Four actual threads, including three children; see session-identities.json.
 63 frozen files verified. Candidate claims Q>0 implies r<1/9 and that r<=1/9
-implies R>0 using C2/C3. External verdict pending; no mathematical score yet.
+implies R>0 using C2/C3. External verdict: PASS 100/100, PROVED, root_closed=true,
+11 checked claims, no substantive gap or repair.
 External audit root: /home/huangzy/codex-benchmark/blind-audits/a9069090-8f36-4d95-87c9-a7cc735acc69.
 Candidate SHA256: 75df6dde44173612434ab6050458e4dadd6e03445c1d27c553c2ed4d18b89f40.
 Original bytes retained, no blinding edits. All audit preflights passed.
 External audit UUID: 01a0817f-8f44-7032-9bc0-a7b8d29658b4. Already dispatched.
+External audit returned after 527.603821 seconds, 45432 uncached input,
+284800 cached input, 15330 output tokens, 11 unique returned responses.
+C full delivery: 2483.409666 seconds, 468683 uncached input, 8024192 cached
+input, 137792 output tokens, 215 unique returned responses.
+
+B first dispatch is active. Same-account authentication was privately refreshed;
+control/auth-refresh-before-B.json records provenance without credentials.
+B solver UUID: 01a08188-1682-7611-9a7d-623663d5a538. Already dispatched.
+Do not supply A/C mathematics or change the original fixed time cap.

@@ -1,0 +1,154 @@
+{
+  "verdict": "PASS",
+  "target_status": "PROVED",
+  "root_closed": true,
+  "scores": {
+    "correctness": 40,
+    "fidelity": 20,
+    "strict_progress": 15,
+    "calibration": 10,
+    "evidence": 10,
+    "reproducibility": 5
+  },
+  "total_score": 100,
+  "score_explanations": {
+    "correctness": "Every load-bearing implication is valid. The exact polynomial certificate was executed and independently reconstructed, including its connection to N(v), its derivative, and the final Q2 comparison.",
+    "fidelity": "The proof establishes the exact strict Q9 implication throughout the requested domain. It uses C2 and C3 to prove a stronger statement that applies, in particular, to every tuple satisfying C1-C3. No extra mass-balance hypothesis, approximate constraint, or discarded orientation is used.",
+    "strict_progress": "15/15: full universal proof. The new exclusion Q_quad>0 implies r<1/9 and the proved sufficient inequality for every r<=1/9 jointly close the entire target, rather than merely restating the supplied sufficient condition.",
+    "calibration": "The submission's affirmative conclusion, exactness claim, and statement that no unproved remainder remains are supported by its arguments and embedded certificate.",
+    "evidence": "The file contains the analytic proofs, the Bernstein representation argument, and a complete rational certificate program. All four stated degrees and coefficient minima were reproduced exactly.",
+    "reproducibility": "The embedded Python 3 program runs with the standard library. A separate standard-library checker directly expands (18), converts to Bernstein form by an independent triangular basis solve, and reconstructs the polynomial identities exactly."
+  },
+  "earliest_substantive_gap": null,
+  "load_bearing_gaps": [],
+  "partial_progress_gaps": [],
+  "checked_claims": [
+    {
+      "id": "C01",
+      "statement": "The domain, variable substitution, constraint (2), and Q_quad=Q1-Q2 match TASK.md.",
+      "proof_locator": "CANDIDATE.md:14-26, 152-157, 211-218",
+      "status": "VERIFIED",
+      "check": "s=sqrt(r) gives 0<s<c<1, h>0, e>0, k>0. Multiplying C2 by positive c gives H(g)+cH(d)=c*pi/2. The sine relations give s^2*cot(A)=s*cos(A)/sin(B), so Q1 is exactly the first task term; Q2 is positive. C1 remains part of the target domain even though the stronger proof does not need it."
+    },
+    {
+      "id": "C02",
+      "statement": "C2 and C3 imply c^2-s^2>k*e*s^2*sin(B)^2 for 0<s<=1/3.",
+      "proof_locator": "CANDIDATE.md:31-83, equations (3)-(5)",
+      "status": "VERIFIED",
+      "check": "Strict convexity gives m^2*tan(g)*tan(d)<c and hence m^2*s^2*sin(g)^2<c*s. Since arcsin(s*sin(z)) has derivative strictly below s for z>0, C3 gives B/g<(1+cs)/(1-cs). Monotonicity of sin(z)/z transfers this bound to sin(B)/sin(g). In log J, the c-derivative's first term is negative, the second is below -2 because c^2-s^2<c, and the third is at most 3/2. J increases with s and is at most J(2/3,1/3)=1210/1323<1. All factors multiplied or divided are positive."
+    },
+    {
+      "id": "C03",
+      "statement": "The small-s inequality implies R_quad>0, including s=1/3.",
+      "proof_locator": "CANDIDATE.md:85-104, equation (6)",
+      "status": "VERIFIED",
+      "check": "The displayed F derivative and V*sin(B)^2-U identity agree with the supplied starting facts. Multiplying (3) by V>0 and subtracting k*e*s^2*U gives a strictly positive lower bound for R_quad. The preceding estimates include the endpoint s=1/3. The new progress is proving (3) from C2-C3 on that entire parameter range, not rederiving the supplied identities."
+    },
+    {
+      "id": "C04",
+      "statement": "C2 implies m^2*tan(g)^2>(3+2s)/(1+6s+3s^2), with the correct trigonometric root and multiplicity.",
+      "proof_locator": "CANDIDATE.md:109-148, equations (7)-(9)",
+      "status": "VERIFIED",
+      "check": "eta=s*cos(g)/cos(d)<s and c>2/3 imply 3*atan(w)+2*atan(sw)>pi. Expanding sin(3*atan(w)+2*atan(sw)) gives exactly the stated quadratic in X=w^2. Theta is strictly increasing from 0 to the limiting value 5*pi/2, so for positive w there are exactly two zeros of its sine, at Theta=pi and 2*pi; both are simple. Thus the smaller positive quadratic root is the pi crossing. The discriminant expansion is exact and lies strictly between 0 and W^2, giving X_->Z/W. No squared constraint is used as a sufficient condition."
+    },
+    {
+      "id": "C05",
+      "statement": "C3 yields the strict geometric bound Q1/x<alpha-beta*v.",
+      "proof_locator": "CANDIDATE.md:159-208, equations (10)-(15)",
+      "status": "VERIFIED",
+      "check": "Strict sine concavity applies because 0<A+d<pi and 0<c<1. Its expansion gives (10) with the stated signs and s^2 factors. With b=cot(B)>0, f(b)=b+a*sqrt(b^2+h) is continuous, strictly increasing and unbounded, and (11) ensures its equality solution b0 is positive. Direct substitution verifies (12); the square-root numerator is positive since M>x and 1+a^2>2a. Monotonicity of c*b-s*sqrt(b^2+h) then gives (13). The identity C-D=(c-s)*(1-cs)^2 verifies (15), so beta>0 and v_*>1."
+    },
+    {
+      "id": "C06",
+      "statement": "The transformed Q2 formula and its strict monotonicity in k are exact.",
+      "proof_locator": "CANDIDATE.md:211-218, equation (16)",
+      "status": "VERIFIED",
+      "check": "Using sin(g)=1/sqrt(1+x^2), cos(g)=x/sqrt(1+x^2), and cos(d)=M/sqrt(1+x^2), the original task expression reduces exactly to (16). It equals K*k/(A0+A1*k), where K=c*h^2*x*M>0, A0=(M+c*s*x)*(1+x^2)>0 and A1=M+c*s^3*x>0. Its derivative is K*A0/(A0+A1*k)^2>0 for k>=0."
+    },
+    {
+      "id": "C07",
+      "statement": "Equations (19)-(20) are the correct polynomial and derivative quantities for N(v).",
+      "proof_locator": "CANDIDATE.md:224-277, equations (18)-(20)",
+      "status": "VERIFIED",
+      "check": "Independent exact expansion of Delta*W*N(v) directly from (18) reproduces all four n_i in (19). E0=Delta*W*N(1), E1=Delta*W*N'(1), E2=n2, and E3=D^2*Delta*W*N'(C/D). Delta, W and D are strictly positive throughout the stated lemma domain."
+    },
+    {
+      "id": "C08",
+      "statement": "The finite rational certificate proves the required signs uniformly on the rectangle.",
+      "proof_locator": "CANDIDATE.md:272-324, 359-435",
+      "status": "VERIFIED",
+      "check": "The affine substitution maps [0,1]^2 onto [2/3,1] x [1/3,1]. The Bernstein representation and partition-of-unity argument are valid. Both the embedded program and an independent triangular basis conversion reproduce E0: degree (4,6), minimum 0; E1: (4,6), 9382/6561; E2: (4,5), 25553/6561; E3: (9,12), 134561396/387420489. All 230 coefficients were checked exactly and the independent checker reconstructs every power coefficient. E0 has six zero coefficients, but b00=15169/59049 multiplies (1-X)^4*(1-Y)^6>0 whenever c<1 and s<1, including the lower edges. This is a uniform polynomial certificate, not a finite point scan."
+    },
+    {
+      "id": "C09",
+      "statement": "The coefficient signs imply N(v)>0 on [1,v_*] and omega>v_*^2.",
+      "proof_locator": "CANDIDATE.md:275-285, equations (17)-(18)",
+      "status": "VERIFIED",
+      "check": "If n3>=0, n2>0 makes N'' positive for v>=1, and N'(1)>0 propagates. If n3<0, N' is concave and its positive endpoint values imply positivity throughout the interval. Thus N(v)>=N(1)>0. At v_*=alpha/beta, the subtracted factor vanishes and c*h*v_*>0, so omega>v_*^2. This derivation is not circular: the derivative argument establishes (18) before (17)."
+    },
+    {
+      "id": "C10",
+      "statement": "For s>=1/3, Q_quad>0 leads to a contradiction.",
+      "proof_locator": "CANDIDATE.md:328-344, equation (22)",
+      "status": "VERIFIED",
+      "check": "Q2>0 and (13) imply 1<v<v_*. Then v^2<omega and x^2=h/(v^2-1) give k0=ell*x^2-1>0. Equation (7) gives k>k0, so the k-monotonicity is applied within its proved domain. Substitution of k0 into (16) gives exactly (22); its denominator is positive. Equation (18) makes that lower bound strictly exceed alpha-beta*v, which strictly exceeds Q1/x. Therefore Q2>Q1, contradicting the antecedent."
+    },
+    {
+      "id": "C11",
+      "statement": "The two ranges exhaust the target and prove its exact strict conclusion.",
+      "proof_locator": "CANDIDATE.md:3-10, 346-353",
+      "status": "VERIFIED",
+      "check": "The exclusion includes s=1/3, so Q_quad>0 implies r=s^2<1/9. The small-r proof covers 0<r<=1/9 and yields R_quad>0. Division by k*e*V>0 gives exactly (c^2-r)/(k*e)>r*U/V=T_quad. No conclusion at Q_quad=0 is required. The excluded endpoints m=1, c=1, r=0 and s=c are never divided through or included in the target; c=2/3 is used only as a legitimate auxiliary boundary bound. No extra special case is left unresolved."
+    }
+  ],
+  "proved_new_claims": [
+    {
+      "statement": "c^2-r>k*(1-c^2)*r*sin(B)^2, and hence R_quad>0, whenever 0<r<=1/9.",
+      "domain": "The domain of TASK.md with exact C2 and C3; C1 is unnecessary for this stronger claim.",
+      "proof_locator": "CANDIDATE.md:29-104, equations (3)-(6)",
+      "relevance": "Establishes the supplied sufficient condition from the actual constraints on a whole parameter range."
+    },
+    {
+      "statement": "m^2*tan(g)^2>(3+2s)/(1+6s+3s^2), with s=sqrt(r).",
+      "domain": "m>1, 2/3<c<1, 0<s<c, acute g,d with sin(d)=s*sin(g) and exact C2.",
+      "proof_locator": "CANDIDATE.md:107-148, equation (7)",
+      "relevance": "Provides the strictly positive lower comparison for k used to exclude the other parameter range."
+    },
+    {
+      "statement": "Q1/x<alpha-beta*v, with x, v, alpha and beta defined in equations (13)-(14).",
+      "domain": "The acute-angle relations with 0<s<c<1 and exact C3.",
+      "proof_locator": "CANDIDATE.md:150-208, equations (10)-(15)",
+      "relevance": "Bounds the first term of Q_quad in the same variables as the C2-based lower bound for the second term."
+    },
+    {
+      "statement": "N(v)>0 for 1<=v<=alpha/beta and 1+ell*(1-s^2)>(alpha/beta)^2, with N and ell as in (18).",
+      "domain": "2/3<=c<1 and 1/3<=s<c.",
+      "proof_locator": "CANDIDATE.md:220-324 and 359-435, equations (17)-(21)",
+      "relevance": "The exact algebraic comparison that uniformly closes the large-r exclusion."
+    },
+    {
+      "statement": "Q_quad>0 implies r<1/9.",
+      "domain": "The domain of TASK.md with exact C2 and C3.",
+      "proof_locator": "CANDIDATE.md:326-346",
+      "relevance": "Forces every tuple with positive Q_quad into the already proved small-r range."
+    },
+    {
+      "statement": "Q_quad>0 implies R_quad>0, equivalently (c^2-r)/(k*(1-c^2))>T_quad.",
+      "domain": "Every tuple satisfying the full domain and exact C1-C3 in TASK.md; the proof also holds under C2-C3 alone.",
+      "proof_locator": "CANDIDATE.md:346-350, using Sections 1-5",
+      "relevance": "Closes the requested universal implication in full."
+    }
+  ],
+  "repairs_supplied": [],
+  "reproducibility": {
+    "inputs": ["TASK.md", "CANDIDATE.md"],
+    "external_sources_used": false,
+    "subagents_used": false,
+    "command": "python3 audit_check.py",
+    "checker": "audit_check.py",
+    "recorded_output": "audit_check_output.json",
+    "arithmetic": "Exact integers and fractions; no floating-point or numerical existence claims.",
+    "scope": "The scratch checker verifies submitted algebra and certificates. The branch, monotonicity, domain and implication arguments were checked directly against the submission. No missing load-bearing argument was supplied."
+  },
+  "rationale": "PASS: the candidate gives a complete exact affirmative proof of Q9. Section 1 proves a new constraint-based sufficient inequality for r<=1/9. Sections 2-5 use correctly oriented trigonometric bounds and a valid, fully reproducible Bernstein certificate to show that Q_quad>0 forces r<1/9. The two results yield the requested strict R_quad>0 conclusion for every admissible tuple. All load-bearing signs, denominators, root choices, root counts, parameter boundaries and final conversions check out. No substantive gap, false claim, unproved remainder or repair was identified. The full score reflects validity and complete target closure, not proof length or artifact creation."
+}

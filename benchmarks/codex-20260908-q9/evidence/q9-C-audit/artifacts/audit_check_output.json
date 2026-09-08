@@ -1,0 +1,63 @@
+{
+  "inputs_sha256": {
+    "TASK.md": "c7133b97e440e90095088927f105c9f88fcdc54f4a4772ee9f85ba5a139e6330",
+    "CANDIDATE.md": "75df6dde44173612434ab6050458e4dadd6e03445c1d27c553c2ed4d18b89f40"
+  },
+  "method": "Exact Fraction arithmetic; direct expansion of (18); independent triangular Bernstein basis conversion and full polynomial reconstruction.",
+  "independent_certificate": [
+    {
+      "polynomial": "E0",
+      "degrees": [
+        4,
+        6
+      ],
+      "coefficient_count": 35,
+      "minimum": "0",
+      "zero_count": 6,
+      "b00": "15169/59049"
+    },
+    {
+      "polynomial": "E1",
+      "degrees": [
+        4,
+        6
+      ],
+      "coefficient_count": 35,
+      "minimum": "9382/6561",
+      "zero_count": 0,
+      "b00": "9382/6561"
+    },
+    {
+      "polynomial": "E2",
+      "degrees": [
+        4,
+        5
+      ],
+      "coefficient_count": 30,
+      "minimum": "25553/6561",
+      "zero_count": 0,
+      "b00": "25553/6561"
+    },
+    {
+      "polynomial": "E3",
+      "degrees": [
+        9,
+        12
+      ],
+      "coefficient_count": 130,
+      "minimum": "134561396/387420489",
+      "zero_count": 0,
+      "b00": "134561396/387420489"
+    }
+  ],
+  "checked_symbolic_identities": [
+    "(15)",
+    "(19)",
+    "discriminant in section 2",
+    "E0 and E1 as value and derivative at 1",
+    "E3 as D^2 times derivative at C/D",
+    "denominator simplifications for (22)"
+  ],
+  "original_certificate_stdout": "N1 (4, 6) 0\nNp1 (4, 6) 9382/6561\nn2 (4, 5) 25553/6561\nNpstar (9, 12) 134561396/387420489\nAll exact polynomial certificates passed.\n",
+  "all_checks_passed": true
+}

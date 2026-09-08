@@ -1,0 +1,16 @@
+{
+	"rule": "FIRST_SESSION_METADATA_BOUND_TO_ROLLOUT_FILENAME",
+	"sessions": [
+		{
+			"id": "01a0817f-8f44-7032-9bc0-a7b8d29658b4",
+			"source": "exec",
+			"path": "/home/huangzy/codex-benchmark/blind-audits/a9069090-8f36-4d95-87c9-a7cc735acc69/candidate/c/home/sessions/2026/09/08/rollout-2026-09-08T22-50-15-01a0817f-8f44-7032-9bc0-a7b8d29658b4.jsonl",
+			"sha256": "69885b57872df7e6752a5b8761e88e8e75b63ef5f89a02909eaad79cac0da62b",
+			"raw_metadata_ids": [
+				"01a0817f-8f44-7032-9bc0-a7b8d29658b4"
+			]
+		}
+	],
+	"thread_count": 1,
+	"child_thread_count": 0
+}

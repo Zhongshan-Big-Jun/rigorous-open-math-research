@@ -1,0 +1,272 @@
+{
+	"records": {
+		"resp_050bcd5090dea992016aa020ca47f887d1bcfc223807a2755a": {
+			"value": {
+				"thread_id": "01a0817f-8f44-7032-9bc0-a7b8d29658b4",
+				"usage": {
+					"input_tokens": 12580,
+					"cached_input_tokens": 0,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 131,
+					"reasoning_output_tokens": 0,
+					"total_tokens": 12711
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/blind-audits/a9069090-8f36-4d95-87c9-a7cc735acc69/candidate/c/home/sessions/2026/09/08/rollout-2026-09-08T22-50-15-01a0817f-8f44-7032-9bc0-a7b8d29658b4.jsonl",
+					"line": 16
+				}
+			]
+		},
+		"resp_050bcd5090dea992016aa020d2075487d1a801b5980468e78d": {
+			"value": {
+				"thread_id": "01a0817f-8f44-7032-9bc0-a7b8d29658b4",
+				"usage": {
+					"input_tokens": 19854,
+					"cached_input_tokens": 12416,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 646,
+					"reasoning_output_tokens": 516,
+					"total_tokens": 20500
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/blind-audits/a9069090-8f36-4d95-87c9-a7cc735acc69/candidate/c/home/sessions/2026/09/08/rollout-2026-09-08T22-50-15-01a0817f-8f44-7032-9bc0-a7b8d29658b4.jsonl",
+					"line": 23
+				}
+			]
+		},
+		"resp_050bcd5090dea992016aa020e9adb487d1ba4c520bc44970f9": {
+			"value": {
+				"thread_id": "01a0817f-8f44-7032-9bc0-a7b8d29658b4",
+				"usage": {
+					"input_tokens": 20570,
+					"cached_input_tokens": 19712,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 129,
+					"reasoning_output_tokens": 0,
+					"total_tokens": 20699
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/blind-audits/a9069090-8f36-4d95-87c9-a7cc735acc69/candidate/c/home/sessions/2026/09/08/rollout-2026-09-08T22-50-15-01a0817f-8f44-7032-9bc0-a7b8d29658b4.jsonl",
+					"line": 27
+				}
+			]
+		},
+		"resp_050bcd5090dea992016aa020f0223c87d197c59451cb8109b6": {
+			"value": {
+				"thread_id": "01a0817f-8f44-7032-9bc0-a7b8d29658b4",
+				"usage": {
+					"input_tokens": 20819,
+					"cached_input_tokens": 20352,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 689,
+					"reasoning_output_tokens": 516,
+					"total_tokens": 21508
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/blind-audits/a9069090-8f36-4d95-87c9-a7cc735acc69/candidate/c/home/sessions/2026/09/08/rollout-2026-09-08T22-50-15-01a0817f-8f44-7032-9bc0-a7b8d29658b4.jsonl",
+					"line": 36
+				}
+			]
+		},
+		"resp_050bcd5090dea992016aa02107821c87d1907c54292138da54": {
+			"value": {
+				"thread_id": "01a0817f-8f44-7032-9bc0-a7b8d29658b4",
+				"usage": {
+					"input_tokens": 29381,
+					"cached_input_tokens": 20608,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 2427,
+					"reasoning_output_tokens": 2406,
+					"total_tokens": 31808
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/blind-audits/a9069090-8f36-4d95-87c9-a7cc735acc69/candidate/c/home/sessions/2026/09/08/rollout-2026-09-08T22-50-15-01a0817f-8f44-7032-9bc0-a7b8d29658b4.jsonl",
+					"line": 52
+				}
+			]
+		},
+		"resp_050bcd5090dea992016aa0215c34dc87d1a92d5c8cf351afe5": {
+			"value": {
+				"thread_id": "01a0817f-8f44-7032-9bc0-a7b8d29658b4",
+				"usage": {
+					"input_tokens": 31849,
+					"cached_input_tokens": 29184,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 3986,
+					"reasoning_output_tokens": 1268,
+					"total_tokens": 35835
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/blind-audits/a9069090-8f36-4d95-87c9-a7cc735acc69/candidate/c/home/sessions/2026/09/08/rollout-2026-09-08T22-50-15-01a0817f-8f44-7032-9bc0-a7b8d29658b4.jsonl",
+					"line": 64
+				}
+			]
+		},
+		"resp_050bcd5090dea992016aa021dc723c87d181282759e0515c07": {
+			"value": {
+				"thread_id": "01a0817f-8f44-7032-9bc0-a7b8d29658b4",
+				"usage": {
+					"input_tokens": 35859,
+					"cached_input_tokens": 31616,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 62,
+					"reasoning_output_tokens": 18,
+					"total_tokens": 35921
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/blind-audits/a9069090-8f36-4d95-87c9-a7cc735acc69/candidate/c/home/sessions/2026/09/08/rollout-2026-09-08T22-50-15-01a0817f-8f44-7032-9bc0-a7b8d29658b4.jsonl",
+					"line": 71
+				}
+			]
+		},
+		"resp_050bcd5090dea992016aa021e1a8ac87d180585fe73e15d59d": {
+			"value": {
+				"thread_id": "01a0817f-8f44-7032-9bc0-a7b8d29658b4",
+				"usage": {
+					"input_tokens": 35978,
+					"cached_input_tokens": 35712,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 79,
+					"reasoning_output_tokens": 16,
+					"total_tokens": 36057
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/blind-audits/a9069090-8f36-4d95-87c9-a7cc735acc69/candidate/c/home/sessions/2026/09/08/rollout-2026-09-08T22-50-15-01a0817f-8f44-7032-9bc0-a7b8d29658b4.jsonl",
+					"line": 79
+				}
+			]
+		},
+		"resp_050bcd5090dea992016aa021e853dc87d18a9f7e177baa8fe7": {
+			"value": {
+				"thread_id": "01a0817f-8f44-7032-9bc0-a7b8d29658b4",
+				"usage": {
+					"input_tokens": 36794,
+					"cached_input_tokens": 35840,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 6127,
+					"reasoning_output_tokens": 1552,
+					"total_tokens": 42921
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/blind-audits/a9069090-8f36-4d95-87c9-a7cc735acc69/candidate/c/home/sessions/2026/09/08/rollout-2026-09-08T22-50-15-01a0817f-8f44-7032-9bc0-a7b8d29658b4.jsonl",
+					"line": 91
+				}
+			]
+		},
+		"resp_050bcd5090dea992016aa022a36a2487d1b59aa8de2ca68660": {
+			"value": {
+				"thread_id": "01a0817f-8f44-7032-9bc0-a7b8d29658b4",
+				"usage": {
+					"input_tokens": 42945,
+					"cached_input_tokens": 36608,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 546,
+					"reasoning_output_tokens": 278,
+					"total_tokens": 43491
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/blind-audits/a9069090-8f36-4d95-87c9-a7cc735acc69/candidate/c/home/sessions/2026/09/08/rollout-2026-09-08T22-50-15-01a0817f-8f44-7032-9bc0-a7b8d29658b4.jsonl",
+					"line": 99
+				}
+			]
+		},
+		"resp_050bcd5090dea992016aa022b7882087d19f08f9957c838c04": {
+			"value": {
+				"thread_id": "01a0817f-8f44-7032-9bc0-a7b8d29658b4",
+				"usage": {
+					"input_tokens": 43603,
+					"cached_input_tokens": 42752,
+					"cache_write_input_tokens": 0,
+					"output_tokens": 508,
+					"reasoning_output_tokens": 370,
+					"total_tokens": 44111
+				}
+			},
+			"origins": [
+				{
+					"path": "/home/huangzy/codex-benchmark/blind-audits/a9069090-8f36-4d95-87c9-a7cc735acc69/candidate/c/home/sessions/2026/09/08/rollout-2026-09-08T22-50-15-01a0817f-8f44-7032-9bc0-a7b8d29658b4.jsonl",
+					"line": 106
+				}
+			]
+		}
+	},
+	"duplicate_records": 0,
+	"outer_calls": {
+		"call_5qB5HVAg5IxS88rKZcxVB004": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_QLSNDFA1RIjrkRtG0Ft6x50v": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_ajymttSc5beh3oeJ6BuDbQ7H": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_qmUoyfH4bdorMX6nxq0wfO6g": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_CZweEiCwy5ylKJfbTqnpQysn": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_oEIUb2NfCeCWaAR5v0oHxZyw": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_Sm8Y3qdn0wwWZlou1mTTOLu2": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_2wYx6txMYPyrdPxD5HkE3wkh": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_fgPdKZjsVCd0Eu9KCdB4SaeO": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		},
+		"call_YnE6qBzAstaw3X4LBEIje99i": {
+			"type": "custom_tool_call",
+			"name": "exec",
+			"namespace": null
+		}
+	},
+	"models": [
+		"gpt-6-astra"
+	],
+	"efforts": [
+		"max"
+	]
+}
