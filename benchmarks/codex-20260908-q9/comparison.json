@@ -1,0 +1,515 @@
+{
+	"schema_version": 1,
+	"task": "q9",
+	"classification": "PROJECT_FRONTIER_DIAGNOSTIC_NOT_HOLDOUT",
+	"recorded_at": "2026-09-08T15:56:27.435447+00:00",
+	"arms": {
+		"A": {
+			"solver": {
+				"schema_version": 1,
+				"status": "RETURNED_UNAUDITED",
+				"root_thread_id": "01a0812b-e1b4-7203-a59b-9dff0757e677",
+				"models": [
+					"gpt-6-astra"
+				],
+				"efforts": [
+					"max"
+				],
+				"root_active_wall_seconds": 2477.650181811987,
+				"aggregate_active_wall_seconds": null,
+				"returned_usage": {
+					"input_tokens": 7907870,
+					"cached_input_tokens": 7586944,
+					"output_tokens": 96822,
+					"reasoning_output_tokens": 38008,
+					"uncached_input_tokens": 320926,
+					"responses_with_usage": 116
+				},
+				"per_thread": {
+					"01a0812b-e1b4-7203-a59b-9dff0757e677": {
+						"input_tokens": 5843096,
+						"cached_input_tokens": 5665536,
+						"output_tokens": 48389,
+						"reasoning_output_tokens": 18143,
+						"uncached_input_tokens": 177560,
+						"responses_with_usage": 60
+					},
+					"01a0812f-fc7f-7ba2-a4fa-76b25a0af688": {
+						"input_tokens": 779632,
+						"cached_input_tokens": 736768,
+						"output_tokens": 17692,
+						"reasoning_output_tokens": 7318,
+						"uncached_input_tokens": 42864,
+						"responses_with_usage": 24
+					},
+					"01a08134-d57c-7ff2-98f0-7db1c8dc3c93": {
+						"input_tokens": 1285142,
+						"cached_input_tokens": 1184640,
+						"output_tokens": 30741,
+						"reasoning_output_tokens": 12547,
+						"uncached_input_tokens": 100502,
+						"responses_with_usage": 32
+					}
+				},
+				"duplicate_usage_records_removed": 0,
+				"outer_model_tool_calls": 111,
+				"root_cli_command_executions": 58,
+				"all_actual_tool_calls": null,
+				"coverage": "Returned response usage only. Unknown in-flight usage is not zero. Outer calls and CLI commands are distinct scopes; aggregate active time and complete nested tool counts remain unknown."
+			},
+			"external_audit": {
+				"schema_version": 1,
+				"status": "RETURNED_UNREVIEWED",
+				"root_thread_id": "01a08155-6c5c-7501-add1-94840ddf1185",
+				"models": [
+					"gpt-6-astra"
+				],
+				"efforts": [
+					"max"
+				],
+				"root_active_wall_seconds": 548.8787683359988,
+				"aggregate_active_wall_seconds": null,
+				"returned_usage": {
+					"input_tokens": 187231,
+					"cached_input_tokens": 138240,
+					"output_tokens": 16637,
+					"reasoning_output_tokens": 7363,
+					"uncached_input_tokens": 48991,
+					"responses_with_usage": 6
+				},
+				"per_thread": {
+					"01a08155-6c5c-7501-add1-94840ddf1185": {
+						"input_tokens": 187231,
+						"cached_input_tokens": 138240,
+						"output_tokens": 16637,
+						"reasoning_output_tokens": 7363,
+						"uncached_input_tokens": 48991,
+						"responses_with_usage": 6
+					}
+				},
+				"duplicate_usage_records_removed": 0,
+				"outer_model_tool_calls": 5,
+				"root_cli_command_executions": 10,
+				"all_actual_tool_calls": null,
+				"coverage": "Returned response usage only. Unknown in-flight usage is not zero. Outer calls and CLI commands are distinct scopes; aggregate active time and complete nested tool counts remain unknown."
+			},
+			"full_delivery": {
+				"uncached_input_tokens": 369917,
+				"cached_input_tokens": 7725184,
+				"output_tokens": 113459,
+				"responses_with_usage": 122,
+				"active_seconds": 3026.5289501479856
+			},
+			"observed_threads": {
+				"solver": {
+					"threads": 3,
+					"children": 2
+				},
+				"audit": {
+					"threads": 1,
+					"children": 0
+				}
+			},
+			"verdict": "PASS",
+			"target_status": "PROVED",
+			"root_closed": true,
+			"score": 100,
+			"scores": {
+				"correctness": 40,
+				"fidelity": 20,
+				"strict_progress": 15,
+				"calibration": 10,
+				"evidence": 10,
+				"reproducibility": 5
+			},
+			"proved_new_claims": [
+				{
+					"statement": "Writing s=sqrt(r), w=(m^2-1)sin(g)^2 and P=1+2c^2-3cs-3c^2s^2+c(2+c^2)s^3, Q_quad>0 implies w<(c-s)(1-c^2s^2)/(sP), with P>0.",
+					"domain": "The stated domain m>1, 2/3<c<1, 0<s<c, 0<g<B<pi/2, with A and d as defined, and C3. Neither C1 nor C2 is needed for this bound.",
+					"proof_locator": "CANDIDATE.md:60-131, equations (5)-(7)",
+					"relevance": "A new necessary quantitative bound from Q_quad>0 and the exact angular constraint; not among the supplied starting facts."
+				},
+				{
+					"statement": "If Q_quad>0 and 0<s<=12/25, then S=c^2-s^2-(m^2-1)(1-c^2)s^2 sin(B)^2>0.",
+					"domain": "The stated domain and C3, with 0<s<=12/25. C1 and C2 are unnecessary for this subdomain result.",
+					"proof_locator": "CANDIDATE.md:134-166, equation (8), with its verifier at lines 398-415",
+					"relevance": "Closes a proper infinite parameter range by proving the supplied sufficient condition from Q_quad>0. The 30 strictly positive Bernstein coefficients certify the needed uniform polynomial inequality."
+				},
+				{
+					"statement": "Q_quad>0 forces s<12/25, equivalently r<144/625.",
+					"domain": "The stated domain with C2 and C3, hence also the full C1-C3 admissible domain.",
+					"proof_locator": "CANDIDATE.md:168-275, equations (9)-(15), and lines 417-457 of the verifier",
+					"relevance": "Excludes the entire complementary parameter range using exact polynomial upper bounds and a strict contradiction to C2."
+				},
+				{
+					"statement": "Q_quad>0 implies S>0 and therefore R_quad>0, equivalently (c^2-r)/((m^2-1)(1-c^2))>T_quad.",
+					"domain": "Every tuple m>1, 2/3<c<1, 0<r<c^2, 0<g<B<pi/2 satisfying all three exact constraints C1-C3 and the prescribed principal branches. The proof also establishes the implication under C2-C3 alone.",
+					"proof_locator": "CANDIDATE.md:45-58 and 277-278, using Sections 2-6",
+					"relevance": "Fully closes Target Q9, including its strict consequent."
+				}
+			],
+			"load_bearing_gaps": [],
+			"first_proof_seconds": null
+		},
+		"C": {
+			"solver": {
+				"schema_version": 1,
+				"status": "RETURNED_UNAUDITED",
+				"root_thread_id": "01a0815e-b361-7b81-86f5-847de62d2841",
+				"models": [
+					"gpt-6-astra"
+				],
+				"efforts": [
+					"max"
+				],
+				"root_active_wall_seconds": 1955.8058444889903,
+				"aggregate_active_wall_seconds": null,
+				"returned_usage": {
+					"input_tokens": 8162643,
+					"cached_input_tokens": 7739392,
+					"output_tokens": 122462,
+					"reasoning_output_tokens": 72520,
+					"uncached_input_tokens": 423251,
+					"responses_with_usage": 204
+				},
+				"per_thread": {
+					"01a0815e-b361-7b81-86f5-847de62d2841": {
+						"input_tokens": 2147869,
+						"cached_input_tokens": 2033280,
+						"output_tokens": 35447,
+						"reasoning_output_tokens": 18597,
+						"uncached_input_tokens": 114589,
+						"responses_with_usage": 54
+					},
+					"01a0815f-078c-7603-b079-24f17be99390": {
+						"input_tokens": 1672005,
+						"cached_input_tokens": 1568384,
+						"output_tokens": 20847,
+						"reasoning_output_tokens": 12470,
+						"uncached_input_tokens": 103621,
+						"responses_with_usage": 40
+					},
+					"01a0815f-2440-7581-b3f3-06299687e40a": {
+						"input_tokens": 2366525,
+						"cached_input_tokens": 2249216,
+						"output_tokens": 31082,
+						"reasoning_output_tokens": 17433,
+						"uncached_input_tokens": 117309,
+						"responses_with_usage": 65
+					},
+					"01a0815f-4eb5-7010-92cb-c664ba04bb6c": {
+						"input_tokens": 1976244,
+						"cached_input_tokens": 1888512,
+						"output_tokens": 35086,
+						"reasoning_output_tokens": 24020,
+						"uncached_input_tokens": 87732,
+						"responses_with_usage": 45
+					}
+				},
+				"duplicate_usage_records_removed": 0,
+				"outer_model_tool_calls": 198,
+				"root_cli_command_executions": 28,
+				"all_actual_tool_calls": null,
+				"coverage": "Returned response usage only. Unknown in-flight usage is not zero. Outer calls and CLI commands are distinct scopes; aggregate active time and complete nested tool counts remain unknown."
+			},
+			"external_audit": {
+				"schema_version": 1,
+				"status": "RETURNED_UNREVIEWED",
+				"root_thread_id": "01a0817f-8f44-7032-9bc0-a7b8d29658b4",
+				"models": [
+					"gpt-6-astra"
+				],
+				"efforts": [
+					"max"
+				],
+				"root_active_wall_seconds": 527.6038211379782,
+				"aggregate_active_wall_seconds": null,
+				"returned_usage": {
+					"input_tokens": 330232,
+					"cached_input_tokens": 284800,
+					"output_tokens": 15330,
+					"reasoning_output_tokens": 6940,
+					"uncached_input_tokens": 45432,
+					"responses_with_usage": 11
+				},
+				"per_thread": {
+					"01a0817f-8f44-7032-9bc0-a7b8d29658b4": {
+						"input_tokens": 330232,
+						"cached_input_tokens": 284800,
+						"output_tokens": 15330,
+						"reasoning_output_tokens": 6940,
+						"uncached_input_tokens": 45432,
+						"responses_with_usage": 11
+					}
+				},
+				"duplicate_usage_records_removed": 0,
+				"outer_model_tool_calls": 10,
+				"root_cli_command_executions": 9,
+				"all_actual_tool_calls": null,
+				"coverage": "Returned response usage only. Unknown in-flight usage is not zero. Outer calls and CLI commands are distinct scopes; aggregate active time and complete nested tool counts remain unknown."
+			},
+			"full_delivery": {
+				"uncached_input_tokens": 468683,
+				"cached_input_tokens": 8024192,
+				"output_tokens": 137792,
+				"responses_with_usage": 215,
+				"active_seconds": 2483.4096656269685
+			},
+			"observed_threads": {
+				"solver": {
+					"threads": 4,
+					"children": 3
+				},
+				"audit": {
+					"threads": 1,
+					"children": 0
+				}
+			},
+			"verdict": "PASS",
+			"target_status": "PROVED",
+			"root_closed": true,
+			"score": 100,
+			"scores": {
+				"correctness": 40,
+				"fidelity": 20,
+				"strict_progress": 15,
+				"calibration": 10,
+				"evidence": 10,
+				"reproducibility": 5
+			},
+			"proved_new_claims": [
+				{
+					"statement": "c^2-r>k*(1-c^2)*r*sin(B)^2, and hence R_quad>0, whenever 0<r<=1/9.",
+					"domain": "The domain of TASK.md with exact C2 and C3; C1 is unnecessary for this stronger claim.",
+					"proof_locator": "CANDIDATE.md:29-104, equations (3)-(6)",
+					"relevance": "Establishes the supplied sufficient condition from the actual constraints on a whole parameter range."
+				},
+				{
+					"statement": "m^2*tan(g)^2>(3+2s)/(1+6s+3s^2), with s=sqrt(r).",
+					"domain": "m>1, 2/3<c<1, 0<s<c, acute g,d with sin(d)=s*sin(g) and exact C2.",
+					"proof_locator": "CANDIDATE.md:107-148, equation (7)",
+					"relevance": "Provides the strictly positive lower comparison for k used to exclude the other parameter range."
+				},
+				{
+					"statement": "Q1/x<alpha-beta*v, with x, v, alpha and beta defined in equations (13)-(14).",
+					"domain": "The acute-angle relations with 0<s<c<1 and exact C3.",
+					"proof_locator": "CANDIDATE.md:150-208, equations (10)-(15)",
+					"relevance": "Bounds the first term of Q_quad in the same variables as the C2-based lower bound for the second term."
+				},
+				{
+					"statement": "N(v)>0 for 1<=v<=alpha/beta and 1+ell*(1-s^2)>(alpha/beta)^2, with N and ell as in (18).",
+					"domain": "2/3<=c<1 and 1/3<=s<c.",
+					"proof_locator": "CANDIDATE.md:220-324 and 359-435, equations (17)-(21)",
+					"relevance": "The exact algebraic comparison that uniformly closes the large-r exclusion."
+				},
+				{
+					"statement": "Q_quad>0 implies r<1/9.",
+					"domain": "The domain of TASK.md with exact C2 and C3.",
+					"proof_locator": "CANDIDATE.md:326-346",
+					"relevance": "Forces every tuple with positive Q_quad into the already proved small-r range."
+				},
+				{
+					"statement": "Q_quad>0 implies R_quad>0, equivalently (c^2-r)/(k*(1-c^2))>T_quad.",
+					"domain": "Every tuple satisfying the full domain and exact C1-C3 in TASK.md; the proof also holds under C2-C3 alone.",
+					"proof_locator": "CANDIDATE.md:346-350, using Sections 1-5",
+					"relevance": "Closes the requested universal implication in full."
+				}
+			],
+			"load_bearing_gaps": [],
+			"first_proof_seconds": null
+		},
+		"B": {
+			"solver": {
+				"schema_version": 1,
+				"status": "RETURNED_UNAUDITED",
+				"root_thread_id": "01a08188-1682-7611-9a7d-623663d5a538",
+				"models": [
+					"gpt-6-astra"
+				],
+				"efforts": [
+					"max"
+				],
+				"root_active_wall_seconds": 2545.1912190210132,
+				"aggregate_active_wall_seconds": null,
+				"returned_usage": {
+					"input_tokens": 8027735,
+					"cached_input_tokens": 7704192,
+					"output_tokens": 127577,
+					"reasoning_output_tokens": 59948,
+					"uncached_input_tokens": 323543,
+					"responses_with_usage": 126
+				},
+				"per_thread": {
+					"01a08188-1682-7611-9a7d-623663d5a538": {
+						"input_tokens": 5688919,
+						"cached_input_tokens": 5512192,
+						"output_tokens": 57755,
+						"reasoning_output_tokens": 27016,
+						"uncached_input_tokens": 176727,
+						"responses_with_usage": 62
+					},
+					"01a0818b-e684-7020-8f97-b487fbc0e474": {
+						"input_tokens": 1261536,
+						"cached_input_tokens": 1196928,
+						"output_tokens": 29523,
+						"reasoning_output_tokens": 15907,
+						"uncached_input_tokens": 64608,
+						"responses_with_usage": 32
+					},
+					"01a08191-34b0-76d0-a080-69beceda9081": {
+						"input_tokens": 751585,
+						"cached_input_tokens": 705280,
+						"output_tokens": 27301,
+						"reasoning_output_tokens": 11267,
+						"uncached_input_tokens": 46305,
+						"responses_with_usage": 22
+					},
+					"01a081a4-35b1-7683-94ab-39d8ba4b8b41": {
+						"input_tokens": 325695,
+						"cached_input_tokens": 289792,
+						"output_tokens": 12998,
+						"reasoning_output_tokens": 5758,
+						"uncached_input_tokens": 35903,
+						"responses_with_usage": 10
+					}
+				},
+				"duplicate_usage_records_removed": 0,
+				"outer_model_tool_calls": 120,
+				"root_cli_command_executions": 60,
+				"all_actual_tool_calls": null,
+				"coverage": "Returned response usage only. Unknown in-flight usage is not zero. Outer calls and CLI commands are distinct scopes; aggregate active time and complete nested tool counts remain unknown."
+			},
+			"external_audit": {
+				"schema_version": 1,
+				"status": "RETURNED_UNREVIEWED",
+				"root_thread_id": "01a081b2-68fc-7690-ba39-ba40f965211a",
+				"models": [
+					"gpt-6-astra"
+				],
+				"efforts": [
+					"max"
+				],
+				"root_active_wall_seconds": 625.1524052470049,
+				"aggregate_active_wall_seconds": null,
+				"returned_usage": {
+					"input_tokens": 382101,
+					"cached_input_tokens": 340608,
+					"output_tokens": 18193,
+					"reasoning_output_tokens": 9189,
+					"uncached_input_tokens": 41493,
+					"responses_with_usage": 12
+				},
+				"per_thread": {
+					"01a081b2-68fc-7690-ba39-ba40f965211a": {
+						"input_tokens": 382101,
+						"cached_input_tokens": 340608,
+						"output_tokens": 18193,
+						"reasoning_output_tokens": 9189,
+						"uncached_input_tokens": 41493,
+						"responses_with_usage": 12
+					}
+				},
+				"duplicate_usage_records_removed": 0,
+				"outer_model_tool_calls": 11,
+				"root_cli_command_executions": 12,
+				"all_actual_tool_calls": null,
+				"coverage": "Returned response usage only. Unknown in-flight usage is not zero. Outer calls and CLI commands are distinct scopes; aggregate active time and complete nested tool counts remain unknown."
+			},
+			"full_delivery": {
+				"uncached_input_tokens": 365036,
+				"cached_input_tokens": 8044800,
+				"output_tokens": 145770,
+				"responses_with_usage": 138,
+				"active_seconds": 3170.343624268018
+			},
+			"observed_threads": {
+				"solver": {
+					"threads": 4,
+					"children": 3
+				},
+				"audit": {
+					"threads": 1,
+					"children": 0
+				}
+			},
+			"verdict": "PASS",
+			"target_status": "PROVED",
+			"root_closed": true,
+			"score": 100,
+			"scores": {
+				"correctness": 40,
+				"fidelity": 20,
+				"strict_progress": 15,
+				"calibration": 10,
+				"evidence": 10,
+				"reproducibility": 5
+			},
+			"proved_new_claims": [
+				{
+					"statement": "If 0 < r <= c^2/4, then c^2-r > k(1-c^2)r sin(B)^2.",
+					"domain": "The stated m,c,r,B,g domain with exact C2 and C3; C1 is unnecessary.",
+					"proof_locator": "CANDIDATE.md:41-84, equations (3)-(5).",
+					"relevance": "Derives the supplied sufficient condition on a specified parameter range instead of assuming or merely restating it."
+				},
+				{
+					"statement": "Writing t=sqrt(r), X=tan(B), z=tan(g), L=sqrt(1+(1-t^2)X^2), w=sqrt(1+(1-t^2)z^2), u=ct, P=(c-tL)/X, and a,b as in (6), Q>0 implies 0<Pz<(a-bw)/(1-u^2) and 1<w<a/b.",
+					"domain": "The stated domain with C3 and Q>0; in particular the section-2 range c/2 <= t < c.",
+					"proof_locator": "CANDIDATE.md:103-140, equations (7)-(9).",
+					"relevance": "Supplies the upper bound on the positive term of Q and the exact w interval needed by the certificate."
+				},
+				{
+					"statement": "With h=m tan(g) and w=sqrt(1+(1-t^2)tan(g)^2), C2 implies h^2 > (49/100)(1+c)^2 w^2/(w+ct)^2.",
+					"domain": "The stated domain with C2, also valid at c=2/3.",
+					"proof_locator": "CANDIDATE.md:143-164, equation (10) and the five-angle verification.",
+					"relevance": "Provides an exact lower bound for the argument of the strictly increasing subtracted term K."
+				},
+				{
+					"statement": "The polynomial E defined in equation (11) is strictly positive.",
+					"domain": "2/3 <= c < 1, c/2 <= t < c, and 1 <= w <= a/b, with a,b,u,J exactly as in (6).",
+					"proof_locator": "CANDIDATE.md:166-179 and 230-367, equations (11), (14)-(16) and the embedded certificate.",
+					"relevance": "Proves the load-bearing comparison K(j)>=f uniformly across the whole complementary parameter range."
+				},
+				{
+					"statement": "Q_quad > 0 implies r < c^2/4.",
+					"domain": "The complete stated domain with exact C2 and C3.",
+					"proof_locator": "CANDIDATE.md:86-206, especially equations (12)-(13) and the contradiction at lines 202-206.",
+					"relevance": "Excludes every Q-positive tuple outside the range handled in Section 1, including r=c^2/4."
+				},
+				{
+					"statement": "Q_quad > 0 implies (c^2-r)/(k(1-c^2)) > r sin(B)^2 > T_quad, and hence R_quad > 0.",
+					"domain": "Every tuple in TASK.md satisfying C1-C3; the stronger statement requiring only C2-C3 also holds.",
+					"proof_locator": "CANDIDATE.md:3-10 and 210-228, using Sections 1, 2, and 4.",
+					"relevance": "Closes the exact universal target Q9 affirmatively."
+				}
+			],
+			"load_bearing_gaps": [],
+			"first_proof_seconds": null
+		}
+	},
+	"comparisons": {
+		"B/A": {
+			"solver_uncached_input_tokens_ratio": 1.0081545278350772,
+			"solver_active_seconds_ratio": 1.0272601183592558,
+			"full_delivery_uncached_input_tokens_ratio": 0.9868051481818895,
+			"full_delivery_active_seconds_ratio": 1.0475180236134864
+		},
+		"B/C": {
+			"solver_uncached_input_tokens_ratio": 0.7644234744867703,
+			"solver_active_seconds_ratio": 1.3013516787429462,
+			"full_delivery_uncached_input_tokens_ratio": 0.7788547909781238,
+			"full_delivery_active_seconds_ratio": 1.276609199097896
+		},
+		"A/C": {
+			"solver_uncached_input_tokens_ratio": 0.7582403821845666,
+			"solver_active_seconds_ratio": 1.2668180682624677,
+			"full_delivery_uncached_input_tokens_ratio": 0.7892690795271005,
+			"full_delivery_active_seconds_ratio": 1.2186990298211229
+		}
+	},
+	"completed": true,
+	"limitations": [
+		"One repository task and one attempt per arm; descriptive only.",
+		"Same-model audits are fallible; no formal verification or literature novelty claim.",
+		"Costs include actual interruptions; unknown in-flight usage is not zero."
+	]
+}

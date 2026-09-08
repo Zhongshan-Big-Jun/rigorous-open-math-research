@@ -1,0 +1,547 @@
+{
+	"recorded_at": "2026-09-08T15:58:28.950123+00:00",
+	"verdict": "PASS",
+	"source_checks": [
+		{
+			"copy": "sources/whiteboard-26.md",
+			"source_path": "/mnt/f/LaTeX/BVE research/research/runs/R-20260831T020156Z-g1p-kpdet/workspace/runs/rigorous-open-math-research/R-20260831T020156Z-g1p-kpdet/whiteboard-26.md",
+			"sha256": "5fdb0e6471dbccfe0e35f188a54f2e9199b1e189dade169c36bdcea605ea1f0b",
+			"copy_matches": true,
+			"original_unchanged": true
+		},
+		{
+			"copy": "sources/route-08-common-beta-orientation/prover_result.md",
+			"source_path": "/mnt/f/LaTeX/BVE research/research/runs/R-20260831T020156Z-g1p-kpdet/workspace/runs/rigorous-open-math-research/R-20260831T020156Z-g1p-kpdet/route-08-common-beta-orientation/prover_result.md",
+			"sha256": "6ecc0ae44f6841414a8a8be8077ed919f1d66d285dc66abbdc79f85660c44d6d",
+			"copy_matches": true,
+			"original_unchanged": true
+		},
+		{
+			"copy": "sources/route-09-acute-threshold/prover_result.md",
+			"source_path": "/mnt/f/LaTeX/BVE research/research/runs/R-20260831T020156Z-g1p-kpdet/workspace/runs/rigorous-open-math-research/R-20260831T020156Z-g1p-kpdet/route-09-acute-threshold/prover_result.md",
+			"sha256": "ef7ad48667026a5eb672c8d4bd48718903fd6dcf2102d9f16b8a6883ece948c2",
+			"copy_matches": true,
+			"original_unchanged": true
+		},
+		{
+			"copy": "sources/route-09-acute-threshold/accepted_package.md",
+			"source_path": "/mnt/f/LaTeX/BVE research/research/runs/R-20260831T020156Z-g1p-kpdet/workspace/runs/rigorous-open-math-research/R-20260831T020156Z-g1p-kpdet/route-09-acute-threshold/accepted_package.md",
+			"sha256": "c76ed655d854bb327fc3755cbd0c2438cddd6eaf37f64111944dcf13db7be45d",
+			"copy_matches": true,
+			"original_unchanged": true
+		},
+		{
+			"copy": "sources/route-10-psi-quadrature/coordinator_direct.md",
+			"source_path": "/mnt/f/LaTeX/BVE research/research/runs/R-20260831T020156Z-g1p-kpdet/workspace/runs/rigorous-open-math-research/R-20260831T020156Z-g1p-kpdet/route-10-psi-quadrature/coordinator_direct.md",
+			"sha256": "e156f97b449daef0eac35ed7ae7ef30ceb2c6eac35983bc24534cf6f1b1a4634",
+			"copy_matches": true,
+			"original_unchanged": true
+		},
+		{
+			"copy": "sources/route-10-psi-quadrature/accepted_package.md",
+			"source_path": "/mnt/f/LaTeX/BVE research/research/runs/R-20260831T020156Z-g1p-kpdet/workspace/runs/rigorous-open-math-research/R-20260831T020156Z-g1p-kpdet/route-10-psi-quadrature/accepted_package.md",
+			"sha256": "53b2e95ddb65396385cc90ba2cac0472c779bafc60b97b8dd6e62aa67607d96a",
+			"copy_matches": true,
+			"original_unchanged": true
+		},
+		{
+			"copy": "sources/route-10-psi-quadrature/repair/e_binding_repair.md",
+			"source_path": "/mnt/f/LaTeX/BVE research/research/runs/R-20260831T020156Z-g1p-kpdet/workspace/runs/rigorous-open-math-research/R-20260831T020156Z-g1p-kpdet/route-10-psi-quadrature/repair/e_binding_repair.md",
+			"sha256": "f5956bc3c6b00c28ed02237095fda7b0478bb5718f6c88098db588753172bf3c",
+			"copy_matches": true,
+			"original_unchanged": true
+		},
+		{
+			"copy": "sources/route-10-psi-quadrature/repair/reaudit.json",
+			"source_path": "/mnt/f/LaTeX/BVE research/research/runs/R-20260831T020156Z-g1p-kpdet/workspace/runs/rigorous-open-math-research/R-20260831T020156Z-g1p-kpdet/route-10-psi-quadrature/repair/reaudit.json",
+			"sha256": "6a950bf3483585a6ddc526ece839fb931f0ff5accdce7abc01f02559f59a87c1",
+			"copy_matches": true,
+			"original_unchanged": true
+		},
+		{
+			"copy": "sources/route-11-q9-wave/reconciliation.md",
+			"source_path": "/mnt/f/LaTeX/BVE research/research/runs/R-20260831T020156Z-g1p-kpdet/workspace/runs/rigorous-open-math-research/R-20260831T020156Z-g1p-kpdet/route-11-q9-wave/reconciliation.md",
+			"sha256": "4e6c6be54c69a24286ebfbcc7ad09430d4fb2aa7e472690733aaee0a8dc0d02b",
+			"copy_matches": true,
+			"original_unchanged": true
+		}
+	],
+	"canonical_checks": [
+		{
+			"path": "/mnt/f/LaTeX/BVE research/blueprint/blueprint.json",
+			"sha256": "e11f7d586b2e5b27f03b74cb76ad326ad92f3617701247b24ab92410f88737a4",
+			"original_unchanged": true
+		},
+		{
+			"path": "/mnt/f/LaTeX/BVE research/blueprint/evidence_inventory.csv",
+			"sha256": "475c99f11485aef5c1b4455cebbe486b413e77f43b86b63d20331982810419c5",
+			"original_unchanged": true
+		}
+	],
+	"audit_bindings": [
+		{
+			"arm": "A",
+			"root": "/home/huangzy/codex-benchmark/blind-audits/b67267e4-974a-418c-8716-eeb5f016001f",
+			"prompt_sha256": "70212a3442481a3c1f7f29935dd0cb9c41366d63eeeb3242a1920eede7d965a0",
+			"candidate_sha256": "386038fcc8e26b44f20a2cf9c8e02ebd1da28de996ccfe62c521999984c8cb2a",
+			"gates": [
+				{
+					"path": "/home/huangzy/codex-benchmark/blind-audits/b67267e4-974a-418c-8716-eeb5f016001f/candidate/c/preflight-01/summary.json",
+					"sha256": "73345e6f0f1e77d52dea5028f5f53790f5692eb7f97914565a308d6afec34800",
+					"result": {
+						"workspace_write": true,
+						"foreign_read_blocked": true,
+						"project_read_blocked": true,
+						"auth_read_blocked": true,
+						"sibling_read_blocked": true,
+						"forbidden_plugin_read_blocked": true,
+						"outside_write_blocked": true,
+						"plugin_files_readable": true,
+						"network_blocked": true,
+						"prompt_items": 5,
+						"prompt_bytes": 16339,
+						"network_baseline_reachable": true,
+						"plugin_file_count": 0,
+						"config_sha256": "084516d32a9dd5f2c777fca6368966bcd7de510be0da7b0997c66672df0a2a8e",
+						"binary_sha256": "56ef98ab4032d317ab26e9b5e5a175650717351edb16ed9cde0cb6d1734d62da",
+						"workflow_visible": false,
+						"forbidden_skills_visible": false,
+						"legacy_project_visible": false,
+						"foreign_session_visible": false,
+						"verdict": "PASS"
+					}
+				},
+				{
+					"path": "/home/huangzy/codex-benchmark/blind-audits/b67267e4-974a-418c-8716-eeb5f016001f/candidate/c/tools-ln4m00hm/summary.json",
+					"sha256": "2b91e35f0762fc0bcadcddf02c305b81c956a07cf7eb647cca8e87c678d1810f",
+					"result": {
+						"model": "gpt-6-astra",
+						"reasoning": {
+							"effort": "max",
+							"context": "all_turns"
+						},
+						"tool_names": [
+							"functions.exec",
+							"nested.apply_patch",
+							"nested.exec_command",
+							"nested.view_image",
+							"nested.write_stdin",
+							"nested.clock__curr_time",
+							"functions.wait",
+							"functions.request_user_input",
+							"functions.request_user_input_async",
+							"clock.sleep",
+							"collaboration.followup_task",
+							"collaboration.interrupt_agent",
+							"collaboration.list_agents",
+							"collaboration.send_message",
+							"collaboration.spawn_agent",
+							"collaboration.wait_agent"
+						],
+						"forbidden": [],
+						"requests": 3,
+						"external_model_calls": 0,
+						"resume_same_session": true,
+						"operational_checks": {
+							"workspace_write": true,
+							"foreign_read_blocked": true,
+							"project_read_blocked": true,
+							"auth_read_blocked": true,
+							"sibling_read_blocked": true,
+							"forbidden_plugin_read_blocked": true,
+							"outside_write_blocked": true,
+							"plugin_files_readable": true,
+							"network_blocked": true
+						},
+						"transport": "LOCAL_STUB_CUSTOM_PROVIDER_SAME_BUNDLED_MODEL_CATALOG",
+						"config_sha256": "084516d32a9dd5f2c777fca6368966bcd7de510be0da7b0997c66672df0a2a8e",
+						"binary_sha256": "56ef98ab4032d317ab26e9b5e5a175650717351edb16ed9cde0cb6d1734d62da",
+						"verdict": "PASS",
+						"child_preflight": {
+							"verdict": "PASS",
+							"checks": {
+								"child_returned": true,
+								"root_and_child_observed": true,
+								"identity_matched": true,
+								"forbidden_metadata_absent": true,
+								"assigned_skills_matched": true,
+								"child_tools_passed": true,
+								"process_returned": true
+							},
+							"operational_checks": {
+								"workspace_write": true,
+								"foreign_read_blocked": true,
+								"project_read_blocked": true,
+								"auth_read_blocked": true,
+								"sibling_read_blocked": true,
+								"forbidden_plugin_read_blocked": true,
+								"outside_write_blocked": true,
+								"plugin_files_readable": true,
+								"network_blocked": true
+							},
+							"delayed_spawn_seconds": 35,
+							"requests": 5,
+							"external_model_calls": 0,
+							"account_metadata_sync_enabled": true,
+							"quota_queries": 0,
+							"fixture_usage_not_scored": true,
+							"helper_sha256": "38cb6d49b86b0eef07c207c5ccafa8ecc8907170527e1bb0fe54ca8778f990bb",
+							"config_sha256": "084516d32a9dd5f2c777fca6368966bcd7de510be0da7b0997c66672df0a2a8e",
+							"assigned_skill_counts": [
+								0,
+								0,
+								0,
+								0,
+								0
+							],
+							"model": "gpt-6-astra",
+							"effort": "max"
+						}
+					}
+				}
+			],
+			"bindings": "PASS"
+		},
+		{
+			"arm": "B",
+			"root": "/home/huangzy/codex-benchmark/blind-audits/69441ccc-096c-40cd-84ed-433c31aed005",
+			"prompt_sha256": "70212a3442481a3c1f7f29935dd0cb9c41366d63eeeb3242a1920eede7d965a0",
+			"candidate_sha256": "51b01295406d1899e3492bd8498731b9f5aac81635c9450bdbc21cf332745776",
+			"gates": [
+				{
+					"path": "/home/huangzy/codex-benchmark/blind-audits/69441ccc-096c-40cd-84ed-433c31aed005/candidate/c/preflight-01/summary.json",
+					"sha256": "4b0cc5290d6e3a4d8d222e856c5df0f858dd7ec7af3cc2e30dc709ce0c3a3cdb",
+					"result": {
+						"workspace_write": true,
+						"foreign_read_blocked": true,
+						"project_read_blocked": true,
+						"auth_read_blocked": true,
+						"sibling_read_blocked": true,
+						"forbidden_plugin_read_blocked": true,
+						"outside_write_blocked": true,
+						"plugin_files_readable": true,
+						"network_blocked": true,
+						"prompt_items": 5,
+						"prompt_bytes": 16809,
+						"network_baseline_reachable": true,
+						"plugin_file_count": 0,
+						"config_sha256": "a32467719ce99017e49c33a63af5d627e42a076b515ad3d635a9bc814d31c6d9",
+						"binary_sha256": "56ef98ab4032d317ab26e9b5e5a175650717351edb16ed9cde0cb6d1734d62da",
+						"workflow_visible": false,
+						"forbidden_skills_visible": false,
+						"legacy_project_visible": false,
+						"foreign_session_visible": false,
+						"verdict": "PASS"
+					}
+				},
+				{
+					"path": "/home/huangzy/codex-benchmark/blind-audits/69441ccc-096c-40cd-84ed-433c31aed005/candidate/c/tools-tvfivnkq/summary.json",
+					"sha256": "5ee05eb445259d0a5075b43d771c620c681a88a4fd3fe707a8e599d780792ef5",
+					"result": {
+						"model": "gpt-6-astra",
+						"reasoning": {
+							"effort": "max",
+							"context": "all_turns"
+						},
+						"tool_names": [
+							"functions.exec",
+							"nested.apply_patch",
+							"nested.exec_command",
+							"nested.view_image",
+							"nested.write_stdin",
+							"nested.clock__curr_time",
+							"functions.wait",
+							"functions.request_user_input",
+							"functions.request_user_input_async",
+							"clock.sleep",
+							"collaboration.followup_task",
+							"collaboration.interrupt_agent",
+							"collaboration.list_agents",
+							"collaboration.send_message",
+							"collaboration.spawn_agent",
+							"collaboration.wait_agent"
+						],
+						"forbidden": [],
+						"requests": 3,
+						"external_model_calls": 0,
+						"resume_same_session": true,
+						"operational_checks": {
+							"workspace_write": true,
+							"foreign_read_blocked": true,
+							"project_read_blocked": true,
+							"auth_read_blocked": true,
+							"sibling_read_blocked": true,
+							"forbidden_plugin_read_blocked": true,
+							"outside_write_blocked": true,
+							"plugin_files_readable": true,
+							"network_blocked": true
+						},
+						"transport": "LOCAL_STUB_CUSTOM_PROVIDER_SAME_BUNDLED_MODEL_CATALOG",
+						"config_sha256": "a32467719ce99017e49c33a63af5d627e42a076b515ad3d635a9bc814d31c6d9",
+						"binary_sha256": "56ef98ab4032d317ab26e9b5e5a175650717351edb16ed9cde0cb6d1734d62da",
+						"verdict": "PASS",
+						"child_preflight": {
+							"verdict": "PASS",
+							"checks": {
+								"child_returned": true,
+								"root_and_child_observed": true,
+								"identity_matched": true,
+								"forbidden_metadata_absent": true,
+								"assigned_skills_matched": true,
+								"child_tools_passed": true,
+								"process_returned": true
+							},
+							"operational_checks": {
+								"workspace_write": true,
+								"foreign_read_blocked": true,
+								"project_read_blocked": true,
+								"auth_read_blocked": true,
+								"sibling_read_blocked": true,
+								"forbidden_plugin_read_blocked": true,
+								"outside_write_blocked": true,
+								"plugin_files_readable": true,
+								"network_blocked": true
+							},
+							"delayed_spawn_seconds": 35,
+							"requests": 5,
+							"external_model_calls": 0,
+							"account_metadata_sync_enabled": true,
+							"quota_queries": 0,
+							"fixture_usage_not_scored": true,
+							"helper_sha256": "38cb6d49b86b0eef07c207c5ccafa8ecc8907170527e1bb0fe54ca8778f990bb",
+							"config_sha256": "a32467719ce99017e49c33a63af5d627e42a076b515ad3d635a9bc814d31c6d9",
+							"assigned_skill_counts": [
+								0,
+								0,
+								0,
+								0,
+								0
+							],
+							"model": "gpt-6-astra",
+							"effort": "max"
+						}
+					}
+				}
+			],
+			"bindings": "PASS"
+		},
+		{
+			"arm": "C",
+			"root": "/home/huangzy/codex-benchmark/blind-audits/a9069090-8f36-4d95-87c9-a7cc735acc69",
+			"prompt_sha256": "70212a3442481a3c1f7f29935dd0cb9c41366d63eeeb3242a1920eede7d965a0",
+			"candidate_sha256": "75df6dde44173612434ab6050458e4dadd6e03445c1d27c553c2ed4d18b89f40",
+			"gates": [
+				{
+					"path": "/home/huangzy/codex-benchmark/blind-audits/a9069090-8f36-4d95-87c9-a7cc735acc69/candidate/c/preflight-01/summary.json",
+					"sha256": "de9c5b9c45a8eb140ce063b6a4a1b3aa497a14a4329f01c806a589f1e123b16c",
+					"result": {
+						"workspace_write": true,
+						"foreign_read_blocked": true,
+						"project_read_blocked": true,
+						"auth_read_blocked": true,
+						"sibling_read_blocked": true,
+						"forbidden_plugin_read_blocked": true,
+						"outside_write_blocked": true,
+						"plugin_files_readable": true,
+						"network_blocked": true,
+						"prompt_items": 5,
+						"prompt_bytes": 16573,
+						"network_baseline_reachable": true,
+						"plugin_file_count": 0,
+						"config_sha256": "e1ff4633a22ef69aba34359db9183d9f47f0ebd1962d2e1581e3d4dc10e82c85",
+						"binary_sha256": "56ef98ab4032d317ab26e9b5e5a175650717351edb16ed9cde0cb6d1734d62da",
+						"workflow_visible": false,
+						"forbidden_skills_visible": false,
+						"legacy_project_visible": false,
+						"foreign_session_visible": false,
+						"verdict": "PASS"
+					}
+				},
+				{
+					"path": "/home/huangzy/codex-benchmark/blind-audits/a9069090-8f36-4d95-87c9-a7cc735acc69/candidate/c/tools-kdqx4_n5/summary.json",
+					"sha256": "6a451072e24bb66ab94885e06af8ec5bd1e02f4c4a7b46d704b4119cf8a680df",
+					"result": {
+						"model": "gpt-6-astra",
+						"reasoning": {
+							"effort": "max",
+							"context": "all_turns"
+						},
+						"tool_names": [
+							"functions.exec",
+							"nested.apply_patch",
+							"nested.exec_command",
+							"nested.view_image",
+							"nested.write_stdin",
+							"nested.clock__curr_time",
+							"functions.wait",
+							"functions.request_user_input",
+							"functions.request_user_input_async",
+							"clock.sleep",
+							"collaboration.followup_task",
+							"collaboration.interrupt_agent",
+							"collaboration.list_agents",
+							"collaboration.send_message",
+							"collaboration.spawn_agent",
+							"collaboration.wait_agent"
+						],
+						"forbidden": [],
+						"requests": 3,
+						"external_model_calls": 0,
+						"resume_same_session": true,
+						"operational_checks": {
+							"workspace_write": true,
+							"foreign_read_blocked": true,
+							"project_read_blocked": true,
+							"auth_read_blocked": true,
+							"sibling_read_blocked": true,
+							"forbidden_plugin_read_blocked": true,
+							"outside_write_blocked": true,
+							"plugin_files_readable": true,
+							"network_blocked": true
+						},
+						"transport": "LOCAL_STUB_CUSTOM_PROVIDER_SAME_BUNDLED_MODEL_CATALOG",
+						"config_sha256": "e1ff4633a22ef69aba34359db9183d9f47f0ebd1962d2e1581e3d4dc10e82c85",
+						"binary_sha256": "56ef98ab4032d317ab26e9b5e5a175650717351edb16ed9cde0cb6d1734d62da",
+						"verdict": "PASS",
+						"child_preflight": {
+							"verdict": "PASS",
+							"checks": {
+								"child_returned": true,
+								"root_and_child_observed": true,
+								"identity_matched": true,
+								"forbidden_metadata_absent": true,
+								"assigned_skills_matched": true,
+								"child_tools_passed": true,
+								"process_returned": true
+							},
+							"operational_checks": {
+								"workspace_write": true,
+								"foreign_read_blocked": true,
+								"project_read_blocked": true,
+								"auth_read_blocked": true,
+								"sibling_read_blocked": true,
+								"forbidden_plugin_read_blocked": true,
+								"outside_write_blocked": true,
+								"plugin_files_readable": true,
+								"network_blocked": true
+							},
+							"delayed_spawn_seconds": 35,
+							"requests": 5,
+							"external_model_calls": 0,
+							"account_metadata_sync_enabled": true,
+							"quota_queries": 0,
+							"fixture_usage_not_scored": true,
+							"helper_sha256": "38cb6d49b86b0eef07c207c5ccafa8ecc8907170527e1bb0fe54ca8778f990bb",
+							"config_sha256": "e1ff4633a22ef69aba34359db9183d9f47f0ebd1962d2e1581e3d4dc10e82c85",
+							"assigned_skill_counts": [
+								0,
+								0,
+								0,
+								0,
+								0
+							],
+							"model": "gpt-6-astra",
+							"effort": "max"
+						}
+					}
+				}
+			],
+			"bindings": "PASS"
+		}
+	],
+	"stage_states": [
+		{
+			"arm": "A",
+			"phase": "solver",
+			"root_thread_id": "01a0812b-e1b4-7203-a59b-9dff0757e677",
+			"single_uninterrupted_segment": true,
+			"exit_code": 0
+		},
+		{
+			"arm": "A",
+			"phase": "audit",
+			"root_thread_id": "01a08155-6c5c-7501-add1-94840ddf1185",
+			"single_uninterrupted_segment": true,
+			"exit_code": 0
+		},
+		{
+			"arm": "B",
+			"phase": "solver",
+			"root_thread_id": "01a08188-1682-7611-9a7d-623663d5a538",
+			"single_uninterrupted_segment": true,
+			"exit_code": 0
+		},
+		{
+			"arm": "B",
+			"phase": "audit",
+			"root_thread_id": "01a081b2-68fc-7690-ba39-ba40f965211a",
+			"single_uninterrupted_segment": true,
+			"exit_code": 0
+		},
+		{
+			"arm": "C",
+			"phase": "solver",
+			"root_thread_id": "01a0815e-b361-7b81-86f5-847de62d2841",
+			"single_uninterrupted_segment": true,
+			"exit_code": 0
+		},
+		{
+			"arm": "C",
+			"phase": "audit",
+			"root_thread_id": "01a0817f-8f44-7032-9bc0-a7b8d29658b4",
+			"single_uninterrupted_segment": true,
+			"exit_code": 0
+		}
+	],
+	"unique_valid_returned_responses": 475,
+	"unique_invalid_returned_responses": 59,
+	"valid_invalid_response_ids_disjoint": true,
+	"invalid_attempts": [
+		{
+			"label": "invalid-initial-A",
+			"mathematical_score": null,
+			"active_seconds": 950.6715293199959,
+			"returned_usage": {
+				"input_tokens": 1802167,
+				"cached_input_tokens": 1612928,
+				"output_tokens": 41533,
+				"reasoning_output_tokens": 19456,
+				"uncached_input_tokens": 189239,
+				"responses_with_usage": 49
+			}
+		},
+		{
+			"label": "invalid-r1-A",
+			"mathematical_score": null,
+			"active_seconds": 274.3057983930048,
+			"returned_usage": {
+				"input_tokens": 385788,
+				"cached_input_tokens": 350208,
+				"output_tokens": 6660,
+				"reasoning_output_tokens": 1908,
+				"uncached_input_tokens": 35580,
+				"responses_with_usage": 10
+			}
+		}
+	],
+	"invalid_attempt_totals": {
+		"uncached_input_tokens": 224819,
+		"cached_input_tokens": 1963136,
+		"output_tokens": 48193,
+		"responses_with_usage": 59,
+		"active_seconds": 1224.9773277130007
+	},
+	"valid_stage_totals": {
+		"uncached_input_tokens": 1203636,
+		"cached_input_tokens": 23794176,
+		"output_tokens": 397021,
+		"responses_with_usage": 475,
+		"active_seconds": 8680.282240042972
+	},
+	"unreturned_usage": null,
+	"coordinator_usage": null,
+	"notes": [
+		"Scored stage costs exclude preparation, fixture probes, the coordinator and contract review.",
+		"Invalid infrastructure attempts are retained separately and not assigned mathematical scores."
+	]
+}

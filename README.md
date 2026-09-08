@@ -13,6 +13,11 @@ Codex 数学研究工作流插件仓库 (marketplace): 一个仓库装下 管理
 额度中断后的最新状态检查与幂等恢复入口. 方案和验证范围见
 [优化结果](docs/optimization-20260905-results.md). 本批不宣称新的数学 A/B 加速结果.
 
+后续对照: [L1 回归](benchmarks/codex-20260906-l1/CONCLUSIONS.md) 和
+[主项目 Q9 难题](benchmarks/codex-20260908-q9/CONCLUSIONS.md) 均已完成旧版/新版/空白三组测试.
+Q9 三组均通过完整证明外审; 新版相对旧版的完整交付非缓存输入少 1.32%,
+时间多 4.75%, 输出多 28.48%. 空白组最快. 单题结果不支持普遍加速结论.
+
 ```mermaid
 flowchart LR
   A["阶段 A 管理<br/>$manage-math-research-program"] -->|"任务包 Q-<date>-<tag>-<hash8>"| B["阶段 B 研究<br/>$rigorous-open-math-research"]

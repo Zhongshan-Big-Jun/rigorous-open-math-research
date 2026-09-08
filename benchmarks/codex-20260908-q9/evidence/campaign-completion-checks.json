@@ -1,0 +1,61 @@
+{
+	"recorded_at": "2026-09-08T15:56:27.442351+00:00",
+	"verdict": "PASS",
+	"stages": [
+		{
+			"arm": "A",
+			"phase": "solver",
+			"checks": {
+				"verdict": "PASS",
+				"files_verified": 59,
+				"owned_process_exited": true
+			}
+		},
+		{
+			"arm": "A",
+			"phase": "audit",
+			"checks": {
+				"verdict": "PASS",
+				"files_verified": 8,
+				"owned_process_exited": true
+			}
+		},
+		{
+			"arm": "C",
+			"phase": "solver",
+			"checks": {
+				"verdict": "PASS",
+				"files_verified": 63,
+				"owned_process_exited": true
+			}
+		},
+		{
+			"arm": "C",
+			"phase": "audit",
+			"checks": {
+				"verdict": "PASS",
+				"files_verified": 8,
+				"owned_process_exited": true
+			}
+		},
+		{
+			"arm": "B",
+			"phase": "solver",
+			"checks": {
+				"verdict": "PASS",
+				"files_verified": 63,
+				"owned_process_exited": true
+			}
+		},
+		{
+			"arm": "B",
+			"phase": "audit",
+			"checks": {
+				"verdict": "PASS",
+				"files_verified": 8,
+				"owned_process_exited": true
+			}
+		}
+	],
+	"unique_returned_responses": 475
+}

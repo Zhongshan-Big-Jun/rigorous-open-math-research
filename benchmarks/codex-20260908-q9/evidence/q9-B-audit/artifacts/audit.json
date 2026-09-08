@@ -1,0 +1,190 @@
+{
+  "verdict": "PASS",
+  "target_status": "PROVED",
+  "root_closed": true,
+  "scores": {
+    "correctness": 40,
+    "fidelity": 20,
+    "strict_progress": 15,
+    "calibration": 10,
+    "evidence": 10,
+    "reproducibility": 5
+  },
+  "total_score": 100,
+  "score_explanations": {
+    "correctness": "Every load-bearing analytic implication is valid, with the required signs and domains. The submitted finite integer certificate proves the stated polynomial inequality uniformly; its polynomial and coefficient transformation were independently reconstructed exactly.",
+    "fidelity": "The proof covers every tuple in the exact TASK.md domain satisfying C1-C3 and establishes the requested strict R_quad > 0 implication. Proving the stronger statement from C2 and C3 is sufficient; no extra hypothesis, approximate constraint, or mass-balance equation is introduced.",
+    "strict_progress": "15/15 for full target closure. Section 2 proves Q_quad > 0 forces r < c^2/4, and Section 1 proves the supplied sufficient condition throughout that range. Their combination leaves no unproved parameter region or weaker remaining core. Credit is for this closure, not for rederiving the supplied identities.",
+    "calibration": "The assertion of a complete proof is justified. The submission accurately identifies its computation as an exact finite algebraic certificate and does not claim a Lean formalization or rely on numerical scans.",
+    "evidence": "All essential arguments and the executable certificate are embedded in CANDIDATE.md. Exact independent checks confirm the substitutions, polynomial degrees and term counts, every Bernstein coefficient, their stated multiplicities, and the submitted inverse identity.",
+    "reproducibility": "The embedded standard-library Python certificate runs successfully. Retained audit_check.py independently reconstructs the displayed polynomial and its Bernstein coefficients using Fraction arithmetic, and audit_check_results.json records the exact results and input hashes."
+  },
+  "earliest_substantive_gap": null,
+  "load_bearing_gaps": [],
+  "partial_progress_gaps": [],
+  "proved_new_claims": [
+    {
+      "statement": "If 0 < r <= c^2/4, then c^2-r > k(1-c^2)r sin(B)^2.",
+      "domain": "The stated m,c,r,B,g domain with exact C2 and C3; C1 is unnecessary.",
+      "proof_locator": "CANDIDATE.md:41-84, equations (3)-(5).",
+      "relevance": "Derives the supplied sufficient condition on a specified parameter range instead of assuming or merely restating it."
+    },
+    {
+      "statement": "Writing t=sqrt(r), X=tan(B), z=tan(g), L=sqrt(1+(1-t^2)X^2), w=sqrt(1+(1-t^2)z^2), u=ct, P=(c-tL)/X, and a,b as in (6), Q>0 implies 0<Pz<(a-bw)/(1-u^2) and 1<w<a/b.",
+      "domain": "The stated domain with C3 and Q>0; in particular the section-2 range c/2 <= t < c.",
+      "proof_locator": "CANDIDATE.md:103-140, equations (7)-(9).",
+      "relevance": "Supplies the upper bound on the positive term of Q and the exact w interval needed by the certificate."
+    },
+    {
+      "statement": "With h=m tan(g) and w=sqrt(1+(1-t^2)tan(g)^2), C2 implies h^2 > (49/100)(1+c)^2 w^2/(w+ct)^2.",
+      "domain": "The stated domain with C2, also valid at c=2/3.",
+      "proof_locator": "CANDIDATE.md:143-164, equation (10) and the five-angle verification.",
+      "relevance": "Provides an exact lower bound for the argument of the strictly increasing subtracted term K."
+    },
+    {
+      "statement": "The polynomial E defined in equation (11) is strictly positive.",
+      "domain": "2/3 <= c < 1, c/2 <= t < c, and 1 <= w <= a/b, with a,b,u,J exactly as in (6).",
+      "proof_locator": "CANDIDATE.md:166-179 and 230-367, equations (11), (14)-(16) and the embedded certificate.",
+      "relevance": "Proves the load-bearing comparison K(j)>=f uniformly across the whole complementary parameter range."
+    },
+    {
+      "statement": "Q_quad > 0 implies r < c^2/4.",
+      "domain": "The complete stated domain with exact C2 and C3.",
+      "proof_locator": "CANDIDATE.md:86-206, especially equations (12)-(13) and the contradiction at lines 202-206.",
+      "relevance": "Excludes every Q-positive tuple outside the range handled in Section 1, including r=c^2/4."
+    },
+    {
+      "statement": "Q_quad > 0 implies (c^2-r)/(k(1-c^2)) > r sin(B)^2 > T_quad, and hence R_quad > 0.",
+      "domain": "Every tuple in TASK.md satisfying C1-C3; the stronger statement requiring only C2-C3 also holds.",
+      "proof_locator": "CANDIDATE.md:3-10 and 210-228, using Sections 1, 2, and 4.",
+      "relevance": "Closes the exact universal target Q9 affirmatively."
+    }
+  ],
+  "checked_claims": [
+    {
+      "claim": "The transcription of the domain, principal branches, U,V, and Q agrees with TASK.md.",
+      "status": "VERIFIED",
+      "proof_locator": "TASK.md:12-47; CANDIDATE.md:14-38.",
+      "audit_evidence": "t=sqrt(r) lies in (0,c), k>0, e>0, all acute trigonometric factors are positive, and the second term subtracted in Q is strictly positive."
+    },
+    {
+      "claim": "C2 yields m^2 t sin(g)^2 < c cos(g) cos(d) < c and k sin(g)^2 < c/t.",
+      "status": "VERIFIED",
+      "proof_locator": "CANDIDATE.md:49-60.",
+      "audit_evidence": "Strict convexity gives tan(c x)<c tan(x) for x=pi/2-H(d) in (0,pi/2). All multiplications and divisions use positive factors."
+    },
+    {
+      "claim": "C3 gives sin(B)/sin(g) < B/g <= (1+ct)/(1-ct).",
+      "status": "VERIFIED",
+      "proof_locator": "CANDIDATE.md:63-79.",
+      "audit_evidence": "Sine concavity implies arcsin(t sin(z))<=tz on the principal branch. The rearrangement divides by 1-ct>0, and sin(z)/z is strictly decreasing for 0<z<pi/2."
+    },
+    {
+      "claim": "Section 1 proves its strict bound throughout 0<t<=c/2.",
+      "status": "VERIFIED",
+      "proof_locator": "CANDIDATE.md:72-84.",
+      "audit_evidence": "The increasing function of t is bounded at c/2. The identity 3(2-x)^2-2(1-x)(2+x)^2=(3x-2)^2+2x^3 was independently expanded exactly and is strictly positive for x=c^2 in (0,1). The endpoint t=c/2 retains strictness."
+    },
+    {
+      "claim": "C3 yields X-z>ct(Xw+zL), and its squared consequence is used with the correct orientation.",
+      "status": "VERIFIED",
+      "proof_locator": "CANDIDATE.md:103-122.",
+      "audit_evidence": "0<A+d<pi justifies strict sine concavity. The first inequality forces 1-uw>0 before squaring. The displayed factorization was checked exactly; N>(1-u)^2>0 and LD>N force D>0."
+    },
+    {
+      "claim": "The decreasing fractional function gives the upper bound (8) and w<a/b.",
+      "status": "VERIFIED",
+      "proof_locator": "CANDIDATE.md:124-140.",
+      "audit_evidence": "Q>0 implies c-tL>0. Both L and N/D are positive, so the derivative comparison is valid. Exact checks confirm D+uN=(1-u^2)(1-uw), cD-tN=a-bw, and a-b=(c-t)(1-ct)^2."
+    },
+    {
+      "claim": "Strict Jensen and tan(pi/5)>7/10 prove h^2>j.",
+      "status": "VERIFIED",
+      "proof_locator": "CANDIDATE.md:143-164.",
+      "audit_evidence": "The weights are c/(1+c) and 1/(1+c); the distinct positive arguments are th/w and h. For c>=2/3 the left angle is at least pi/5. Both five-angle rational values were checked exactly, and their signs isolate 5 arctan(7/10) in (pi/2,pi)."
+    },
+    {
+      "claim": "Equation (12) is the exact transformed Q and K is strictly increasing for x>=0.",
+      "status": "VERIFIED",
+      "proof_locator": "CANDIDATE.md:181-195.",
+      "audit_evidence": "Using cos(d)=w/sqrt(1+z^2), sin(g)=z/sqrt(1+z^2), and h=mz reduces the original denominator to 1+uw+h^2(1+ut^2/w). Its cleared polynomial identity was independently checked. The displayed derivative has a strictly positive numerator and denominator."
+    },
+    {
+      "claim": "K(j)-f equals the fraction in equation (13).",
+      "status": "VERIFIED",
+      "proof_locator": "CANDIDATE.md:196-200.",
+      "audit_evidence": "Substituting z^2=(w^2-1)/(1-t^2) and j=Jw^2/(w+u)^2 gives exactly the displayed E numerator after clearing denominators. The denominator is positive since u<1, w>=1, and J>0."
+    },
+    {
+      "claim": "Equations (14)-(15) and the code construct the same polynomial as equation (11).",
+      "status": "VERIFIED",
+      "proof_locator": "CANDIDATE.md:234-257 and 308-331.",
+      "audit_evidence": "Independently expanded equation (11), substituted every monomial using t=cs and w=(beta+delta*zeta)/beta, and cleared by 100 beta^4/c. This matches all 637 terms of the submitted F with degrees (26,18,4). Independent rational affine substitution matches all 2103 terms of G. beta and the original scaling factors are strictly positive."
+    },
+    {
+      "claim": "The full Bernstein certificate has 2535 positive and 30 zero coefficients and proves E>0.",
+      "status": "VERIFIED",
+      "proof_locator": "CANDIDATE.md:259-272 and 333-366.",
+      "audit_evidence": "The submitted code, including its inverse-basis identity, passes. An independent unscaled Fraction conversion in reverse axis order matches all 2565 coefficients. There are no negatives; zeros occur exactly when i+j>=42. All 95 coefficients with i=0 are positive. Since xi=3c-2<1, their nonnegative Bernstein contribution is strictly positive, including eta and zeta endpoints."
+    },
+    {
+      "claim": "The contradiction excludes the whole range c/2<=t<c under Q>0.",
+      "status": "VERIFIED",
+      "proof_locator": "CANDIDATE.md:202-206.",
+      "audit_evidence": "The polynomial lemma applies because the earlier proof establishes 1<w<a/b. Combining Pz<f, h^2>j, strict monotonicity of K, and K(j)>=f yields Qz<0 while Qz>0."
+    },
+    {
+      "claim": "The final result is the requested strict implication, not just a restatement of the supplied sufficient condition.",
+      "status": "VERIFIED",
+      "proof_locator": "TASK.md:49-83; CANDIDATE.md:210-228.",
+      "audit_evidence": "Sections 1 and 2 establish the previously unproved antecedent of that sufficient condition for every Q-positive tuple. The supplied identities give V>pi and 0<T_quad<r sin(B)^2. Division by ke>0 and multiplication by V>0 preserve strictness, proving R_quad>0."
+    },
+    {
+      "claim": "All task quantifiers and relevant endpoints are covered.",
+      "status": "VERIFIED",
+      "proof_locator": "TASK.md:12-30 and 51-62; CANDIDATE.md:14-26, 45-46, 88, 168, 234-257.",
+      "audit_evidence": "The cases 0<t<=c/2 and c/2<=t<c cover 0<r<c^2, with the shared endpoint explicitly handled. The certificate includes c=2/3 and s=1/2; the target has c>2/3 and c<1. The excluded limits m=1, r=0, r=c^2, g=0, g=B, and B=pi/2 are never used as admissible tuples. The proof makes no solution-multiplicity or counterexample claim requiring an existence certificate. C1 remains a target hypothesis, and establishing a universal implication without needing it is logically sufficient."
+    }
+  ],
+  "repairs_supplied": [],
+  "verification": {
+    "scope": "Read only TASK.md and CANDIDATE.md as source material; used local standard-library scratch computation. No external sources or subagents.",
+    "method": "Line-by-line analytic review plus exact independent polynomial reconstruction and rational Bernstein conversion; no floating-point scan used as proof.",
+    "commands": [
+      "python3 candidate_certificate.py",
+      "python3 audit_check.py"
+    ],
+    "supporting_files": [
+      "candidate_certificate.py",
+      "audit_check.py",
+      "audit_check_results.json"
+    ],
+    "exact_results": {
+      "python_version": "3.14.4",
+      "task_sha256": "c7133b97e440e90095088927f105c9f88fcdc54f4a4772ee9f85ba5a139e6330",
+      "candidate_sha256": "51b01295406d1899e3492bd8498731b9f5aac81635c9450bdbc21cf332745776",
+      "certificate_sha256": "bae2b17096f9706fdf64d227cc00e065af4c52e0e6b614067e788eceb5e402d1",
+      "submitted_certificate_output": "PASS: exact Bernstein identity; 2535 positive, 30 zero; E > 0 for c < 1.",
+      "independent_algebra_checks": "PASS",
+      "equation_14_reconstruction": "PASS: independent expansion of equation (11)",
+      "equation_15_reconstruction": "PASS: exact rational affine substitution",
+      "independent_bernstein_conversion": "PASS: rational arithmetic, reversed axes",
+      "degrees": [
+        26,
+        18,
+        4
+      ],
+      "f_terms": 637,
+      "g_terms": 2103,
+      "coefficient_count": 2565,
+      "positive_coefficients": 2535,
+      "zero_coefficients": 30,
+      "negative_coefficients": 0,
+      "common_integer_scale": 437341981684608000,
+      "first_index_zero_coefficients_all_positive": true,
+      "zero_locus_in_coefficient_indices": "i+j >= 42, for all k in 0..4",
+      "repairs_supplied": false
+    }
+  },
+  "rationale": "PASS: the submitted proof closes Q9 uniformly on the complete requested domain. Section 1 proves the strict sufficient inequality whenever r<=c^2/4. Section 2 uses exact consequences of C2 and C3, together with the embedded polynomial certificate, to show that Q_quad>0 forces r<c^2/4. Section 3 therefore proves R_quad>0. The analytic transformations preserve all required signs and strictness. The certificate is a complete finite exact identity, not numerical sampling, and independently reconstructs to the displayed polynomial with all stated coefficient counts. There is no substantive gap, unproved remainder, false claim, or auditor-supplied repair."
+}

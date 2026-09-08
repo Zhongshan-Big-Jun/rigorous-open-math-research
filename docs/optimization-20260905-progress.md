@@ -1,6 +1,6 @@
 # Optimization implementation progress
 
-Updated: 2026-09-06. State: FIRST_BATCH_RELEASED_AND_VERIFIED.
+Updated: 2026-09-09. State: FIRST_BATCH_RELEASED_AND_VERIFIED; L1_AND_Q9_COMPARISONS_COMPLETE.
 
 ## Contract
 
@@ -26,6 +26,17 @@ the lowest observed complete-delivery cost on both development tasks. Quota,
 cache and account/plan differences prevent causal plugin-only attribution.
 See the [L1 conclusion](../benchmarks/codex-20260906-l1/CONCLUSIONS.md) and
 [current status](../benchmarks/codex-20260906-l1/STATUS.md).
+
+The user then requested a harder repository problem. The Q9 frontier comparison
+completed all three solver and external-audit stages on 2026-09-08 UTC. All three
+proved Q9 and received PASS 100/100 with full root closure. New/old full-delivery
+uncached input was 0.986805, time 1.047518, and output 1.284781. Blank Codex was
+fastest. See [Q9 conclusions](../benchmarks/codex-20260908-q9/CONCLUSIONS.md),
+[machine data](../benchmarks/codex-20260908-q9/comparison.json), and
+[repository overlap](../benchmarks/codex-20260908-q9/REPOSITORY_OVERLAP.md).
+All six valid stages returned in one uninterrupted segment on the same account.
+Two earlier isolation-invalid attempts are preserved separately without scores.
+This task does not establish a general speedup or replace the L1 results.
 
 The next separate work is live literature-to-tool reuse and controlled in-flight
 interruption acceptance, followed by scoped ablations before considering L2.
@@ -53,4 +64,10 @@ infer runtime selection from their existence.
 
 ## Recovery boundaries
 
-No Q9 worker or research solver has been dispatched. No BVE accepted graph or checkpoint-bound mathematical artifact has been changed. No reset credit is authorized. At the 2026-09-06 continuation, the account reported five-hour used 2%, weekly used 47%; shared usage is not task consumption. Future work starts from these release records, not by replaying old mathematical work.
+L1 and Q9 are complete and immutable. Do not resume their solver or audit sessions.
+Q9 recovery and completion evidence is in benchmarks/codex-20260908-q9/STATUS.md.
+The main project's nine source files, blueprint.json and evidence_inventory.csv
+still match the selection hashes. Q9 proofs are benchmark artifacts awaiting any
+separately scoped main-project integration. The user disabled quota queries,
+reserve gates and quota-driven coordination; do not restore them or redeem resets.
+Future acceptance work starts from these release records and frozen comparisons.

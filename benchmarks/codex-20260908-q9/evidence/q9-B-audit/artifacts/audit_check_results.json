@@ -1,0 +1,26 @@
+{
+  "python_version": "3.14.4",
+  "task_sha256": "c7133b97e440e90095088927f105c9f88fcdc54f4a4772ee9f85ba5a139e6330",
+  "candidate_sha256": "51b01295406d1899e3492bd8498731b9f5aac81635c9450bdbc21cf332745776",
+  "certificate_sha256": "bae2b17096f9706fdf64d227cc00e065af4c52e0e6b614067e788eceb5e402d1",
+  "submitted_certificate_output": "PASS: exact Bernstein identity; 2535 positive, 30 zero; E > 0 for c < 1.",
+  "independent_algebra_checks": "PASS",
+  "equation_14_reconstruction": "PASS: independent expansion of equation (11)",
+  "equation_15_reconstruction": "PASS: exact rational affine substitution",
+  "independent_bernstein_conversion": "PASS: rational arithmetic, reversed axes",
+  "degrees": [
+    26,
+    18,
+    4
+  ],
+  "f_terms": 637,
+  "g_terms": 2103,
+  "coefficient_count": 2565,
+  "positive_coefficients": 2535,
+  "zero_coefficients": 30,
+  "negative_coefficients": 0,
+  "common_integer_scale": 437341981684608000,
+  "first_index_zero_coefficients_all_positive": true,
+  "zero_locus_in_coefficient_indices": "i+j >= 42, for all k in 0..4",
+  "repairs_supplied": false
+}

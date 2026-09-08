@@ -8,6 +8,13 @@ This repository is a standard Codex marketplace (named `math-research`) containi
 
 ## Workflow overview
 
+The [L1 regression](benchmarks/codex-20260906-l1/CONCLUSIONS.md) and the harder
+[repository Q9 comparison](benchmarks/codex-20260908-q9/CONCLUSIONS.md) are complete.
+All three Q9 treatments produced externally audited full proofs. Compared with
+the old plugin, the new plugin used 1.32% less uncached input across solving and
+external audit, but 4.75% more time and 28.48% more output. Blank Codex was fastest.
+This single-task result does not establish a general speedup.
+
 ```mermaid
 flowchart LR
   A["Stage A manage<br/>$manage-math-research-program"] -->|"task package Q-<date>-<tag>-<hash8>"| B["Stage B research<br/>$rigorous-open-math-research"]
