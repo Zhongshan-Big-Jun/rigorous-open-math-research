@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "run_id": "q9",
+  "status": "INDEPENDENTLY_AUDITED_PROOF",
+  "started_at": "2026-09-08T14:59:50+00:00",
+  "completed_at": "2026-09-08T15:38:56.937849+00:00",
+  "wall_budget_seconds": 3600,
+  "consolidation_started_at": "2026-09-08T15:23:08+00:00",
+  "result": {
+    "path": "../../answer.md",
+    "sha256": "51b01295406d1899e3492bd8498731b9f5aac81635c9450bdbc21cf332745776"
+  },
+  "completion_manifest": {
+    "path": "completion_manifest.json",
+    "sha256": "dd221dede3e5280cbe0d865b5b6f9593d8d50803647fe5ab5213464aecc4c5e1"
+  },
+  "completion_audit": {
+    "path": "completion_audit.json",
+    "sha256": "b6e96590c6f161bdaac8760404d4c7326faed4452903094a31a5049c8eaacb07"
+  },
+  "formalization": "scaffold",
+  "formalization_manifest": "formalization_progress.md",
+  "formalization_reason": "Lean and lake unavailable; uncompiled scaffold retained, no formal-verification claim.",
+  "research_stop": "STOP",
+  "python": "3.14.4 (main, Jun 18 2026, 14:25:02) [GCC 15.2.0]",
+  "external_sources_used": false,
+  "novelty": "UNKNOWN",
+  "upstream_status_verbatim": "INDEPENDENTLY_AUDITED_PROOF"
+}

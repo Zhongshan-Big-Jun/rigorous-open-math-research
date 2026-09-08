@@ -1,0 +1,108 @@
+{
+  "verdict": "PASS",
+  "research_status": "RIGOROUS_PARTIAL_RESULT",
+  "audit_type": "independent_claim_local",
+  "auditor": "/root/audit_partial",
+  "inputs": [
+    {
+      "path": "TASK.md",
+      "sha256": "c7133b97e440e90095088927f105c9f88fcdc54f4a4772ee9f85ba5a139e6330"
+    },
+    {
+      "path": "runs/q9/partial_algebra.md",
+      "sha256": "036931d3974fb6736691bc5a0990933e081e26462c8da7e33a9ade3555c1b353",
+      "initial_sha256": "1414740994967772ede01684c3f365f264d81354d18804de452d48e6658c1ea6",
+      "revision_checked": "The only change explicitly states the smooth extension of H near zero, already independently verified."
+    }
+  ],
+  "audit_report": {
+    "path": "runs/q9/audit_partial.md",
+    "sha256": "883c6405aa5b9e5f9bf77a00acb571891235807a0391f2f0632354c122bb3bf0"
+  },
+  "critical_errors": [],
+  "gaps": [],
+  "first_error": null,
+  "repair_hints": "None required.",
+  "covered_scope": [
+    "On the original domain, Q positivity implies sin(B)^2 < (c^2-r)/(c^2-r^2), independently of C1--C3.",
+    "Q9 for exact constrained tuples satisfying k(1-c^2)r <= c^2-r^2, including equality.",
+    "The parameter condition for every 1<m<=sqrt(2), using (c^2-r)(1+r)>0.",
+    "For every fixed m>1, exact local Q-positive admissible tuples satisfying the parameter condition via the smooth implicit function theorem.",
+    "All first derivatives, residuals, Jacobian determinant, c_prime(0)>0, strict domain inequalities, principal branches, and continuity arguments."
+  ],
+  "checks": [
+    {
+      "id": "angular_bound",
+      "status": "PASS",
+      "method": "Independent sign and algebra derivation; squaring positive sides only."
+    },
+    {
+      "id": "partial_implication",
+      "status": "PASS",
+      "method": "Independent strict inequality chain using supplied T_quad<r sin(B)^2."
+    },
+    {
+      "id": "low_m_interval",
+      "status": "PASS",
+      "method": "Direct expansion c^2-r^2-(1-c^2)r=(c^2-r)(1+r)>0."
+    },
+    {
+      "id": "ift_residual_map",
+      "status": "PASS",
+      "method": "Explicit smooth open-neighborhood extension and exact zero residual at t=0."
+    },
+    {
+      "id": "ift_derivatives",
+      "status": "PASS",
+      "method": "Independent chain rule gives E_t=(-(2/3)m sin(b),m sin(b),-(4/3)sin(b)); determinant -9 pi h/4."
+    },
+    {
+      "id": "ift_entry_sign",
+      "status": "PASS",
+      "method": "Independent elimination gives c_prime(0)=8(m-h)sin(b)/(9 pi)>0."
+    },
+    {
+      "id": "exact_domain",
+      "status": "PASS",
+      "method": "Continuity, principal-arcsine monotonicity, and exact C3 ensure every original strict inequality simultaneously."
+    },
+    {
+      "id": "branch_q_and_p",
+      "status": "PASS",
+      "method": "Exact limits Q0=c0 cos(b)/(sin(b)(1+k sin(b)^2))>0 and G(0)=4/9>0."
+    },
+    {
+      "id": "input_binding",
+      "status": "PASS",
+      "method": "sha256sum and hashlib; final reviewed candidate hash recorded."
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "Supplied strict bound T_quad<r sin(B)^2",
+      "source": "TASK.md",
+      "hypotheses_checked": true
+    },
+    {
+      "name": "Finite-dimensional smooth implicit function theorem",
+      "source": "Exactly stated standard theorem; external-source search excluded",
+      "hypotheses_checked": true
+    }
+  ],
+  "computational_verification": {
+    "floating_point_evidence_used": false,
+    "symbolic_cas_attempt": {
+      "status": "unavailable",
+      "detail": "Python import sympy failed with ModuleNotFoundError; no CAS verification claimed."
+    },
+    "formal_kernel_check": "not performed"
+  },
+  "residual_risk": [
+    "This is not a global solution audit: Q9 outside the additional parameter condition remains unproved here.",
+    "No classification of all branches or uniform neighborhood in m is claimed.",
+    "External-literature novelty was not audited; no external sources were read.",
+    "No Lean or other kernel verification was performed; the verdict is supported by exact analytic derivations."
+  ],
+  "read_restrictions_observed": true,
+  "subagents_spawned": false
+}

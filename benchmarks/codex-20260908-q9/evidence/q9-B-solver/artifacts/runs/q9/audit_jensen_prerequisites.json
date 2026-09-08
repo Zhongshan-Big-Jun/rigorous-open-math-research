@@ -1,0 +1,117 @@
+{
+  "verdict": "PASS",
+  "research_status": "RIGOROUS_PARTIAL_RESULT",
+  "audit_type": "independent_claim_local",
+  "auditor": "/root/audit_partial",
+  "inputs": [
+    {
+      "path": "TASK.md",
+      "sha256": "c7133b97e440e90095088927f105c9f88fcdc54f4a4772ee9f85ba5a139e6330"
+    },
+    {
+      "path": "runs/q9/jensen_prerequisites.md",
+      "sha256": "62a08ff1f97a9a037c1790df10bc1a6df50f84d204ea475d75165421053e2c13"
+    }
+  ],
+  "audit_report": {
+    "path": "runs/q9/audit_jensen_prerequisites.md",
+    "sha256": "da367fb5ede41018f3680c2fe167cd8dbb5dd320f6e4271748bec2fd85725dca"
+  },
+  "critical_errors": [],
+  "gaps": [],
+  "first_error": null,
+  "repair_hints": "No repair required within the audited scope. E>=0 must remain an explicitly open obligation until independently proved.",
+  "covered_scope": [
+    "Under the original domain, C2, C3, Q>0, and t=sqrt(r)>=c/2, derive 0<Pz<f and 1<w<a/b with all orientation and denominator signs justified.",
+    "Strict Jensen estimate h^2>j, including the exact rational-angle proof tan(pi/5)>7/10.",
+    "Exact substitution of the original Q expression into Qz=Pz-K(h^2).",
+    "Monotonicity K_prime(x)>0 for every x>=0.",
+    "Exact identity K(j)-f=E/((1-u^2)M), with M=(1+uw)(w+u)^2+Jw(w+ut^2)>0 on the full proposed algebraic domain, including its included boundary faces.",
+    "Conditional exclusion of Q-positive tuples with t>=c/2 if E>=0 is subsequently established."
+  ],
+  "checks": [
+    {
+      "id": "c3_concavity_orientation",
+      "status": "PASS",
+      "method": "A+d lies in (0,pi); strict sine concavity gives sin(c(A+d))>c sin(A+d)."
+    },
+    {
+      "id": "c3_tangent_substitution",
+      "status": "PASS",
+      "method": "Common positive denominator yields X-z>u(Xw+zL), establishing 1-uw>0 before division or squaring."
+    },
+    {
+      "id": "c3_factorization",
+      "status": "PASS",
+      "method": "Independent expansion and exact rational-coefficient polynomial check."
+    },
+    {
+      "id": "d_and_n_signs",
+      "status": "PASS",
+      "method": "N>(1-u)^2>0 and LD>N with L>0 force D>0 and L>N/D."
+    },
+    {
+      "id": "pz_bound",
+      "status": "PASS",
+      "method": "Q positivity gives c-tL>0; decreasing rational function and D+uN=(1-u^2)(1-uw) yield 0<Pz<(a-bw)/(1-u^2)."
+    },
+    {
+      "id": "jensen",
+      "status": "PASS",
+      "method": "Arctan second derivative is negative on positive inputs; inputs differ and weights are strictly positive."
+    },
+    {
+      "id": "tan_constant",
+      "status": "PASS",
+      "method": "Exact five-angle rational numerators and the interval 0<5theta<5pi/4 force theta<pi/5."
+    },
+    {
+      "id": "q_substitution",
+      "status": "PASS",
+      "method": "Recomputed directly from task Q using cos(d)=w/sqrt(1+z^2), h=mz, and k z^2=h^2-z^2."
+    },
+    {
+      "id": "k_monotonicity",
+      "status": "PASS",
+      "method": "Independent quotient-rule derivative, positive for all x>=0 regardless of the sign of K(x)."
+    },
+    {
+      "id": "e_reduction",
+      "status": "PASS",
+      "method": "Exact fraction simplification gives K(j)-f=E/[(1-u^2)M]; denominator is strictly positive on the stated algebra domain."
+    },
+    {
+      "id": "conditional_contradiction",
+      "status": "PASS",
+      "method": "If E>=0, Qz<Pz upper bound minus K(h^2) is strictly negative or zero, contradicting Qz>0."
+    },
+    {
+      "id": "hash_binding",
+      "status": "PASS",
+      "method": "Initial and final candidate SHA-256 checks agree with requested snapshot."
+    }
+  ],
+  "explicitly_open": [
+    {
+      "claim": "E>=0 for 2/3<=c<1, c/2<=t<c, 1<=w<=a/b",
+      "status": "OPEN_NOT_AUDITED",
+      "reason": "Assigned separately; this audit verifies only the conditional reduction."
+    }
+  ],
+  "computational_verification": {
+    "exact_polynomial_checks": "PASS: C3 factorization, D+uN identity, cD-tN=a-bw, and a-b=(c-t)(1-ct)^2.",
+    "exact_rational_checks": "PASS: five-angle numerators 23807/100000 and -5399/2000.",
+    "floating_point_evidence_used": false,
+    "e_sign_tested": false,
+    "formal_kernel_check": "not performed"
+  },
+  "residual_risk": [
+    "E>=0 is wholly outside this audit and remains open here.",
+    "No global Q9 proof or refutation is certified by this PASS.",
+    "No complete solution-set classification or additional existence theorem is established.",
+    "No Lean/kernel verification or external-literature novelty audit was performed."
+  ],
+  "external_sources_used": false,
+  "unfinished_algebra_files_read": false,
+  "subagents_spawned": false
+}

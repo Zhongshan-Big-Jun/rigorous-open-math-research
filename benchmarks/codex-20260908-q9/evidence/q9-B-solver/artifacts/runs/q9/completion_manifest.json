@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "candidate_author_id": "/root",
+  "frozen_at": "2026-09-08T15:30:00.943504+00:00",
+  "contract": {
+    "path": "problem_contract.md",
+    "sha256": "c7133b97e440e90095088927f105c9f88fcdc54f4a4772ee9f85ba5a139e6330"
+  },
+  "obligation_graph": {
+    "path": "obligation_graph.json",
+    "sha256": "477bfc42ac8818a6844ed9ca09e0c3722cf31086ea7c03b29a425907961e7c09"
+  },
+  "candidate_proof": {
+    "path": "../../answer.md",
+    "sha256": "51b01295406d1899e3492bd8498731b9f5aac81635c9450bdbc21cf332745776"
+  },
+  "dependencies": [
+    {
+      "path": "worker_jensen_certificate.py",
+      "sha256": "bae2b17096f9706fdf64d227cc00e065af4c52e0e6b614067e788eceb5e402d1"
+    }
+  ],
+  "root_obligations": [
+    {
+      "id": "O1",
+      "status": "CLOSED",
+      "proof_anchor": "../../answer.md#q9-proof"
+    }
+  ]
+}

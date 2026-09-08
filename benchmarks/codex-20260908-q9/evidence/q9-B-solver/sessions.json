@@ -1,0 +1,128 @@
+[
+	{
+		"id": "01a08188-1682-7611-9a7d-623663d5a538",
+		"source": "exec",
+		"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC-r2/q9/b/home/sessions/2026/09/08/rollout-2026-09-08T22-59-34-01a08188-1682-7611-9a7d-623663d5a538.jsonl",
+		"models": [
+			"gpt-6-astra"
+		],
+		"efforts": [
+			"max"
+		],
+		"token_usage": {
+			"input_tokens": 5688919,
+			"cached_input_tokens": 5512192,
+			"cache_write_input_tokens": 0,
+			"output_tokens": 57755,
+			"reasoning_output_tokens": 27016,
+			"total_tokens": 5746674
+		},
+		"token_usage_scope": "FILE_CUMULATIVE_UNDEDUPLICATED",
+		"outer_tool_calls": 61,
+		"response_count": null,
+		"aggregate_active_seconds": null,
+		"forbidden_skill_metadata": []
+	},
+	{
+		"id": "01a0818b-e684-7020-8f97-b487fbc0e474",
+		"source": {
+			"subagent": {
+				"thread_spawn": {
+					"parent_thread_id": "01a08188-1682-7611-9a7d-623663d5a538",
+					"depth": 1,
+					"agent_path": "/root/stronger_bound",
+					"agent_nickname": "Popper",
+					"agent_role": null
+				}
+			}
+		},
+		"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC-r2/q9/b/home/sessions/2026/09/08/rollout-2026-09-08T23-03-44-01a0818b-e684-7020-8f97-b487fbc0e474.jsonl",
+		"models": [
+			"gpt-6-astra"
+		],
+		"efforts": [
+			"max"
+		],
+		"token_usage": {
+			"input_tokens": 1261536,
+			"cached_input_tokens": 1196928,
+			"cache_write_input_tokens": 0,
+			"output_tokens": 29523,
+			"reasoning_output_tokens": 15907,
+			"total_tokens": 1291059
+		},
+		"token_usage_scope": "FILE_CUMULATIVE_UNDEDUPLICATED",
+		"outer_tool_calls": 30,
+		"response_count": null,
+		"aggregate_active_seconds": null,
+		"forbidden_skill_metadata": []
+	},
+	{
+		"id": "01a08191-34b0-76d0-a080-69beceda9081",
+		"source": {
+			"subagent": {
+				"thread_spawn": {
+					"parent_thread_id": "01a08188-1682-7611-9a7d-623663d5a538",
+					"depth": 1,
+					"agent_path": "/root/audit_partial",
+					"agent_nickname": "Boole",
+					"agent_role": null
+				}
+			}
+		},
+		"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC-r2/q9/b/home/sessions/2026/09/08/rollout-2026-09-08T23-09-32-01a08191-34b0-76d0-a080-69beceda9081.jsonl",
+		"models": [
+			"gpt-6-astra"
+		],
+		"efforts": [
+			"max"
+		],
+		"token_usage": {
+			"input_tokens": 751585,
+			"cached_input_tokens": 705280,
+			"cache_write_input_tokens": 0,
+			"output_tokens": 27301,
+			"reasoning_output_tokens": 11267,
+			"total_tokens": 778886
+		},
+		"token_usage_scope": "FILE_CUMULATIVE_UNDEDUPLICATED",
+		"outer_tool_calls": 20,
+		"response_count": null,
+		"aggregate_active_seconds": null,
+		"forbidden_skill_metadata": []
+	},
+	{
+		"id": "01a081a4-35b1-7683-94ab-39d8ba4b8b41",
+		"source": {
+			"subagent": {
+				"thread_spawn": {
+					"parent_thread_id": "01a08188-1682-7611-9a7d-623663d5a538",
+					"depth": 1,
+					"agent_path": "/root/completion_audit",
+					"agent_nickname": "Fermat",
+					"agent_role": null
+				}
+			}
+		},
+		"path": "/home/huangzy/codex-benchmark/Q9-20260908-ASTRA-ABC-r2/q9/b/home/sessions/2026/09/08/rollout-2026-09-08T23-30-17-01a081a4-35b1-7683-94ab-39d8ba4b8b41.jsonl",
+		"models": [
+			"gpt-6-astra"
+		],
+		"efforts": [
+			"max"
+		],
+		"token_usage": {
+			"input_tokens": 325695,
+			"cached_input_tokens": 289792,
+			"cache_write_input_tokens": 0,
+			"output_tokens": 12998,
+			"reasoning_output_tokens": 5758,
+			"total_tokens": 338693
+		},
+		"token_usage_scope": "FILE_CUMULATIVE_UNDEDUPLICATED",
+		"outer_tool_calls": 9,
+		"response_count": null,
+		"aggregate_active_seconds": null,
+		"forbidden_skill_metadata": []
+	}
+]

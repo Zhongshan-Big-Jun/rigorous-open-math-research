@@ -1,0 +1,93 @@
+{
+  "verdict": "PASS",
+  "research_status": "RIGOROUS_PARTIAL_RESULT",
+  "audit_type": "independent_claim_local",
+  "auditor": "/root/audit_partial",
+  "inputs": [
+    {
+      "path": "TASK.md",
+      "sha256": "c7133b97e440e90095088927f105c9f88fcdc54f4a4772ee9f85ba5a139e6330"
+    },
+    {
+      "path": "runs/q9/partial_small_r.md",
+      "sha256": "3172c3b3000a121fa647003f053bb2facb5d4cce4266dae03019a32dffa3f706"
+    }
+  ],
+  "audit_report": {
+    "path": "runs/q9/audit_small_r.md",
+    "sha256": "79751eb8b86f8f19029adcab89d49b2ee24ee13e2444629a4f519a129d2cd703"
+  },
+  "critical_errors": [],
+  "gaps": [],
+  "first_error": null,
+  "repair_hints": "No theorem repair required. State the comparison with the first range in terms of restrictions, without implying unproved exact-solution existence at fixed c,r for arbitrary m.",
+  "covered_scope": "On the complete task domain, C2 and C3 and 0<r<=c^2/4 imply c^2-r>k(1-c^2)r sin(B)^2 and therefore R_quad>0, independently of Q positivity and without using C1.",
+  "checks": [
+    {
+      "id": "tan_convexity",
+      "status": "PASS",
+      "method": "Derive strict convexity on [0,y] from tan second derivative, with y=pi/2-H(d)>0 and 0<c<1."
+    },
+    {
+      "id": "c2_bound",
+      "status": "PASS",
+      "method": "Principal tangent identities and positive multipliers give m^2 t sin(g)^2<c cos(g)cos(d)<c, hence k sin(g)^2<c/t."
+    },
+    {
+      "id": "arcsine_bound",
+      "status": "PASS",
+      "method": "Sine concavity and principal arcsine give asin(t sin(z))<=t z for 0<t<1 and acute z."
+    },
+    {
+      "id": "c3_sine_ratio",
+      "status": "PASS",
+      "method": "C3 and ct<1 give B/g<=(1+ct)/(1-ct); independently sin(z)/z strictly decreases, giving sin(B)/sin(g)<B/g."
+    },
+    {
+      "id": "parameter_monotonicity",
+      "status": "PASS",
+      "method": "Derivative of (1+ct)/(1-ct) is 2c/(1-ct)^2>0; positive factor monotonicity applies for t<=c/2<1/c."
+    },
+    {
+      "id": "endpoint_polynomial",
+      "status": "PASS",
+      "method": "Independent expansion and exact integer-coefficient check of 3(2-x)^2-2(1-x)(2+x)^2=(3x-2)^2+2x^3>0."
+    },
+    {
+      "id": "strict_r_endpoint",
+      "status": "PASS",
+      "method": "Strict upper bound by 3c^2/4 persists when r=c^2/4."
+    },
+    {
+      "id": "no_hidden_c1",
+      "status": "PASS",
+      "method": "Directly recompute V>0 and V sin(B)^2-U>0 from definitions; neither requires C1."
+    },
+    {
+      "id": "q_independence",
+      "status": "PASS",
+      "method": "Every proof step is independent of Q."
+    },
+    {
+      "id": "hash_binding",
+      "status": "PASS",
+      "method": "SHA-256 candidate binding checked and audit report hashed."
+    }
+  ],
+  "interpretive_notes": [
+    "The final comparison sentence is accepted only as an observation about algebraic parameter permissiveness, not as a separate exact-solution existence theorem.",
+    "No assertion that the new constrained subdomain has a nonempty difference from the first partial range was audited or needed."
+  ],
+  "computational_verification": {
+    "exact_polynomial_identity": "PASS; coefficient vectors on both sides equal [4,-12,9,2].",
+    "floating_point_evidence_used": false,
+    "formal_kernel_check": "not performed"
+  },
+  "residual_risk": [
+    "Global Q9 for r>c^2/4 is not settled by this audit.",
+    "No existence theorem for every admitted (m,c,r), nor for fixed c,r and arbitrarily large m, is asserted.",
+    "External-literature novelty and Lean/kernel verification were not checked."
+  ],
+  "external_sources_used": false,
+  "subagents_spawned": false
+}

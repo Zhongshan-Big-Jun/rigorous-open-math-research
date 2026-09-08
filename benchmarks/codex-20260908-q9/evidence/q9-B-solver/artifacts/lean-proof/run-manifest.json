@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "status": "SCAFFOLDED",
+  "formalization": "scaffold",
+  "formalization_reason": "Lean and lake unavailable; no Mathlib project in workspace; uncompiled handoff only.",
+  "scaffold": {
+    "path": "Q9.lean",
+    "sha256": "e78c89659deb0ff27fdf723852137983fd1562547681671877a6c2753bbf6119"
+  },
+  "build_attempted": false,
+  "timestamp": "2026-09-08T15:32:29.544464+00:00",
+  "input_hashes": {
+    "Q9.lean": "e78c89659deb0ff27fdf723852137983fd1562547681671877a6c2753bbf6119"
+  }
+}

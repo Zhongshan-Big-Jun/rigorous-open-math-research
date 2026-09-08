@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "root_obligations": [
+    {
+      "id": "O1",
+      "status": "CLOSED",
+      "proof_anchor": "../../answer.md#q9-proof"
+    }
+  ],
+  "obligations": [
+    {
+      "id": "O5-small-r",
+      "status": "CLOSED",
+      "proof": "../../answer.md Section 1",
+      "audit": "audit_small_r.json"
+    },
+    {
+      "id": "O6-analytic",
+      "status": "CLOSED",
+      "proof": "../../answer.md Section 2",
+      "audit": "audit_jensen_prerequisites.json"
+    },
+    {
+      "id": "O7-polynomial",
+      "status": "CLOSED",
+      "proof": "../../answer.md Section 4",
+      "evidence": "exact integer Bernstein certificate; fresh independent package audit pending"
+    },
+    {
+      "id": "LEAN",
+      "status": "OPEN",
+      "scope": "formalization only, not a mathematical root obligation",
+      "gap": "No Lean/lake/Mathlib environment; uncompiled scaffold retained"
+    }
+  ]
+}

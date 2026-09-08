@@ -1,0 +1,24 @@
+{
+  "verdict": "SCAFFOLDED",
+  "machine": {
+    "lean_version": "unavailable",
+    "lake_version": "unavailable",
+    "build_attempted": false,
+    "build_passed": false,
+    "sorry_axiom_hits": [
+      "Q9.lean: small_r proof placeholder",
+      "Q9.lean: q_positive_small_r proof placeholder",
+      "Q9.lean: q9 proof placeholder"
+    ]
+  },
+  "statement_fidelity": [],
+  "critical_errors": [],
+  "gaps": [
+    {
+      "location": "Q9.lean",
+      "issue": "Uncompiled statement scaffold; all three Lean proofs remain to be formalized."
+    }
+  ],
+  "repair_hints": "In a separately authorized environment with Lean and Mathlib, pin versions, check statement fidelity, fill the proof blocks and run the full Lean audit.",
+  "scope": "Formalization only; does not assess the analytic proof and exact integer certificate in answer.md."
+}

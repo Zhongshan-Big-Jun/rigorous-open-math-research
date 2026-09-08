@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "python": "3.14.4 (main, Jun 18 2026, 14:25:02) [GCC 15.2.0]",
+  "independent_F_terms": 637,
+  "independent_G_terms": 2103,
+  "degrees": [
+    26,
+    18,
+    4
+  ],
+  "bernstein_positive": 2535,
+  "bernstein_zero": 30,
+  "all_i_zero_positive": true,
+  "every_coefficient_matches_frozen_checker": true,
+  "checker_stdout": "PASS: exact Bernstein identity; 2535 positive, 30 zero; E > 0 for c < 1.",
+  "methods": [
+    "Direct integer expansion of displayed E before homogeneous w substitution",
+    "Horner affine substitution for c and s",
+    "Fraction-valued Bernstein transform by Pascal adjacent addition tables"
+  ]
+}
