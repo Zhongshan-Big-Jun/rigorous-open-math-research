@@ -1,0 +1,9 @@
+{
+	"root": "/home/huangzy/codex-benchmark/blind-audits/1729c39b-2b92-4f03-a8fc-e440ca4f8338",
+	"task_sha256": "6859e0af922ba8454758e2195fcefcfe8fa164a40e2c23022ec7ebb2da228943",
+	"candidate_sha256": "7363828bca46d73a5e33cd50aa8d9b325388f99f48355ff8a95bf8ae796204df",
+	"prompt_sha256": "0fe00f849eac6832730f488d80428144edb8cc6b88e54fade69e0bd4125407b9",
+	"config_sha256": "024df1d1471435562966174c74c0280ad99a385678278890d110612bc214be30",
+	"created_at": "2026-09-08T08:22:01.966256+00:00",
+	"budget_seconds": 900
+}

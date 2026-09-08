@@ -131,6 +131,7 @@ the external audit at 100/100. Its unchanged answer was sent for blind audit at
 | A old solver, including three children | Wall-limited frozen answer, independently accepted | - | 1802.784 | 303881 | 2906624 | 59829 | 65 |
 | A independent blind audit | PASS, no load-bearing gap or repair | 100/100 | 621.203 | 47863 | 320128 | 16583 | 11 |
 | A solver + external audit | Accepted; solver hit wall cap | 100/100 | 2423.987 | 351744 | 3226752 | 76412 | 76 |
+| C blank solver, including two children | Frozen; external audit pending | - | 1266.552 | 106041 | 693120 | 45056 | 34 |
 
 The candidate claims the required bound for every t>=1024 with c=1/2 and C=10^12.
 It retains the lower-bound proof, rejected shortcuts and the final interval-kernel
@@ -192,3 +193,10 @@ because no standalone checker file was written. See [audit](evidence/t2-a/audit/
 C started at 2026-09-08T08:00:13Z in its presealed blank environment using the
 current desktop account. Its task, tools, model/effort and 1800-second allowance
 are the registered settings. C is the last unscored L1 delivery.
+
+C returned normally after 1266.552126 active seconds and was frozen at
+2026-09-08T08:21:20Z. Its answer claims c=1/(2 sqrt(2)), C=2^43 and t0=16;
+the external audit started at 08:22:39Z. No redaction was needed. Its 34
+returned response records include two children. See [answer](evidence/t2-c/answer.md),
+[usage](evidence/t2-c/usage-summary.json), and
+[binding](evidence/t2-c/blind-audit-binding.json).

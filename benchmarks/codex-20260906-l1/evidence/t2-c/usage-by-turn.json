@@ -1,0 +1,111 @@
+{
+	"scope": "Unique returned response records grouped by actual thread_id and turn_id. No causal overhead attribution.",
+	"turns": [
+		{
+			"thread_id": "01a08008-2b94-7352-baf8-b6ba7ba9d481",
+			"turn_id": "01a08008-2ba9-7fe1-bc50-c0391b8b60ce",
+			"first_recorded_at": "2026-09-08T08:00:37.705Z",
+			"last_recorded_at": "2026-09-08T08:21:07.598Z",
+			"usage": {
+				"input_tokens": 396322,
+				"cached_input_tokens": 341888,
+				"output_tokens": 13021,
+				"reasoning_output_tokens": 2853,
+				"uncached_input_tokens": 54434,
+				"responses_with_usage": 16
+			},
+			"first_response_usage": {
+				"input_tokens": 11200,
+				"cached_input_tokens": 0,
+				"output_tokens": 153,
+				"reasoning_output_tokens": 0,
+				"uncached_input_tokens": 11200,
+				"responses_with_usage": 1
+			},
+			"response_ids": [
+				"resp_0ae4b159f180aae7016a9fc0bae79087d1bec0e7f74c3b236f",
+				"resp_0ae4b159f180aae7016a9fc0c3a6e887d18be43f9c7ee6e46b",
+				"resp_0ae4b159f180aae7016a9fc0d144fc87d18703a559ea41f793",
+				"resp_0ae4b159f180aae7016a9fc18a208887d18191aea4b5705bb6",
+				"resp_0ae4b159f180aae7016a9fc1ac55e087d1944c145d3babac1e",
+				"resp_0ae4b159f180aae7016a9fc1b144d487d187e7ada60fb81fe0",
+				"resp_0ae4b159f180aae7016a9fc1d79ab487d1bbef408359b7d77e",
+				"resp_0ae4b159f180aae7016a9fc2dba5e087d1af3eab39cb404865",
+				"resp_0ae4b159f180aae7016a9fc2e3323487d1b4399e10366a94a3",
+				"resp_0ae4b159f180aae7016a9fc341bd8487d19f3332e2575d04e0",
+				"resp_0ae4b159f180aae7016a9fc352351087d191df566621a5e5b0",
+				"resp_0ae4b159f180aae7016a9fc38ff4ec87d18f4f4004c89cba99",
+				"resp_0ae4b159f180aae7016a9fc44197f087d18a5e01ccd37f8bbc",
+				"resp_0ae4b159f180aae7016a9fc48ad09487d18d7388fb7bac0263",
+				"resp_0ae4b159f180aae7016a9fc492942887d1adfab8c356e4b15e",
+				"resp_0ae4b159f180aae7016a9fc4dd334887d1a3e75cceb84b5808"
+			]
+		},
+		{
+			"thread_id": "01a08008-b941-7b50-98c6-e79897b26077",
+			"turn_id": "01a08008-b950-7c21-982a-115717748333",
+			"first_recorded_at": "2026-09-08T08:01:05.305Z",
+			"last_recorded_at": "2026-09-08T08:15:10.414Z",
+			"usage": {
+				"input_tokens": 231371,
+				"cached_input_tokens": 198528,
+				"output_tokens": 15185,
+				"reasoning_output_tokens": 11922,
+				"uncached_input_tokens": 32843,
+				"responses_with_usage": 10
+			},
+			"first_response_usage": {
+				"input_tokens": 11115,
+				"cached_input_tokens": 0,
+				"output_tokens": 46,
+				"reasoning_output_tokens": 25,
+				"uncached_input_tokens": 11115,
+				"responses_with_usage": 1
+			},
+			"response_ids": [
+				"resp_0b24e12e6c9befc4016a9fc0d8236087d1a947dd9cab573794",
+				"resp_0b24e12e6c9befc4016a9fc0dfc80c87d194eb82515ea36a8f",
+				"resp_0b24e12e6c9befc4016a9fc1eb864487d1b9d9dd04ce5fb860",
+				"resp_0b24e12e6c9befc4016a9fc2f089ec87d19360746884013082",
+				"resp_0b24e12e6c9befc4016a9fc33ad03c87d1b3a9006169776979",
+				"resp_0b24e12e6c9befc4016a9fc3a78b4087d1b2b2e52de8227a58",
+				"resp_0b24e12e6c9befc4016a9fc3b0e67c87d1aaf4ababbe69cb59",
+				"resp_0b24e12e6c9befc4016a9fc3b6a9ec87d1bdde0993a17f301c",
+				"resp_0b24e12e6c9befc4016a9fc3bdafd087d1ac5c26b79654f1fa",
+				"resp_0b24e12e6c9befc4016a9fc422d00487d1b68f3f1b5dec3ef1"
+			]
+		},
+		{
+			"thread_id": "01a08008-e176-73a1-8709-79b0866f1d7d",
+			"turn_id": "01a08008-e1b6-7d82-afe1-8d6da882dbb5",
+			"first_recorded_at": "2026-09-08T08:01:41.118Z",
+			"last_recorded_at": "2026-09-08T08:13:13.099Z",
+			"usage": {
+				"input_tokens": 171468,
+				"cached_input_tokens": 152704,
+				"output_tokens": 16850,
+				"reasoning_output_tokens": 10391,
+				"uncached_input_tokens": 18764,
+				"responses_with_usage": 8
+			},
+			"first_response_usage": {
+				"input_tokens": 11114,
+				"cached_input_tokens": 10240,
+				"output_tokens": 537,
+				"reasoning_output_tokens": 516,
+				"uncached_input_tokens": 874,
+				"responses_with_usage": 1
+			},
+			"response_ids": [
+				"resp_007e61ae22266862016a9fc0e3a40887d28971a0d1735051e3",
+				"resp_007e61ae22266862016a9fc103d74087d294eee5f736ac2742",
+				"resp_007e61ae22266862016a9fc1c7669c87d2a75168117a36cf3d",
+				"resp_007e61ae22266862016a9fc23e4ef487d2b9f46a7509c8d893",
+				"resp_007e61ae22266862016a9fc2c3427487d284dff1fcd2bb2563",
+				"resp_007e61ae22266862016a9fc373a26887d29773cb98eb32458a",
+				"resp_007e61ae22266862016a9fc383f8a087d2b616dc843b3d2581",
+				"resp_007e61ae22266862016a9fc3ad906c87d2a350a137ad14ef1c"
+			]
+		}
+	]
+}
