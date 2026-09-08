@@ -1,0 +1,138 @@
+{
+  "verdict": "PASS",
+  "scores": {
+    "correctness": 40,
+    "fidelity": 20,
+    "strict_progress": 15,
+    "calibration": 10,
+    "evidence": 10,
+    "reproducibility": 5
+  },
+  "total_score": 100,
+  "earliest_substantive_gap": null,
+  "load_bearing_gaps": [],
+  "checked_claims": [
+    {
+      "id": "C01",
+      "location": "CANDIDATE.md:11-25",
+      "claim": "The conditional lamp law is the same kernel of (minimum, maximum, endpoint) for the two specified starts, for t >= 1.",
+      "status": "VERIFIED",
+      "evidence": "Every visited site receives a reset, including the initial site on the first departure. Conditional on the base path, the last reset indices are distinct and independent of the reset bits. Nearest-neighbor paths visit their entire integer range. All paths with a given triple therefore have the same product lamp law, so conditioning only on that triple is valid. Unvisited sites retain zero, in particular site 2 for the 0-start and site 0 for the 2-start until visited. The displayed countable-kernel contraction proves (1) with the stated TV convention. No coupling of different histories is assumed."
+    },
+    {
+      "id": "C02",
+      "location": "CANDIDATE.md:29-59",
+      "claim": "The base-position event gives TV >= a_t >= 1/(2 sqrt(t)) for every integer t >= 1.",
+      "status": "VERIFIED",
+      "evidence": "Translation by 2 makes the event difference exactly P(-2 < S_t <= 0). Its accessible site is 0 at even times and -1 at odd times, each with mass a_t. Both central-binomial inductions have correct initial values and squared recurrence inequalities; the upper induction's polynomial difference is 3j+2. The identity a_(2j+1) = b_(j+1) and the alternate odd-time expression are correct. The odd-time comparison reduces to 9(2j+1) >= 16j, and t=1 is checked separately. The same binomial estimates establish (3)."
+    },
+    {
+      "id": "C03",
+      "location": "CANDIDATE.md:61-79",
+      "claim": "The Gaussian bound (5) holds uniformly for N >= 1 and integer w, including support endpoints.",
+      "status": "VERIFIED",
+      "evidence": "For supported nonnegative w, the binomial ratios use u=(v+1)/(N+1)<1 and telescope to exponent -(w^2-w0^2)/(2(N+1)). The conversion to exponent -w^2/(4N) uses 2(N+1)<=4N and a prefactor at most (4/3)sqrt(2)<2. Unsupported arguments contribute zero; symmetry covers negative arguments. No ratio at a zero denominator or logarithm at u=1 is needed."
+    },
+    {
+      "id": "C04",
+      "location": "CANDIDATE.md:81-95",
+      "claim": "The exact identity (7) and the uniform third-difference estimate (6) are valid for t >= 3 with the stated parity.",
+      "status": "VERIFIED",
+      "evidence": "The eight possibilities for the first three signs give coefficients 1,-3,3,-1. The ordered-distinct term in W^3 has N(N-1)(N-2) terms, giving precisely the conditional expectation in (7). Outside the support of W all four free-walk terms vanish, so null conditioning is avoided. For N=t+3>=6, the denominator is at least N^3/2 and N<=2t. Substituting (5) gives 32 N^-2 (u^3+3u) exp(-u^2/4). The displayed elementary maxima bound this by 1728 N^-2 exp(-w^2/(8N)), which is below the claimed 10000 t^-2 exp(-w^2/(16t))."
+    },
+    {
+      "id": "C05",
+      "location": "CANDIDATE.md:99-111",
+      "claim": "The killed-interval sine expansion (8) has the correct normalization and eigenvalues.",
+      "status": "VERIFIED",
+      "evidence": "There are L-1 interior states and L-1 nonzero orthogonal sine vectors, each with squared norm L/2. The nearest-neighbor killed transition matrix acts on each by cos(pi j/L), giving the factor 2/L in its matrix power. This includes the one-state contracted interval L=2 used later."
+    },
+    {
+      "id": "C06",
+      "location": "CANDIDATE.md:113-129",
+      "claim": "The image expansion (9) and range inclusion-exclusion (10) apply to every interval used in the upper bound.",
+      "status": "VERIFIED",
+      "evidence": "The image expression has the free nearest-neighbor recurrence, zero absorbing boundary values by symmetry and index shifts, and the correct initial delta in the interior. Each image sum has only finitely many nonzero terms. Inclusion-exclusion removes paths missing either extreme. In the common-support region a<=0,b>=2, L>=4, so even the doubly contracted interval is nonempty. Any excluded start or endpoint in a contracted interval is exactly its adjacent absorbing boundary, where both kernel formulas vanish."
+    },
+    {
+      "id": "C07",
+      "location": "CANDIDATE.md:136-153",
+      "claim": "The real extension (12) agrees with the killed kernels at all required integer corners and permits the indicated mixed derivatives.",
+      "status": "VERIFIED",
+      "evidence": "For s=0 or 2 and z congruent to t modulo 2, pairing j with L-j gives sign (-1)^(t+x+y)=1 even in contracted intervals. The middle eigenvalue contributes zero at positive times. The cutoff function g_t has continuous derivatives through order two for t>=4, and the sum is locally finite in L>0. Differentiating first in s does not differentiate g_t; the two boundary derivatives require only its first two derivatives. Thus the mixed derivative actually used is continuous. The extension also vanishes at x or y equal to 0 or L."
+    },
+    {
+      "id": "C08",
+      "location": "CANDIDATE.md:143-192",
+      "claim": "The uniform mixed-derivative bound (13), with constant 10^9, follows from the submitted estimates.",
+      "status": "VERIFIED",
+      "evidence": "The bounds in (14) follow from sin(theta)<=theta and cos(theta)<=exp(-theta^2/2); for h'', t>=4 ensures (t-2)/2>=t/4. The coordinate derivatives are correctly transformed as partial_a=-(partial_L+partial_x+partial_y) and partial_b=partial_L. Expanding F_LL gives exactly the polynomial in (15); F_xL and F_yL have the stated bounds. Their combined coefficient is 4(34+6+6)=184<=200. With u=t/L^2>=1 and v=u d^2, t^2 L^-4 d^3=v^2/d. The polynomial estimate and decreasing Gaussian sum then give a bound below 6*10^8, hence below 10^9. The cutoff and L=2 endpoint cause no singularity."
+    },
+    {
+      "id": "C09",
+      "location": "CANDIDATE.md:194-203",
+      "claim": "The fundamental-theorem-of-calculus step and short-interval count establish (11).",
+      "status": "VERIFIED",
+      "evidence": "All eight corners use the correct kernels. Throughout the box, L-2<=L'<=L with L>=4, and x',y' remain in [0,L']: explicitly x'>=-a, y'>=z-a, L'-x'>=b-2, and L'-y'>=b-z. Thus (13) applies everywhere, including boundary corners. Iterated integration has volume 2. For each integer L, eligible a values number L-3 and endpoint values number L-1, both at most L. Summing L^2 up to floor(sqrt(t)) is at most t^(3/2), giving exactly the stated 2*10^9/sqrt(t)."
+    },
+    {
+      "id": "C10",
+      "location": "CANDIDATE.md:205-214",
+      "claim": "The finite-difference identity (16), its reflected-image sign, and its translate counts are exact.",
+      "status": "VERIFIED",
+      "evidence": "Contracting either boundary shifts the direct-image argument by -2k, producing D_(2k)^2. For the reflected image the two shifts are -(2k+2) and -2k. The minus sign of that image together with increasing s by 2 yields the positive second term centered at z-2a+4+2kL. Telescoping D_(2k) works with the stated overall minus sign for negative k. Therefore the two products contain k^2 and |k(k+1)| translates of D_2^3, respectively; k=0 and the reflected k=-1 terms vanish."
+    },
+    {
+      "id": "C11",
+      "location": "CANDIDATE.md:216-230",
+      "claim": "The image distances, multiplicities, parity, and constant 60000 in (19) hold uniformly over the long intervals.",
+      "status": "VERIFIED",
+      "evidence": "Here integer L>sqrt(t)>=32. The bound |z|<=L-2 and the telescoping shifts give (17). In the reflected term, 4<=r+y+2<=2L-2 gives initial magnitude at least 2mL+2; shifts and centering cost at most 4m+5, giving (18). Both displayed lower bounds exceed mL/2 for every m>=1. D_2^3 at v is the negative of the expression in (6) with w=v-3, which is harmless under absolute value; w has parity t+3. The first-image indices are k=+/-m and the second-image indices are k=m,-m-1, giving total multiplicity 2m^2+2m(m+1)<=6m^2. Applying (6) yields exponent -m^2 L^2/(64t) and coefficient 60000."
+    },
+    {
+      "id": "C12",
+      "location": "CANDIDATE.md:232-252",
+      "claim": "The long-interval summation establishes (21) with constant 6*10^10.",
+      "status": "VERIFIED",
+      "evidence": "X=L^2/t>1 and Y=m^2>=1 meet the hypotheses of XY>=(X+Y)/2, giving the separated Gaussian majorant. The comparison on [n-1,n] in (20) is pointwise valid. Its integral is exactly the displayed sum of three Gaussian moments. The stated elementary numerical bounds give coefficients at most 768+128+12=908<1000 for T>=1. Applying (20) with T=1 and T=t, and counting at most L^2 triples, yields 60000*t^-2*1000*1000*t^(3/2)=6*10^10/sqrt(t). The majorants are nonnegative and summable."
+    },
+    {
+      "id": "C13",
+      "location": "CANDIDATE.md:256-261",
+      "claim": "The contribution outside common support is at most 3/sqrt(t), with the correct reflection endpoints and TV factor.",
+      "status": "VERIFIED",
+      "evidence": "The two exceptional supports are disjoint: the 0-start requires b<=1 and the 2-start requires a>=1. Reflection about 1 equates their masses. Reflecting the tail after the first visit to 2 bijects paths with M_t>=2 and S_t<2 with all paths ending above 2; each length-t path retains probability 2^-t. Thus P(M_t<=1)=P(S_t<2)-P(S_t>2)=P(-2<=S_t<2). That interval has two sites of each parity, giving at most 2sqrt(2/t)<3/sqrt(t). Half the sum of the two exceptional masses equals one such mass."
+    },
+    {
+      "id": "C14",
+      "location": "CANDIDATE.md:263-279",
+      "claim": "The requested theorem follows with c=1/2, C=10^12, and t0=1024, with all requested special cases addressed.",
+      "status": "VERIFIED",
+      "evidence": "The short and long estimates are l1 bounds, so each receives a factor 1/2 when assembled into TV; the exceptional-support estimate is already a TV contribution. The resulting numerator is 3+10^9+3*10^10=31000000003<10^12. The reduction and lower event then prove both bounds for every integer t>=1024. Both starts have even base parity and all lamps initially zero, exactly as tasked. At t=0 the distinct deterministic states have TV=1; t=1 is handled in the lower bound, and no analytic upper estimate is claimed below t0. The constants are positive and finite."
+    },
+    {
+      "id": "C15",
+      "location": "CANDIDATE.md:111-118,194-199,273-279",
+      "claim": "The proof supplies its external analytic inputs in the forms needed and checks their applicable domains.",
+      "status": "VERIFIED",
+      "evidence": "The candidate states the one-dimensional fundamental theorem of calculus and the three Gaussian integral identities explicitly. Continuity of the required mixed derivatives on the compact integration rectangle is established, and all Gaussian parameters are positive with convergent integrals. It derives the finite-dimensional kernel expansion, image identity, reflection identity, and TV contraction directly. The remaining differentiations, binomial identities, and finite trigonometric identities are elementary calculations supplied or directly checkable from the displayed expressions; no unproved research theorem is carrying the conclusion."
+    }
+  ],
+  "input_scope": ["TASK.md", "CANDIDATE.md"],
+  "input_sha256": {
+    "TASK.md": "6859e0af922ba8454758e2195fcefcfe8fa164a40e2c23022ec7ebb2da228943",
+    "CANDIDATE.md": "9f86ec2c20f883bbb038acd1afaf73773f8c0c68307194862d68f8a401dbf7f8"
+  },
+  "independent_checks": {
+    "method": "Uniform analytical review of the submitted proof, supplemented only by bounded exact integer falsification checks.",
+    "command": "python3 audit_checks.py",
+    "script": "audit_checks.py",
+    "results": "audit_checks.json",
+    "total_exact_checks": 69466,
+    "counterexamples_found": 0,
+    "scope": "Direct walk enumeration and image identities for times 0 through 16; exchangeability identity for times 3 through 64 including support endpoints and exterior arguments; central-binomial checks through j=128 and the lower constant through t=256; image shifts for L=33 through 40 and m=1 through 12.",
+    "limitation": "These finite checks can falsify claims but do not prove any uniform bound. The verdict relies on the submitted exact arguments reviewed in checked_claims."
+  },
+  "repairs_supplied": [],
+  "rationale": "The submitted proof establishes both requested bounds uniformly with explicit constants and the exact switch-walk-switch lamp convention. Its principal upper-bound obligations are all closed: the parity-correct sine extension has a proved uniform mixed-derivative bound on the full interpolation box, and the image expansion has the correct finite differences, distances, multiplicities, and summable constants. The lamp conditioning, forced zeros, boundary reflection, support endpoints, small times, and TV normalization are handled correctly. No substantive gap or false load-bearing claim was identified, and no missing argument was supplied as a repair. Completion, rather than merely meeting the historical score threshold, supports PASS."
+}

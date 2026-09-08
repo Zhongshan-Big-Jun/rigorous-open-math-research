@@ -1,0 +1,22 @@
+{
+  "purpose": "Bounded exact falsification only; no uniform claim is proved by these checks.",
+  "input_sha256": {
+    "TASK.md": "6859e0af922ba8454758e2195fcefcfe8fa164a40e2c23022ec7ebb2da228943",
+    "CANDIDATE.md": "9f86ec2c20f883bbb038acd1afaf73773f8c0c68307194862d68f8a401dbf7f8"
+  },
+  "checks": {
+    "triple_mass": 34,
+    "reflection_22": 17,
+    "lower_event_4": 17,
+    "difference_identity_16": 2975,
+    "killed_image_9": 8874,
+    "exchangeability_identity_7": 2573,
+    "central_binomial_2": 128,
+    "lower_constant": 256,
+    "first_distance_17": 31200,
+    "second_distance_18": 23296,
+    "image_multiplicities": 96
+  },
+  "total_checks": 69466,
+  "counterexamples_found": 0
+}

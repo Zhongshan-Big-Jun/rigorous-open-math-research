@@ -1,0 +1,88 @@
+{
+	"scope": "Unique returned response records grouped by actual thread_id and turn_id. No causal overhead attribution.",
+	"turns": [
+		{
+			"thread_id": "01a07e44-c25b-7913-977c-d2f3fb87dc2e",
+			"turn_id": "01a07e44-c26a-7343-9087-ab7e8b84c70c",
+			"first_recorded_at": "2026-09-07T23:47:21.751Z",
+			"last_recorded_at": "2026-09-07T23:51:29.228Z",
+			"usage": {
+				"input_tokens": 88523,
+				"cached_input_tokens": 57344,
+				"output_tokens": 7013,
+				"reasoning_output_tokens": 6728,
+				"uncached_input_tokens": 31179,
+				"responses_with_usage": 4
+			},
+			"first_response_usage": {
+				"input_tokens": 11673,
+				"cached_input_tokens": 0,
+				"output_tokens": 138,
+				"reasoning_output_tokens": 0,
+				"uncached_input_tokens": 11673,
+				"responses_with_usage": 1
+			},
+			"response_ids": [
+				"resp_0d333b4a6367c44b016a9f4d209cc087d0925c590b998217c7",
+				"resp_0d333b4a6367c44b016a9f4d269a2087d0b6360a9bba7f0f2b",
+				"resp_0d333b4a6367c44b016a9f4d4ea4f887d0bcab297320d013f9",
+				"resp_0d333b4a6367c44b016a9f4dc01f2087d087fe947097dea45e"
+			]
+		},
+		{
+			"thread_id": "01a07e44-c25b-7913-977c-d2f3fb87dc2e",
+			"turn_id": "01a07e4b-9be8-7ca3-a910-b62359e48a4a",
+			"first_recorded_at": "2026-09-07T23:55:12.312Z",
+			"last_recorded_at": "2026-09-07T23:59:57.987Z",
+			"usage": {
+				"input_tokens": 187221,
+				"cached_input_tokens": 173696,
+				"output_tokens": 9295,
+				"reasoning_output_tokens": 2341,
+				"uncached_input_tokens": 13525,
+				"responses_with_usage": 5
+			},
+			"first_response_usage": {
+				"input_tokens": 35163,
+				"cached_input_tokens": 27264,
+				"output_tokens": 738,
+				"reasoning_output_tokens": 516,
+				"uncached_input_tokens": 7899,
+				"responses_with_usage": 1
+			},
+			"response_ids": [
+				"resp_043a861dd78d059c016a9f4ee0742c87d08819ed7f9e536a20",
+				"resp_043a861dd78d059c016a9f4efd4be487d0ac69009d8e73d70a",
+				"resp_043a861dd78d059c016a9f4f06825487d0987df2d540fc642a",
+				"resp_043a861dd78d059c016a9f4f73607487d08a07f8d3a2da6f9d",
+				"resp_043a861dd78d059c016a9f4f77c56887d0be18541adf75411d"
+			]
+		},
+		{
+			"thread_id": "01a07e44-c25b-7913-977c-d2f3fb87dc2e",
+			"turn_id": "01a07f5e-522e-7b90-9658-05706e466183",
+			"first_recorded_at": "2026-09-08T04:55:11.069Z",
+			"last_recorded_at": "2026-09-08T04:55:19.273Z",
+			"usage": {
+				"input_tokens": 93681,
+				"cached_input_tokens": 0,
+				"output_tokens": 837,
+				"reasoning_output_tokens": 259,
+				"uncached_input_tokens": 93681,
+				"responses_with_usage": 2
+			},
+			"first_response_usage": {
+				"input_tokens": 46442,
+				"cached_input_tokens": 0,
+				"output_tokens": 707,
+				"reasoning_output_tokens": 259,
+				"uncached_input_tokens": 46442,
+				"responses_with_usage": 1
+			},
+			"response_ids": [
+				"resp_08d8b88d9afe8a13016a9f953432d487d0af1e071e67c8f9d3",
+				"resp_08d8b88d9afe8a13016a9f954c10cc87d094cfe2c9811e1e06"
+			]
+		}
+	]
+}

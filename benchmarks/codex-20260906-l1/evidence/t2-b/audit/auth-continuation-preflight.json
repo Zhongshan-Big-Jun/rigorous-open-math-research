@@ -1,0 +1,7 @@
+{
+	"checked_at": "2026-09-08T04:54:42.616325+00:00",
+	"same_account": true,
+	"source_access_token_valid": true,
+	"config_unchanged": true,
+	"reason": "Refresh private same-account authentication before quota continuation; no extra attempt or budget."
+}

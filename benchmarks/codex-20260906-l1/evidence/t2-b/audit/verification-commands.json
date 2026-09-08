@@ -1,0 +1,26 @@
+[
+	{
+		"segment": "segment-02",
+		"command": "/bin/bash -c \"python - <<'PY'\nfrom pathlib import Path\nimport hashlib\nfor name in ('TASK.md', 'CANDIDATE.md'):\n    p = Path(name)\n    print(name, 'sha256', hashlib.sha256(p.read_bytes()).hexdigest())\nfor name in ('audit.json', 'audit.md', 'audit_checks.py', 'audit_checks.json'):\n    p = Path(name)\n    print(name, 'exists', p.exists())\nPY\"",
+		"aggregated_output": "/bin/bash: line 1: python: command not found\n",
+		"exit_code": 127
+	},
+	{
+		"segment": "segment-02",
+		"command": "/bin/bash -c \"python3 - <<'PY'\nfrom pathlib import Path\nimport hashlib\nfor name in ('TASK.md', 'CANDIDATE.md'):\n    p = Path(name)\n    print(name, 'sha256', hashlib.sha256(p.read_bytes()).hexdigest())\nfor name in ('audit.json', 'audit.md', 'audit_checks.py', 'audit_checks.json'):\n    p = Path(name)\n    print(name, 'exists', p.exists())\nPY\"",
+		"aggregated_output": "TASK.md sha256 6859e0af922ba8454758e2195fcefcfe8fa164a40e2c23022ec7ebb2da228943\nCANDIDATE.md sha256 9f86ec2c20f883bbb038acd1afaf73773f8c0c68307194862d68f8a401dbf7f8\naudit.json exists False\naudit.md exists False\naudit_checks.py exists False\naudit_checks.json exists False\n",
+		"exit_code": 0
+	},
+	{
+		"segment": "segment-02",
+		"command": "/bin/bash -c 'python3 audit_checks.py'",
+		"aggregated_output": "{\n  \"purpose\": \"Bounded exact falsification only; no uniform claim is proved by these checks.\",\n  \"input_sha256\": {\n    \"TASK.md\": \"6859e0af922ba8454758e2195fcefcfe8fa164a40e2c23022ec7ebb2da228943\",\n    \"CANDIDATE.md\": \"9f86ec2c20f883bbb038acd1afaf73773f8c0c68307194862d68f8a401dbf7f8\"\n  },\n  \"checks\": {\n    \"triple_mass\": 34,\n    \"reflection_22\": 17,\n    \"lower_event_4\": 17,\n    \"difference_identity_16\": 2975,\n    \"killed_image_9\": 8874,\n    \"exchangeability_identity_7\": 2573,\n    \"central_binomial_2\": 128,\n    \"lower_constant\": 256,\n    \"first_distance_17\": 31200,\n    \"second_distance_18\": 23296,\n    \"image_multiplicities\": 96\n  },\n  \"total_checks\": 69466,\n  \"counterexamples_found\": 0\n}\n",
+		"exit_code": 0
+	},
+	{
+		"segment": "segment-03",
+		"command": "/bin/bash -c \"python3 - <<'PY'\nfrom pathlib import Path\nimport hashlib\nimport json\nreport = json.loads(Path('audit.json').read_text())\nchecks = json.loads(Path('audit_checks.json').read_text())\nrequired = {'verdict', 'scores', 'total_score', 'load_bearing_gaps', 'checked_claims', 'rationale'}\nassert required <= report.keys()\nlimits = {'correctness': 40, 'fidelity': 20, 'strict_progress': 15, 'calibration': 10, 'evidence': 10, 'reproducibility': 5}\nassert report['scores'].keys() == limits.keys()\nassert all(0 <= value <= limits[name] for name, value in report['scores'].items())\nassert sum(report['scores'].values()) == report['total_score']\nassert report['verdict'] == 'PASS' and report['load_bearing_gaps'] == []\nassert len(report['checked_claims']) == 15\nassert checks['total_checks'] == sum(checks['checks'].values()) == report['independent_checks']['total_exact_checks']\nassert checks['counterexamples_found'] == 0\nfor name in ('TASK.md', 'CANDIDATE.md'):\n    digest = hashlib.sha256(Path(name).read_bytes()).hexdigest()\n    assert digest == report['input_sha256'][name] == checks['input_sha256'][name]\nassert Path('audit.md').is_file() and Path('audit_checks.py').is_file()\nprint('Validated audit.json and audit.md; input hashes and 69,466 exact-check records agree.')\nprint('Verdict:', report['verdict'], 'Score:', report['total_score'], 'Load-bearing gaps:', len(report['load_bearing_gaps']))\nPY\"",
+		"aggregated_output": "Validated audit.json and audit.md; input hashes and 69,466 exact-check records agree.\nVerdict: PASS Score: 100 Load-bearing gaps: 0\n",
+		"exit_code": 0
+	}
+]

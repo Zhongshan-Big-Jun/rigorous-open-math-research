@@ -1,6 +1,6 @@
 # L1 measured results
 
-Development-task REGRESSION only. Updated 2026-09-07. T1 is complete: C, A and B
+Development-task REGRESSION only. Updated 2026-09-08. T1 is complete: C, A and B
 all passed the independent external audit at 100/100, with no load-bearing gap
 or repair. B does not meet the observed T1 cost targets. T2 remains outstanding;
 these interrupted development runs do not establish a causal plugin-only effect.
@@ -111,13 +111,15 @@ measure with summed root-plus-child active time, which remains unknown.
 T2 B started at 2026-09-07T13:18:47Z after all six T2 preflight gates passed
 without external model calls. Treatments, task and scoring remain unchanged.
 The registered second task allows an honest exact partial result with a stated
-first unresolved obligation. T2 B returned a complete-proof candidate, but has
-no external score yet. Its unchanged answer was sent for blind audit at
+first unresolved obligation. T2 B returned a complete-proof candidate and passed
+the external audit at 100/100. Its unchanged answer was sent for blind audit at
 2026-09-07T23:47:10Z, without any process-verdict redaction being needed.
 
 | T2 stage | Verdict | Score | Active seconds | Uncached input | Cached input | Output | Responses with usage |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| B new solver, including research child and internal audit | Frozen; external audit pending | - | 1754.827 | 277157 | 2351360 | 69407 | 55 |
+| B new solver, including research child and internal audit | Frozen, independently accepted | - | 1754.827 | 277157 | 2351360 | 69407 | 55 |
+| B independent blind audit | PASS, no load-bearing gap or repair | 100/100 | 670.341 | 138385 | 231040 | 17145 | 11 |
+| B solver + external audit | Accepted | 100/100 | 2425.167 | 415542 | 2582400 | 86552 | 66 |
 
 The candidate claims the required bound for every t>=1024 with c=1/2 and C=10^12.
 It retains the lower-bound proof, rejected shortcuts and the final interval-kernel
@@ -125,3 +127,25 @@ route. These are development benchmark artifacts, not a novelty claim or an
 update to the main project's accepted mathematics. See [candidate](evidence/t2-b/answer.md),
 [binding](evidence/t2-b/blind-audit-binding.json), and
 [continuation](evidence/t2-b/quota-continuation.json).
+
+B's external auditor verified 15 load-bearing claims, including conditional lamp
+independence, both time parities, the interpolation box for the short-interval
+derivative bound, long-interval image signs and multiplicities, and the final TV
+factor. It supplied no repair. Its 69466 bounded exact checks are falsification
+checks; the PASS rests on the submitted uniform proof. See
+[audit](evidence/t2-b/audit/audit.json), [checker](evidence/t2-b/audit/audit_checks.py),
+and [coordinator consistency checks](evidence/t2-b/audit/coordinator-validation.json).
+
+The external audit includes 302.375437 seconds before a coordinator quota
+snapshot expired, 324.840431 before actual quota exhaustion, and 43.124759 in
+the final continuation. Both continuations reused the original audit session
+and the same 900-second allowance. Its final two responses contained 93681
+uncached input tokens with no cached input. All returned costs remain charged;
+the coordinator pause and quota/cache effects are not isolated plugin overhead.
+See [audit continuation](evidence/t2-b/audit/quota-continuation.json) and
+[turn usage](evidence/t2-b/audit/usage-by-turn.json).
+
+T2 B's actual dispatch-to-external-audit-return elapsed time was 56197.786263
+seconds, including quota waits and coordinator work. T2 A started at
+2026-09-08T04:57:17Z with fresh same-account private authentication. A and C
+remain unscored, so no complete T2 treatment comparison is available yet.

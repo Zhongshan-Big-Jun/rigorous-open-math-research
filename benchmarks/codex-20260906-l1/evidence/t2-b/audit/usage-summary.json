@@ -1,0 +1,36 @@
+{
+	"schema_version": 1,
+	"status": "RETURNED_UNREVIEWED",
+	"root_thread_id": "01a07e44-c25b-7913-977c-d2f3fb87dc2e",
+	"models": [
+		"gpt-6-astra"
+	],
+	"efforts": [
+		"max"
+	],
+	"root_active_wall_seconds": 670.3406269389816,
+	"aggregate_active_wall_seconds": null,
+	"returned_usage": {
+		"input_tokens": 369425,
+		"cached_input_tokens": 231040,
+		"output_tokens": 17145,
+		"reasoning_output_tokens": 9328,
+		"uncached_input_tokens": 138385,
+		"responses_with_usage": 11
+	},
+	"per_thread": {
+		"01a07e44-c25b-7913-977c-d2f3fb87dc2e": {
+			"input_tokens": 369425,
+			"cached_input_tokens": 231040,
+			"output_tokens": 17145,
+			"reasoning_output_tokens": 9328,
+			"uncached_input_tokens": 138385,
+			"responses_with_usage": 11
+		}
+	},
+	"duplicate_usage_records_removed": 0,
+	"outer_model_tool_calls": 10,
+	"root_cli_command_executions": 7,
+	"all_actual_tool_calls": null,
+	"coverage": "Returned response usage only. Unknown in-flight usage is not zero. Outer calls and CLI commands are distinct scopes; aggregate active time and complete nested tool counts remain unknown."
+}

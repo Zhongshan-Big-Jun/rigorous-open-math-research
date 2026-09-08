@@ -1,0 +1,34 @@
+{
+	"root_thread_id": "01a07e44-c25b-7913-977c-d2f3fb87dc2e",
+	"active_seconds": 670.3406269389816,
+	"segments": [
+		{
+			"path": "/home/huangzy/codex-benchmark/blind-audits/0123470f-b6de-45a5-bd7e-fabe1d7af8e4/candidate/c/run/segment-01",
+			"active_seconds": 302.37543665998965,
+			"exit_code": 1,
+			"stop_reason": "QUOTA_SNAPSHOT_STALE"
+		},
+		{
+			"path": "/home/huangzy/codex-benchmark/blind-audits/0123470f-b6de-45a5-bd7e-fabe1d7af8e4/candidate/c/run/segment-02",
+			"active_seconds": 324.8404312969942,
+			"exit_code": 1,
+			"stop_reason": null
+		},
+		{
+			"path": "/home/huangzy/codex-benchmark/blind-audits/0123470f-b6de-45a5-bd7e-fabe1d7af8e4/candidate/c/run/segment-03",
+			"active_seconds": 43.12475898199773,
+			"exit_code": 0,
+			"stop_reason": null
+		}
+	],
+	"role": "BLIND_AUDIT",
+	"status": "RETURNED_UNREVIEWED",
+	"updated_at": "2026-09-08T04:55:25.892822+00:00",
+	"runner_pid": 137933,
+	"process_pid": 137958,
+	"process_start_ticks": "9980334",
+	"boot_id": "c22695bd-fbd7-4f23-a329-d67445f00ddc",
+	"current_segment": "/home/huangzy/codex-benchmark/blind-audits/0123470f-b6de-45a5-bd7e-fabe1d7af8e4/candidate/c/run/segment-03",
+	"exit_code": 0,
+	"stop_reason": null
+}

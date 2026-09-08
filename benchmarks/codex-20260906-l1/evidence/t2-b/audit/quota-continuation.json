@@ -1,0 +1,69 @@
+{
+	"root_thread_id": "01a07e44-c25b-7913-977c-d2f3fb87dc2e",
+	"segments": [
+		{
+			"path": "/home/huangzy/codex-benchmark/blind-audits/0123470f-b6de-45a5-bd7e-fabe1d7af8e4/candidate/c/run/segment-01",
+			"active_seconds": 302.37543665998965,
+			"exit_code": 1,
+			"stop_reason": "QUOTA_SNAPSHOT_STALE"
+		},
+		{
+			"path": "/home/huangzy/codex-benchmark/blind-audits/0123470f-b6de-45a5-bd7e-fabe1d7af8e4/candidate/c/run/segment-02",
+			"active_seconds": 324.8404312969942,
+			"exit_code": 1,
+			"stop_reason": null
+		},
+		{
+			"path": "/home/huangzy/codex-benchmark/blind-audits/0123470f-b6de-45a5-bd7e-fabe1d7af8e4/candidate/c/run/segment-03",
+			"active_seconds": 43.12475898199773,
+			"exit_code": 0,
+			"stop_reason": null
+		}
+	],
+	"events": [
+		{
+			"segment": "segment-01",
+			"line": 1,
+			"event": {
+				"type": "thread.started",
+				"thread_id": "01a07e44-c25b-7913-977c-d2f3fb87dc2e"
+			}
+		},
+		{
+			"segment": "segment-02",
+			"line": 1,
+			"event": {
+				"type": "thread.started",
+				"thread_id": "01a07e44-c25b-7913-977c-d2f3fb87dc2e"
+			}
+		},
+		{
+			"segment": "segment-02",
+			"line": 16,
+			"event": {
+				"type": "error",
+				"message": "You've hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/codex/settings/usage to purchase more credits or try again at 12:34 PM."
+			}
+		},
+		{
+			"segment": "segment-02",
+			"line": 17,
+			"event": {
+				"type": "turn.failed",
+				"error": {
+					"message": "You've hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/codex/settings/usage to purchase more credits or try again at 12:34 PM."
+				}
+			}
+		},
+		{
+			"segment": "segment-03",
+			"line": 1,
+			"event": {
+				"type": "thread.started",
+				"thread_id": "01a07e44-c25b-7913-977c-d2f3fb87dc2e"
+			}
+		}
+	],
+	"extra_budget_seconds": 0,
+	"classification": "Segment 01: coordinator quota snapshot stale. Segment 02: actual CLI usage-limit exit after saving audit files. Segment 03: same-session normal return."
+}
