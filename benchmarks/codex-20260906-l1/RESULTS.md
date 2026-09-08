@@ -1,9 +1,32 @@
 # L1 measured results
 
-Development-task REGRESSION only. Updated 2026-09-08. T1 is complete: C, A and B
-all passed the independent external audit at 100/100, with no load-bearing gap
-or repair. B does not meet the observed T1 cost targets. T2 remains outstanding;
-these interrupted development runs do not establish a causal plugin-only effect.
+Development-task REGRESSION only. Updated 2026-09-08. L1 is complete: all six
+old/new/blank submissions across T1 and T2 passed the independent external audit
+at 100/100, with no load-bearing gap or repair. B misses the registered observed
+solver cost targets. Blank C has the lowest observed full-delivery cost on each
+task at equal audited proof quality. These interrupted development runs, including
+an account/plan change, do not establish a causal plugin-only effect.
+
+The [Chinese conclusion](CONCLUSIONS.md), [T2 comparison](comparison-t2.json),
+[complete comparison](comparison-l1.json), and
+[completion checks](evidence/campaign-completion-checks.json) bind the final result.
+All 12 solver/audit stages are frozen; 285 unique returned responses were counted.
+Five solvers returned normally. A's T2 solver hit its wall cap with a saved proof
+that subsequently passed external audit; all six external audits returned normally.
+
+| Both tasks, solver + external audit | Quality | Active minutes | Uncached input | Cached input | Output |
+| --- | --- | --- | --- | --- | --- |
+| A old plugin | 2/2 PASS, 100/100 each | 68.903 | 537852 | 4753280 | 124430 |
+| B new plugin | 2/2 PASS, 100/100 each | 65.653 | 690945 | 5035392 | 133833 |
+| C blank | 2/2 PASS, 100/100 each | 45.007 | 264547 | 1120256 | 85518 |
+
+The paired B/A solver medians are 1.448519 for uncached input (target <=0.75)
+and 0.937393 for active wall time (target <=0.80); both targets fail. Including
+external audits, the paired medians are 1.330589 and 0.942885 respectively.
+These are medians of the two task-level ratios, not ratios of the pooled totals.
+The separate internal-delivery timing metric remains unknown; no missing value
+is silently equated to an observed timing scope. Functional feature acceptances
+and L2 remain separate from this completed offline L1 campaign.
 
 | T1 stage | Verdict | Score | Active seconds | Uncached input | Cached input | Output | Responses with usage |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -131,7 +154,9 @@ the external audit at 100/100. Its unchanged answer was sent for blind audit at
 | A old solver, including three children | Wall-limited frozen answer, independently accepted | - | 1802.784 | 303881 | 2906624 | 59829 | 65 |
 | A independent blind audit | PASS, no load-bearing gap or repair | 100/100 | 621.203 | 47863 | 320128 | 16583 | 11 |
 | A solver + external audit | Accepted; solver hit wall cap | 100/100 | 2423.987 | 351744 | 3226752 | 76412 | 76 |
-| C blank solver, including two children | Frozen; external audit pending | - | 1266.552 | 106041 | 693120 | 45056 | 34 |
+| C blank solver, including two children | Frozen, independently accepted | - | 1266.552 | 106041 | 693120 | 45056 | 34 |
+| C independent blind audit | PASS, no load-bearing gap or repair | 100/100 | 597.610 | 84504 | 227456 | 15207 | 10 |
+| C solver + external audit | Accepted | 100/100 | 1864.162 | 190545 | 920576 | 60263 | 44 |
 
 The candidate claims the required bound for every t>=1024 with c=1/2 and C=10^12.
 It retains the lower-bound proof, rejected shortcuts and the final interval-kernel
@@ -200,3 +225,19 @@ the external audit started at 08:22:39Z. No redaction was needed. Its 34
 returned response records include two children. See [answer](evidence/t2-c/answer.md),
 [usage](evidence/t2-c/usage-summary.json), and
 [binding](evidence/t2-c/blind-audit-binding.json).
+
+C's external audit returned normally at 2026-09-08T08:32:37Z after 597.610152
+seconds. It verified 16 load-bearing claims and returned PASS 100/100 with no
+gap or repair. Its 62018 exact finite checks support falsification only; the
+verdict rests on the submitted uniform proof. See [audit](evidence/t2-c/audit/audit.json),
+[checker](evidence/t2-c/audit/audit_checks.py), and
+[coordinator checks](evidence/t2-c/audit/coordinator-validation.json).
+
+The final T2 dispatch-to-audit-return elapsed times were 10884.690937 seconds
+for A, 56197.786263 for B, and 1943.153675 for C. Active-stage totals and these
+elapsed measures retain their different scopes. No mathematical result was
+integrated into the main project's accepted knowledge by this campaign.
+
+Earlier present-tense progress statements below the initial overview record
+stage boundaries as they occurred. The complete comparison and current STATUS.md
+supersede their pending-stage instructions; no solver or audit should be rerun.

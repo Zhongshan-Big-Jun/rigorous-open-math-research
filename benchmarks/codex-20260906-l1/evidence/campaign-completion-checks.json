@@ -1,0 +1,111 @@
+{
+	"checked_at": "2026-09-08T08:34:53.903097+00:00",
+	"verdict": "PASS",
+	"stage_count": 12,
+	"unique_returned_response_count": 285,
+	"deliveries": [
+		{
+			"task": "t1",
+			"arm": "A",
+			"solver_status": "RETURNED_UNAUDITED",
+			"root_thread_id": "01a076cc-139f-76f1-aede-3af2443f3a4a",
+			"audit_thread_id": "01a076e8-54ca-7531-b267-9c8372da88ed",
+			"verdict": "PASS",
+			"checks": [
+				"all frozen hashes",
+				"candidate and task bindings",
+				"published audit byte identity",
+				"actual model and effort",
+				"unique returned response usage",
+				"score and gap consistency",
+				"owned process no longer alive"
+			]
+		},
+		{
+			"task": "t1",
+			"arm": "B",
+			"solver_status": "RETURNED_UNAUDITED",
+			"root_thread_id": "01a0798d-cd6d-7b22-bbd2-bb4b4a1fdb43",
+			"audit_thread_id": "01a07ab9-a0fc-7552-a660-ca613819682d",
+			"verdict": "PASS",
+			"checks": [
+				"all frozen hashes",
+				"candidate and task bindings",
+				"published audit byte identity",
+				"actual model and effort",
+				"unique returned response usage",
+				"score and gap consistency",
+				"owned process no longer alive"
+			]
+		},
+		{
+			"task": "t1",
+			"arm": "C",
+			"solver_status": "RETURNED_UNAUDITED",
+			"root_thread_id": "01a076b7-6a23-7fb0-bb84-115e1d497eb0",
+			"audit_thread_id": "01a076c2-ceb3-7b61-a8fa-d92cc729e2c3",
+			"verdict": "PASS",
+			"checks": [
+				"all frozen hashes",
+				"candidate and task bindings",
+				"published audit byte identity",
+				"actual model and effort",
+				"unique returned response usage",
+				"score and gap consistency",
+				"owned process no longer alive"
+			]
+		},
+		{
+			"task": "t2",
+			"arm": "A",
+			"solver_status": "BUDGET_EXHAUSTED",
+			"root_thread_id": "01a07f60-ad98-7b10-b036-3be86f11c5dc",
+			"audit_thread_id": "01a07ffd-494a-7f63-9726-fb745638c58e",
+			"verdict": "PASS",
+			"checks": [
+				"all frozen hashes",
+				"candidate and task bindings",
+				"published audit byte identity",
+				"actual model and effort",
+				"unique returned response usage",
+				"score and gap consistency",
+				"owned process no longer alive"
+			]
+		},
+		{
+			"task": "t2",
+			"arm": "B",
+			"solver_status": "RETURNED_UNAUDITED",
+			"root_thread_id": "01a07c05-7813-7f23-89c6-f4aea5101e6a",
+			"audit_thread_id": "01a07e44-c25b-7913-977c-d2f3fb87dc2e",
+			"verdict": "PASS",
+			"checks": [
+				"all frozen hashes",
+				"candidate and task bindings",
+				"published audit byte identity",
+				"actual model and effort",
+				"unique returned response usage",
+				"score and gap consistency",
+				"owned process no longer alive"
+			]
+		},
+		{
+			"task": "t2",
+			"arm": "C",
+			"solver_status": "RETURNED_UNAUDITED",
+			"root_thread_id": "01a08008-2b94-7352-baf8-b6ba7ba9d481",
+			"audit_thread_id": "01a0801c-b396-7923-8718-c04ca59d1f35",
+			"verdict": "PASS",
+			"checks": [
+				"all frozen hashes",
+				"candidate and task bindings",
+				"published audit byte identity",
+				"actual model and effort",
+				"unique returned response usage",
+				"score and gap consistency",
+				"owned process no longer alive"
+			]
+		}
+	],
+	"extra_mathematical_review": false
+}

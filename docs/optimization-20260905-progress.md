@@ -19,8 +19,17 @@ User approved the optimization plan and added actual source reading, agent-annot
 
 ## Next actions
 
-The implementation batch is complete. The next research-performance work is the
-plan's separately frozen L1/L2 experiment; no solver-speedup claim is made here.
+The implementation batch is complete. The separately frozen L1 old/new/blank
+regression completed on 2026-09-08: all six proofs passed external blind audit,
+but the new plugin missed the observed solver cost targets. Blank Codex had
+the lowest observed complete-delivery cost on both development tasks. Quota,
+cache and account/plan differences prevent causal plugin-only attribution.
+See the [L1 conclusion](../benchmarks/codex-20260906-l1/CONCLUSIONS.md) and
+[current status](../benchmarks/codex-20260906-l1/STATUS.md).
+
+The next separate work is live literature-to-tool reuse and controlled in-flight
+interruption acceptance, followed by scoped ablations before considering L2.
+No L2 stage is automatically dispatched and no solver-speedup claim is made.
 Resolve the actual loaded skill path before using helpers: the physical source
 inventory still reports retained same-name direct/personal copies and does not
 infer runtime selection from their existence.

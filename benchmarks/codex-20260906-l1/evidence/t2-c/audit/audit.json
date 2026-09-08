@@ -1,0 +1,132 @@
+{
+  "verdict": "PASS",
+  "scores": {
+    "correctness": 40,
+    "fidelity": 20,
+    "strict_progress": 15,
+    "calibration": 10,
+    "evidence": 10,
+    "reproducibility": 5
+  },
+  "total_score": 100,
+  "load_bearing_gaps": [],
+  "earliest_substantive_gap": null,
+  "checked_claims": [
+    {
+      "claim": "The exact requested chain and starting states are used.",
+      "location": "CANDIDATE.md:3-13, 41-57",
+      "status": "VERIFIED",
+      "evidence": "The starts are (all-zero lamps, 0) and (all-zero lamps, 2). Both departure and arrival lamps are independently resampled. Site 2 is never interpreted as an initially lit lamp. The constants c=1/(2 sqrt(2)), C=2^43, and t_0=16 are explicit and satisfy the requested constraints."
+    },
+    {
+      "claim": "The base-coordinate events prove the lower bound for both parities.",
+      "location": "CANDIDATE.md:17-36",
+      "status": "VERIFIED",
+      "evidence": "Translation by 2 leaves the endpoint parity unchanged. The indicated half-line differences isolate p_(2n)(0) and p_(2n+1)(1), respectively. The central-binomial induction has the correct base case and ratio inequality. In the odd case the ratio is at least 1/2, so the resulting 1/(4 sqrt(n)) is at least 1/(2 sqrt(2t)); the even case is stronger still. Projection to the base supplies a legitimate event for full-state TV."
+    },
+    {
+      "claim": "The common range-to-lamps kernel and TV contraction are valid for t>=1.",
+      "location": "CANDIDATE.md:41-57",
+      "status": "VERIFIED",
+      "evidence": "A nearest-neighbor path visits every integer between its minimum and maximum. For t>=1, every visited site is resampled, including the starting site and a site first reached on the final step. Conditional on the base path, last-resampling indices depend only on that path and select distinct independent fair coins. Thus conditioning down to the triple preserves the same product law. Unvisited lamps, including either initial site if unvisited, remain zero. Summing the common probability kernel and applying the triangle inequality gives the stated factor 1/2 in (1)."
+    },
+    {
+      "claim": "Exceptional ranges have full l1 contribution at most 8/sqrt(t).",
+      "location": "CANDIDATE.md:59-73",
+      "status": "VERIFIED",
+      "evidence": "Outside intervals containing both starts, Q_0 contributes only when M_t<2 and Q_2 only when m_t>0. The map S -> 2-S identifies these two exceptional probabilities. Reflection after first hitting 2 is an invertible, probability-preserving path map with the endpoint classes stated in the submission. Symmetry gives p_t(0)+p_t(2) for even t and 2p_t(1) for odd t. Applying (3) bounds each exceptional probability by 4/sqrt(t)."
+    },
+    {
+      "claim": "The count of remaining range triples is at most 2L^2 for each length L>=2.",
+      "location": "CANDIDATE.md:75-77",
+      "status": "VERIFIED",
+      "evidence": "With b=a+L and [a,b] containing [0,2], a runs over 2-L,...,0, exactly L-1 values. There are L+1 possible endpoints before restricting parity. Therefore (L-1)(L+1)<=2L^2; counting the wrong parity only enlarges this bound."
+    },
+    {
+      "claim": "The Gaussian point-mass estimate (3) holds for every n>=1 and integer u.",
+      "location": "CANDIDATE.md:81-100",
+      "status": "VERIFIED",
+      "evidence": "The central-mass upper induction is valid, including the empty-product base case. For supported even and odd endpoints, the logarithms of the successive binomial ratios give sums j^2/n and j(j+1)/n as stated. The odd correction is absorbed by sqrt(2)e^(1/4)<2. Symmetry, wrong parity, and points beyond the support are explicitly handled."
+    },
+    {
+      "claim": "The third finite-difference identity (5) and uniform estimate (4) are valid.",
+      "location": "CANDIDATE.md:102-134",
+      "status": "VERIFIED",
+      "evidence": "The displayed cubic binomial expansion has the stated sign and factor 8. Its zero-binomial convention covers the shifted support endpoints and wrong parity. For n=t+3>=6, n(n-1)(n-2)>=n^3/2. The polynomial-Gaussian estimate gives 2048 n^(-2) exp(-(u-3)^2/(8n)); the submitted inequalities (u-3)^2>=u^2/2-9, n<=2t, and exp(9/(8n))<2 then give exactly the permissible constant 4096 and exponent denominator 32t."
+    },
+    {
+      "claim": "All three sum estimates in (6) have valid explicit constants.",
+      "location": "CANDIDATE.md:136-157",
+      "status": "VERIFIED",
+      "evidence": "On each interval [j-1,j], the proposed integral integrand bounds the j-th summand from above after integration. The polynomial inequalities and substitutions yield 1104<2^11 for the first sum and 3072t^(3/2)+32sqrt(t)<=3104t^(3/2)<2^12t^(3/2) for the other sums. The tail comparisons and displayed elementary integral evaluations justify these constants without a Gaussian-integral theorem."
+    },
+    {
+      "claim": "The killed image formula (7), inclusion-exclusion (8), and start difference (9) are valid on every interval used.",
+      "location": "CANDIDATE.md:161-192",
+      "status": "VERIFIED",
+      "evidence": "The finite image sum satisfies the killed recurrence, the initial delta, and zero boundary values; induction gives uniqueness. Starting points on a zero boundary also cancel in the image sum. When L=2, the most shortened interval is a valid singleton; any excluded start or endpoint is exactly one of its zero boundaries. Expanding the four kernels gives D_(2k)^2 on direct images and -D_(2k)D_(2k+2) on reflected images. Subtracting starts 0 and 2 gives the plus sign and reflected argument z-2a+4+2kN in (9)."
+    },
+    {
+      "claim": "All translate multiplicities and argument bounds used in (10) are correct.",
+      "location": "CANDIDATE.md:194-216",
+      "status": "VERIFIED",
+      "evidence": "Telescoping D_(2k) into translates of Delta produces k^2 terms for the first family. The second family vanishes at k=0,-1 and has k(k+1) or m(m-1) terms for k>=1 or k=-m<=-2. The submitted extremal arguments follow from 2-L<=a<=0 and a<=z<=a+L. Pairing signs in the first family costs at most 2 sum k^2 exp(-k^2 L^2/(32t)); reindexing the second family costs at most 4 of the same sum. Thus the factor 6 in (10) is justified."
+    },
+    {
+      "claim": "The large-range l1 bound (11) is uniform, including L=sqrt(t).",
+      "location": "CANDIDATE.md:219-226",
+      "status": "VERIFIED",
+      "evidence": "For k>=1 and L^2/t>=1, 2k^2 L^2/t>=k^2+L^2/t proves the exponential separation. Counting at most 2L^2 triples and applying the two j^2 sums in (6) gives 12*2^36/sqrt(t)<2^40/sqrt(t). Extending the length sum beyond physically attainable ranges only increases its nonnegative bound."
+    },
+    {
+      "claim": "The sine expansion and parity pairing give the interpolation's required corner values.",
+      "location": "CANDIDATE.md:231-265",
+      "status": "VERIFIED",
+      "evidence": "The submission derives the distinct sine eigenvalues, orthogonality, norm N/2, completeness, and killed recurrence. Pairing j and N-j multiplies a term by (-1)^(t+x+y)=(-1)^(t+s+z), which is 1 for the two even starts and supported endpoints. The middle eigenvalue contributes zero for t>=1. Boundary sine factors are zero. Thus (13) agrees with every discrete corner needed in (8), without claiming a random-walk interpretation at real starts or boundaries."
+    },
+    {
+      "claim": "The boundary/start interpolation permits the repeated FTC identity (14).",
+      "location": "CANDIDATE.md:261-275",
+      "status": "VERIFIED",
+      "evidence": "Throughout the entire integration box, L<=N<=L+2 and 0<=x,y<=N, including L=2 and boundary corners. The cutoff f_t is C^2 at pi/2 for t>=3, and the sum is locally finite in N>0. Only two boundary derivatives hit f_t; the start derivative hits a sine factor. The required mixed derivative is therefore continuous. Boundary inclusion-exclusion equals minus the double boundary integral, and taking q_0-q_2 supplies the second minus sign, giving (14) with its displayed positive sign and volume 2."
+    },
+    {
+      "claim": "The derivative estimates (15)-(18) hold uniformly throughout the box.",
+      "location": "CANDIDATE.md:278-327",
+      "status": "VERIFIED",
+      "evidence": "Direct differentiation gives r_a=(r-1)/N, r_b=-r/N, and r_ab=(1-2r)/N^2, with the same formulas for w, verifying all stated geometric bounds. The product-rule coefficients are 6+10J+4J^2, 6+4J, and 1 as in (15). For J>3 the two stated coefficient bounds hold. For t>=4, each power cos^(t-i), i<=2, is bounded by exp(-t theta^2/4). Substitution t theta^2=vJ^2 gives the polynomial bound in (16). In the small-range box, u/4<=v<=u and v>=1/4; the exponent split in (17) and N>=L then give (18), including cutoff points by continuity."
+    },
+    {
+      "claim": "The small-range sum (19)-(20) has the asserted uniform rate and constant.",
+      "location": "CANDIDATE.md:330-345",
+      "status": "VERIFIED",
+      "evidence": "The integration volume 2 and triple count 2L^2 produce the coefficient 2^28. Each length summand equals t^(-1)u(1+u)^2 exp(-u/4), with u>=1. It is bounded by 4t^(-1)u^3 exp(-u/4)<=6912/t<2^13/t. There are fewer than sqrt(t) lengths, yielding 2^41/sqrt(t). The small and large ranges partition all L>=2 without losing the square-root endpoint."
+    },
+    {
+      "claim": "The final constants, small times, and external-theorem obligations are satisfied.",
+      "location": "CANDIDATE.md:13, 350-363",
+      "status": "VERIFIED",
+      "evidence": "For every integer t>=16 all earlier time restrictions hold. The total range-triple l1 bound is (8+2^40+2^41)/sqrt(t); halving it is less than 2^43/sqrt(t). At t=0 the laws are distinct point masses. At t=1 exactly two common states have mass 1/8 each under both laws, so TV=3/4. The stated treatment of 2<=t<16 is valid. Random-walk and spectral formulas are derived rather than invoked as external probability results. The FTC is stated in the form used, and its continuity hypotheses are verified for the interpolation."
+    }
+  ],
+  "reproducibility": {
+    "inputs": ["TASK.md", "CANDIDATE.md"],
+    "method": "Independent exact mathematical review of every load-bearing step, supplemented only by finite falsification checks using integer and rational arithmetic.",
+    "script": "audit_checks.py",
+    "command": "python3 audit_checks.py",
+    "python_version_used": "3.14.4",
+    "finite_checks": {
+      "equation_2": 21,
+      "equation_5": 5580,
+      "equation_7": 8517,
+      "equation_8": 31932,
+      "equation_9": 15966,
+      "small_time_tv": 2,
+      "total": 62018,
+      "result": "No counterexample; exit status 0."
+    },
+    "limitation": "Finite checks do not establish asymptotics or any universal claim. PASS rests on verification of the submitted uniform exact proof, including its analytic estimates."
+  },
+  "repairs_supplied": [],
+  "rationale": "The submitted proof establishes both requested bounds for the exact switch-walk-switch chain with explicit constants and a valid integer threshold. Its range-kernel reduction handles the initial zero lamps correctly. The complementary image and sine estimates close the upper bound uniformly, with correct parity, boundary cases, multiplicities, differentiation, and summation constants. No substantive gap or false load-bearing claim was identified. No missing argument was repaired or credited as part of the submission; the audit's calculations verify arguments already present. Full scores reflect demonstrated closure and accurate completion claims, independently of the historical numerical threshold."
+}

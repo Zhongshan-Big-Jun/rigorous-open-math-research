@@ -1,0 +1,22 @@
+{
+	"root_thread_id": "01a0801c-b396-7923-8718-c04ca59d1f35",
+	"active_seconds": 597.6101524039987,
+	"segments": [
+		{
+			"path": "/home/huangzy/codex-benchmark/blind-audits/1729c39b-2b92-4f03-a8fc-e440ca4f8338/candidate/c/run/segment-01",
+			"active_seconds": 597.6101524039987,
+			"exit_code": 0,
+			"stop_reason": null
+		}
+	],
+	"role": "BLIND_AUDIT",
+	"status": "RETURNED_UNREVIEWED",
+	"updated_at": "2026-09-08T08:32:37.193430+00:00",
+	"runner_pid": 167233,
+	"process_pid": 167240,
+	"process_start_ticks": "11228016",
+	"boot_id": "c22695bd-fbd7-4f23-a329-d67445f00ddc",
+	"current_segment": "/home/huangzy/codex-benchmark/blind-audits/1729c39b-2b92-4f03-a8fc-e440ca4f8338/candidate/c/run/segment-01",
+	"exit_code": 0,
+	"stop_reason": null
+}

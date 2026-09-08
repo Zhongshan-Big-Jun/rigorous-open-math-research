@@ -1,0 +1,17 @@
+{
+	"checked_at": "2026-09-08T08:34:53.517279+00:00",
+	"checks": [
+		"normal return within shared audit allowance",
+		"all frozen hashes",
+		"task and candidate bindings",
+		"score shape and ranges",
+		"score sum",
+		"verdict and gap consistency",
+		"actual model and effort",
+		"returned usage deduplication"
+	],
+	"verdict": "PASS",
+	"auditor_verdict": "PASS",
+	"checked_claim_count": 16,
+	"extra_mathematical_review": false
+}

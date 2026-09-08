@@ -1,0 +1,732 @@
+{
+	"schema_version": 1,
+	"classification": "DEVELOPMENT_REGRESSION",
+	"recorded_at": "2026-09-08T08:34:53.889739+00:00",
+	"state": "L1_COMPLETE",
+	"source_comparisons": {
+		"benchmarks/codex-20260906-l1/comparison-t1.json": "ad197b94db282e1f2c3188986d29c1e7a8f5d0c02482fb6b12d3bd886723ad3f",
+		"benchmarks/codex-20260906-l1/comparison-t2.json": "f8d72518cd1ff8fc9934f2193992e041b3e7c0bc9f0fe41eebdf6e62e246269b"
+	},
+	"tasks": {
+		"t1": {
+			"schema_version": 1,
+			"task": "T1",
+			"classification": "DEVELOPMENT_REGRESSION",
+			"recorded_at": "2026-09-08T08:34:53.779486+00:00",
+			"arms": {
+				"A": {
+					"verdict": "PASS",
+					"score": 100,
+					"load_bearing_gap_count": 0,
+					"solver": {
+						"schema_version": 1,
+						"status": "RETURNED_UNAUDITED",
+						"root_thread_id": "01a076cc-139f-76f1-aede-3af2443f3a4a",
+						"models": [
+							"gpt-6-astra"
+						],
+						"efforts": [
+							"max"
+						],
+						"root_active_wall_seconds": 1277.9981995010749,
+						"aggregate_active_wall_seconds": null,
+						"returned_usage": {
+							"input_tokens": 1548782,
+							"cached_input_tokens": 1425408,
+							"output_tokens": 35714,
+							"reasoning_output_tokens": 10723,
+							"uncached_input_tokens": 123374,
+							"responses_with_usage": 29
+						},
+						"per_thread": {
+							"01a076cc-139f-76f1-aede-3af2443f3a4a": {
+								"input_tokens": 1432741,
+								"cached_input_tokens": 1339392,
+								"output_tokens": 28542,
+								"reasoning_output_tokens": 8926,
+								"uncached_input_tokens": 93349,
+								"responses_with_usage": 24
+							},
+							"01a076dc-f493-7c23-96ba-fbad85c69fb6": {
+								"input_tokens": 116041,
+								"cached_input_tokens": 86016,
+								"output_tokens": 7172,
+								"reasoning_output_tokens": 1797,
+								"uncached_input_tokens": 30025,
+								"responses_with_usage": 5
+							}
+						},
+						"duplicate_usage_records_removed": 0,
+						"outer_model_tool_calls": 27,
+						"root_cli_command_executions": 26,
+						"all_actual_tool_calls": null,
+						"coverage": "Returned response usage only. Unknown in-flight usage is not zero. Outer calls and CLI commands are distinct scopes; aggregate active time and complete nested tool counts remain unknown."
+					},
+					"external_audit": {
+						"schema_version": 1,
+						"status": "RETURNED_UNREVIEWED",
+						"root_thread_id": "01a076e8-54ca-7531-b267-9c8372da88ed",
+						"models": [
+							"gpt-6-astra"
+						],
+						"efforts": [
+							"max"
+						],
+						"root_active_wall_seconds": 432.19204933397896,
+						"aggregate_active_wall_seconds": null,
+						"returned_usage": {
+							"input_tokens": 163854,
+							"cached_input_tokens": 101120,
+							"output_tokens": 12304,
+							"reasoning_output_tokens": 5591,
+							"uncached_input_tokens": 62734,
+							"responses_with_usage": 7
+						},
+						"per_thread": {
+							"01a076e8-54ca-7531-b267-9c8372da88ed": {
+								"input_tokens": 163854,
+								"cached_input_tokens": 101120,
+								"output_tokens": 12304,
+								"reasoning_output_tokens": 5591,
+								"uncached_input_tokens": 62734,
+								"responses_with_usage": 7
+							}
+						},
+						"duplicate_usage_records_removed": 0,
+						"outer_model_tool_calls": 6,
+						"root_cli_command_executions": 10,
+						"all_actual_tool_calls": null,
+						"coverage": "Returned response usage only. Unknown in-flight usage is not zero. Outer calls and CLI commands are distinct scopes; aggregate active time and complete nested tool counts remain unknown."
+					},
+					"full_delivery": {
+						"uncached_input_tokens": 186108,
+						"cached_input_tokens": 1526528,
+						"output_tokens": 48018,
+						"responses_with_usage": 36,
+						"active_seconds": 1710.1902488350538
+					},
+					"dispatch_to_audit_return_seconds": 46124.377046,
+					"first_proof_seconds": null
+				},
+				"B": {
+					"verdict": "PASS",
+					"score": 100,
+					"load_bearing_gap_count": 0,
+					"solver": {
+						"schema_version": 1,
+						"status": "RETURNED_UNAUDITED",
+						"root_thread_id": "01a0798d-cd6d-7b22-bbd2-bb4b4a1fdb43",
+						"models": [
+							"gpt-6-astra"
+						],
+						"efforts": [
+							"max"
+						],
+						"root_active_wall_seconds": 1151.9731205549979,
+						"aggregate_active_wall_seconds": null,
+						"returned_usage": {
+							"input_tokens": 2551967,
+							"cached_input_tokens": 2307072,
+							"output_tokens": 38060,
+							"reasoning_output_tokens": 10033,
+							"uncached_input_tokens": 244895,
+							"responses_with_usage": 41
+						},
+						"per_thread": {
+							"01a0798d-cd6d-7b22-bbd2-bb4b4a1fdb43": {
+								"input_tokens": 2278298,
+								"cached_input_tokens": 2101120,
+								"output_tokens": 29422,
+								"reasoning_output_tokens": 7327,
+								"uncached_input_tokens": 177178,
+								"responses_with_usage": 32
+							},
+							"01a07996-de92-7282-99db-98ddda82bd10": {
+								"input_tokens": 273669,
+								"cached_input_tokens": 205952,
+								"output_tokens": 8638,
+								"reasoning_output_tokens": 2706,
+								"uncached_input_tokens": 67717,
+								"responses_with_usage": 9
+							}
+						},
+						"duplicate_usage_records_removed": 0,
+						"outer_model_tool_calls": 39,
+						"root_cli_command_executions": 33,
+						"all_actual_tool_calls": null,
+						"coverage": "Returned response usage only. Unknown in-flight usage is not zero. Outer calls and CLI commands are distinct scopes; aggregate active time and complete nested tool counts remain unknown."
+					},
+					"external_audit": {
+						"schema_version": 1,
+						"status": "RETURNED_UNREVIEWED",
+						"root_thread_id": "01a07ab9-a0fc-7552-a660-ca613819682d",
+						"models": [
+							"gpt-6-astra"
+						],
+						"efforts": [
+							"max"
+						],
+						"root_active_wall_seconds": 362.0292773000001,
+						"aggregate_active_wall_seconds": null,
+						"returned_usage": {
+							"input_tokens": 176428,
+							"cached_input_tokens": 145920,
+							"output_tokens": 9221,
+							"reasoning_output_tokens": 2234,
+							"uncached_input_tokens": 30508,
+							"responses_with_usage": 8
+						},
+						"per_thread": {
+							"01a07ab9-a0fc-7552-a660-ca613819682d": {
+								"input_tokens": 176428,
+								"cached_input_tokens": 145920,
+								"output_tokens": 9221,
+								"reasoning_output_tokens": 2234,
+								"uncached_input_tokens": 30508,
+								"responses_with_usage": 8
+							}
+						},
+						"duplicate_usage_records_removed": 0,
+						"outer_model_tool_calls": 7,
+						"root_cli_command_executions": 7,
+						"all_actual_tool_calls": null,
+						"coverage": "Returned response usage only. Unknown in-flight usage is not zero. Outer calls and CLI commands are distinct scopes; aggregate active time and complete nested tool counts remain unknown."
+					},
+					"full_delivery": {
+						"uncached_input_tokens": 275403,
+						"cached_input_tokens": 2452992,
+						"output_tokens": 47281,
+						"responses_with_usage": 49,
+						"active_seconds": 1514.002397854998
+					},
+					"dispatch_to_audit_return_seconds": 20012.581674,
+					"first_proof_seconds": null
+				},
+				"C": {
+					"verdict": "PASS",
+					"score": 100,
+					"load_bearing_gap_count": 0,
+					"solver": {
+						"schema_version": 1,
+						"status": "RETURNED_UNAUDITED",
+						"root_thread_id": "01a076b7-6a23-7fb0-bb84-115e1d497eb0",
+						"models": [
+							"gpt-6-astra"
+						],
+						"efforts": [
+							"max"
+						],
+						"root_active_wall_seconds": 443.18853776401374,
+						"aggregate_active_wall_seconds": null,
+						"returned_usage": {
+							"input_tokens": 127626,
+							"cached_input_tokens": 86272,
+							"output_tokens": 13231,
+							"reasoning_output_tokens": 5122,
+							"uncached_input_tokens": 41354,
+							"responses_with_usage": 7
+						},
+						"per_thread": {
+							"01a076b7-6a23-7fb0-bb84-115e1d497eb0": {
+								"input_tokens": 127626,
+								"cached_input_tokens": 86272,
+								"output_tokens": 13231,
+								"reasoning_output_tokens": 5122,
+								"uncached_input_tokens": 41354,
+								"responses_with_usage": 7
+							}
+						},
+						"duplicate_usage_records_removed": 0,
+						"outer_model_tool_calls": 6,
+						"root_cli_command_executions": 4,
+						"all_actual_tool_calls": null,
+						"coverage": "Returned response usage only. Unknown in-flight usage is not zero. Outer calls and CLI commands are distinct scopes; aggregate active time and complete nested tool counts remain unknown."
+					},
+					"external_audit": {
+						"schema_version": 1,
+						"status": "RETURNED_UNREVIEWED",
+						"root_thread_id": "01a076c2-ceb3-7b61-a8fa-d92cc729e2c3",
+						"models": [
+							"gpt-6-astra"
+						],
+						"efforts": [
+							"max"
+						],
+						"root_active_wall_seconds": 393.08503571001347,
+						"aggregate_active_wall_seconds": null,
+						"returned_usage": {
+							"input_tokens": 146056,
+							"cached_input_tokens": 113408,
+							"output_tokens": 12024,
+							"reasoning_output_tokens": 4919,
+							"uncached_input_tokens": 32648,
+							"responses_with_usage": 7
+						},
+						"per_thread": {
+							"01a076c2-ceb3-7b61-a8fa-d92cc729e2c3": {
+								"input_tokens": 146056,
+								"cached_input_tokens": 113408,
+								"output_tokens": 12024,
+								"reasoning_output_tokens": 4919,
+								"uncached_input_tokens": 32648,
+								"responses_with_usage": 7
+							}
+						},
+						"duplicate_usage_records_removed": 0,
+						"outer_model_tool_calls": 6,
+						"root_cli_command_executions": 10,
+						"all_actual_tool_calls": null,
+						"coverage": "Returned response usage only. Unknown in-flight usage is not zero. Outer calls and CLI commands are distinct scopes; aggregate active time and complete nested tool counts remain unknown."
+					},
+					"full_delivery": {
+						"uncached_input_tokens": 74002,
+						"cached_input_tokens": 199680,
+						"output_tokens": 25255,
+						"responses_with_usage": 14,
+						"active_seconds": 836.2735734740272
+					},
+					"dispatch_to_audit_return_seconds": 1142.683408,
+					"first_proof_seconds": null
+				}
+			},
+			"comparisons": {
+				"B/A": {
+					"solver_uncached_input_ratio": 1.9849806280091429,
+					"solver_active_seconds_ratio": 0.9013886881880767,
+					"full_delivery_uncached_input_ratio": 1.4798020504223355,
+					"full_delivery_active_seconds_ratio": 0.8852830256085865
+				},
+				"A/C": {
+					"solver_uncached_input_ratio": 2.983363157131112,
+					"solver_active_seconds_ratio": 2.8836445228228698,
+					"full_delivery_uncached_input_ratio": 2.5149050025674984,
+					"full_delivery_active_seconds_ratio": 2.045012903768588
+				},
+				"B/C": {
+					"solver_uncached_input_ratio": 5.921918073221454,
+					"solver_active_seconds_ratio": 2.5992845536280393,
+					"full_delivery_uncached_input_ratio": 3.7215615794167727,
+					"full_delivery_active_seconds_ratio": 1.8104152108568567
+				}
+			},
+			"full_L1_complete": true
+		},
+		"t2": {
+			"schema_version": 1,
+			"task": "T2",
+			"classification": "DEVELOPMENT_REGRESSION",
+			"recorded_at": "2026-09-08T08:34:53.880991+00:00",
+			"arms": {
+				"A": {
+					"verdict": "PASS",
+					"score": 100,
+					"load_bearing_gap_count": 0,
+					"solver": {
+						"schema_version": 1,
+						"status": "BUDGET_EXHAUSTED",
+						"root_thread_id": "01a07f60-ad98-7b10-b036-3be86f11c5dc",
+						"models": [
+							"gpt-6-astra"
+						],
+						"efforts": [
+							"max"
+						],
+						"root_active_wall_seconds": 1802.7838558259973,
+						"aggregate_active_wall_seconds": null,
+						"returned_usage": {
+							"input_tokens": 3210505,
+							"cached_input_tokens": 2906624,
+							"output_tokens": 59829,
+							"reasoning_output_tokens": 25717,
+							"uncached_input_tokens": 303881,
+							"responses_with_usage": 65
+						},
+						"per_thread": {
+							"01a07f60-ad98-7b10-b036-3be86f11c5dc": {
+								"input_tokens": 2549210,
+								"cached_input_tokens": 2376704,
+								"output_tokens": 31998,
+								"reasoning_output_tokens": 11652,
+								"uncached_input_tokens": 172506,
+								"responses_with_usage": 39
+							},
+							"01a07f63-b64d-75d1-a546-27ca22fd2870": {
+								"input_tokens": 341139,
+								"cached_input_tokens": 270336,
+								"output_tokens": 13297,
+								"reasoning_output_tokens": 8792,
+								"uncached_input_tokens": 70803,
+								"responses_with_usage": 13
+							},
+							"01a07f69-3669-7a70-a80f-c4307511cfad": {
+								"input_tokens": 101411,
+								"cached_input_tokens": 75520,
+								"output_tokens": 8726,
+								"reasoning_output_tokens": 3416,
+								"uncached_input_tokens": 25891,
+								"responses_with_usage": 5
+							},
+							"01a07ff6-d166-7303-a085-4b0415d80beb": {
+								"input_tokens": 218745,
+								"cached_input_tokens": 184064,
+								"output_tokens": 5808,
+								"reasoning_output_tokens": 1857,
+								"uncached_input_tokens": 34681,
+								"responses_with_usage": 8
+							}
+						},
+						"duplicate_usage_records_removed": 0,
+						"outer_model_tool_calls": 62,
+						"root_cli_command_executions": 54,
+						"all_actual_tool_calls": null,
+						"coverage": "Returned response usage only. Unknown in-flight usage is not zero. Outer calls and CLI commands are distinct scopes; aggregate active time and complete nested tool counts remain unknown."
+					},
+					"external_audit": {
+						"schema_version": 1,
+						"status": "RETURNED_UNREVIEWED",
+						"root_thread_id": "01a07ffd-494a-7f63-9726-fb745638c58e",
+						"models": [
+							"gpt-6-astra"
+						],
+						"efforts": [
+							"max"
+						],
+						"root_active_wall_seconds": 621.2031505180057,
+						"aggregate_active_wall_seconds": null,
+						"returned_usage": {
+							"input_tokens": 367991,
+							"cached_input_tokens": 320128,
+							"output_tokens": 16583,
+							"reasoning_output_tokens": 8518,
+							"uncached_input_tokens": 47863,
+							"responses_with_usage": 11
+						},
+						"per_thread": {
+							"01a07ffd-494a-7f63-9726-fb745638c58e": {
+								"input_tokens": 367991,
+								"cached_input_tokens": 320128,
+								"output_tokens": 16583,
+								"reasoning_output_tokens": 8518,
+								"uncached_input_tokens": 47863,
+								"responses_with_usage": 11
+							}
+						},
+						"duplicate_usage_records_removed": 0,
+						"outer_model_tool_calls": 10,
+						"root_cli_command_executions": 10,
+						"all_actual_tool_calls": null,
+						"coverage": "Returned response usage only. Unknown in-flight usage is not zero. Outer calls and CLI commands are distinct scopes; aggregate active time and complete nested tool counts remain unknown."
+					},
+					"full_delivery": {
+						"uncached_input_tokens": 351744,
+						"cached_input_tokens": 3226752,
+						"output_tokens": 76412,
+						"responses_with_usage": 76,
+						"active_seconds": 2423.987006344003
+					},
+					"dispatch_to_audit_return_seconds": 10884.690937,
+					"first_proof_seconds": null
+				},
+				"B": {
+					"verdict": "PASS",
+					"score": 100,
+					"load_bearing_gap_count": 0,
+					"solver": {
+						"schema_version": 1,
+						"status": "RETURNED_UNAUDITED",
+						"root_thread_id": "01a07c05-7813-7f23-89c6-f4aea5101e6a",
+						"models": [
+							"gpt-6-astra"
+						],
+						"efforts": [
+							"max"
+						],
+						"root_active_wall_seconds": 1754.8266456569982,
+						"aggregate_active_wall_seconds": null,
+						"returned_usage": {
+							"input_tokens": 2628517,
+							"cached_input_tokens": 2351360,
+							"output_tokens": 69407,
+							"reasoning_output_tokens": 31095,
+							"uncached_input_tokens": 277157,
+							"responses_with_usage": 55
+						},
+						"per_thread": {
+							"01a07c05-7813-7f23-89c6-f4aea5101e6a": {
+								"input_tokens": 1918064,
+								"cached_input_tokens": 1724288,
+								"output_tokens": 40954,
+								"reasoning_output_tokens": 15843,
+								"uncached_input_tokens": 193776,
+								"responses_with_usage": 31
+							},
+							"01a07c08-50dd-76c2-b03c-fa7f82ae17b4": {
+								"input_tokens": 459574,
+								"cached_input_tokens": 413184,
+								"output_tokens": 19967,
+								"reasoning_output_tokens": 11446,
+								"uncached_input_tokens": 46390,
+								"responses_with_usage": 15
+							},
+							"01a07e3a-bdb6-7b51-bdec-b093629bce5c": {
+								"input_tokens": 250879,
+								"cached_input_tokens": 213888,
+								"output_tokens": 8486,
+								"reasoning_output_tokens": 3806,
+								"uncached_input_tokens": 36991,
+								"responses_with_usage": 9
+							}
+						},
+						"duplicate_usage_records_removed": 0,
+						"outer_model_tool_calls": 52,
+						"root_cli_command_executions": 28,
+						"all_actual_tool_calls": null,
+						"coverage": "Returned response usage only. Unknown in-flight usage is not zero. Outer calls and CLI commands are distinct scopes; aggregate active time and complete nested tool counts remain unknown."
+					},
+					"external_audit": {
+						"schema_version": 1,
+						"status": "RETURNED_UNREVIEWED",
+						"root_thread_id": "01a07e44-c25b-7913-977c-d2f3fb87dc2e",
+						"models": [
+							"gpt-6-astra"
+						],
+						"efforts": [
+							"max"
+						],
+						"root_active_wall_seconds": 670.3406269389816,
+						"aggregate_active_wall_seconds": null,
+						"returned_usage": {
+							"input_tokens": 369425,
+							"cached_input_tokens": 231040,
+							"output_tokens": 17145,
+							"reasoning_output_tokens": 9328,
+							"uncached_input_tokens": 138385,
+							"responses_with_usage": 11
+						},
+						"per_thread": {
+							"01a07e44-c25b-7913-977c-d2f3fb87dc2e": {
+								"input_tokens": 369425,
+								"cached_input_tokens": 231040,
+								"output_tokens": 17145,
+								"reasoning_output_tokens": 9328,
+								"uncached_input_tokens": 138385,
+								"responses_with_usage": 11
+							}
+						},
+						"duplicate_usage_records_removed": 0,
+						"outer_model_tool_calls": 10,
+						"root_cli_command_executions": 7,
+						"all_actual_tool_calls": null,
+						"coverage": "Returned response usage only. Unknown in-flight usage is not zero. Outer calls and CLI commands are distinct scopes; aggregate active time and complete nested tool counts remain unknown."
+					},
+					"full_delivery": {
+						"uncached_input_tokens": 415542,
+						"cached_input_tokens": 2582400,
+						"output_tokens": 86552,
+						"responses_with_usage": 66,
+						"active_seconds": 2425.1672725959797
+					},
+					"dispatch_to_audit_return_seconds": 56197.786263,
+					"first_proof_seconds": null
+				},
+				"C": {
+					"verdict": "PASS",
+					"score": 100,
+					"load_bearing_gap_count": 0,
+					"solver": {
+						"schema_version": 1,
+						"status": "RETURNED_UNAUDITED",
+						"root_thread_id": "01a08008-2b94-7352-baf8-b6ba7ba9d481",
+						"models": [
+							"gpt-6-astra"
+						],
+						"efforts": [
+							"max"
+						],
+						"root_active_wall_seconds": 1266.552125549002,
+						"aggregate_active_wall_seconds": null,
+						"returned_usage": {
+							"input_tokens": 799161,
+							"cached_input_tokens": 693120,
+							"output_tokens": 45056,
+							"reasoning_output_tokens": 25166,
+							"uncached_input_tokens": 106041,
+							"responses_with_usage": 34
+						},
+						"per_thread": {
+							"01a08008-2b94-7352-baf8-b6ba7ba9d481": {
+								"input_tokens": 396322,
+								"cached_input_tokens": 341888,
+								"output_tokens": 13021,
+								"reasoning_output_tokens": 2853,
+								"uncached_input_tokens": 54434,
+								"responses_with_usage": 16
+							},
+							"01a08008-b941-7b50-98c6-e79897b26077": {
+								"input_tokens": 231371,
+								"cached_input_tokens": 198528,
+								"output_tokens": 15185,
+								"reasoning_output_tokens": 11922,
+								"uncached_input_tokens": 32843,
+								"responses_with_usage": 10
+							},
+							"01a08008-e176-73a1-8709-79b0866f1d7d": {
+								"input_tokens": 171468,
+								"cached_input_tokens": 152704,
+								"output_tokens": 16850,
+								"reasoning_output_tokens": 10391,
+								"uncached_input_tokens": 18764,
+								"responses_with_usage": 8
+							}
+						},
+						"duplicate_usage_records_removed": 0,
+						"outer_model_tool_calls": 31,
+						"root_cli_command_executions": 7,
+						"all_actual_tool_calls": null,
+						"coverage": "Returned response usage only. Unknown in-flight usage is not zero. Outer calls and CLI commands are distinct scopes; aggregate active time and complete nested tool counts remain unknown."
+					},
+					"external_audit": {
+						"schema_version": 1,
+						"status": "RETURNED_UNREVIEWED",
+						"root_thread_id": "01a0801c-b396-7923-8718-c04ca59d1f35",
+						"models": [
+							"gpt-6-astra"
+						],
+						"efforts": [
+							"max"
+						],
+						"root_active_wall_seconds": 597.6101524039987,
+						"aggregate_active_wall_seconds": null,
+						"returned_usage": {
+							"input_tokens": 311960,
+							"cached_input_tokens": 227456,
+							"output_tokens": 15207,
+							"reasoning_output_tokens": 8114,
+							"uncached_input_tokens": 84504,
+							"responses_with_usage": 10
+						},
+						"per_thread": {
+							"01a0801c-b396-7923-8718-c04ca59d1f35": {
+								"input_tokens": 311960,
+								"cached_input_tokens": 227456,
+								"output_tokens": 15207,
+								"reasoning_output_tokens": 8114,
+								"uncached_input_tokens": 84504,
+								"responses_with_usage": 10
+							}
+						},
+						"duplicate_usage_records_removed": 0,
+						"outer_model_tool_calls": 9,
+						"root_cli_command_executions": 7,
+						"all_actual_tool_calls": null,
+						"coverage": "Returned response usage only. Unknown in-flight usage is not zero. Outer calls and CLI commands are distinct scopes; aggregate active time and complete nested tool counts remain unknown."
+					},
+					"full_delivery": {
+						"uncached_input_tokens": 190545,
+						"cached_input_tokens": 920576,
+						"output_tokens": 60263,
+						"responses_with_usage": 44,
+						"active_seconds": 1864.1622779530007
+					},
+					"dispatch_to_audit_return_seconds": 1943.153675,
+					"first_proof_seconds": null
+				}
+			},
+			"comparisons": {
+				"B/A": {
+					"solver_uncached_input_ratio": 0.9120576804736065,
+					"solver_active_seconds_ratio": 0.9733982473750153,
+					"full_delivery_uncached_input_ratio": 1.1813762281659388,
+					"full_delivery_active_seconds_ratio": 1.00048691112984
+				},
+				"A/C": {
+					"solver_uncached_input_ratio": 2.8656934581907,
+					"solver_active_seconds_ratio": 1.4233791246803673,
+					"full_delivery_uncached_input_ratio": 1.8459891364244667,
+					"full_delivery_active_seconds_ratio": 1.3003090101177965
+				},
+				"B/C": {
+					"solver_uncached_input_ratio": 2.6136777284257975,
+					"solver_active_seconds_ratio": 1.385514745314053,
+					"full_delivery_uncached_input_ratio": 2.180807683224435,
+					"full_delivery_active_seconds_ratio": 1.3009421450470542
+				}
+			},
+			"full_L1_complete": true
+		}
+	},
+	"full_delivery_totals": {
+		"A": {
+			"uncached_input_tokens": 537852,
+			"cached_input_tokens": 4753280,
+			"output_tokens": 124430,
+			"responses_with_usage": 112,
+			"active_seconds": 4134.177255179056
+		},
+		"B": {
+			"uncached_input_tokens": 690945,
+			"cached_input_tokens": 5035392,
+			"output_tokens": 133833,
+			"responses_with_usage": 115,
+			"active_seconds": 3939.1696704509777
+		},
+		"C": {
+			"uncached_input_tokens": 264547,
+			"cached_input_tokens": 1120256,
+			"output_tokens": 85518,
+			"responses_with_usage": 58,
+			"active_seconds": 2700.435851427028
+		}
+	},
+	"paired_ratio_medians": {
+		"B/A": {
+			"solver_uncached_input_ratio": 1.4485191542413747,
+			"solver_active_seconds_ratio": 0.9373934677815461,
+			"full_delivery_uncached_input_ratio": 1.3305891392941371,
+			"full_delivery_active_seconds_ratio": 0.9428849683692133
+		},
+		"A/C": {
+			"solver_uncached_input_ratio": 2.924528307660906,
+			"solver_active_seconds_ratio": 2.1535118237516184,
+			"full_delivery_uncached_input_ratio": 2.1804470694959823,
+			"full_delivery_active_seconds_ratio": 1.6726609569431923
+		},
+		"B/C": {
+			"solver_uncached_input_ratio": 4.267797900823625,
+			"solver_active_seconds_ratio": 1.992399649471046,
+			"full_delivery_uncached_input_ratio": 2.951184631320604,
+			"full_delivery_active_seconds_ratio": 1.5556786779519554
+		}
+	},
+	"quality": {
+		"pass_count": 6,
+		"scored_deliveries": 6,
+		"normal_solver_return_count": 5,
+		"wall_limited_solver_delivery_count": 1,
+		"normal_external_audit_return_count": 6
+	},
+	"targets": {
+		"solver_uncached_input": {
+			"maximum": 0.75,
+			"observed_median": 1.4485191542413747,
+			"met": false
+		},
+		"solver_active_wall": {
+			"maximum": 0.8,
+			"observed_median": 0.9373934677815461,
+			"met": false
+		},
+		"separate_internal_delivery_time_metric": null
+	},
+	"observed_cost_decision": "NO_GO_FOR_PERFORMANCE_CLAIM",
+	"causal_plugin_effect_established": false,
+	"literature_feature_acceptance_complete": false,
+	"controlled_interruption_acceptance_complete": false,
+	"limitations": [
+		"Two development tasks with one attempt per arm; no statistical or novelty claim.",
+		"Quota interruptions, cold-cache continuations, a coordinator snapshot pause, authentication recovery, and an active-account/plan change are retained confounds.",
+		"All returned solver, child, and external-audit costs are included; unknown in-flight usage remains unknown.",
+		"A T2 solver was stopped at its wall cap; its saved proof passed external review but the process did not return normally.",
+		"Aggregate root-plus-child active time, complete nested tool counts and first-proof time remain unknown."
+	]
+}

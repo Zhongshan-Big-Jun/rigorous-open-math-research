@@ -1,0 +1,26 @@
+[
+	{
+		"segment": "segment-01",
+		"command": "/bin/bash -c \"python - <<'PY'\nimport sys\nprint(sys.version.split()[0])\nPY\"",
+		"aggregated_output": "/bin/bash: line 1: python: command not found\n",
+		"exit_code": 127
+	},
+	{
+		"segment": "segment-01",
+		"command": "/bin/bash -c 'python3 --version'",
+		"aggregated_output": "Python 3.14.4\n",
+		"exit_code": 0
+	},
+	{
+		"segment": "segment-01",
+		"command": "/bin/bash -c 'python3 audit_checks.py'",
+		"aggregated_output": "equation_2: 21 exact finite checks; no counterexample\nequation_5: 5580 exact finite checks; no counterexample\nequation_7: 8517 exact finite checks; no counterexample\nequation_8: 31932 exact finite checks; no counterexample\nequation_9: 15966 exact finite checks; no counterexample\nsmall_time_tv: 2 exact finite checks; no counterexample\nThese finite checks do not establish any uniform bound.\n",
+		"exit_code": 0
+	},
+	{
+		"segment": "segment-01",
+		"command": "/bin/bash -c \"python3 - <<'PY'\nimport json\nfrom pathlib import Path\nreport = json.loads(Path('audit.json').read_text())\nrequired = {'verdict', 'scores', 'total_score', 'load_bearing_gaps', 'checked_claims', 'rationale'}\nassert required <= report.keys()\nlimits = {'correctness': 40, 'fidelity': 20, 'strict_progress': 15, 'calibration': 10, 'evidence': 10, 'reproducibility': 5}\nassert report['scores'].keys() == limits.keys()\nassert all(0 <= report['scores'][key] <= maximum for key, maximum in limits.items())\nassert report['total_score'] == sum(report['scores'].values())\nchecks = report['reproducibility']['finite_checks']\nassert checks['total'] == sum(value for key, value in checks.items() if key not in {'total', 'result'})\nassert Path('audit.md').is_file()\nprint(f\\\"Valid audit.json: {report['verdict']}, {report['total_score']}/100, {len(report['checked_claims'])} checked claims, {len(report['load_bearing_gaps'])} load-bearing gaps.\\\")\nprint('audit.md and audit_checks.py are present.')\nPY\"",
+		"aggregated_output": "Valid audit.json: PASS, 100/100, 16 checked claims, 0 load-bearing gaps.\naudit.md and audit_checks.py are present.\n",
+		"exit_code": 0
+	}
+]
