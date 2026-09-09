@@ -10,15 +10,18 @@ This repository is a standard Codex marketplace (named `math-research`) containi
 
 The [2.0 refactor plan, in Chinese](docs/v2.0-refactor-plan.md) proposes short
 workflow guidance with fewer mandatory steps, retaining literature reading,
-annotatable tool cards, pointer retrieval and interruption recovery. Only the
-plan is complete; released and installed plugins remain on 1.x. The workflow
-below describes those existing versions.
+annotatable tool cards, pointer retrieval and interruption recovery. Revision 2
+adds exact Lean targets and dependencies, reusable compiler feedback, semantic
+audit reuse and verification-job recovery, prioritizing false-success fixes.
+Cloud platforms and a second checker remain optional. Only the plan is complete;
+released and installed plugins remain on 1.x. The workflow below describes those
+existing versions.
 
 The [Fuse / Prove2Me research report, in Chinese](docs/lean-verification-platform-research-2026-09-09.md)
 examines the public Kakeya and full FLT artifacts, target verification, semantic
 audit and recovery methods, with isolated probes of the current verifier.
-The 2.0 plan is preserved; the suggestions are not implemented and the large
-proofs were not independently replayed in this research task.
+Its methods are now incorporated into the revised 2.0 plan. Implementation has
+not started, and the large proofs were not independently replayed in the research.
 
 The [L1 regression](benchmarks/codex-20260906-l1/CONCLUSIONS.md) and the harder
 [repository Q9 comparison](benchmarks/codex-20260908-q9/CONCLUSIONS.md) are complete.

@@ -1,6 +1,6 @@
 # Optimization implementation progress
 
-Updated: 2026-09-09. State: FIRST_BATCH_RELEASED_AND_VERIFIED; L1_AND_Q9_COMPARISONS_COMPLETE; V2_PLAN_DOCUMENTED; LEAN_PLATFORM_RESEARCH_DOCUMENTED.
+Updated: 2026-09-09. State: FIRST_BATCH_RELEASED_AND_VERIFIED; L1_AND_Q9_COMPARISONS_COMPLETE; V2_PLAN_REVISED; LEAN_PLATFORM_RESEARCH_DOCUMENTED.
 
 ## Current direction: 2.0 planning
 
@@ -20,9 +20,18 @@ records primary sources, pinned proof targets and verification boundaries,
 and proposes tool and semantic-audit improvements for discussion. Isolated
 Python probes found false success aggregation for missing or timed-out targets
 and a Lean block-comment false positive. Process responses were simulated;
-no Lean proof was executed. Runtime code, versions and the 2.0 plan are unchanged.
-These recommendations do not authorize automatic platform publication or start
-a new benchmark.
+no Lean proof was executed. That research preserved runtime code, versions and
+the original 2.0 plan.
+
+The user subsequently requested incorporation of those methods into the same
+plan. Revision 2 now specifies exact targets and transitive axioms, conditional
+proof dependencies, reusable Lean feedback, semantic read-back and audit reuse,
+formal declaration pointers and durable verification-job recovery. P0 addresses
+false-success reporting, followed by tool integration and real Lean acceptance.
+The entry size targets and old/new/blank comparisons are retained; cloud platforms
+and independent checkers remain optional. Only the plan and maintenance documents
+have changed. The research evidence is preserved, and implementation and new
+benchmarks have not started.
 
 ## Contract
 
