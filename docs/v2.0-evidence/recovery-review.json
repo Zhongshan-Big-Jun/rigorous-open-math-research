@@ -1,0 +1,49 @@
+{
+  "schema": "math-plugin-v2-capability-evidence/1",
+  "component": "continuity",
+  "status": "review_findings_closed",
+  "scope": "Bounded independent review of persisted progress and process recovery; no mathematical certification.",
+  "behavior_tests": [
+    {
+      "platform": "Linux",
+      "tests": 26,
+      "passed": 24,
+      "skipped": 2,
+      "seconds": 5.594
+    },
+    {
+      "platform": "native Windows",
+      "tests": 26,
+      "passed": 26,
+      "skipped": 0,
+      "seconds": 7.597
+    }
+  ],
+  "reviewer": "independent agent, did not author the recovery runtime",
+  "source_hashes": {
+    "plugins/math-research-workflow/scripts/research_state.py": "e960aaf7e5211892449c7488a24f27e57103ac8d99bde9ff857d1ef7ba52a612",
+    "plugins/math-research-workflow/scripts/validate_pipeline.py": "234d6d61e74b6f9f7df1a1a49b4d0ed412978b578dc2924f87773665ea4b702f",
+    "plugins/math-research-workflow/skills/math-research-workflow/references/v2-continuity.md": "8cf4cd4fe7148dcd8c3ca44edb25bfd3a5619e4da0bf073fa7d6902eb6ebe1cc",
+    "tests/test_research_state.py": "18483b6ca7c7bd1e6abd662b79ded2e9b55435f70f42edb83531e5a6c7440866"
+  },
+  "review_report": {
+    "local_path": "/mnt/f/tools/math-plugin-v2-20260909/recovery-final-review.md",
+    "sha256": "d84b59bbfb375eb72b85b5cf168b0bce8717d3c28e1e04de8f455ec500c0298f"
+  },
+  "final_reproductions": {
+    "platforms": [
+      "Linux Python 3.14.4",
+      "native Windows Python 3.12.14"
+    ],
+    "malformed_observations": "healthy jobs and progress returned with an isolated problem; validator returns DATA_ISSUES without traceback",
+    "timeout_during_metadata_lock": "0.05-second timeout, 0.15-second delayed child effect, 0.4-second independent lock: TIMEOUT and no delayed effect",
+    "positive_controls": "valid observations and the same contention with a generous or absent timeout pass; no same-ID redispatch"
+  },
+  "earlier_findings": "Original concurrency, bookkeeping, input-boundary, fingerprint, external-read, archive and platform reproductions passed the narrowed documented guarantees.",
+  "limits": [
+    "No unconditional CAS against editors ignoring the helper lock.",
+    "Generic mutable-input applicability remains null, including unobserved ABA.",
+    "No power-loss, cross-machine filesystem or forced supervisor-kill deadline guarantee.",
+    "The independent re-review did not repeat the entire behavior suite."
+  ]
+}

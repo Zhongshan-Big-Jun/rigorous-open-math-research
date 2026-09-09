@@ -1,183 +1,90 @@
-# rigorous-open-math-research
+# Math Research 2.0
 
-English: [README_EN.md](README_EN.md)
+[English](README_EN.md) | [使用与迁移](docs/v2.0-guide.md) | [实施与验证](docs/v2.0-implementation-status.md)
 
-Codex 数学研究工作流插件仓库 (marketplace): 一个仓库装下 管理 → 研究 → 验证 的完整数学研究工作流.
+面向长期数学研究的 Codex 插件. 帮助人和 agent 从论文, 成功证明与失败路线中积累可复用的工具和理解, 再把它们带入下一个问题.
 
-本仓库是标准 Codex marketplace (名 `math-research`), 包含 4 个插件, 安装后可在 Codex 中调用对应 skill.
-`math-research-workflow` 是编排层 (旗舰), 把其余三个 skill 组织成三阶段流水线.
+四个组件统一为 `2.0.0`, 以简短工作引导配合实际工具. 研究者可以自主选择证明, 反例, 文献, 计算, 协作或 Lean, 按问题需要使用各组件.
 
-## 工作流总览
+## 能做什么
 
-2026-09-09 规划: [2.0 重构方案](docs/v2.0-refactor-plan.md) 将插件改为简短工作流程引导,
-取消默认强制串联与重复记录, 保留并简化文献工具库, agent 批注, 指针检索和中断续接.
-修订 2 已纳入精确 Lean 目标与依赖检查, 交互编译, 语义审计复用及编译任务恢复,
-将验证器假通过修复列为 P0. 云平台与第二 checker 为可选适配.
-当前仅完成方案, 发布及安装仍为 1.x; 以下流程说明对应现有版本.
+| 研究中的需要 | 2.0 提供的支持 |
+| --- | --- |
+| 论文读过以后还能找到并用上 | 保存原文, 版本和定位, 按段读取, 建立工具卡及可重建指针 |
+| agent 能留下自己的理解和疑问 | 可检索的自由批注, 关联具体卡片版本, 保留来源与适用范围 |
+| 成功和失败都能帮助后续研究 | 保存变换, 构造, 程序, 关键障碍和重试条件, 按需比较路线 |
+| 人能参与整理与判断 | 可编辑的项目理解页, 区分已有解释, 候选想法, 直觉与待讨论问题 |
+| 会话或额度中断后继续 | 读取当前进展, 保存原子快照, 找回实际任务与日志, 防止重复执行及旧状态覆盖 |
+| 在研究中使用 Lean | 编译反馈, 精确声明及传递公理检查, 分开报告执行, 语义, 根目标与证据身份 |
 
-2026-09-09 调研: [Fuse / Prove2Me 与 Lean 验证优化](docs/lean-verification-platform-research-2026-09-09.md)
-核对三维挂谷和完整 FLT 的公开证明范围, 分析根目标检查, 语义审计和恢复方法,
-并记录现有验证器的隔离诊断. 调研建议已纳入上述修订方案, 尚未实施或独立重放大型证明.
+工具卡与指针表是核心. 卡片保存数学内容和条件, 注释承载理解与修正, 指针帮助下一次研究找到实际证据. 卡片数量和图节点数量本身不是研究成果.
 
-2026-09-05 更新: 文献实际内容保存与按需读取, agent 批注工具卡与指针表,
-额度中断后的最新状态检查与幂等恢复入口. 方案和验证范围见
-[优化结果](docs/optimization-20260905-results.md). 本批不宣称新的数学 A/B 加速结果.
+## 选择组件
 
-后续对照: [L1 回归](benchmarks/codex-20260906-l1/CONCLUSIONS.md) 和
-[主项目 Q9 难题](benchmarks/codex-20260908-q9/CONCLUSIONS.md) 均已完成旧版/新版/空白三组测试.
-Q9 三组均通过完整证明外审; 新版相对旧版的完整交付非缓存输入少 1.32%,
-时间多 4.75%, 输出多 28.48%. 空白组最快. 单题结果不支持普遍加速结论.
+四个组件可以分别安装和调用, 无须强制串联.
 
-```mermaid
-flowchart LR
-  A["阶段 A 管理<br/>$manage-math-research-program"] -->|"任务包 Q-<date>-<tag>-<hash8>"| B["阶段 B 研究<br/>$rigorous-open-math-research"]
-  B -->|"候选证明 (CANDIDATE_COMPLETE_PROOF)"| C["阶段 C 验证<br/>$lean-verify"]
-  C -->|"verdict + run-manifest"| D["已接受知识库 (hash 绑定)"]
-  B --> B1["求解子 agent"]
-  B --> B2["审计子 agent"]
-  C --> C1["形式化子 agent"]
-  C --> C2["验证子 agent"]
-```
+| 插件 / Skill | 适合的工作 |
+| --- | --- |
+| `$math-research-workflow` | 跨问题, 跨会话研究的组织与续接 |
+| `$rigorous-open-math-research` | 证明, 反例, 构造和数学论证审查 |
+| `$manage-math-research-program` | 文献, 可批注工具库, 研究经验和项目理解 |
+| `$lean-verify` | Lean 反馈, 形式化目标核对和可复现验证 |
 
-- 阶段边界强制交接契约 (`assets/pipeline-handoff.template.md`) 与自动 git 同步 (先父仓库, 后 fork).
-- 只有 `已证` / `CANDIDATE_COMPLETE_PROOF` 的结果进入阶段 C; `数值证据` / `猜想` / `开放` 显式标注且不进入形式化.
-- 一轮完整运行的所有分支与终态见 [`docs/pipeline-full-flow.md`](docs/pipeline-full-flow.md).
+例如:
 
-## 插件清单
+> 使用 $manage-math-research-program, 找出这些证明与失败路线中值得复用的工具, 保留适用条件和证据指针, 更新我们对问题的理解.
 
-| 插件 | 提供的 Skill | 定位与能力 |
-| --- | --- | --- |
-| `math-research-workflow` | 一体化工作流编排 | 编排层 (旗舰): 管理-研究-验证三阶段流水线, 子 agent 分工, 交接契约, 阶段边界 git 同步 |
-| `rigorous-open-math-research` | 严格开放数学研究 | 求解执行层: 定理契约, 多路线搜索, 研究台账, 对抗性审计, 文献核验 (引用必须附链接且不得编造), 子 agent 分工 |
-| `manage-math-research-program` | 数学研究项目管理 | 项目管理层: 工作区初始化, 文献策展, 开放问题组合, 工具库, 任务包派发, 已接受知识流水线与 plugin-owned Blueprint gateway |
-| `lean-verify` | Lean 4 形式化验证 | 验证层: 陈述保真审计, 机器验证 (lake build + sorry/axiom 扫描), 义务级独立审计, hash 绑定运行清单 |
+> 使用 $rigorous-open-math-research 继续这个问题. 根据当前数学进展选择方法, 有必要时使用文献或 Lean, 并保留能够帮助下一次研究的信息.
 
-依赖方向 (单向, 无反向调用):
+## 安装
 
-```text
-manage-math-research-program -> rigorous-open-math-research
-math-research-workflow -> manage-math-research-program + rigorous-open-math-research + lean-verify
-lean-verify 独立插件, 与其余 skill 互补
-```
-
-## 安装 (推荐: marketplace)
+本仓库的 marketplace 名为 `math-research`. 在支持插件的 Codex CLI 中:
 
 ```bash
-# 添加本仓库为 marketplace (仅需一次), marketplace 名为 math-research
 codex plugin marketplace add xsoc1/rigorous-open-math-research
-
-# 查看可用插件
-codex plugin list
-
-# 按需安装 (可只装需要的组件)
 codex plugin add math-research-workflow@math-research
 codex plugin add rigorous-open-math-research@math-research
 codex plugin add manage-math-research-program@math-research
 codex plugin add lean-verify@math-research
 ```
 
-- marketplace 清单位于仓库根 `.agents/plugins/marketplace.json`.
-- 安装后需新开一个 Codex 会话以加载插件 skill.
+可只安装需要的组件. 已安装时刷新 marketplace 后重新安装目标组件. 安装后新开任务以加载新版技能与工具, 参见 [OpenAI 插件说明](https://learn.chatgpt.com/docs/plugins). 工具需要 Python 3.10+; 文献索引使用 PyYAML; Lean 功能使用项目固定的 Lean/Lake 环境.
 
-## 安装 (备选: skill-installer)
+安装完整插件, 不单独复制 `SKILL.md`: 部分可执行工具位于插件的 `scripts/` 和 `runtime/` 下. DSH 用户使用单向适配仓库 [math-research-dsh](https://github.com/xsoc1/math-research-dsh).
 
-在 Codex 中使用 `$skill-installer`, 仓库路径分别为
+## 成果仓库
 
-- `xsoc1/rigorous-open-math-research/tree/main/plugins/rigorous-open-math-research/skills/rigorous-open-math-research`
-- `xsoc1/rigorous-open-math-research/tree/main/plugins/manage-math-research-program/skills/manage-math-research-program`
-- `xsoc1/rigorous-open-math-research/tree/main/plugins/lean-verify/skills/lean-verify`
-- `xsoc1/rigorous-open-math-research/tree/main/plugins/math-research-workflow/skills/math-research-workflow`
+[Sturm-Liouville theory research](https://github.com/Zhongshan-Big-Jun/Sturm-Liouville-theory-research) 是使用本插件开展长期人机协作研究的成果仓库, 包含谱理论证明, 开放问题, 失败路线, 工具卡, 计算证书与部分 Lean 工程.
 
-或手动将对应 skill 目录复制到 `~/.codex/skills/` (Windows: `C:\Users\<用户名>\.codex\skills\`).
-`manage-math-research-program` 自带 `MANIFEST.sha256` (sha256 逐文件校验清单), 修改后需重新生成.
+插件协助研究的组织, 探索和核验. 数学成果的具体贡献, 严格性和适用范围以该仓库的证明与审计记录为准; 使用插件不等于所有结论已经形式化验证.
 
-## 仓库结构
+## 验证与已知范围
 
-```text
-.
-├── .agents/plugins/marketplace.json      # marketplace 清单 (插件顺序 = Codex 渲染顺序)
-├── .github/workflows/validate.yml        # CI: 仓库级校验
-├── plugins/
-│   ├── math-research-workflow/           # 编排插件 (旗舰): 三阶段流水线编排
-│   │   ├── .codex-plugin/plugin.json
-│   │   ├── agents/openai.yaml
-│   │   ├── assets/                     # handoff/whiteboard/interruption-state 模板
-│   │   ├── scripts/checkpoint_resume.py # 配额 checkpoint/resume 确定性工具
-│   │   └── skills/math-research-workflow/ (SKILL.md + references/workflow-design.md)
-│   ├── rigorous-open-math-research/      # 求解执行层
-│   ├── manage-math-research-program/     # 项目管理层
-│   └── lean-verify/                      # 验证层
-├── scripts/validate_all.py               # 本地校验入口 (与 CI 共用)
-├── AGENTS.md                             # 仓库维护约定与会话记录
-├── LICENSE
-└── README.md
-```
+[实施记录](docs/v2.0-implementation-status.md) 区分实际完成的功能, 行为测试, 迁移回放和实验范围. [迁移指南](docs/v2.0-guide.md) 说明旧卡片, 批注, 检查点和验证结果如何继续使用.
 
-每个插件统一形态: `.codex-plugin/plugin.json` + `skills/<name>/SKILL.md` (+ 可选 `agents/`, `assets/`, `scripts/`, `references/`, `examples/`).
+旧版 / 新版 / 空白对照原件保留在 [L1](benchmarks/codex-20260906-l1/CONCLUSIONS.md) 与 [Q9](benchmarks/codex-20260908-q9/CONCLUSIONS.md). 这些是 1.x 的既有实验, 不作为 2.0 的加速或新发现证据. Q9 三组都通过证明外审, 空白组最快. 2.0 的价值需要通过实际复用, 范围正确性和长期研究进展来衡量.
 
-## 校验
+Fuse / Prove2Me 的方法调研见 [报告](docs/lean-verification-platform-research-2026-09-09.md). 本地实现不意味着已经接入其生产服务, 也不意味着本仓库独立重放了完整 Kakeya 或 FLT 形式化.
+
+## 开发与维护
 
 ```bash
-# 本地校验: marketplace + 插件结构 + SKILL frontmatter/上下文预算 + Markdown fence + MANIFEST + UTF-8/BOM
-python scripts/validate_all.py
-
-# 行为冒烟: lean-verify 扫描器 + 编排层门禁
-python tests/smoke_lean_verify.py
-python tests/smoke_pipeline_gate.py
-python tests/smoke_scoped_pipeline.py
-python tests/smoke_formalization_handoff.py
-python tests/smoke_checkpoint_resume.py
-python tests/smoke_blueprint_gateway.py
+python3 -X utf8 scripts/validate_all.py
+python3 -X utf8 tests/test_research_state.py
 ```
 
-push / PR 时 GitHub Actions 自动运行以上校验与冒烟.
+其余行为检查由 [CI](.github/workflows/validate.yml) 统一运行. 验证结果不能只依赖提示词中出现某个关键词. 旧协议的兼容检查显式使用 `validate_pipeline.py --legacy-v1`.
 
-## 使用
-
-| 场景 | 调用 |
+| 路径 | 内容 |
 | --- | --- |
-| 数学项目 研究+验证 全流程 (含子 agent 分工) | `$math-research-workflow` |
-| 单个数学问题 (证明/反例/构造/审计) | `$rigorous-open-math-research` |
-| 长期项目/文献/工具库/任务包/知识库维护 | `$manage-math-research-program` |
-| Lean 4 形式化验证 | `$lean-verify` |
+| `plugins/` | 四个可安装组件, 简短入口及按需工具与参考 |
+| `tests/`, `scripts/` | 行为验证, 维护工具和独立实验装置 |
+| `docs/` | 2.0 指南, 实施结果, 方法调研和历史设计 |
+| `benchmarks/` | 冻结的题目, 运行记录, 证明, 审计与成本证据 |
+| `AGENTS.md` | 维护方法与当前会话摘要 |
 
-- 若项目根目录是 git 仓库, skill 会自动检查并保持仓库同步 (会话开始 `git status`/`git fetch`, 阶段收尾提交并推送), 详见 `manage-math-research-program/references/git-sync.md`.
-- 所有研究结论遵循严格性标注: `严格证明` / `数值证据` / `猜想` 显式区分, 未完成严格证明的断言不标为 "已解决".
+[重构设计](docs/v2.0-refactor-plan.md) | [清理记录](docs/v2.0-cleanup.json) | [维护历史](AGENTS_HISTORY.md)
 
-## 同步
+## 许可与来源
 
-- 父仓库: `xsoc1/rigorous-open-math-research`
-- fork 副本: `Zhongshan-Big-Jun/rigorous-open-math-research` (同步方式: push 父仓库后, 在 fork 上执行 GitHub 的 Sync fork / merge-upstream)
-
-## 版本历史
-
-| 版本 | 日期 | 摘要 |
-| --- | --- | --- |
-| `manage 1.8.1` | 2026-09-05 | 实项目回放修复旧卡片 YAML 不规范和缺少结束标记的兼容性; 显式待检查指针, 保留归档限制, 统一 PDF 页分隔符的抽取行号. 77 张真实卡片和 sequence-26 隔离回放通过 |
-| `1.15.0` | 2026-09-05 | workflow 恢复入口和额度检查, 同名技能来源诊断与严格指标比较; manage 1.8.0 文献内容库及 agent 批注指针; rigorous 1.12.0 协议冲突修复 |
-| `1.14.1` | 2026-08-31 | workflow checkpoint-current validator 修复: scoped 门禁先验证最新 sealed checkpoint, 再校验其 state 绑定的版本化 whiteboard/closure; 不再误读不可变祖先, `STALE` 时禁止回退 |
-| `1.14.0` | 2026-08-31 | Blueprint v2.2 active runtime gateway: manage v1.7.0 新增 `runtime/blueprintctl.py`, rigorous v1.11.0 与 workflow 统一使用 ensure-once layout/config 绑定, canonical validate/query/proposal/integrate 全部走 plugin-owned code, 修复跨根 artifact 解析并拒绝 project-local tool 注入 |
-| `1.13.0` | 2026-08-30 | workflow canonical formalization consumption: `consume/verify-consumption` 在 exact-copy receipt `READY` 后生成唯一 immutable sibling record, 显式保持数学/验证状态不变, 并允许 Stage C 后续合法演化目标 scaffold; exclusive-create 关闭 overwrite TOCTOU |
-| `1.12.0` | 2026-08-30 | workflow cross-root formalization handoff: immutable exact-copy Tier 0 scaffold receipt 绑定 Stage B scope 与 Stage C Lean 项目身份, 源 manifest/proof/scaffold, 目标副本和 durable registration anchors; 明确不支持完整 requested 包, 不升级 FORMALLY_VERIFIED |
-| `1.11.0` | 2026-08-30 | workflow 隔离作用域门禁: `--scope` 把仓库内自包含目录作为完整逻辑项目根, 所有发现和路径绑定均限制在 scope 内; scope 外历史债务不参与局部裁决, 输出明确禁止把 scoped PASS 当作全仓 PASS |
-| `1.10.0` | 2026-08-30 | rigorous/workflow checkpoint 可用性优化: `advance` 自动版本化 bound whiteboard/closure 并生成防误封 draft; 修复 project-prefixed path 与 PowerShell 7 位时间戳; typed obligation lineage 自动退休旧 action |
-| `1.9.0` | 2026-08-29 | rigorous/workflow 配额中断恢复: 结构化保存 completed/open/in-flight/do-not-repeat 状态, 用不可变 checkpoint 在恢复前复算全部 hash; 唯一 predecessor receipt 锁定跨 segment 谱系, 最小读取集/首个动作/计分累计量/状态变更均受确定性门禁保护 |
-| `1.8.0` | 2026-08-28 | rigorous/workflow fast-close 证书: 结构化冻结 contract/obligation graph/proof/root anchors/dependencies, 用 hash-bound 独立审计触发确定性 STOP; 禁止追加 Stage B 路线与重复全局审计, 单次 frontier 升级必须绑定原证书, 授权, 正整数预算和停止条件 |
-| `1.7.0` | 2026-08-27 | rigorous/workflow closure-first 性能优化: 先直接求解并证伪首个承重义务, 再按明确决策增量扩展子 agent; 延迟生成非必要工件, 全局审计移至完成或交接边界 |
-| `1.6.0` | 2026-08-24 | Codex 性能优化: 四个 SKILL 入口移出 changelog, 修复 rigorous 输出协议 fence, 增加上下文预算与 Markdown 门禁, 加入索引检索和有界工具批处理规则 |
-| `1.5.0` | 2026-08-23 | 性能可观测与示警: performance.json + baseline 对比, 成本异常上升时写 performance_alert 并向用户示警, 单次告警需复验 |
-| `1.4.0` | 2026-08-23 | 工具按问题类作用域生命周期: 类级退休/归档, 工具不删除仍可显式检索, manage_tool_lifecycle.py |
-| `1.3.0` | 2026-08-23 | 轻量 reuse 协议 (紧凑预扫描 + 最低产物集 + reuse_summary + 强制 Lean scaffold) |
-| `1.2.0` | 2026-08-16 | 轻量优先成本分级升级协议 (Tier 0-3, 小改动优先, 升级触发/回退, 白板与任务包集成) |
-| `1.1.0` | 2026-08-16 | 研究地图 / 双轨审计 / OpenProver·Rethlas·Danus 蒸馏 / lake build 防护与鲁棒性 / 性能优化 |
-| `1.0.0` | 2026-08-16 | 初始稳定版: 四插件工作流 + 提交审计 + 进展登记/scaffold + 交接协议 |
-
-版本规则: 大版本 = 工作流架构/能力代际; 小版本 = 新功能批次; 补丁 = 纯修复。
-历史 cachebuster (0.1.0+codex.日期) 已并入上表, 不再使用日期后缀。
-
-## 版权与免责声明
-
-- 版权归属: 本仓库的编排结构, 提示词组织, 文档与脚本由作者整合撰写, 按 MIT 许可分发 (见 `LICENSE`); 但其中的工作方法大量参考/改编自公开研究与开源项目 (如 MMAT, LeanMarathon, MechMath, M2F, FaithSieve, FormalRx, Archon-Horizon, EvE 等), 方法本身的思想与协议不归本仓库所有.
-- 方法来源: 各 skill 的 `references/changelog.md` 已附来源链接 (MMAT, LeanMarathon, MechMath, M2F, FaithSieve, FormalRx, Archon-Horizon, EvE, Blueprint v2.x 等), 引用以链接与要点转述形式呈现, 未复制受版权保护的论文正文或专有代码; 若署名或归属有误, 欢迎指正, 我们会在确认后修正.
-- 第三方名称: 文中出现的项目, 组织与商标名称归各自所有者, 与本仓库无隶属或背书关系.
-- 使用风险: 本仓库按"现状"提供, 不保证无缺陷; 生成的研究结果, 证明, 代码与结论须由使用者独立核验后再使用, 作者不对任何直接或间接损失负责, 内容不构成专业或法律意见.
+代码与文档按 [MIT](LICENSE) 许可发布. 方法参考及归属保留在各组件的 `references/` 与调研报告中. 第三方论文, 软件和名称遵循其各自许可与归属; 项目不暗示第三方背书.

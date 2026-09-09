@@ -1,0 +1,88 @@
+{
+  "verdict": "PASS",
+  "kind": "DETERMINISTIC_FROZEN_Q9_LIBRARY_REPLAY",
+  "elapsed_seconds": 55.456704166019335,
+  "full_certificate_coefficient_count": 230,
+  "legacy_cards": 77,
+  "legacy_index_rows_preserved": 3,
+  "frozen_bindings_checked": 9,
+  "original_inputs_unchanged": 89,
+  "reuses": [
+    {
+      "c": [
+        "3/4",
+        "5/6"
+      ],
+      "claims_full_q9_formalization": false,
+      "coefficient_count": 130,
+      "minimum": "3375573111339/1000000000000",
+      "new_mathematical_discovery": false,
+      "pointer": "tools/q9-exact-polynomial-program.md",
+      "polynomial": "Npstar",
+      "program": "evidence/q9-C/verify_certificate.py",
+      "program_sha256": "233b4f68e7b2608b87ddd54063241c2c8e8c1ae96440dc76332fd78b468b0918",
+      "t": [
+        "2/5",
+        "3/5"
+      ],
+      "verdict": "SCOPED_POLYNOMIAL_REUSE_PASS"
+    },
+    {
+      "mathematical_counterexample": false,
+      "pointer": "tools/q9-exact-polynomial-program.md",
+      "reasons": [
+        "c interval is outside the recorded polynomial box"
+      ],
+      "verdict": "NOT_COVERED"
+    }
+  ],
+  "model_calls": 0,
+  "new_discovery_claims": 0,
+  "accepted_graph_modified": false,
+  "limits": "Fresh processes are deterministic consumers, not a new agent study. This checks polynomial reuse, not the complete Q9 proof or Lean formalization.",
+  "full_result_sha256": "bff87dfb03a09e4de96bb5cdad07e0b5116c7f3a620a465e2a787a12dfdb6b83",
+  "source_commit": "f95627ca1b44aeb75692a5814e20050b0e6a40cb",
+  "local_evidence": "F:/tools/math-research-v2-library-20260909-final",
+  "replay_script": "plugins/manage-math-research-program/skills/manage-math-research-program/scripts/tests/test_library_q9_reuse.py",
+  "final_runtime_replay": {
+    "verdict": "PASS",
+    "elapsed_seconds": 51.800875496002845,
+    "legacy_cards": 77,
+    "legacy_index_rows_preserved": 3,
+    "full_certificate_coefficient_count": 230,
+    "frozen_bindings_checked": 9,
+    "original_inputs_unchanged": 89,
+    "reuses": [
+      {
+        "c": [
+          "3/4",
+          "5/6"
+        ],
+        "claims_full_q9_formalization": false,
+        "coefficient_count": 130,
+        "minimum": "3375573111339/1000000000000",
+        "new_mathematical_discovery": false,
+        "pointer": "tools/q9-exact-polynomial-program.md",
+        "polynomial": "Npstar",
+        "program": "evidence/q9-C/verify_certificate.py",
+        "program_sha256": "233b4f68e7b2608b87ddd54063241c2c8e8c1ae96440dc76332fd78b468b0918",
+        "t": [
+          "2/5",
+          "3/5"
+        ],
+        "verdict": "SCOPED_POLYNOMIAL_REUSE_PASS"
+      },
+      {
+        "mathematical_counterexample": false,
+        "pointer": "tools/q9-exact-polynomial-program.md",
+        "reasons": [
+          "c interval is outside the recorded polynomial box"
+        ],
+        "verdict": "NOT_COVERED"
+      }
+    ],
+    "result_sha256": "a6d2d51c3f90580862ca62599eb0357b495abe893da1167c74f80ac80db15d5e",
+    "local_evidence": "F:/tools/math-plugin-v2-20260909/library-final-validation",
+    "runtime_sha256": "45342a9b6000e68ad5fbd4f1795a06c151769c61053e7e9461b03d3357585a35"
+  }
+}

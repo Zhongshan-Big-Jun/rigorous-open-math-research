@@ -1,5 +1,9 @@
 # Release history
 
+## 2.0.0
+
+Concise, independent research guidance; reusable experience from successful and failed routes; versioned literature and annotations; current-state continuity; exact Lean target verification and reusable local feedback. Legacy immutable evidence stays readable. See the repository 2.0 implementation report for tested scope.
+
 ## Changelog (2026-09-05, v1.15.0)
 
 - Added compact latest-checkpoint inspection, idempotent receipt preparation,

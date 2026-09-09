@@ -1,0 +1,16 @@
+{
+  "baseline": "f95627ca1b44aeb75692a5814e20050b0e6a40cb",
+  "removed": [
+    {
+      "path": "scripts/split_rigorous_skill.py",
+      "sha256": "1ac80d9c0a86a2367ba7db452150b99b3e982fe1bedbfd8ee265a7cd18661785",
+      "bytes": 11740,
+      "reason": "One-time 1.x phase splitter; no runtime or CI callers; its phase driver would restore the removed default protocol. Historical source remains in baseline f95627c."
+    }
+  ],
+  "preserved": [
+    "Frozen benchmarks and original verifier probes",
+    "Legacy sealed checkpoint and canonical Blueprint receivers",
+    "Old mathematical examples and source attribution"
+  ]
+}

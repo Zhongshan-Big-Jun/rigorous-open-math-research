@@ -1,0 +1,70 @@
+{
+  "kind": "ONE_SOURCE_FRESH_CONTEXT_LIBRARY_ACCEPTANCE",
+  "verdict": "SCOPED_REUSE_ACCEPTED",
+  "source_url": "https://arxiv.org/pdf/1711.07032v1",
+  "source_id": "cb4c339c15bd33547d04a1966ff9ce19ce503f25e2b2478abc301f16086f4665",
+  "pdf_sha256": "7b4b308d14cd82528f1417a0324f76a695883ba27a021f827174ee4c07eff130",
+  "reading_coverage": "PDF pages 1, 2 and 22 only; page 22 image inspected by curator",
+  "question": {
+    "kind": "single-source library usability acceptance, not a controlled research benchmark",
+    "question": "Fix the real Sturm-Liouville coefficient class of the retrieved source on a finite interval, with quasi-derivative y^[1]=p(y′+s y). For h_a,h_b >= 0 consider y^[1](a)=h_a y(a), y^[1](b)=-h_b y(b). Determine whether each increasingly ordered eigenvalue increases or decreases in either parameter with the other fixed, and identify the spectral index in its one-sided Dirichlet limit. Separately evaluate the claim that approaching the angular boundaries alpha->pi- or beta->0+ preserves every eigenvalue index. Finally explain whether the same theorem applies unchanged if these conditions are replaced by ordinary derivative conditions y′(a)=h_a y(a), y′(b)=-h_b y(b), without added endpoint regularity. Use actual retrieved card, source and annotation pointers; distinguish source statements from your deductions."
+  },
+  "question_sha256": "32d8abef28c0246ef5e53a3698f0c09605310972b2dd4b2466bc38757cfcbeb4",
+  "consumer_id": "01a08520-8048-70c0-82e4-54d998e5ed8b",
+  "answer_sha256": "9a147be8a51dbf7e457e7a29d01ab30dfa0dca2f907fe24f1d339b25e5325ab2",
+  "retrieval_log_sha256": "3e1da8365b10011d2755800f3b83cb837b57aa69beb5b7d41ed6b8f0eebd6ec6",
+  "input_files_unchanged": 8,
+  "card_sha256": "547461ec5a9afa2dcbf65181cf42eec2d95d1bb46ed8ff80e631c1416126770f",
+  "passages": [
+    {
+      "start_line": 1,
+      "end_line": 60,
+      "start_offset": 0,
+      "next_offset": 3182,
+      "passage_sha256": "84296a9a44f25099e52e0df135f3ffa77a81e00a0f545c3f8a1ff65aae6e4501"
+    },
+    {
+      "start_line": 61,
+      "end_line": 120,
+      "start_offset": 3182,
+      "next_offset": 6993,
+      "passage_sha256": "62763447fdf4038ecc2d482490e7136a0b2c9e54dfa82428584b4aed454c80c4"
+    },
+    {
+      "start_line": 121,
+      "end_line": 154,
+      "start_offset": 6993,
+      "next_offset": null,
+      "passage_sha256": "e693a0bd270d09b2424586e5e7f86be50ea5e032f0d52f47b32761669200a938"
+    }
+  ],
+  "observation": {
+    "started_at": "2026-09-09T07:45:16.797Z",
+    "clock_note": "Consumer wall-clock observation starts immediately after the question read and before CLI discovery. This is one uncontrolled usability observation, not a performance benchmark.",
+    "retrieval_completed_at": "2026-09-09T07:47:01.633Z",
+    "retrieval_elapsed_seconds": 104.836,
+    "answer_prepared_at": "2026-09-09T07:49:30.931Z",
+    "elapsed_to_answer_prepared_seconds": 254.134,
+    "total_recorded_command_wall_seconds": 1.3967727979999998,
+    "completed_at": "2026-09-09T07:51:50.720Z",
+    "elapsed_seconds": 393.924
+  },
+  "checks": {
+    "parameter_sign_translation": "correct",
+    "positive_parameter_dirichlet_index": "same index",
+    "opposite_singular_angle_limit": "escape of lowest eigenvalue and index shift identified",
+    "ordinary_derivative_substitution": "unsupported without endpoint regularity identified",
+    "source_and_deduction_distinguished": true
+  },
+  "coordinator_review": "coordinator; independent of fresh consumer but also source-card author",
+  "usability_fix": "Query now returns scope separately from explicit conditions after an index refresh. Post-fix probe used a copy; frozen card, note, source, index and answer unchanged.",
+  "runtime_before_scope_field_sha256": "e85979cced718980efd95994516885b906291d944bce31b96a338dfd0e7f0795",
+  "runtime_after_scope_field_sha256": "45342a9b6000e68ad5fbd4f1795a06c151769c61053e7e9461b03d3357585a35",
+  "limits": [
+    "One supplied source and one fresh-context consumer; not a controlled model comparison.",
+    "No full-paper proof audit, no Lean proof, no canonical integration.",
+    "No speedup or general research-performance claim."
+  ],
+  "local_evidence": "F:/tools/math-plugin-v2-20260909/literature-acceptance",
+  "initial_driver_issue": "A literal single-space assertion did not match a double space in the PDF layout extraction; source bytes and reader output were intact. Corrected the acceptance driver, preserving its issue record."
+}

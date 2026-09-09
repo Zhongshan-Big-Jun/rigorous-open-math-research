@@ -63,13 +63,54 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Install library dependency
-        run: pip install pyyaml
+      - name: Install behavior test dependencies
+        run: pip install pyyaml jsonschema
       - name: Test source reading, annotation and pointers
         run: python -X utf8 tests/smoke_research_library.py
       - name: Test recovery and quota observation
         run: python -X utf8 tests/smoke_recovery_status.py
+      - name: Test durable 2.0 research continuity
+        run: python -X utf8 tests/test_research_state.py
+      - name: Test 2.0 library and research experience
+        run: python -X utf8 -m unittest discover -s plugins/manage-math-research-program/skills/manage-math-research-program/scripts/tests -p "test_*.py"
+      - name: Test 2.0 Lean execution and evidence handling
+        run: python -X utf8 -m unittest discover -s plugins/lean-verify/scripts/tests -p "test_v2_verifier.py"
       - name: Test metric comparisons
         run: python -X utf8 tests/smoke_performance_metrics.py
       - name: Test skill source diagnostics
         run: python -X utf8 tests/smoke_skill_sources.py
+
+  lean-runtime:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install schema test dependency
+        run: pip install jsonschema
+      - uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: tests/fixtures/lean-v2-runtime
+          auto-config: "false"
+          build: "false"
+          test: "false"
+          lint: "false"
+          use-mathlib-cache: "false"
+          use-github-cache: "false"
+      - name: Verify real Lean targets and interactive feedback
+        env:
+          LEAN_VERIFY_REAL_LEAN: lean
+          LEAN_VERIFY_REAL_LAKE: lake
+          LEAN_VERIFY_TEST_TMPDIR: ${{ runner.temp }}
+          LEAN_VERIFY_TEST_REPORT: ${{ runner.temp }}/lean-controls.json
+          LEAN_VERIFY_KEEP_TEST_ARTIFACTS: "1"
+        run: python -X utf8 -m unittest discover -s plugins/lean-verify/scripts/tests -p "test_v2_lean_real.py" -v
+      - name: Retain actual compiler evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lean-controls
+          path: |
+            ${{ runner.temp }}/lean-controls.json
+            ${{ runner.temp }}/real-*

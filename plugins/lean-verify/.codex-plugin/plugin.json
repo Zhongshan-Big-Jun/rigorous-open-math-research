@@ -1,7 +1,7 @@
 {
   "name": "lean-verify",
-  "version": "1.6.0",
-  "description": "Strict verification workflow for Lean 4 formalizations: statement-fidelity audit, machine checks (lake build, sorry/axiom scan), per-obligation independent audit, structured verdicts, and hash-bound run manifests.",
+  "version": "2.0.0",
+  "description": "Use Lean feedback during research and check execution, exact declarations, transitive axioms and intended mathematical scope. Preserve input-bound evidence and reuse unchanged semantic reviews.",
   "author": {
     "name": "xsoc1"
   },
@@ -16,11 +16,11 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Lean Verify",
-    "shortDescription": "Strict Lean 4 formalization verification with audit reports and structured verdicts.",
-    "longDescription": "Runs a verifiable end-to-end check of a Lean 4 proof against its informal theorem contract: environment pinning, statement-fidelity audit, machine verification, independent per-obligation audit, structured verdict JSON, and a hash-bound run manifest.",
+    "shortDescription": "Precise Lean targets, compiler feedback and evidence",
+    "longDescription": "Use Lean feedback during research and check execution, exact declarations, transitive axioms and intended mathematical scope. Preserve input-bound evidence and reuse unchanged semantic reviews.",
     "developerName": "xsoc1",
     "category": "Developer Tools",
     "capabilities": [],
-    "defaultPrompt": "Help me verify a Lean 4 formalization of a theorem."
+    "defaultPrompt": "Check the intended theorem against the actual Lean declaration, dependency closure and reproducible machine evidence."
   }
 }

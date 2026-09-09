@@ -1,0 +1,89 @@
+{
+  "schema": "math-plugin-v2-capability-evidence/1",
+  "component": "lean",
+  "status": "all_reported_reproductions_pass_after_fixes",
+  "scope": "Local runtime and saved-evidence correctness; no new mathematical semantic audit or full research-project formalization.",
+  "source_hashes": {
+    "plugins/lean-verify/assets/verification_output.schema.json": "0ba7f0afad04a704a7004cc98dd5ee7509a780eb719e45300edd1e6e477aef6c",
+    "plugins/lean-verify/assets/verification_output.v1.schema.json": "cf2f2532843b8b03fe7f3d42ccbf5bc8565a3871afe44a14bc7bb1e8fd4f7b26",
+    "plugins/lean-verify/scripts/LeanVerifyProbe.lean.template": "4299cc51119b911992511b2ce05e114dfdcbe5d698b4639838585e74c62a7a7f",
+    "plugins/lean-verify/scripts/lake_build_guard.py": "ad8107677112126a6ff9c2f6ed4ed7019960f8357306f4b69e98047ff2d0c4f0",
+    "plugins/lean-verify/scripts/lean_evidence.py": "acfc329ae136d491293020dc0b1001f27b2b43200466962c07c83d960e991be1",
+    "plugins/lean-verify/scripts/lean_feedback.py": "cf3a7c5e18a4f981768fdccfa8761fe8e91a92b8f6ac5e60b5d79e36139a90bc",
+    "plugins/lean-verify/scripts/lean_routes.py": "4c286832a5a9b69a2f8c66768906993bacd7ced232a4af6175a7fca5cf9031f3",
+    "plugins/lean-verify/scripts/lean_runtime.py": "cb8de8974c1ed6598d3c81ebab40331944198da8feb6f80b20196362af5a6086",
+    "plugins/lean-verify/scripts/run_manifest.schema.json": "0ba7f0afad04a704a7004cc98dd5ee7509a780eb719e45300edd1e6e477aef6c",
+    "plugins/lean-verify/scripts/tests/test_v2_lean_real.py": "a43e644e29569f95a8ba53167231b335b36ff6668e95fbcdd002fb6e771aeaf6",
+    "plugins/lean-verify/scripts/tests/test_v2_verifier.py": "c53b0b3625bd8799ad2c9d06df48b59bafc8dd0e227f896009f9dcf6b86c8281",
+    "plugins/lean-verify/scripts/verify_lean_project.py": "e47d05e2adda03c829a364425aa19b94acb0664d481c845cc12959a426ba7661",
+    "plugins/lean-verify/skills/lean-verify/references/v2-verification.md": "c5f49105c6417904e919460a00123ea931d4686dae34d5ca51b53ad18a79d527"
+  },
+  "reported_defect_families": [
+    "expected-only transitive definitions and axioms",
+    "quoted and multiline local imports using stale caches",
+    "new module shadowing a recorded artifact",
+    "notation and elaboration context erased from the final expression"
+  ],
+  "independent_final_controls": {
+    "runtime": "native Windows Python3.10.11 and Lean4.31.0",
+    "passed_checks": 9,
+    "verifier_manifests": 4,
+    "dependency_compilations": 4,
+    "local_results": "/mnt/f/tools/math-plugin-v2-20260909/lean-probes/independent-review-context-native/results.json",
+    "results_sha256": "2524465fea3aad874729785fdf38211142bef6c6c1d4d03520ae7b288ace8958",
+    "source_unchanged": true,
+    "all_passed": true,
+    "cases": [
+      "expected-type_full_context_and_smaller_semantic_subset",
+      "expected-type_positive_verification_and_recheck",
+      "expected-type_changed_notation_receipt_stale",
+      "expected-type_stale_route_rejected",
+      "expected-type_fresh_changed_notation_rejected",
+      "source-type_full_context_and_smaller_semantic_subset",
+      "source-type_positive_verification_and_recheck",
+      "source-type_changed_notation_receipt_stale",
+      "source-type_fresh_changed_notation_rejected"
+    ]
+  },
+  "coordinator_final_context_controls": {
+    "test_count": 1,
+    "subcases": [
+      "expected-type notation",
+      "source-type notation"
+    ],
+    "verifier_manifests": 4,
+    "passed": true,
+    "elapsed_seconds": 149.593,
+    "runtime": "native Windows Python3.10.11 and Lean4.31.0",
+    "results_sha256": "ef8b9925875a79c97d00b28273a62c5d054c0945f2ca56a20789d85f8a9f695d"
+  },
+  "earlier_full_integration": {
+    "test_count": 14,
+    "passed": true,
+    "elapsed_seconds": 661.867,
+    "status": "historical before the final complete-context amendment",
+    "runtime": "Windows Lean4.31.0 invoked from WSL Python3.14.4",
+    "results_sha256": "71809058816ac375b790b77afe737a324e0de5d42cfbd63d8af1fa30a8b5f2c0"
+  },
+  "current_portable_tests": {
+    "count": 12,
+    "passed": true
+  },
+  "complete_current_suite": {
+    "test_count": 15,
+    "workflow": ".github/workflows/validate.yml",
+    "status_source": "GitHub Actions for the exact release commit; do not infer execution from the workflow definition."
+  },
+  "limits": [
+    "Full loaded-module byte hashing can be substantial; CLI summaries stay compact.",
+    "Saved rechecks use current Lean module resolution but do not replay the proof through the kernel.",
+    "Local receipts do not authenticate a coherently replaced evidence bundle.",
+    "Supplied semantic-review records are checked for bindings, not for reviewer identity, independence or mathematical validity.",
+    "The first new notation test was interrupted for a corrected test-only failure label; it was not counted as a pass."
+  ],
+  "independent_final_report": {
+    "path": "/mnt/f/tools/math-plugin-v2-20260909/lean-independent-review.md",
+    "sha256": "d1f7688c816fe99d9d3cdeb9880488042d5ec0801183f01dccb0314214802dd0",
+    "verdict": "PASS within reviewed scope; no remaining substantive release blocker; remote Linux CI excluded"
+  }
+}

@@ -1,7 +1,7 @@
 {
   "name": "manage-math-research-program",
-  "version": "1.8.1",
-  "description": "Manage long-running, cross-paper, cross-problem mathematics research programs: project workspaces, literature curation, paper maps, open-problem portfolios, tool libraries, budgets, checkpoints, task packets, delegation to rigorous-open-math-research, and a hash-bound reviewed accepted-knowledge base with blueprint integration. Chinese trigger: 数学研究项目管理, 跨会话维护.",
+  "version": "2.0.0",
+  "description": "Read literature into versioned sources and reusable tool cards, add searchable agent annotations, compare research experience and maintain a human editable understanding page. Use the Blueprint receiver for canonical accepted knowledge when present.",
   "author": {
     "name": "xsoc1"
   },
@@ -15,12 +15,12 @@
   ],
   "skills": "./skills/",
   "interface": {
-    "displayName": "Math Research Program Manager",
-    "shortDescription": "数学研究项目管理: 文献, 开放问题, 任务包, 已接受知识库.",
-    "longDescription": "Program management layer for mathematics research: initialize and validate project workspaces, curate literature, maintain paper maps and open-problem portfolios, delegate concrete problems to rigorous-open-math-research, ingest audited artifacts by reference, and maintain a hash-bound, reviewed, canonical accepted-knowledge base.",
+    "displayName": "Manage Math Research Program",
+    "shortDescription": "Literature, annotatable tools and project understanding",
+    "longDescription": "Read literature into versioned sources and reusable tool cards, add searchable agent annotations, compare research experience and maintain a human editable understanding page. Use the Blueprint receiver for canonical accepted knowledge when present.",
     "developerName": "xsoc1",
     "category": "Education & Research",
     "capabilities": [],
-    "defaultPrompt": "帮我管理一个长期数学研究项目(初始化, 维护项目仓库)."
+    "defaultPrompt": "Organize this project's literature, reusable tools and research experience so we can choose the next useful mathematical step."
   }
 }
