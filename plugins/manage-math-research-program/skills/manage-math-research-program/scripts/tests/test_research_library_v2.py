@@ -18,7 +18,7 @@ import research_library as library
 class LibraryV2Tests(unittest.TestCase):
 	def setUp(self):
 		self.Temp = tempfile.TemporaryDirectory()
-		self.Root = Path(self.Temp.name)
+		self.Root = Path(self.Temp.name).resolve()
 		self.Card = library.save_card(self.Root, dict(content="A compact positivity estimate.", title="Estimate", conditions=["x in [0, 1]"]))
 		library.make_index(self.Root)
 
