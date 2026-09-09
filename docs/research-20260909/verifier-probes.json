@@ -1,0 +1,74 @@
+{
+	"observed_at_utc": "2026-09-09T02:31:57.946941+00:00",
+	"scope": "Verifier Python logic only. All process/version responses are simulated. No Lean proof was compiled or verified.",
+	"source_path": "plugins/lean-verify/scripts/verify_lean_project.py",
+	"source_sha256": "99b0d6b9cf4ae90b2e95a0dddee1202abfb9b4acdee80d94db02de24ab8f144c",
+	"cases": [
+		{
+			"case": "missing_target",
+			"target_exists": false,
+			"simulated_target_exit": null,
+			"target_command_attempted": false,
+			"verifier_process_exit": 0,
+			"aggregate_build_exit": 0,
+			"machine_verification_passed": true,
+			"target_results": [
+				{
+					"exit_code": null,
+					"stderr": "target file not found: Target.lean"
+				}
+			]
+		},
+		{
+			"case": "timeout_target",
+			"target_exists": true,
+			"simulated_target_exit": null,
+			"target_command_attempted": true,
+			"verifier_process_exit": 0,
+			"aggregate_build_exit": 0,
+			"machine_verification_passed": true,
+			"target_results": [
+				{
+					"exit_code": null,
+					"stderr": "SIMULATED timeout"
+				}
+			]
+		},
+		{
+			"case": "failed_target_control",
+			"target_exists": true,
+			"simulated_target_exit": 1,
+			"target_command_attempted": true,
+			"verifier_process_exit": 0,
+			"aggregate_build_exit": 1,
+			"machine_verification_passed": false,
+			"target_results": [
+				{
+					"exit_code": 1,
+					"stderr": ""
+				}
+			]
+		},
+		{
+			"case": "successful_target_control",
+			"target_exists": true,
+			"simulated_target_exit": 0,
+			"target_command_attempted": true,
+			"verifier_process_exit": 0,
+			"aggregate_build_exit": 0,
+			"machine_verification_passed": true,
+			"target_results": [
+				{
+					"exit_code": 0,
+					"stderr": ""
+				}
+			]
+		}
+	],
+	"lean_block_comment_scan_hits": [
+		{
+			"line": 1,
+			"kind": "sorry"
+		}
+	]
+}

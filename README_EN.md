@@ -14,6 +14,12 @@ annotatable tool cards, pointer retrieval and interruption recovery. Only the
 plan is complete; released and installed plugins remain on 1.x. The workflow
 below describes those existing versions.
 
+The [Fuse / Prove2Me research report, in Chinese](docs/lean-verification-platform-research-2026-09-09.md)
+examines the public Kakeya and full FLT artifacts, target verification, semantic
+audit and recovery methods, with isolated probes of the current verifier.
+The 2.0 plan is preserved; the suggestions are not implemented and the large
+proofs were not independently replayed in this research task.
+
 The [L1 regression](benchmarks/codex-20260906-l1/CONCLUSIONS.md) and the harder
 [repository Q9 comparison](benchmarks/codex-20260908-q9/CONCLUSIONS.md) are complete.
 All three Q9 treatments produced externally audited full proofs. Compared with

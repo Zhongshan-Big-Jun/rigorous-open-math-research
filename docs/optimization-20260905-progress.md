@@ -1,6 +1,6 @@
 # Optimization implementation progress
 
-Updated: 2026-09-09. State: FIRST_BATCH_RELEASED_AND_VERIFIED; L1_AND_Q9_COMPARISONS_COMPLETE; V2_PLAN_DOCUMENTED.
+Updated: 2026-09-09. State: FIRST_BATCH_RELEASED_AND_VERIFIED; L1_AND_Q9_COMPARISONS_COMPLETE; V2_PLAN_DOCUMENTED; LEAN_PLATFORM_RESEARCH_DOCUMENTED.
 
 ## Current direction: 2.0 planning
 
@@ -13,6 +13,16 @@ interruption recovery remain core capabilities. Mandatory research phases,
 role boundaries, repeated ledgers, default audit/formalization chains and quota
 gates are proposed for removal. This turn changes documentation only; all four
 installed/released versions remain 1.x and no new experiments are started.
+
+The user then requested research on Fuse / Kakeya and Prove2Me / FLT while
+preserving that plan. The [Lean platform report](lean-verification-platform-research-2026-09-09.md)
+records primary sources, pinned proof targets and verification boundaries,
+and proposes tool and semantic-audit improvements for discussion. Isolated
+Python probes found false success aggregation for missing or timed-out targets
+and a Lean block-comment false positive. Process responses were simulated;
+no Lean proof was executed. Runtime code, versions and the 2.0 plan are unchanged.
+These recommendations do not authorize automatic platform publication or start
+a new benchmark.
 
 ## Contract
 
