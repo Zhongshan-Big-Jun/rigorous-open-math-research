@@ -20,7 +20,7 @@ import research_state as state
 class ResearchStateTests(unittest.TestCase):
 	def setUp(self):
 		self.Temp = tempfile.TemporaryDirectory()
-		self.Project = Path(self.Temp.name)
+		self.Project = Path(self.Temp.name).resolve()
 		(self.Project / "input.txt").write_text("v1")
 
 	def tearDown(self):
@@ -31,7 +31,9 @@ class ResearchStateTests(unittest.TestCase):
 		while(time.monotonic() < Deadline):
 			Record = state.job_status(self.Project, JobId)
 			if(Record["state"] not in ("STARTING", "RUNNING")):
-				return Record
+				Supervisor = Record.get("supervisor_pid")
+				if(not Supervisor or state.process_identity(Supervisor) != Record.get("supervisor_identity")):
+					return Record
 			time.sleep(0.05)
 		self.fail("job failed to finish: " + json.dumps(Record))
 
@@ -243,6 +245,30 @@ class ResearchStateTests(unittest.TestCase):
 			state.start_job(self.Project, "missing-input", ["unused"], ["missing.lean"])
 		with self.assertRaises(ValueError):
 			state.input_snapshot(self.Project, ["input.txt", "link/../input.txt"])
+
+	def test_noncanonical_root_preserves_containment(self):
+		(self.Project / "child").mkdir()
+		Aliases = [self.Project / "child/..", Path(self.Temp.name)]
+		if(os.name == "nt"):
+			import ctypes
+			from ctypes import wintypes
+			ShortPath = ctypes.WinDLL("kernel32", use_last_error=True).GetShortPathNameW
+			ShortPath.argtypes = [wintypes.LPCWSTR, wintypes.LPWSTR, wintypes.DWORD]
+			ShortPath.restype = wintypes.DWORD
+			Buffer = ctypes.create_unicode_buffer(32768)
+			Length = ShortPath(str(self.Project), Buffer, len(Buffer))
+			self.assertTrue(0 < Length < len(Buffer))
+			Aliases.append(Path(Buffer.value))
+		Expected = state.input_snapshot(self.Project, ["input.txt"])
+		for Index, Alias in enumerate(Aliases):
+			with self.subTest(root=str(Alias)):
+				self.assertEqual(state.inside(Alias, "input.txt"), self.Project / "input.txt")
+				self.assertEqual(state.input_snapshot(Alias, ["input.txt"]), Expected)
+				Record, Created = state.create_job(Alias, "alias-" + str(Index), dict(kind="external", provider="fixture", request_key=str(Index), inputs=Expected))
+				self.assertTrue(Created)
+				self.assertEqual(Record["state"], "UNKNOWN")
+				with self.assertRaises(ValueError):
+					state.inside(Alias, "../outside")
 
 	def test_progress_single_read_and_late_direct_edit_conflict(self):
 		First = state.save_progress(self.Project, "original", "missing")

@@ -58,6 +58,7 @@ def json_bytes(Data):
 
 
 def inside(Root, Name):
+	Root = Path(Root).resolve()
 	Candidate = (Root / Name).resolve()
 	if(not Candidate.is_relative_to(Root)):
 		raise ValueError("path escapes project")
@@ -134,6 +135,7 @@ def progress_path(Root, Requested=None):
 
 
 def input_snapshot(Root, Names, Require=True):
+	Root = Path(Root).resolve()
 	Snapshot = {}
 	for Name in sorted(set(Names)):
 		if(".." in Path(Name).parts):

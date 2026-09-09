@@ -163,7 +163,8 @@ def extract_target(Runtime, Contract, WorkDir, Timeout):
 	ProbeSource = WorkDir / "LeanVerifyProbe.lean"
 	ProbeSource.write_text(PROBE_TEMPLATE.read_text(encoding="utf-8").expandtabs(2), encoding="utf-8")
 	ProbeOlean = Library / "LeanVerifyProbe.olean"
-	Probe = Runtime.execute(["-R", tool_path(WorkDir, Runtime.Command), "-o", tool_path(ProbeOlean, Runtime.Command), tool_path(ProbeSource, Runtime.Command)], Timeout, [Library], WorkDir)
+	# Keep the project cwd for elan's toolchain pin and Lake configuration.
+	Probe = Runtime.execute(["-R", tool_path(WorkDir, Runtime.Command), "-o", tool_path(ProbeOlean, Runtime.Command), tool_path(ProbeSource, Runtime.Command)], Timeout, [Library])
 	Probe.update(kind="inspector_compile", olean=str(ProbeOlean))
 	Commands.append(Probe)
 	if(result_status(Probe) != "passed" or not ProbeOlean.is_file()):
@@ -171,7 +172,7 @@ def extract_target(Runtime, Contract, WorkDir, Timeout):
 	Output = WorkDir / "declaration.json"
 	Inspector = WorkDir / "InspectRoot.lean"
 	Inspector.write_text(inspection_source(Contract, ModuleName, tool_path(Output, Runtime.Command)), encoding="utf-8")
-	Inspection = Runtime.execute([tool_path(Inspector, Runtime.Command)], Timeout, [Library], WorkDir)
+	Inspection = Runtime.execute([tool_path(Inspector, Runtime.Command)], Timeout, [Library])
 	Inspection["kind"] = "declaration_inspection"
 	Commands.append(Inspection)
 	if(result_status(Inspection) != "passed" or not Output.is_file()):

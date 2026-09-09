@@ -298,6 +298,10 @@ class RealLeanControls(unittest.TestCase):
 		Root = self.project('/- sorry\n/- admit /- nested axiom liar : False -/ -/\n-/\ndef note := r##"sorry /- admit -/"##\ntheorem target : True := True.intro\n')
 		Manifest, _ = self.verify(Root)
 		self.assert_closed(Manifest)
+		for Kind in ("inspector_compile", "declaration_inspection"):
+			Records = [Item for Item in Manifest["build"]["commands"] if Item.get("kind") == Kind]
+			self.assertEqual(len(Records), 1)
+			self.assertEqual(Path(Records[0]["cwd"]), Root, "generated inspection must retain the project's toolchain and Lake context")
 		self.assertEqual(Manifest["sorry_axiom_hits"], [])
 		self.assertEqual(Manifest["target"]["axioms"], [])
 		Manifest, _ = self.verify(Root, Expected=None)
