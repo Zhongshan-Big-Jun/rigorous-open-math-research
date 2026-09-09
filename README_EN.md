@@ -8,6 +8,12 @@ This repository is a standard Codex marketplace (named `math-research`) containi
 
 ## Workflow overview
 
+The [2.0 refactor plan, in Chinese](docs/v2.0-refactor-plan.md) proposes short
+workflow guidance with fewer mandatory steps, retaining literature reading,
+annotatable tool cards, pointer retrieval and interruption recovery. Only the
+plan is complete; released and installed plugins remain on 1.x. The workflow
+below describes those existing versions.
+
 The [L1 regression](benchmarks/codex-20260906-l1/CONCLUSIONS.md) and the harder
 [repository Q9 comparison](benchmarks/codex-20260908-q9/CONCLUSIONS.md) are complete.
 All three Q9 treatments produced externally audited full proofs. Compared with

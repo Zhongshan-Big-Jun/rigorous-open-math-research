@@ -1,10 +1,27 @@
 # Optimization implementation progress
 
-Updated: 2026-09-09. State: FIRST_BATCH_RELEASED_AND_VERIFIED; L1_AND_Q9_COMPARISONS_COMPLETE.
+Updated: 2026-09-09. State: FIRST_BATCH_RELEASED_AND_VERIFIED; L1_AND_Q9_COMPARISONS_COMPLETE; V2_PLAN_DOCUMENTED.
+
+## Current direction: 2.0 planning
+
+The user requested a plan to turn the plugin into workflow guidance with far
+fewer unnecessary constraints, targeting version 2.0. The
+[2.0 refactor plan](v2.0-refactor-plan.md) is the current planning entry.
+It separates optional research methods, tool data integrity and benchmark
+controls. Literature reading, annotatable tool cards, pointer reuse and
+interruption recovery remain core capabilities. Mandatory research phases,
+role boundaries, repeated ledgers, default audit/formalization chains and quota
+gates are proposed for removal. This turn changes documentation only; all four
+installed/released versions remain 1.x and no new experiments are started.
 
 ## Contract
 
-User approved the optimization plan and added actual source reading, agent-annotatable tool cards and pointer tables, and quota interruption recovery. Preserve independent mathematical audit and immutable checkpoint semantics. Baseline: 516037f14f340107da8448b6e42df17317d9fc63.
+The earlier 1.x optimization contract included actual source reading,
+agent-annotatable tool cards and pointer tables, and quota interruption
+recovery, while preserving its independent-audit and checkpoint protocol.
+That is the historical contract for the completed batch and frozen comparisons,
+not a requirement to retain those research-process gates in 2.0.
+Baseline: 516037f14f340107da8448b6e42df17317d9fc63.
 
 ## Completed and verified
 
@@ -38,9 +55,10 @@ All six valid stages returned in one uninterrupted segment on the same account.
 Two earlier isolation-invalid attempts are preserved separately without scores.
 This task does not establish a general speedup or replace the L1 results.
 
-The next separate work is live literature-to-tool reuse and controlled in-flight
-interruption acceptance, followed by scoped ablations before considering L2.
-No L2 stage is automatically dispatched and no solver-speedup claim is made.
+The remaining live literature-to-tool reuse and controlled in-flight interruption
+acceptance now belong to the 2.0 plan. Implementation and new comparisons follow
+that plan when requested; no L2 stage is automatically dispatched and no
+solver-speedup claim is made.
 Resolve the actual loaded skill path before using helpers: the physical source
 inventory still reports retained same-name direct/personal copies and does not
 infer runtime selection from their existence.
