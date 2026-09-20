@@ -69,6 +69,8 @@ The [Fuse / Prove2Me report](docs/lean-verification-platform-research-2026-09-09
 
 ## Development
 
+When cloning with Git on Windows, enable long paths for archived review packets: `git -c core.longpaths=true clone https://github.com/xsoc1/rigorous-open-math-research.git`. CI sets the same option through the Git process environment.
+
 ```bash
 python3 -X utf8 scripts/validate_all.py
 python3 -X utf8 tests/test_research_state.py

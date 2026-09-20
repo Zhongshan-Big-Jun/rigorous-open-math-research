@@ -71,6 +71,8 @@ Fuse / Prove2Me 的方法调研见 [报告](docs/lean-verification-platform-rese
 
 ## 开发与维护
 
+Windows 使用 Git 克隆本仓库时, 深层归档检验包需要启用长路径: `git -c core.longpaths=true clone https://github.com/xsoc1/rigorous-open-math-research.git`. CI 通过 Git 进程环境设置同一选项.
+
 ```bash
 python3 -X utf8 scripts/validate_all.py
 python3 -X utf8 tests/test_research_state.py
