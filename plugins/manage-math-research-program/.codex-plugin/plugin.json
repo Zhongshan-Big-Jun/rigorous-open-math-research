@@ -1,6 +1,6 @@
 {
   "name": "manage-math-research-program",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Read literature into versioned sources and reusable tool cards, add searchable agent annotations, compare research experience and maintain a human editable understanding page. Use the Blueprint receiver for canonical accepted knowledge when present.",
   "author": {
     "name": "xsoc1"

@@ -25,8 +25,11 @@ A proved implication `H -> T` is a conditional result when the desired target is
 `T`. Allowed foundational axioms are a policy about the actual closure, not a
 requirement that every proof use all of them.
 
-Read back important target statements, definitions and conversion lemmas in
-mathematical language. Inspect hidden or impossible assumptions, empty domains,
+For important targets and conversion lemmas, have a fresh stateless subagent
+read back the actual declarations and relevant definitions in mathematical
+language, without the author's conversation or intended informal theorem.
+Use a separate fresh verification agent to compare that readback and the
+formal artifacts with the intended statement. Inspect hidden or impossible assumptions, empty domains,
 boundary cases and specialized parameters where relevant. Compare this with the
 user's intended theorem; restating the intended theorem is not a semantic audit.
 A machine match to a saved contract does not establish that the contract itself
@@ -45,8 +48,10 @@ identities support interrupted work. LSP state and build caches are replaceable
 acceleration, never the sole record of a verification result.
 
 Present machine results, semantic review, root closure and evidence scope
-separately. State any remaining leaves and assumptions. Independent review or an
-additional checker can add evidence where useful; neither cloud platforms nor
-per-obligation LLM re-proving is required for every proof.
+separately. State any remaining leaves and assumptions. Verification agents
+receive frozen minimal packets and do not inherit author context. An unavailable
+reviewer leaves review pending. Compiler sessions may stay warm during authoring;
+review independence concerns the reviewer context and evidence, not discarding
+valid immutable build caches. Additional kernel implementations remain optional.
 
 [Release history](references/changelog.md).

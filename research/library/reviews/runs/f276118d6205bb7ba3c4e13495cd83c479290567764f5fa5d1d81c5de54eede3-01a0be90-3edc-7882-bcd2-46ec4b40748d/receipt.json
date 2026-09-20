@@ -1,0 +1,7 @@
+{
+	"completion_sha256": "53ae9902c9bf8a21db7dac40f87da7a69099714a2b70d1123157dd20f8e25e4b",
+	"dispatch_sha256": "173f5b23e1bbf4d556d9508139900dbf778cbb1919ed43bcef1b85382adcc8a2",
+	"report_sha256": "f3c3ff2bbf7ce61579e73dc14d2d7d8900d1648935c9571f8fe63bb5e86af096",
+	"schema": "research-review-bundle/v1",
+	"trust": "COORDINATOR_ATTESTED_TOOL_TRANSCRIPT"
+}

@@ -1,0 +1,36 @@
+{
+	"author_ids": [
+		"coordinator-20260920-round2"
+	],
+	"claims": [
+		{
+			"id": "review-receipt",
+			"statement": "Review the actual review packet/receipt implementation against its documented trusted-coordinator boundary. Find ways inherited or author contexts, unchecked or stale evidence, unsupported completion, incomplete obligations, forged bare pass flags, corruption or retry behavior can incorrectly approve a review. Do not assume genuine service authenticity beyond the documented coordinator trust. Library import is supplied for helper context; correction integration is not part of this packet. Independently run or construct tests in disposable space if helpful.",
+			"verification": "software"
+		}
+	],
+	"inputs": {
+		"plugins/manage-math-research-program/skills/manage-math-research-program/references/v2-review.md": {
+			"role": "contract",
+			"sha256": "5bb60e40d62e08fe5ff1c867b1ffa407230f9c9d445e5c2b9564357c6315347d",
+			"snapshot": "inputs/plugins/manage-math-research-program/skills/manage-math-research-program/references/v2-review.md"
+		},
+		"plugins/manage-math-research-program/skills/manage-math-research-program/scripts/research_library.py": {
+			"role": "implementation",
+			"sha256": "8009fa00f729e839066efd761833e539c4e21dd9b9cb2bb0fac7bb35e933340e",
+			"snapshot": "inputs/plugins/manage-math-research-program/skills/manage-math-research-program/scripts/research_library.py"
+		},
+		"plugins/manage-math-research-program/skills/manage-math-research-program/scripts/research_review.py": {
+			"role": "implementation",
+			"sha256": "00c78deabc4bacad2af417738bae97d62a1d35e068d17a44a578b589bd3863c1",
+			"snapshot": "inputs/plugins/manage-math-research-program/skills/manage-math-research-program/scripts/research_review.py"
+		},
+		"plugins/manage-math-research-program/skills/manage-math-research-program/scripts/tests/test_research_review.py": {
+			"role": "implementation",
+			"sha256": "3a61f7359df0e67e5d537ef95e2b4958def9b471cec54f68e92ecedc237b1675",
+			"snapshot": "inputs/plugins/manage-math-research-program/skills/manage-math-research-program/scripts/tests/test_research_review.py"
+		}
+	},
+	"kind": "mathematics",
+	"schema": "research-review-packet/v1"
+}

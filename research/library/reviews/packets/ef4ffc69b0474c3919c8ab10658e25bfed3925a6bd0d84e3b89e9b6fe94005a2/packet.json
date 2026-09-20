@@ -1,0 +1,88 @@
+{
+	"author_ids": [
+		"01a0be43-fcf5-7700-b44b-a3a09759418c",
+		"01a0be76-3212-7d03-9f16-d6d3ecac95a7",
+		"coordinator-20260920-round2"
+	],
+	"claims": [
+		{
+			"id": "review-integrity",
+			"statement": "Independently review packet/receipt integrity and the supplied prior rejection fixes: complete packet schema at consumption, content identity and fresh reviewer binding, duplicate JSON keys, stale/current source, incomplete/negative/no-return handling and crash retry. Seek new defects within the documented trusted-coordinator boundary; do not claim cryptographic service or OS attestation.",
+			"verification": "software"
+		},
+		{
+			"id": "correction-lifecycle",
+			"statement": "Independently verify issue intake, immutable versions, explicit downstream propagation, default exclusion, history/annotations, malformed old cards, repair proposals and scoped release against research_review. Check editing/reindex, generic PASS, substituted obligations, changed issues or dependencies, corrupt/missing store or receipts, failed writes, crash retries and concurrency. Canonical must remain untouched. Reproduce relevant behavior in disposable space; do not edit originals. Specifically reproduce and evaluate fixes for CL1 committed request membership/head including trailing deletion, CL2 opaque indexing and IncludeUnreviewed bypass, CL3 exact persisted registration intent and crash retry, CL4 conflicting path aliases, and CL5 supported manual opaque repair with clearly documented save_card limitation. Verify explicit legacy adoption rejects shortened or wrong expected history and preserves immutable request/event bytes. Do not infer authentication against a trusted coordinator maliciously replacing all records and anchors. Reproduce CL6 from the latest independent rejection: quarantine existing A1, with B depending on A1 and C on B; releasing A0->A1 alone must leave B and C blocked. Verify the full issue dependency closure precedes individual release projection; each downstream repair still requires its own exact review, including preexisting repairs and multi-issue invalidation. The new regression and all earlier obligations must continue to hold.",
+			"verification": "software"
+		}
+	],
+	"inputs": {
+		"docs/v2.0.1-evidence/corrections-rejected-downstream.json": {
+			"role": "prior-findings",
+			"sha256": "36a7d7cc1df1e79c2a6f58e1be2d90c843736b98555efca54549cb250947b08d",
+			"snapshot": "inputs/docs/v2.0.1-evidence/corrections-rejected-downstream.json"
+		},
+		"docs/v2.0.1-evidence/corrections-rejected-initial.json": {
+			"role": "prior-findings",
+			"sha256": "feb4b40209add00506a7708ea28ba86429f41da74a8e499e28ef7a4ba28b22a0",
+			"snapshot": "inputs/docs/v2.0.1-evidence/corrections-rejected-initial.json"
+		},
+		"docs/v2.0.1-evidence/review-rejected-initial.json": {
+			"role": "prior-findings",
+			"sha256": "8410bc481b36708dcb49132a14d9261f027aad620141e66eaa52bc243be8c4ce",
+			"snapshot": "inputs/docs/v2.0.1-evidence/review-rejected-initial.json"
+		},
+		"plugins/manage-math-research-program/skills/manage-math-research-program/references/v2-corrections.md": {
+			"role": "contract",
+			"sha256": "d365d05162f58c9617a2eb50c49aa99e693616a23af87f129735ca48aee2891b",
+			"snapshot": "inputs/plugins/manage-math-research-program/skills/manage-math-research-program/references/v2-corrections.md"
+		},
+		"plugins/manage-math-research-program/skills/manage-math-research-program/references/v2-review.md": {
+			"role": "contract",
+			"sha256": "bfeb6f4c900b8e60277bf3f4987141953398fbedcec2fedb2ef967ff0bfa03df",
+			"snapshot": "inputs/plugins/manage-math-research-program/skills/manage-math-research-program/references/v2-review.md"
+		},
+		"plugins/manage-math-research-program/skills/manage-math-research-program/scripts/research_corrections.py": {
+			"role": "implementation",
+			"sha256": "9cd066b5995860250d984ee89c168f64e41d28f6a580bdfd7d59e71d7cbf671e",
+			"snapshot": "inputs/plugins/manage-math-research-program/skills/manage-math-research-program/scripts/research_corrections.py"
+		},
+		"plugins/manage-math-research-program/skills/manage-math-research-program/scripts/research_experience.py": {
+			"role": "implementation-dependency",
+			"sha256": "47001d9b809c7892e692a75ea0efb8d4659059106515c9bcdcef1e03410a2764",
+			"snapshot": "inputs/plugins/manage-math-research-program/skills/manage-math-research-program/scripts/research_experience.py"
+		},
+		"plugins/manage-math-research-program/skills/manage-math-research-program/scripts/research_library.py": {
+			"role": "implementation",
+			"sha256": "273d31edff1ed89747b81fac5da9dc0cd4e5b3d092cd4718e9fb8a4ec2d96447",
+			"snapshot": "inputs/plugins/manage-math-research-program/skills/manage-math-research-program/scripts/research_library.py"
+		},
+		"plugins/manage-math-research-program/skills/manage-math-research-program/scripts/research_review.py": {
+			"role": "implementation",
+			"sha256": "e5ae2a786bc9ac26ce489abe05627d166bc4699389ba20f938540bbe60ae2c14",
+			"snapshot": "inputs/plugins/manage-math-research-program/skills/manage-math-research-program/scripts/research_review.py"
+		},
+		"plugins/manage-math-research-program/skills/manage-math-research-program/scripts/tests/test_research_corrections.py": {
+			"role": "implementation",
+			"sha256": "8237f883bdb59060a631a2a8f1ceef4bcccd9713fe2d701b919d6df752616c3d",
+			"snapshot": "inputs/plugins/manage-math-research-program/skills/manage-math-research-program/scripts/tests/test_research_corrections.py"
+		},
+		"plugins/manage-math-research-program/skills/manage-math-research-program/scripts/tests/test_research_experience.py": {
+			"role": "behavior-tests",
+			"sha256": "0183a24a916ffd97825f33cb832e2fb6b77fa29c16bb279904845cab2dfd34c4",
+			"snapshot": "inputs/plugins/manage-math-research-program/skills/manage-math-research-program/scripts/tests/test_research_experience.py"
+		},
+		"plugins/manage-math-research-program/skills/manage-math-research-program/scripts/tests/test_research_library_v2.py": {
+			"role": "implementation",
+			"sha256": "cefdc9e2bae2ad1885755a52e22f5d05f59419c44f54742550572a1b8a2139a8",
+			"snapshot": "inputs/plugins/manage-math-research-program/skills/manage-math-research-program/scripts/tests/test_research_library_v2.py"
+		},
+		"plugins/manage-math-research-program/skills/manage-math-research-program/scripts/tests/test_research_review.py": {
+			"role": "implementation",
+			"sha256": "48fa5faf43323d4232f957ce79e54c1af2526ff1d4024223109f434225bb8e92",
+			"snapshot": "inputs/plugins/manage-math-research-program/skills/manage-math-research-program/scripts/tests/test_research_review.py"
+		}
+	},
+	"kind": "mathematics",
+	"schema": "research-review-packet/v1"
+}

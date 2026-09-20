@@ -1,6 +1,6 @@
 ---
 name: math-research-workflow
-description: Support a long-running mathematics project with reusable research knowledge, literature tools, continuity across sessions, and optional Lean verification. Use when coordinating research across problems or sessions, or choosing the relevant research tools.
+description: Support a long-running mathematics project with reusable knowledge, literature tools, continuity, isolated review and integrated formal verification. Use when coordinating research across problems or sessions, correcting prior results, or choosing the relevant research tools.
 ---
 
 # Mathematics research workflow
@@ -25,6 +25,19 @@ Use components independently as needed:
 - `$manage-math-research-program`: read and curate literature, tools, annotations,
   research experience, and a human editable project understanding page.
 - `$lean-verify`: obtain compiler feedback or check a precise formal target.
+
+Build verification into the argument: give each substantive inference explicit
+hypotheses and an evidence status, and use Lean feedback while developing the
+steps whose formal contracts can be checked. Partial formalization leaves the
+remaining steps visible; it never certifies an entire informal proof.
+
+Verification agents start with fresh context and a frozen, minimal evidence
+packet, without the author's conversation or prior verdicts. Author self-checks
+are development evidence. Before accepting a repaired result or reusing it as
+verified knowledge, obtain this separate review. Read the [verification loop](references/v2-verification-loop.md)
+when delegating checks, comparing Lean with the intended statement, or receiving
+an internal or external audit. Unresolved findings suspend affected library
+reuse and propagate to dependents until a reviewed repair resolves them.
 
 Keep the current goal, useful findings with pointers, remaining uncertainty and
 next ideas in the project's existing progress page. If interrupted, read its

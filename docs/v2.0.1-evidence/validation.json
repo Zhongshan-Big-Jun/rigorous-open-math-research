@@ -1,0 +1,22 @@
+{
+  "runtime_hashes": {
+    "scripts/research_review.py": "e5ae2a786bc9ac26ce489abe05627d166bc4699389ba20f938540bbe60ae2c14",
+    "scripts/research_corrections.py": "fb7ea80507d165372a6e9177c03f2fde339b6e0095a12599e7bc111624bf062e",
+    "scripts/research_library.py": "273d31edff1ed89747b81fac5da9dc0cd4e5b3d092cd4718e9fb8a4ec2d96447",
+    "scripts/tests/test_research_review.py": "48fa5faf43323d4232f957ce79e54c1af2526ff1d4024223109f434225bb8e92",
+    "scripts/tests/test_research_corrections.py": "73fd740de70b1cb82995c52b21f276fac69222f07049e6e40bfd780fdce8f65c",
+    "scripts/tests/test_research_library_v2.py": "cefdc9e2bae2ad1885755a52e22f5d05f59419c44f54742550572a1b8a2139a8"
+  },
+  "linux_tests": 84,
+  "windows_tests": 84,
+  "compatibility_tests": 7,
+  "lean_portable_tests": 12,
+  "repository_checks": 81,
+  "publication": "UNPUBLISHED_WORKTREE_2.0.1",
+  "independent_software_review": "APPROVED",
+  "transcripts_are_synthetic_in_unit_tests": true,
+  "receipt_portability": "Original absolute dispatch path required; WSL-origin receipts validated from WSL; native Windows preflight rejected changed prompt path.",
+  "independent_software_bundle": "research/library/reviews/runs/970acf55865281fc31d81d9c4741e02fa544b4dfcffbc823ebebb3559b316070-01a0bea7-0ab6-7bb2-936c-49845ca1ea86",
+  "independent_supplied_tests": 83,
+  "independent_extra_test_methods": 10
+}

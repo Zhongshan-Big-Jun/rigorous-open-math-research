@@ -1,0 +1,15 @@
+test_conflicting_dependency_versions_reject_new_and_legacy_revisions (test_research_corrections.CorrectionTests.test_conflicting_dependency_versions_reject_new_and_legacy_revisions) ... FAIL
+
+======================================================================
+FAIL: test_conflicting_dependency_versions_reject_new_and_legacy_revisions (test_research_corrections.CorrectionTests.test_conflicting_dependency_versions_reject_new_and_legacy_revisions)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/f/LaTeX/BVE research/_xsoc1_work/plugins/manage-math-research-program/skills/manage-math-research-program/scripts/tests/test_research_corrections.py", line 163, in test_conflicting_dependency_versions_reject_new_and_legacy_revisions
+    with self.assertRaisesRegex(ValueError, "conflicting dependency versions"):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 0.067s
+
+FAILED (failures=1)

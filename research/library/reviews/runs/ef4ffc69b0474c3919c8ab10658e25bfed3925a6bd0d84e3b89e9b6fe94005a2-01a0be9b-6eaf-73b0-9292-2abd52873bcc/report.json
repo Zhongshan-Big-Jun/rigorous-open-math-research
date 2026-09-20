@@ -1,0 +1,49 @@
+{
+	"checked_paths": [
+		"docs/v2.0.1-evidence/corrections-rejected-downstream.json",
+		"docs/v2.0.1-evidence/corrections-rejected-initial.json",
+		"docs/v2.0.1-evidence/review-rejected-initial.json",
+		"plugins/manage-math-research-program/skills/manage-math-research-program/references/v2-corrections.md",
+		"plugins/manage-math-research-program/skills/manage-math-research-program/references/v2-review.md",
+		"plugins/manage-math-research-program/skills/manage-math-research-program/scripts/research_corrections.py",
+		"plugins/manage-math-research-program/skills/manage-math-research-program/scripts/research_experience.py",
+		"plugins/manage-math-research-program/skills/manage-math-research-program/scripts/research_library.py",
+		"plugins/manage-math-research-program/skills/manage-math-research-program/scripts/research_review.py",
+		"plugins/manage-math-research-program/skills/manage-math-research-program/scripts/tests/test_research_corrections.py",
+		"plugins/manage-math-research-program/skills/manage-math-research-program/scripts/tests/test_research_experience.py",
+		"plugins/manage-math-research-program/skills/manage-math-research-program/scripts/tests/test_research_library_v2.py",
+		"plugins/manage-math-research-program/skills/manage-math-research-program/scripts/tests/test_research_review.py"
+	],
+	"claim_results": [
+		{
+			"id": "review-integrity",
+			"reason": "All 16 supplied review tests passed. Inspection and execution confirmed consumption-time schema validation, unique obligations, packet content identity, immutable reviewer binding, recursive duplicate-key rejection, and invalidation by changed sources, snapshots or transcripts. Independent checks confirmed that negative and incomplete reports remain negative, cannot be overwritten by approval, and missing completion cannot produce approval. Actual child-process exits after identity, spawn, dispatch, completion, report and receipt publication recovered through identical retries after confirming termination and preserving the stale lock. The supplied historical review findings are corrected; no remaining actionable defect was identified within the declared trusted-coordinator boundary.",
+			"verdict": "APPROVED"
+		},
+		{
+			"id": "correction-lifecycle",
+			"reason": "All 81 supplied tests and six additional independent test methods passed. CL1–CL5 reproductions confirmed detection of trailing journal deletion, opaque-card exclusion despite IncludeUnreviewed, exact registration-intent recovery with corruption rejection, conflicting-alias rejection, and the documented manual opaque repair with save_card's limitation preserved. Legacy adoption rejected incorrect or shortened expectations and preserved request/event bytes. The CL6 repair computes the full issue closure before projecting releases: upstream-only release left direct and transitive dependents blocked, including preexisting downstream repairs and a second issue; each downstream release required its own exact review. Changed dependencies and missing receipts invalidated reuse. Supplied tests also exercised editing/reindexing, annotations, substituted obligations, store corruption, failed writes, process exits and concurrent writers. Canonical sentinel files remained unchanged. However, an additional independently reproduced regression fails: distinct dependency versions at one path collapse into a single required review binding, allowing release without supplying every declared dependency version.",
+			"verdict": "CHANGES_REQUIRED"
+		}
+	],
+	"findings": [
+		{
+			"claim_id": "correction-lifecycle",
+			"id": "CL7",
+			"lines": "459-460",
+			"path": "plugins/manage-math-research-program/skills/manage-math-research-program/scripts/research_corrections.py",
+			"problem": "required_bindings keys dependency evidence only by location. bind_dependencies permits two distinct hashes at the same location, so the later assignment silently overwrites the earlier required version. Packet generation and release verification therefore do not enforce the documented requirement to bind and check every declared dependency.",
+			"reproduction": "Saved two upstream versions at tools/upstream.md and made the version with the lexicographically greater hash current. Saved a repaired dependent declaring both exact upstream versions. review_requirements supplied only the greater hash; neither the other version's file nor its immutable snapshot appeared among the packet inputs. A clearly labeled synthetic approval of that generated packet was accepted by release, which returned RELEASED; default query returned the dependent with reuse_allowed=true. This was reproduced twice, including an independent regression that failed its assertion that the incompletely covered repair must remain blocked.",
+			"requested_change": "Reject conflicting version hashes for one canonical dependency location, or explicitly bind and require review of an immutable snapshot for every declared version. Prevent dictionary overwrites from reducing required evidence, including when checking existing stored revisions. Add regression coverage asserting that release cannot succeed with an omitted dependency version.",
+			"severity": "medium"
+		}
+	],
+	"limitations": [
+		"Receipt tests used explicitly synthetic transcripts. They do not establish live service authenticity, actual context isolation, completeness of author disclosure or OS attestation.",
+		"Execution used disposable Linux filesystem projects, injected failures, actual process exits and supplied contention tests. Windows filesystem behavior, power-loss durability and exhaustive concurrency interleavings were not verified.",
+		"This review evaluates software obligations. Successful tests and mathematical fixtures do not prove mathematical correctness, universal claims or complete formalization.",
+		"Only the frozen packet and its 13 listed snapshots were inspected as project evidence. The source project was not modified. Final verification confirmed that the packet hash and every listed snapshot hash still matched."
+	],
+	"packet_sha256": "ef4ffc69b0474c3919c8ab10658e25bfed3925a6bd0d84e3b89e9b6fe94005a2",
+	"verdict": "CHANGES_REQUIRED"
+}

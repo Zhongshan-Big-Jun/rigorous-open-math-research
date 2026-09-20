@@ -1,6 +1,6 @@
 {
   "name": "lean-verify",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Use Lean feedback during research and check execution, exact declarations, transitive axioms and intended mathematical scope. Preserve input-bound evidence and reuse unchanged semantic reviews.",
   "author": {
     "name": "xsoc1"

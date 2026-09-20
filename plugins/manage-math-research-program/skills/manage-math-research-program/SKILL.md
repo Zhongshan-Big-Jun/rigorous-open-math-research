@@ -32,6 +32,16 @@ references or failure modes when useful. Small cards do not need an exhaustive
 form. Agent annotations are searchable and bound to the card version they
 comment on; they do not silently broaden its proof or verification scope.
 
+When an audit, counterexample or later source correction challenges a card,
+use the [correction module](references/v2-corrections.md) to suspend affected
+retrieval, trace explicit dependencies, replace erroneous current content and
+rebuild pointers. Preserve historical versions and human annotations. A file
+edit or new index alone cannot clear an unresolved finding. Restoration needs
+a fresh isolated review bound to the issue and repaired versions; the
+[review packet tools](references/v2-review.md) retain its actual dispatch,
+completion and evidence identities. A correction annotation by itself is not
+a retraction mechanism.
+
 An experience entry can preserve a successful route or a useful obstruction.
 Record what failed, its conditions and what new fact would justify another
 attempt. Distinguish disproved statements, weak methods, missing lemmas and

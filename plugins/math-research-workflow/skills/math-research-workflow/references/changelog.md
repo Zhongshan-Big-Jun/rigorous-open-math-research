@@ -1,5 +1,11 @@
 # Release history
 
+## 2.0.1 (working tree, 2026-09-20)
+
+Integrate formal feedback, fresh-context verification and correction propagation at the acceptance/reuse boundary.
+
+Validation and publication are recorded in the round 2 correction report; a version field does not establish installation or release.
+
 ## 2.0.0
 
 Concise, independent research guidance; reusable experience from successful and failed routes; versioned literature and annotations; current-state continuity; exact Lean target verification and reusable local feedback. Legacy immutable evidence stays readable. See the repository 2.0 implementation report for tested scope.

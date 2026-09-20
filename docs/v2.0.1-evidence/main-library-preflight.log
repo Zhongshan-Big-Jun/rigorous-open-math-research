@@ -1,0 +1,22 @@
+Requirement identity unchanged: left-definite-theory
+Requirement identity unchanged: left-definite-moment-recurrence
+Requirement identity unchanged: moment-jump-completeness
+Requirement identity unchanged: denseness-criteria
+Requirement identity unchanged: third-order-minimal-K1
+Requirement identity unchanged: balanced-phase
+Requirement identity unchanged: mw-zero-truncation
+Requirement identity unchanged: mw-periodic-extension
+Requirement identity unchanged: spectral-monotonicity-reduction
+Traceback (most recent call last):
+  File "F:\tools\math-audit-round2-20260920\preflight-main-library.py", line 24, in <module>
+    assert review.verify_review_bundle(Project,bundle)['verdict']=='APPROVED'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\LaTeX\BVE research\_xsoc1_work\plugins\manage-math-research-program\skills\manage-math-research-program\scripts\research_review.py", line 285, in verify_review_bundle
+    Folder, Dispatch, Packet, Hash = load_dispatch(project, BundlePath)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\LaTeX\BVE research\_xsoc1_work\plugins\manage-math-research-program\skills\manage-math-research-program\scripts\research_review.py", line 259, in load_dispatch
+    Agent = check_spawn(PacketPath, Packet, json.loads(SpawnRaw, object_pairs_hook=unique_object))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\LaTeX\BVE research\_xsoc1_work\plugins\manage-math-research-program\skills\manage-math-research-program\scripts\research_review.py", line 178, in check_spawn
+    raise ValueError("dispatch does not match the frozen minimal review prompt")
+ValueError: dispatch does not match the frozen minimal review prompt

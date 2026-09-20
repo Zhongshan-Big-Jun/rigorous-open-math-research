@@ -140,17 +140,21 @@ class LibraryTests(unittest.TestCase):
 		self.assertEqual(Result["needs_metadata_review"], ["tools/broken.md"])
 		self.assertEqual(len(library.query_tools(self.Root, "lemma")["hits"]), 1)
 		self.assertFalse(library.query_tools(self.Root, "broken")["hits"])
-		Hit = library.query_tools(self.Root, "broken", IncludeUnreviewed=True)["hits"][0]
+		self.assertFalse(library.query_tools(self.Root, "broken", IncludeUnreviewed=True)["hits"])
+		Hit = library.query_tools(self.Root, "broken", IncludeUnreviewed=True, IncludeAffected=True)["hits"][0]
 		self.assertEqual(Hit["metadata_status"], "UNPARSEABLE")
+		self.assertFalse(Hit["reuse_allowed"])
+		self.assertEqual(Hit["trust"], "HISTORY_ONLY_NOT_REUSE")
 		self.assertEqual(Broken.read_bytes(), Raw)
 		Index = self.Root / "index/tools.json"
 		Data = library.read_json(Index)
-		Row = next(Item for Item in Data["items"] if Item["location"] == "tools/broken.md")
+		Row = next(Item for Item in Data["blocked_items"] if Item["location"] == "tools/broken.md")
 		Row.update(lifecycle="archived", applicability=[dict(status="retired")])
 		Index.write_bytes(library.json_bytes(Data))
 		library.make_index(self.Root, ["tools"])
 		self.assertFalse(library.query_tools(self.Root, "broken", IncludeUnreviewed=True)["hits"])
-		self.assertTrue(library.query_tools(self.Root, "broken", IncludeArchived=True, IncludeUnreviewed=True)["hits"])
+		self.assertFalse(library.query_tools(self.Root, "broken", IncludeArchived=True, IncludeUnreviewed=True)["hits"])
+		self.assertTrue(library.query_tools(self.Root, "broken", IncludeArchived=True, IncludeUnreviewed=True, IncludeAffected=True)["hits"])
 		Unterminated = self.Root / "tools/unterminated.md"
 		Unterminated.write_text("---\napplicability:\n- status: retired\n# Missing closing delimiter\n", encoding="utf-8")
 		Result = library.make_index(self.Root, ["tools"])

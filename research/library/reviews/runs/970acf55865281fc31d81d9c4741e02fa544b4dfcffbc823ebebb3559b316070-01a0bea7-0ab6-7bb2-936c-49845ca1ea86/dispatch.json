@@ -1,0 +1,8 @@
+{
+	"packet": "research/library/reviews/packets/970acf55865281fc31d81d9c4741e02fa544b4dfcffbc823ebebb3559b316070/packet.json",
+	"packet_sha256": "970acf55865281fc31d81d9c4741e02fa544b4dfcffbc823ebebb3559b316070",
+	"reviewer_id": "01a0bea7-0ab6-7bb2-936c-49845ca1ea86",
+	"schema": "research-review-dispatch/v1",
+	"spawn_sha256": "dd55bbecb36451a2d3f3d4af709f5a9f29adf949cf8a991631698e59dc056737",
+	"trust": "COORDINATOR_ATTESTED_TOOL_TRANSCRIPT"
+}

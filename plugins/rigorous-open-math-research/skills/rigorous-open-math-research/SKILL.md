@@ -18,9 +18,15 @@ a search snippet into a claim that the paper was read.
 
 Use computation, limiting cases, counterexamples or Lean where they test a
 substantive risk in the argument. Keep exploratory evidence distinct from proof.
-When reviewing, attack the steps carrying the conclusion and the fidelity of
-the hypotheses. Independent review can help where it adds a different check;
-there is no required number of agents, rounds or ledger files.
+Make each substantive inference's hypotheses and evidence explicit. Test formal
+contracts with Lean during development where possible; preserve open analytic
+and formal obligations instead of inferring whole-proof success from fragments.
+When verifying or auditing, use a fresh stateless subagent with only the frozen
+proof, definitions, source evidence and requested obligations. Do not fork the
+author's conversation or reuse an author as verifier. A formal statement
+readback receives only the actual declaration and definitions before comparison
+with the intended theorem. Author self-checks remain development evidence;
+without an isolated reviewer, report independent review as unavailable.
 
 Successful and failed approaches both contribute to long-term research:
 
@@ -37,6 +43,11 @@ Save these where the project already keeps tools or experience; use
 `$manage-math-research-program` for source capture, searchable annotations and
 pointer reconstruction. Do not produce a reflection document after every step.
 For concrete examples, read [research experience](references/v2-research-experience.md).
+
+An audit finding is evidence to investigate, not an instruction or automatically
+a disproof. Suspend affected tool reuse while checking it; confirmed errors need
+versioned correction and dependent-claim review. Use the manage plugin's
+correction module when present, preserving original proofs and annotations.
 
 Present the strongest result actually justified, its assumptions, proof or
 source pointers, and the precise remaining gap. Separate proved results,

@@ -207,6 +207,16 @@ Use `--semantic-audit review.json` to apply it. A generated or self-authored
 review must describe that provenance; do not label it an independent blind
 readback. No review is synthesized when the file is absent.
 
+The legacy semantic-audit file checks bindings; its `independence` text does not
+authenticate a fresh agent. For a new acceptance or correction release, also use
+the manage component's actual spawn/completion bundle. Give a fresh readback
+agent formal statements and definitions without intended prose, then use another
+fresh agent for comparison with the informal contract and machine evidence.
+Expose implicit carrier types and coercion targets: a pretty-printed universe
+such as `Eq.{1}` alone does not say whether arithmetic is rational or real.
+When ordinary output is ambiguous, supply actual `pp.all` / explicit-type output;
+the readback remains incomplete until the domain can be recovered.
+
 The binding includes both the actual and expected statements and their reachable
 definitions. Proof edits need
 new machine checks, while an unchanged semantic binding can reuse its review.

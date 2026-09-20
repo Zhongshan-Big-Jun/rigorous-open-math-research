@@ -1,0 +1,67 @@
+{
+	"author_ids": [
+		"01a0be43-fcf5-7700-b44b-a3a09759418c",
+		"coordinator-20260920-round2"
+	],
+	"claims": [
+		{
+			"id": "review-integrity",
+			"statement": "Independently review packet/receipt integrity and the supplied prior rejection fixes: complete packet schema at consumption, content identity and fresh reviewer binding, duplicate JSON keys, stale/current source, incomplete/negative/no-return handling and crash retry. Seek new defects within the documented trusted-coordinator boundary; do not claim cryptographic service or OS attestation.",
+			"verification": "software"
+		},
+		{
+			"id": "correction-lifecycle",
+			"statement": "Independently verify issue intake, immutable versions, explicit downstream propagation, default exclusion, history/annotations, malformed old cards, repair proposals and scoped release against research_review. Check editing/reindex, generic PASS, substituted obligations, changed issues or dependencies, corrupt/missing store or receipts, failed writes, crash retries and concurrency. Canonical must remain untouched. Reproduce relevant behavior in disposable space; do not edit originals.",
+			"verification": "software"
+		}
+	],
+	"inputs": {
+		"docs/v2.0.1-evidence/review-rejected-initial.json": {
+			"role": "prior-findings",
+			"sha256": "8410bc481b36708dcb49132a14d9261f027aad620141e66eaa52bc243be8c4ce",
+			"snapshot": "inputs/docs/v2.0.1-evidence/review-rejected-initial.json"
+		},
+		"plugins/manage-math-research-program/skills/manage-math-research-program/references/v2-corrections.md": {
+			"role": "contract",
+			"sha256": "6b88bf39a9b1db876d511cbe27a4bf922321114ded6492b29725b5681081aeb6",
+			"snapshot": "inputs/plugins/manage-math-research-program/skills/manage-math-research-program/references/v2-corrections.md"
+		},
+		"plugins/manage-math-research-program/skills/manage-math-research-program/references/v2-review.md": {
+			"role": "contract",
+			"sha256": "bfeb6f4c900b8e60277bf3f4987141953398fbedcec2fedb2ef967ff0bfa03df",
+			"snapshot": "inputs/plugins/manage-math-research-program/skills/manage-math-research-program/references/v2-review.md"
+		},
+		"plugins/manage-math-research-program/skills/manage-math-research-program/scripts/research_corrections.py": {
+			"role": "implementation",
+			"sha256": "26b59804484771227b0b8abea642ed6a53383200dfe867408a328ff4497a540e",
+			"snapshot": "inputs/plugins/manage-math-research-program/skills/manage-math-research-program/scripts/research_corrections.py"
+		},
+		"plugins/manage-math-research-program/skills/manage-math-research-program/scripts/research_library.py": {
+			"role": "implementation",
+			"sha256": "0925e056e5bcebeedf00b5253dec302094f35ceeb3aa317ed4dfb557edd897f8",
+			"snapshot": "inputs/plugins/manage-math-research-program/skills/manage-math-research-program/scripts/research_library.py"
+		},
+		"plugins/manage-math-research-program/skills/manage-math-research-program/scripts/research_review.py": {
+			"role": "implementation",
+			"sha256": "e5ae2a786bc9ac26ce489abe05627d166bc4699389ba20f938540bbe60ae2c14",
+			"snapshot": "inputs/plugins/manage-math-research-program/skills/manage-math-research-program/scripts/research_review.py"
+		},
+		"plugins/manage-math-research-program/skills/manage-math-research-program/scripts/tests/test_research_corrections.py": {
+			"role": "implementation",
+			"sha256": "d50838cbde9addf9091ab7f45013ed13f23798067b547b802542e095da0fe431",
+			"snapshot": "inputs/plugins/manage-math-research-program/skills/manage-math-research-program/scripts/tests/test_research_corrections.py"
+		},
+		"plugins/manage-math-research-program/skills/manage-math-research-program/scripts/tests/test_research_library_v2.py": {
+			"role": "implementation",
+			"sha256": "c365801e8b2fc300476a3b920cffc2fd32ed6c3a35ce2347f1ca52e109b82edf",
+			"snapshot": "inputs/plugins/manage-math-research-program/skills/manage-math-research-program/scripts/tests/test_research_library_v2.py"
+		},
+		"plugins/manage-math-research-program/skills/manage-math-research-program/scripts/tests/test_research_review.py": {
+			"role": "implementation",
+			"sha256": "48fa5faf43323d4232f957ce79e54c1af2526ff1d4024223109f434225bb8e92",
+			"snapshot": "inputs/plugins/manage-math-research-program/skills/manage-math-research-program/scripts/tests/test_research_review.py"
+		}
+	},
+	"kind": "mathematics",
+	"schema": "research-review-packet/v1"
+}

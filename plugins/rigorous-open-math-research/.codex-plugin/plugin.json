@@ -1,6 +1,6 @@
 {
   "name": "rigorous-open-math-research",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Develop and audit research-level mathematical arguments. Preserve precise scope, useful constructions and insights from successful and failed routes without a fixed phase or agent protocol.",
   "author": {
     "name": "xsoc1"

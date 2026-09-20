@@ -4,7 +4,9 @@
 
 Codex plugins for long-term collaborative mathematics. Turn papers, successful proofs and failed approaches into reusable tools and understanding that help with the next problem.
 
-All four components use version `2.0.0`. Short guidance and concrete tools support the researcher's choice of proofs, counterexamples, literature, computation, collaboration and Lean.
+All four components use version `2.0.1`. Short guidance and concrete tools support the researcher's choice of proofs, counterexamples, literature, computation, collaboration and Lean.
+
+The September 20 correction adds fresh-context review, formal feedback during research, and version-bound library correction. See the [design and validation record](docs/v2.0.1-verification-corrections.md).
 
 ## What the plugins support
 
@@ -12,6 +14,7 @@ All four components use version `2.0.0`. Short guidance and concrete tools suppo
 | --- | --- |
 | Find and use previously read literature | Preserve source content, versions and locators; read bounded segments; rebuild tool pointers |
 | Let agents record interpretations and questions | Searchable free-form annotations tied to card versions, with provenance and scope |
+| Respond to errors found by later audits | Quarantine affected versions and dependencies, repair active cards, and restore each card after independent review |
 | Learn from successful and failed routes | Preserve transformations, constructions, programs, obstructions and reconsideration conditions; compare routes when useful |
 | Keep the human involved | An editable understanding page distinguishing explanations, candidate ideas, intuition and open decisions |
 | Continue after a session or quota interruption | Current progress, atomic snapshots, actual job identities and full logs, with stale-write and duplicate-dispatch protection |
