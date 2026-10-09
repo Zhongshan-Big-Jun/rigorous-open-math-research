@@ -1,0 +1,55 @@
+{
+	"bindings": {
+		"before-manage-2.0.2.zip": "99e6d019d93e109eda69d66fa6d47bc1b49761bbdb548eea5faec9e170624007",
+		"prior-forward-v3.json": "1bd0798d4434dbc671bb5f42a0ef17aabb4a67f53f4fff90a19f85901e5cb2b9",
+		"prior-forward-v4.json": "c142ec803b3f09c884858af0ffd44524c09a6397e461ff461ac2da65fd22a005",
+		"prior-software-v3.json": "bb050af542c8246656b210f5c5af6df27228cd2c6752b8bf924d071d0bd372dd",
+		"prior-software-v4.json": "18771d451fa31c520f28da4768175d7219da80e758a71f00f2dad7e5250b1936",
+		"prior-software-v5.json": "940b52755cf25d0942777b9fe8cb5b5c2b4be48f8a2f49e764b5853573bd3d13",
+		"prior-software-v6.json": "a409ddc7e2a164bee1dab52618790fd805b13dc0a29dc1aaabd6eecff7c6ce5c",
+		"scope-v7.md": "53ccd1bf8b52238ac0517e65f548d825bbcaa6b56b3977f73a2fb1ab390c6f26",
+		"sl-inputs.zip": "251e849bfdaaf3f841c0bfc838c7831b9bc68476b75966344bf436e9296e6c12",
+		"source-v7.zip": "9a8a2c8cde30c02972cca36d204097b2351ba76f17ca117f7fc767013ce0c4a4",
+		"user-request.txt": "e8da38552aecaaa95da1d89585b83ad5798d8a38289bb5b4b9a0b10e6880c67b"
+	},
+	"bundle": "research/library/reviews/runs/35b38f41006c1900f8b26d828107696170d29dc41cc6b49dcdf29bafb61f4aec-task-9592d1ed13f95b17734c54a5dac59d3c4e9ea94355bbe01f0ccfc89967ad0eee",
+	"checked_paths": [
+		"scope-v7.md",
+		"user-request.txt",
+		"source-v7.zip",
+		"before-manage-2.0.2.zip",
+		"sl-inputs.zip",
+		"prior-forward-v3.json",
+		"prior-forward-v4.json",
+		"prior-software-v3.json",
+		"prior-software-v4.json",
+		"prior-software-v5.json",
+		"prior-software-v6.json"
+	],
+	"claims": [
+		{
+			"id": "current-reuse-boundaries",
+			"reason": "当前 v7 已修正单独 source_id 和规范 source.json 路径的标题改名旁路: 同 URL/version/raw/text 的新捕获保持隔离, 多种等价路径和缺失旧 live metadata 的情况也保持隔离. 三个捕获组成文件分别受影响时, 当前与实际旧版生成的比较读回为历史, 理解页省略相关候选解释, 关系复用与 impact 禁止, 旧导出拒绝且原字节保留. 继承字段、正文直接命中排序及先前关系依据门控也通过独立检查. 同一 12 卡语料的旧、新五问实际运行并核对了对应源文范围; 没有将整数替代系、发散侧闭包、有界谱尾或 G2 提升为更广结论. 但仍有两项当前义务未满足: 同时提供 path 与 source_id 可绕过捕获聚合门控, 使候选解释、理解页、关系影响分析及导出恢复许可; 不同 URL 或版本的 metadata 一旦正常登记为精确依赖版本, 又因共同的隐式 tool_id='source' 被错误合并隔离.",
+			"verdict": "CHANGES_REQUIRED"
+		},
+		{
+			"id": "generic-runtime",
+			"reason": "独立执行 117 项便携测试, 116 项通过、1 项 Q9 因缺少供应材料跳过; 旧库 7 项烟测、gateway 烟测和 validator 81 项检查通过. 自建非 SL 项目采用 records/depot、devices 和 cache/subject-view.json 布局, 57 项独立边界检查通过, 包括旧比较兼容、路径门控、普通坏卡隔离、权威纠错库失败关闭、人的原字节与并发编辑保护、锁争用和批注身份. 六个独立运行时克隆分别修改五个相关脚本或插件版本, warm 生成/导出/query 均拒绝, cold 进程读取新身份; context 行为变化另由 cold 零命中验证. 默认 Lean 保持 UNKNOWN 且未调用 subprocess; 实际已有 lean_evidence 接口对不完整收据返回未建立通过, 另一声明的明确测试替身也不能借用通过结果. 11 个输入哈希、244 项源码 manifest 和 11 项源文身份均匹配, 最终冻结源码及源文字节未变. 然而, 两项剩余捕获身份问题均在该通用布局实际复现, 因而当前通用运行时声明不能批准.",
+			"verdict": "CHANGES_REQUIRED"
+		}
+	],
+	"formalization": "NOT_INFERRED_FROM_REVIEW_APPROVAL",
+	"kind": "mathematics",
+	"limitations": [
+		"只使用 packet 列出的冻结快照及 scope 指定的 Python/依赖环境. 独立 fixture、源码克隆和输出位于 F:/tools scratch; 未修改原项目、冻结输入、全局安装或 canonical, 未发布.",
+		"Q9 的基准证据未供应, 实际跳过, 不能计作新的 Q9 通过.",
+		"未执行 Lean 编译、内核重放或完整真实 SL 保存收据的正向重验. 不完整收据的真实接口调用与另一声明的测试替身属于软件边界证据.",
+		"五问检查针对供应源文的适用范围, 没有重新批准全部解析证明或外部文献. 下一步分别应核对拟用整数阶的端点 jet 与真实幂域桥、具体收敛保留集的闭包、接口路径可微性及集中余项、全部精确零点的 ND, 以及常密度标定后的真实切空间与有限接口项.",
+		"旧关键词检索已经找到主要材料. 新 context 增加范围、来源及缺桥展示, 但 repair 问仍加入宽泛 B4 材料, 未直接取回全部替代内容. 知识包受索引根、深度、大小和来源覆盖限制; 本审查不宣称全面语义检索改善或性能提升.",
+		"便携审查适配器测试不验证服务端原生调用真实性; 未供应的历史审查和完整原始 Lean manifests 不在本次检查范围."
+	],
+	"packet_sha256": "35b38f41006c1900f8b26d828107696170d29dc41cc6b49dcdf29bafb61f4aec",
+	"reviewer_id": "/root/manage_software_review_v7",
+	"trust": "COORDINATOR_ATTESTED_TOOL_TRANSCRIPT",
+	"verdict": "CHANGES_REQUIRED"
+}

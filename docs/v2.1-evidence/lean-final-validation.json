@@ -1,0 +1,344 @@
+{
+  "checked_at": "2026-10-08T18:37:31.571669+00:00",
+  "passed": true,
+  "research_source_pairing_checks": 16,
+  "current_links_checked": 47,
+  "anchors_checked": 2,
+  "commands": [
+    {
+      "command": [
+        "C:\\Users\\HuangZY\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+        "-X",
+        "utf8",
+        "F:\\tools\\lean-joint-20261008\\check_preservation.py"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"passed\": true, \"original_sl_sources\": 53, \"untracked_snapshot_entries\": 135, \"untracked_note\": \"134 original untracked files plus the task-created development-save.lock were captured; none were deleted or replaced.\"}\n{\"failures\": []}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "-C",
+        "F:\\LaTeX\\BVE research",
+        "diff",
+        "--check",
+        "--",
+        "AGENTS.md",
+        "state/AGENTS_SESSION_LOG.md",
+        "state/current.json",
+        "state/RESUME.md",
+        "lean-proof/lakefile.lean",
+        "lean-proof/README.md",
+        "lean-proof/STATUS.md",
+        "lean-proof/LEMMA_INDEX.md",
+        "lean-proof/formalization_progress.md"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "warning: in the working copy of 'lean-proof/LEMMA_INDEX.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'lean-proof/README.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'lean-proof/STATUS.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'lean-proof/formalization_progress.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'lean-proof/lakefile.lean', LF will be replaced by CRLF the next time Git touches it\n"
+    },
+    {
+      "command": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "-C",
+        "F:\\LaTeX\\BVE research\\_xsoc1_work",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "links": [
+    {
+      "source": "F:\\LaTeX\\BVE research\\lean-proof\\README.md",
+      "target": "SLVerified.lean",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\lean-proof\\README.md",
+      "target": "targets.json",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\lean-proof\\README.md",
+      "target": "SL/Analysis/IntervalL2.lean",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\lean-proof\\README.md",
+      "target": "SL/Krein/IntegralDomain.lean",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\lean-proof\\README.md",
+      "target": "SL/Krein/PolynomialEnergy.lean",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\lean-proof\\README.md",
+      "target": "SL/Weighted/Model.lean",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\lean-proof\\README.md",
+      "target": "SL/Weighted/L2Bridge.lean",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\lean-proof\\README.md",
+      "target": "SL/Weighted/ConstantDD.lean",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\lean-proof\\README.md",
+      "target": "../research/artifacts/lean-development-20261008/verification-v3/development-result.json",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\lean-proof\\README.md",
+      "target": "../research/artifacts/lean-development-20261008/README.md",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\lean-proof\\README.md",
+      "target": "../research/artifacts/lean-development-20261008/semantic-review-v3/binding-results.json",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\lean-proof\\README.md",
+      "target": "SLDrafts.lean",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\lean-proof\\STATUS.md",
+      "target": "../research/artifacts/lean-development-20261008/verification-v3/development-result.json",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\lean-proof\\STATUS.md",
+      "target": "../research/artifacts/lean-development-20261008/semantic-review-v3/binding-results.json",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\lean-proof\\STATUS.md",
+      "target": "../research/artifacts/lean-development-20261008/README.md",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\lean-proof\\LEMMA_INDEX.md",
+      "target": "SLVerified.lean",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\lean-proof\\LEMMA_INDEX.md",
+      "target": "SL/Krein/IntegralDomain.lean",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\lean-proof\\LEMMA_INDEX.md",
+      "target": "SL/Krein/LinearDomain.lean",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\lean-proof\\LEMMA_INDEX.md",
+      "target": "SL/Krein/IntegralConstruction.lean",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\lean-proof\\LEMMA_INDEX.md",
+      "target": "SL/Krein/WeakDerivative.lean",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\lean-proof\\LEMMA_INDEX.md",
+      "target": "SLVerified.lean",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\lean-proof\\LEMMA_INDEX.md",
+      "target": "SL/Krein/PolynomialBridge.lean",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\lean-proof\\LEMMA_INDEX.md",
+      "target": "SL/Krein/PolynomialEnergy.lean",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\lean-proof\\LEMMA_INDEX.md",
+      "target": "SLVerified.lean",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\lean-proof\\LEMMA_INDEX.md",
+      "target": "SL/Weighted/L2Bridge.lean",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\lean-proof\\LEMMA_INDEX.md",
+      "target": "SL/Weighted/ConstantDD.lean",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\lean-proof\\LEMMA_INDEX.md",
+      "target": "targets.json",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\lean-proof\\LEMMA_INDEX.md",
+      "target": "STATUS.md",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\lean-proof\\formalization_progress.md",
+      "target": "SLVerified.lean",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\lean-proof\\formalization_progress.md",
+      "target": "targets.json",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\lean-proof\\formalization_progress.md",
+      "target": "../research/artifacts/lean-development-20261008/README.md",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\lean-proof\\formalization_progress.md",
+      "target": "SLDrafts.lean",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\research\\artifacts\\lean-development-20261008\\README.md",
+      "target": "SOURCE-PAIRING.json",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\research\\artifacts\\lean-development-20261008\\README.md",
+      "target": "../../../lean-proof/SLVerified.lean",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\research\\artifacts\\lean-development-20261008\\README.md",
+      "target": "../../../lean-proof/targets.json",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\research\\artifacts\\lean-development-20261008\\README.md",
+      "target": "verification-v3/development-result.json",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\research\\artifacts\\lean-development-20261008\\README.md",
+      "target": "semantic-review-v3/binding-results.json",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\research\\artifacts\\lean-development-20261008\\README.md",
+      "target": "reviews/",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\state\\RESUME.md",
+      "target": "../lean-proof/SLVerified.lean",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\state\\RESUME.md",
+      "target": "../lean-proof/STATUS.md",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\state\\RESUME.md",
+      "target": "../research/artifacts/lean-development-20261008/README.md",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\AGENTS.md",
+      "target": "docs/history/lean-joint-entry-snapshots-20261008.json",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\AGENTS.md",
+      "target": "state/AGENTS_SESSION_LOG.md#2026-10-08-研究-lean-与插件联合开发",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\AGENTS.md",
+      "target": "research/artifacts/lean-development-20261008/verification/development-result.json",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\AGENTS.md",
+      "target": "research/artifacts/lean-development-20261008/README.md",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\AGENTS.md",
+      "target": "state/AGENTS_SESSION_LOG.md#2026-10-09-联合-lean-开发最终验收与续接",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\state\\AGENTS_SESSION_LOG.md",
+      "target": "../research/artifacts/lean-development-20261008/verification/development-result.json",
+      "exists": true,
+      "anchor_valid": true
+    }
+  ],
+  "failures": [],
+  "scope": "Original-byte/prefix protection, scoped research and plugin diff checks, new handoff links/anchors, source/review pairing and current task consistency. No new Lean proof replay, platform test, installation or publication."
+}

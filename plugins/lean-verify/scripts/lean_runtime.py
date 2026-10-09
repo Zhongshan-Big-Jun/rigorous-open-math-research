@@ -91,6 +91,12 @@ def executable_path(Name):
 	return str(Path(Found).absolute()) if Found else Name
 
 
+def background_options(Platform=None):
+	"""Native Windows background commands must not create console windows."""
+	Platform = os.name if Platform is None else Platform
+	return {"creationflags": getattr(subprocess, "CREATE_NO_WINDOW", 0x08000000)} if Platform == "nt" else {}
+
+
 def windows_executable(Command):
 	try:
 		return Path(Command[0]).resolve().suffix.lower() == ".exe"
@@ -215,6 +221,21 @@ def source_snapshot(Root, Excluded=()):
 	return Files
 
 
+def bound_input_changes(Root, Contract):
+	"""Optional exact-contract bindings for source prose and non-Lean target lists."""
+	Bindings = Contract.get("input_file_hashes", {})
+	if(not isinstance(Bindings, dict)):
+		raise ValueError("contract input_file_hashes must map actual paths to SHA-256 values")
+	Changed = []
+	for Name, Digest in Bindings.items():
+		if(not isinstance(Name, str) or not Name or not isinstance(Digest, str) or not re.fullmatch(r"[a-f0-9]{64}", Digest)):
+			raise ValueError("invalid exact-contract input file binding")
+		FilePath = (Path(Root) / Name).resolve()
+		if(not FilePath.is_file() or sha256_file(FilePath) != Digest):
+			Changed.append("contract_input:" + Name)
+	return Changed
+
+
 def result_status(Result):
 	if(Result.get("status")):
 		return Result["status"]
@@ -248,7 +269,7 @@ def run(Command, Cwd, timeout=3600, log_dir=None, Env=None, InputText=None):
 	write_json(JobPath, Result)
 	with OutputPath.open("wb") as Output, ErrorPath.open("wb") as Error:
 		try:
-			Process = subprocess.Popen(Command, cwd=str(Cwd), stdout=Output, stderr=Error, stdin=subprocess.PIPE if InputText is not None else subprocess.DEVNULL, env=Env, start_new_session=os.name == "posix")
+			Process = subprocess.Popen(Command, cwd=str(Cwd), stdout=Output, stderr=Error, stdin=subprocess.PIPE if InputText is not None else subprocess.DEVNULL, env=Env, start_new_session=os.name == "posix", **background_options())
 			Result.update({"pid": Process.pid, "process_identity": process_identity(Process.pid)})
 			write_json(JobPath, Result)
 			try:
@@ -262,7 +283,7 @@ def run(Command, Cwd, timeout=3600, log_dir=None, Env=None, InputText=None):
 					except ProcessLookupError:
 						pass
 				elif(os.name == "nt"):
-					subprocess.run(["taskkill", "/PID", str(Process.pid), "/T", "/F"], capture_output=True, timeout=10)
+					subprocess.run(["taskkill", "/PID", str(Process.pid), "/T", "/F"], capture_output=True, timeout=10, **background_options())
 				try:
 					Process.wait(timeout=5)
 					Result["cleanup"] = "unconfirmed_windows_children" if os.name != "nt" and windows_executable(Command) else "process_group_stopped"

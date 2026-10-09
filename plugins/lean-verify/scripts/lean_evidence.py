@@ -10,7 +10,7 @@ import sys
 import uuid
 from pathlib import Path
 
-from lean_runtime import CONFIGURATION_NAMES, HEADER_PROBE, RUNTIME_BINARY_NAMES, LeanRuntime, hash_json, host_path, named_hashes, sha256_file, snapshot_exclusions, source_snapshot, tool_path
+from lean_runtime import CONFIGURATION_NAMES, HEADER_PROBE, RUNTIME_BINARY_NAMES, LeanRuntime, bound_input_changes, hash_json, host_path, named_hashes, sha256_file, snapshot_exclusions, source_snapshot, tool_path
 
 TOOL_NAMES = ("verify_lean_project.py", "lean_runtime.py", "lean_evidence.py", "LeanVerifyProbe.lean.template", "lake_build_guard.py", "run_manifest.schema.json")
 
@@ -86,6 +86,7 @@ def recheck_manifest(ManifestPath):
 			raise ValueError("missing exact expected statement binding")
 		if(hash_json(Contract) != Evidence["contract_sha256"]):
 			raise ValueError("contract receipt mismatch")
+		Reasons.extend(bound_input_changes(Root, Contract))
 		Initial = Manifest["input_hashes"]
 		if(not Initial or Target["file"] not in Initial or hash_json(Initial) != Evidence["input_sha256"]):
 			raise ValueError("target source has no input receipt")

@@ -1,5 +1,41 @@
 # Release history
 
+## 2.1.2 (local correction, 2026-10-09)
+
+Require the development entrance's output directory to be outside the project
+and not its ancestor; reject every project-internal output rather than exclude
+project source subtrees. Include the strict verifier's complete tool set in
+loaded and common identities, including the build guard and manifest schema.
+Finish status manifest/contract/stdout/job reads before final freshness checks
+and bind the summary and job-output bytes across that pass. Increase supported
+type-printing limits in development and strict probes and reject readable
+types containing Lean's omission marker. Complete encoded expressions and
+dependency bindings remain required. Original v1/v2 negative reviews and
+actual reproductions remain preserved; this entry asserts no review approval,
+installation, release or universal speedup.
+
+## 2.1.1 (local correction, 2026-10-09)
+
+Recheck trial sources and destination bytes after the potentially slow runtime
+and import queries, immediately before atomic saving. Recheck every selected
+manifest in one terminal pass, with common source, declared-input, runtime,
+tool and listed-evidence bindings observed before and after it; recompute each
+row and the combined result from that terminal pass. Durable status uses the
+same stability boundary. Hash target-list bytes from the actual parsed read.
+These are observed freshness checks, not an OS-wide filesystem transaction.
+The first independent v1 review and actual race reproductions remain retained;
+current acceptance requires new frozen evidence and a fresh correction review.
+
+## 2.1.0 (local development, 2026-10-08)
+
+Add an executable proof-development entrance for project/mathlib source
+discovery, actual interface probes, candidate feedback, fresh atomic saving,
+nonempty independent target lists and existing durable workflow jobs. Final
+root checks still use the exact verifier and evidence rechecker. Extend exact
+contracts with optional input-file bindings for target lists and informal
+sources. Actual validation and source versions are recorded by the current
+joint-development delivery; this entry does not assert installation or release.
+
 ## 2.0.1 (working tree, 2026-09-20)
 
 Require blind formal readback and separate isolated comparison; retain exact machine evidence and partial-formalization boundaries.

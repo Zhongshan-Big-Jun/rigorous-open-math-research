@@ -1,0 +1,70 @@
+{
+  "verdict": "CHANGES_REQUIRED",
+  "packet_sha256": "3efc53c580ab8a2bb512193025fc580b9d3fe5a03331da00fff8634b003c888f",
+  "reviewer_id": "/root/manage_software_review_v3",
+  "bindings": {
+    "before-manage-2.0.2.zip": "99e6d019d93e109eda69d66fa6d47bc1b49761bbdb548eea5faec9e170624007",
+    "scope.md": "011dc3292af58e5f4983a394b20809204834339db1adaeb0a6ab48be4320880e",
+    "sl-inputs.zip": "251e849bfdaaf3f841c0bfc838c7831b9bc68476b75966344bf436e9296e6c12",
+    "source-v3.zip": "d7d0b8a0d840fa65247216ee9ff16bb098aead62fe9463ced99f0332ed80d53a",
+    "user-request.txt": "e8da38552aecaaa95da1d89585b83ad5798d8a38289bb5b4b9a0b10e6880c67b"
+  },
+  "claims": [
+    {
+      "case_results": [
+        {
+          "id": "integer",
+          "next_mathematical_check": "对 r=3 核对四个低提升的端点 jet、真实幂域条件及双向范数估计；非整数阶或 c 趋零一致性须另立合同。",
+          "result": "新旧检索均找到整数 Hermite-Legendre 替代系和原族非基障碍。当前输出保留固定 c、逐个整数阶、奇数阶 r+1 个低提升及次数一致但可依赖 c/r 的常数；没有把替代系升级为原稀疏族 Riesz 基。"
+        },
+        {
+          "id": "deletion",
+          "next_mathematical_check": "选取一支倒数和收敛的具体保留集，进一步刻画其闭包元素或零化泛函；不能由无限余维直接得到完整表示。",
+          "result": "保留复数 Krein 幂域、0<=s<7/2、两支倒数和、三个临界值的较少迹一侧。发散侧精确闭包、稠密性充要判据与收敛侧无限余维没有混为完整闭包描述。"
+        },
+        {
+          "id": "tail",
+          "next_mathematical_check": "先证明所用接口路径的可微性和集中极限误差控制，再组合有限 f'(a_i) 项与余项检验 Hessian；有界 h 的尾界不能直接代入。",
+          "result": "找到有界方向 Parseval 谱尾、移动接口有限二阶项及缺桥经验。原文要求真实 DD 完整排序谱、可靠包络和正分母；delta/delta-prime 方向及路径加速度项仍独立。"
+        },
+        {
+          "id": "global",
+          "next_mathematical_check": "对每个 R>1 的全部 F_sigma=0 点证明 Jacobian 非退化；有限对称分支样本不能完成这个量词。",
+          "result": "找到 G2 和全局开放卡，保留 n>=2、全部精确残差零点、每个紧 R 区间的量词。没有将 G2、ND/G1 和条件化唯一性合并为全局完成。"
+        },
+        {
+          "id": "repair",
+          "next_mathematical_check": "先以常密度单位质量脉冲和不等块宽真实切空间作标定，再检查接口有限项及严格余项；单独读取旧 issue 的精确义务，不以新卡登记代替 release。",
+          "result": "旧检索已找到 Green 窄脉冲反例路线，新上下文另带入 G2、全局开放和接口条目。原文支持连续有限部核、总变差及总质量条件，以及常密度中点极限反例；原隔离工具没有自动放行。但该问的知识包未直接取回全部给定替代材料，覆盖仍需继续阅读。"
+        }
+      ],
+      "id": "current-reuse-boundaries",
+      "reason": "正常路径中的当前正文重建、继承字段标记、条件保留、未知依赖、人的编辑保护及显式历史查看均有实际通过证据。旧版与新版使用相同卡片语料、相同五问及显式卡片根/索引运行；旧关键词检索本来已经能找到主要材料，新接口补充了条件对照、来源和缺桥。所读 SL 原文支持卡片保留的主要范围边界。然而，独立检查复现了两个仍存在的纠错绕过：非规范路径引用丢失隔离状态，使旧版实际生成的比较在新版理解页重新成为当前候选解释；typed relation 又忽略已隔离依据的门控结果，仍允许当前复用及影响分析，并能导出。因此不能批准当前纠错贯穿所有入口的总体声明。",
+      "verdict": "CHANGES_REQUIRED"
+    },
+    {
+      "id": "generic-runtime",
+      "reason": "在独立 scratch 中实际运行便携测试 109 项，其中 108 项通过、Q9 一项因缺证据跳过；网关烟测、旧库 7 项烟测及 validate_all 的 81 项检查通过。244 项冻结源码和 11 项来源身份哈希一致，执行后源码身份未变。不同物理布局的非 SL fixture 验证了默认 Lean 不执行、缺证据保持未知、错误声明不能借用另一声明回执、锁争用、恢复和人工编辑保护。另用独立非 SL fixture 复现了本报告两个剩余门控问题，说明其为通用运行时缺陷，而非 SL 特例。真实完整 Lean 正向回执未提供，不能宣称完成该路径的端到端验收。",
+      "verdict": "CHANGES_REQUIRED"
+    }
+  ],
+  "checked_paths": [
+    "scope.md",
+    "user-request.txt",
+    "source-v3.zip",
+    "before-manage-2.0.2.zip",
+    "sl-inputs.zip"
+  ],
+  "kind": "mathematics",
+  "trust": "COORDINATOR_ATTESTED_TOOL_TRANSCRIPT",
+  "bundle": "research/library/reviews/runs/3efc53c580ab8a2bb512193025fc580b9d3fe5a03331da00fff8634b003c888f-task-f9316e4647a833eea1ebd1a63f686e00b2a0a2e429ff615e3fd3aa098b0f3c84",
+  "formalization": "NOT_INFERRED_FROM_REVIEW_APPROVAL",
+  "limitations": [
+    "只读取供应包和其中列出的快照；执行均在 F:/tools 的独立派生副本。未修改源项目、全局安装或 canonical，也未发布。",
+    "Q9 未执行，其跳过不能计作新的 Q9 通过。",
+    "未提供完整真实 Lean manifest、构建工件及环境绑定；没有执行新的 Lean 编译或内核重放。声明不匹配等适配边界使用明确测试替身检查，不属于真实证明验收。",
+    "审查适用范围来自供应的实际原文；没有验证未提供的完整历史数学审查、外部文献或形式化成果。",
+    "相同五问显示旧检索已具实用价值。新上下文提供更清楚的范围，但 repair 问附加 B4 后增加泛化条目，且仍缺部分直接替代材料；不能据测试计数宣称语义检索全面改善或提速。",
+    "审查适配器保留协调者回执的既有信任边界；测试没有证明服务端原生调用真实性。"
+  ]
+}

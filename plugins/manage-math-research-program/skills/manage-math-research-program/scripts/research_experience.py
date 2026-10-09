@@ -8,6 +8,7 @@ assembles them; shared words do not establish a theorem or an accepted premise.
 from __future__ import annotations
 
 import argparse
+from contextlib import nullcontext
 import json
 import os
 from pathlib import Path
@@ -16,7 +17,8 @@ import re
 import research_library as library
 
 OUTCOMES = ("success", "partial", "failed", "no_return", "unknown")
-FAILURE_KINDS = ("counterexample", "method_limit", "missing_lemma", "infrastructure", "unknown")
+FAILURE_KINDS = ("counterexample", "method_limit", "missing_lemma", "numerical_resolution", "software_error", "infrastructure", "unknown")
+COMPARISON_FIELDS = ("target", "admissible_class", "key_assumptions", "lost_information", "completed_steps", "failure_location", "complementary_lemma")
 START = "<!-- research-understanding:v2:start -->"
 END = "<!-- research-understanding:v2:end -->"
 HASH_PREFIX = "<!-- research-understanding-sha256:"
@@ -59,6 +61,8 @@ def record_experience(project, Data, ToolPath=None, ExpectedHash=None):
 		transformations=text_items(Data.pop("transformations", [])),
 		reconsider_when=text_items(Data.pop("reconsider_when", [])),
 		not_applicable_to=text_items(Data.pop("not_applicable_to", [])))
+	for Key in COMPARISON_FIELDS:
+		Experience[Key] = text_items(Data.pop(Key, []))
 	Content = Data.get("content", "")
 	if(not Content and not Experience["question"] and not Experience["conclusion"]):
 		raise ValueError("provide content, a question or a conclusion worth retaining")
@@ -81,30 +85,49 @@ def record_experience(project, Data, ToolPath=None, ExpectedHash=None):
 	return library.save_card(project, Data, ToolPath, ExpectedHash)
 
 
-def read_route(project, PathValue):
+def read_route(project, PathValue, IncludeAffected=False, _Locked=False):
+	if(not _Locked):
+		with library.writer_lock(library.library_root(project)):
+			return read_route(project, PathValue, IncludeAffected, True)
+	Row = library.read_card(project, PathValue, IncludeAffected, _Locked=True)
 	PathValue = library.inside(project, PathValue)
 	Raw = PathValue.read_bytes()
+	if(library.digest(Raw) != Row["sha256"]):
+		raise ValueError("route changed during read")
 	Front, Body, MetadataStatus = library.read_metadata(Raw)
-	Experience = Front.get("experience", dict())
-	for Key in ("question", "conclusion", "mechanism", "scope", "transformations", "reconsider_when", "not_applicable_to"):
+	Experience = Row.get("experience", dict())
+	for Key in ("question", "conclusion", "mechanism", "scope", "transformations", "reconsider_when", "not_applicable_to", *COMPARISON_FIELDS):
 		text_items(Experience.get(Key))
 	return dict(path=library.relative(project, PathValue), sha256=library.digest(Raw),
-		tool_id=Front.get("tool_id", PathValue.stem), title=Front.get("title", PathValue.stem),
-		metadata_status=MetadataStatus, evidence_status=Front.get("evidence_status", "UNKNOWN"),
-		conditions=Front.get("conditions", "UNSPECIFIED"), experience=Experience,
-		summary=Front.get("summary", Experience.get("conclusion", Body[:500])),
+		tool_id=Row["tool_id"], title=Row["title"],
+		metadata_status=MetadataStatus, evidence_status=Row.get("evidence_status", "UNKNOWN"),
+		conditions=Row.get("conditions", "UNSPECIFIED"), experience=Experience,
+		summary=Row["summary"],
 		evidence=library.reference_states(project, Front.get("evidence", [])),
 		resources=library.reference_states(project, Front.get("resources", [])),
 		sources=library.reference_states(project, Front.get("sources", [])),
 		lean=library.lean_reference_states(project, Front.get("lean", [])),
-		trust="RETRIEVAL_ONLY_REVALIDATE_APPLICATION")
+		correction_state=Row["correction_state"], reuse_allowed=Row["reuse_allowed"], field_provenance=Row["field_provenance"],
+		trust=Row["trust"])
 
 
-def compare_routes(project, Routes, Hypotheses=None):
+def hypothesis_view(project, Hypothesis):
+	References = library.reference_states(project, Hypothesis.get("evidence", []))
+	Allowed = all(Reference.get("reference_reuse_allowed") is not False and Reference.get("binding_state") not in ("STALE_OR_UNBOUND", "INVALID") for Reference in References)
+	return dict(Hypothesis, evidence=References, reuse_allowed=Allowed,
+		status="CANDIDATE_EXPLANATION" if Allowed else "HISTORY_ONLY_NOT_REUSE", validated=False,
+		evidence_coverage="AUTHOR_REFERENCES_NOT_PROOF" if References else "NOT_SUPPLIED")
+
+
+def compare_routes(project, Routes, Hypotheses=None, IncludeAffected=False, _Locked=False):
+	if(not _Locked):
+		with library.writer_lock(library.library_root(project)):
+			return compare_routes(project, Routes, Hypotheses, IncludeAffected, True)
 	Paths = list(dict.fromkeys(Routes))
 	if(len(Paths) < 2):
 		raise ValueError("compare at least two explicit routes")
-	Records = [read_route(project, PathValue) for PathValue in Paths]
+	library.gated_rows(project, [])
+	Records = [read_route(project, PathValue, IncludeAffected, True) for PathValue in Paths]
 	Hypotheses = [] if Hypotheses is None else Hypotheses
 	if(isinstance(Hypotheses, dict)):
 		Hypotheses = [Hypotheses]
@@ -114,16 +137,25 @@ def compare_routes(project, Routes, Hypotheses=None):
 	for Hypothesis in Hypotheses:
 		if(not isinstance(Hypothesis, dict) or any(not isinstance(Hypothesis.get(Key), str) or not Hypothesis[Key].strip() for Key in ("explanation", "prediction", "test", "scope"))):
 			raise ValueError("each supplied hypothesis needs an explanation, scope, prediction and test")
-		Candidates.append(dict(Hypothesis, status="CANDIDATE_EXPLANATION", origin="AUTHOR_SUPPLIED", validated=False))
+		Candidate = dict(Hypothesis, origin="AUTHOR_SUPPLIED", evidence=library.bind_references(project, Hypothesis.get("evidence", [])))
+		Candidate = hypothesis_view(project, Candidate)
+		if(not Candidate["reuse_allowed"] and not IncludeAffected):
+			raise ValueError("REUSE_BLOCKED: candidate explanation cites changed or quarantined evidence; use explicit history inspection")
+		Candidates.append(Candidate)
 	Transforms = [set(text_items(Record["experience"].get("transformations", []))) for Record in Records]
 	Shared = sorted(set.intersection(*Transforms))
 	Comparison = dict(schema_version=2, kind="route_comparison", status="CANDIDATE_COMPARISON",
 		routes=Records, shared_transformations=Shared, hypotheses=Candidates,
 		interpretation="Shared labels are exact text matches, not inferred equivalence or mathematical evidence.",
 		accepted_graph_modified=False)
+	Comparison["dimensions"] = {Key: [dict(path=Record["path"], recorded=Record["experience"].get(Key, [])) for Record in Records] for Key in COMPARISON_FIELDS}
+	Comparison["next_checks"] = [dict(path=Record["path"], reconsider_when=Record["experience"].get("reconsider_when", []), complementary_lemma=Record["experience"].get("complementary_lemma", [])) for Record in Records]
+	Comparison["reuse_allowed"] = all(Record["reuse_allowed"] for Record in Records) and all(Candidate["reuse_allowed"] for Candidate in Candidates)
+	if(not Comparison["reuse_allowed"]):
+		Comparison["status"] = "HISTORY_ONLY_NOT_REUSE"
 	Data = library.json_bytes(Comparison)
 	PathValue = library.inside(project, library.library_root(project) / "comparisons" / (library.digest(Data) + ".json"))
-	with library.writer_lock(library.library_root(project)):
+	with nullcontext():
 		for Record in Records:
 			if(library.digest(library.inside(project, Record["path"]).read_bytes()) != Record["sha256"]):
 				raise ValueError("route changed while comparing; read the current route")
@@ -131,7 +163,11 @@ def compare_routes(project, Routes, Hypotheses=None):
 	return dict(path=library.relative(project, PathValue), sha256=library.digest(Data), **Comparison)
 
 
-def read_comparison(project, PathValue):
+def read_comparison(project, PathValue, _Locked=False):
+	if(not _Locked):
+		with library.writer_lock(library.library_root(project)):
+			return read_comparison(project, PathValue, True)
+	library.gated_rows(project, [])
 	PathValue = library.inside(project, PathValue)
 	Data = PathValue.read_bytes()
 	Record = json.loads(Data)
@@ -140,11 +176,16 @@ def read_comparison(project, PathValue):
 	Routes = []
 	for Route in Record["routes"]:
 		try:
-			State = "CURRENT" if library.digest(library.inside(project, Route["path"]).read_bytes()) == Route["sha256"] else "STALE"
+			Current = library.read_card(project, Route["path"], True, _Locked=True)
+			State = "CURRENT" if Current["sha256"] == Route["sha256"] else "STALE"
+			Allowed = Current["reuse_allowed"] and State == "CURRENT"
 		except OSError:
 			State = "MISSING"
-		Routes.append(dict(Route, binding_state=State))
-	return dict(Record, routes=Routes, path=library.relative(project, PathValue), sha256=library.digest(Data))
+			Allowed = False
+		Routes.append(dict(Route, binding_state=State, reuse_allowed=Allowed, correction_state=Current["correction_state"] if State != "MISSING" else dict(status="missing"), trust="RETRIEVAL_ONLY_REVALIDATE_APPLICATION" if Allowed else "HISTORY_ONLY_NOT_REUSE"))
+	Candidates = [hypothesis_view(project, Hypothesis) for Hypothesis in Record["hypotheses"]]
+	Allowed = all(Route["reuse_allowed"] for Route in Routes) and all(Candidate["reuse_allowed"] for Candidate in Candidates)
+	return dict(Record, routes=Routes, hypotheses=Candidates, reuse_allowed=Allowed, status=Record["status"] if Allowed else "HISTORY_ONLY_NOT_REUSE", path=library.relative(project, PathValue), sha256=library.digest(Data))
 
 
 def markdown_text(Value):
@@ -181,7 +222,11 @@ def replace_generated(Before, Payload):
 
 
 def update_understanding(project, Routes=None, Comparisons=None, OutputPath=None):
-	Output = library.inside(project, OutputPath or library.library_root(project).parent / "understanding.md")
+	Existing = library.inside(project, "docs/PROJECT_UNDERSTANDING.md")
+	Output = library.inside(project, OutputPath or (Existing if Existing.exists() else library.library_root(project).parent / "understanding.md"))
+	Before = Output.read_bytes() if Output.exists() else None
+	with library.writer_lock(library.library_root(project)):
+		library.gated_rows(project, [])
 	if(Output.suffix != ".md"):
 		raise ValueError("the understanding page must be Markdown")
 	if(Routes is None):
@@ -206,7 +251,7 @@ def update_understanding(project, Routes=None, Comparisons=None, OutputPath=None
 	for Record in Records:
 		Experience = Record["experience"]
 		Lines.extend(["### " + markdown_text(Record["title"]), "",
-			markdown_link(project, Output, Record) + " (sha256 `" + Record["sha256"] + "`).", "",
+			markdown_link(project, Output, Record), "",
 			"- Reported evidence: " + markdown_text(Record["evidence_status"]),
 			"- Outcome: " + markdown_text(Experience.get("outcome", "unknown")),
 			"- Failure kind: " + markdown_text(Experience.get("failure_kind") or "not recorded"),
@@ -223,6 +268,9 @@ def update_understanding(project, Routes=None, Comparisons=None, OutputPath=None
 		Lines.extend(["### Candidate route comparison", "", markdown_link(project, Output, Report), ""])
 		for Route in Report["routes"]:
 			Lines.append("- Input " + markdown_link(project, Output, Route) + ": " + Route["binding_state"])
+		if(not Report["reuse_allowed"]):
+			Lines.append("- Historical discussion only. Changed or quarantined inputs do not support reuse of these explanations.")
+			continue
 		for Hypothesis in Report["hypotheses"]:
 			Lines.extend(["", "- Candidate explanation: " + markdown_text(Hypothesis["explanation"]),
 				"- Scope: " + markdown_text(Hypothesis["scope"]),
@@ -234,13 +282,20 @@ def update_understanding(project, Routes=None, Comparisons=None, OutputPath=None
 		Lines.extend("- " + markdown_text(Item["path"]) + ": " + markdown_text(Item["error"]) for Item in Issues)
 	Payload = "\n".join(Lines).rstrip("\n") + "\n\n"
 	with library.writer_lock(library.library_root(project)):
-		Before = Output.read_bytes() if Output.exists() else b"# Project understanding\n\n## Human notes\n\n"
+		library.gated_rows(project, [])
+		if((Output.read_bytes() if Output.exists() else None) != Before):
+			raise ValueError("understanding page changed concurrently; all human bytes retained")
 		for Record in Records:
 			if(library.digest(library.inside(project, Record["path"]).read_bytes()) != Record["sha256"]):
 				raise ValueError("an input changed while assembling the page; retry")
-		After = replace_generated(Before, Payload)
+			library.read_card(project, Record["path"], _Locked=True)
+		for Report in Reports:
+			Current = read_comparison(project, Report["path"], True)
+			if(Current["reuse_allowed"] != Report["reuse_allowed"]):
+				raise ValueError("comparison applicability changed while assembling; retry")
+		After = replace_generated(Before or b"# Project understanding\n\n## Human notes\n\n", Payload)
 		if(After != Before):
-			library.atomic_write(Output, After)
+			library.atomic_write(Output, After, Before)
 	return dict(path=library.relative(project, Output), sha256=library.digest(After),
 		reused=Before == After, assembled_routes=len(Records), assembled_comparisons=len(Reports),
 		issues=Issues, status="ASSEMBLED_RESEARCH_NOTES", accepted_graph_modified=False)
@@ -258,6 +313,7 @@ def main():
 	Compare.add_argument("--project", required=True)
 	Compare.add_argument("--route", action="append", required=True)
 	Compare.add_argument("--hypothesis", help="JSON object or list: explanation, scope, prediction and test")
+	Compare.add_argument("--include-affected", action="store_true", help="explicit history discussion only; never reuse")
 	Understanding = Sub.add_parser("understanding")
 	Understanding.add_argument("--project", required=True)
 	Understanding.add_argument("--route", action="append")
@@ -269,7 +325,7 @@ def main():
 			Result = record_experience(Args.project, library.read_json(Path(Args.input)), Args.tool, Args.expected_sha256)
 		elif(Args.command == "compare"):
 			Hypotheses = library.read_json(Path(Args.hypothesis)) if Args.hypothesis else None
-			Result = compare_routes(Args.project, Args.route, Hypotheses)
+			Result = compare_routes(Args.project, Args.route, Hypotheses, Args.include_affected)
 		else:
 			Result = update_understanding(Args.project, Args.route, Args.comparison, Args.output)
 		print(json.dumps(Result, ensure_ascii=False))

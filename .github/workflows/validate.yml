@@ -80,6 +80,8 @@ jobs:
         run: python -X utf8 -m unittest discover -s plugins/manage-math-research-program/skills/manage-math-research-program/scripts/tests -p "test_*.py"
       - name: Test 2.0 Lean execution and evidence handling
         run: python -X utf8 -m unittest discover -s plugins/lean-verify/scripts/tests -p "test_v2_verifier.py"
+      - name: Test proof development adapters
+        run: python -X utf8 -m unittest discover -s plugins/lean-verify/scripts/tests -p "test_lean_develop.py"
       - name: Test metric comparisons
         run: python -X utf8 tests/smoke_performance_metrics.py
       - name: Test skill source diagnostics
@@ -111,6 +113,14 @@ jobs:
           LEAN_VERIFY_TEST_REPORT: ${{ runner.temp }}/lean-controls.json
           LEAN_VERIFY_KEEP_TEST_ARTIFACTS: "1"
         run: python -X utf8 -m unittest discover -s plugins/lean-verify/scripts/tests -p "test_v2_lean_real.py" -v
+      - name: Verify actual proof development and job continuation
+        env:
+          LEAN_VERIFY_REAL_LEAN: lean
+          LEAN_VERIFY_REAL_LAKE: lake
+          LEAN_VERIFY_TEST_TMPDIR: ${{ runner.temp }}
+          LEAN_DEVELOP_TEST_REPORT: ${{ runner.temp }}/lean-development-controls.json
+          LEAN_VERIFY_KEEP_TEST_ARTIFACTS: "1"
+        run: python -X utf8 -m unittest discover -s plugins/lean-verify/scripts/tests -p "test_lean_develop_real.py" -v
       - name: Retain actual compiler evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -119,3 +129,5 @@ jobs:
           path: |
             ${{ runner.temp }}/lean-controls.json
             ${{ runner.temp }}/real-*
+            ${{ runner.temp }}/lean-development-controls.json
+            ${{ runner.temp }}/develop-real-*

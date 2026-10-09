@@ -1,7 +1,7 @@
 {
   "name": "lean-verify",
-  "version": "2.0.1",
-  "description": "Use Lean feedback during research and check execution, exact declarations, transitive axioms and intended mathematical scope. Preserve input-bound evidence and reuse unchanged semantic reviews.",
+  "version": "2.1.2",
+  "description": "Develop Lean proofs with local lemma discovery, actual interface probes and fresh candidate feedback, then use exact declaration, transitive axiom and intended-scope verification with durable research jobs.",
   "author": {
     "name": "xsoc1"
   },
@@ -16,8 +16,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Lean Verify",
-    "shortDescription": "Precise Lean targets, compiler feedback and evidence",
-    "longDescription": "Use Lean feedback during research and check execution, exact declarations, transitive axioms and intended mathematical scope. Preserve input-bound evidence and reuse unchanged semantic reviews.",
+    "shortDescription": "Proof development, precise targets and checked evidence",
+    "longDescription": "Develop Lean proofs with local lemma discovery, actual interface probes and fresh candidate feedback, then use exact declaration, transitive axiom and intended-scope verification with durable research jobs.",
     "developerName": "xsoc1",
     "category": "Developer Tools",
     "capabilities": [],

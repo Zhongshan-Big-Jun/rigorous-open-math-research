@@ -15,7 +15,7 @@ import uuid
 from pathlib import Path
 from urllib.parse import quote
 
-from lean_runtime import ArtifactHashCache, LeanRuntime, full_output, hash_bytes, hash_json, host_path, now_iso, process_identity, result_status, sha256_file, source_snapshot, tool_path, windows_executable, write_json
+from lean_runtime import ArtifactHashCache, LeanRuntime, background_options, full_output, hash_bytes, hash_json, host_path, now_iso, process_identity, result_status, sha256_file, source_snapshot, tool_path, windows_executable, write_json
 
 
 class ProtocolFailure(RuntimeError):
@@ -43,7 +43,7 @@ class LeanLsp:
 		self.ProtocolLog = (self.LogDir / "protocol.jsonl").open("a", encoding="utf-8")
 		self.LogLock = threading.Lock()
 		self.ErrorLog = (self.LogDir / "stderr.log").open("wb")
-		self.Process = subprocess.Popen(Runtime.Command + ["--server"], cwd=Runtime.Root, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=self.ErrorLog, env=Runtime.command_env())
+		self.Process = subprocess.Popen(Runtime.Command + ["--server"], cwd=Runtime.Root, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=self.ErrorLog, env=Runtime.command_env(), **background_options())
 		self.Reader = threading.Thread(target=self.read_messages, daemon=True)
 		self.Reader.start()
 		self.Identity = {"session_id": self.SessionId, "pid": self.Process.pid, "process_identity": process_identity(self.Process.pid), "protocol_log": str(self.LogDir / "protocol.jsonl"), "stderr_log": str(self.LogDir / "stderr.log")}

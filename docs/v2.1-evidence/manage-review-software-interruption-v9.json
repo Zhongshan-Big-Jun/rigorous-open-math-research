@@ -1,0 +1,8 @@
+{
+  "task_name": "/root/manage_software_review_v9",
+  "tool": "collaboration.interrupt_agent",
+  "result": {
+    "previous_status": "running"
+  },
+  "reason": "v8 native completion arrived after the v9 spawn and disclosed two new findings still present in v9; no v9 completion was received and no verdict is inferred."
+}

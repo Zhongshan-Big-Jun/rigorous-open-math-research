@@ -1,5 +1,43 @@
 # Release history
 
+## 2.1.0 (local development, 2026-10-09)
+
+Add optional task context to keyword query, weighted current-field relevance,
+bounded live card reads and reproducible knowledge views with typed relations.
+Regenerate derived summaries from current bodies; retain inherited author fields
+with their old basis and an explicit revalidation state. Relevance does not
+establish applicability. Unknown outgoing dependencies remain unknown.
+Direct query matches precede goal-only and context-only suggestions even with a
+small reading limit. Knowledge generation/export require unchanged process code
+identity; source updates require a fresh Python process.
+
+Route comparison, understanding, knowledge views and export now share the live
+correction gate. Prefer the existing human understanding page and reject edits
+during assembly. Add comparison dimensions and numerical/software failure kinds.
+Captured source IDs aggregate the live permission of metadata, raw and extracted
+bytes, including in candidate evidence and typed relation bases.
+Path-only references to any capture member retain the same aggregate gate.
+Exports bind absent as well as present correction state and recheck source and
+relation permissions before saving an immutable knowledge view.
+Current declared tool IDs outrank cached pointer IDs on reads and refreshes;
+legacy index-only identities and immutable prior bindings remain readable.
+Live gates derive a bound Markdown declaration alongside its durable legacy ID,
+so an older inconsistent registration cannot erase either issue obligation.
+Selected Lean references can call the existing recheck and semantic identity
+interfaces explicitly; ordinary retrieval launches no compiler. Preserve the
+2.0.2 native review adapter and all immutable correction/release identities.
+
+Actual validation, source pairing and SL forward-use evidence are recorded in
+the local delivery record. This version is not installed or published by itself.
+
+## 2.0.2 (local development, 2026-10-08)
+
+Support the actual collaboration spawn/final-message transcript shape alongside
+legacy native UUID receipts. Preserve canonical task identities, explicit fresh
+context and exact frozen prompts; require the dispatched reviewer's actual
+FINAL_ANSWER and retain missing completion as pending. Older receipts remain
+readable without identity rewriting. A version field does not establish release.
+
 ## 2.0.1 (working tree, 2026-09-20)
 
 Add frozen native-tool review receipts and recoverable issue, quarantine, dependency and reviewed-repair handling.

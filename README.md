@@ -1,10 +1,10 @@
-# Math Research 2.0
+# Math Research
 
 [English](README_EN.md) | [使用与迁移](docs/v2.0-guide.md) | [实施与验证](docs/v2.0-implementation-status.md)
 
 面向长期数学研究的 Codex 插件. 帮助人和 agent 从论文, 成功证明与失败路线中积累可复用的工具和理解, 再把它们带入下一个问题.
 
-当前四个组件为 `2.0.1`, 以简短工作引导配合实际工具. 研究者可以自主选择证明, 反例, 文献, 计算, 协作或 Lean, 按问题需要使用各组件.
+当前组件版本为 lean-verify `2.1.2`, manage `2.1.0`, workflow `2.0.2`, rigorous `2.0.1`. [Lean 开发与问题知识复用](docs/v2.1-joint-development.md) 提供最新能力及真实验证入口. 研究者可以自主选择证明, 反例, 文献, 计算, 协作或 Lean, 按问题需要使用各组件.
 
 2026-09-20 修补: 研究过程中融入形式化反馈, 正式检验使用无上下文隔离 agent; 新增版本绑定的工具库纠错与复用屏蔽. 见 [目标、方法与验收](docs/v2.0.1-verification-corrections.md).
 

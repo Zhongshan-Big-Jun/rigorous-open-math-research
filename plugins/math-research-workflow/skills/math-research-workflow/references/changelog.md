@@ -1,5 +1,12 @@
 # Release history
 
+## 2.0.2 (local development, 2026-10-08)
+
+Retain the existing detached Windows supervisor and hide its background child
+console with CREATE_NO_WINDOW. POSIX process/session behavior is unchanged.
+Actual process and job tests are recorded in the joint-development delivery;
+this entry does not assert release or installation.
+
 ## 2.0.1 (working tree, 2026-09-20)
 
 Integrate formal feedback, fresh-context verification and correction propagation at the acceptance/reuse boundary.

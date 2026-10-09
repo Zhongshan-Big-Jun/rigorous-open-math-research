@@ -1,6 +1,6 @@
 {
   "name": "math-research-workflow",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Support long-running mathematics research with concise guidance, reusable knowledge and optional Lean verification. Choose research methods and collaboration freely; preserve useful understanding and continue across sessions.",
   "author": {
     "name": "xsoc1"

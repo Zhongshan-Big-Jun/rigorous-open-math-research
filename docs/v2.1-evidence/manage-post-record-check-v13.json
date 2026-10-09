@@ -1,0 +1,211 @@
+{
+  "schema": "post-record-check/v1",
+  "baseline_preservation": {
+    "path": "F:\\tools\\manage-context-20261009\\preservation-final-v13.json",
+    "sha256": "ff546a3d99a176b8fed59eeaa4c642717b53303a4e682ed0e8512f5158c3e4ce",
+    "passed": true,
+    "counts": {
+      "research": {
+        "original_files": 21782,
+        "protected_original_files": 21776,
+        "allowed_changed_files": 6
+      },
+      "plugin": {
+        "original_files": 1233,
+        "protected_original_files": 1221,
+        "allowed_changed_files": 12
+      }
+    }
+  },
+  "record_changes": {
+    "F:\\LaTeX\\BVE research\\AGENTS.md": {
+      "before_sha256": "bfa271a20845923fd2278d74d4a12c13870243efd14b8c5c51a59e42d55847fb",
+      "after_sha256": "edd6a5ad6c7c51cf0451682982222e59a2e2bc2dd368b50993e889b4ecb8ffc6"
+    },
+    "F:\\LaTeX\\BVE research\\_xsoc1_work\\AGENTS.md": {
+      "before_sha256": "77d6371cb7640a26b9bdd87fefbc59e489ce4a20f8235f5fe92a0e1551bff587",
+      "after_sha256": "9663c15d5e53cd8ce6fb0ee89f6f67446e3d28d77906081b3442eaf2967b4f0c"
+    },
+    "F:\\LaTeX\\BVE research\\research\\artifacts\\manage-context-20261009\\README.md": {
+      "before_sha256": "2036b09f77d14e59d88f788e6f70ef6227975c1dcaf6559088f054544e8a5a1b",
+      "after_sha256": "24366f3eea40f423191d462a87bfe1c3cddfcbd97b12699bc6bec8995eafbf67"
+    }
+  },
+  "original_prefixes": {
+    "research/AGENTS.md": true,
+    "research/state/AGENTS_SESSION_LOG.md": true,
+    "research/docs/PROJECT_UNDERSTANDING.md": true,
+    "plugin/AGENTS.md": true,
+    "plugin/AGENTS_HISTORY.md": true,
+    "resume_original_suffix": true
+  },
+  "source_pairing": {
+    "files": 244,
+    "all_match": true
+  },
+  "repositories": {
+    "research": {
+      "head": "f3b78f402497c6a2ecdf8e53770fe84bab308198",
+      "branch": "main",
+      "staged": "",
+      "diff_check_exit": 0
+    },
+    "plugin": {
+      "head": "9e0da0c37bf2ecc62d30061888ebbbdb0d86846f",
+      "branch": "codex/plugin-v2-implementation-20260909",
+      "staged": "",
+      "diff_check_exit": 0
+    }
+  },
+  "current_links": [
+    {
+      "source": "F:\\LaTeX\\BVE research\\research\\artifacts\\manage-context-20261009\\README.md",
+      "target": "SOURCE-PAIRING.json",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\research\\artifacts\\manage-context-20261009\\README.md",
+      "target": "../../../_xsoc1_work/plugins/manage-math-research-program/skills/manage-math-research-program/references/task-context.md",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\research\\artifacts\\manage-context-20261009\\README.md",
+      "target": "../../work/manage-context-20261009/cases.json",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\research\\artifacts\\manage-context-20261009\\README.md",
+      "target": "../../work/manage-context-20261009/source-origins.json",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\research\\artifacts\\manage-context-20261009\\README.md",
+      "target": "before-cases-final.json",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\research\\artifacts\\manage-context-20261009\\README.md",
+      "target": "after-cases-v13.json",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\research\\artifacts\\manage-context-20261009\\README.md",
+      "target": "cards/sl-bounded-to-interface-route.md",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\research\\artifacts\\manage-context-20261009\\README.md",
+      "target": "cards/sl-pulse-obstruction-route.md",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\research\\artifacts\\manage-context-20261009\\README.md",
+      "target": "cards/sl-weighted-dd-local-lean.md",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\research\\artifacts\\manage-context-20261009\\README.md",
+      "target": "scoped-index.json",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\research\\artifacts\\manage-context-20261009\\README.md",
+      "target": "original-live-gate.json",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\research\\artifacts\\manage-context-20261009\\README.md",
+      "target": "../lean-development-20261008/README.md",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\research\\artifacts\\manage-context-20261009\\README.md",
+      "target": "lean-recheck-summary-v4.json",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\research\\artifacts\\manage-context-20261009\\README.md",
+      "target": "F:/tools/manage-context-20261009/review-forward-receipt-v5.json",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\research\\artifacts\\manage-context-20261009\\README.md",
+      "target": "F:/tools/manage-context-20261009/review-software-receipt-v13.json",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\research\\artifacts\\manage-context-20261009\\README.md",
+      "target": "F:/tools/manage-context-20261009/TESTS-v13.json",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\research\\artifacts\\manage-context-20261009\\README.md",
+      "target": "F:/tools/manage-context-20261009/preservation-final-v13.json",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\state\\RESUME.md",
+      "target": "../research/artifacts/manage-context-20261009/README.md",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\state\\RESUME.md",
+      "target": "../research/artifacts/manage-context-20261009/SOURCE-PAIRING.json",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\state\\RESUME.md",
+      "target": "../research/artifacts/lean-development-20261008/README.md",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\_xsoc1_work\\plugins\\manage-math-research-program\\skills\\manage-math-research-program\\SKILL.md",
+      "target": "scripts/research_library.py",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\_xsoc1_work\\plugins\\manage-math-research-program\\skills\\manage-math-research-program\\SKILL.md",
+      "target": "references/v2-library.md",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\_xsoc1_work\\plugins\\manage-math-research-program\\skills\\manage-math-research-program\\SKILL.md",
+      "target": "references/task-context.md",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\_xsoc1_work\\plugins\\manage-math-research-program\\skills\\manage-math-research-program\\SKILL.md",
+      "target": "references/v2-corrections.md",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\_xsoc1_work\\plugins\\manage-math-research-program\\skills\\manage-math-research-program\\SKILL.md",
+      "target": "references/v2-review.md",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\_xsoc1_work\\plugins\\manage-math-research-program\\skills\\manage-math-research-program\\SKILL.md",
+      "target": "references/blueprint-runtime-gateway.md",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\_xsoc1_work\\plugins\\manage-math-research-program\\skills\\manage-math-research-program\\SKILL.md",
+      "target": "references/changelog.md",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\_xsoc1_work\\plugins\\manage-math-research-program\\skills\\manage-math-research-program\\references\\v2-library.md",
+      "target": "task-context.md",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\_xsoc1_work\\plugins\\manage-math-research-program\\skills\\manage-math-research-program\\references\\v2-library.md",
+      "target": "v2-library-implementation-notes.md",
+      "exists": true
+    }
+  ],
+  "checked_test_logs": 5,
+  "errors": [],
+  "passed": true,
+  "scope": "Full original-file preservation ran before only three declared final explanatory document edits. This check binds those edits, current source, receipts, test logs and links; no software test or Lean proof was rerun."
+}

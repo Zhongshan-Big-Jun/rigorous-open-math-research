@@ -1,0 +1,47 @@
+{
+	"bindings": {
+		"before-manage-2.0.2.zip": "99e6d019d93e109eda69d66fa6d47bc1b49761bbdb548eea5faec9e170624007",
+		"prior-forward-v3.json": "1bd0798d4434dbc671bb5f42a0ef17aabb4a67f53f4fff90a19f85901e5cb2b9",
+		"prior-software-v3.json": "bb050af542c8246656b210f5c5af6df27228cd2c6752b8bf924d071d0bd372dd",
+		"scope-v4.md": "70afd18ae8d6741eaaf9c40096f53442e4b43ee26aebac779b4a1ee616dbd6d8",
+		"sl-inputs.zip": "251e849bfdaaf3f841c0bfc838c7831b9bc68476b75966344bf436e9296e6c12",
+		"source-v4.zip": "23e416a7968787a6b2650c894c086b5052c34b9a226abad0920a21b1e5de1ba7",
+		"user-request.txt": "e8da38552aecaaa95da1d89585b83ad5798d8a38289bb5b4b9a0b10e6880c67b"
+	},
+	"bundle": "research/library/reviews/runs/1e0126aee37c5824aebf10f7d08c89ef58461e9a2e294a88e9a3a7dd9bd58478-task-99df6c84f3b644175b5bb341c03492c1cc81eedeaad294741ddfab762adc6ba3",
+	"checked_paths": [
+		"scope-v4.md",
+		"user-request.txt",
+		"source-v4.zip",
+		"before-manage-2.0.2.zip",
+		"sl-inputs.zip",
+		"prior-forward-v3.json",
+		"prior-software-v3.json"
+	],
+	"claims": [
+		{
+			"id": "current-reuse-boundaries",
+			"reason": "三个先前报告的缺陷已在当前源码中修复，并经独立运行确认：正文更新后继承的 conditions、problem_ids、objects 和 parameter_scope 不再单独贡献当前上下文命中；实际旧版 compare CLI 生成的 './' 引用经新版读回后保持隔离，理解页省略其候选解释；已隔离的关系依据及非 card 目标均使 reuse_allowed 和 impact_eligible 为 false，导出也保持这一状态。相同12张卡片语料的旧、新索引和五问均实际运行，另读取了相关源文的合同和边界。整数替代系保留固定 c、逐个整数阶和奇数阶 r+1 个低提升；删项结果保留成员窗口、临界值较少迹一侧及收敛侧仅无限余维的限制；有界谱尾与移动接口的分布方向、有限 f' 项没有混同；G2 与尚未证明的全零点 ND/G1 分开；窄脉冲反例没有升级为对所有集中方法的否定。相应下一步分别是核对拟用阶数的端点 jet 和域条件、刻画具体收敛保留集的闭包、证明真实接口路径可微性及集中余项、证明全部精确零点的 Jacobian 非退化、以常密度标定后补齐实际切空间与接口项。旧关键词检索本已找到主要材料，新接口增加了条件、来源、缺桥和依赖覆盖说明。然而，独立非 SL 实验仍发现上下文专属的泛化候选能挤掉正文中直接命中查询的材料，当前排名修补未满足声明的边界。",
+			"verdict": "CHANGES_REQUIRED"
+		},
+		{
+			"id": "generic-runtime",
+			"reason": "独立执行便携测试113项，其中112项通过、Q9一项因材料未提供而跳过；旧库7项烟测、gateway烟测及81项静态验证通过。另在自建非 SL 项目中使用不同 research_root、卡片根和索引路径，确认继承字段排除、旧比较兼容、规范路径纠错、关系门控、理解页人工作品前缀及幂等刷新。默认知识包没有调用 subprocess，缺证据 Lean 状态保持未知，另一声明的测试回执不能通过精确根身份检查。244项源码manifest及11项源文身份均核对通过，执行后所供源码和旧、新SL副本的源文字节保持不变。但生产者身份只读取调用时的磁盘脚本，不能识别已载入代码与更新后的磁盘源码不同的状态；独立运行证明这种状态下仍可生成并导出知识包，且标记为未实际执行的新源码身份。因此相关身份边界尚未通过。",
+			"verdict": "CHANGES_REQUIRED"
+		}
+	],
+	"formalization": "NOT_INFERRED_FROM_REVIEW_APPROVAL",
+	"kind": "mathematics",
+	"limitations": [
+		"仅使用列出的冻结输入及所供依赖环境；未读取作者工作树、会话、记忆或未提供的审查材料。",
+		"Q9材料未提供，因此未执行Q9；测试中的跳过不构成新Q9通过。",
+		"未执行Lean编译或真实完整SL保存收据的正向重放。声明防替换检查使用明确的软件测试替身，不属于数学证明验收。",
+		"源文阅读用于核对五问的对象、量词、关键条件和常见误用，没有重新批准全部论文、证明依赖或未提供的历史审查。",
+		"旧检索已具实用价值。当前修补改善了所供repair查询的首位结果，但仍返回部分宽泛B4材料，也没有直接取回该问全部替代材料；未作全面语义检索改善或性能提升判断。",
+		"执行使用独立派生副本；未修改源项目、冻结包、全局安装或实际canonical状态，也未发布。"
+	],
+	"packet_sha256": "1e0126aee37c5824aebf10f7d08c89ef58461e9a2e294a88e9a3a7dd9bd58478",
+	"reviewer_id": "/root/manage_software_review_v4",
+	"trust": "COORDINATOR_ATTESTED_TOOL_TRANSCRIPT",
+	"verdict": "CHANGES_REQUIRED"
+}

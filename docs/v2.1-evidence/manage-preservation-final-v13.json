@@ -1,0 +1,535 @@
+{
+  "schema": "scoped-preservation/v1",
+  "repositories": {
+    "research": {
+      "original_files": 21782,
+      "protected_original_files": 21776,
+      "changed": [
+        {
+          "path": "AGENTS.md",
+          "before": "dac5ebd2ae4753c06c6d405d8e3d4f64f788f9146a68bfda6eaca45086694a52",
+          "after": "bfa271a20845923fd2278d74d4a12c13870243efd14b8c5c51a59e42d55847fb"
+        },
+        {
+          "path": "docs/PROJECT_UNDERSTANDING.md",
+          "before": "b54ff042da6d6b6934ccef7f79dfcd18e2b326298ed81ced93d24c22ac005c10",
+          "after": "5a9c14e23e5d6f623a8163bc775b6fb6e633a3e89073792b11544713b5412429"
+        },
+        {
+          "path": "research/library/card-bindings/catalog.json",
+          "before": "a07be2e60509e0acae14196d0d58e6296bff77a00169c0f4ee9fe0736beb9792",
+          "after": "4976b539b801b9f0440daa003228de7cbe4fd1b0af9f65888eb6c2fc3155397d"
+        },
+        {
+          "path": "state/AGENTS_SESSION_LOG.md",
+          "before": "2f6c03a114c330ba6c658cd8230eb9c5b0f9bb4090cddaa62b20274d73f49db7",
+          "after": "e1890beaf396043dbaa4c6550a579e524ca0807396528bfd3c1521e0f07e6f04"
+        },
+        {
+          "path": "state/RESUME.md",
+          "before": "0df8e23f118e8ae138d727268c2141029de48da91d044c95338a123bd1b5cec9",
+          "after": "91216a2a31d66e665b51ff24fc1eae653d56154df137e925fe68ca6d7e75b580"
+        },
+        {
+          "path": "state/current.json",
+          "before": "85bb15658089c399ef6bd15c439e8193e98f3b7b04b240ca0150be10add689ea",
+          "after": "b25e99cfa57d152a0f2e2c3ed607fa53c905e25240093bb52eb58cc8f2287f96"
+        }
+      ],
+      "missing": [],
+      "added": [
+        "docs/history/AGENTS.md.pre-manage-context-20261009.txt",
+        "docs/history/AGENTS_SESSION_LOG.md.pre-manage-context-20261009.txt",
+        "docs/history/PROJECT_UNDERSTANDING.md.pre-manage-context-20261009.txt",
+        "docs/history/RESUME.md.pre-manage-context-20261009.txt",
+        "docs/history/current.json.pre-manage-context-20261009.txt",
+        "docs/history/manage-context-entry-snapshots-20261009.json",
+        "research/artifacts/lean-development-20261008/verification-v3/targets/weighted-dd/lean-verification-runs/rechecks/494ac539c6fd4ff98c4199e3ef1307fe/ResolveImports.lean",
+        "research/artifacts/lean-development-20261008/verification-v3/targets/weighted-dd/lean-verification-runs/rechecks/494ac539c6fd4ff98c4199e3ef1307fe/logs/9d65d859178143adae43f63519ae73f3.job.json",
+        "research/artifacts/lean-development-20261008/verification-v3/targets/weighted-dd/lean-verification-runs/rechecks/494ac539c6fd4ff98c4199e3ef1307fe/logs/9d65d859178143adae43f63519ae73f3.stderr.log",
+        "research/artifacts/lean-development-20261008/verification-v3/targets/weighted-dd/lean-verification-runs/rechecks/494ac539c6fd4ff98c4199e3ef1307fe/logs/9d65d859178143adae43f63519ae73f3.stdout.log",
+        "research/artifacts/lean-development-20261008/verification-v3/targets/weighted-dd/lean-verification-runs/rechecks/8377d0c6691b46bea45beef58962a030/ResolveImports.lean",
+        "research/artifacts/lean-development-20261008/verification-v3/targets/weighted-dd/lean-verification-runs/rechecks/8377d0c6691b46bea45beef58962a030/logs/a8ecb23cd9974ca6b55ae6d3437a70ad.job.json",
+        "research/artifacts/lean-development-20261008/verification-v3/targets/weighted-dd/lean-verification-runs/rechecks/8377d0c6691b46bea45beef58962a030/logs/a8ecb23cd9974ca6b55ae6d3437a70ad.stderr.log",
+        "research/artifacts/lean-development-20261008/verification-v3/targets/weighted-dd/lean-verification-runs/rechecks/8377d0c6691b46bea45beef58962a030/logs/a8ecb23cd9974ca6b55ae6d3437a70ad.stdout.log",
+        "research/artifacts/manage-context-20261009/README.md",
+        "research/artifacts/manage-context-20261009/SOURCE-PAIRING.json",
+        "research/artifacts/manage-context-20261009/after-cases-final.json",
+        "research/artifacts/manage-context-20261009/after-cases-v10.json",
+        "research/artifacts/manage-context-20261009/after-cases-v11.json",
+        "research/artifacts/manage-context-20261009/after-cases-v13.json",
+        "research/artifacts/manage-context-20261009/after-cases-v3.json",
+        "research/artifacts/manage-context-20261009/after-cases-v4.json",
+        "research/artifacts/manage-context-20261009/after-cases-v5.json",
+        "research/artifacts/manage-context-20261009/after-cases-v6.json",
+        "research/artifacts/manage-context-20261009/after-cases-v7.json",
+        "research/artifacts/manage-context-20261009/after-cases-v8.json",
+        "research/artifacts/manage-context-20261009/after-cases.json",
+        "research/artifacts/manage-context-20261009/before-cases-final.json",
+        "research/artifacts/manage-context-20261009/before-cases.json",
+        "research/artifacts/manage-context-20261009/cards/sl-bounded-to-interface-route.md",
+        "research/artifacts/manage-context-20261009/cards/sl-pulse-obstruction-route.md",
+        "research/artifacts/manage-context-20261009/cards/sl-weighted-dd-local-lean.md",
+        "research/artifacts/manage-context-20261009/historical-replacement-v10.json",
+        "research/artifacts/manage-context-20261009/historical-replacement-v13.json",
+        "research/artifacts/manage-context-20261009/historical-replacement-v5.json",
+        "research/artifacts/manage-context-20261009/historical-replacement-v6.json",
+        "research/artifacts/manage-context-20261009/historical-replacement-v7.json",
+        "research/artifacts/manage-context-20261009/historical-replacement-v8.json",
+        "research/artifacts/manage-context-20261009/integration-inputs.json",
+        "research/artifacts/manage-context-20261009/lean-default-v10.json",
+        "research/artifacts/manage-context-20261009/lean-default-v13.json",
+        "research/artifacts/manage-context-20261009/lean-default-v3.json",
+        "research/artifacts/manage-context-20261009/lean-default-v4.json",
+        "research/artifacts/manage-context-20261009/lean-default-v5.json",
+        "research/artifacts/manage-context-20261009/lean-default-v6.json",
+        "research/artifacts/manage-context-20261009/lean-default-v7.json",
+        "research/artifacts/manage-context-20261009/lean-default-v8.json",
+        "research/artifacts/manage-context-20261009/lean-recheck-summary-v3.json",
+        "research/artifacts/manage-context-20261009/lean-recheck-summary-v4.json",
+        "research/artifacts/manage-context-20261009/lean-selected-recheck-v3.json",
+        "research/artifacts/manage-context-20261009/lean-selected-recheck-v4.json",
+        "research/artifacts/manage-context-20261009/original-live-gate.json",
+        "research/artifacts/manage-context-20261009/runtime-v10.json",
+        "research/artifacts/manage-context-20261009/runtime-v13.json",
+        "research/artifacts/manage-context-20261009/runtime-v5.json",
+        "research/artifacts/manage-context-20261009/runtime-v6.json",
+        "research/artifacts/manage-context-20261009/runtime-v7.json",
+        "research/artifacts/manage-context-20261009/runtime-v8.json",
+        "research/artifacts/manage-context-20261009/scoped-index.json",
+        "research/library/card-bindings/5486b081f07467fed43b37d8793220313a6d40ebe22e35967ae6ea071339b9a3.json",
+        "research/library/card-bindings/6bb0aebfbbf71b08b5b489c6838515ab85c3e50102dcb7857c148cba700fddfb.json",
+        "research/library/card-bindings/822fa1597a089b9da835d7356ef14250aac6a1def93821b9bc121d9fb56170ff.json",
+        "research/library/card-bindings/c08d71a16907ea2e6d637468d95ab7f341baae76fb03688baeb01b213640a7a7.json",
+        "research/library/card-versions/463e5555db3d29b39f28f1fae107f884bd2c676221ca1eb8da91e54e51cc9e62.md",
+        "research/library/card-versions/5112a3188cee1bc2141a13411ad812c76a7f748e914283bacc038f08a7715b48.md",
+        "research/library/card-versions/5899697b623f0d1372c35275e00575d4f01e3020291daae47ae54411f7b5d6d5.md",
+        "research/library/card-versions/6f350e6428912f9c5fa8a44c7c9390e4eae500ec8650cc27b9208eb362cc0e36.md",
+        "research/library/comparisons/53cbd301bb92255a28785953ce4cd230b3367cd1fd6c8cea5cc007650e90136d.json",
+        "research/library/index-history/9ca42c68a5303f1c4b526038607b3df24681db346501814512a67de0c8a8ac44.json",
+        "research/work/manage-context-20261009/blueprint-project.json",
+        "research/work/manage-context-20261009/cards/old-second-variation.md",
+        "research/work/manage-context-20261009/cards/sl-arbitrary-deletion.md",
+        "research/work/manage-context-20261009/cards/sl-bounded-tail.md",
+        "research/work/manage-context-20261009/cards/sl-cofinite-trace.md",
+        "research/work/manage-context-20261009/cards/sl-g2.md",
+        "research/work/manage-context-20261009/cards/sl-global-open.md",
+        "research/work/manage-context-20261009/cards/sl-integer-replacement.md",
+        "research/work/manage-context-20261009/cards/sl-krein-model.md",
+        "research/work/manage-context-20261009/cards/sl-moving-interface.md",
+        "research/work/manage-context-20261009/cards/sl-original-family-obstruction.md",
+        "research/work/manage-context-20261009/cases.json",
+        "research/work/manage-context-20261009/docs/PROJECT_UNDERSTANDING.md",
+        "research/work/manage-context-20261009/evidence/library/card-bindings-required.json",
+        "research/work/manage-context-20261009/evidence/library/card-bindings/1744a90d4b3444735edeb3c2f28581076a76a7097d82c17cffbb41049f5aa0a6.json",
+        "research/work/manage-context-20261009/evidence/library/card-bindings/303261670cfd0490226a89e44d5ddddbc1d1940d6ce00ec1bfb8fec3c3ba3a55.json",
+        "research/work/manage-context-20261009/evidence/library/card-bindings/430d584bdf1b6274dcdd940c550172fbdc88adbfe2669ee9a5f6499038626a81.json",
+        "research/work/manage-context-20261009/evidence/library/card-bindings/570ba1dd28f5bd061f6595ebbccb188a7519943e2af200488f8e1bcb94ff4bd3.json",
+        "research/work/manage-context-20261009/evidence/library/card-bindings/620d20db7f8c3b5ffef4052abacad36369dbf9a9308fa8bf343a04604ecced30.json",
+        "research/work/manage-context-20261009/evidence/library/card-bindings/8c1e2d1ea2b0b0ba3ae127df10ffa25f49927ae30a28c4198cc6fb6b4fee85ff.json",
+        "research/work/manage-context-20261009/evidence/library/card-bindings/aea91de7a6dd8d2b53c3bc000b0e2f66ce1b75fb7b8866a71f2cbdb998ad2014.json",
+        "research/work/manage-context-20261009/evidence/library/card-bindings/b8c2e9efb842948d6692b3bf71af77c76e76a2777a50689e4d32b80c20b738da.json",
+        "research/work/manage-context-20261009/evidence/library/card-bindings/c44923d76fd6cbaa5329bd03cbfd9c38cb444cdbd3d08362ba06b837cdaed4a9.json",
+        "research/work/manage-context-20261009/evidence/library/card-bindings/catalog.json",
+        "research/work/manage-context-20261009/evidence/library/card-bindings/cc952d6cf8ce475121340f81ccf69c5940d1f1ce39cad049756cb51692eeaf8c.json",
+        "research/work/manage-context-20261009/evidence/library/card-bindings/d74da88ecfd3582267b746179d2519dbf9dea9e444e66b2ca90b6a6e07d51ce1.json",
+        "research/work/manage-context-20261009/evidence/library/card-bindings/d8950c72d15c155cadddf0d9378e2f1156af84a8a8125086986f992c53bafb24.json",
+        "research/work/manage-context-20261009/evidence/library/card-bindings/db4d3f8c92d9f8052c2ec24477772d94994765a6d42d1d384ee84e2e59515dfe.json",
+        "research/work/manage-context-20261009/evidence/library/card-bindings/dcfd3d8ddfdaffb4cbfa76ba24abd08f66f6c092280f5f860217ec7061e54d04.json",
+        "research/work/manage-context-20261009/evidence/library/card-bindings/f5e4696131f8e6837187794838a2d55886ba7e26fa6826d47f56ffba2cb8b1c1.json",
+        "research/work/manage-context-20261009/evidence/library/card-bindings/fe6aca087b7b83b382b81cd333a9d81755004dc253dbec9a062d7141f41d86f4.json",
+        "research/work/manage-context-20261009/evidence/library/card-versions/018975256ae7e7452a2422ec39e3023291d9c4440d804c375034cb82b6bf0e55.md",
+        "research/work/manage-context-20261009/evidence/library/card-versions/06391fc98d11295dac52c77580982201e13a427c75e588e13b190bc65f15433d.md",
+        "research/work/manage-context-20261009/evidence/library/card-versions/19ec6d1a80deeae0f9de233e81113fdc5fe46fd070249252b2043f59afe058a5.md",
+        "research/work/manage-context-20261009/evidence/library/card-versions/2c7daf17adfc5596ab20987091f42c4fc71f650f64eb9fdb66a0260a81e3dce9.md",
+        "research/work/manage-context-20261009/evidence/library/card-versions/330224d6da18dca30bae3871c2ee8f2bc3c8d86b8bd35061cf45c96732951e39.md",
+        "research/work/manage-context-20261009/evidence/library/card-versions/335e4ccf6d12da4c432d431c8cdebaff42d09ae41f7414b8368875b9dcf3e6e4.md",
+        "research/work/manage-context-20261009/evidence/library/card-versions/401f32cddea0465f6679c7a7c66874e91170c6dc1704a5d0f917026a81060cf0.md",
+        "research/work/manage-context-20261009/evidence/library/card-versions/497afaba9d8e732fbd491ff20d9c339b85c469b93f15b04b61bc063eaf7fe123.md",
+        "research/work/manage-context-20261009/evidence/library/card-versions/4cc3d15ae7d97a8df359c19ef8d148d167934d2ce242614616526c5a3f9077fd.md",
+        "research/work/manage-context-20261009/evidence/library/card-versions/59bf4c4ec2a271a137485190cd7d317554520a472b1f2ee181faea2f513767f0.md",
+        "research/work/manage-context-20261009/evidence/library/card-versions/bd8b14c5c86a0a65addea094cdf9511d3e7d7502870089db3affe24acba06664.md",
+        "research/work/manage-context-20261009/evidence/library/card-versions/c4cafb6613a93fed10961c8ca61a79be1ff0fb06ff4dc53da0aa1b0b46a4f50a.md",
+        "research/work/manage-context-20261009/evidence/library/card-versions/cb2dd955f4bb6edcecfc697d5ef5bdf2fbfeea4b1e09643ded111999417cd901.md",
+        "research/work/manage-context-20261009/evidence/library/card-versions/e2b6533d7ea9fe4567ae6d62ba7eb4c744d91ba5ea71e48fdc86679989619a75.md",
+        "research/work/manage-context-20261009/evidence/library/card-versions/e6e412ba1ad964b166fa2ac146a493db2b7a219a229fb6c4d4ac26ee6c636164.md",
+        "research/work/manage-context-20261009/evidence/library/card-versions/f1f6fe173ddbb1442dde63af832f06777366a0f93027ee1e2d35f238f9759236.md",
+        "research/work/manage-context-20261009/evidence/library/corrections-journal.json",
+        "research/work/manage-context-20261009/evidence/library/corrections-required.json",
+        "research/work/manage-context-20261009/evidence/library/corrections/events/00000000-adab55e824cb549ce2e803ec8a7ba55549560333b36f2bf653deb1ef0052c839.json",
+        "research/work/manage-context-20261009/evidence/library/corrections/evidence/1269be1279be5a0c476cd851f447af279cdac514028daf4d943c9a2964831724.bin",
+        "research/work/manage-context-20261009/evidence/library/corrections/requests/81b1c9abf32548f5411898a8ba683b22e43a8bf11a91d531e9ce941a8423df62.json",
+        "research/work/manage-context-20261009/evidence/library/experiences/sl-bounded-to-interface-route.md",
+        "research/work/manage-context-20261009/evidence/library/experiences/sl-pulse-obstruction-route.md",
+        "research/work/manage-context-20261009/evidence/library/index-history/33f9dc68ad35c6a15519fc2bf04ff94b681914fd09f7c0ec383836516250ff17.json",
+        "research/work/manage-context-20261009/evidence/library/index-history/87e00ca7e25cc749d0f4b55f2a282aa6d966629fa66d4e809cf33e1df77b38d1.json",
+        "research/work/manage-context-20261009/evidence/library/index-history/8ee4d6c722f99451b9d2c595cce0bc906c88dcf7a2a6ecbd4c43db4099d20cd6.json",
+        "research/work/manage-context-20261009/evidence/library/index-history/c7522edd32b19e790f76ea8c24acebd6f5b75b0ccedb3ae88df9ac47ae55c3de.json",
+        "research/work/manage-context-20261009/evidence/library/index-history/d844a203a4b84c4705a4d9e9906bc79cec5e5a1a0e63440a7e13d59b034b1c2d.json",
+        "research/work/manage-context-20261009/exports/01bc8c36c6d22854d55470b9efb6621e1afb4d2181e96064b14faf1055c82d84.json",
+        "research/work/manage-context-20261009/exports/01ea1989053afe13543d26a0edd03ad46e9decdc13e96122332d46d47d1053e2.json",
+        "research/work/manage-context-20261009/exports/05f009d867bb3d212f6f0b11362c72877e098dc4cb118af5f8436350e1b674e2.json",
+        "research/work/manage-context-20261009/exports/08a5083a38bfc41bff7b631d536a469464ee11402adbabfae7edf459babb8d4f.json",
+        "research/work/manage-context-20261009/exports/1355eb8e5c30992e9ba3c725fc08f6d0c44c92c16d79d78d525ea8d520dff6ba.json",
+        "research/work/manage-context-20261009/exports/13bc3109ff7368ebcd44588e2cfdf0913067f6e3112024addbbdb76934b9cc41.json",
+        "research/work/manage-context-20261009/exports/17249c65996ba91ee711ef3c59be0df18f490410e41b5d2c0568fedaa854401d.json",
+        "research/work/manage-context-20261009/exports/1fa95fc745ce41e322a99669e4055494fe8f1a234085a4ac6c2db487dd32e6ee.json",
+        "research/work/manage-context-20261009/exports/23f0c8ea0aa01e42f6c71cea64a59ea89f7b657d505cef3bb64e0d86b4847eee.json",
+        "research/work/manage-context-20261009/exports/30f51a9fd9476ce8112d65a756688da8a6098d6a24bb0e0be14020d48a9aece9.json",
+        "research/work/manage-context-20261009/exports/327acf4f95b8276e4c6633b72e25a70e85439e4be297bb23f0f5215a5ad3b138.json",
+        "research/work/manage-context-20261009/exports/3527f897df9c63501bcdfb540b39f268d1067d5c576b398c1854d8b4211495bc.json",
+        "research/work/manage-context-20261009/exports/36c118cdde42c4c9a9bbe9bd7431b5f277eaaf428f993fe792d7ead179adaced.json",
+        "research/work/manage-context-20261009/exports/38c0c9313db24cf0bbe28bb1b012956a65a6dae824fa24aa7310af6d9a92e896.json",
+        "research/work/manage-context-20261009/exports/4a040deb7af03046c2724c775503d1cae37b710aa926b8129a1a88118674c869.json",
+        "research/work/manage-context-20261009/exports/582f0d36daed43cb1d7f2c5dca2bf1000994a4eeedcda45221d3eecab852e1da.json",
+        "research/work/manage-context-20261009/exports/596517a0360e32f3ff1ed2e116a356a8d4d912059d40097fe14b61bb98ba1c15.json",
+        "research/work/manage-context-20261009/exports/6546dbb763df3a23f23f8d7bbcdd417fac52b74b57de02a9fcf37084d79d49b2.json",
+        "research/work/manage-context-20261009/exports/67290cc035e96fae949c1f1801034a6fb1a8fd144510e3b685995867b6af86db.json",
+        "research/work/manage-context-20261009/exports/6b8c227ececba1ef985b3ef36b7c29dbb5f2291542f5c74794ded9002a857dea.json",
+        "research/work/manage-context-20261009/exports/6baaa5e60d428bbd381adb4fee6a314e27da49743c8d22b3397fd44e540a5bc8.json",
+        "research/work/manage-context-20261009/exports/6e356930359979055c40a8f20f5d54241e2c83ccd2073b2abe852209153824ba.json",
+        "research/work/manage-context-20261009/exports/724992f59ef8ad3721fa247a2bc1917a8409745cb4f16121c342b89126d69d38.json",
+        "research/work/manage-context-20261009/exports/79eb25c9b606ec125f9ac4c0b1e64c461f45b0c7472d09e4d06ca5b74ecd3c2a.json",
+        "research/work/manage-context-20261009/exports/7cf062fc2a1467ecf2e504cedc0dded8ac96943989a03bfeca84250182838144.json",
+        "research/work/manage-context-20261009/exports/7e406b49c8f523d4bf9b4043e944edd67c39b8dc82e7b5065ee5bc4b4ab5899c.json",
+        "research/work/manage-context-20261009/exports/8340a8736cef8082546fd5bb1b05e790ee56a2a1077fb5458c358a5b095c2332.json",
+        "research/work/manage-context-20261009/exports/84cbd90f00d2f853b47629635925a99332d51e3c89313f1055e931155fc00109.json",
+        "research/work/manage-context-20261009/exports/8b4264b2df2a77b311499a9225fda62e670aa53949775437ae045ab8e9ef51f2.json",
+        "research/work/manage-context-20261009/exports/90f172083ff226c9882c772b3a7359c809fd7dab31e9c3137788b716facfde77.json",
+        "research/work/manage-context-20261009/exports/a0971dcd9814b0fdafc2b2a2a7bc715a7f40d7b44566e31f5356bc2088d3b427.json",
+        "research/work/manage-context-20261009/exports/a3ccf9e1f538b66b79fafaae964b2c9fc5162bbe6c009de215b865c1854d31ca.json",
+        "research/work/manage-context-20261009/exports/a9b0e8e6d7b8f0931ee0440fc99f19255f367eb34048c9bf26f4c304092c7d70.json",
+        "research/work/manage-context-20261009/exports/af0721fa61ee78f8ccd83ec7ad0415451bc23a0a48535cda619901b90315424a.json",
+        "research/work/manage-context-20261009/exports/b2cd83c7752faa76bf7c1bc4a2787b5f67ac0614f4431eaeed2b7d03a1f22b2a.json",
+        "research/work/manage-context-20261009/exports/bae035d6e35ad83036c9e117579662cbcf12285860a7f9068758e4893c0095fb.json",
+        "research/work/manage-context-20261009/exports/bb7d868f7ade745e8a5668d5a2c09e33e798ef7ea438b748dc467ba754b5f829.json",
+        "research/work/manage-context-20261009/exports/c08d0566883a5f5765703947000511340b0b9014309b5856562ffe957f4bfd35.json",
+        "research/work/manage-context-20261009/exports/c880c16fb36c99c454d7e8d04b14e849cfaed22a261f9d58b20e3de01fc0e5b7.json",
+        "research/work/manage-context-20261009/exports/cc0435bc814ce74e62e1a9e5229d7420a2ca7e8cb7fea665d523345bebd2d505.json",
+        "research/work/manage-context-20261009/exports/cc9807560d2486957245a61c88509789e230c317e5f6d5c2147647f9b981aba2.json",
+        "research/work/manage-context-20261009/exports/d06cb8dc819ecfb5a0b99696094306283b88d97eaf838c152bbaa83bbb8ef28f.json",
+        "research/work/manage-context-20261009/exports/ddcb0a0dd1e9999cfa4f797a23ceb026321eeda3afb45efd7d5b5acc6e7406fd.json",
+        "research/work/manage-context-20261009/exports/e19be4b11cc8af11579e49528c47d2eea62f60738ad0654ba37371b4ff3befad.json",
+        "research/work/manage-context-20261009/exports/e2530ce27b6aad1b94dcccd780f0b5e641b85bbf679cfaaabb6949290d98f7c3.json",
+        "research/work/manage-context-20261009/exports/efeacf1b6380012b0ec2569d7e6f7aaef9b092a41b8314312ef73c2b75432fba.json",
+        "research/work/manage-context-20261009/exports/f03df4906b5e19a1aba943f0d96f20a9a2a51d9999ed78b25876651c540d6313.json",
+        "research/work/manage-context-20261009/exports/f0f263be2f7ef8a42e21bd5205ac84d4c1b45610c6dda2149565a2ed98737fbf.json",
+        "research/work/manage-context-20261009/exports/f0fff84f2f84a99d43d88d5db6dd18138831f06c9736eaf2dcdabc02f16738f7.json",
+        "research/work/manage-context-20261009/exports/f55e133973c7e0dd979bddca738445472fd1ba3a4730d5096a289fcfc62ad956.json",
+        "research/work/manage-context-20261009/index/after.json",
+        "research/work/manage-context-20261009/index/before.json",
+        "research/work/manage-context-20261009/index/tools.json",
+        "research/work/manage-context-20261009/original-live-gate.json",
+        "research/work/manage-context-20261009/source-origins.json",
+        "research/work/manage-context-20261009/sources/SL_G2_compactness_proof.md",
+        "research/work/manage-context-20261009/sources/SL_bounded_direction_spectral_tail.md",
+        "research/work/manage-context-20261009/sources/SL_cofinite_all_orders.tex",
+        "research/work/manage-context-20261009/sources/SL_fractional_left_definite.tex",
+        "research/work/manage-context-20261009/sources/SL_full_window_deletions_and_finite_constraints.md",
+        "research/work/manage-context-20261009/sources/SL_integer_left_definite_riesz_systems.md",
+        "research/work/manage-context-20261009/sources/STATUS.md",
+        "research/work/manage-context-20261009/sources/analytic-repair.md",
+        "research/work/manage-context-20261009/sources/research_map.md",
+        "research/work/manage-context-20261009/sources/weighted-l2.md",
+        "research/work/manage-context-20261009/sources/weighted.md"
+      ],
+      "head": "f3b78f402497c6a2ecdf8e53770fe84bab308198",
+      "branch": "main",
+      "staged": [],
+      "diff_check_exit": 0
+    },
+    "plugin": {
+      "original_files": 1233,
+      "protected_original_files": 1221,
+      "changed": [
+        {
+          "path": "AGENTS.md",
+          "before": "6f3b0f540bc3e51bb41660e27c8f50d9dc9dde27329f9c27e476a4411c66f1b7",
+          "after": "77d6371cb7640a26b9bdd87fefbc59e489ce4a20f8235f5fe92a0e1551bff587"
+        },
+        {
+          "path": "AGENTS_HISTORY.md",
+          "before": "e7ab8fa9fe601bfccf89339da55147bb0df9c6a280bfe66e23d12170dba20878",
+          "after": "9cb1f2852a267f6e9f40f7d720fbd65b5eadb370a8c3e4f1a80cca4289783f3f"
+        },
+        {
+          "path": "plugins/manage-math-research-program/.codex-plugin/plugin.json",
+          "before": "c2fa1c62f286fd4113d52f38a0152f5240c6d5ddbae7de81f56f4a656304384c",
+          "after": "11230609765cca970e8d44d4c22202b92f69fd361a52b431b6509df955682ea8"
+        },
+        {
+          "path": "plugins/manage-math-research-program/runtime/blueprintctl.py",
+          "before": "dc5b680dff646e45504a2f7d2974374ef46bd6e141e9c27e71314a8a8ea79156",
+          "after": "d86dd2e2fd28447ddad4351f2f5c98ee64b8551aa31b10ecd82d1d423e471ce6"
+        },
+        {
+          "path": "plugins/manage-math-research-program/skills/manage-math-research-program/MANIFEST.sha256",
+          "before": "149e2fd9bfc230f4e4937745f0379a2be785e2fdf3fb878c9b0dd46f13215ed8",
+          "after": "a77282cfb7fce0f7c44910ee8c01940ea0987f6e8eeb8173e1f7e39cfafaa274"
+        },
+        {
+          "path": "plugins/manage-math-research-program/skills/manage-math-research-program/SKILL.md",
+          "before": "456e5c5e51083082587452eb1bfbd3aa1b74c87930c560f0041a8f75a9bfbf65",
+          "after": "31a13fa07820cc0b6ce2ff69a59864a3ed6137df59950d444b42a10603f6999d"
+        },
+        {
+          "path": "plugins/manage-math-research-program/skills/manage-math-research-program/references/changelog.md",
+          "before": "d83f01eb504f6c2d704b3ee825529cc3a55f889eeff740072e8cda741ad9213f",
+          "after": "895bf643d47d31d882d00df00d300ca9b610ae2bdceb935a2c68c69b8271d9f7"
+        },
+        {
+          "path": "plugins/manage-math-research-program/skills/manage-math-research-program/references/v2-library.md",
+          "before": "f05eeee583556460ec222a836124d85502d760963206e1345214a5cc7ff39e85",
+          "after": "287d203ecd730040f84cfd8529d22cfd8a7c4e87b47c0276dd171aa4c10c1e88"
+        },
+        {
+          "path": "plugins/manage-math-research-program/skills/manage-math-research-program/scripts/research_corrections.py",
+          "before": "fb7ea80507d165372a6e9177c03f2fde339b6e0095a12599e7bc111624bf062e",
+          "after": "733f1af881a147c5dff61408831ae844c6e4c414f4fa7399ab627393611bbd32"
+        },
+        {
+          "path": "plugins/manage-math-research-program/skills/manage-math-research-program/scripts/research_experience.py",
+          "before": "47001d9b809c7892e692a75ea0efb8d4659059106515c9bcdcef1e03410a2764",
+          "after": "aa156bb93da8ac47cae35c3cf93d6349a562c65e6c8a20188e907bc9db11c6bd"
+        },
+        {
+          "path": "plugins/manage-math-research-program/skills/manage-math-research-program/scripts/research_library.py",
+          "before": "273d31edff1ed89747b81fac5da9dc0cd4e5b3d092cd4718e9fb8a4ec2d96447",
+          "after": "0c4ecde9cc548a8ff45dd5418c68e91f3b9f6498eb26c932727554322fa568a5"
+        },
+        {
+          "path": "tests/smoke_research_library.py",
+          "before": "ba5a1854b6e6855fc22b06be51a0b47bbd27fc7465908c9efe1d4b1d6383104d",
+          "after": "e8ba683d61e27afa112faeea0fe16f21543f496077128332fbcfc1b9fb3ef3c2"
+        }
+      ],
+      "missing": [],
+      "added": [
+        "plugins/manage-math-research-program/skills/manage-math-research-program/references/task-context.md",
+        "plugins/manage-math-research-program/skills/manage-math-research-program/scripts/research_context.py",
+        "plugins/manage-math-research-program/skills/manage-math-research-program/scripts/tests/test_research_context.py"
+      ],
+      "head": "9e0da0c37bf2ecc62d30061888ebbbdb0d86846f",
+      "branch": "codex/plugin-v2-implementation-20260909",
+      "staged": [],
+      "diff_check_exit": 0
+    }
+  },
+  "original_prefixes": {
+    "research/AGENTS.md": true,
+    "research/state/AGENTS_SESSION_LOG.md": true,
+    "research/docs/PROJECT_UNDERSTANDING.md": true,
+    "plugin/AGENTS.md": true,
+    "plugin/AGENTS_HISTORY.md": true,
+    "research/state/RESUME.md historical original bytes": true
+  },
+  "source_pairing": {
+    "files": 244,
+    "all_match": true
+  },
+  "shared_review_adapter_unchanged": true,
+  "main_index_unchanged": true,
+  "existing_api_generated_additions": {
+    "schema": "existing-api-generated-additions/v1",
+    "paths": {
+      "research/artifacts/lean-development-20261008/verification-v3/targets/weighted-dd/lean-verification-runs/rechecks/494ac539c6fd4ff98c4199e3ef1307fe/ResolveImports.lean": {
+        "sha256": "9c2bf682fad628fddc35d423ed3fbcc550fe334c10225627a5af8f2f1916526b",
+        "purpose": "Explicit selected existing lean_evidence recheck's lean --deps resolution probe and retained job/log output; no target proof compilation."
+      },
+      "research/artifacts/lean-development-20261008/verification-v3/targets/weighted-dd/lean-verification-runs/rechecks/494ac539c6fd4ff98c4199e3ef1307fe/logs/9d65d859178143adae43f63519ae73f3.job.json": {
+        "sha256": "b43a28df3f5e650be466ae71acee9c079c594754f8c30b18a4b232baef98f844",
+        "purpose": "Explicit selected existing lean_evidence recheck's lean --deps resolution probe and retained job/log output; no target proof compilation."
+      },
+      "research/artifacts/lean-development-20261008/verification-v3/targets/weighted-dd/lean-verification-runs/rechecks/494ac539c6fd4ff98c4199e3ef1307fe/logs/9d65d859178143adae43f63519ae73f3.stderr.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "purpose": "Explicit selected existing lean_evidence recheck's lean --deps resolution probe and retained job/log output; no target proof compilation."
+      },
+      "research/artifacts/lean-development-20261008/verification-v3/targets/weighted-dd/lean-verification-runs/rechecks/494ac539c6fd4ff98c4199e3ef1307fe/logs/9d65d859178143adae43f63519ae73f3.stdout.log": {
+        "sha256": "e2ddf826a9c775ab3f63849318a474772d79789ab7bac8d6b54a3b48832e9244",
+        "purpose": "Explicit selected existing lean_evidence recheck's lean --deps resolution probe and retained job/log output; no target proof compilation."
+      },
+      "research/artifacts/lean-development-20261008/verification-v3/targets/weighted-dd/lean-verification-runs/rechecks/8377d0c6691b46bea45beef58962a030/ResolveImports.lean": {
+        "sha256": "9c2bf682fad628fddc35d423ed3fbcc550fe334c10225627a5af8f2f1916526b",
+        "purpose": "Explicit selected existing lean_evidence recheck's lean --deps resolution probe and retained job/log output; no target proof compilation."
+      },
+      "research/artifacts/lean-development-20261008/verification-v3/targets/weighted-dd/lean-verification-runs/rechecks/8377d0c6691b46bea45beef58962a030/logs/a8ecb23cd9974ca6b55ae6d3437a70ad.job.json": {
+        "sha256": "863d6275a7ab9ca7cd8e1341ce28696a4f343cb9637cdf27ca42c8b57a9ca304",
+        "purpose": "Explicit selected existing lean_evidence recheck's lean --deps resolution probe and retained job/log output; no target proof compilation."
+      },
+      "research/artifacts/lean-development-20261008/verification-v3/targets/weighted-dd/lean-verification-runs/rechecks/8377d0c6691b46bea45beef58962a030/logs/a8ecb23cd9974ca6b55ae6d3437a70ad.stderr.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "purpose": "Explicit selected existing lean_evidence recheck's lean --deps resolution probe and retained job/log output; no target proof compilation."
+      },
+      "research/artifacts/lean-development-20261008/verification-v3/targets/weighted-dd/lean-verification-runs/rechecks/8377d0c6691b46bea45beef58962a030/logs/a8ecb23cd9974ca6b55ae6d3437a70ad.stdout.log": {
+        "sha256": "e2ddf826a9c775ab3f63849318a474772d79789ab7bac8d6b54a3b48832e9244",
+        "purpose": "Explicit selected existing lean_evidence recheck's lean --deps resolution probe and retained job/log output; no target proof compilation."
+      },
+      "research/library/card-bindings/5486b081f07467fed43b37d8793220313a6d40ebe22e35967ae6ea071339b9a3.json": {
+        "sha256": "5486b081f07467fed43b37d8793220313a6d40ebe22e35967ae6ea071339b9a3",
+        "purpose": "Existing registration API legacy exact-version projection for the three new scoped candidate cards."
+      },
+      "research/library/card-bindings/6bb0aebfbbf71b08b5b489c6838515ab85c3e50102dcb7857c148cba700fddfb.json": {
+        "sha256": "6bb0aebfbbf71b08b5b489c6838515ab85c3e50102dcb7857c148cba700fddfb",
+        "purpose": "Existing registration API legacy exact-version projection for the three new scoped candidate cards."
+      },
+      "research/library/card-bindings/822fa1597a089b9da835d7356ef14250aac6a1def93821b9bc121d9fb56170ff.json": {
+        "sha256": "822fa1597a089b9da835d7356ef14250aac6a1def93821b9bc121d9fb56170ff",
+        "purpose": "Existing registration API legacy exact-version projection for the three new scoped candidate cards."
+      },
+      "research/library/card-bindings/c08d71a16907ea2e6d637468d95ab7f341baae76fb03688baeb01b213640a7a7.json": {
+        "sha256": "c08d71a16907ea2e6d637468d95ab7f341baae76fb03688baeb01b213640a7a7",
+        "purpose": "Existing registration API legacy exact-version projection for the three new scoped candidate cards."
+      },
+      "research/library/index-history/9ca42c68a5303f1c4b526038607b3df24681db346501814512a67de0c8a8ac44.json": {
+        "sha256": "9ca42c68a5303f1c4b526038607b3df24681db346501814512a67de0c8a8ac44",
+        "purpose": "Existing index API retains its prior content-addressed pointer view."
+      }
+    },
+    "original_catalog_reconstruction_matches": true,
+    "added_catalog_records": 4
+  },
+  "current_links": [
+    {
+      "source": "F:\\LaTeX\\BVE research\\research\\artifacts\\manage-context-20261009\\README.md",
+      "target": "SOURCE-PAIRING.json",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\research\\artifacts\\manage-context-20261009\\README.md",
+      "target": "../../../_xsoc1_work/plugins/manage-math-research-program/skills/manage-math-research-program/references/task-context.md",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\research\\artifacts\\manage-context-20261009\\README.md",
+      "target": "../../work/manage-context-20261009/cases.json",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\research\\artifacts\\manage-context-20261009\\README.md",
+      "target": "../../work/manage-context-20261009/source-origins.json",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\research\\artifacts\\manage-context-20261009\\README.md",
+      "target": "before-cases-final.json",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\research\\artifacts\\manage-context-20261009\\README.md",
+      "target": "after-cases-v13.json",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\research\\artifacts\\manage-context-20261009\\README.md",
+      "target": "cards/sl-bounded-to-interface-route.md",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\research\\artifacts\\manage-context-20261009\\README.md",
+      "target": "cards/sl-pulse-obstruction-route.md",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\research\\artifacts\\manage-context-20261009\\README.md",
+      "target": "cards/sl-weighted-dd-local-lean.md",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\research\\artifacts\\manage-context-20261009\\README.md",
+      "target": "scoped-index.json",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\research\\artifacts\\manage-context-20261009\\README.md",
+      "target": "original-live-gate.json",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\research\\artifacts\\manage-context-20261009\\README.md",
+      "target": "../lean-development-20261008/README.md",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\research\\artifacts\\manage-context-20261009\\README.md",
+      "target": "lean-recheck-summary-v4.json",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\research\\artifacts\\manage-context-20261009\\README.md",
+      "target": "F:/tools/manage-context-20261009/review-forward-receipt-v5.json",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\research\\artifacts\\manage-context-20261009\\README.md",
+      "target": "F:/tools/manage-context-20261009/review-software-receipt-v13.json",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\research\\artifacts\\manage-context-20261009\\README.md",
+      "target": "F:/tools/manage-context-20261009/TESTS-v13.json",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\state\\RESUME.md",
+      "target": "../research/artifacts/manage-context-20261009/README.md",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\state\\RESUME.md",
+      "target": "../research/artifacts/manage-context-20261009/SOURCE-PAIRING.json",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\state\\RESUME.md",
+      "target": "../research/artifacts/lean-development-20261008/README.md",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\_xsoc1_work\\plugins\\manage-math-research-program\\skills\\manage-math-research-program\\SKILL.md",
+      "target": "scripts/research_library.py",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\_xsoc1_work\\plugins\\manage-math-research-program\\skills\\manage-math-research-program\\SKILL.md",
+      "target": "references/v2-library.md",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\_xsoc1_work\\plugins\\manage-math-research-program\\skills\\manage-math-research-program\\SKILL.md",
+      "target": "references/task-context.md",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\_xsoc1_work\\plugins\\manage-math-research-program\\skills\\manage-math-research-program\\SKILL.md",
+      "target": "references/v2-corrections.md",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\_xsoc1_work\\plugins\\manage-math-research-program\\skills\\manage-math-research-program\\SKILL.md",
+      "target": "references/v2-review.md",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\_xsoc1_work\\plugins\\manage-math-research-program\\skills\\manage-math-research-program\\SKILL.md",
+      "target": "references/blueprint-runtime-gateway.md",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\_xsoc1_work\\plugins\\manage-math-research-program\\skills\\manage-math-research-program\\SKILL.md",
+      "target": "references/changelog.md",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\_xsoc1_work\\plugins\\manage-math-research-program\\skills\\manage-math-research-program\\references\\v2-library.md",
+      "target": "task-context.md",
+      "exists": true
+    },
+    {
+      "source": "F:\\LaTeX\\BVE research\\_xsoc1_work\\plugins\\manage-math-research-program\\skills\\manage-math-research-program\\references\\v2-library.md",
+      "target": "v2-library-implementation-notes.md",
+      "exists": true
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

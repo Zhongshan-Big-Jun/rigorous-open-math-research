@@ -104,8 +104,14 @@ def inspect_declaration (ActualName : Name) (ExpectedName : Option Name) : Comma
 	let Used := dependency_closure Environment [ActualName]
 	let SemanticUsed := semantic_closure Environment Info.type.getUsedConstants.toList
 	let FullType ← liftTermElabM <| withOptions
-		(fun Options => Options.setBool `pp.all true |>.setBool `pp.universes true |>.setBool `pp.explicit true)
-		(do return (← ppExpr Info.type).pretty)
+		(fun Options => Options.setBool `pp.all true |>.setBool `pp.universes true |>.setBool `pp.explicit true
+			|>.setBool `pp.deepTerms true |>.setBool `pp.proofs true
+			|>.set `pp.maxSteps (10000000 : Nat) |>.set `maxRecDepth (8192 : Nat))
+		(do
+			let Printed := (← ppExpr Info.type).pretty
+			if Printed.contains '⋯' then
+				throwError "type pretty-printing omitted terms; complete readable type unavailable"
+			return Printed)
 	let mut Comparison := Json.mkObj [("status", toJson "not_requested")]
 	let mut ExpectedStatement := Json.null
 	if let some ExpectedName := ExpectedName then

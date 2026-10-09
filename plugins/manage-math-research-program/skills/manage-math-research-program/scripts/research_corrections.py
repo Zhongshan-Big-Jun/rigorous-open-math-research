@@ -243,8 +243,48 @@ def key(Ref):
 
 
 def same_identity(Left, Right):
-	return (Left["location"] == Right["location"] or Left["sha256"] == Right["sha256"]
-		or bool(Left.get("tool_id") and Left.get("tool_id") == Right.get("tool_id")))
+	if(Left["location"] == Right["location"] or Left["sha256"] == Right["sha256"]):
+		return True
+	if(Left.get("capture_identity") and Left.get("capture_identity") == Right.get("capture_identity")):
+		return True
+	LeftIds = Left.get("identity_tool_ids", [Left.get("identity_tool_id", Left.get("tool_id"))])
+	RightIds = Right.get("identity_tool_ids", [Right.get("identity_tool_id", Right.get("tool_id"))])
+	return bool((set(LeftIds) - {None}) & (set(RightIds) - {None}))
+
+
+def identity_projection(project, Row):
+	"""Project bound source identities without changing immutable legacy bindings.
+
+	The common filename source.json is not a declaration that different captures
+	are the same tool. Exact path/hash and explicit dependency obligations remain.
+	"""
+	Row = {Name: Value for Name, Value in Row.items() if Name not in ("capture_identity", "identity_tool_id", "identity_tool_ids")}
+	CaptureId = library.capture_metadata_id(project, Row["location"])
+	IsCard = Path(Row["location"]).suffix.casefold() == ".md"
+	if(not CaptureId and not IsCard):
+		return Row
+	Snapshot = version_path(project, Row["sha256"])
+	if(Snapshot.is_file()):
+		Raw = version_bytes(project, Row)
+	else:
+		Raw = library.inside(project, Row["location"]).read_bytes()
+		require(library.digest(Raw) == Row["sha256"], "source version changed before identity projection")
+	if(IsCard):
+		try:
+			Front = library.read_metadata(Raw)[0]
+		except (ValueError, TypeError, UnicodeError):
+			Front = {}
+		# Preserve both a durable legacy identity and the declaration in its
+		# bound source. Neither identity may erase the other's issue obligation.
+		Ids = [str(Value) for Value in (Row.get("tool_id"), Front.get("tool_id") or Front.get("slug")) if Value]
+		return dict(Row, identity_tool_ids=sorted(set(Ids)))
+	try:
+		Record = json.loads(Raw.decode("utf-8-sig"))
+	except (ValueError, UnicodeError):
+		Record = None
+	Identity = library.capture_identity(Record)
+	Implicit = Row.get("tool_id") in (None, Path(Row["location"]).stem)
+	return dict(Row, capture_identity=Identity, identity_tool_id=None if Implicit else Row.get("tool_id"))
 
 
 def journal_path(project):
@@ -544,6 +584,7 @@ def accepted_releases(project, Store):
 
 def impact_states(project, Store):
 	Released, Problems = accepted_releases(project, Store)
+	Identities = {Key: identity_projection(project, Node) for Key, Node in Store["nodes"].items()}
 	States = {Key: dict(status="metadata_invalid" if Node.get("metadata_status") == "INVALID" else "clear", issues=[], reuse_allowed=Node.get("metadata_status") != "INVALID") for Key, Node in Store["nodes"].items()}
 	Rank = dict(needs_review=1, quarantine=2, retracted=3)
 	for IssueHash, Issue in issue_requests(Store).items():
@@ -561,7 +602,7 @@ def impact_states(project, Store):
 		while(Changed):
 			Changed = False
 			for Key, Node in Store["nodes"].items():
-				Statuses = [Status for Other, Status in Blocked.items() if same_identity(Node, Store["nodes"][Other])]
+				Statuses = [Status for Other, Status in Blocked.items() if same_identity(Identities[Key], Identities[Other])]
 				if(any(key(Ref) in Blocked for Ref in Node["dependencies"])):
 					Statuses.append("needs_review")
 				if(Statuses):
@@ -600,13 +641,21 @@ def gate_rows(project, Rows):
 		States, Problems = impact_states(project, Store)
 		Output = []
 		for Row in Rows:
+			Row = identity_projection(project, Row)
 			VersionKey = Row.get("location"), Row.get("sha256")
 			State = States.get(VersionKey)
 			Node = Store["nodes"].get(VersionKey, {})
 			if(State is None):
-				Affected = [Value for Key, Value in States.items() if not Value["reuse_allowed"] and same_identity(Row, Store["nodes"][Key])]
+				Affected = [Value for Key, Value in States.items() if not Value["reuse_allowed"] and same_identity(Row, identity_projection(project, Store["nodes"][Key]))]
 				State = dict(status="needs_review", issues=sorted({IssueId for Value in Affected for IssueId in Value["issues"]}), reuse_allowed=False) if Affected else dict(status="clear", issues=[], reuse_allowed=True)
-			Output.append(dict(Row, correction_state=State, reuse_allowed=State["reuse_allowed"], dependencies_known=Node.get("dependencies_known", Row.get("metadata_status") != "UNPARSEABLE")))
+			Known = False
+			if(Node and Node.get("metadata_status") != "INVALID"):
+				Front, _, _ = library.read_metadata(version_bytes(project, Node))
+				Known = "dependencies" in Front or "depends_on" in Front
+			elif(not Node):
+				Known = Row.get("dependencies_known") is True
+			Output.append(dict(Row, correction_state=State, reuse_allowed=State["reuse_allowed"], dependencies_known=Known,
+				dependency_coverage="EXPLICIT_DECLARATION_NOT_PROVEN_COMPLETE" if Known else "UNKNOWN_OUTGOING_DEPENDENCIES"))
 		return Output, Problems
 	except (ImportError, OSError, ValueError, TypeError, KeyError, RuntimeError) as Error:
 		State = dict(status="corrections_invalid", issues=[], reuse_allowed=False, error=str(Error))

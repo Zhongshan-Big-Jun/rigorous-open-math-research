@@ -19,6 +19,14 @@ source, read it in bounded segments, index tools, query them and add annotations
 The [library guide](references/v2-library.md) describes the concrete commands,
 experience comparison and the human editable understanding page.
 
+For a current research question, use `query --context` when small optional
+problem, object or scope fields help. Use `read` for the live gated statement,
+then `context` to assemble a bounded knowledge view and source reading order.
+The [task context guide](references/task-context.md) gives runnable commands.
+Ranking explains textual relevance; the host must check the actual conditions
+and any model bridge. Retained metadata is not a new statement. Explicit
+historical inspection never recommends a quarantined route for reuse.
+
 Read enough of the original source to verify the material being used. Preserve
 its URL or publication identity, version, raw/text hashes and locators. OCR or
 text extraction may damage formulas; inspect the original when meaning is
@@ -48,12 +56,24 @@ attempt. Distinguish disproved statements, weak methods, missing lemmas and
 infrastructure failures. Keep the old evidence when revising an interpretation.
 Cross-route comparisons can suggest a candidate invariant, definition or common
 mechanism; attach a testable prediction and keep candidate status visible.
+Compare targets, admissible classes, lost information and complementary lemmas.
+The script displays recorded dimensions; it does not infer a unified theory or
+launch a retry. Put source evidence beside the host's proposed explanation.
 
 Keep the project understanding page readable by the human collaborator: current
 explanations, competing ideas, recent changes in understanding, and decisions or
 questions that would benefit from discussion. Preserve human edits and label
 intuition as intuition. Generated pointers and comparison views are disposable;
 source notes, comments and proofs are the durable content.
+`understanding` prefers an existing `docs/PROJECT_UNDERSTANDING.md`. Only its
+marked generated region is managed. A manual or concurrent edit causes a
+conflict instead of replacement.
+
+Lean references remain unverified by default even when their bytes match.
+An explicit `context --recheck-lean --lean-tools` calls the existing Lean
+verifier for selected saved references. Keep execution, exact root, semantic
+identity review, open model connections and acceptance separate. This never
+compiles every project or turns a conditional theorem into its conclusion.
 
 ## Continuity and accepted knowledge
 

@@ -157,7 +157,7 @@ cards. Free annotations work on these cards too.
 
 ```text
 python EXPERIENCE compare --project PROJECT --route CARD_A --route CARD_B --hypothesis hypotheses.json
-python EXPERIENCE understanding --project PROJECT --route CARD_A --route CARD_B --comparison COMPARISON_PATH --output research/understanding.md
+python EXPERIENCE understanding --project PROJECT --route CARD_A --route CARD_B --comparison COMPARISON_PATH
 ```
 
 `compare` binds the selected route versions and mechanically collects their
@@ -171,13 +171,20 @@ contains evidence and no invented explanation. Repeating it reuses the same
 content-addressed comparison file.
 
 `understanding` assembles these records and candidates into an editable page,
-defaulting to `research/understanding.md`. Without `--route`, it uses indexed
+preferring an existing `docs/PROJECT_UNDERSTANDING.md`, otherwise using the
+configured research root's `understanding.md`. Without `--route`, it uses indexed
 experience cards. It marks comparison inputs that changed since the comparison.
 Write human intuition, competing explanations, questions and decisions outside
 the generated markers. Those bytes are preserved exactly. If the generated
 region itself was manually edited, refresh refuses to overwrite it: move the
 handwritten material outside the markers before retrying. No user intuition is
 automatically relabeled as an accepted mathematical fact.
+
+For live gated reads, optional task-context retrieval, typed relations and
+bounded knowledge views, use the [task context guide](task-context.md).
+Comparison inputs and candidate evidence are rechecked through the live
+correction gate. An explicitly requested historical comparison retains its
+discussion but cannot support current reuse.
 
 ## Library write recovery
 

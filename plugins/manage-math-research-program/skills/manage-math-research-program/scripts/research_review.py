@@ -167,21 +167,36 @@ def check_packet(project, PacketPath):
 
 
 def check_spawn(PacketPath, Packet, Spawn):
-	if(not isinstance(Spawn, dict) or Spawn.get("tool") != "multi_agent_v1__spawn_agent"):
+	if(not isinstance(Spawn, dict) or Spawn.get("tool") not in ("multi_agent_v1__spawn_agent", "collaboration.spawn_agent")):
 		raise ValueError("only the explicit Codex fresh-context tool adapter is supported")
 	Arguments, Result = Spawn.get("arguments", {}), Spawn.get("result", {})
 	if(not isinstance(Arguments, dict) or not isinstance(Result, dict)):
 		raise ValueError("invalid spawn arguments or result")
-	if(Arguments.get("fork_context") is not False):
-		raise ValueError("review dispatch must explicitly use fork_context=false")
 	if(Arguments.get("message") != reviewer_prompt(PacketPath) or "items" in Arguments):
 		raise ValueError("dispatch does not match the frozen minimal review prompt")
-	Agent = Result.get("agent_id")
-	if(not isinstance(Agent, str) or not re.fullmatch(r"[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}", Agent)):
-		raise ValueError("dispatch has no native agent identity")
+	if(Spawn["tool"] == "multi_agent_v1__spawn_agent"):
+		if(Arguments.get("fork_context") is not False):
+			raise ValueError("review dispatch must explicitly use fork_context=false")
+		Agent = Result.get("agent_id")
+		if(not isinstance(Agent, str) or not re.fullmatch(r"[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}", Agent)):
+			raise ValueError("dispatch has no native agent identity")
+	else:
+		if(Arguments.get("fork_turns") != "none"):
+			raise ValueError("review dispatch must explicitly use fork_turns=none")
+		Agent = Result.get("task_name")
+		TaskName = Arguments.get("task_name")
+		if(not isinstance(TaskName, str) or not re.fullmatch(r"[a-z0-9_]+", TaskName) or not isinstance(Agent, str) or not re.fullmatch(r"/root(?:/[a-z0-9_]+)+", Agent) or Agent.rsplit("/", 1)[-1] != TaskName):
+			raise ValueError("dispatch has no matching native canonical task identity")
+		if("agent_id" in Result or "fork_context" in Arguments):
+			raise ValueError("do not synthesize legacy identity or context fields for the collaboration adapter")
 	if(Agent in Packet.get("author_ids", [])):
 		raise ValueError("an author cannot verify their own packet")
 	return Agent
+
+
+def agent_storage_id(Agent):
+	# Retain old UUID paths; canonical task paths are identities, not filesystem paths.
+	return "task-" + library.digest(Agent.encode("utf-8")) if Agent.startswith("/") else Agent
 
 
 def record_dispatch(project, PacketPath, Spawn):
@@ -189,12 +204,12 @@ def record_dispatch(project, PacketPath, Spawn):
 	PacketPath = bound_path(Project, str(PacketPath))
 	Packet, Hash = check_packet(Project, PacketPath)
 	Agent = check_spawn(PacketPath, Packet, Spawn)
-	Folder = review_root(Project) / "runs" / (Hash + "-" + Agent)
+	Folder = review_root(Project) / "runs" / (Hash + "-" + agent_storage_id(Agent))
 	Dispatch = dict(schema="research-review-dispatch/v1", trust=TRUST,
 		packet=library.relative(Project, PacketPath), packet_sha256=Hash, reviewer_id=Agent,
 		spawn_sha256=library.digest(library.json_bytes(Spawn)))
 	with library.writer_lock(library.library_root(Project)):
-		library.immutable_write(review_root(Project) / "identities" / (Agent + ".json"),
+		library.immutable_write(review_root(Project) / "identities" / (agent_storage_id(Agent) + ".json"),
 			library.json_bytes(dict(packet_sha256=Hash, spawn_sha256=Dispatch["spawn_sha256"])))
 		library.immutable_write(Folder / "spawn.json", library.json_bytes(Spawn))
 		library.immutable_write(Folder / "dispatch.json", library.json_bytes(Dispatch))
@@ -204,11 +219,17 @@ def record_dispatch(project, PacketPath, Spawn):
 def completion_report(Completion, Agent):
 	if(not isinstance(Completion, dict)):
 		raise ValueError("completion must be the tool result object")
-	Result = Completion.get("status", {}).get(Agent)
-	if(not isinstance(Result, dict) or not isinstance(Result.get("completed"), str)):
-		raise ValueError("no completed response from the dispatched reviewer")
+	if(Agent.startswith("/")):
+		if(Completion.get("message_type") != "FINAL_ANSWER" or Completion.get("sender") != Agent or Completion.get("task_name") != Agent.rsplit("/", 1)[0] or not isinstance(Completion.get("payload"), str)):
+			raise ValueError("no actual FINAL_ANSWER from the dispatched canonical task")
+		CompletedText = Completion["payload"]
+	else:
+		Result = Completion.get("status", {}).get(Agent)
+		if(not isinstance(Result, dict) or not isinstance(Result.get("completed"), str)):
+			raise ValueError("no completed response from the dispatched reviewer")
+		CompletedText = Result["completed"]
 	try:
-		Report = json.loads(Result["completed"], object_pairs_hook=unique_object)
+		Report = json.loads(CompletedText, object_pairs_hook=unique_object)
 	except (ValueError, TypeError) as Error:
 		raise ValueError("reviewer completion must contain the complete JSON report") from Error
 	if(not isinstance(Report, dict)):
@@ -259,7 +280,7 @@ def load_dispatch(project, BundlePath):
 	Agent = check_spawn(PacketPath, Packet, json.loads(SpawnRaw, object_pairs_hook=unique_object))
 	if(Agent != Dispatch.get("reviewer_id")):
 		raise ValueError("dispatch reviewer identity changed")
-	Identity = read_json(review_root(Project) / "identities" / (Agent + ".json"))
+	Identity = read_json(review_root(Project) / "identities" / (agent_storage_id(Agent) + ".json"))
 	if(Identity != dict(packet_sha256=Hash, spawn_sha256=Dispatch["spawn_sha256"])):
 		raise ValueError("reviewer identity was rebound to different evidence")
 	return Folder, Dispatch, Packet, Hash

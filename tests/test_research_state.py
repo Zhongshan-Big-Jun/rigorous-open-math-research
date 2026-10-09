@@ -119,6 +119,13 @@ class ResearchStateTests(unittest.TestCase):
 		state.start_job(self.Project, "missing", [str(self.Project / "absent-executable")])
 		self.assertEqual(self.wait_job("missing")["state"], "FAILED_TO_START")
 
+	@unittest.skipUnless(os.name == "nt", "actual Windows console API control")
+	def test_background_job_child_has_no_console_window(self):
+		self.start("hidden-child", "import ctypes; print(ctypes.windll.kernel32.GetConsoleWindow())")
+		Record = self.wait_job("hidden-child")
+		self.assertEqual(Record["state"], "SUCCEEDED")
+		self.assertEqual((self.Project / Record["stdout"]).read_text().strip(), "0")
+
 	def test_pid_reuse_is_unknown_and_never_dispatches(self):
 		state.create_job(self.Project, "orphan", dict(kind="local", command=["unused"], cwd=".", inputs={}, timeout_seconds=None))
 		state.update_job(self.Project, "orphan", dict(state="RUNNING", supervisor_pid=os.getpid(), supervisor_identity="old-process"))

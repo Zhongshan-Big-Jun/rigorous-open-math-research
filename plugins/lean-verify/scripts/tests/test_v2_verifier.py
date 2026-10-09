@@ -14,7 +14,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from lean_runtime import aggregate_results, full_output, hash_json, process_identity, run, scan_file, sha256_file, write_json
+from lean_runtime import aggregate_results, background_options, full_output, hash_json, process_identity, run, scan_file, sha256_file, write_json
 from lake_build_guard import acquire, release
 from lean_routes import evaluate_routes
 from verify_lean_project import make_parser, verify_project
@@ -68,7 +68,7 @@ class VerifierControls(unittest.TestCase):
 		with patch("lean_runtime.subprocess.Popen", return_value=TimedProcess()), patch(CleanupTarget) as Cleanup:
 			Result = run(["mock"], self.Root, timeout=0.1, log_dir=self.Root / "logs")
 		if(os.name == "nt"):
-			Cleanup.assert_called_once_with(["taskkill", "/PID", str(TimedProcess.pid), "/T", "/F"], capture_output=True, timeout=10)
+			Cleanup.assert_called_once_with(["taskkill", "/PID", str(TimedProcess.pid), "/T", "/F"], capture_output=True, timeout=10, **background_options())
 		else:
 			Cleanup.assert_called_once_with(TimedProcess.pid, signal.SIGKILL)
 		self.assertEqual(Result["status"], "timeout")

@@ -1,0 +1,102 @@
+{
+	"bindings": {
+		"before-manage-2.0.2.zip": "99e6d019d93e109eda69d66fa6d47bc1b49761bbdb548eea5faec9e170624007",
+		"cache-projection-reproduction-v8.json": "40e551ffb67b766f90a58459fec26db0a43dce6ab8270a1e785e0f5f8b76cccf",
+		"independent-capture-probe-v8.py": "16c884f95282c97922784c28cf4f318f7ad1e37a1122fc1a8bfc45fcff7ba2e2",
+		"independent-capture-results-v8.json": "8e87be4dae4f2e65297bca7c448b7f5fef6d9d023250125dbbb07d94cd97fdbb",
+		"independent-export-probe-v8.py": "199ed1f3cbd252bdda19829c26fe206e2c61fbdc625f0758b014529128f3b627",
+		"independent-export-results-v8.json": "3d1339a7552b3d845e0a0aceb64aed24a4a040dbadb8916f5896607996d6f012",
+		"prior-forward-v3.json": "1bd0798d4434dbc671bb5f42a0ef17aabb4a67f53f4fff90a19f85901e5cb2b9",
+		"prior-forward-v4.json": "c142ec803b3f09c884858af0ffd44524c09a6397e461ff461ac2da65fd22a005",
+		"prior-software-v3.json": "bb050af542c8246656b210f5c5af6df27228cd2c6752b8bf924d071d0bd372dd",
+		"prior-software-v4.json": "18771d451fa31c520f28da4768175d7219da80e758a71f00f2dad7e5250b1936",
+		"prior-software-v5.json": "940b52755cf25d0942777b9fe8cb5b5c2b4be48f8a2f49e764b5853573bd3d13",
+		"prior-software-v6.json": "a409ddc7e2a164bee1dab52618790fd805b13dc0a29dc1aaabd6eecff7c6ce5c",
+		"prior-software-v7.json": "73af1b8193b93712532246dacc7eb131b8662facb8aa96c287a502f819557e98",
+		"prior-software-v8.json": "4c2cb2c61183571ca593cbc7afbb14e67ad5d6275c71d6d329eb41f74b9fc224",
+		"probe_cache_projection_v8.py": "0a9bdfd33c441b275faef714e571683d8536d4fe7b1f4258eeaadd59bf6c99af",
+		"scope-v11.md": "a25545c8d85cdade88e669e24a07563233c1a0be53df97b463c1974d8d3db92e",
+		"sl-inputs.zip": "251e849bfdaaf3f841c0bfc838c7831b9bc68476b75966344bf436e9296e6c12",
+		"source-v11.zip": "faa47a0b0bf06ba131c57fd9dabd776f3f43be70c6d4084014f39558ea6ee8c7",
+		"source-v8.zip": "7a74a72020b9530321cae09e1c10071c5f64372f60177157afe2275c7748121a",
+		"user-request.txt": "e8da38552aecaaa95da1d89585b83ad5798d8a38289bb5b4b9a0b10e6880c67b"
+	},
+	"bundle": "research/library/reviews/runs/1d5410bf0d437ce677056d649cf8801dc9e50365c68950a9bf574f5fde2fa32f-task-3d873b4a0fbdf40649503214303b5ff33cbdd7fa84b4e3320fec84658eed3842",
+	"checked_paths": [
+		"user-request.txt",
+		"scope-v11.md",
+		"source-v11.zip",
+		"before-manage-2.0.2.zip",
+		"sl-inputs.zip",
+		"source-v8.zip",
+		"prior-software-v3.json",
+		"prior-forward-v3.json",
+		"prior-software-v4.json",
+		"prior-forward-v4.json",
+		"prior-software-v5.json",
+		"prior-software-v6.json",
+		"prior-software-v7.json",
+		"prior-software-v8.json",
+		"probe_cache_projection_v8.py",
+		"cache-projection-reproduction-v8.json",
+		"independent-capture-probe-v8.py",
+		"independent-capture-results-v8.json",
+		"independent-export-probe-v8.py",
+		"independent-export-results-v8.json"
+	],
+	"claims": [
+		{
+			"case_results": [
+				{
+					"id": "integer",
+					"next_mathematical_check": "核对拟用整数阶的端点 jet 和真实幂域条件；非整数阶及 c 趋零一致性须另补桥梁。",
+					"reason": "同语料旧查询已找到整数替代系和原族非基障碍。新版保留固定 c>0、真实复 Krein 幂域、各固定非负整数阶、奇数阶 r+1 个低提升及可依赖 c/r 的次数一致常数。供应原文没有把不同的 Hermite-Legendre 替代系变成原稀疏族 Riesz 基。"
+				},
+				{
+					"id": "deletion",
+					"next_mathematical_check": "选择具体收敛保留集，研究其零化空间或闭包表示，不能直接套用发散侧公式。",
+					"reason": "原文与当前输出区分密度充要判据、两支倒数和发散时的精确闭包、任一收敛时的无限余维。保留 0<=s<7/2 及三个临界值采用较少迹一侧；没有给收敛侧完整元素描述。"
+				},
+				{
+					"id": "tail",
+					"next_mathematical_check": "证明实际接口路径的可微性、集中极限和余项控制，再组合有限接口项。",
+					"reason": "原文要求正有界可测密度、实有界 h、完整排序 DD 谱及可靠包络和正分母。新版保留 delta/delta-prime 接口方向的模型差异和有限二阶路径项；驻点 f(a_i)=0 不消去 f'(a_i)。"
+				},
+				{
+					"id": "global",
+					"next_mathematical_check": "证明每个 R>1 的全部精确零点上 Jacobian 非退化；有限分支样本不能覆盖该量词。",
+					"reason": "G2 的全部精确零点、固定 n>=2、每个紧 R 区间及 R=1 范围与仍开放的 ND/G1 分开。条件化唯一性没有被提升为无条件全局完成。"
+				},
+				{
+					"id": "repair",
+					"next_mathematical_check": "先以常密度和不等块宽真实切空间标定，再补接口有限项及严格余项；旧 issue 和下游版本义务继续独立处理。",
+					"reason": "原文支持一维连续有界有限部核、总变差及总质量条件和常密度中点极限反例。它否定旧 Green 发散理由，没有永久否定集中方法。新上下文首先取回脉冲经验，但仍加入宽泛 B4 材料，没有直接取回全部替代材料。"
+				}
+			],
+			"id": "current-reuse-boundaries",
+			"reason": "当前修补实际阻止了供应的三项 v8 反例。独立旧版重放确认原捕获成员路径旁路、首个 issue 后旧包继续导出及缓存 identity_tool_id=null 旁路确实存在；v11 的 path-only raw/text 引用及双 selector 均保留聚合隔离，比较读回、理解页、关系/impact 和导出保持相应禁用。首次 issue 在 catalog/custom index 未变时已使旧包导出被拒绝，原导出字节保留。不同 URL/version 的已登记捕获及消费者保持独立，缺失旧 live metadata 仍不解除标题别名义务。额外独立边界检查确认继承条件不参与当前命中、直接正文查询命中不被纯上下文挤掉、旧比较的等价路径引用受隔离、人工生成区编辑被保留并报告冲突、未知依赖未被视为空闭包。然而，另一缓存身份字段 tool_id 仍能覆盖当前 frontmatter，并能经 make_index 污染新的耐久版本登记，使已隔离工具重新进入当前查询、阅读顺序和导出。故纠错贯穿所有入口及身份边界的总体声明不能批准。",
+			"verdict": "CHANGES_REQUIRED"
+		},
+		{
+			"id": "generic-runtime",
+			"reason": "独立运行便携测试 121 项，120 项通过、缺材料 Q9 一项跳过；旧库 7 项烟测、gateway 烟测及 validate_all 的 81 项检查通过。自建非 SL 项目使用 records/depot 研究目录、instruments 卡片根和 custom index，24 项额外边界检查通过。默认 Lean 不执行 subprocess 且保持 UNKNOWN；实际调用冻结 lean_evidence 接口没有批准不完整 manifest，另一声明的明确测试替身也不能借用精确根通过。便携检查覆盖 warm 源码更新、锁争用、并发编辑、恢复、审查隔离及旧纠错协议。全部输入哈希、244 项当前源码 manifest 和旧/新 SL 副本的 11 项来源身份最终仍一致。但上述缓存 tool_id 旁路在这一通用布局中实际复现，且可进入耐久登记，因此当前通用身份边界仍未满足。",
+			"verdict": "CHANGES_REQUIRED"
+		}
+	],
+	"formalization": "NOT_INFERRED_FROM_REVIEW_APPROVAL",
+	"kind": "mathematics",
+	"limitations": [
+		"只使用 packet 所列快照和 scope 指定运行环境；执行及修改仅发生在 F:/tools 的独立派生副本，没有修改冻结输入、源项目、全局安装或实际 canonical，也没有发布。",
+		"Q9 基准材料未提供，实际跳过；不能计作新的 Q9 通过。",
+		"未执行 Lean 编译、内核重放或完整真实 SL 保存收据的正向重验。实际不完整收据检查及另一声明的测试替身只验证软件边界。",
+		"五问核对限于供应原文的陈述、对象、量词和适用范围，没有重新批准完整解析证明、外部文献或未提供的历史审查。",
+		"旧关键词检索本已找到主要材料。新版增加条件、来源及缺桥展示，同时仍有宽泛上下文材料和来源覆盖限制；没有证明全面语义检索改善或性能提升。",
+		"一个初始自建边界探针因未建立旧纠错写入器使用的默认索引而中止，失败日志保留；在新 fixture 中显式建立该索引后，24 项检查通过。该配置错误未作为当前生产缺陷报告。",
+		"供应的旧 cache probe 在 v11 因预期的 REUSE_BLOCKED 异常退出；修补判断另由独立缓存字段变体检查作出，未把旧脚本退出码当成修补证明。",
+		"便携审查适配器测试不验证服务端原生调用真实性；未提供的完整历史审查和完整 Lean manifests 不在本次检查范围。"
+	],
+	"packet_sha256": "1d5410bf0d437ce677056d649cf8801dc9e50365c68950a9bf574f5fde2fa32f",
+	"reviewer_id": "/root/manage_software_review_v11",
+	"trust": "COORDINATOR_ATTESTED_TOOL_TRANSCRIPT",
+	"verdict": "CHANGES_REQUIRED"
+}

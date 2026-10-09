@@ -35,6 +35,12 @@ The result contains a frozen packet and the exact reviewer prompt. Invoke
 `message`. Save the actual invocation and response in a JSON object with keys
 `tool`, `arguments`, `result`; `tool` is `multi_agent_v1__spawn_agent`.
 
+The current `collaboration.spawn_agent` adapter is also accepted. Save its
+actual `task_name`, `fork_turns:"none"`, exact `message`, and returned canonical
+`result.task_name`. The canonical task path remains the reviewer identity;
+the storage directory uses a path-safe digest. Preserve the native fields
+instead of inventing an old UUID or converting them to the legacy adapter.
+
 ```text
 python REVIEW --project PROJECT dispatch --packet PACKET --spawn-transcript spawn.json
 ```
@@ -47,6 +53,12 @@ or a successful tool response to make a packet complete.
 
 The reviewer returns one JSON object as specified in the emitted prompt. Save
 the actual `wait_agent` result, including `status[agent_id].completed`, then:
+
+For the current collaboration adapter, save the actual delivered message as
+`message_type:"FINAL_ANSWER"`, `task_name` (recipient parent), `sender` (the
+dispatched canonical task), and `payload` (complete original JSON report text).
+`wait_agent` availability notifications and ordinary messages contain no final
+review and cannot complete a bundle. Missing completion remains pending.
 
 ```text
 python REVIEW --project PROJECT receive --bundle BUNDLE --completion-transcript completion.json

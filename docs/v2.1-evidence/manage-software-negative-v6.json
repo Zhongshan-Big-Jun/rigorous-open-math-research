@@ -1,0 +1,53 @@
+{
+	"bindings": {
+		"before-manage-2.0.2.zip": "99e6d019d93e109eda69d66fa6d47bc1b49761bbdb548eea5faec9e170624007",
+		"prior-forward-v3.json": "1bd0798d4434dbc671bb5f42a0ef17aabb4a67f53f4fff90a19f85901e5cb2b9",
+		"prior-forward-v4.json": "c142ec803b3f09c884858af0ffd44524c09a6397e461ff461ac2da65fd22a005",
+		"prior-software-v3.json": "bb050af542c8246656b210f5c5af6df27228cd2c6752b8bf924d071d0bd372dd",
+		"prior-software-v4.json": "18771d451fa31c520f28da4768175d7219da80e758a71f00f2dad7e5250b1936",
+		"prior-software-v5.json": "940b52755cf25d0942777b9fe8cb5b5c2b4be48f8a2f49e764b5853573bd3d13",
+		"scope-v6.md": "5110d239e99791ef2d9532e20d28bc59d8ce60d7fd340aac72346ae361f885dc",
+		"sl-inputs.zip": "251e849bfdaaf3f841c0bfc838c7831b9bc68476b75966344bf436e9296e6c12",
+		"source-v6.zip": "3736863bcc6558ec3f74eb04b2182f3f66c6a8cdce93ec9de117c471d92d45f9",
+		"user-request.txt": "e8da38552aecaaa95da1d89585b83ad5798d8a38289bb5b4b9a0b10e6880c67b"
+	},
+	"bundle": "research/library/reviews/runs/881e4fecbc9d3b048783da58c299947465d5be9766b7e46c50717f1bd853b8c3-task-58f3f8d24555bc20862ffc418b9c551edd37c2bedd585434cbbd285d2fc9face",
+	"checked_paths": [
+		"scope-v6.md",
+		"user-request.txt",
+		"source-v6.zip",
+		"before-manage-2.0.2.zip",
+		"sl-inputs.zip",
+		"prior-forward-v3.json",
+		"prior-forward-v4.json",
+		"prior-software-v3.json",
+		"prior-software-v4.json",
+		"prior-software-v5.json"
+	],
+	"claims": [
+		{
+			"id": "current-reuse-boundaries",
+			"reason": "v6 对原 source_id 旁路的修补已逐项独立通过: 分别只隔离 source.json、raw.bin 或 text.txt 时, 原 capture 引用仍为字节 CURRENT, 但 reference_reuse_allowed=false; 新比较拒绝, 旧2.0.2实际生成的比较与当前比较读回均变为历史, 理解页省略相关候选解释, 关系复用及影响分析为false, 新导出保留该状态, 旧导出拒绝且已保存字节不变. 此前继承字段、五种等价路径、关系依据/非card目标及正文单次命中被宽泛上下文挤掉的反例也通过独立检查. 两版使用同一12张卡片语料、显式索引和五问实际运行; 原文阅读确认整数替代与原族非基、删项发散侧与收敛侧、有界谱尾与接口分布方向、G2与开放ND/G1、窄脉冲反例与重开条件的边界没有合并. 但仍存在当前纠错身份旁路: 当单独 source.json 被隔离时, 保持原URL、原version及完全相同raw/text, 仅修改捕获标题即可得到新source_id并重新成为当前可复用依据. 新比较、读回、理解页、关系impact及导出均实际恢复许可, 未发生revision/review/release. 因而总体纠错贯穿与精确版本义务尚不能批准.",
+			"verdict": "CHANGES_REQUIRED"
+		},
+		{
+			"id": "generic-runtime",
+			"reason": "独立执行116项便携测试, 115项通过、1项Q9因缺供应材料跳过; 旧库7项烟测、gateway烟测和validator81项检查通过. 自建非SL项目采用records/depot、devices及cache/subject-view.json布局, 实际检查当前字段、未知依赖、排序、旧比较兼容、捕获组成文件门控、人工前后缀及生成区保护、外部编辑冲突、锁争用、导出中断恢复与幂等、普通坏卡隔离和权威纠错库失败关闭. 六个独立运行时克隆分别修改context/library/experience/corrections/review源码及插件版本: warm进程的生成、导出和查询均拒绝, cold进程读取新身份; context行为变化另由cold零命中确认. 默认Lean知识包没有执行subprocess且保留UNKNOWN; 冻结版现有lean_evidence接口对不完整收据不建立通过, 另一声明的明确测试替身不能借用精确根结果. 十个输入哈希、244项源码manifest及11项来源身份均一致, 最终源码及源文字节未变. 然而, 同一非SL布局实际复现了source.json标题改名绕过, 表明剩余缺陷属于通用运行时.",
+			"verdict": "CHANGES_REQUIRED"
+		}
+	],
+	"formalization": "NOT_INFERRED_FROM_REVIEW_APPROVAL",
+	"kind": "mathematics",
+	"limitations": [
+		"只读取packet列出的冻结快照及scope指定依赖环境; 未读取作者会话、记忆、工作树或未供应判决. 执行与派生修改均在F:/tools独立scratch中, 未修改原项目、冻结输入、全局安装或canonical, 未发布.",
+		"Q9所需基准证据未提供, 实际跳过, 不能计作新Q9通过.",
+		"未执行Lean编译、内核重放或完整真实SL保存收据的正向重验. 不完整收据的真实接口调用与另一声明的测试替身检查属于软件边界证据.",
+		"SL原文阅读核对五问的对象、量词、条件和常见误用, 未重新批准全部解析证明、外部文献或未供应历史审查. 下一步分别应核对拟用整数阶的端点jet和域桥、具体收敛保留集的闭包、接口路径可微性及集中余项、全部精确零点的ND, 以及常密度标定后的真实切空间和有限接口项.",
+		"旧关键词检索本已找到主要材料; 新context仍加入部分宽泛B4建议, repair包未直接取得全部替代材料. 知识包受索引根、深度、大小和来源覆盖限制, 本审查不宣称全面语义检索改善或性能提升.",
+		"审查适配器的便携检查不验证服务端原生调用真实性; 协调者回执仍受既有信任边界约束."
+	],
+	"packet_sha256": "881e4fecbc9d3b048783da58c299947465d5be9766b7e46c50717f1bd853b8c3",
+	"reviewer_id": "/root/manage_software_review_v6",
+	"trust": "COORDINATOR_ATTESTED_TOOL_TRANSCRIPT",
+	"verdict": "CHANGES_REQUIRED"
+}

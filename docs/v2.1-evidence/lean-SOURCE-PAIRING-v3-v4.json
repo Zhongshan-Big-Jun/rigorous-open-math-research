@@ -1,0 +1,48 @@
+{
+  "scope": "v3 executed research and old-real15, final v4 changes only test fault-injection gating; actual executions are not relabeled as v4 reruns",
+  "research_execution_source": "F:\\tools\\lean-joint-20261008\\plugin\\source-freeze-v3",
+  "final_delivery_source": "F:\\tools\\lean-joint-20261008\\plugin\\source-freeze-v4",
+  "changed_paths": [
+    "plugins/lean-verify/scripts/tests/develop_tool_race_fixture.py"
+  ],
+  "identical_runtime_scripts_templates_schemas": {
+    "plugins/lean-verify/scripts/LeanVerifyProbe.lean.template": "9c457f0f6c51d69a2e585787ee84083a4f3964499bcfc780730be88fec629d67",
+    "plugins/lean-verify/scripts/lake_build_guard.py": "ad8107677112126a6ff9c2f6ed4ed7019960f8357306f4b69e98047ff2d0c4f0",
+    "plugins/lean-verify/scripts/lean_develop.py": "3c8731167f428206a4d7f26918c5dbac2d25ae795bde2a9217e1196ebcc1d8d6",
+    "plugins/lean-verify/scripts/lean_evidence.py": "4b9bab684e531e98d7ccd370c8b937a43b1a141750c208e95d56ce80ff662393",
+    "plugins/lean-verify/scripts/lean_feedback.py": "592386b5a725b35969512b55738720ab1cdd126424cb7c53a9163fb5d431d95d",
+    "plugins/lean-verify/scripts/lean_routes.py": "4c286832a5a9b69a2f8c66768906993bacd7ced232a4af6175a7fca5cf9031f3",
+    "plugins/lean-verify/scripts/lean_runtime.py": "1ee058a8e5a06ba9f21bc604597c5a24a56b28e2a99e42ec62eb86805c87e6eb",
+    "plugins/lean-verify/scripts/run_manifest.schema.json": "0ba7f0afad04a704a7004cc98dd5ee7509a780eb719e45300edd1e6e477aef6c",
+    "plugins/lean-verify/scripts/verify_lean_project.py": "6d6748956ce4032eaaa0b65d4b4bf92d1a71630787fae902baaa28981c106b1d",
+    "plugins/manage-math-research-program/skills/manage-math-research-program/scripts/index_lean_lemmas.py": "cb6adad864a8ec0552245b410cc0bdb65cd8e41eeecea0682607b3c999386580",
+    "plugins/manage-math-research-program/skills/manage-math-research-program/scripts/init_project.py": "30d731525e163ebce39d22885c09238dbd2a33fc1116ece452d06a23b1eb6cc0",
+    "plugins/manage-math-research-program/skills/manage-math-research-program/scripts/manage_tool_lifecycle.py": "172149cff5a378b3b4c1059a039ba9992a3fd0f1ba08ff8585154464cc2aa2e3",
+    "plugins/manage-math-research-program/skills/manage-math-research-program/scripts/research_corrections.py": "fb7ea80507d165372a6e9177c03f2fde339b6e0095a12599e7bc111624bf062e",
+    "plugins/manage-math-research-program/skills/manage-math-research-program/scripts/research_experience.py": "47001d9b809c7892e692a75ea0efb8d4659059106515c9bcdcef1e03410a2764",
+    "plugins/manage-math-research-program/skills/manage-math-research-program/scripts/research_library.py": "273d31edff1ed89747b81fac5da9dc0cd4e5b3d092cd4718e9fb8a4ec2d96447",
+    "plugins/manage-math-research-program/skills/manage-math-research-program/scripts/research_review.py": "15bd6e7870c62585af0a5bd32c192608ab070ba9926cf9dda3118962c0a0d412",
+    "plugins/manage-math-research-program/skills/manage-math-research-program/scripts/scaffold_result.py": "2593671168e55cdd6de51604d625a11db443ab623640c5de6eb28c7ce2f335b7",
+    "plugins/manage-math-research-program/skills/manage-math-research-program/scripts/sync_remotes.py": "5857af3dc0863a24be4973a8bf86a649e18c022adbfb0a1e6240336fde786324",
+    "plugins/manage-math-research-program/skills/manage-math-research-program/scripts/update_research_map.py": "5c53d3acdfc30634507ba214555075a38f96997ff4368954ce1762438191acc4",
+    "plugins/manage-math-research-program/skills/manage-math-research-program/scripts/validate_project.py": "545f0ef4b7bb1a97f0673f0b382a41e4058e5001a547d91861f67163a6ee7940",
+    "plugins/math-research-workflow/scripts/checkpoint_resume.py": "55a513e851385d660da41906838f1cee893671d52fc4cefdb72edf8f7569456b",
+    "plugins/math-research-workflow/scripts/doctor.py": "7cb6e09c7d35e5829581e9adc3adbaf024eca6bb8484294bad51364bb5eb58de",
+    "plugins/math-research-workflow/scripts/formalization_handoff.py": "eabe483b097dfadbffaa19617ad1056e3b5a07ffc42ce7fe70eed097eaca82ff",
+    "plugins/math-research-workflow/scripts/legacy_pipeline.py": "9313289ece6cd3c84b728c2c15c2efea9c4020cdb4142bcebe3f455fb9c14d8a",
+    "plugins/math-research-workflow/scripts/recovery_status.py": "0df8d56c769af118b3b425da5065b7fba1fc3b7858eb8d962c182c0fa12b5f08",
+    "plugins/math-research-workflow/scripts/research_state.py": "9ec4afa2d2936bc1940548ba01fd9c97768357f1327170484dfb2ea2a0520132",
+    "plugins/math-research-workflow/scripts/skill_sources.py": "f78b2df9edeb058271e0ecafb3b02c7c9f335c94167c563a33d483c645a7e983",
+    "plugins/math-research-workflow/scripts/validate_pipeline.py": "234d6d61e74b6f9f7df1a1a49b4d0ed412978b578dc2924f87773665ea4b702f",
+    "plugins/math-research-workflow/skills/math-research-workflow/scripts/performance_alert.py": "d540d4c6fad44190d38f2f28a61c93a80751519927e9189bfc817c21f17dfcbf",
+    "plugins/math-research-workflow/skills/math-research-workflow/scripts/performance_metrics.py": "34bce0d5976fc90586cfd431f5af6aa8fd00aacae6316ce8b3adaf335071c4a0"
+  },
+  "identical_component_versions": {
+    "lean-verify": "2.1.2",
+    "manage-math-research-program": "2.0.2",
+    "math-research-workflow": "2.0.2",
+    "rigorous-open-math-research": "2.0.1"
+  },
+  "v3_manifest_sha256": "518b3b386de997d14dcc4488f9f1e344d974e1f0125be32e5d9c65306a12bcf5",
+  "v4_manifest_sha256": "4715506ebda0a77c5db14f8a77fa2deceba3d882b35543b268b811931bb2efc7"
+}

@@ -467,8 +467,11 @@ def require_ensured(project: Path) -> dict[str, Any]:
 
 
 def run_tool(tool: str, arguments: list[str], *, cwd: Path) -> int:
-	command = [sys.executable, str(TOOLS_ROOT / REQUIRED_TOOLS[tool]), *arguments]
-	completed = subprocess.run(command, cwd=cwd, text=True)
+	command = [sys.executable, "-X", "utf8", str(TOOLS_ROOT / REQUIRED_TOOLS[tool]), *arguments]
+	completed = subprocess.run(command, cwd=cwd, capture_output=True, text=True, encoding="utf-8",
+		creationflags=subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0)
+	sys.stdout.write(completed.stdout)
+	sys.stderr.write(completed.stderr)
 	return completed.returncode
 
 

@@ -1,10 +1,10 @@
-# Math Research 2.0
+# Math Research
 
 [中文](README.md) | [Use and migration](docs/v2.0-guide.md) | [Implementation and validation](docs/v2.0-implementation-status.md)
 
 Codex plugins for long-term collaborative mathematics. Turn papers, successful proofs and failed approaches into reusable tools and understanding that help with the next problem.
 
-All four components use version `2.0.1`. Short guidance and concrete tools support the researcher's choice of proofs, counterexamples, literature, computation, collaboration and Lean.
+Current versions: lean-verify `2.1.2`, manage `2.1.0`, workflow `2.0.2`, rigorous `2.0.1`. See the [Lean development and task knowledge increment](docs/v2.1-joint-development.md) for executable capabilities and actual validation. Short guidance and concrete tools support the researcher's choice of proofs, counterexamples, literature, computation, collaboration and Lean.
 
 The September 20 correction adds fresh-context review, formal feedback during research, and version-bound library correction. See the [design and validation record](docs/v2.0.1-verification-corrections.md).
 

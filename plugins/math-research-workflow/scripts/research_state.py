@@ -26,6 +26,11 @@ import time
 UNCHECKED = object()
 
 
+def hidden_child_options(Platform=None):
+	Platform = os.name if Platform is None else Platform
+	return dict(creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0x08000000)) if Platform == "nt" else {}
+
+
 def retry_io(Action):
 	Deadline = time.monotonic() + 5
 	while(True):
@@ -440,7 +445,7 @@ def run_worker(Project, JobId):
 			with Stdout.open("wb") as Out, Stderr.open("wb") as Err:
 				try:
 					Process = subprocess.Popen(Record["command"], cwd=inside(Root, Record["cwd"]),
-						stdin=subprocess.DEVNULL, stdout=Out, stderr=Err)
+						stdin=subprocess.DEVNULL, stdout=Out, stderr=Err, **hidden_child_options())
 				except OSError as Error:
 					update_job(Root, JobId, dict(state="FAILED_TO_START", error=str(Error), completed_at=utc_now()))
 					return

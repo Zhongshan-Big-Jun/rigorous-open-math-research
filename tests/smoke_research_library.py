@@ -72,7 +72,10 @@ class LibraryTests(unittest.TestCase):
 			library.annotate(self.Root, "tools/lemma.md", Hash, "agent", "observation", "Statement", "new")
 		library.make_index(self.Root, ["tools"], ReadmePath="tools/README.md")
 		self.assertFalse(library.query_tools(self.Root, "boundary")["hits"])
-		Hit = library.query_tools(self.Root, "lemma")["hits"][0]
+		self.assertFalse(library.query_tools(self.Root, "lemma")["hits"])
+		Hit = library.query_tools(self.Root, "stable-id")["hits"][0]
+		self.assertEqual(Hit["historical_metadata"]["title"]["value"], "Test lemma")
+		self.assertEqual(Hit["field_provenance"]["title"]["state"], "INHERITED_NEEDS_REVALIDATION")
 		self.assertEqual(Hit["annotations"][0]["state"], "STALE")
 		Readme = (self.Root / "tools/README.md").read_text(encoding="utf-8")
 		self.assertTrue(Readme.startswith("# Human notes\nKeep this exactly.\n"))
@@ -128,7 +131,8 @@ class LibraryTests(unittest.TestCase):
 					Result = library.make_index(self.Root, ["tools"])
 					self.assertEqual(Result["needs_metadata_review"], [])
 					self.assertFalse(library.query_tools(self.Root, "bound")["hits"])
-					Hit = library.query_tools(self.Root, "bound", IncludeArchived=True)["hits"][0]
+					# Title inheritance is separate from the retained retirement guard.
+					Hit = library.query_tools(self.Root, "lemma", IncludeArchived=True)["hits"][0]
 					self.assertEqual(Hit["metadata_status"], "VALID")
 					self.assertEqual(self.Card.read_bytes(), Raw)
 

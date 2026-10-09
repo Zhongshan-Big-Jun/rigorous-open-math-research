@@ -13,7 +13,7 @@ import time
 import uuid
 from pathlib import Path
 
-from lean_runtime import LeanRuntime, aggregate_results, full_output, hash_json, host_path, mask_lean_source, now_iso, result_status, run, scan_file, sha256_file, snapshot_exclusions, source_snapshot, tool_path, write_json
+from lean_runtime import LeanRuntime, aggregate_results, bound_input_changes, full_output, hash_json, host_path, mask_lean_source, now_iso, result_status, run, scan_file, sha256_file, snapshot_exclusions, source_snapshot, tool_path, write_json
 from lake_build_guard import acquire, release
 from lean_evidence import TOOL_NAMES, bind_receipt
 
@@ -190,6 +190,8 @@ def extract_target(Runtime, Contract, WorkDir, Timeout):
 
 def derive_target(Target, Environment, Contract):
 	Target = dict(Target)
+	if(not isinstance(Target.get("actual_type"), str) or not Target["actual_type"].strip() or "⋯" in Target["actual_type"]):
+		raise ValueError("complete readable type unavailable; replay with the supported pretty-printing options")
 	Modules = [Item["module"] for Item in Target["imported_modules"]]
 	if(Target.get("module_inventory_scope") != "loaded_environment" or Target.get("loaded_module_count") != len(Modules) or len(set(Modules)) != len(Modules)):
 		raise ValueError("incomplete loaded-module inventory; replay is required")
@@ -303,13 +305,17 @@ def verify_project(Arguments):
 	if(Arguments.universes):
 		Contract["universes"] = Arguments.universes.split(",")
 	if(Arguments.expect_manifest):
-		Previous = json.loads(Path(Arguments.expect_manifest).read_text(encoding="utf-8"))["target"]
+		PreviousManifest = json.loads(Path(Arguments.expect_manifest).read_text(encoding="utf-8"))
+		Previous = PreviousManifest["target"]
 		for Key in ("file", "declaration", "expected_type", "universes"):
 			Contract.setdefault(Key, Previous.get(Key))
 		for Key in ("semantic_sha256", "semantic_environment_sha256", "definition_hashes", "type_sha256"):
 			if(not Previous.get(Key) and Key != "definition_hashes"):
 				raise ValueError("previous manifest lacks a usable target identity")
 			Contract[Key] = Previous[Key]
+		if("input_file_hashes" in PreviousManifest["evidence"]["contract"]):
+			Contract["input_file_hashes"] = PreviousManifest["evidence"]["contract"]["input_file_hashes"]
+	BoundInputChanges = bound_input_changes(Root, Contract)
 	Environment = Runtime.environment() if Arguments.build or Contract else {"lean_version": None, "lake_version": None, "lean_status": "not_probed", "lake_status": "not_probed", "scope": "source scan; no runtime launched"}
 	Build = None
 	Target = None
@@ -345,6 +351,7 @@ def verify_project(Arguments):
 			release(Root, Guard["token"])
 	Final = source_snapshot(Root, Exclusions)
 	Changed = sorted(Name for Name in set(Initial) | set(Final) if Initial.get(Name) != Final.get(Name))
+	Changed += sorted(set(BoundInputChanges + bound_input_changes(Root, Contract)))
 	ArtifactChanges = []
 	if(Target and Target.get("status") == "checked"):
 		for Name, Item in Target["import_artifacts"].items():

@@ -1,0 +1,255 @@
+{
+  "schema": "joint-lean-plugin-correction-execution/v1",
+  "recorded_at": "2026-10-08T18:10:35.723434+00:00",
+  "scope": "actual final v4 software correction checks with retained v3 old-real15 execution; independent approval, research theorem proof, installation, publication and canonical acceptance are separate",
+  "runtime": {
+    "host": "native Windows",
+    "python": "C:\\Users\\HuangZY\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+    "lean": "C:\\Users\\HuangZY\\.elan\\toolchains\\leanprover--lean4---v4.31.0\\bin\\lean.exe",
+    "lake": "C:\\Users\\HuangZY\\.elan\\toolchains\\leanprover--lean4---v4.31.0\\bin\\lake.exe",
+    "python_dependency_path": "F:\\tools\\lean-joint-20261008\\plugin\\test-deps",
+    "dependencies_scope": "isolated --target install of jsonschema and PyYAML; no global environment or plugin installation"
+  },
+  "freeze": {
+    "root": "F:\\tools\\lean-joint-20261008\\plugin\\source-freeze-v4",
+    "manifest": {
+      "path": "F:\\tools\\lean-joint-20261008\\plugin\\source-freeze-v4\\SOURCE-MANIFEST.json",
+      "sha256": "4715506ebda0a77c5db14f8a77fa2deceba3d882b35543b268b811931bb2efc7"
+    },
+    "verified_file_count": 241,
+    "working_source_bytes_match": true,
+    "component_versions": {
+      "lean-verify": "2.1.2",
+      "manage-math-research-program": "2.0.2",
+      "math-research-workflow": "2.0.2",
+      "rigorous-open-math-research": "2.0.1"
+    },
+    "changed_from_v2": [
+      "plugins/lean-verify/.codex-plugin/plugin.json",
+      "plugins/lean-verify/scripts/LeanVerifyProbe.lean.template",
+      "plugins/lean-verify/scripts/lean_develop.py",
+      "plugins/lean-verify/scripts/tests/develop_tool_race_fixture.py",
+      "plugins/lean-verify/scripts/tests/test_lean_develop.py",
+      "plugins/lean-verify/scripts/tests/test_lean_develop_real.py",
+      "plugins/lean-verify/scripts/verify_lean_project.py",
+      "plugins/lean-verify/skills/lean-verify/references/changelog.md",
+      "plugins/lean-verify/skills/lean-verify/references/v2-development.md"
+    ]
+  },
+  "suites": {
+    "new_portable": {
+      "path": "F:\\tools\\lean-joint-20261008\\plugin\\frozen-v4-development-portable.log",
+      "sha256": "885b33d55ea14c442a2024235480e7b19109d001d0275a9dc6e69bc807d28a5e",
+      "status": "passed",
+      "count": 21,
+      "execution_root": "F:\\tools\\lean-joint-20261008\\plugin\\source-freeze-v4",
+      "elapsed_seconds": 6.7
+    },
+    "retained_portable": {
+      "path": "F:\\tools\\lean-joint-20261008\\plugin\\frozen-v4-retained-portable.log",
+      "sha256": "ea7c75835e6a26dac28f979afa13fdf1a2ec3e3026e200c9784b8301d2a447f7",
+      "status": "passed",
+      "count": 12,
+      "execution_root": "F:\\tools\\lean-joint-20261008\\plugin\\source-freeze-v4",
+      "elapsed_seconds": 1.924
+    },
+    "generic_actual_lean": {
+      "path": "F:\\tools\\lean-joint-20261008\\plugin\\frozen-v4-development-real.log",
+      "sha256": "ce29e54dc1509683d70d74074c436c99594dc47d66fe739cc8003ba16543f7fd",
+      "status": "passed",
+      "count": 11,
+      "execution_root": "F:\\tools\\lean-joint-20261008\\plugin\\source-freeze-v4",
+      "elapsed_seconds": 1155.782
+    },
+    "retained_actual_lean": {
+      "path": "F:\\tools\\lean-joint-20261008\\plugin\\frozen-v3-retained-real.log",
+      "sha256": "d0cc92dd8235de51dec10105efe428c2fc8b6429795bceaf2b43ab64aa64b6d0",
+      "status": "passed",
+      "count": 15,
+      "execution_root": "F:\\tools\\lean-joint-20261008\\plugin\\source-freeze-v3",
+      "elapsed_seconds": 991.305
+    },
+    "workflow": {
+      "path": "F:\\tools\\lean-joint-20261008\\plugin\\frozen-v4-workflow.log",
+      "sha256": "b9b18463315f2ffd87c49317929c4832e22e11b36ffe185ca02b1d92afc6bb68",
+      "status": "passed",
+      "count": 28,
+      "execution_root": "F:\\tools\\lean-joint-20261008\\plugin\\source-freeze-v4",
+      "elapsed_seconds": 10.749
+    },
+    "repository_validator": {
+      "path": "F:\\tools\\lean-joint-20261008\\plugin\\frozen-v4-validate.log",
+      "sha256": "67a1fc47b021bb4c85c593163a3405e8806c7103661a58181e3f45a3172d4fb0",
+      "status": "passed",
+      "count": 81,
+      "execution_root": "F:\\tools\\lean-joint-20261008\\plugin\\source-freeze-v4"
+    }
+  },
+  "source_pairing": {
+    "path": "F:\\tools\\lean-joint-20261008\\plugin\\SOURCE-PAIRING-v3-v4.json",
+    "sha256": "8feafbb5fc7073530ff953333138ff78c1aa91dc1ccec22f78972b1a46a2c568"
+  },
+  "execution_identity_scope": "generic11, portable21/12, workflow28 and validator81 executed on v4; old-real15 executed on v3 with identical runtime/template/schema and old test source, not relabeled a v4 rerun; manage87 remains earlier unchanged-source execution",
+  "raw_actual_results": {
+    "generic": {
+      "path": "F:\\tools\\lean-joint-20261008\\plugin\\frozen-v4-development-real.json",
+      "sha256": "1f716239000cf915eb309f442752ffaba3160de17ed4928f835e446f36f33053"
+    },
+    "retained": {
+      "path": "F:\\tools\\lean-joint-20261008\\plugin\\frozen-v3-retained-real.json",
+      "sha256": "4da348ca329fd5dd8b2d7e418f685b0a15dfdb974bf7ed459e6ff06b12d01f91"
+    }
+  },
+  "original_negative_reviews": {
+    "v1": {
+      "report": {
+        "path": "F:\\LaTeX\\BVE research\\research\\artifacts\\lean-development-20261008\\reviews\\software-v1-final.json",
+        "sha256": "7f119f43595d9a27746e86c29a0f1a2c64e08ef1a61ccbc80d38eadde9a24098"
+      },
+      "completion": {
+        "path": "F:\\LaTeX\\BVE research\\research\\artifacts\\lean-development-20261008\\reviews\\software-v1-completion.json",
+        "sha256": "90463d6b84dc0a7a2edda181c802e739c95d73313afdb98da260b884a3c86f4a"
+      },
+      "verdict": "CHANGES_REQUIRED",
+      "receipt": {
+        "path": "F:\\tools\\lean-joint-20261008\\plugin\\software-review-received-v1.json",
+        "sha256": "76e540eae9b29c5b6a2c869774b0e9dc8b896a1e11262cd7b6f1448cecde266a"
+      }
+    },
+    "v2": {
+      "report": {
+        "path": "F:\\tools\\lean-joint-20261008\\plugin\\review-v2-native-evidence\\report.json",
+        "sha256": "6abb8965a7edb609a14adf3688ba5ab1fbb01ebbb24f573384a88196d14d0bf5"
+      },
+      "completion": {
+        "path": "F:\\LaTeX\\BVE research\\research\\artifacts\\lean-development-20261008\\reviews\\software-v2-completion.json",
+        "sha256": "6033fa2660f51a2a0132e199b78dce05bdd521093f2ad3529e572ba2dd213ce4"
+      },
+      "verdict": "CHANGES_REQUIRED",
+      "receipt": {
+        "path": "F:\\tools\\lean-joint-20261008\\software-v2-received.json",
+        "sha256": "d4d01a9f19d14ccf64728a3135b395547e8f1979379952b10e422bde487632af"
+      },
+      "preserved_reproduction_scope": {
+        "path": "F:\\tools\\lean-joint-20261008\\plugin\\review-v2-native-evidence\\README.md",
+        "sha256": "0e255a9b7cb6463914ec5e21dfdf549152eb9d06692a32e14a853a65da66cbde"
+      },
+      "missing_original_split_logs_disclosed": true
+    }
+  },
+  "author_actual_reproduction": {
+    "v1": {
+      "path": "F:\\tools\\lean-joint-20261008\\plugin\\review-v1-race-reproduction\\REPRODUCTION.json",
+      "sha256": "cff4efc2b5e673accfe2d15c105b06fb34e161df4fd015d184b4d4eb60ab4af2"
+    },
+    "v2": {
+      "path": "F:\\tools\\lean-joint-20261008\\plugin\\review-v2-race-reproduction-corrected\\REPRODUCTION.json",
+      "sha256": "b1623b8ee0b9de05b81da8a0e7c9783e515222fa77e79e2dec19335e9deb6cab"
+    },
+    "v2_cases": [
+      {
+        "path": "F:\\tools\\lean-joint-20261008\\plugin\\review-v2-race-reproduction-corrected\\overlap-save.json",
+        "sha256": "3024e8e91e7cdc27a376bc05e77a401ad35fddbaee6ddb3b6f3ef43003884fc1"
+      },
+      {
+        "path": "F:\\tools\\lean-joint-20261008\\plugin\\review-v2-race-reproduction-corrected\\overlap-batch.json",
+        "sha256": "1566cbaf43e98128eb069769bb976f1cabb2792e036d174746196732b96aba82"
+      },
+      {
+        "path": "F:\\tools\\lean-joint-20261008\\plugin\\review-v2-race-reproduction-corrected\\tool-lake_build_guard.py.json",
+        "sha256": "a393c5c941a0c520cce06cfc3d805e33190e87e94ef619a0eba6aeb999f7f9fa"
+      },
+      {
+        "path": "F:\\tools\\lean-joint-20261008\\plugin\\review-v2-race-reproduction-corrected\\tool-run_manifest.schema.json.json",
+        "sha256": "328807afa3cb40527b34e56736873309d32185f01e6b76a7e38abf96c20ef302"
+      }
+    ]
+  },
+  "retained_failed_attempts": [
+    {
+      "path": "F:\\tools\\lean-joint-20261008\\plugin\\frozen-v3-development-real.log",
+      "sha256": "5aa0e9305ea97e2aa68d2552248152e6cb07b247117e6d79e8b43a5e55ac6881"
+    },
+    {
+      "path": "F:\\tools\\lean-joint-20261008\\plugin\\frozen-v3-development-real.json",
+      "sha256": "655ebdb76b4a41047db4300920bb372b2708dc0978081dbb380b391881c67f35"
+    },
+    {
+      "path": "F:\\tools\\lean-joint-20261008\\plugin\\frozen-v3-test-injection-failure.json",
+      "sha256": "e16949c6fc8b3da3a0e99e8570740def1da6e798cf1d2dcbcf607ddebca57575"
+    },
+    {
+      "path": "F:\\tools\\lean-joint-20261008\\plugin\\review-v2-races.log",
+      "sha256": "b16dd74de6c50b96cf86c1bd49bb939b0ca7be28cdf6b22af1769dc6db5dd2b9"
+    },
+    {
+      "path": "F:\\tools\\lean-joint-20261008\\plugin\\pp-interface\\supported.log",
+      "sha256": "0c5b4ea76f3ca90dc0a8615a0fb48e7fa8defc21563c8a0f0dcfdee72a2d66a8"
+    },
+    {
+      "path": "F:\\tools\\lean-joint-20261008\\plugin\\pp-interface\\unsupported-depth.log",
+      "sha256": "6948a1d94cfa4bfd1e253edaab3e13c9e89ecd4aae4739add0f79ebf3f7c9acb"
+    },
+    {
+      "path": "F:\\tools\\lean-joint-20261008\\plugin\\pp-interface\\zero-steps.log",
+      "sha256": "46fb4d564ab0d7411d26e5fb3d92277d14f67b1e8eea18aae3343545bd6fdf7f"
+    },
+    {
+      "path": "F:\\tools\\lean-joint-20261008\\plugin\\working-v3-long-type.log",
+      "sha256": "81749ccbda98b4625c9bc677653b9157b5b5bf7d77968edba9c6a78acc7b7b73"
+    },
+    {
+      "path": "F:\\tools\\lean-joint-20261008\\plugin\\working-v3-long-type-assertion-correction.json",
+      "sha256": "b332358cdb822308810a593f0f680a532fc258ae2a6a042408089bd4a1fab01d"
+    }
+  ],
+  "pretty_printing_interface": {
+    "supported_options_native": {
+      "path": "F:\\tools\\lean-joint-20261008\\plugin\\pp-interface\\supported-v2.log",
+      "sha256": "a3a406f030e2d04802244bbba2216d8ecccb5599e64644a428cda6576fc26c11"
+    },
+    "zero_steps_native_omission": {
+      "path": "F:\\tools\\lean-joint-20261008\\plugin\\pp-interface\\zero-steps-v2.log",
+      "sha256": "3aed0403a0e9abc55862d2d8b80aaea6a26c9463bcef278c47561b7ada321200"
+    },
+    "v2_actual_long_type_omission": {
+      "path": "F:\\tools\\lean-joint-20261008\\plugin\\pp-interface\\long-type-v2\\REPRODUCTION.json",
+      "sha256": "d1b47ac9c11e206a4d846adf96b46ef7b1a22727849abecf410cd889d2f6c652"
+    },
+    "configuration": {
+      "pp.all": true,
+      "pp.universes": true,
+      "pp.explicit": true,
+      "pp.deepTerms": true,
+      "pp.proofs": true,
+      "pp.maxSteps": 10000000,
+      "maxRecDepth": 8192
+    },
+    "policy": "any remaining omission marker or failed full type printing is incomplete; full encoded type expressions and dependencies remain required"
+  },
+  "retained_earlier_execution": {
+    "manage87": {
+      "path": "F:\\tools\\lean-joint-20261008\\plugin\\manage-all.log",
+      "sha256": "b1486795b465927cd42e926b0aa8fcfdee6f7f4ce90c472fdf24066dc807781c"
+    },
+    "binding": "all manage component source/skill/metadata/test bytes match the v1 freeze; the 87-test execution is retained earlier evidence, not a newly executed v4 suite",
+    "verified_unchanged_manage_files": 72
+  },
+  "rich_analysis_cost": {
+    "source": "coordinator's actual SL v2 execution observation",
+    "first_declaration_json_approx_mb": 218,
+    "first_run_manifest_approx_gb": 1.4,
+    "python_ram_approx_gb": 4.8,
+    "meaning": "complete expression/dependency records and manifest embedding can be expensive; generic fixture timings do not establish universal speedup"
+  },
+  "limits": [
+    "all new development actions reject project-internal output, project root output and project-ancestor output; old entry behavior is retained",
+    "before/after binding observations do not establish an OS-wide filesystem transaction or prevent later arbitrary edits",
+    "current source hashes are not an authenticated service identity",
+    "no Linux or WSL live execution",
+    "no cloud CI",
+    "no universal timing or speedup result",
+    "software fixtures do not prove the research theorem or complete Mathlib compatibility",
+    "fresh final independent review must dispatch and complete separately"
+  ]
+}

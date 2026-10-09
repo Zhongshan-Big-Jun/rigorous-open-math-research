@@ -1,0 +1,131 @@
+{
+  "schema": "publication-evidence-copies/v1",
+  "scope": "Exact reference copies of prior local executions and native receipts. Copies do not receive the results into another project or expand review scope. Original paths, packets, negative receipts and frozen sources remain unchanged.",
+  "copies": {
+    "manage-TESTS-v13.json": {
+      "source": "F:\\tools\\manage-context-20261009\\TESTS-v13.json",
+      "sha256": "a9643daeff839149ef59b44dfc0aae30bd22f4dcde24202c42e954a00e74b534",
+      "bytes": 3157
+    },
+    "manage-review-software-completion-v13.json": {
+      "source": "F:\\tools\\manage-context-20261009\\review-software-completion-v13.json",
+      "sha256": "cf6356cb71680a05ea2afeea6d340297763d2cf912b2d37a7fe9892d54658168",
+      "bytes": 7825
+    },
+    "manage-review-software-receipt-v13.json": {
+      "source": "F:\\tools\\manage-context-20261009\\review-software-receipt-v13.json",
+      "sha256": "60e67616e44a09c238c7f72eaf8b7a0b162848b76887a8248d168028e942c55b",
+      "bytes": 10132
+    },
+    "manage-review-forward-completion-v5.json": {
+      "source": "F:\\tools\\manage-context-20261009\\review-forward-completion-v5.json",
+      "sha256": "4dd7f6236a3a450ec52bdd6b9de9c16a4d7e07820646b532aa4bcf51f31f5e9b",
+      "bytes": 7147
+    },
+    "manage-review-forward-receipt-v5.json": {
+      "source": "F:\\tools\\manage-context-20261009\\review-forward-receipt-v5.json",
+      "sha256": "d81492d6e00cb4c566af5bcd65d9d185c7b39e082f9bd321bebefa4c5bff4ca2",
+      "bytes": 7796
+    },
+    "manage-preservation-final-v13.json": {
+      "source": "F:\\tools\\manage-context-20261009\\preservation-final-v13.json",
+      "sha256": "ff546a3d99a176b8fed59eeaa4c642717b53303a4e682ed0e8512f5158c3e4ce",
+      "bytes": 39331
+    },
+    "manage-post-record-check-v13.json": {
+      "source": "F:\\tools\\manage-context-20261009\\post-record-check-v13.json",
+      "sha256": "72de1623612367fc720028c1283fac187f466f4cba9eb167022ba202fe814b9e",
+      "bytes": 8259
+    },
+    "manage-tests-frozen-v13.log": {
+      "source": "F:\\tools\\manage-context-20261009\\tests-frozen-v13.log",
+      "sha256": "d1f6d71cfce20564aeb0d17909488718069a1b82facfe6a4f2a9412a540a11b6",
+      "bytes": 13798
+    },
+    "manage-q9-source-v13.log": {
+      "source": "F:\\tools\\manage-context-20261009\\q9-source-v13.log",
+      "sha256": "26dd3c6b01e18333b55b1b91e83fc9cca0e0768f44392bfe48782eff86477126",
+      "bytes": 176
+    },
+    "manage-library-smoke-v13.log": {
+      "source": "F:\\tools\\manage-context-20261009\\library-smoke-v13.log",
+      "sha256": "3239789066637799b3c2619207491ac6754d3cade0c026afe2ef84fc58ce667d",
+      "bytes": 110
+    },
+    "manage-gateway-smoke-v13.log": {
+      "source": "F:\\tools\\manage-context-20261009\\gateway-smoke-v13.log",
+      "sha256": "afc082b40aa13b20c01093dabaac04ad000f973b7fecdadd3a2ef9cdbeaaaefb",
+      "bytes": 32
+    },
+    "manage-validate-frozen-v13.log": {
+      "source": "F:\\tools\\manage-context-20261009\\validate-frozen-v13.log",
+      "sha256": "d26f45d198ddf89f18f1c8bd7bc9accee59cb6e1396390b2d2c73cb6bb80b37b",
+      "bytes": 5986
+    },
+    "manage-software-negative-v3.json": {
+      "source": "F:\\tools\\manage-context-20261009\\review-software-receipt-v3.json",
+      "sha256": "29ec931ea4551b12591c21cdf95736d2df53377248ccd2481cb18dac98dfd901",
+      "bytes": 6285
+    },
+    "manage-software-negative-v4.json": {
+      "source": "F:\\tools\\manage-context-20261009\\review-software-receipt-v4.json",
+      "sha256": "f8d7439b842f2060ff1d48c0940dfa87d91bd7844ff382550967939241d00af5",
+      "bytes": 4797
+    },
+    "manage-software-negative-v5.json": {
+      "source": "F:\\tools\\manage-context-20261009\\review-software-receipt-v5.json",
+      "sha256": "ff1c9f3272d381548e39cb1a8ec60eafd2ad883df6521809311127f553f410e6",
+      "bytes": 5044
+    },
+    "manage-software-negative-v6.json": {
+      "source": "F:\\tools\\manage-context-20261009\\review-software-receipt-v6.json",
+      "sha256": "0a48c08bd036ddc8af3d0e3044e2d4cd26411b93dfe6cbe63cdb429c41964a58",
+      "bytes": 5471
+    },
+    "manage-software-negative-v7.json": {
+      "source": "F:\\tools\\manage-context-20261009\\review-software-receipt-v7.json",
+      "sha256": "803437dc9938e90b7112c30124ab2691df67d73659a53a3739d79011f00ae2b8",
+      "bytes": 5313
+    },
+    "manage-software-negative-v8.json": {
+      "source": "F:\\tools\\manage-context-20261009\\review-software-receipt-v8.json",
+      "sha256": "e12c390c2dcf7e74f0db4d71472143089a0359ee7fc7622be2b4eefbe8fc2a4b",
+      "bytes": 5817
+    },
+    "manage-software-negative-v11.json": {
+      "source": "F:\\tools\\manage-context-20261009\\review-software-receipt-v11.json",
+      "sha256": "cd5d9706f3838069335b715a64c743349e1255f27eae6e34dde35855d7ac00ec",
+      "bytes": 8797
+    },
+    "manage-review-software-interruption-v9.json": {
+      "source": "F:\\tools\\manage-context-20261009\\review-software-interruption-v9.json",
+      "sha256": "60cdc53c6278afb3a57c0d1937b820ada2e87896acb304b664b54e1d534e5d85",
+      "bytes": 321
+    },
+    "source-manifest-v13.json": {
+      "source": "F:\\tools\\manage-context-20261009\\source-freeze-v13\\SOURCE-MANIFEST.json",
+      "sha256": "3a18b98aefb24764b4d038aa705a1787316cc7a82c6543d1d5894dd9b5087f74",
+      "bytes": 39109
+    },
+    "lean-TESTS-v4.json": {
+      "source": "F:\\tools\\lean-joint-20261008\\plugin\\TESTS-v4.json",
+      "sha256": "ea3a85c2ca4f29329d8ce2beed7ed64a911fafb4d4d0ffda66cfafc59c9e4d5b",
+      "bytes": 12696
+    },
+    "lean-software-v4-received.json": {
+      "source": "F:\\tools\\lean-joint-20261008\\software-v4-received.json",
+      "sha256": "3dba7d10866a20d8614f904ea72aaee25fbbdcf3097c9837197bb23b8a600611",
+      "bytes": 42008
+    },
+    "lean-SOURCE-PAIRING-v3-v4.json": {
+      "source": "F:\\tools\\lean-joint-20261008\\plugin\\SOURCE-PAIRING-v3-v4.json",
+      "sha256": "8feafbb5fc7073530ff953333138ff78c1aa91dc1ccec22f78972b1a46a2c568",
+      "bytes": 5352
+    },
+    "lean-final-validation.json": {
+      "source": "F:\\tools\\lean-joint-20261008\\final-validation.json",
+      "sha256": "1226e2a7e53f4665a6a45837a0511d84ab8e2c5972dd082f74d3784001d35447",
+      "bytes": 11738
+    }
+  }
+}

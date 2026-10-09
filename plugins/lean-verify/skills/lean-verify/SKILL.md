@@ -1,6 +1,6 @@
 ---
 name: lean-verify
-description: Use Lean 4 compiler feedback during research and verify a precise formal target against its intended mathematical statement. Check execution, target identity, transitive axioms and semantic scope, preserving reproducible evidence and reusable reviews.
+description: Develop Lean 4 proofs with local lemma discovery, actual interface probes and candidate feedback, then verify precise roots against independent intended statements. Preserve exact target, transitive axiom, freshness and semantic-review checks.
 ---
 
 # Lean verification
@@ -8,6 +8,10 @@ description: Use Lean 4 compiler feedback during research and verify a precise f
 Use Lean where it helps the mathematics: test a local lemma, formalize a bridge,
 inspect a goal or verify a root theorem. A small target needs no node ledger.
 For commands and result formats, read [the verification tools](references/v2-verification.md).
+For lemma discovery, candidate trial/save, nonempty target lists or durable
+per-root work, read [proof development](references/v2-development.md) and use
+`scripts/lean_develop.py`. The agent writes the proofs and independent expected
+types; the development tool delegates final checks to the existing verifier.
 
 Distinguish four questions:
 

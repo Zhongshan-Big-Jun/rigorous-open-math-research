@@ -34,6 +34,10 @@ A reusable JSON contract is accepted by `--contract contract.json`:
 
 A contract may also pin `definition_hashes`, `type_sha256`,
 `environment_sha256`, or `semantic_sha256` from an earlier extraction.
+Optional `input_file_hashes` maps actual informal-source or target-list paths to
+SHA-256 values. Both verification and saved-evidence rechecking require those
+bytes to remain current. Relative paths are resolved in the project; these
+bindings extend the existing exact contract rather than changing v2 verdicts.
 `--expect-manifest previous/run-manifest.json` binds an observed statement
 version, including its definitions and environment. This provides mechanical
 identity, not a new human judgment about its meaning. Definitions with the same
@@ -154,6 +158,10 @@ strings, raw strings, and quoted identifiers. It is a location aid rather than
 an extensible Lean parser. The final axiom evidence comes from Lean itself.
 
 ## Reusable feedback
+
+For a connected discovery/candidate/save/root workflow, read
+[proof development](v2-development.md). Existing verification and feedback
+entrypoints remain available independently.
 
 ```bash
 python scripts/lean_feedback.py --project /path/to/lean-project \

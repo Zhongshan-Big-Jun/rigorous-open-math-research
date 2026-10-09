@@ -1,1 +1,11 @@
 * text=auto eol=lf
+
+# Preserve exact reviewed runtime and evidence bytes.
+/plugins/** -text whitespace=cr-at-eol
+/tests/** -text whitespace=cr-at-eol
+/scripts/** -text whitespace=cr-at-eol
+/.github/workflows/** -text whitespace=cr-at-eol
+/.agents/plugins/** -text whitespace=cr-at-eol
+/docs/v2.1-evidence/** -text whitespace=cr-at-eol
+/AGENTS.md -text whitespace=cr-at-eol
+/AGENTS_HISTORY.md -text whitespace=cr-at-eol

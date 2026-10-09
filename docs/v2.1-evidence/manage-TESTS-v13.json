@@ -1,0 +1,92 @@
+{
+  "schema": "executed-manage-tests/v1",
+  "freeze": "F:\\tools\\manage-context-20261009\\source-freeze-v13",
+  "source_manifest_sha256": "3a18b98aefb24764b4d038aa705a1787316cc7a82c6543d1d5894dd9b5087f74",
+  "dependency_path": "F:/tools/lean-joint-20261008/plugin/test-deps",
+  "executions": [
+    {
+      "log": "F:\\tools\\manage-context-20261009\\tests-frozen-v13.log",
+      "sha256": "d1f6d71cfce20564aeb0d17909488718069a1b82facfe6a4f2a9412a540a11b6",
+      "command": [
+        "C:/Users/HuangZY/AppData/Local/Programs/Python/Python310/python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "plugins/manage-math-research-program/skills/manage-math-research-program/scripts/tests",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "workdir": "F:\\tools\\manage-context-20261009\\source-freeze-v13",
+      "exit_code": 0,
+      "passed": 121,
+      "skipped": 1
+    },
+    {
+      "log": "F:\\tools\\manage-context-20261009\\q9-source-v13.log",
+      "sha256": "26dd3c6b01e18333b55b1b91e83fc9cca0e0768f44392bfe48782eff86477126",
+      "command": [
+        "C:/Users/HuangZY/AppData/Local/Programs/Python/Python310/python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "plugins/manage-math-research-program/skills/manage-math-research-program/scripts/tests/test_library_q9_reuse.py",
+        "-v"
+      ],
+      "workdir": "F:\\LaTeX\\BVE research\\_xsoc1_work",
+      "exit_code": 0,
+      "passed": 1,
+      "skipped": 0
+    },
+    {
+      "log": "F:\\tools\\manage-context-20261009\\library-smoke-v13.log",
+      "sha256": "3239789066637799b3c2619207491ac6754d3cade0c026afe2ef84fc58ce667d",
+      "command": [
+        "C:/Users/HuangZY/AppData/Local/Programs/Python/Python310/python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "tests/smoke_research_library.py"
+      ],
+      "workdir": "F:\\tools\\manage-context-20261009\\source-freeze-v13",
+      "exit_code": 0,
+      "passed": 7,
+      "skipped": 0
+    },
+    {
+      "log": "F:\\tools\\manage-context-20261009\\gateway-smoke-v13.log",
+      "sha256": "afc082b40aa13b20c01093dabaac04ad000f973b7fecdadd3a2ef9cdbeaaaefb",
+      "command": [
+        "C:/Users/HuangZY/AppData/Local/Programs/Python/Python310/python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "tests/smoke_blueprint_gateway.py"
+      ],
+      "workdir": "F:\\tools\\manage-context-20261009\\source-freeze-v13",
+      "exit_code": 0,
+      "passed": null,
+      "skipped": 0
+    },
+    {
+      "log": "F:\\tools\\manage-context-20261009\\validate-frozen-v13.log",
+      "sha256": "d26f45d198ddf89f18f1c8bd7bc9accee59cb6e1396390b2d2c73cb6bb80b37b",
+      "command": [
+        "C:/Users/HuangZY/AppData/Local/Programs/Python/Python310/python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "scripts/validate_all.py"
+      ],
+      "workdir": "F:\\tools\\manage-context-20261009\\source-freeze-v13",
+      "exit_code": 0,
+      "passed": 81,
+      "skipped": 0
+    }
+  ],
+  "scope": "Software behavior and existing Q9 evidence reuse; no new mathematical theorem or kernel replay is inferred."
+}
